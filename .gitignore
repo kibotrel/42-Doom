@@ -1,0 +1,18 @@
+# Objects directories - Files
+objs
+*.o
+
+# Static libraries - Headers
+*.a
+*.gch
+
+# Executables - Scripts
+a.out
+doom
+
+# Debug
+*.dSYM
+
+# Recovery
+*.swp
+.DS_Store
