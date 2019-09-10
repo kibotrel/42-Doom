@@ -6,18 +6,22 @@
 #    By: kibotrel <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/10 16:16:29 by kibotrel          #+#    #+#              #
-#    Updated: 2019/09/10 16:56:57 by kibotrel         ###   ########.fr        #
+#    Updated: 2019/09/10 19:22:36 by kibotrel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+
+# Executable's name (Can be changed)
 
 NAME			= doom
 
 # All the directories needed to know where files should be (Can be changed)
 
+SDL_DIR			= $(abspath sdl)
 LFT_DIR			= libft
 SRCS_DIR		= srcs
 OBJS_DIR		= objs
-INCS_DIR		= incs libft/incs
+INCS_DIR		= incs libft/incs sdl/include
+BUILD_DIR		= $(SDL_DIR)/build
 OBJS_SUBDIRS	= core
 
 # Source files (Can be changed)
@@ -38,7 +42,7 @@ C_SUBDIRS		= $(foreach dir, $(OBJS_SUBDIRS), $(D_OBJS)$(dir))
 
 CC				= gcc
 OBJS			= $(SRCS:.c=.o)
-LIBS			= -L./$(LFT_DIR) -lft
+LIBS			= -L./$(LFT_DIR) -lft $(shell $(BUILD_DIR)/bin/sdl2-config --libs)
 CFLAGS			= $(C_INCS) -Wall -Wextra -Werror -O3 -g
 
 # Color codes
@@ -51,7 +55,11 @@ YELLOW			= \033[33m
 
 all: $(C_SUBDIRS) $(NAME)
 
-$(NAME): $(LFT) $(OBJS_DIR) $(C_OBJS)
+$(BUILD_DIR):
+	@mkdir -p $(BUILD_DIR)
+	@cd $(BUILD_DIR); $(SDL_DIR)/configure --prefix $(BUILD_DIR); make -j; make install
+
+$(NAME): $(BUILD_DIR) $(LFT) $(OBJS_DIR) $(C_OBJS)
 	@echo "$(YELLOW)\n      - Building $(RESET)$(NAME) $(YELLOW)...\n$(RESET)"
 	@$(CC) $(CFLAGS) -o $(NAME) $(C_OBJS) $(LIBS)
 	@echo "$(GREEN)***   Project $(NAME) successfully compiled   ***\n$(RESET)"
@@ -80,10 +88,12 @@ clean:
 	@echo "$(GREEN)***   Deleting all object from $(NAME)   ...   ***\n$(RESET)"
 	@$(RM) $(C_OBJS)
 
-# Deleting the executable after cleaning up all .o files
+# Deleting the executable after cleaning up all .o files (W.I.P : SDL need a
+# cleaning process with a directory check in order to make distclean
 
 fclean: clean
 	@make -sC $(LFT_DIR) fclean
+	@rm -rf $(BUILD_DIR)
 	@echo "$(GREEN)***   Deleting executable file from $(NAME)   ...   ***\n$(RESET)"
 	@$(RM) $(NAME)
 
