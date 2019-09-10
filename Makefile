@@ -1,39 +1,51 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: kibotrel <marvin@42.fr>                    +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2019/09/10 16:16:29 by kibotrel          #+#    #+#              #
+#    Updated: 2019/09/10 16:56:57 by kibotrel         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
 
-NAME		= doom
+NAME			= doom
 
 # All the directories needed to know where files should be (Can be changed)
 
-LFT_DIR				= libft
-SRCS_DIR			= srcs/
-OBJS_DIR			= objs/
-INCS_DIR			= ./incs/ ./libft/incs/
+LFT_DIR			= libft
+SRCS_DIR		= srcs
+OBJS_DIR		= objs
+INCS_DIR		= incs libft/incs
 OBJS_SUBDIRS	= core
-
 
 # Source files (Can be changed)
 
-LFT			= ./libft/libft.a
-INCS		= incs/env.h
-SRCS		= core/main.c
+LFT				= libft/libft.a
+INCS			= incs/env.h
+SRCS			= core/main.c
 
 # Some tricks in order to get the makefile doing his job the way I want (Can't be changed)
 
-C_OBJS			= $(addprefix $(OBJS_DIR), $(OBJS))
-C_SUBDIRS		= $(foreach dir, $(OBJS_SUBDIRS), $(OBJS_DIR)$(dir))
-C_INCS			= $(foreach include, $(INCS_DIR), -I$(include))
+D_SRCS			= $(addsuffix /, $(SRCS_DIR))
+D_OBJS			= $(addsuffix /, $(OBJS_DIR))
+C_OBJS			= $(addprefix $(D_OBJS), $(OBJS))
+C_INCS			= $(foreach include, $(INCS_DIR), -I./$(include))
+C_SUBDIRS		= $(foreach dir, $(OBJS_SUBDIRS), $(D_OBJS)$(dir))
 
 # How files should be compiled with set flags (Can be changed)
 
-CC			= gcc
-OBJS		= $(SRCS:.c=.o)
-LIBS		= -L$(LFT_DIR) -lft
-CFLAGS	= $(C_INCS) -Wall -Wextra -Werror -O3 -g
+CC				= gcc
+OBJS			= $(SRCS:.c=.o)
+LIBS			= -L./$(LFT_DIR) -lft
+CFLAGS			= $(C_INCS) -Wall -Wextra -Werror -O3 -g
 
 # Color codes
 
-RESET		= \033[0m
-GREEN		= \033[32m
-YELLOW	= \033[33m
+RESET			= \033[0m
+GREEN			= \033[32m
+YELLOW			= \033[33m
 
 # Check if object directory exists, build libs and then the Project
 
@@ -52,7 +64,7 @@ $(C_SUBDIRS):
 
 # Redefinition of implicit compilation rule to prompt some colors and file names during the said compilation
 
-$(OBJS_DIR)%.o: $(SRCS_DIR)%.c $(INCS)
+$(D_OBJS)%.o: $(D_SRCS)%.c $(INCS)
 	@echo "$(YELLOW)      - Compiling :$(RESET)" $<
 	@$(CC) $(CFLAGS) -c $< -o $@
 
