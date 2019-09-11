@@ -1,5 +1,6 @@
 # Objects directories - Files
 objs
+build
 *.o
 
 # Static libraries - Headers

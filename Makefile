@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: kibotrel <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/10 16:16:29 by kibotrel          #+#    #+#              #
-#    Updated: 2019/09/10 19:22:36 by kibotrel         ###   ########.fr        #
+#    Updated: 2019/09/11 11:35:26 by kibotrel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -57,7 +57,10 @@ all: $(C_SUBDIRS) $(NAME)
 
 $(BUILD_DIR):
 	@mkdir -p $(BUILD_DIR)
-	@cd $(BUILD_DIR); $(SDL_DIR)/configure --prefix $(BUILD_DIR); make -j; make install
+	@cd $(BUILD_DIR);								\
+	$(SDL_DIR)/configure --prefix $(BUILD_DIR);		\
+	make -j;										\
+	make install
 
 $(NAME): $(BUILD_DIR) $(LFT) $(OBJS_DIR) $(C_OBJS)
 	@echo "$(YELLOW)\n      - Building $(RESET)$(NAME) $(YELLOW)...\n$(RESET)"
@@ -85,11 +88,13 @@ $(LFT):
 
 clean:
 	@make -sC $(LFT_DIR) clean
+	@if [ -f "$(BUILD_DIR)/Makefile" ]; then		\
+		make -sC $(BUILD_DIR) clean;				\
+	fi
 	@echo "$(GREEN)***   Deleting all object from $(NAME)   ...   ***\n$(RESET)"
 	@$(RM) $(C_OBJS)
 
-# Deleting the executable after cleaning up all .o files (W.I.P : SDL need a
-# cleaning process with a directory check in order to make distclean
+# Deleting the executable after cleaning up all .o files
 
 fclean: clean
 	@make -sC $(LFT_DIR) fclean
