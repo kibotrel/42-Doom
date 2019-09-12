@@ -12,7 +12,7 @@
 
 # Executable's name (Can be changed)
 
-NAME			= doom
+NAME			= doom-nukem
 
 # All the directories needed to know where files should be (Can be changed)
 
