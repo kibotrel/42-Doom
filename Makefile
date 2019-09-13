@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+         #
+#    By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/10 16:16:29 by kibotrel          #+#    #+#              #
-#    Updated: 2019/09/11 11:35:26 by kibotrel         ###   ########.fr        #
+#    Updated: 2019/09/13 21:06:32 by nde-jesu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,13 +22,13 @@ SRCS_DIR		= srcs
 OBJS_DIR		= objs
 INCS_DIR		= incs libft/incs sdl/include
 BUILD_DIR		= $(SDL_DIR)/build
-OBJS_SUBDIRS	= core
+OBJS_SUBDIRS	= editor
 
 # Source files (Can be changed)
 
 LFT				= libft/libft.a
-INCS			= incs/env.h
-SRCS			= core/main.c
+INCS			= incs/editor.h
+SRCS			= editor/main.c editor/events.c editor/utils.c editor/vertex.c
 
 # Some tricks in order to get the makefile doing his job the way I want (Can't be changed)
 
@@ -42,7 +42,7 @@ C_SUBDIRS		= $(foreach dir, $(OBJS_SUBDIRS), $(D_OBJS)$(dir))
 
 CC				= gcc
 OBJS			= $(SRCS:.c=.o)
-LIBS			= -L./$(LFT_DIR) -lft $(shell $(BUILD_DIR)/bin/sdl2-config --libs)
+LIBS			= -L./$(LFT_DIR) -lft $(shell $(BUILD_DIR)/sdl2-config --libs)
 CFLAGS			= $(C_INCS) -Wall -Wextra -Werror -O3 -g
 
 # Color codes

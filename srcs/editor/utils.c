@@ -1,0 +1,73 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/09/13 20:41:22 by nde-jesu          #+#    #+#             */
+/*   Updated: 2019/09/13 23:05:21 by nde-jesu         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <math.h>
+#include "editor.h"
+
+void	put_pixel(t_sdl *sdl, int x, int y, int color)
+{
+	int				*pixel;
+	SDL_Surface		*surf;
+
+	surf = sdl->surf;
+	if ((x >= 0 && x < WIN_W) && (y >= 0 && y < WIN_H))
+	{
+		pixel = surf->pixels + y * surf->pitch
+			+ x * surf->format->BytesPerPixel;
+		*pixel = color;
+	}
+}
+
+void	draw_line(t_sdl *sdl, t_vertex start, t_vertex end, int color)
+{
+		t_line		line;
+
+		line.delta_x = abs(end.x - start.x);
+		line.delta_y = abs(end.y - start.y);
+		line.sign_x = start.x < end.x ? 1 : -1;
+		line.sign_y = start.y < end.y ? 1 : -1;
+		line.error = line.delta_x - line.delta_y;
+		put_pixel(sdl, end.x, end.y, color);
+		while (start.x != end.x || start.y != end.y)
+		{
+			put_pixel(sdl, start.x, start.y, color);
+			line.error_2 = line.error * 2;
+			if (line.error_2 > -line.delta_y)
+			{
+				line.error -= line.delta_y;
+				start.x += line.sign_x;
+			}
+			if (line.error_2 < line.delta_x)
+			{
+				line.error += line.delta_x;
+				start.y += line.sign_y;
+			}
+		}
+}
+
+void	print_grid(t_editor *edit)
+{
+	int		x;
+	int		y;
+
+	y = 0;
+	while (y < WIN_H)
+	{
+		x = 0;
+		while (x < WIN_W)
+		{
+			put_pixel(edit->sdl, x, y, 0x9c9c9c);
+			x += edit->dist_grid;
+		}
+		y += edit->dist_grid;
+	}
+}
