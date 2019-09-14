@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/13 20:22:28 by nde-jesu          #+#    #+#             */
-/*   Updated: 2019/09/13 23:05:34 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2019/09/14 11:56:42 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,7 @@ void		print_all(t_editor **edit)
 
 void		mouse_click(t_editor **edit, SDL_Event event)
 {
-	t_vertex	*new;
-
-	new = get_vertex(edit, event.motion.x, event.motion.y);
-	put_pixel((*edit)->sdl, new->x, new->y, 0xFF0000);
+	get_vertex(edit, event.motion.x, event.motion.y);
 }
 
 void		events(t_editor **edit)
