@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/13 19:59:45 by nde-jesu          #+#    #+#             */
-/*   Updated: 2019/09/14 11:56:15 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2019/09/14 15:57:01 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,13 +51,14 @@ typedef struct          s_editor
 	int					dist_grid;
 }                       t_editor;
 
-void					events(t_editor ** edit);
+void		events(t_editor ** edit);
 
 void		get_vertex(t_editor **edit, int x, int y);
-
-
 
 void		put_pixel(t_sdl *sdl, int x, int y, int color);
 void		draw_line(t_sdl *sdl, t_vertex start, t_vertex end, int color);
 void		print_grid(t_editor *edit);
+
+void		create_map(t_editor *edit);
+
 #endif

@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/13 19:58:31 by nde-jesu          #+#    #+#             */
-/*   Updated: 2019/09/13 20:53:28 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2019/09/14 12:01:34 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,5 +44,7 @@ int		main(int ac, char **av)
             exit(1);
         init_editor(&edit);
 		events(&edit);
+
+		create_map(edit);
     }
 }

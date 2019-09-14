@@ -6,7 +6,7 @@
 #    By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/10 16:16:29 by kibotrel          #+#    #+#              #
-#    Updated: 2019/09/13 21:06:32 by nde-jesu         ###   ########.fr        #
+#    Updated: 2019/09/14 15:55:25 by nde-jesu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,8 @@ OBJS_SUBDIRS	= editor
 
 LFT				= libft/libft.a
 INCS			= incs/editor.h
-SRCS			= editor/main.c editor/events.c editor/utils.c editor/vertex.c
+SRCS			= 	editor/main.c editor/events.c editor/utils.c editor/vertex.c \
+					editor/create_map.c
 
 # Some tricks in order to get the makefile doing his job the way I want (Can't be changed)
 
@@ -43,7 +44,7 @@ C_SUBDIRS		= $(foreach dir, $(OBJS_SUBDIRS), $(D_OBJS)$(dir))
 CC				= gcc
 OBJS			= $(SRCS:.c=.o)
 LIBS			= -L./$(LFT_DIR) -lft $(shell $(BUILD_DIR)/sdl2-config --libs)
-CFLAGS			= $(C_INCS) -Wall -Wextra -Werror -O3 -g
+CFLAGS			= $(C_INCS) -Wall -Wextra  -O3 -g
 
 # Color codes
 
