@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/09/16 11:53:54 by kibotrel          #+#    #+#             */
+/*   Updated: 2019/09/16 13:17:44 by kibotrel         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 #include "env.h"
 #include "doom.h"
@@ -16,15 +28,12 @@ int			main(int ac, char **av)
 
 	if (ac <= 2)
 	{
+		env_setup(&env);
 		if (prechecks(ac, av))
-		{
-			setup(&env);
-			SDL_SetWindowTitle(sdl->win, TITLE);
-			SDL_Delay(5000);
-			clean_sdl(&env->sdl);
-		}
+			graphic_setup(&env, &env.sdl);
 		else
-			ft_print_error(E_FILENAME, 1);
+			ft_print_error(env.error[1], 1);
+		hooks(&env, &env.sdl);
 	}
 	else
 		usage();

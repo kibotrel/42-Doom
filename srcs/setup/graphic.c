@@ -1,16 +1,34 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   graphic.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/09/16 11:54:18 by kibotrel          #+#    #+#             */
+/*   Updated: 2019/09/16 12:25:39 by kibotrel         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "SDL.h"
 #include "libft.h"
 #include "env.h"
 #include "doom.h"
 
-#include <stdio.h>
-
 void	graphic_setup(t_env *env, t_sdl *sdl)
 {
-	if (!SDL_Init(SDL_INIT_VIDEO|SDL_INIT_AUDIO))
-		printf("Error : init\n");
-	if (!(sdl->win = SDL_CreateWindow("", 0, 0, 600, 400, 0)))
-		printf("Error : win\n");
-	if (!(sdl->ren = SDL_CreateRenderer(sdl->win, -1, SDL_RENDERER_TARGETTEXTURE)))
-		printf("Error : ren\n");
+	int	w;
+
+	w = SDL_WINDOWPOS_CENTERED;
+	if (SDL_Init(SDL_INIT_VIDEO|SDL_INIT_AUDIO))
+		env->status = E_SDL_INIT;
+	if (!env->status && !(sdl->win = SDL_CreateWindow("", w, w, 600, 400, 0)))
+		env->status = E_SDL_WIN;
+	if (!env->status && !(sdl->screen = SDL_GetWindowSurface(sdl->win)))
+		env->status = E_SDL_WINSURF;
+	if (env->status)
+	{
+		clean_sdl(sdl);
+		ft_print_error(env->error[env->status], env->status);
+	}
 }

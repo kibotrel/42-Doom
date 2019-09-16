@@ -1,27 +1,49 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   doom.h                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/09/16 11:54:10 by kibotrel          #+#    #+#             */
+/*   Updated: 2019/09/16 13:18:14 by kibotrel         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef DOOM_H
 # define DOOM_H
 
 # include "SDL.h"
+# include "env.h"
 
 typedef struct		s_sdl
 {
+	SDL_Event		event;
 	SDL_Window		*win;
-	SDL_Renderer	*ren;
+	SDL_Surface		*screen;
 }					t_sdl;
 
 typedef struct		s_env
 {
 	int				w;
 	int				h;
-	int				state;
+	int				run;
+	int				status;
+	char			*error[NB_ERRORS + 1];
 	t_sdl			sdl;
 }					t_env;
+
+/*
+**	core/hooks.c
+*/
+
+void				hooks(t_env *env, t_sdl *sdl);
 
 /*
 **	setup/setup.c
 */
 
-void				setup(t_env *env);
+void				env_setup(t_env *env);
 
 /*
 **	setup/graphic.c

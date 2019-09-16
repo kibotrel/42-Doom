@@ -1,16 +1,34 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   setup.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/09/16 11:58:26 by kibotrel          #+#    #+#             */
+/*   Updated: 2019/09/16 12:56:17 by kibotrel         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 #include "env.h"
 #include "doom.h"
 
-static void	env_setup(t_env *env)
+static void	error_messages(t_env *env)
 {
-	env->w = WIDTH;
-	env->h = HEIGHT;
+	ft_bzero(env->error, sizeof(char*));
+	env->error[0] = "";
+	env->error[1] = "\033[31;1mError:\033[0m Incorrect filename (*.data).";
+	env->error[2] = "\033[31;1mError:\033[0m Can't init SDL connexion.";
+	env->error[3] = "\033[31;1mError:\033[0m Can't create SDL window.";
+	env->error[4] = "\033[31;1mError:\033[0m Can't retrieve window-surface.";
 }
 
-void		setup(t_env *env)
+void		env_setup(t_env *env)
 {
 	ft_bzero(env, sizeof(t_env));
-	env_setup(env);
-	graphic_setup(env, &env->sdl);
+	env->w = WIN_W;
+	env->h = WIN_H;
+	env->run = 1;
+	error_messages(env);
 }
