@@ -9,7 +9,7 @@ build
 
 # Executables - Scripts
 a.out
-doom
+doom-nukem
 
 # Debug
 *.dSYM
