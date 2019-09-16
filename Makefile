@@ -22,13 +22,19 @@ SRCS_DIR		= srcs
 OBJS_DIR		= objs
 INCS_DIR		= incs libft/incs sdl/include
 BUILD_DIR		= $(SDL_DIR)/build
-OBJS_SUBDIRS	= core
+OBJS_SUBDIRS	= core usage setup clean
 
 # Source files (Can be changed)
 
 LFT				= libft/libft.a
-INCS			= incs/env.h
-SRCS			= core/main.c
+INCS			= incs/env.h incs/doom.h
+SRCS			= core/main.c							\
+														\
+				  usage/usage.c							\
+														\
+				  setup/setup.c		setup/graphic.c		\
+														\
+				  clean/sdl.c
 
 # Some tricks in order to get the makefile doing his job the way I want (Can't be changed)
 
