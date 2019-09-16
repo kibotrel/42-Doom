@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/16 11:54:10 by kibotrel          #+#    #+#             */
-/*   Updated: 2019/09/16 13:18:14 by kibotrel         ###   ########.fr       */
+/*   Updated: 2019/09/16 16:53:02 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,12 @@ typedef struct		s_env
 */
 
 void				hooks(t_env *env, t_sdl *sdl);
+
+/*
+**	core/keyboard.c
+*/
+
+void				handle_keyboard(t_env *env, t_sdl *sdl);
 
 /*
 **	setup/setup.c

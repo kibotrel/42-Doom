@@ -6,7 +6,7 @@
 #    By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/10 16:16:29 by kibotrel          #+#    #+#              #
-#    Updated: 2019/09/16 12:45:58 by kibotrel         ###   ########.fr        #
+#    Updated: 2019/09/16 16:53:27 by kibotrel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,13 +22,14 @@ SRCS_DIR		= srcs
 OBJS_DIR		= objs
 INCS_DIR		= incs libft/incs sdl/include
 BUILD_DIR		= $(SDL_DIR)/build
-OBJS_SUBDIRS	= core usage setup clean
+OBJS_SUBDIRS	= core usage setup clean menu
 
 # Source files (Can be changed)
 
 LFT				= libft/libft.a
 INCS			= incs/env.h incs/doom.h
 SRCS			= core/main.c		core/hooks.c		\
+				  core/keyboard.c						\
 														\
 				  usage/usage.c							\
 														\
