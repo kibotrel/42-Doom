@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/16 11:58:26 by kibotrel          #+#    #+#             */
-/*   Updated: 2019/09/16 12:56:17 by kibotrel         ###   ########.fr       */
+/*   Updated: 2019/09/16 13:54:39 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ static void	error_messages(t_env *env)
 	env->error[1] = "\033[31;1mError:\033[0m Incorrect filename (*.data).";
 	env->error[2] = "\033[31;1mError:\033[0m Can't init SDL connexion.";
 	env->error[3] = "\033[31;1mError:\033[0m Can't create SDL window.";
-	env->error[4] = "\033[31;1mError:\033[0m Can't retrieve window-surface.";
+	env->error[4] = "\033[31;1mError:\033[0m Can't retrieve window's surface.";
+	env->error[5] = "\033[31;1mError:\033[0m Can't update the given frame.";
 }
 
 void		env_setup(t_env *env)
