@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/16 11:54:25 by kibotrel          #+#    #+#             */
-/*   Updated: 2019/09/16 13:52:56 by kibotrel         ###   ########.fr       */
+/*   Updated: 2019/09/17 10:10:14 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@
 **	Useful macros
 */
 
-# define WIN_W			620
-# define WIN_H			480
+# define WIN_W			1280
+# define WIN_H			720
 # define TITLE			"Doom-Nukem v0.0.1"
 # define FAILURE		0
 # define SUCCESS		1
