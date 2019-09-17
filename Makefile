@@ -6,7 +6,7 @@
 #    By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/10 16:16:29 by kibotrel          #+#    #+#              #
-#    Updated: 2019/09/16 16:53:27 by kibotrel         ###   ########.fr        #
+#    Updated: 2019/09/17 10:59:36 by kibotrel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,17 +16,20 @@ NAME			= doom-nukem
 
 # All the directories needed to know where files should be (Can be changed)
 
+LZ_DIR			= $(LPNG_DIR)/ZLIB/lib
 SDL_DIR			= $(abspath sdl)
 LFT_DIR			= libft
+LPNG_DIR		= libpng
 SRCS_DIR		= srcs
 OBJS_DIR		= objs
-INCS_DIR		= incs libft/incs sdl/include
+INCS_DIR		= incs libft/incs sdl/include libpng/incs
 BUILD_DIR		= $(SDL_DIR)/build
 OBJS_SUBDIRS	= core usage setup clean menu
 
 # Source files (Can be changed)
 
-LFT				= libft/libft.a
+LFT				= $(LFT_DIR)/libft.a
+LPNG			= $(LPNG_DIR)/libpng.a
 INCS			= incs/env.h incs/doom.h
 SRCS			= core/main.c		core/hooks.c		\
 				  core/keyboard.c						\
@@ -34,6 +37,8 @@ SRCS			= core/main.c		core/hooks.c		\
 				  usage/usage.c							\
 														\
 				  setup/setup.c		setup/graphic.c		\
+														\
+				  menu/menu.c							\
 														\
 				  clean/sdl.c
 
@@ -49,8 +54,8 @@ C_SUBDIRS		= $(foreach dir, $(OBJS_SUBDIRS), $(D_OBJS)$(dir))
 
 CC				= gcc
 OBJS			= $(SRCS:.c=.o)
-LIBS			= -L./$(LFT_DIR) -lft $(shell $(BUILD_DIR)/bin/sdl2-config --libs)
-CFLAGS			= $(C_INCS) -Wall -Wextra -Werror -O3 -g
+LIBS			= -L$(LFT_DIR) -lft $(shell $(BUILD_DIR)/bin/sdl2-config --libs) -L$(LPNG_DIR) -lpng -L$(LZ_DIR) -lz
+CFLAGS			= $(C_INCS) -Wall -Wextra -Werror -O3
 
 # Color codes
 
@@ -69,7 +74,7 @@ $(BUILD_DIR):
 	make -j;										\
 	make install
 
-$(NAME): $(BUILD_DIR) $(LFT) $(OBJS_DIR) $(C_OBJS)
+$(NAME): $(BUILD_DIR) $(LFT) $(LPNG) $(OBJS_DIR) $(C_OBJS)
 	@echo "$(YELLOW)\n      - Building $(RESET)$(NAME) $(YELLOW)...\n$(RESET)"
 	@$(CC) $(CFLAGS) -o $(NAME) $(C_OBJS) $(LIBS)
 	@echo "$(GREEN)***   Project $(NAME) successfully compiled   ***\n$(RESET)"
@@ -86,15 +91,19 @@ $(D_OBJS)%.o: $(D_SRCS)%.c $(INCS)
 	@echo "$(YELLOW)      - Compiling :$(RESET)" $<
 	@$(CC) $(CFLAGS) -c $< -o $@
 
-# Compilation rule for function library "libft"
+# Compilation rules for libraries
 
 $(LFT):
 	@make -sC $(LFT_DIR) -j
+
+$(LPNG):
+	@make -sC $(LPNG_DIR) -j
 
 # Deleting all .o files and then the directory where they were located
 
 clean:
 	@make -sC $(LFT_DIR) clean
+	@make -sC $(LPNG_DIR) clean
 	@if [ -f "$(BUILD_DIR)/Makefile" ]; then		\
 		make -sC $(BUILD_DIR) clean;				\
 	fi
@@ -105,6 +114,7 @@ clean:
 
 fclean: clean
 	@make -sC $(LFT_DIR) fclean
+	@make -sC $(LPNG_DIR) fclean
 	@rm -rf $(BUILD_DIR)
 	@echo "$(GREEN)***   Deleting executable file from $(NAME)   ...   ***\n$(RESET)"
 	@$(RM) $(NAME)
