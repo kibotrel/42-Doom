@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/16 11:54:10 by kibotrel          #+#    #+#             */
-/*   Updated: 2019/09/17 15:57:08 by kibotrel         ###   ########.fr       */
+/*   Updated: 2019/09/17 18:15:43 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,11 @@ typedef struct		s_sdl
 	SDL_Surface		*screen;
 }					t_sdl;
 
+typedef struct		s_data
+{
+	t_point			ui;
+}					t_data;
+
 typedef struct		s_env
 {
 	int				w;
@@ -37,6 +42,7 @@ typedef struct		s_env
 	char			*error[NB_ERRORS + 1];
 	t_sdl			sdl;
 	t_win			win;
+	t_data			data;
 	t_status		status;
 }					t_env;
 
@@ -92,6 +98,8 @@ void				clean_sdl(t_sdl *sdl);
 **	utils/graphic.c
 */
 
+void				draw_buttons(t_point ui, t_sdl *sdl, int color);
 void				draw_pixel(SDL_Surface *win, int x, int y, int color);
+void				draw_rectangle(t_sdl *sdl, t_point ui, int color, int n);
 
 #endif

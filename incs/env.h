@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/16 11:54:25 by kibotrel          #+#    #+#             */
-/*   Updated: 2019/09/17 16:16:06 by kibotrel         ###   ########.fr       */
+/*   Updated: 2019/09/17 17:42:07 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@
 **	Environement informations
 */
 
-# define WIN_W			1920
-# define WIN_H			1080
+# define WIN_W			1280
+# define WIN_H			720
 # define TXT_GAME		" - Game"
 # define TXT_MENU		" - Menu"
 # define TXT_EDITOR		" - Editor"
@@ -37,6 +37,7 @@
 **	Color codes
 */
 
+# define RED			0xFF0000
 # define WHITE			0xFFFFFF
 
 /*

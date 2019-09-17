@@ -6,10 +6,11 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/16 11:58:26 by kibotrel          #+#    #+#             */
-/*   Updated: 2019/09/17 15:11:24 by kibotrel         ###   ########.fr       */
+/*   Updated: 2019/09/17 18:04:11 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <math.h>
 #include "libft.h"
 #include "env.h"
 #include "doom.h"
@@ -25,6 +26,11 @@ static void	error_messages(t_env *env)
 	env->error[5] = "\033[31;1mError:\033[0m Can't update the given frame.";
 }
 
+static void	infos_setup(t_env *env)
+{
+	env->data.ui.y = floor(env->h / 9);
+	env->data.ui.x = floor(env->w / 3);
+}
 void		env_setup(t_env *env)
 {
 	ft_bzero(env, sizeof(t_env));
@@ -33,4 +39,5 @@ void		env_setup(t_env *env)
 	env->run = 1;
 	env->status = NOTHING;
 	error_messages(env);
+	infos_setup(env);
 }
