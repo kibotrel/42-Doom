@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/16 16:45:57 by kibotrel          #+#    #+#             */
-/*   Updated: 2019/09/17 13:45:54 by kibotrel         ###   ########.fr       */
+/*   Updated: 2019/09/17 14:35:16 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ static void	draw_background(t_env *env, t_sdl *sdl)
 	n = 1;
 	base.y = floor(env->h / 9);
 	base.x = floor(env->w / 3);
+
 	while (n < 8)
 	{
 		p.y = base.y * n;

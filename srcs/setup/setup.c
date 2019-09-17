@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/16 11:58:26 by kibotrel          #+#    #+#             */
-/*   Updated: 2019/09/16 13:54:39 by kibotrel         ###   ########.fr       */
+/*   Updated: 2019/09/17 15:11:24 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,6 @@ void		env_setup(t_env *env)
 	env->w = WIN_W;
 	env->h = WIN_H;
 	env->run = 1;
+	env->status = NOTHING;
 	error_messages(env);
 }

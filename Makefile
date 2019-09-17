@@ -6,7 +6,7 @@
 #    By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/10 16:16:29 by kibotrel          #+#    #+#              #
-#    Updated: 2019/09/17 12:57:28 by kibotrel         ###   ########.fr        #
+#    Updated: 2019/09/17 15:46:28 by kibotrel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,24 +24,25 @@ SRCS_DIR		= srcs
 OBJS_DIR		= objs
 INCS_DIR		= incs libft/incs sdl/include libpng/incs
 BUILD_DIR		= $(SDL_DIR)/build
-OBJS_SUBDIRS	= core usage setup clean menu utils
+OBJS_SUBDIRS	= core usage setup clean menu utils events
 
 # Source files (Can be changed)
 
 LFT				= $(LFT_DIR)/libft.a
 LPNG			= $(LPNG_DIR)/libpng.a
 INCS			= incs/env.h incs/doom.h
-SRCS			= core/main.c		core/hooks.c		\
-				  core/keyboard.c						\
-														\
-				  usage/usage.c							\
-														\
-				  setup/setup.c		setup/graphic.c		\
-														\
-				  menu/menu.c							\
-														\
-				  clean/sdl.c							\
-														\
+SRCS			= core/main.c			core/hooks.c		\
+															\
+				  events/keyboard.c		events/mouse.c		\
+															\
+				  usage/usage.c								\
+															\
+				  setup/setup.c			setup/graphic.c		\
+															\
+				  menu/menu.c								\
+															\
+				  clean/sdl.c								\
+															\
 				  utils/graphic.c
 
 # Some tricks in order to get the makefile doing his job the way I want (Can't be changed)

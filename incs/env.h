@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/16 11:54:25 by kibotrel          #+#    #+#             */
-/*   Updated: 2019/09/17 13:51:57 by kibotrel         ###   ########.fr       */
+/*   Updated: 2019/09/17 16:16:06 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@
 **	Environement informations
 */
 
-# define WIN_W			1280
-# define WIN_H			720
+# define WIN_W			1920
+# define WIN_H			1080
 # define TXT_GAME		" - Game"
 # define TXT_MENU		" - Menu"
 # define TXT_EDITOR		" - Editor"
@@ -40,13 +40,25 @@
 # define WHITE			0xFFFFFF
 
 /*
-**	Error messages
+**	Enums
 */
 
-# define E_SDL_WIN		3
-# define E_FILENAME		1
-# define E_SDL_INIT		2
-# define E_SDL_UPDATE	5
-# define E_SDL_WINSURF	4
+typedef enum			e_win
+{
+	MENU,
+	GAME,
+	EDITOR,
+	SETTINGS
+}						t_win;
+
+typedef enum			e_status
+{
+	NOTHING,
+	E_FILENAME,
+	E_SDL_INIT,
+	E_SDL_WIN,
+	E_SDL_WINSURF,
+	E_SDL_UPDATE
+}						t_status;
 
 #endif

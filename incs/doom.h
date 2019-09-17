@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/16 11:54:10 by kibotrel          #+#    #+#             */
-/*   Updated: 2019/09/17 13:48:49 by kibotrel         ###   ########.fr       */
+/*   Updated: 2019/09/17 15:57:08 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,10 @@ typedef struct		s_env
 	int				w;
 	int				h;
 	int				run;
-	int				win;
-	int				status;
 	char			*error[NB_ERRORS + 1];
 	t_sdl			sdl;
+	t_win			win;
+	t_status		status;
 }					t_env;
 
 /*
@@ -47,10 +47,16 @@ typedef struct		s_env
 void				hooks(t_env *env, t_sdl *sdl);
 
 /*
-**	core/keyboard.c
+**	events/keyboard.c
 */
 
 void				handle_keyboard(t_env *env, t_sdl *sdl);
+
+/*
+**	events/mouse.c
+*/
+
+void				handle_mouse(t_env *env, t_sdl *sdl);
 
 /*
 **	setup/setup.c
@@ -83,7 +89,7 @@ void				menu(t_env *env);
 void				clean_sdl(t_sdl *sdl);
 
 /*
-**
+**	utils/graphic.c
 */
 
 void				draw_pixel(SDL_Surface *win, int x, int y, int color);
