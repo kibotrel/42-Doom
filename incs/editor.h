@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/13 19:59:45 by nde-jesu          #+#    #+#             */
-/*   Updated: 2019/09/16 15:41:32 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2019/09/17 10:01:25 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,13 @@
 
 # include "env.h"
 # include "SDL.h"
+
+typedef enum			e_settings
+{
+	vertex,
+	player,
+	ennemi
+}						t_settings;
 
 typedef struct 			s_line
 {
@@ -44,9 +51,12 @@ typedef struct          s_sdl
 typedef struct          s_editor
 {
     t_sdl               *sdl;
+	t_settings			sett;
 
 	t_vertex			*vertex;
-    
+    t_vertex			*ennemi;
+	t_vertex			player;
+	
 	int					finish;
 	int					dist_grid;
 }                       t_editor;
@@ -54,6 +64,10 @@ typedef struct          s_editor
 void		events(t_editor *edit);
 
 void		get_vertex(t_editor *edit, int x, int y);
+void		place_player(t_editor *edit, int x, int y);
+
+void		print_all_vertex(t_editor *edit);
+void		print_player(t_editor *edit, int color);
 
 void		put_pixel(t_sdl *sdl, int x, int y, int color);
 void		draw_line(t_sdl *sdl, t_vertex start, t_vertex end, int color);

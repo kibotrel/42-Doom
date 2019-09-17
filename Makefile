@@ -6,7 +6,7 @@
 #    By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/10 16:16:29 by kibotrel          #+#    #+#              #
-#    Updated: 2019/09/14 15:55:25 by nde-jesu         ###   ########.fr        #
+#    Updated: 2019/09/17 09:41:08 by nde-jesu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,7 @@ OBJS_SUBDIRS	= editor
 LFT				= libft/libft.a
 INCS			= incs/editor.h
 SRCS			= 	editor/main.c editor/events.c editor/utils.c editor/vertex.c \
-					editor/create_map.c
+					editor/create_map.c editor/player.c
 
 # Some tricks in order to get the makefile doing his job the way I want (Can't be changed)
 

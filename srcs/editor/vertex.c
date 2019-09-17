@@ -6,12 +6,30 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/13 21:06:21 by nde-jesu          #+#    #+#             */
-/*   Updated: 2019/09/16 15:41:11 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2019/09/17 09:26:53 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "editor.h"
+
+void		print_all_vertex(t_editor *edit)
+{
+	t_vertex	*vertex;
+	t_vertex	*prev_vertex;
+
+	vertex = edit->vertex;
+	prev_vertex = NULL;
+	while (vertex)
+	{
+		if (prev_vertex == NULL)
+			put_pixel(edit->sdl, vertex->x, vertex->y, 0xFF0000);
+		else
+			draw_line(edit->sdl, *prev_vertex, *vertex, 0xFF00000);
+		prev_vertex = vertex;
+		vertex = vertex->next;
+	}
+}
 
 t_vertex 	*create_vertex(int x, int y)
 {

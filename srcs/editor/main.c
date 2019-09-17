@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/13 19:58:31 by nde-jesu          #+#    #+#             */
-/*   Updated: 2019/09/16 15:41:45 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2019/09/17 09:28:30 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ void	init_editor(t_editor *edit)
 		exit(1);
 	edit->finish = 1;
 	edit->dist_grid = WIN_W / 50;
+	edit->sett = vertex;
+	edit->player.number = 0;
 }
 
 int		main(int ac, char **av)
