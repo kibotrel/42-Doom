@@ -6,7 +6,7 @@
 #    By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/10 16:16:29 by kibotrel          #+#    #+#              #
-#    Updated: 2019/09/17 10:59:36 by kibotrel         ###   ########.fr        #
+#    Updated: 2019/09/17 12:57:28 by kibotrel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ SRCS_DIR		= srcs
 OBJS_DIR		= objs
 INCS_DIR		= incs libft/incs sdl/include libpng/incs
 BUILD_DIR		= $(SDL_DIR)/build
-OBJS_SUBDIRS	= core usage setup clean menu
+OBJS_SUBDIRS	= core usage setup clean menu utils
 
 # Source files (Can be changed)
 
@@ -40,7 +40,9 @@ SRCS			= core/main.c		core/hooks.c		\
 														\
 				  menu/menu.c							\
 														\
-				  clean/sdl.c
+				  clean/sdl.c							\
+														\
+				  utils/graphic.c
 
 # Some tricks in order to get the makefile doing his job the way I want (Can't be changed)
 
