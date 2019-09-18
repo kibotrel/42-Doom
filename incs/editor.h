@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/13 19:59:45 by nde-jesu          #+#    #+#             */
-/*   Updated: 2019/09/18 07:50:04 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2019/09/18 11:32:13 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,6 @@ typedef struct          s_editor
 {
     t_sdl               *sdl;
 	t_settings			sett;
-
 	t_sector			*sector;
 	t_vertex			*vertex;
     t_vertex			*ennemi;
