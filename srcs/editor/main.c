@@ -6,21 +6,30 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/13 19:58:31 by nde-jesu          #+#    #+#             */
-/*   Updated: 2019/09/17 09:28:30 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2019/09/17 12:54:04 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdlib.h>
 #include "SDL.h"
 #include "editor.h"
-#include "libft.h"
 
 // Replace exits with real functions (with some free)
 
 void	init_editor(t_editor *edit)
 {
 	SDL_Init(SDL_INIT_VIDEO);
-	if (!(edit->sdl = (t_sdl*)ft_memalloc(sizeof(t_sdl))))
+	if (!(edit->sdl = (t_sdl*)malloc(sizeof(t_sdl))))
 		exit(1);
+	if (!(edit->vertex = (t_vertex*)malloc(sizeof(t_vertex))))
+		exit(1);
+	if (!(edit->ennemi = (t_vertex*)malloc(sizeof(t_vertex))))
+		exit(1);
+	if (!(edit->object = (t_vertex*)malloc(sizeof(t_vertex))))
+		exit(1);
+	edit->vertex = NULL;
+	edit->ennemi = NULL;
+	edit->object = NULL;	
 	edit->sdl->win = SDL_CreateWindow("DNME", SDL_WINDOWPOS_CENTERED,
 		SDL_WINDOWPOS_CENTERED, WIN_W, WIN_H, 0);
 	if (edit->sdl->win == NULL)

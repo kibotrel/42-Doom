@@ -6,12 +6,25 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/13 20:41:22 by nde-jesu          #+#    #+#             */
-/*   Updated: 2019/09/13 23:05:21 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2019/09/17 12:56:20 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdlib.h>
 #include <math.h>
 #include "editor.h"
+
+t_vertex 	*create_vertex(int x, int y)
+{
+	t_vertex	*new;
+
+	if (!(new = (t_vertex*)malloc(sizeof(t_vertex))))
+		exit(1);
+	new->x = x;
+	new->y = y;
+	new->next = NULL;
+	return (new);
+}
 
 void	put_pixel(t_sdl *sdl, int x, int y, int color)
 {

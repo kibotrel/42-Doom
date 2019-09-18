@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/13 21:06:21 by nde-jesu          #+#    #+#             */
-/*   Updated: 2019/09/17 09:26:53 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2019/09/17 12:52:58 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,23 +23,12 @@ void		print_all_vertex(t_editor *edit)
 	while (vertex)
 	{
 		if (prev_vertex == NULL)
-			put_pixel(edit->sdl, vertex->x, vertex->y, 0xFF0000);
+			put_pixel(edit->sdl, vertex->x, vertex->y, 0x0000FF);
 		else
-			draw_line(edit->sdl, *prev_vertex, *vertex, 0xFF00000);
+			draw_line(edit->sdl, *prev_vertex, *vertex, 0x0000FF);
 		prev_vertex = vertex;
 		vertex = vertex->next;
 	}
-}
-
-t_vertex 	*create_vertex(int x, int y)
-{
-	t_vertex	*new;
-
-	if (!(new = (t_vertex*)ft_memalloc(sizeof(t_vertex))))
-		exit(1);
-	new->x = x;
-	new->y = y;
-	return (new);
 }
 
 void		add_vertex(t_vertex **vertex, t_vertex *new)
@@ -48,11 +37,11 @@ void		add_vertex(t_vertex **vertex, t_vertex *new)
 	t_vertex		*prev_vertex;
 
 	new->number = vertex_num++;
-	if ((*vertex) == NULL)
-		(*vertex) = new;
+	if (*vertex == NULL)
+		*vertex = new;
 	else
 	{
-		prev_vertex = (*vertex);
+		prev_vertex = *vertex;
 		while (prev_vertex->next)
 			prev_vertex = prev_vertex->next;
 		prev_vertex->next = new;
