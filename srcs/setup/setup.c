@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/16 11:58:26 by kibotrel          #+#    #+#             */
-/*   Updated: 2019/09/17 18:04:11 by kibotrel         ###   ########.fr       */
+/*   Updated: 2019/09/19 13:55:52 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ static void	error_messages(t_env *env)
 	env->error[3] = "\033[31;1mError:\033[0m Can't create SDL window.";
 	env->error[4] = "\033[31;1mError:\033[0m Can't retrieve window's surface.";
 	env->error[5] = "\033[31;1mError:\033[0m Can't update the given frame.";
+	env->error[6] = "\033[31;1mError:\033[0m Can't init TTF connexion.";
 }
 
 static void	infos_setup(t_env *env)
