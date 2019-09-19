@@ -1,42 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   selector.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/16 11:53:54 by kibotrel          #+#    #+#             */
-/*   Updated: 2019/09/18 14:20:34 by kibotrel         ###   ########.fr       */
+/*   Created: 2019/09/18 14:21:13 by kibotrel          #+#    #+#             */
+/*   Updated: 2019/09/18 14:36:13 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <stdlib.h>
 #include "env.h"
 #include "doom.h"
 
-static int	prechecks(int ac, char **av)
+void	selector(t_env *env)
 {
-	if (ac == 2)
-		return (ft_isvalidname(av[1], ".data"));
-	else
-		return (SUCCESS);
-}
-
-int			main(int ac, char **av)
-{
-	t_env	env;
-
-	if (ac <= 2)
+	if (env->win == MENU)
+		menu(env);
+	else if (env->win == GAME)
+		game(env);
+	else if (env->win == EDITOR)
+		editor(env);
+	else if (env->win == SETTINGS)
+		settings(env);
+	else if (env->win == QUIT)
 	{
-		env_setup(&env);
-		if (prechecks(ac, av))
-			graphic_setup(&env, &env.sdl);
-		else
-			ft_print_error(env.error[1], 1);
-		selector(&env);
-		hooks(&env, &env.sdl);
+		clean_sdl(&env->sdl);
+		exit(0);
 	}
-	else
-		usage();
-	return (0);
 }

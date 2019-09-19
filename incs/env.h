@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/16 11:54:25 by kibotrel          #+#    #+#             */
-/*   Updated: 2019/09/17 17:42:07 by kibotrel         ###   ########.fr       */
+/*   Updated: 2019/09/19 10:41:59 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,12 @@
 # define TXT_GAME		" - Game"
 # define TXT_MENU		" - Menu"
 # define TXT_EDITOR		" - Editor"
-# define TXT_WINDOW		"Doom-Nukem v0.0.1"
+# define TXT_SETTINGS	" - Settings"
+# define TXT_WINDOW		"Doom-Nukem v0.0.2"
 # define TITLE_MENU		TXT_WINDOW TXT_MENU
+# define TITLE_GAME		TXT_WINDOW TXT_GAME
+# define TITLE_EDITOR	TXT_WINDOW TXT_EDITOR
+# define TITLE_SETTINGS	TXT_WINDOW TXT_SETTINGS
 
 /*
 **	Color codes
@@ -49,7 +53,8 @@ typedef enum			e_win
 	MENU,
 	GAME,
 	EDITOR,
-	SETTINGS
+	SETTINGS,
+	QUIT
 }						t_win;
 
 typedef enum			e_status

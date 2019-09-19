@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/16 11:54:10 by kibotrel          #+#    #+#             */
-/*   Updated: 2019/09/17 18:15:43 by kibotrel         ###   ########.fr       */
+/*   Updated: 2019/09/18 14:40:22 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,12 @@ typedef struct		s_env
 void				hooks(t_env *env, t_sdl *sdl);
 
 /*
+**	core/selector.c
+*/
+
+void				selector(t_env *env);
+
+/*
 **	events/keyboard.c
 */
 
@@ -87,6 +93,25 @@ void				usage(void);
 */
 
 void				menu(t_env *env);
+
+/*
+**	menu/game.c
+*/
+
+void				game(t_env *env);
+
+/*
+**	menu/editor.c
+*/
+
+void				editor(t_env *env);
+
+/*
+**	menu/ettings.c
+*/
+
+void				settings(t_env *env);
+
 
 /*
 **	clean/sdl.c
