@@ -6,11 +6,12 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/17 11:08:34 by kibotrel          #+#    #+#             */
-/*   Updated: 2019/09/17 18:13:38 by kibotrel         ###   ########.fr       */
+/*   Updated: 2019/09/19 19:21:17 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "SDL.h"
+#include "libft.h"
 #include "env.h"
 #include "doom.h"
 
@@ -25,29 +26,16 @@ void	draw_pixel(SDL_Surface *win, int x, int y, int color)
 	}
 }
 
-void	draw_rectangle(t_sdl *sdl, t_point ui, int color, int n)
+void	text_to_screen(t_env *env, t_sdl *sdl, char *text, int pos)
 {
-	t_point	p;
-
-	p.y = ui.y * n;
-	while (p.y <= ui.y * (n + 1))
+	scale_text(env, sdl, text, pos);
+	if (!(sdl->text = TTF_RenderText_Blended(sdl->font, text, sdl->color)))
+		env->status = E_TTF_RENDER;
+	if (!env->status && SDL_BlitSurface(sdl->text, 0, sdl->screen, &sdl->pos))
+		env->status = E_SDL_BLIT;
+	if (env->status)
 	{
-		p.x = ui.x - 1;
-		while (++p.x <= ui.x * 2)
-		{
-			if (p.y == ui.y * n || p.y == ui.y * (n + 1))
-				draw_pixel(sdl->screen, p.x, p.y, color);
-			if (p.x == ui.x || p.x == ui.x * 2)
-				draw_pixel(sdl->screen, p.x, p.y, color);
-		}
-		p.y++;
+		clean_sdl(sdl);
+		ft_print_error(env->error[env->status], env->status);
 	}
-}
-void	draw_buttons(t_point ui, t_sdl *sdl, int color)
-{
-	int		n;
-
-	n = -1;
-	while (++n < 8)
-		draw_rectangle(sdl, ui, color, ++n);
 }

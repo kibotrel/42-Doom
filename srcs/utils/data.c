@@ -1,27 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sdl.c                                              :+:      :+:    :+:   */
+/*   data.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/16 11:54:05 by kibotrel          #+#    #+#             */
-/*   Updated: 2019/09/19 19:21:50 by kibotrel         ###   ########.fr       */
+/*   Created: 2019/09/19 16:28:40 by kibotrel          #+#    #+#             */
+/*   Updated: 2019/09/19 18:07:03 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "SDL.h"
-#include "SDL_ttf.h"
-#include "doom.h"
 
-void	clean_sdl(t_sdl *sdl)
+void	police_color(SDL_Color *color, int r, int g, int b)
 {
-	if (sdl->screen)
-		SDL_FreeSurface(sdl->screen);
-	if (sdl->win)
-		SDL_DestroyWindow(sdl->win);
-	if (sdl->font)
-		TTF_CloseFont(sdl->font);
-	TTF_Quit();
-	SDL_Quit();
+	color->r = r;
+	color->g = g;
+	color->b = b;
+}
+
+void	paste_position(SDL_Rect *pos, int x, int y)
+{
+	pos->x = x;
+	pos->y = y;
 }

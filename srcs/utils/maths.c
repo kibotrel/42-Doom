@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sdl.c                                              :+:      :+:    :+:   */
+/*   maths.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/16 11:54:05 by kibotrel          #+#    #+#             */
-/*   Updated: 2019/09/19 19:21:50 by kibotrel         ###   ########.fr       */
+/*   Created: 2019/09/19 18:18:26 by kibotrel          #+#    #+#             */
+/*   Updated: 2019/09/19 19:23:17 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,18 @@
 #include "SDL_ttf.h"
 #include "doom.h"
 
-void	clean_sdl(t_sdl *sdl)
+void	scale_text(t_env *env, t_sdl *sdl, char *text, int pos)
 {
-	if (sdl->screen)
-		SDL_FreeSurface(sdl->screen);
-	if (sdl->win)
-		SDL_DestroyWindow(sdl->win);
-	if (sdl->font)
-		TTF_CloseFont(sdl->font);
-	TTF_Quit();
-	SDL_Quit();
+	t_point	end;
+	t_point	start;
+	t_point	scale;
+
+	TTF_SizeText(sdl->font, text, &sdl->size.x, &sdl->size.y);
+	start.x = env->data.ui.x;
+	start.y = env->data.ui.y * pos;
+	end.x = start.x + env->data.ui.x;
+	end.y = start.y + env->data.ui.y;
+	scale.x = start.x + (end.x - (start.x + sdl->size.x)) / 2;
+	scale.y = start.y + (end.y - (start.y + sdl->size.y)) / 2;
+	paste_position(&sdl->pos, scale.x, scale.y);
 }

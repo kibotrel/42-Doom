@@ -6,7 +6,7 @@
 #    By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/10 16:16:29 by kibotrel          #+#    #+#              #
-#    Updated: 2019/09/19 11:55:32 by kibotrel         ###   ########.fr        #
+#    Updated: 2019/09/19 19:21:41 by kibotrel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -52,7 +52,8 @@ SRCS			= core/main.c			core/hooks.c							\
 																				\
 				  clean/sdl.c													\
 																				\
-				  utils/graphic.c
+				  utils/graphic.c		utils/data.c							\
+				  utils/maths.c
 
 # Some tricks in order to get the makefile doing his job the way I want (Can't be changed)
 

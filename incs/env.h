@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/16 11:54:25 by kibotrel          #+#    #+#             */
-/*   Updated: 2019/09/19 13:56:19 by kibotrel         ###   ########.fr       */
+/*   Updated: 2019/09/19 19:31:03 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@
 **	Useful macros
 */
 
-# define NB_ERRORS		6
+# define DEFAULT		64
+# define NB_ERRORS		9
 
 /*
 **	Environement informations

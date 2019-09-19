@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/16 11:58:26 by kibotrel          #+#    #+#             */
-/*   Updated: 2019/09/19 13:55:52 by kibotrel         ###   ########.fr       */
+/*   Updated: 2019/09/19 19:20:15 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,9 @@ static void	error_messages(t_env *env)
 	env->error[4] = "\033[31;1mError:\033[0m Can't retrieve window's surface.";
 	env->error[5] = "\033[31;1mError:\033[0m Can't update the given frame.";
 	env->error[6] = "\033[31;1mError:\033[0m Can't init TTF connexion.";
+	env->error[7] = "\033[31;1mError:\033[0m Can't load the given font.";
+	env->error[8] = "\033[31;1mError:\033[0m Can't write text on SDL_Surface.";
+	env->error[9] = "\033[31;1mError:\033[0m Can't blit text with the screen.";
 }
 
 static void	infos_setup(t_env *env)
