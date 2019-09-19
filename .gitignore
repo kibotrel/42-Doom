@@ -2,6 +2,7 @@
 objs
 build
 sdl*
+lib*
 *.o
 
 # Static libraries - Headers
