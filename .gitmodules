@@ -7,3 +7,6 @@
 [submodule "libpng"]
 	path = libpng
 	url = https://github.com/kibotrel/PNG-Parser.git
+[submodule "sdl_ttf"]
+	path = sdl_ttf
+	url = https://github.com/Ecognize/SDL_ttf.git
