@@ -1,7 +1,8 @@
 # Objects directories - Files
 objs
 build
-sdl*
+sdl
+sdl_ttf
 lib*
 *.o
 
