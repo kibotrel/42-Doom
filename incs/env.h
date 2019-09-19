@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/16 11:54:25 by kibotrel          #+#    #+#             */
-/*   Updated: 2019/09/19 10:41:59 by kibotrel         ###   ########.fr       */
+/*   Updated: 2019/09/19 13:56:19 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,7 @@
 **	Useful macros
 */
 
-# define FAILURE		0
-# define SUCCESS		1
-# define NB_ERRORS		5
+# define NB_ERRORS		6
 
 /*
 **	Environement informations
@@ -43,28 +41,5 @@
 
 # define RED			0xFF0000
 # define WHITE			0xFFFFFF
-
-/*
-**	Enums
-*/
-
-typedef enum			e_win
-{
-	MENU,
-	GAME,
-	EDITOR,
-	SETTINGS,
-	QUIT
-}						t_win;
-
-typedef enum			e_status
-{
-	NOTHING,
-	E_FILENAME,
-	E_SDL_INIT,
-	E_SDL_WIN,
-	E_SDL_WINSURF,
-	E_SDL_UPDATE
-}						t_status;
 
 #endif

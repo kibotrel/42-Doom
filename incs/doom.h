@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/16 11:54:10 by kibotrel          #+#    #+#             */
-/*   Updated: 2019/09/18 14:40:22 by kibotrel         ###   ########.fr       */
+/*   Updated: 2019/09/19 14:03:09 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,34 +16,62 @@
 # include "SDL.h"
 # include "env.h"
 
+/*
+**	Enumerators
+*/
+
+typedef enum			e_win
+{
+	MENU,
+	GAME,
+	EDITOR,
+	SETTINGS,
+	QUIT
+}						t_win;
+
+typedef enum			e_status
+{
+	NOTHING,
+	E_FILENAME,
+	E_SDL_INIT,
+	E_SDL_WIN,
+	E_SDL_WINSURF,
+	E_SDL_UPDATE,
+	E_TTF_INIT
+}						t_status;
+
+/*
+**	Structures
+*/
+
 typedef struct		s_point
 {
-	int				x;
-	int				y;
+	int				x;						// x coordinate
+	int				y;						// y coordinate
 }					t_point;
 
 typedef struct		s_sdl
 {
-	SDL_Event		event;
-	SDL_Window		*win;
-	SDL_Surface		*screen;
+	SDL_Event		event;					// Handle keyboard, mouse and window events
+	SDL_Window		*win;					// Window identifier
+	SDL_Surface		*screen;				// Display informations linked to the window
 }					t_sdl;
 
 typedef struct		s_data
 {
-	t_point			ui;
+	t_point			ui;						// Menu ratios for menu interface spacing
 }					t_data;
 
 typedef struct		s_env
 {
-	int				w;
-	int				h;
-	int				run;
-	char			*error[NB_ERRORS + 1];
-	t_sdl			sdl;
-	t_win			win;
-	t_data			data;
-	t_status		status;
+	int				w;						// Width of the window
+	int				h;						// Height of the window
+	int				run;					// Game loop breaker
+	char			*error[NB_ERRORS + 1];	// Array of error messages
+	t_sdl			sdl;					// Informations about SDL
+	t_win			win;					// To know which window is displayed
+	t_data			data;					// Useful informations
+	t_status		status;					// Code to retrieve upon exit
 }					t_env;
 
 /*
