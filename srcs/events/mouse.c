@@ -6,15 +6,13 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/17 13:51:13 by kibotrel          #+#    #+#             */
-/*   Updated: 2019/09/18 14:34:08 by kibotrel         ###   ########.fr       */
+/*   Updated: 2019/09/19 15:33:22 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "SDL.h"
-#include <math.h>
-#include "doom.h"
-
 #include "libft.h"
+#include "doom.h"
 
 static void	left_click(t_env *env, t_point ui, int x, int y)
 {
@@ -29,7 +27,7 @@ static void	left_click(t_env *env, t_point ui, int x, int y)
 		if (y >= ui.y * n && y <= ui.y * (n + 1) && x >= ui.x && x <= ui.x * 2)
 		{
 			env->win = box;
-			SDL_memset(env->sdl.screen->pixels, 0, env->sdl.screen->h * env->sdl.screen->pitch);
+			ft_bzero(env->sdl.screen->pixels, env->sdl.screen->h * env->sdl.screen->pitch);
 			selector(env);
 			break;
 		}

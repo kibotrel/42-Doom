@@ -6,12 +6,11 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/18 14:21:13 by kibotrel          #+#    #+#             */
-/*   Updated: 2019/09/18 14:36:13 by kibotrel         ###   ########.fr       */
+/*   Updated: 2019/09/19 13:58:46 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include "env.h"
 #include "doom.h"
 
 void	selector(t_env *env)
