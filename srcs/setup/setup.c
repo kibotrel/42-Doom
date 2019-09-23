@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/16 11:58:26 by kibotrel          #+#    #+#             */
-/*   Updated: 2019/09/19 19:20:15 by kibotrel         ###   ########.fr       */
+/*   Updated: 2019/09/23 19:08:30 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,14 +34,14 @@ static void	infos_setup(t_env *env)
 {
 	env->data.ui.y = floor(env->h / 9);
 	env->data.ui.x = floor(env->w / 3);
+	env->data.f_size = floor(env->w * MAX_FONT_SIZE / MAX_WIDTH);
 }
+
 void		env_setup(t_env *env)
 {
 	ft_bzero(env, sizeof(t_env));
 	env->w = WIN_W;
 	env->h = WIN_H;
-	env->run = 1;
-	env->status = NOTHING;
 	error_messages(env);
 	infos_setup(env);
 }

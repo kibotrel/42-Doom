@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/16 11:54:25 by kibotrel          #+#    #+#             */
-/*   Updated: 2019/09/19 19:31:03 by kibotrel         ###   ########.fr       */
+/*   Updated: 2019/09/23 18:15:12 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,9 @@
 **	Useful macros
 */
 
-# define DEFAULT		64
 # define NB_ERRORS		9
+# define MAX_WIDTH		1920
+# define MAX_FONT_SIZE	64
 
 /*
 **	Environement informations
