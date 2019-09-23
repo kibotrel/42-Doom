@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/16 11:54:10 by kibotrel          #+#    #+#             */
-/*   Updated: 2019/09/19 19:14:36 by kibotrel         ###   ########.fr       */
+/*   Updated: 2019/09/23 19:03:09 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,37 +50,34 @@ typedef enum			e_status
 
 typedef struct		s_point
 {
-	int				x;						// x coordinate
-	int				y;						// y coordinate
+	int				x;
+	int				y;
 }					t_point;
 
 typedef struct		s_sdl
 {
-	t_point			size;					// Used to determine text dimensions
-	SDL_Rect		pos;					// Position where the text will be copied
-	TTF_Font		*font;					// Glyph atlas to display text
-	SDL_Event		event;					// Handle keyboard, mouse and window events
-	SDL_Color		color;					// Used to color text from sdl_ttf
-	SDL_Window		*win;					// Window identifier
-	SDL_Surface		*text;					// Used to render text from sdl_ttf
-	SDL_Surface		*screen;				// Display informations linked to the window
+	TTF_Font		*font;
+	SDL_Event		event;
+	SDL_Color		color;
+	SDL_Window		*win;
+	SDL_Surface		*screen;
 }					t_sdl;
 
 typedef struct		s_data
 {
-	t_point			ui;						// Menu ratios for menu interface spacing
+	int				f_size;
+	t_point			ui;
+	t_point			size;
 }					t_data;
 
 typedef struct		s_env
 {
-	int				w;						// Width of the window
-	int				h;						// Height of the window
-	int				run;					// Game loop breaker
-	char			*error[NB_ERRORS + 1];	// Array of error messages
-	t_sdl			sdl;					// Informations about SDL
-	t_win			win;					// To know which window is displayed
-	t_data			data;					// Useful informations
-	t_status		status;					// Code to retrieve upon exit
+	int				w;
+	int				h;
+	char			*error[NB_ERRORS + 1];
+	t_sdl			sdl;
+	t_win			win;
+	t_data			data;
 }					t_env;
 
 /*
@@ -151,12 +148,11 @@ void				editor(t_env *env);
 
 void				settings(t_env *env);
 
-
 /*
 **	clean/sdl.c
 */
 
-void				clean_sdl(t_sdl *sdl);
+void				clean(t_env *env, int error);
 
 /*
 **	utils/graphic.c
@@ -176,5 +172,6 @@ void				police_color(SDL_Color *color, int r, int g, int b);
 **	utils/maths
 */
 
-void				scale_text();
+void				scale_text(t_env *e, SDL_Rect *where, char *text, int pos);
+
 #endif

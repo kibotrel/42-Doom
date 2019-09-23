@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/16 11:53:54 by kibotrel          #+#    #+#             */
-/*   Updated: 2019/09/19 13:58:37 by kibotrel         ###   ########.fr       */
+/*   Updated: 2019/09/23 18:57:47 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int			main(int ac, char **av)
 		if (prechecks(ac, av))
 			graphic_setup(&env, &env.sdl);
 		else
-			ft_print_error(env.error[1], 1);
+			clean(&env, E_FILENAME);
 		selector(&env);
 		hooks(&env, &env.sdl);
 	}

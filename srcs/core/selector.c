@@ -6,11 +6,10 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/18 14:21:13 by kibotrel          #+#    #+#             */
-/*   Updated: 2019/09/19 13:58:46 by kibotrel         ###   ########.fr       */
+/*   Updated: 2019/09/23 18:57:53 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include "doom.h"
 
 void	selector(t_env *env)
@@ -24,8 +23,5 @@ void	selector(t_env *env)
 	else if (env->win == SETTINGS)
 		settings(env);
 	else if (env->win == QUIT)
-	{
-		clean_sdl(&env->sdl);
-		exit(0);
-	}
+		clean(env, NOTHING);
 }
