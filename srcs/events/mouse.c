@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/17 13:51:13 by kibotrel          #+#    #+#             */
-/*   Updated: 2019/09/19 15:33:22 by kibotrel         ###   ########.fr       */
+/*   Updated: 2019/09/23 19:06:07 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,9 @@
 
 static void	left_click(t_env *env, t_point ui, int x, int y)
 {
-	int		n;
-	int		box;
+	int	n;
+	int	box;
+	int	size;
 
 	n = 1;
 	box = 0;
@@ -27,9 +28,10 @@ static void	left_click(t_env *env, t_point ui, int x, int y)
 		if (y >= ui.y * n && y <= ui.y * (n + 1) && x >= ui.x && x <= ui.x * 2)
 		{
 			env->win = box;
-			ft_bzero(env->sdl.screen->pixels, env->sdl.screen->h * env->sdl.screen->pitch);
+			size = env->sdl.screen->h * env->sdl.screen->pitch;
+			ft_bzero(env->sdl.screen->pixels, size);
 			selector(env);
-			break;
+			break ;
 		}
 		n += 2;
 	}
@@ -37,7 +39,7 @@ static void	left_click(t_env *env, t_point ui, int x, int y)
 
 static void	mouse_motion(t_env *env, t_point ui, int x, int y)
 {
-	int		n;
+	int	n;
 
 	n = 1;
 	while (n < 8)
@@ -45,7 +47,7 @@ static void	mouse_motion(t_env *env, t_point ui, int x, int y)
 		if (y >= ui.y * n && y <= ui.y * (n + 1) && x >= ui.x && x <= ui.x * 2)
 		{
 			draw_rectangle(&env->sdl, ui, RED, n);
-			return;
+			return ;
 		}
 		n += 2;
 	}

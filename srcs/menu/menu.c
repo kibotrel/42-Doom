@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/16 16:45:57 by kibotrel          #+#    #+#             */
-/*   Updated: 2019/09/19 18:59:27 by kibotrel         ###   ########.fr       */
+/*   Updated: 2019/09/23 19:06:37 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,6 @@ static void	draw_text(t_env *env, t_sdl *sdl)
 	text_to_screen(env, sdl, "SETTINGS", 5);
 	text_to_screen(env, sdl, "QUIT", 7);
 }
-
 
 void		menu(t_env *env)
 {
