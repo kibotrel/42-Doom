@@ -1,12 +1,6 @@
 [submodule "libft"]
 	path = libft
 	url = https://github.com/kibotrel/42-Libft.git
-[submodule "sdl"]
-	path = sdl
-	url = https://github.com/spurious/SDL-mirror.git
 [submodule "libpng"]
 	path = libpng
 	url = https://github.com/kibotrel/PNG-Parser.git
-[submodule "sdl_ttf"]
-	path = sdl_ttf
-	url = https://github.com/Ecognize/SDL_ttf.git
