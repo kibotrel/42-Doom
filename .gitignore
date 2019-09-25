@@ -3,7 +3,7 @@ objs
 build
 sdl
 sdl_ttf
-lib*
+
 *.o
 
 # Static libraries - Headers
