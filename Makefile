@@ -6,13 +6,13 @@
 #    By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/10 16:16:29 by kibotrel          #+#    #+#              #
-#    Updated: 2019/09/25 11:57:15 by kibotrel         ###   ########.fr        #
+#    Updated: 2019/09/25 14:51:54 by kibotrel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-### Variables ###
+#---------------------------------- VARIABLES ---------------------------------#
 
-# Executable / Library (Can be changed)
+# Executable / Library (Can be changed).
 
 FT				= libft.a
 SDL				= libsdl2.a
@@ -20,15 +20,15 @@ TTF				= libsdl2_ttf.a
 PNG				= libpng.a
 NAME			= doom-nukem
 
-# Color codes
+# Color codes (Can be changed).
 
 RESET			= \033[0m
 GREEN			= \033[32m
 YELLOW			= \033[33m
 
-### Directories ###
+#--------------------------------- DIRECTORIES  -------------------------------#
 
-# Libraries (Can be changed)
+# Libraries (Can be changed).
 
 LZ_DIR			= $(LPNG_DIR)/ZLIB/lib
 LFT_DIR			= libft
@@ -36,19 +36,21 @@ LPNG_DIR		= libpng
 BREW_DIR		= $(HOME)/.brew
 BREW_LIBS		= $(BREW_DIR)/lib
 
-# Project (Can be changed)
+# Project (Can be changed).
 
 SRCS_DIR		= srcs
 OBJS_DIR		= objs
 
-# Location of all header files used in the project to avoid writing the full path upon include (Can be changed)
+# Location of all header files used in the project to avoid
+# writing the full path upon include (Can be changed).
 
 INCS_DIR		:= incs
 INCS_DIR		+= libft/incs
 INCS_DIR		+= libpng/incs
 INCS_DIR		+= $(BREW_DIR)/include/SDL2
 
-# All the subdirectories used in the project to organise source files
+# All the subdirectories used in the project
+# to organise source files (Can be changed).
 
 OBJS_SUBDIRS	:= core
 OBJS_SUBDIRS	+= menu
@@ -58,18 +60,19 @@ OBJS_SUBDIRS	+= clean
 OBJS_SUBDIRS	+= utils
 OBJS_SUBDIRS	+= events
 
-### Files ###
+#------------------------------------ FILES -----------------------------------#
 
-# Every libraries needed to compile the project (Can be changed)
+# Every libraries needed to compile the project (Can be changed).
 
 LFT				= $(LFT_DIR)/$(FT)
 LPNG			= $(LPNG_DIR)/$(PNG)
 LSDL			= $(BREW_LIBS)/$(SDL)
 LTTF			= $(BREW_LIBS)/$(TTF)
 
-# Used header at each compilation to check file integrity
+# Used header at each compilation to check file integrity (Can be changed).
 
-INCS			= incs/env.h incs/doom.h
+INCS			:= incs/env.h
+INCS			+= incs/doom.h
 
 # Source files (Can be changed)
 
@@ -90,7 +93,9 @@ SRCS			+= utils/graphic.c
 SRCS			+= events/mouse.c
 SRCS			+= events/keyboard.c
 
-# Some tricks in order to get the makefile doing his job (Can't be changed)
+#-------------------------------- MISCELANEOUS --------------------------------#
+
+# Some tricks in order to get the makefile doing his job (Can't be changed).
 
 D_SRCS			= $(addsuffix /, $(SRCS_DIR))
 D_OBJS			= $(addsuffix /, $(OBJS_DIR))
@@ -98,28 +103,36 @@ C_OBJS			= $(addprefix $(D_OBJS), $(OBJS))
 C_INCS			= $(foreach include, $(INCS_DIR), -I$(include))
 C_SUBDIRS		= $(foreach dir, $(OBJS_SUBDIRS), $(D_OBJS)$(dir))
 
-# How files should be compiled (Can't be changed)
+#--------------------------------- COMPILATION --------------------------------#
+
+# How files should be compiled (Can't be changed).
 
 CC				= gcc
 OBJS			= $(SRCS:.c=.o)
 
-# Linked libraries at compile time (Can be changed)
+# Linked libraries at compile time (Can be changed).
 
-LIBS			= -L$(LFT_DIR) -lft -L$(LPNG_DIR) -lpng -L$(LZ_DIR) -lz -L$(BREW_LIBS) -lSDL2 -lSDL2_ttf
+LIBS			:= -L$(LFT_DIR) -lft
+LIBS			+= -L$(LPNG_DIR) -lpng
+LIBS			+= -L$(LZ_DIR) -lz
+LIBS			+= -L$(BREW_LIBS) -lSDL2
+LIBS			+= -L$(BREW_LIBS) -lSDL2_ttf
 
-# Compilation flags (Can be changed)
+# Compilation flags (Can be changed).
 
 CFLAGS			= $(C_INCS) -Wall -Wextra -Werror -O3
 
-### Rules ###
+#------------------------------------ RULES -----------------------------------#
 
-# Redefinition of the implicit compilation rule to prompt some informations (Can't be changed)
+# Redefinition of the implicit compilation rule
+# to prompt some informations (Can't be changed).
 
 $(D_OBJS)%.o: $(D_SRCS)%.c $(INCS)
 	@echo "$(YELLOW)      - Compiling :$(RESET)" $<
 	@$(CC) $(CFLAGS) -c $< -o $@
 
-# Implicit make rule simply using dependancies to compile our project
+# Implicit make rule simply using dependancies
+# to compile our project (Can't be canged).
 
 all: $(C_SUBDIRS) $(NAME)
 
@@ -128,7 +141,8 @@ $(NAME): $(LSDL) $(LTTF) $(LFT) $(LPNG) $(OBJS_DIR) $(C_OBJS)
 	@$(CC) $(CFLAGS) -o $(NAME) $(C_OBJS) $(LIBS)
 	@echo "$(GREEN)***   Project $(NAME) successfully compiled   ***\n$(RESET)"
 
-#  Libraries installation using brew without prompting anything on standard output (Can be changed)
+# Libraries installation using brew without prompting
+# anything on standard output (Can be changed).
 
 $(LSDL):
 	@echo "$(GREEN)***   Installing library libSDL2.a   ...  ***\n$(RESET)"
@@ -162,7 +176,8 @@ clean:
 	@echo "$(GREEN)***   Deleting all object from $(NAME)   ...   ***\n$(RESET)"
 	@$(RM) $(C_OBJS)
 
-# Deleting all executables and libraries after cleaning up all .o files (Can't be changed).
+# Deleting all executables and libraries after cleaning up
+# all .o files (Can't be changed).
 
 fclean: clean
 	@make -sC $(LFT_DIR) fclean
@@ -182,6 +197,7 @@ fclean: clean
 
 re: fclean all
 
-# Avoid unexpected behaviour when regular files get the same name as the following variables (Can be changed).
+# Avoid unexpected behaviour when regular files
+# get the same name as the following variables (Can be changed).
 
 .PHONY: all clean fclean re
