@@ -6,7 +6,7 @@
 #    By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/10 16:16:29 by kibotrel          #+#    #+#              #
-#    Updated: 2019/09/25 14:51:54 by kibotrel         ###   ########.fr        #
+#    Updated: 2019/09/25 18:04:15 by kibotrel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,7 @@ YELLOW			= \033[33m
 
 # Libraries (Can be changed).
 
-LZ_DIR			= $(LPNG_DIR)/ZLIB/lib
+LZ_DIR			= $(BREW_DIR)/opt/zlib/lib
 LFT_DIR			= libft
 LPNG_DIR		= libpng
 BREW_DIR		= $(HOME)/.brew
@@ -145,11 +145,11 @@ $(NAME): $(LSDL) $(LTTF) $(LFT) $(LPNG) $(OBJS_DIR) $(C_OBJS)
 # anything on standard output (Can be changed).
 
 $(LSDL):
-	@echo "$(GREEN)***   Installing library libSDL2.a   ...  ***\n$(RESET)"
+	@echo "$(GREEN)***   Installing library $(SDL)   ...  ***\n$(RESET)"
 	@brew install sdl2 > /dev/null 2>&1
 
 $(LTTF):
-	@echo "$(GREEN)***   Installing library libSDL2_ttf.a   ...  ***\n$(RESET)"
+	@echo "$(GREEN)***   Installing library $(TTF)   ...  ***\n$(RESET)"
 	@brew install sdl2_ttf > /dev/null 2>&1
 
 # Libraries installion using their own Makefile (Can be changed).
@@ -185,11 +185,11 @@ fclean: clean
 	@echo "$(GREEN)***   Deleting executable file from $(NAME)   ...   ***\n$(RESET)"
 	@$(RM) $(NAME)
 	@if [ -f "$(LSDL)" ]; then														\
-		echo "$(GREEN)***   Deleting library libSDL2.a   ...  ***\n$(RESET)";		\
+		echo "$(GREEN)***   Deleting library $(SDL)   ...  ***\n$(RESET)";		\
 		brew uninstall --ignore-dependencies sdl2 > /dev/null 2>&1;					\
 	fi
 	@if [ -f "$(LTTF)" ]; then														\
-		echo "$(GREEN)***   Deleting library libSDL2_ttf.a   ...  ***\n$(RESET)";	\
+		echo "$(GREEN)***   Deleting library $(TTF)   ...  ***\n$(RESET)";	\
 		brew uninstall sdl2_ttf > /dev/null 2>&1;									\
 	fi
 
