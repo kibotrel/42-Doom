@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/17 11:31:58 by nde-jesu          #+#    #+#             */
-/*   Updated: 2019/09/17 12:02:35 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2019/09/25 17:24:23 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,11 +65,11 @@ void		add_ennemy(t_vertex **ennemy, t_vertex *new)
 	}
 }
 
-void	get_ennemy(t_editor *edit, int x, int y)
+void	get_ennemy(t_editor **edit, int x, int y)
 {
 	t_vertex	*new_ennemy;
 
 	new_ennemy = create_vertex(x, y);
-	add_ennemy(&edit->ennemi, new_ennemy);
+	add_ennemy(&(*edit)->ennemi, new_ennemy);
 }
 

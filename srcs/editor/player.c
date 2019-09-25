@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/17 09:22:32 by nde-jesu          #+#    #+#             */
-/*   Updated: 2019/09/17 12:02:46 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2019/09/25 17:24:08 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,12 +43,12 @@ void	print_player(t_editor *edit, int color)
 	}
 }
 
-void	place_player(t_editor *edit, int x, int y)
+void	place_player(t_editor **edit, int x, int y)
 {
-	if (edit->player.number == 1)
-		print_player(edit, 0x000000);
-	edit->player.x = x;
-	edit->player.y = y;
-	edit->player.number = 1;
+	if ((*edit)->player.number == 1)
+		print_player((*edit), 0x000000);
+	(*edit)->player.x = x;
+	(*edit)->player.y = y;
+	(*edit)->player.number = 1;
 }
 
