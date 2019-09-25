@@ -6,7 +6,7 @@
 #    By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/10 16:16:29 by kibotrel          #+#    #+#              #
-#    Updated: 2019/09/24 11:18:14 by kibotrel         ###   ########.fr        #
+#    Updated: 2019/09/25 11:57:15 by kibotrel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,6 +19,12 @@ SDL				= libsdl2.a
 TTF				= libsdl2_ttf.a
 PNG				= libpng.a
 NAME			= doom-nukem
+
+# Color codes
+
+RESET			= \033[0m
+GREEN			= \033[32m
+YELLOW			= \033[33m
 
 ### Directories ###
 
@@ -104,12 +110,6 @@ LIBS			= -L$(LFT_DIR) -lft -L$(LPNG_DIR) -lpng -L$(LZ_DIR) -lz -L$(BREW_LIBS) -l
 # Compilation flags (Can be changed)
 
 CFLAGS			= $(C_INCS) -Wall -Wextra -Werror -O3
-
-# Color codes
-
-RESET			= \033[0m
-GREEN			= \033[32m
-YELLOW			= \033[33m
 
 ### Rules ###
 
