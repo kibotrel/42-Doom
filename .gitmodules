@@ -1,3 +1,6 @@
 [submodule "libft"]
 	path = libft
 	url = https://github.com/kibotrel/42-Libft.git
+[submodule "libpng"]
+	path = libpng
+	url = https://github.com/kibotrel/PNG-Parser.git
