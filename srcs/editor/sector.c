@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/25 09:12:52 by nde-jesu          #+#    #+#             */
-/*   Updated: 2019/09/25 17:22:59 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2019/09/25 21:18:30 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int			get_color(t_sector *sect, int *i)
 	if (sect->is_portal != NULL && sect->is_portal[*i] != -1)
 		color = 0xFFFFFF;
 	else
-		color = 0xFF0000;
+		color = 0x0000ff;
 	return (color);
 }
 
