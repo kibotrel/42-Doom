@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/13 19:59:45 by nde-jesu          #+#    #+#             */
-/*   Updated: 2019/09/25 17:57:30 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2019/09/26 09:49:04 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,9 @@ typedef struct          s_editor
 void		events(t_editor **edit);
 
 void		get_sector(t_editor **edit, int x, int y);
+int			get_wall_color(t_sector *sect, int *i);
+int			is_sector_complete(t_vertex *first, t_vertex *last);
+
 t_vertex	*get_vertex(t_editor **edit, int x, int y);
 t_vertex	*create_vertex(int x, int y);
 void		place_player(t_editor **edit, int x, int y);

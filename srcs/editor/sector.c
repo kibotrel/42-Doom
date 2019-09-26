@@ -6,26 +6,13 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/25 09:12:52 by nde-jesu          #+#    #+#             */
-/*   Updated: 2019/09/25 21:18:30 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2019/09/26 09:47:38 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "libft.h"
 #include "editor.h"
-
-int			get_color(t_sector *sect, int *i)
-{
-	int 	color;
-
-	if (sect->is_portal != NULL && *i >= sect->num_vertex)
-		*i = 0;
-	if (sect->is_portal != NULL && sect->is_portal[*i] != -1)
-		color = 0xFFFFFF;
-	else
-		color = 0x0000ff;
-	return (color);
-}
 
 void		print_sector(t_editor *edit)
 {
@@ -41,21 +28,12 @@ void		print_sector(t_editor *edit)
 		vertex = sect->vertex;
 		while (vertex && ++i)
 		{
-			color = get_color(sect, &i);
+			color = get_wall_color(sect, &i);
 			draw_walls(edit->sdl, sect, vertex, color);
 			vertex = vertex->next;
 		}
 		sect = sect->next;
 	}
-}
-
-int			is_sector_complete(t_vertex *first, t_vertex *last)
-{
-	if (!first || !last)
-		return (0);
-	if (first->x == last->x && first->y == last->y)
-		return (1);
-	return (0);
 }
 
 int			count_vertex_in_sector(t_vertex *vertex)
