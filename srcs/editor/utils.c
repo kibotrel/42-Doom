@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/13 20:41:22 by nde-jesu          #+#    #+#             */
-/*   Updated: 2019/09/25 16:59:12 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2019/09/30 15:59:14 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,29 @@
 #include <math.h>
 #include "editor.h"
 #include "libft.h"
+
+// Changer cette fonction pour renvoyer le secteur dans lequel le point est, sinon -1
+
+int		is_in_sector(t_vertex point, t_vertex *vertex)
+{
+	int		cross;
+	float	line;
+
+	cross = 0;
+	while (vertex)
+	{
+		if (vertex->next)
+		{
+			if (((vertex->y <= point.y) && (vertex->next->y > point.y)) || ((vertex->y > point.y) && (vertex->next->y <= point.y)))
+			{
+				line = (float)(point.y - vertex->y) / (vertex->next->y - vertex->y);
+				if (point.x < vertex->x + line * (vertex->next->x - vertex->x))
+					++cross;
+			}
+		vertex = vertex->next;
+	}
+	return (cross&1);
+}
 
 t_vertex 	*create_vertex(int x, int y)
 {
