@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/16 11:54:10 by kibotrel          #+#    #+#             */
-/*   Updated: 2019/09/23 19:03:09 by kibotrel         ###   ########.fr       */
+/*   Updated: 2019/10/03 15:33:14 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include "SDL.h"
 # include "SDL_ttf.h"
-# include "env.h"
+# include "bmp.h"
 
 /*
 **	Enumerators
@@ -41,7 +41,9 @@ typedef enum			e_status
 	E_TTF_INIT,
 	E_TTF_FONT,
 	E_TTF_RENDER,
-	E_SDL_BLIT
+	E_SDL_BLIT,
+	E_BMP_PARSE,
+	NB_ERRORS
 }						t_status;
 
 /*
@@ -56,6 +58,7 @@ typedef struct		s_point
 
 typedef struct		s_sdl
 {
+	t_bmp			bmp;
 	TTF_Font		*font;
 	SDL_Event		event;
 	SDL_Color		color;
@@ -74,7 +77,7 @@ typedef struct		s_env
 {
 	int				w;
 	int				h;
-	char			*error[NB_ERRORS + 1];
+	char			*error[NB_ERRORS];
 	t_sdl			sdl;
 	t_win			win;
 	t_data			data;
@@ -127,6 +130,7 @@ void				usage(void);
 */
 
 void				menu(t_env *env);
+void				draw_text(t_env *env, t_sdl *sdl);
 void				draw_buttons(t_point ui, t_sdl *sdl, int color);
 void				draw_rectangle(t_sdl *sdl, t_point ui, int color, int n);
 
@@ -165,6 +169,7 @@ void				text_to_screen(t_env *env, t_sdl *sdl, char *text, int pos);
 **	utils/data.c
 */
 
+char				*get_string(int n);
 void				paste_position(SDL_Rect *pos, int x, int y);
 void				police_color(SDL_Color *color, int r, int g, int b);
 

@@ -6,12 +6,13 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/16 11:54:18 by kibotrel          #+#    #+#             */
-/*   Updated: 2019/09/23 19:08:11 by kibotrel         ###   ########.fr       */
+/*   Updated: 2019/10/03 14:20:50 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "SDL.h"
 #include "SDL_ttf.h"
+#include "bmp.h"
 #include "libft.h"
 #include "doom.h"
 
@@ -30,6 +31,10 @@ static void	sdl_setup(t_env *env, t_sdl *sdl)
 		clean(env, E_SDL_WIN);
 	if (!(sdl->screen = SDL_GetWindowSurface(sdl->win)))
 		clean(env, E_SDL_WINSURF);
+	if (env->h == 1080 && bmp_to_array("assets/menu_1080.bmp", &sdl->bmp))
+		clean(env, E_BMP_PARSE);
+	if (env->h == 720 && bmp_to_array("assets/menu_720.bmp", &sdl->bmp))
+		clean(env, E_BMP_PARSE);
 }
 
 static void	ttf_setup(t_env *env, t_sdl *sdl)

@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/16 11:58:26 by kibotrel          #+#    #+#             */
-/*   Updated: 2019/09/23 19:08:30 by kibotrel         ###   ########.fr       */
+/*   Updated: 2019/10/03 14:35:42 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,21 +19,22 @@ static void	error_messages(t_env *env)
 {
 	ft_bzero(env->error, sizeof(char*));
 	env->error[0] = "";
-	env->error[1] = "\033[31;1mError:\033[0m Incorrect filename (*.data).";
-	env->error[2] = "\033[31;1mError:\033[0m Can't init SDL connexion.";
-	env->error[3] = "\033[31;1mError:\033[0m Can't create SDL window.";
-	env->error[4] = "\033[31;1mError:\033[0m Can't retrieve window's surface.";
-	env->error[5] = "\033[31;1mError:\033[0m Can't update the given frame.";
-	env->error[6] = "\033[31;1mError:\033[0m Can't init TTF connexion.";
-	env->error[7] = "\033[31;1mError:\033[0m Can't load the given font.";
-	env->error[8] = "\033[31;1mError:\033[0m Can't write text on SDL_Surface.";
-	env->error[9] = "\033[31;1mError:\033[0m Can't blit text with the screen.";
+	env->error[1] = M_FILENAME;
+	env->error[2] = M_SDL_INIT;
+	env->error[3] = M_SDL_WIN;
+	env->error[4] = M_SDL_WINSURF;
+	env->error[5] = M_SDL_UPDATE;
+	env->error[6] = M_TTF_INIT;
+	env->error[7] = M_TTF_FONT;
+	env->error[8] = M_TTF_RENDER;
+	env->error[9] = M_SDL_BLIT;
+	env->error[10] = M_BMP_PARSE;
 }
 
 static void	infos_setup(t_env *env)
 {
-	env->data.ui.y = floor(env->h / 9);
-	env->data.ui.x = floor(env->w / 3);
+	env->data.ui.y = floor(env->h / RATIO_UI_Y);
+	env->data.ui.x = floor(env->w / RATIO_UI_X);
 	env->data.f_size = floor(env->w * MAX_FONT_SIZE / MAX_WIDTH);
 }
 

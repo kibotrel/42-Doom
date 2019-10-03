@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/16 16:45:57 by kibotrel          #+#    #+#             */
-/*   Updated: 2019/09/23 19:06:37 by kibotrel         ###   ########.fr       */
+/*   Updated: 2019/10/03 15:24:06 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,12 @@ void		draw_rectangle(t_sdl *sdl, t_point ui, int color, int n)
 	p.y = ui.y * n;
 	while (p.y <= ui.y * (n + 1))
 	{
-		p.x = ui.x - 1;
-		while (++p.x <= ui.x * 2)
+		p.x = ui.x * MIN_UI_X - 1;
+		while (++p.x <= ui.x * MAX_UI_X)
 		{
 			if (p.y == ui.y * n || p.y == ui.y * (n + 1))
 				draw_pixel(sdl->screen, p.x, p.y, color);
-			if (p.x == ui.x || p.x == ui.x * 2)
+			if (p.x == ui.x * MIN_UI_X || p.x == ui.x * MAX_UI_X)
 				draw_pixel(sdl->screen, p.x, p.y, color);
 		}
 		p.y++;
@@ -44,7 +44,7 @@ void		draw_buttons(t_point ui, t_sdl *sdl, int color)
 		draw_rectangle(sdl, ui, color, ++n);
 }
 
-static void	draw_text(t_env *env, t_sdl *sdl)
+void	draw_text(t_env *env, t_sdl *sdl)
 {
 	text_to_screen(env, sdl, "GAME", 1);
 	text_to_screen(env, sdl, "EDITOR", 3);
@@ -52,9 +52,25 @@ static void	draw_text(t_env *env, t_sdl *sdl)
 	text_to_screen(env, sdl, "QUIT", 7);
 }
 
+static void	draw_image(t_env *env, t_sdl *sdl)
+{
+	int	x;
+	int	y;
+
+	y = sdl->bmp.height;
+	while (--y >= 0)
+	{
+		x = -1;
+		while (++x < sdl->bmp.width)
+			if (x < env->w && y < env->h)
+				draw_pixel(sdl->screen, x, y, sdl->bmp.pixels[x + y * sdl->bmp.width]);
+	}
+}
+
 void		menu(t_env *env)
 {
 	SDL_SetWindowTitle(env->sdl.win, TITLE_MENU);
+	draw_image(env, &env->sdl);
 	draw_buttons(env->data.ui, &env->sdl, WHITE);
 	draw_text(env, &env->sdl);
 }

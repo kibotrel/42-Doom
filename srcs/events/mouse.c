@@ -6,12 +6,13 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/17 13:51:13 by kibotrel          #+#    #+#             */
-/*   Updated: 2019/09/23 19:06:07 by kibotrel         ###   ########.fr       */
+/*   Updated: 2019/10/03 15:29:04 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "SDL.h"
 #include "libft.h"
+#include "env.h"
 #include "doom.h"
 
 static void	left_click(t_env *env, t_point ui, int x, int y)
@@ -25,7 +26,8 @@ static void	left_click(t_env *env, t_point ui, int x, int y)
 	while (n < 8)
 	{
 		box++;
-		if (y >= ui.y * n && y <= ui.y * (n + 1) && x >= ui.x && x <= ui.x * 2)
+		if (y >= ui.y * n && y <= ui.y * (n + 1)
+			&& x >= ui.x * MIN_UI_X && x <= ui.x * MAX_UI_X)
 		{
 			env->win = box;
 			size = env->sdl.screen->h * env->sdl.screen->pitch;
@@ -44,14 +46,19 @@ static void	mouse_motion(t_env *env, t_point ui, int x, int y)
 	n = 1;
 	while (n < 8)
 	{
-		if (y >= ui.y * n && y <= ui.y * (n + 1) && x >= ui.x && x <= ui.x * 2)
+		if (y >= ui.y * n && y <= ui.y * (n + 1)
+			&& x >= ui.x * MIN_UI_X && x <= ui.x * MAX_UI_X)
 		{
 			draw_rectangle(&env->sdl, ui, RED, n);
+			police_color(&env->sdl.color, 255, 0, 0);
+			text_to_screen(env, &env->sdl, get_string(n), n);
 			return ;
 		}
 		n += 2;
 	}
+	police_color(&env->sdl.color, 255, 255, 255);
 	draw_buttons(ui, &env->sdl, WHITE);
+	draw_text(env, &env->sdl);
 }
 
 void		handle_mouse(t_env *e, t_sdl *sdl)

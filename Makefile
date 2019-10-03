@@ -6,7 +6,7 @@
 #    By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/10 16:16:29 by kibotrel          #+#    #+#              #
-#    Updated: 2019/09/25 18:04:15 by kibotrel         ###   ########.fr        #
+#    Updated: 2019/10/03 10:07:06 by kibotrel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@
 FT				= libft.a
 SDL				= libsdl2.a
 TTF				= libsdl2_ttf.a
-PNG				= libpng.a
+BMP				= libbmp.a
 NAME			= doom-nukem
 
 # Color codes (Can be changed).
@@ -30,9 +30,8 @@ YELLOW			= \033[33m
 
 # Libraries (Can be changed).
 
-LZ_DIR			= $(BREW_DIR)/opt/zlib/lib
 LFT_DIR			= libft
-LPNG_DIR		= libpng
+LBMP_DIR		= libbmp
 BREW_DIR		= $(HOME)/.brew
 BREW_LIBS		= $(BREW_DIR)/lib
 
@@ -46,7 +45,7 @@ OBJS_DIR		= objs
 
 INCS_DIR		:= incs
 INCS_DIR		+= libft/incs
-INCS_DIR		+= libpng/incs
+INCS_DIR		+= libbmp/incs
 INCS_DIR		+= $(BREW_DIR)/include/SDL2
 
 # All the subdirectories used in the project
@@ -65,7 +64,7 @@ OBJS_SUBDIRS	+= events
 # Every libraries needed to compile the project (Can be changed).
 
 LFT				= $(LFT_DIR)/$(FT)
-LPNG			= $(LPNG_DIR)/$(PNG)
+LBMP			= $(LBMP_DIR)/$(BMP)
 LSDL			= $(BREW_LIBS)/$(SDL)
 LTTF			= $(BREW_LIBS)/$(TTF)
 
@@ -113,8 +112,7 @@ OBJS			= $(SRCS:.c=.o)
 # Linked libraries at compile time (Can be changed).
 
 LIBS			:= -L$(LFT_DIR) -lft
-LIBS			+= -L$(LPNG_DIR) -lpng
-LIBS			+= -L$(LZ_DIR) -lz
+LIBS			+= -L$(LBMP_DIR) -lbmp
 LIBS			+= -L$(BREW_LIBS) -lSDL2
 LIBS			+= -L$(BREW_LIBS) -lSDL2_ttf
 
@@ -136,7 +134,7 @@ $(D_OBJS)%.o: $(D_SRCS)%.c $(INCS)
 
 all: $(C_SUBDIRS) $(NAME)
 
-$(NAME): $(LSDL) $(LTTF) $(LFT) $(LPNG) $(OBJS_DIR) $(C_OBJS)
+$(NAME): $(LSDL) $(LTTF) $(LFT) $(LBMP) $(OBJS_DIR) $(C_OBJS)
 	@echo "$(YELLOW)\n      - Building $(RESET)$(NAME) $(YELLOW)...\n$(RESET)"
 	@$(CC) $(CFLAGS) -o $(NAME) $(C_OBJS) $(LIBS)
 	@echo "$(GREEN)***   Project $(NAME) successfully compiled   ***\n$(RESET)"
@@ -157,8 +155,8 @@ $(LTTF):
 $(LFT):
 	@make -sC $(LFT_DIR) -j
 
-$(LPNG):
-	@make -sC $(LPNG_DIR) -j
+$(LBMP):
+	@make -sC $(LBMP_DIR) -j
 
 # Rules used to create folders if they aren't already existing (Can be changed).
 
@@ -172,7 +170,7 @@ $(C_SUBDIRS):
 
 clean:
 	@make -sC $(LFT_DIR) clean
-	@make -sC $(LPNG_DIR) clean
+	@make -sC $(LBMP_DIR) clean
 	@echo "$(GREEN)***   Deleting all object from $(NAME)   ...   ***\n$(RESET)"
 	@$(RM) $(C_OBJS)
 
@@ -181,7 +179,7 @@ clean:
 
 fclean: clean
 	@make -sC $(LFT_DIR) fclean
-	@make -sC $(LPNG_DIR) fclean
+	@make -sC $(LBMP_DIR) fclean
 	@echo "$(GREEN)***   Deleting executable file from $(NAME)   ...   ***\n$(RESET)"
 	@$(RM) $(NAME)
 	@if [ -f "$(LSDL)" ]; then														\
