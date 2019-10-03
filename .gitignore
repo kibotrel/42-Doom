@@ -8,6 +8,7 @@ sdl_ttf
 # Static libraries - Headers
 *.a
 *.gch
+lib*
 
 # Executables - Scripts
 a.out
