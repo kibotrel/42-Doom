@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/17 09:22:32 by nde-jesu          #+#    #+#             */
-/*   Updated: 2019/09/30 15:59:33 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2019/10/06 11:56:49 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,12 @@ void	print_player(t_editor *edit, int color)
 void	place_player(t_editor **edit, int x, int y)
 {
 	t_vertex	player;
+	int			player_sector;
 
-	(*edit)->player.x = x;
-	(*edit)->player.y = y;	
-	if (is_in_sector(player, (*edit)->sector))
+	player.x = x;
+	player.y = y;	
+	player_sector = is_in_sector((*edit), player);
+	if (player_sector != -1)
 	{
 		if ((*edit)->player.number == 1)
 			print_player((*edit), 0x000000);

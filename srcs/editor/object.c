@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/17 11:51:23 by nde-jesu          #+#    #+#             */
-/*   Updated: 2019/09/25 17:24:39 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2019/10/06 11:54:02 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,10 @@ void		add_object(t_vertex **object, t_vertex *new)
 void	get_object(t_editor **edit, int x, int y)
 {
 	t_vertex	*new_object;
+	int			object_sector;
 
 	new_object = create_vertex(x, y);
-	add_object(&(*edit)->object, new_object);
+	object_sector = is_in_sector((*edit), *new_object);
+	if (object_sector != -1)
+		add_object(&(*edit)->object, new_object);
 }

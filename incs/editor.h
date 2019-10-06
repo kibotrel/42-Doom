@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/13 19:59:45 by nde-jesu          #+#    #+#             */
-/*   Updated: 2019/09/30 15:55:56 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2019/10/06 11:33:40 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,7 @@ void		write_player(t_editor *edit, int fd);
 void		write_vertex_sector(t_sector *sect, t_vertex *all, int fd);
 void		write_sector_file(t_sector *sector, t_vertex *all, int fd);
 
-int		is_in_sector(t_vertex point, t_vertex *vertex);
+int			is_in_sector(t_editor *edit, t_vertex point);
 
 
 #endif
