@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/13 21:06:21 by nde-jesu          #+#    #+#             */
-/*   Updated: 2019/09/25 17:21:16 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2019/10/07 14:53:04 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,19 +15,25 @@
 
 void		print_all_vertex(t_editor *edit)
 {
+	t_sector 	*sector;
 	t_vertex	*vertex;
 	t_vertex	*prev_vertex;
 
-	vertex = edit->vertex;
-	prev_vertex = NULL;
-	while (vertex)
+	sector = edit->sector;
+	while (sector)
 	{
-		if (prev_vertex == NULL)
-			put_pixel(edit->sdl, vertex->x, vertex->y, 0x0000FF);
-		else
-			draw_line(edit->sdl, *prev_vertex, *vertex, 0x0000FF);
-		prev_vertex = vertex;
-		vertex = vertex->next;
+		vertex = sector->vertex;
+		prev_vertex = NULL;
+		while (vertex)
+		{
+			if (prev_vertex == NULL)
+				put_pixel(edit->sdl, vertex->x, vertex->y, 0x0000FF);
+			else
+				draw_line(edit->sdl, *prev_vertex, *vertex, 0x0000FF);
+			prev_vertex = vertex;
+			vertex = vertex->next;
+		}
+		sector = sector->next;
 	}
 }
 

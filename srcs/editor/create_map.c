@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/14 12:02:03 by nde-jesu          #+#    #+#             */
-/*   Updated: 2019/09/25 18:07:24 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2019/10/07 14:44:45 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,26 +19,25 @@
 
 void	write_vertex_file(t_editor *edit, int fd)
 {
-	int			y;
+	t_sector	*sector;
 	t_vertex	*vertex;
 
-	vertex = edit->vertex;
-	while (vertex)
+	sector = edit->sector;
+	while (sector)
 	{
-		ft_putstr_fd("vertex\t", fd);
-		ft_putstr_fd("y ", fd);
-		ft_putnbr_fd(vertex->y, fd);
-		ft_putchar_fd('\t', fd);
-		y = vertex->y;			
-		ft_putstr_fd("x ", fd);
-		while (vertex && vertex->y == y)
+		vertex = sector->vertex;
+		while (vertex)
 		{
+			ft_putstr_fd("vertex\t", fd);
+			ft_putstr_fd("y ", fd);
+			ft_putnbr_fd(vertex->y, fd);
+			ft_putchar_fd('\t', fd);
+			ft_putstr_fd("x ", fd);
 			ft_putnbr_fd(vertex->x, fd);
-			if (vertex->next != NULL && vertex->next->y == y)
-				ft_putchar_fd(' ', fd);
+			ft_putchar_fd('\n', fd);		
 			vertex = vertex->next;
 		}
-		ft_putchar_fd('\n', fd);
+		sector = sector->next;
 	}
 	ft_putchar_fd('\n', fd);
 }

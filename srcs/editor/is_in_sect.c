@@ -6,13 +6,11 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/06 11:19:25 by nde-jesu          #+#    #+#             */
-/*   Updated: 2019/10/06 12:12:19 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2019/10/07 08:10:21 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "editor.h"
-
-https://www.geeksforgeeks.org/how-to-check-if-a-given-point-lies-inside-a-polygon/
 
 int		is_left(t_vertex p0, t_vertex p1, t_vertex p2)
 {

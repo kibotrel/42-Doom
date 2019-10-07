@@ -6,14 +6,14 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/25 17:48:19 by nde-jesu          #+#    #+#             */
-/*   Updated: 2019/09/25 17:58:09 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2019/10/07 14:29:36 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "editor.h"
 
-int		search_vertex(t_vertex *all, t_vertex *to_find)
+int		search_vertex_num(t_vertex *all, t_vertex *to_find)
 {
 	t_vertex	*vertex;
 
@@ -49,7 +49,7 @@ void	write_vertex_sector(t_sector *sect, t_vertex *all, int fd)
 	vertex = sect->vertex;
 	while (vertex)
 	{
-		pos = search_vertex(all, vertex);
+		pos = search_vertex_num(all, vertex);
 		ft_putnbr_fd(pos, fd);
 		if (vertex->next)
 			ft_putchar_fd(' ', fd);
