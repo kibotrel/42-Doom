@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/13 19:59:45 by nde-jesu          #+#    #+#             */
-/*   Updated: 2019/10/07 15:06:24 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2019/10/08 16:24:38 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ typedef enum			e_settings
 	vertex,
 	player,
 	ennemi,
-	object
+	object,
+	portal
 }						t_settings;
 
 typedef struct 			s_line
@@ -56,6 +57,13 @@ typedef struct			s_sector
 	struct s_sector		*next;
 }						t_sector;
 
+typedef struct 			s_portal
+{
+	t_sector 			*is_in_sector;
+	t_vertex			*start;
+	t_vertex			*end;
+}						t_portal;
+
 typedef struct          s_sdl
 {
     SDL_Window         	*win;
@@ -67,6 +75,7 @@ typedef struct          s_editor
 {
     t_sdl               *sdl;
 	t_settings			sett;
+	t_portal			portal;
 	t_sector			*sector;
 	t_vertex			*vertex;
     t_vertex			*ennemi;
@@ -81,6 +90,7 @@ typedef struct          s_editor
 void		events(t_editor **edit);
 
 void		get_sector(t_editor **edit, int x, int y);
+t_sector	*get_last_sector(t_editor **edit);
 int			get_wall_color(t_sector *sect, int *i);
 int			is_sector_complete(t_vertex *first, t_vertex *last);
 
@@ -110,6 +120,6 @@ void		write_vertex_sector(t_sector *sect, t_vertex *all, int fd);
 void		write_sector_file(t_sector *sector, t_vertex *all, int fd);
 
 int			is_in_sector(t_editor *edit, t_vertex point);
-
+void		place_portal(t_editor **edit, int x, int y);
 
 #endif
