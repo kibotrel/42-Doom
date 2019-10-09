@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/13 19:59:45 by nde-jesu          #+#    #+#             */
-/*   Updated: 2019/10/08 16:24:38 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2019/10/09 08:26:48 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,8 @@ typedef struct          s_editor
 	t_vertex			*object;
 	t_vertex			player;
 	
+	t_vertex			*last_vertex;
+
 	int					sect_is_closed;
 	int					finish;
 	int					dist_grid;

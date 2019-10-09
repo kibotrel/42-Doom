@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/13 20:41:22 by nde-jesu          #+#    #+#             */
-/*   Updated: 2019/10/06 11:57:34 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2019/10/09 09:06:49 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,9 +101,12 @@ void	print_grid(t_editor *edit)
 		x = 0;
 		while (x < WIN_W)
 		{
-			put_pixel(edit->sdl, x, y, 0x9c9c9c);
-			x += edit->dist_grid;
+			if (x % edit->dist_grid == 0 && y % edit->dist_grid == 0)
+				put_pixel(edit->sdl, x, y, 0x9c9c9c);
+			else
+				put_pixel(edit->sdl, x, y, 0x000000);
+			++x;
 		}
-		y += edit->dist_grid;
+		++y;
 	}
 }

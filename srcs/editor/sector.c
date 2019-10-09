@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/25 09:12:52 by nde-jesu          #+#    #+#             */
-/*   Updated: 2019/09/26 09:47:38 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2019/10/09 08:49:59 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,6 +101,7 @@ void		get_sector(t_editor **edit, int x, int y)
 			sect->is_portal[1] = sect->is_child;
 		sect->next = new_sector();
 		(*edit)->sect_is_closed = 1;
+		(*edit)->last_vertex = create_vertex(-1, -1);
 	}
 	else
 	{

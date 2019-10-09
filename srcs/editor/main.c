@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/13 19:58:31 by nde-jesu          #+#    #+#             */
-/*   Updated: 2019/10/08 16:24:43 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2019/10/09 08:26:55 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ void	init_editor(t_editor **edit)
 		exit(1);
 	(*edit)->finish = 1;
 	(*edit)->player.number = 0;
+	(*edit)->last_vertex = create_vertex(-1, -1);
 }
 
 int		main(int ac, char **av)

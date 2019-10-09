@@ -6,12 +6,22 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/13 20:22:28 by nde-jesu          #+#    #+#             */
-/*   Updated: 2019/10/08 20:18:37 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2019/10/09 09:07:38 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "editor.h"
 #include "SDL.h"
+#include "libft.h"
+
+void		print_line(t_editor *edit, int x, int y)
+{
+	t_vertex	*act_pos;
+
+	act_pos = create_vertex(x, y);
+	if (edit->last_vertex->x != -1 && edit->last_vertex->y != -1)
+		draw_line(edit->sdl, *edit->last_vertex, *act_pos, 0x0ff0f0);
+}
 
 void		print_all(t_editor *edit)
 {
@@ -20,6 +30,7 @@ void		print_all(t_editor *edit)
 	print_ennemy(edit, 0xff0000);
 	print_object(edit, 0x00ff00);
 	print_sector(edit);
+	print_line(edit, edit->sdl->event.motion.x, edit->sdl->event.motion.y);
 }
 
 void		mouse_click(t_editor **edit, SDL_Event event)
