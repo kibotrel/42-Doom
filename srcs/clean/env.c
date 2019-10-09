@@ -1,23 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sdl.c                                              :+:      :+:    :+:   */
+/*   env.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/16 11:54:05 by kibotrel          #+#    #+#             */
-/*   Updated: 2019/10/08 19:32:48 by kibotrel         ###   ########.fr       */
+/*   Created: 2019/10/08 19:29:45 by kibotrel          #+#    #+#             */
+/*   Updated: 2019/10/08 19:34:12 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "SDL.h"
+#include "libft.h"
 #include "doom.h"
 
-void	sdl_clean(t_sdl *sdl)
+static void	env_clean(t_env *env)
 {
-	if (sdl->screen)
-		SDL_FreeSurface(sdl->screen);
-	if (sdl->win)
-		SDL_DestroyWindow(sdl->win);
-	SDL_Quit();
+	if (env->sdl.bmp.pixels)
+		free(env->sdl.bmp.pixels);
+}
+
+void		clean(t_env *env, int error)
+{
+	ttf_clean(&env->sdl);
+	sdl_clean(&env->sdl);
+	env_clean(env);
+	ft_print_error(env->error[error], error);
 }

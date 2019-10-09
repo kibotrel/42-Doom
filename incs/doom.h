@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/16 11:54:10 by kibotrel          #+#    #+#             */
-/*   Updated: 2019/10/03 15:33:14 by kibotrel         ###   ########.fr       */
+/*   Updated: 2019/10/09 02:37:55 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,10 +66,17 @@ typedef struct		s_sdl
 	SDL_Surface		*screen;
 }					t_sdl;
 
+typedef struct		s_ui
+{
+	int				button;
+	t_point			min;
+	t_point			max;
+}					t_ui;
+
 typedef struct		s_data
 {
 	int				f_size;
-	t_point			ui;
+	t_ui			ui;
 	t_point			size;
 }					t_data;
 
@@ -96,6 +103,31 @@ void				hooks(t_env *env, t_sdl *sdl);
 void				selector(t_env *env);
 
 /*
+**	core/game.c
+*/
+
+void				game(t_env *env);
+
+/*
+**	core/menu.c
+*/
+
+void				menu(t_env *env);
+void				draw_ui(t_env *env);
+void				draw_button(t_env *env, t_ui ui, int color, int n);
+/*
+**	core/editor.c
+*/
+
+void				editor(t_env *env);
+
+/*
+**	core/ettings.c
+*/
+
+void				settings(t_env *env);
+
+/*
 **	events/keyboard.c
 */
 
@@ -106,6 +138,12 @@ void				handle_keyboard(t_env *env, t_sdl *sdl);
 */
 
 void				handle_mouse(t_env *env, t_sdl *sdl);
+
+/*
+**	events/motion.c
+*/
+
+void				handle_motion(t_env *env, t_sdl *sdl);
 
 /*
 **	setup/setup.c
@@ -126,43 +164,41 @@ void				graphic_setup(t_env *env, t_sdl *sdl);
 void				usage(void);
 
 /*
-**	menu/menu.c
+**	menu/click.c
 */
 
-void				menu(t_env *env);
-void				draw_text(t_env *env, t_sdl *sdl);
-void				draw_buttons(t_point ui, t_sdl *sdl, int color);
-void				draw_rectangle(t_sdl *sdl, t_point ui, int color, int n);
+void				menu_click(t_env *env, t_ui ui, int x, int y);
 
 /*
-**	menu/game.c
+**	menu/motion.c
 */
 
-void				game(t_env *env);
+void				menu_hover(t_env *env, t_ui ui, int x, int y);
 
 /*
-**	menu/editor.c
-*/
-
-void				editor(t_env *env);
-
-/*
-**	menu/ettings.c
-*/
-
-void				settings(t_env *env);
-
-/*
-**	clean/sdl.c
+**	clean/env.c
 */
 
 void				clean(t_env *env, int error);
 
 /*
+**	clean/sdl.c
+*/
+
+void				sdl_clean(t_sdl *sdl);
+
+/*
+**	clean/ttf.c
+*/
+
+void				ttf_clean(t_sdl *sdl);
+
+/*
 **	utils/graphic.c
 */
 
-void				draw_pixel(SDL_Surface *win, int x, int y, int color);
+void				draw_background(t_env *env, t_sdl *sdl, t_bmp img);
+void				draw_pixel(t_env *env, SDL_Surface *win, t_point p, int c);
 void				text_to_screen(t_env *env, t_sdl *sdl, char *text, int pos);
 
 /*

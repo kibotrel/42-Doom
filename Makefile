@@ -6,7 +6,7 @@
 #    By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/10 16:16:29 by kibotrel          #+#    #+#              #
-#    Updated: 2019/10/03 10:07:06 by kibotrel         ###   ########.fr        #
+#    Updated: 2019/10/08 20:59:48 by kibotrel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -76,13 +76,17 @@ INCS			+= incs/doom.h
 # Source files (Can be changed)
 
 SRCS			:= core/main.c
+SRCS			+= core/game.c
+SRCS			+= core/menu.c
 SRCS			+= core/hooks.c
+SRCS			+= core/editor.c
 SRCS			+= core/selector.c
-SRCS			+= menu/menu.c
-SRCS			+= menu/game.c
-SRCS			+= menu/editor.c
-SRCS			+= menu/settings.c
+SRCS			+= core/settings.c
+SRCS			+= clean/env.c
 SRCS			+= clean/sdl.c
+SRCS			+= clean/ttf.c
+SRCS			+= menu/click.c
+SRCS			+= menu/motion.c
 SRCS			+= setup/setup.c
 SRCS			+= setup/graphic.c
 SRCS			+= usage/usage.c
@@ -90,6 +94,7 @@ SRCS			+= utils/data.c
 SRCS			+= utils/maths.c
 SRCS			+= utils/graphic.c
 SRCS			+= events/mouse.c
+SRCS			+= events/motion.c
 SRCS			+= events/keyboard.c
 
 #-------------------------------- MISCELANEOUS --------------------------------#

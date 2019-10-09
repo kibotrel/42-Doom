@@ -1,23 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sdl.c                                              :+:      :+:    :+:   */
+/*   click.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/16 11:54:05 by kibotrel          #+#    #+#             */
-/*   Updated: 2019/10/08 19:32:48 by kibotrel         ###   ########.fr       */
+/*   Created: 2019/10/08 20:33:18 by kibotrel          #+#    #+#             */
+/*   Updated: 2019/10/08 21:35:28 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "SDL.h"
+#include "libft.h"
+#include "env.h"
 #include "doom.h"
 
-void	sdl_clean(t_sdl *sdl)
+void	menu_click(t_env *env, t_ui ui, int x, int y)
 {
-	if (sdl->screen)
-		SDL_FreeSurface(sdl->screen);
-	if (sdl->win)
-		SDL_DestroyWindow(sdl->win);
-	SDL_Quit();
+	int	n;
+	int	box;
+	int	size;
+
+	n = 1;
+	box = 0;
+	while (n < 8)
+	{
+		box++;
+		if (y >= ui.min.y * n && y <= ui.min.y * (n + 1)
+			&& x >= ui.min.x && x <= ui.max.x)
+		{
+			env->win = box;
+			size = env->sdl.screen->h * env->sdl.screen->pitch;
+			ft_bzero(env->sdl.screen->pixels, size);
+			selector(env);
+			break ;
+		}
+		n += 2;
+	}
 }

@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/16 12:45:38 by kibotrel          #+#    #+#             */
-/*   Updated: 2019/09/23 19:04:39 by kibotrel         ###   ########.fr       */
+/*   Updated: 2019/10/08 19:42:23 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,10 @@ void	hooks(t_env *env, t_sdl *sdl)
 				clean(env, NOTHING);
 			else if (sdl->event.type == SDL_KEYDOWN)
 				handle_keyboard(env, sdl);
-			else if (sdl->event.type == SDL_MOUSEBUTTONDOWN
-					|| sdl->event.type == SDL_MOUSEMOTION)
+			else if (sdl->event.type == SDL_MOUSEBUTTONDOWN)
 				handle_mouse(env, sdl);
+			else if (sdl->event.type == SDL_MOUSEMOTION)
+				handle_motion(env, sdl);
 		}
 		if (SDL_UpdateWindowSurface(sdl->win))
 			clean(env, E_SDL_UPDATE);

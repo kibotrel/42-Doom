@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/16 11:54:25 by kibotrel          #+#    #+#             */
-/*   Updated: 2019/10/03 15:17:42 by kibotrel         ###   ########.fr       */
+/*   Updated: 2019/10/09 00:02:24 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,7 @@
 **	Useful values
 */
 
-# define MIN_UI_X		1200
-# define MAX_UI_X		1680
-# define RATIO_UI_X		1920
+# define RATIO_UI_X		8
 # define RATIO_UI_Y		9
 # define MAX_WIDTH		1920
 # define MAX_FONT_SIZE	64

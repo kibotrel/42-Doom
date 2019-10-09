@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/16 11:58:26 by kibotrel          #+#    #+#             */
-/*   Updated: 2019/10/03 14:35:42 by kibotrel         ###   ########.fr       */
+/*   Updated: 2019/10/08 21:32:55 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,10 @@ static void	error_messages(t_env *env)
 
 static void	infos_setup(t_env *env)
 {
-	env->data.ui.y = floor(env->h / RATIO_UI_Y);
-	env->data.ui.x = floor(env->w / RATIO_UI_X);
+	env->data.ui.min.y = floor(env->h / RATIO_UI_Y);
+	env->data.ui.min.x = floor(env->w / RATIO_UI_X) * 5;
+	env->data.ui.max.y = env->h;
+	env->data.ui.max.x = floor(env->w / RATIO_UI_X) * 7;
 	env->data.f_size = floor(env->w * MAX_FONT_SIZE / MAX_WIDTH);
 }
 
