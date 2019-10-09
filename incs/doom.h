@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/16 11:54:10 by kibotrel          #+#    #+#             */
-/*   Updated: 2019/10/09 02:37:55 by kibotrel         ###   ########.fr       */
+/*   Updated: 2019/10/09 03:41:59 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,15 @@ typedef enum			e_win
 	QUIT
 }						t_win;
 
+typedef enum			e_assets
+{
+	MENU_1080P,
+	MENU_900P,
+	MENU_768P,
+	MENU_720P,
+	NB_ASSETS
+}						t_assets;
+
 typedef enum			e_status
 {
 	NOTHING,
@@ -43,6 +52,7 @@ typedef enum			e_status
 	E_TTF_RENDER,
 	E_SDL_BLIT,
 	E_BMP_PARSE,
+	E_BKGD,
 	NB_ERRORS
 }						t_status;
 
@@ -58,7 +68,7 @@ typedef struct		s_point
 
 typedef struct		s_sdl
 {
-	t_bmp			bmp;
+	t_bmp			bmp[NB_ASSETS];
 	TTF_Font		*font;
 	SDL_Event		event;
 	SDL_Color		color;
@@ -69,6 +79,7 @@ typedef struct		s_sdl
 typedef struct		s_ui
 {
 	int				button;
+	int				background;
 	t_point			min;
 	t_point			max;
 }					t_ui;
@@ -84,6 +95,7 @@ typedef struct		s_env
 {
 	int				w;
 	int				h;
+	char			*asset[NB_ASSETS];
 	char			*error[NB_ERRORS];
 	t_sdl			sdl;
 	t_win			win;
@@ -205,6 +217,7 @@ void				text_to_screen(t_env *env, t_sdl *sdl, char *text, int pos);
 **	utils/data.c
 */
 
+int					get_dimensions(int height);
 char				*get_string(int n);
 void				paste_position(SDL_Rect *pos, int x, int y);
 void				police_color(SDL_Color *color, int r, int g, int b);

@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/08 19:56:17 by kibotrel          #+#    #+#             */
-/*   Updated: 2019/10/09 02:27:02 by kibotrel         ###   ########.fr       */
+/*   Updated: 2019/10/09 03:21:03 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,6 @@ void	draw_ui(t_env *env)
 void	menu(t_env *env)
 {
 	SDL_SetWindowTitle(env->sdl.win, TITLE_MENU);
-	draw_background(env, &env->sdl, env->sdl.bmp);
+	draw_background(env, &env->sdl, env->sdl.bmp[env->data.ui.background]);
 	draw_ui(env);
 }

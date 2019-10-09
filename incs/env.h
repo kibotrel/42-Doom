@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/16 11:54:25 by kibotrel          #+#    #+#             */
-/*   Updated: 2019/10/09 00:02:24 by kibotrel         ###   ########.fr       */
+/*   Updated: 2019/10/09 03:37:09 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@
 
 # define E_CODE			"\033[31;1mError:\033[0m "
 
+# define M_BKGD			E_CODE "Menu background not available"
 # define M_SDL_WIN		E_CODE "Can't create SDL window."
 # define M_FILENAME		E_CODE "Incorrect filename (*.data)."
 # define M_TTF_FONT		E_CODE "Can't load the given font."

@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/16 11:54:18 by kibotrel          #+#    #+#             */
-/*   Updated: 2019/10/03 14:20:50 by kibotrel         ###   ########.fr       */
+/*   Updated: 2019/10/09 03:32:22 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,23 +18,23 @@
 
 static void	sdl_setup(t_env *env, t_sdl *sdl)
 {
-	int	x;
-	int	y;
-	int	config;
+	int		asset;
+	int		config;
+	t_point	p;
 
-	x = env->w;
-	y = env->h;
+	p.x = env->w;
+	p.y = env->h;
+	asset = -1;
 	config = SDL_WINDOWPOS_CENTERED;
 	if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO))
 		clean(env, E_SDL_INIT);
-	if (!(sdl->win = SDL_CreateWindow("", config, config, x, y, 0)))
+	if (!(sdl->win = SDL_CreateWindow("", config, config, p.x, p.y, 0)))
 		clean(env, E_SDL_WIN);
 	if (!(sdl->screen = SDL_GetWindowSurface(sdl->win)))
 		clean(env, E_SDL_WINSURF);
-	if (env->h == 1080 && bmp_to_array("assets/menu_1080.bmp", &sdl->bmp))
-		clean(env, E_BMP_PARSE);
-	if (env->h == 720 && bmp_to_array("assets/menu_720.bmp", &sdl->bmp))
-		clean(env, E_BMP_PARSE);
+	while (++asset < NB_ASSETS)
+		if (bmp_to_array(env->asset[asset], &sdl->bmp[asset]))
+			clean(env, E_BMP_PARSE);
 }
 
 static void	ttf_setup(t_env *env, t_sdl *sdl)
