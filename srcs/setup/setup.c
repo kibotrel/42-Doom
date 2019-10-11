@@ -6,11 +6,12 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/16 11:58:26 by kibotrel          #+#    #+#             */
-/*   Updated: 2019/10/09 03:49:10 by kibotrel         ###   ########.fr       */
+/*   Updated: 2019/10/10 17:31:52 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <math.h>
+#include "SDL.h"
 #include "libft.h"
 #include "env.h"
 #include "doom.h"
@@ -43,6 +44,7 @@ static void	assets_paths(t_env *env)
 
 static void	infos_setup(t_env *env)
 {
+	ft_bzero(env->input, sizeof(int) * SDL_NUM_SCANCODES);
 	ft_bzero(&env->data.ui, sizeof(t_ui));
 	env->data.ui.min.y = floor(env->h / RATIO_UI_Y);
 	env->data.ui.min.x = floor(env->w / RATIO_UI_X) * 5;
@@ -51,6 +53,18 @@ static void	infos_setup(t_env *env)
 	if ((env->data.ui.background = get_dimensions(env->h)))
 	 	clean(env, E_BKGD);
 	env->data.f_size = floor(env->w * MAX_FONT_SIZE / MAX_WIDTH);
+	ft_bzero(&env->vertex, sizeof(t_point) * 4);
+	env->vertex[0].y = env->h / 4;
+	env->vertex[0].x = env->w / 4;
+	env->vertex[1].y = env->h / 4;
+	env->vertex[1].x = env->w / 4 * 3;
+	env->vertex[2].y = env->h / 4 * 3;
+	env->vertex[2].x = env->w / 4 * 3;
+	env->vertex[3].y = env->h / 4 * 3;
+	env->vertex[3].x = env->w / 4;
+	ft_bzero(&env->player, sizeof(t_player));
+	env->player.position.x = env->w / 2;
+	env->player.position.y = env->h / 2;
 }
 
 void		env_setup(t_env *env)

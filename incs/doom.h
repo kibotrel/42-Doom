@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/16 11:54:10 by kibotrel          #+#    #+#             */
-/*   Updated: 2019/10/09 03:41:59 by kibotrel         ###   ########.fr       */
+/*   Updated: 2019/10/10 18:04:00 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,17 +91,33 @@ typedef struct		s_data
 	t_point			size;
 }					t_data;
 
+typedef struct		s_player
+{
+	int				angle;
+	t_point			position;
+}					t_player;
+
 typedef struct		s_env
 {
 	int				w;
 	int				h;
+	int				input[SDL_NUM_SCANCODES];
 	char			*asset[NB_ASSETS];
 	char			*error[NB_ERRORS];
 	t_sdl			sdl;
 	t_win			win;
 	t_data			data;
+	t_point			vertex[4];
+	t_player		player;
 }					t_env;
 
+typedef struct		s_line
+{
+	int				error;
+	int				offset;
+	t_point			sign;
+	t_point			delta;
+}					t_line;
 /*
 **	core/hooks.c
 */
@@ -127,6 +143,7 @@ void				game(t_env *env);
 void				menu(t_env *env);
 void				draw_ui(t_env *env);
 void				draw_button(t_env *env, t_ui ui, int color, int n);
+
 /*
 **	core/editor.c
 */
@@ -143,7 +160,7 @@ void				settings(t_env *env);
 **	events/keyboard.c
 */
 
-void				handle_keyboard(t_env *env, t_sdl *sdl);
+void				handle_keyboard(t_env *env);
 
 /*
 **	events/mouse.c
@@ -210,6 +227,7 @@ void				ttf_clean(t_sdl *sdl);
 */
 
 void				draw_background(t_env *env, t_sdl *sdl, t_bmp img);
+void				draw_line(t_env *env, t_point a, t_point b, int color);
 void				draw_pixel(t_env *env, SDL_Surface *win, t_point p, int c);
 void				text_to_screen(t_env *env, t_sdl *sdl, char *text, int pos);
 
@@ -220,12 +238,25 @@ void				text_to_screen(t_env *env, t_sdl *sdl, char *text, int pos);
 int					get_dimensions(int height);
 char				*get_string(int n);
 void				paste_position(SDL_Rect *pos, int x, int y);
+void				line_params(t_line *line, t_point a, t_point b);
 void				police_color(SDL_Color *color, int r, int g, int b);
 
 /*
-**	utils/maths
+**	utils/maths.c
 */
 
 void				scale_text(t_env *e, SDL_Rect *where, char *text, int pos);
 
+/*
+**	game/keyboard.c
+*/
+
+void				game_keyboard(t_env *env);
+
+/*
+**	game/keyboard.c
+*/
+
+void				editor_keyboard(t_env *env);
+void				update_position(t_env *env);
 #endif

@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/17 11:08:34 by kibotrel          #+#    #+#             */
-/*   Updated: 2019/10/09 02:55:11 by kibotrel         ###   ########.fr       */
+/*   Updated: 2019/10/10 13:46:51 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,5 +50,29 @@ void	draw_background(t_env *e, t_sdl *s, t_bmp img)
 		while (++p.x < img.width)
 			if (p.x < e->w && p.y < e->h)
 				draw_pixel(e, s->screen, p, img.pixels[p.x + p.y * img.width]);
+	}
+}
+
+void	draw_line(t_env *env, t_point start, t_point end, int color)
+{
+	t_line	line;
+	t_point	p;
+
+	line_params(&line, start, end);
+	p = start;
+	while (p.y != end.y || p.x != end.x)
+	{
+		draw_pixel(env, env->sdl.screen, p, color);
+		if ((line.error = line.offset * 2) > -line.delta.y)
+		{
+			line.offset -= line.delta.y;
+			p.x += line.sign.x;
+		}
+		if (line.error < line.delta.x)
+		{
+			line.offset += line.delta.x;
+			p.y += line.sign.   y;
+		}
+		draw_pixel(env, env->sdl.screen, p, color);
 	}
 }

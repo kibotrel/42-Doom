@@ -6,7 +6,7 @@
 #    By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/10 16:16:29 by kibotrel          #+#    #+#              #
-#    Updated: 2019/10/08 20:59:48 by kibotrel         ###   ########.fr        #
+#    Updated: 2019/10/10 16:58:11 by kibotrel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -52,11 +52,13 @@ INCS_DIR		+= $(BREW_DIR)/include/SDL2
 # to organise source files (Can be changed).
 
 OBJS_SUBDIRS	:= core
+OBJS_SUBDIRS	+= game
 OBJS_SUBDIRS	+= menu
 OBJS_SUBDIRS	+= usage
 OBJS_SUBDIRS	+= setup
 OBJS_SUBDIRS	+= clean
 OBJS_SUBDIRS	+= utils
+OBJS_SUBDIRS	+= editor
 OBJS_SUBDIRS	+= events
 
 #------------------------------------ FILES -----------------------------------#
@@ -82,17 +84,20 @@ SRCS			+= core/hooks.c
 SRCS			+= core/editor.c
 SRCS			+= core/selector.c
 SRCS			+= core/settings.c
+SRCS			+= game/movement.c
+SRCS			+= game/keyboard.c
+SRCS			+= menu/click.c
+SRCS			+= menu/motion.c
 SRCS			+= clean/env.c
 SRCS			+= clean/sdl.c
 SRCS			+= clean/ttf.c
-SRCS			+= menu/click.c
-SRCS			+= menu/motion.c
 SRCS			+= setup/setup.c
 SRCS			+= setup/graphic.c
 SRCS			+= usage/usage.c
 SRCS			+= utils/data.c
 SRCS			+= utils/maths.c
 SRCS			+= utils/graphic.c
+SRCS			+= editor/keyboard.c
 SRCS			+= events/mouse.c
 SRCS			+= events/motion.c
 SRCS			+= events/keyboard.c
@@ -137,9 +142,9 @@ $(D_OBJS)%.o: $(D_SRCS)%.c $(INCS)
 # Implicit make rule simply using dependancies
 # to compile our project (Can't be canged).
 
-all: $(C_SUBDIRS) $(NAME)
+all: $(NAME)
 
-$(NAME): $(LSDL) $(LTTF) $(LFT) $(LBMP) $(OBJS_DIR) $(C_OBJS)
+$(NAME): $(LSDL) $(LTTF) $(LFT) $(LBMP) $(OBJS_DIR) $(C_SUBDIRS) $(C_OBJS)
 	@echo "$(YELLOW)\n      - Building $(RESET)$(NAME) $(YELLOW)...\n$(RESET)"
 	@$(CC) $(CFLAGS) -o $(NAME) $(C_OBJS) $(LIBS)
 	@echo "$(GREEN)***   Project $(NAME) successfully compiled   ***\n$(RESET)"
