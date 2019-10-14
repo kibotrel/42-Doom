@@ -3,71 +3,167 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+         #
+#    By: reda-con <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2019/09/10 16:16:29 by kibotrel          #+#    #+#              #
-#    Updated: 2019/10/06 11:34:27 by nde-jesu         ###   ########.fr        #
+#    Created: 2019/10/14 13:34:57 by reda-con          #+#    #+#              #
+#    Updated: 2019/10/14 13:35:02 by reda-con         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-# Executable's name (Can be changed)
+#---------------------------------- VARIABLES ---------------------------------#
 
+# Executable / Library (Can be changed).
+
+FT				= libft.a
+SDL				= libsdl2.a
+TTF				= libsdl2_ttf.a
+BMP				= libbmp.a
 NAME			= doom-nukem
 
-# All the directories needed to know where files should be (Can be changed)
-
-SDL_DIR			= $(abspath sdl)
-LFT_DIR			= libft
-SRCS_DIR		= srcs
-OBJS_DIR		= objs
-INCS_DIR		= incs libft/incs sdl/include
-BUILD_DIR		= $(SDL_DIR)/build
-OBJS_SUBDIRS	= editor
-
-# Source files (Can be changed)
-
-LFT				= libft/libft.a
-INCS			= incs/editor.h
-SRCS			= 	editor/main.c editor/events.c editor/utils.c editor/vertex.c \
-					editor/create_map.c editor/player.c editor/ennemy.c editor/object.c \
-					editor/sector.c editor/create_map_2.c editor/sector_2.c editor/is_in_sect.c
-
-# Some tricks in order to get the makefile doing his job the way I want (Can't be changed)
-
-D_SRCS			= $(addsuffix /, $(SRCS_DIR))
-D_OBJS			= $(addsuffix /, $(OBJS_DIR))
-C_OBJS			= $(addprefix $(D_OBJS), $(OBJS))
-C_INCS			= $(foreach include, $(INCS_DIR), -I./$(include))
-C_SUBDIRS		= $(foreach dir, $(OBJS_SUBDIRS), $(D_OBJS)$(dir))
-
-# How files should be compiled with set flags (Can be changed)
-
-CC				= gcc
-OBJS			= $(SRCS:.c=.o)
-LIBS			= -L./$(LFT_DIR) -lft $(shell $(BUILD_DIR)/sdl2-config --libs)
-CFLAGS			= $(C_INCS) -Wall -Wextra  -O3 -g
-
-# Color codes
+# Color codes (Can be changed).
 
 RESET			= \033[0m
 GREEN			= \033[32m
 YELLOW			= \033[33m
 
-# Check if object directory exists, build libs and then the Project
+#--------------------------------- DIRECTORIES  -------------------------------#
+
+# Libraries (Can be changed).
+
+LFT_DIR			= libft
+LBMP_DIR		= libbmp
+BREW_DIR		= $(HOME)/.brew
+BREW_LIBS		= $(BREW_DIR)/lib
+
+# Project (Can be changed).
+
+SRCS_DIR		= srcs
+OBJS_DIR		= objs
+
+# Location of all header files used in the project to avoid
+# writing the full path upon include (Can be changed).
+
+INCS_DIR		:= incs
+INCS_DIR		+= libft/incs
+INCS_DIR		+= libbmp/incs
+INCS_DIR		+= $(BREW_DIR)/include/SDL2
+
+# All the subdirectories used in the project
+# to organise source files (Can be changed).
+
+OBJS_SUBDIRS	:= core
+OBJS_SUBDIRS	+= menu
+OBJS_SUBDIRS	+= usage
+OBJS_SUBDIRS	+= setup
+OBJS_SUBDIRS	+= clean
+OBJS_SUBDIRS	+= utils
+OBJS_SUBDIRS	+= events
+
+#------------------------------------ FILES -----------------------------------#
+
+# Every libraries needed to compile the project (Can be changed).
+
+LFT				= $(LFT_DIR)/$(FT)
+LBMP			= $(LBMP_DIR)/$(BMP)
+LSDL			= $(BREW_LIBS)/$(SDL)
+LTTF			= $(BREW_LIBS)/$(TTF)
+
+# Used header at each compilation to check file integrity (Can be changed).
+
+INCS			:= incs/env.h
+INCS			+= incs/doom.h
+
+# Source files (Can be changed)
+
+SRCS			:= core/main.c
+SRCS			+= core/game.c
+SRCS			+= core/menu.c
+SRCS			+= core/hooks.c
+SRCS			+= core/editor.c
+SRCS			+= core/selector.c
+SRCS			+= core/settings.c
+SRCS			+= clean/env.c
+SRCS			+= clean/sdl.c
+SRCS			+= clean/ttf.c
+SRCS			+= menu/click.c
+SRCS			+= menu/motion.c
+SRCS			+= setup/setup.c
+SRCS			+= setup/graphic.c
+SRCS			+= usage/usage.c
+SRCS			+= utils/data.c
+SRCS			+= utils/maths.c
+SRCS			+= utils/graphic.c
+SRCS			+= events/mouse.c
+SRCS			+= events/motion.c
+SRCS			+= events/keyboard.c
+
+#-------------------------------- MISCELANEOUS --------------------------------#
+
+# Some tricks in order to get the makefile doing his job (Can't be changed).
+
+D_SRCS			= $(addsuffix /, $(SRCS_DIR))
+D_OBJS			= $(addsuffix /, $(OBJS_DIR))
+C_OBJS			= $(addprefix $(D_OBJS), $(OBJS))
+C_INCS			= $(foreach include, $(INCS_DIR), -I$(include))
+C_SUBDIRS		= $(foreach dir, $(OBJS_SUBDIRS), $(D_OBJS)$(dir))
+
+#--------------------------------- COMPILATION --------------------------------#
+
+# How files should be compiled (Can't be changed).
+
+CC				= gcc
+OBJS			= $(SRCS:.c=.o)
+
+# Linked libraries at compile time (Can be changed).
+
+LIBS			:= -L$(LFT_DIR) -lft
+LIBS			+= -L$(LBMP_DIR) -lbmp
+LIBS			+= -L$(BREW_LIBS) -lSDL2
+LIBS			+= -L$(BREW_LIBS) -lSDL2_ttf
+
+# Compilation flags (Can be changed).
+
+CFLAGS			= $(C_INCS) -Wall -Wextra -Werror -O3
+
+#------------------------------------ RULES -----------------------------------#
+
+# Redefinition of the implicit compilation rule
+# to prompt some informations (Can't be changed).
+
+$(D_OBJS)%.o: $(D_SRCS)%.c $(INCS)
+	@echo "$(YELLOW)      - Compiling :$(RESET)" $<
+	@$(CC) $(CFLAGS) -c $< -o $@
+
+# Implicit make rule simply using dependancies
+# to compile our project (Can't be canged).
 
 all: $(C_SUBDIRS) $(NAME)
 
-$(BUILD_DIR):
-	@mkdir -p $(BUILD_DIR)
-	@cd $(BUILD_DIR);								\
-	$(SDL_DIR)/configure --prefix $(BUILD_DIR);		\
-	make -j;										\
-	make install
-
-$(NAME): $(BUILD_DIR) $(LFT) $(OBJS_DIR) $(C_OBJS)
+$(NAME): $(LSDL) $(LTTF) $(LFT) $(LBMP) $(OBJS_DIR) $(C_OBJS)
 	@echo "$(YELLOW)\n      - Building $(RESET)$(NAME) $(YELLOW)...\n$(RESET)"
 	@$(CC) $(CFLAGS) -o $(NAME) $(C_OBJS) $(LIBS)
 	@echo "$(GREEN)***   Project $(NAME) successfully compiled   ***\n$(RESET)"
+
+# Libraries installation using brew without prompting
+# anything on standard output (Can be changed).
+
+$(LSDL):
+	@echo "$(GREEN)***   Installing library $(SDL)   ...  ***\n$(RESET)"
+	@brew install sdl2 > /dev/null 2>&1
+
+$(LTTF):
+	@echo "$(GREEN)***   Installing library $(TTF)   ...  ***\n$(RESET)"
+	@brew install sdl2_ttf > /dev/null 2>&1
+
+# Libraries installion using their own Makefile (Can be changed).
+
+$(LFT):
+	@make -sC $(LFT_DIR) -j
+
+$(LBMP):
+	@make -sC $(LBMP_DIR) -j
+
+# Rules used to create folders if they aren't already existing (Can be changed).
 
 $(OBJS_DIR):
 	@mkdir -p $(OBJS_DIR)
@@ -75,35 +171,36 @@ $(OBJS_DIR):
 $(C_SUBDIRS):
 	@mkdir -p $(C_SUBDIRS)
 
-# Redefinition of implicit compilation rule to prompt some colors and file names during the said compilation
-
-$(D_OBJS)%.o: $(D_SRCS)%.c $(INCS)
-	@echo "$(YELLOW)      - Compiling :$(RESET)" $<
-	@$(CC) $(CFLAGS) -c $< -o $@
-
-# Compilation rule for function library "libft"
-
-$(LFT):
-	@make -sC $(LFT_DIR) -j
-
-# Deleting all .o files and then the directory where they were located
+# Deleting all .o files. (Can't be changed).
 
 clean:
 	@make -sC $(LFT_DIR) clean
-	@if [ -f "$(BUILD_DIR)/Makefile" ]; then		\
-		make -sC $(BUILD_DIR) clean;				\
-	fi
+	@make -sC $(LBMP_DIR) clean
 	@echo "$(GREEN)***   Deleting all object from $(NAME)   ...   ***\n$(RESET)"
 	@$(RM) $(C_OBJS)
 
-# Deleting the executable after cleaning up all .o files
+# Deleting all executables and libraries after cleaning up
+# all .o files (Can't be changed).
 
 fclean: clean
 	@make -sC $(LFT_DIR) fclean
-	@rm -rf $(BUILD_DIR)
+	@make -sC $(LBMP_DIR) fclean
 	@echo "$(GREEN)***   Deleting executable file from $(NAME)   ...   ***\n$(RESET)"
 	@$(RM) $(NAME)
+	@if [ -f "$(LSDL)" ]; then														\
+		echo "$(GREEN)***   Deleting library $(SDL)   ...  ***\n$(RESET)";		\
+		brew uninstall --ignore-dependencies sdl2 > /dev/null 2>&1;					\
+	fi
+	@if [ -f "$(LTTF)" ]; then														\
+		echo "$(GREEN)***   Deleting library $(TTF)   ...  ***\n$(RESET)";	\
+		brew uninstall sdl2_ttf > /dev/null 2>&1;									\
+	fi
+
+# Re-compile everything (Can't be changed).
 
 re: fclean all
+
+# Avoid unexpected behaviour when regular files
+# get the same name as the following variables (Can be changed).
 
 .PHONY: all clean fclean re
