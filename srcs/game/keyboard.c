@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/10 15:11:44 by kibotrel          #+#    #+#             */
-/*   Updated: 2019/10/14 17:52:34 by kibotrel         ###   ########.fr       */
+/*   Updated: 2019/10/15 17:51:09 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ void	game_keyboard(t_env *env)
 	{
 		env->win = MENU;
 		menu(env);
+		return ;
 	}
 	if (env->input[SDL_SCANCODE_W] || env->input[SDL_SCANCODE_A]
 		|| env->input[SDL_SCANCODE_S] || env->input[SDL_SCANCODE_D])
