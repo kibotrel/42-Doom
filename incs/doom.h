@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/16 11:54:10 by kibotrel          #+#    #+#             */
-/*   Updated: 2019/10/10 18:04:00 by kibotrel         ###   ########.fr       */
+/*   Updated: 2019/10/15 17:41:52 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,13 @@ typedef struct		s_point
 	int				y;
 }					t_point;
 
+typedef struct		s_pos
+{
+	double			x;
+	double			y;
+	double			z;
+}					t_pos;
+
 typedef struct		s_sdl
 {
 	t_bmp			bmp[NB_ASSETS];
@@ -93,8 +100,9 @@ typedef struct		s_data
 
 typedef struct		s_player
 {
-	int				angle;
-	t_point			position;
+	t_pos			position;
+	double			angle;
+	double			speed;
 }					t_player;
 
 typedef struct		s_env
@@ -104,11 +112,13 @@ typedef struct		s_env
 	int				input[SDL_NUM_SCANCODES];
 	char			*asset[NB_ASSETS];
 	char			*error[NB_ERRORS];
+	t_pos			pos;
 	t_sdl			sdl;
 	t_win			win;
 	t_data			data;
 	t_point			vertex[4];
 	t_player		player;
+	t_point			wall[8];
 }					t_env;
 
 typedef struct		s_line
@@ -254,9 +264,20 @@ void				scale_text(t_env *e, SDL_Rect *where, char *text, int pos);
 void				game_keyboard(t_env *env);
 
 /*
-**	game/keyboard.c
+**	game/movement.c
+*/
+
+void				update_position(t_env *env);
+
+/*
+**	game/camera.c
+*/
+
+void				update_angle(t_env *env);
+
+/*
+**	editor/keyboard.c
 */
 
 void				editor_keyboard(t_env *env);
-void				update_position(t_env *env);
 #endif
