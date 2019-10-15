@@ -6,14 +6,13 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/10 16:47:31 by kibotrel          #+#    #+#             */
-/*   Updated: 2019/10/14 17:25:04 by kibotrel         ###   ########.fr       */
+/*   Updated: 2019/10/15 21:28:02 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <math.h>
-#include "SDL.h"
 #include "libft.h"
-#include "doom.h"
+#include "structs.h"
 
 void	update_position(t_env *env)
 {

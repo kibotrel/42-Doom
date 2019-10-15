@@ -6,15 +6,15 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/18 14:38:11 by kibotrel          #+#    #+#             */
-/*   Updated: 2019/10/15 17:30:55 by kibotrel         ###   ########.fr       */
+/*   Updated: 2019/10/15 19:24:16 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <math.h>
-#include "SDL.h"
-#include "libft.h"
 #include "env.h"
-#include "doom.h"
+#include "core.h"
+#include "libft.h"
+#include "utils.h"
 
 void	project(t_env *env, t_point p1, t_point p2, double angle)
 {

@@ -6,13 +6,13 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/08 19:29:45 by kibotrel          #+#    #+#             */
-/*   Updated: 2019/10/09 03:45:44 by kibotrel         ###   ########.fr       */
+/*   Updated: 2019/10/15 19:14:20 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "libft.h"
-#include "doom.h"
+#include "clean.h"
 
 static void	env_clean(t_env *env)
 {

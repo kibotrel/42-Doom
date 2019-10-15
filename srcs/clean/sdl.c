@@ -6,12 +6,11 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/16 11:54:05 by kibotrel          #+#    #+#             */
-/*   Updated: 2019/10/08 19:32:48 by kibotrel         ###   ########.fr       */
+/*   Updated: 2019/10/15 21:29:28 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "SDL.h"
-#include "doom.h"
+#include "structs.h"
 
 void	sdl_clean(t_sdl *sdl)
 {

@@ -6,13 +6,14 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/16 12:45:38 by kibotrel          #+#    #+#             */
-/*   Updated: 2019/10/14 12:02:09 by kibotrel         ###   ########.fr       */
+/*   Updated: 2019/10/15 19:24:58 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "SDL.h"
 #include "env.h"
-#include "doom.h"
+#include "core.h"
+#include "clean.h"
+#include "events.h"
 
 void	hooks(t_env *env, t_sdl *sdl)
 {

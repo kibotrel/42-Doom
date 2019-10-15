@@ -6,15 +6,14 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/16 11:54:18 by kibotrel          #+#    #+#             */
-/*   Updated: 2019/10/09 03:32:22 by kibotrel         ###   ########.fr       */
+/*   Updated: 2019/10/15 21:13:24 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "SDL.h"
-#include "SDL_ttf.h"
-#include "bmp.h"
+#include "clean.h"
 #include "libft.h"
-#include "doom.h"
+#include "setup.h"
+#include "utils.h"
 
 static void	sdl_setup(t_env *env, t_sdl *sdl)
 {

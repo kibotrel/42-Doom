@@ -1,19 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   settings.c                                         :+:      :+:    :+:   */
+/*   setup.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/18 14:38:31 by kibotrel          #+#    #+#             */
-/*   Updated: 2019/10/15 19:28:02 by kibotrel         ###   ########.fr       */
+/*   Created: 2019/10/15 18:43:02 by kibotrel          #+#    #+#             */
+/*   Updated: 2019/10/15 19:09:14 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "env.h"
-#include "core.h"
+#ifndef SETUP_H
+# define SETUP_H
 
-void	settings(t_env *env)
-{
-	SDL_SetWindowTitle(env->sdl.win, TITLE_SETTINGS);
-}
+#include "structs.h"
+
+/*
+**	setup.c
+*/
+
+void	env_setup(t_env *env);
+
+/*
+**	graphic.c
+*/
+
+void	graphic_setup(t_env *env, t_sdl *sdl);
+
+#endif

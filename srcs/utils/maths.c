@@ -6,14 +6,11 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/19 18:18:26 by kibotrel          #+#    #+#             */
-/*   Updated: 2019/10/08 21:34:07 by kibotrel         ###   ########.fr       */
+/*   Updated: 2019/10/15 21:15:56 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "SDL.h"
-#include "SDL_ttf.h"
-#include "env.h"
-#include "doom.h"
+#include "utils.h"
 
 void	scale_text(t_env *env, SDL_Rect *where, char *text, int pos)
 {

@@ -6,13 +6,12 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/17 11:08:34 by kibotrel          #+#    #+#             */
-/*   Updated: 2019/10/15 17:34:57 by kibotrel         ###   ########.fr       */
+/*   Updated: 2019/10/15 21:17:23 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "SDL.h"
-#include "env.h"
-#include "doom.h"
+#include "clean.h"
+#include "utils.h"
 
 void	draw_pixel(t_env *env, SDL_Surface *win, t_point p, int color)
 {
@@ -72,7 +71,7 @@ void	draw_line(t_env *env, t_point start, t_point end, int color)
 		if (line.error < line.delta.x)
 		{
 			line.offset += line.delta.x;
-			p.y += line.sign.   y;
+			p.y += line.sign.y;
 		}
 		if ((p.x >= 480 && p.x <= 1440) && (p.y >= 270 && p.y <= 810))
 			draw_pixel(env, env->sdl.screen, p, color);

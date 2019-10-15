@@ -6,12 +6,16 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/16 11:53:54 by kibotrel          #+#    #+#             */
-/*   Updated: 2019/10/09 03:47:16 by kibotrel         ###   ########.fr       */
+/*   Updated: 2019/10/15 19:24:09 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "core.h"
 #include "libft.h"
-#include "doom.h"
+#include "clean.h"
+#include "setup.h"
+#include "utils.h"
+
 
 static int	prechecks(int ac, char **av)
 {

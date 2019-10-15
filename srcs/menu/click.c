@@ -6,13 +6,12 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/08 20:33:18 by kibotrel          #+#    #+#             */
-/*   Updated: 2019/10/08 21:35:28 by kibotrel         ###   ########.fr       */
+/*   Updated: 2019/10/15 19:30:18 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "core.h"
 #include "libft.h"
-#include "env.h"
-#include "doom.h"
 
 void	menu_click(t_env *env, t_ui ui, int x, int y)
 {

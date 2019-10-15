@@ -1,19 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   settings.c                                         :+:      :+:    :+:   */
+/*   editor.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/18 14:38:31 by kibotrel          #+#    #+#             */
-/*   Updated: 2019/10/15 19:28:02 by kibotrel         ###   ########.fr       */
+/*   Created: 2019/10/15 21:22:22 by kibotrel          #+#    #+#             */
+/*   Updated: 2019/10/15 21:22:59 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "env.h"
-#include "core.h"
+#ifndef EDITOR_H
+# define EDITOR_H
 
-void	settings(t_env *env)
-{
-	SDL_SetWindowTitle(env->sdl.win, TITLE_SETTINGS);
-}
+#include "structs.h"
+
+/*
+**	keyboard.c
+*/
+
+void	editor_keyboard(t_env *env);
+
+
+#endif

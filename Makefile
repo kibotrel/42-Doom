@@ -6,7 +6,7 @@
 #    By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/10 16:16:29 by kibotrel          #+#    #+#              #
-#    Updated: 2019/10/11 14:23:41 by kibotrel         ###   ########.fr        #
+#    Updated: 2019/10/15 21:26:33 by kibotrel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -54,7 +54,6 @@ INCS_DIR		+= $(BREW_DIR)/include/SDL2
 OBJS_SUBDIRS	:= core
 OBJS_SUBDIRS	+= game
 OBJS_SUBDIRS	+= menu
-OBJS_SUBDIRS	+= usage
 OBJS_SUBDIRS	+= setup
 OBJS_SUBDIRS	+= clean
 OBJS_SUBDIRS	+= utils
@@ -73,7 +72,16 @@ LTTF			= $(BREW_LIBS)/$(TTF)
 # Used header at each compilation to check file integrity (Can be changed).
 
 INCS			:= incs/env.h
-INCS			+= incs/doom.h
+INCS			+= incs/core.h
+INCS			+= incs/game.h
+INCS			+= incs/menu.h
+INCS			+= incs/clean.h
+INCS			+= incs/enums.h
+INCS			+= incs/setup.h
+INCS			+= incs/utils.h
+INCS			+= incs/editor.h
+INCS			+= incs/events.h
+INCS			+= incs/structs.h
 
 # Source files (Can be changed)
 
@@ -94,9 +102,9 @@ SRCS			+= clean/sdl.c
 SRCS			+= clean/ttf.c
 SRCS			+= setup/setup.c
 SRCS			+= setup/graphic.c
-SRCS			+= usage/usage.c
 SRCS			+= utils/data.c
 SRCS			+= utils/maths.c
+SRCS			+= utils/usage.c
 SRCS			+= utils/graphic.c
 SRCS			+= editor/keyboard.c
 SRCS			+= events/mouse.c
@@ -194,11 +202,11 @@ fclean: clean
 	@echo "$(GREEN)***   Deleting executable file from $(NAME)   ...   ***\n$(RESET)"
 	@$(RM) $(NAME)
 	@if [ -f "$(LSDL)" ]; then														\
-		echo "$(GREEN)***   Deleting library $(SDL)   ...  ***\n$(RESET)";		\
+		echo "$(GREEN)***   Deleting library $(SDL)   ...  ***\n$(RESET)";			\
 		brew uninstall --ignore-dependencies sdl2 > /dev/null 2>&1;					\
 	fi
 	@if [ -f "$(LTTF)" ]; then														\
-		echo "$(GREEN)***   Deleting library $(TTF)   ...  ***\n$(RESET)";	\
+		echo "$(GREEN)***   Deleting library $(TTF)   ...  ***\n$(RESET)";			\
 		brew uninstall sdl2_ttf > /dev/null 2>&1;									\
 	fi
 

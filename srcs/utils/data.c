@@ -6,14 +6,14 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/19 16:28:40 by kibotrel          #+#    #+#             */
-/*   Updated: 2019/10/09 07:29:42 by kibotrel         ###   ########.fr       */
+/*   Updated: 2019/10/15 21:15:06 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "SDL.h"
-#include "doom.h"
-
+#include "enums.h"
+#include "structs.h"
 
 void	line_params(t_line *line, t_point a, t_point b)
 {

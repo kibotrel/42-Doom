@@ -6,13 +6,14 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/10 15:11:44 by kibotrel          #+#    #+#             */
-/*   Updated: 2019/10/15 17:51:09 by kibotrel         ###   ########.fr       */
+/*   Updated: 2019/10/15 21:28:57 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "SDL.h"
+#include "core.h"
+#include "game.h"
 #include "libft.h"
-#include "doom.h"
 
 void	game_keyboard(t_env *env)
 {

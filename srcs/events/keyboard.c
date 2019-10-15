@@ -6,12 +6,13 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/16 15:23:52 by kibotrel          #+#    #+#             */
-/*   Updated: 2019/10/11 13:12:28 by kibotrel         ###   ########.fr       */
+/*   Updated: 2019/10/15 21:21:48 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "SDL.h"
-#include "doom.h"
+#include "game.h"
+#include "clean.h"
+#include "editor.h"
 
 void	handle_keyboard(t_env *env)
 {

@@ -1,19 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   settings.c                                         :+:      :+:    :+:   */
+/*   usage.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/18 14:38:31 by kibotrel          #+#    #+#             */
-/*   Updated: 2019/10/15 19:28:02 by kibotrel         ###   ########.fr       */
+/*   Created: 2019/09/19 15:29:59 by kibotrel          #+#    #+#             */
+/*   Updated: 2019/10/15 21:16:13 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "env.h"
-#include "core.h"
+#include "libft.h"
 
-void	settings(t_env *env)
+void	usage(void)
 {
-	SDL_SetWindowTitle(env->sdl.win, TITLE_SETTINGS);
+	ft_putendl("usage: ./doom-nukem \'data-file\'");
 }

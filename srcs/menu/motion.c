@@ -6,12 +6,13 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/08 20:34:23 by kibotrel          #+#    #+#             */
-/*   Updated: 2019/10/09 02:53:24 by kibotrel         ###   ########.fr       */
+/*   Updated: 2019/10/15 19:29:03 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "env.h"
-#include "doom.h"
+#include "core.h"
+#include "utils.h"
 
 void	menu_hover(t_env *env, t_ui ui, int x, int y)
 {
