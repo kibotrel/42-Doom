@@ -6,11 +6,10 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/13 19:58:31 by nde-jesu          #+#    #+#             */
-/*   Updated: 2019/10/09 08:26:55 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2019/10/15 14:34:49 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include "SDL.h"
 #include "editor.h"
 #include "libft.h"
@@ -34,6 +33,7 @@ void	init_editor(t_editor **edit)
 	(*edit)->finish = 1;
 	(*edit)->player.number = 0;
 	(*edit)->last_vertex = create_vertex(-1, -1);
+	init_portals(edit);
 }
 
 int		main(int ac, char **av)
@@ -50,4 +50,5 @@ int		main(int ac, char **av)
 		events(&edit);
 		create_map(edit);
     }
+	return (1);
 }

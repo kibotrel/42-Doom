@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/06 11:19:25 by nde-jesu          #+#    #+#             */
-/*   Updated: 2019/10/07 08:10:21 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2019/10/15 14:31:55 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int		is_left(t_vertex p0, t_vertex p1, t_vertex p2)
 		return (2);
 }
 
-int		intersect(t_vertex v1, t_vertex v2, t_vertex p1, t_vertex p2)
+int		intersects_count(t_vertex v1, t_vertex v2, t_vertex p1, t_vertex p2)
 {
 	int		tab[4];
 
@@ -40,23 +40,23 @@ int		intersect(t_vertex v1, t_vertex v2, t_vertex p1, t_vertex p2)
 
 int		inters(t_vertex *prev_vertex, t_vertex point, t_vertex extreme)
 {
-	int			intersects;
+	int			intersections;
 	t_vertex	*vertex;
 
-	intersects = 0;
+	intersections = 0;
 	vertex = prev_vertex;
 	while (vertex)
 	{
 		if (vertex->next == NULL)
 		{
-			if (intersect(*vertex, *(prev_vertex), point, extreme))
-				++intersects;
+			if (intersects_count(*vertex, *(prev_vertex), point, extreme))
+				++intersections;
 		}
-		else if (intersect(*vertex, *(vertex->next), point, extreme))
-			++intersects;
+		else if (intersects_count(*vertex, *(vertex->next), point, extreme))
+			++intersections;
 		vertex = vertex->next;
 	}
-	return (intersects);
+	return (intersections);
 }
 
 int		is_in_sector(t_editor *edit, t_vertex point)

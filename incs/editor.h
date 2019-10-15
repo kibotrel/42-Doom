@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/13 19:59:45 by nde-jesu          #+#    #+#             */
-/*   Updated: 2019/10/09 08:26:48 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2019/10/15 14:35:02 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,13 +57,6 @@ typedef struct			s_sector
 	struct s_sector		*next;
 }						t_sector;
 
-typedef struct 			s_portal
-{
-	t_sector 			*is_in_sector;
-	t_vertex			*start;
-	t_vertex			*end;
-}						t_portal;
-
 typedef struct          s_sdl
 {
     SDL_Window         	*win;
@@ -75,7 +68,6 @@ typedef struct          s_editor
 {
     t_sdl               *sdl;
 	t_settings			sett;
-	t_portal			portal;
 	t_sector			*sector;
 	t_vertex			*vertex;
     t_vertex			*ennemi;
@@ -83,6 +75,11 @@ typedef struct          s_editor
 	t_vertex			player;
 	
 	t_vertex			*last_vertex;
+
+	t_vertex			portal_points[2];
+	t_sector			*which_sector;
+	t_vertex			*ab;
+	t_vertex			*cd;
 
 	int					sect_is_closed;
 	int					finish;
@@ -123,5 +120,9 @@ void		write_sector_file(t_sector *sector, t_vertex *all, int fd);
 
 int			is_in_sector(t_editor *edit, t_vertex point);
 void		place_portal(t_editor **edit, int x, int y);
+void		create_portal(t_editor **edit, int x, int y);
+void		init_portals(t_editor **edit);
+int			intersects_count(t_vertex v1, t_vertex v2, t_vertex p1, t_vertex p2);
+
 
 #endif
