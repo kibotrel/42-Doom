@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 19:25:01 by kibotrel          #+#    #+#             */
-/*   Updated: 2019/10/15 19:26:30 by kibotrel         ###   ########.fr       */
+/*   Updated: 2019/10/15 23:59:23 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,5 @@ void	handle_mouse(t_env *env, t_sdl *sdl);
 */
 
 void	handle_motion(t_env *env, t_sdl *sdl);
-
 
 #endif

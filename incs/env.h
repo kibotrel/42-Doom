@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/16 11:54:25 by kibotrel          #+#    #+#             */
-/*   Updated: 2019/10/09 03:37:09 by kibotrel         ###   ########.fr       */
+/*   Updated: 2019/10/15 23:54:10 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,15 @@
 **	Useful values
 */
 
+# define WIN_W			1920
+# define WIN_H			1080
 # define RATIO_UI_X		8
 # define RATIO_UI_Y		9
 # define MAX_WIDTH		1920
 # define MAX_FONT_SIZE	64
 
 /*
-** Useful strings
+** String macros
 */
 
 # define E_CODE			"\033[31;1mError:\033[0m "
@@ -39,13 +41,6 @@
 # define M_SDL_UPDATE	E_CODE "Can't update the given frame."
 # define M_TTF_RENDER	E_CODE "Can't write text on SDL Surface."
 # define M_SDL_WINSURF	E_CODE "Can't retrieve SDL window's surface."
-
-/*
-**	Environement informations
-*/
-
-# define WIN_W			1920
-# define WIN_H			1080
 
 # define TXT_GAME		" - Game"
 # define TXT_MENU		" - Menu"
