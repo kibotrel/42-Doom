@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/16 12:45:38 by kibotrel          #+#    #+#             */
-/*   Updated: 2019/10/11 13:09:57 by kibotrel         ###   ########.fr       */
+/*   Updated: 2019/10/14 12:02:09 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,10 @@ void	hooks(t_env *env, t_sdl *sdl)
 			if (sdl->event.type == SDL_QUIT)
 				clean(env, NOTHING);
 			if (env->sdl.event.type == SDL_KEYDOWN)
+			{
+				printf("%d\n", sdl->event.key.keysym.scancode);
 				env->input[sdl->event.key.keysym.scancode] = 1;
+			}
 			if (env->sdl.event.type == SDL_KEYUP)
 				env->input[sdl->event.key.keysym.scancode] = 0;
 			if (sdl->event.type == SDL_MOUSEBUTTONDOWN)

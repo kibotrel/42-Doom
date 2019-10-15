@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/17 11:08:34 by kibotrel          #+#    #+#             */
-/*   Updated: 2019/10/10 13:46:51 by kibotrel         ###   ########.fr       */
+/*   Updated: 2019/10/15 17:34:57 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,8 @@ void	draw_line(t_env *env, t_point start, t_point end, int color)
 	p = start;
 	while (p.y != end.y || p.x != end.x)
 	{
-		draw_pixel(env, env->sdl.screen, p, color);
+		if ((p.x >= 480 && p.x <= 1440) && (p.y >= 270 && p.y <= 810))
+			draw_pixel(env, env->sdl.screen, p, color);
 		if ((line.error = line.offset * 2) > -line.delta.y)
 		{
 			line.offset -= line.delta.y;
@@ -73,6 +74,7 @@ void	draw_line(t_env *env, t_point start, t_point end, int color)
 			line.offset += line.delta.x;
 			p.y += line.sign.   y;
 		}
-		draw_pixel(env, env->sdl.screen, p, color);
+		if ((p.x >= 480 && p.x <= 1440) && (p.y >= 270 && p.y <= 810))
+			draw_pixel(env, env->sdl.screen, p, color);
 	}
 }
