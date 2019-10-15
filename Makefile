@@ -6,7 +6,7 @@
 #    By: reda-con <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/14 13:34:57 by reda-con          #+#    #+#              #
-#    Updated: 2019/10/14 13:35:02 by reda-con         ###   ########.fr        #
+#    Updated: 2019/10/14 14:24:04 by reda-con         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,13 +51,7 @@ INCS_DIR		+= $(BREW_DIR)/include/SDL2
 # All the subdirectories used in the project
 # to organise source files (Can be changed).
 
-OBJS_SUBDIRS	:= core
-OBJS_SUBDIRS	+= menu
-OBJS_SUBDIRS	+= usage
-OBJS_SUBDIRS	+= setup
-OBJS_SUBDIRS	+= clean
-OBJS_SUBDIRS	+= utils
-OBJS_SUBDIRS	+= events
+OBJS_SUBDIRS	:= editor
 
 #------------------------------------ FILES -----------------------------------#
 
@@ -71,31 +65,22 @@ LTTF			= $(BREW_LIBS)/$(TTF)
 # Used header at each compilation to check file integrity (Can be changed).
 
 INCS			:= incs/env.h
-INCS			+= incs/doom.h
+INCS			+= incs/editor.h
 
 # Source files (Can be changed)
 
-SRCS			:= core/main.c
-SRCS			+= core/game.c
-SRCS			+= core/menu.c
-SRCS			+= core/hooks.c
-SRCS			+= core/editor.c
-SRCS			+= core/selector.c
-SRCS			+= core/settings.c
-SRCS			+= clean/env.c
-SRCS			+= clean/sdl.c
-SRCS			+= clean/ttf.c
-SRCS			+= menu/click.c
-SRCS			+= menu/motion.c
-SRCS			+= setup/setup.c
-SRCS			+= setup/graphic.c
-SRCS			+= usage/usage.c
-SRCS			+= utils/data.c
-SRCS			+= utils/maths.c
-SRCS			+= utils/graphic.c
-SRCS			+= events/mouse.c
-SRCS			+= events/motion.c
-SRCS			+= events/keyboard.c
+SRCS			:= editor/main.c
+SRCS			+= editor/create_map.c
+SRCS			+= editor/create_map_2.c
+SRCS			+= editor/ennemy.c
+SRCS			+= editor/events.c
+SRCS			+= editor/is_in_sect.c
+SRCS			+= editor/object.c
+SRCS			+= editor/player.c
+SRCS			+= editor/sector.c
+SRCS			+= editor/sector_2.c
+SRCS			+= editor/utils.c
+SRCS			+= editor/vertex.c
 
 #-------------------------------- MISCELANEOUS --------------------------------#
 
