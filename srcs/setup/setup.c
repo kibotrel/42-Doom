@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/16 11:58:26 by kibotrel          #+#    #+#             */
-/*   Updated: 2019/10/16 02:50:05 by kibotrel         ###   ########.fr       */
+/*   Updated: 2019/10/16 05:58:25 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ static void	infos_setup(t_env *env)
 	env->data.f_size = floor(env->w * MAX_FONT_SIZE / MAX_WIDTH);
 }
 
-void		point(t_point *p, int x, int y)
+static void		point(t_point *p, int x, int y)
 {
 	p->x = x;
 	p->y = y;
@@ -87,12 +87,6 @@ void		env_setup(t_env *env)
 	env->vertex[2].x = env->w / 4 * 3;
 	env->vertex[3].y = env->h / 4 * 3;
 	env->vertex[3].x = env->w / 4;
-	point(&env->wall[0], env->w / 4 + 7,   env->h / 4 + 21 );
-	point(&env->wall[1], env->w / 4 + 91,  env->h / 4 + 76 );
-	point(&env->wall[2], env->w / 4 + 371, env->h / 2 + 103);
-	point(&env->wall[3], env->w / 4 + 93,  env->h / 2 + 103);
-	point(&env->wall[4], env->w / 2 + 7,   env->h / 4 + 98);
-	point(&env->wall[5], env->w / 2 - 82,  env->h / 4 + 108);
-	point(&env->wall[6], env->w / 2 + 290, env->h / 4 + 153);
-	point(&env->wall[7], env->w / 2 + 170, env->h / 4 + 420);
+	point(&env->wall[0], 1240, 370);
+	point(&env->wall[1], 1240, 710);
 }

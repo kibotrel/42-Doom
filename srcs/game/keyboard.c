@@ -6,11 +6,10 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/10 15:11:44 by kibotrel          #+#    #+#             */
-/*   Updated: 2019/10/16 03:11:57 by kibotrel         ###   ########.fr       */
+/*   Updated: 2019/10/16 03:19:25 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "SDL.h"
 #include "core.h"
 #include "game.h"
 #include "libft.h"
@@ -27,7 +26,7 @@ void	game_keyboard(t_env *env)
 		|| env->input[SDL_SCANCODE_S] || env->input[SDL_SCANCODE_D])
 		update_position(env, env->cam.angle, env->cam.speed);
 	if (env->input[SDL_SCANCODE_RIGHT] || env->input[SDL_SCANCODE_LEFT])
-		update_angle(env);
+		update_angle(env, &env->cam.angle);
 	if (env->input[SDL_SCANCODE_LSHIFT])
 		env->cam.speed = 5.0;
 	else

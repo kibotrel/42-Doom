@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 21:22:14 by kibotrel          #+#    #+#             */
-/*   Updated: 2019/10/16 03:04:24 by kibotrel         ###   ########.fr       */
+/*   Updated: 2019/10/16 03:19:21 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,6 @@ void	update_position(t_env *env, int angle, int speed);
 */
 
 void	reset_view(t_env *env);
-void	update_angle(t_env *env);
+void	update_angle(t_env *env, double *cam);
 
 #endif
