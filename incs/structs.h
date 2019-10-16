@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 18:48:17 by kibotrel          #+#    #+#             */
-/*   Updated: 2019/10/16 02:48:15 by kibotrel         ###   ########.fr       */
+/*   Updated: 2019/10/16 02:56:01 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,8 @@ typedef struct	s_ui
 typedef struct	s_data
 {
 	int			f_size;						// Font size
+	int 		w_size;						// Window size in bytes
 	t_ui		ui;							// Menu informations
-	t_point		size;						// Text dimensions
 }				t_data;
 
 /*

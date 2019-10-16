@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/16 11:54:18 by kibotrel          #+#    #+#             */
-/*   Updated: 2019/10/15 21:13:24 by kibotrel         ###   ########.fr       */
+/*   Updated: 2019/10/16 02:59:03 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ static void	sdl_setup(t_env *env, t_sdl *sdl)
 	while (++asset < NB_ASSETS)
 		if (bmp_to_array(env->asset[asset], &sdl->bmp[asset]))
 			clean(env, E_BMP_PARSE);
+	env->data.w_size = sdl->screen->h * sdl->screen->pitch;
 }
 
 static void	ttf_setup(t_env *env, t_sdl *sdl)

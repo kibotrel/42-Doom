@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/10 15:11:44 by kibotrel          #+#    #+#             */
-/*   Updated: 2019/10/16 02:52:36 by kibotrel         ###   ########.fr       */
+/*   Updated: 2019/10/16 03:11:57 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,15 +28,12 @@ void	game_keyboard(t_env *env)
 		update_position(env, env->cam.angle, env->cam.speed);
 	if (env->input[SDL_SCANCODE_RIGHT] || env->input[SDL_SCANCODE_LEFT])
 		update_angle(env);
-	ft_bzero(env->sdl.screen->pixels, env->sdl.screen->h * env->sdl.screen->pitch);
 	if (env->input[SDL_SCANCODE_LSHIFT])
 		env->cam.speed = 5.0;
 	else
 		env->cam.speed = 1.0;
 	if (env->input[SDL_SCANCODE_R])
-	{
-		env->player.pos = env->cam.pos;
-		env->cam.angle = 0;
-	}
+		reset_view(env);
+	ft_bzero(env->sdl.screen->pixels, env->data.w_size);
 	game(env);
 }
