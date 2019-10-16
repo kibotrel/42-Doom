@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/16 11:58:26 by kibotrel          #+#    #+#             */
-/*   Updated: 2019/10/15 23:51:14 by kibotrel         ###   ########.fr       */
+/*   Updated: 2019/10/16 02:50:05 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,10 +74,11 @@ void		env_setup(t_env *env)
 	ft_bzero(&env->player, sizeof(t_player));
 	ft_bzero(&env->vertex, sizeof(t_point) * 4);
 	ft_bzero(&env->wall, sizeof(t_point) * 8);
-	env->player.position.x = env->w / 2;
-	env->player.position.y = env->h / 2;
-	env->pos = env->player.position;
-	env->player.speed = 1.0;
+	ft_bzero(&env->cam, sizeof(t_cam));
+	env->player.pos.x = env->w / 2;
+	env->player.pos.y = env->h / 2;
+	env->cam.pos = env->player.pos;
+	env->cam.speed = 1.0;
 	env->vertex[0].y = env->h / 4;
 	env->vertex[0].x = env->w / 4;
 	env->vertex[1].y = env->h / 4;

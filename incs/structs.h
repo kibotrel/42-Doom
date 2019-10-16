@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 18:48:17 by kibotrel          #+#    #+#             */
-/*   Updated: 2019/10/16 02:01:55 by kibotrel         ###   ########.fr       */
+/*   Updated: 2019/10/16 02:48:15 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,17 +55,6 @@ typedef struct	s_data
 }				t_data;
 
 /*
-**	Player informations.
-*/
-
-typedef struct	s_player
-{
-	t_pos		position;					// Real player position
-	double		angle;						// What the player is seeing (degrees)
-	double		speed;						// Modify deplacement speed
-}				t_player;
-
-/*
 ** Graphic library informations.
 */
 
@@ -80,6 +69,26 @@ typedef struct	s_sdl
 }				t_sdl;
 
 /*
+**	Camera informations.
+*/
+
+typedef struct	s_cam
+{
+	t_pos		pos;						// Real player position
+	double		angle;						// What the player is seeing (degrees)
+	double		speed;						// Modify deplacement speed
+}				t_cam;
+
+/*
+**	Player informations.
+*/
+
+typedef struct	s_player
+{
+	t_pos		pos;					// Real player position
+}				t_player;
+
+/*
 **	Main structure.
 */
 
@@ -90,11 +99,11 @@ typedef struct	s_env
 	int			input[SDL_NUM_SCANCODES];	// Handle key inputs
 	char		*asset[NB_ASSETS];			// Array of path to assets
 	char		*error[NB_ERRORS];			// Array of error messages
+	t_cam		cam;
 	t_sdl		sdl;						// SDL structure
 	t_win		win;						// Enum for window state
 	t_data		data;						// Structure for miscelaneous informations
 
-	t_pos		pos;						// Absolute player position
 	t_point		vertex[4];					// Rectangle that delimit the space
 	t_player	player;						// Player informations
 	t_point		wall[8];					// Array of points that goes in pair to from walls withing space
