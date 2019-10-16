@@ -6,7 +6,7 @@
 #    By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/10 16:16:29 by kibotrel          #+#    #+#              #
-#    Updated: 2019/10/15 21:26:33 by kibotrel         ###   ########.fr        #
+#    Updated: 2019/10/16 01:46:00 by kibotrel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -105,6 +105,7 @@ SRCS			+= setup/graphic.c
 SRCS			+= utils/data.c
 SRCS			+= utils/maths.c
 SRCS			+= utils/usage.c
+SRCS			+= utils/checks.c
 SRCS			+= utils/graphic.c
 SRCS			+= editor/keyboard.c
 SRCS			+= events/mouse.c

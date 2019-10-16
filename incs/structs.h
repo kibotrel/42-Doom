@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 18:48:17 by kibotrel          #+#    #+#             */
-/*   Updated: 2019/10/15 19:22:45 by kibotrel         ###   ########.fr       */
+/*   Updated: 2019/10/16 02:01:55 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,17 +99,5 @@ typedef struct	s_env
 	t_player	player;						// Player informations
 	t_point		wall[8];					// Array of points that goes in pair to from walls withing space
 }				t_env;
-
-/*
-**	Informations for utils/graphic.c - draw_line() function.
-*/
-
-typedef struct		s_line
-{
-	int				error;		// Current error
-	int				offset;		// size of the line
-	t_point			sign;		// Slope of the line
-	t_point			delta;		// Global error
-}					t_line;
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/10 16:47:31 by kibotrel          #+#    #+#             */
-/*   Updated: 2019/10/15 21:28:02 by kibotrel         ###   ########.fr       */
+/*   Updated: 2019/10/16 01:58:41 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,12 @@ void	update_position(t_env *env)
 	}
 	if (env->input[SDL_SCANCODE_A])
 	{
-		env->player.position.x += (cos(ft_radians(env->player.angle + 90)) * env->player.speed);
+		env->player.position.x -= (cos(ft_radians(env->player.angle + 90)) * env->player.speed);
 		env->player.position.y -= (sin(ft_radians(env->player.angle + 90)) * env->player.speed);
 	}
 	if (env->input[SDL_SCANCODE_D])
 	{
-		env->player.position.x -= (cos(ft_radians(env->player.angle + 90)) * env->player.speed);
+		env->player.position.x += (cos(ft_radians(env->player.angle + 90)) * env->player.speed);
 		env->player.position.y += (sin(ft_radians(env->player.angle + 90)) * env->player.speed);
 	}
 }
