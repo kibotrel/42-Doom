@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/13 20:22:28 by nde-jesu          #+#    #+#             */
-/*   Updated: 2019/10/17 14:55:33 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2019/10/17 15:55:26 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,11 @@ void		print_all(t_editor *edit)
 	print_vertex(edit->sdl, edit->object, 0x8b4513);
 	print_sector(edit);
 	print_vertex(edit->sdl, edit->vertex, 0xffff00);
-	mouse = create_vertex((edit->sdl->event.motion.x / edit->dist_grid) * edit->dist_grid, (edit->sdl->event.motion.y / edit->dist_grid) * edit->dist_grid);
-	print_vertex(edit->sdl, mouse, 0x0ff0f0);
+	if (edit->sett == vertex)
+	{
+		mouse = create_vertex((edit->sdl->event.motion.x / edit->dist_grid) * edit->dist_grid, (edit->sdl->event.motion.y / edit->dist_grid) * edit->dist_grid);
+		print_vertex(edit->sdl, mouse, 0x0ff0f0);
+	}
 	print_line(edit, edit->sdl->event.motion.x, edit->sdl->event.motion.y);
 }
 
