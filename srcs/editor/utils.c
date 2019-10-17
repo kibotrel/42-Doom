@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/13 20:41:22 by nde-jesu          #+#    #+#             */
-/*   Updated: 2019/10/09 09:06:49 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2019/10/17 13:37:40 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,26 @@
 #include <math.h>
 #include "editor.h"
 #include "libft.h"
+
+void		print_vertex(t_sdl *sdl, t_vertex *to_print, int color)
+{
+	t_vertex	*print;
+
+	print = to_print;
+	while (print)
+	{
+		put_pixel(sdl, print->x, print->y, color);
+		put_pixel(sdl, print->x + 1, print->y, color);
+		put_pixel(sdl, print->x, print->y + 1, color);
+		put_pixel(sdl, print->x + 1, print->y + 1, color);
+		put_pixel(sdl, print->x - 1, print->y, color);
+		put_pixel(sdl, print->x + 1, print->y - 1, color);
+		put_pixel(sdl, print->x - 1, print->y + 1, color);
+		put_pixel(sdl, print->x, print->y - 1, color);
+		put_pixel(sdl, print->x - 1, print->y - 1, color);
+		print = print->next;
+	}
+}
 
 t_vertex 	*create_vertex(int x, int y)
 {
@@ -87,7 +107,7 @@ void	draw_walls(t_sdl *sdl, t_sector *sect, t_vertex *vertex, int color)
 		draw_line(sdl, start, end, color);
 	}
 	else
-		put_pixel(sdl, vertex->x, vertex->	y, color);
+		put_pixel(sdl, vertex->x, vertex->y, color);
 }
 
 void	print_grid(t_editor *edit)

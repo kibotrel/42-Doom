@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/14 12:02:03 by nde-jesu          #+#    #+#             */
-/*   Updated: 2019/10/07 14:44:45 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2019/10/17 14:08:08 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,12 @@ void	write_vertex_file(t_editor *edit, int fd)
 		vertex = sector->vertex;
 		while (vertex)
 		{
-			ft_putstr_fd("vertex\t", fd);
-			ft_putstr_fd("y ", fd);
-			ft_putnbr_fd(vertex->y, fd);
-			ft_putchar_fd('\t', fd);
+			ft_putstr_fd("vertex ", fd);
 			ft_putstr_fd("x ", fd);
 			ft_putnbr_fd(vertex->x, fd);
+			ft_putchar_fd(' ', fd);
+			ft_putstr_fd("y ", fd);
+			ft_putnbr_fd(vertex->y, fd);
 			ft_putchar_fd('\n', fd);		
 			vertex = vertex->next;
 		}
@@ -53,11 +53,15 @@ void		write_sector_file(t_sector *sector, t_vertex *all, int fd)
 		vertex = sect->vertex;
 		if (vertex)
 		{
-			ft_putstr_fd("sector\th_floor ", fd);
+			ft_putstr_fd("sector number ", fd);
+			ft_putnbr_fd(sect->number, fd);
+			ft_putstr_fd(" h_floor ", fd);
 			ft_putnbr_fd(sect->h_floor, fd);
 			ft_putstr_fd(" h_ceil ", fd);
 			ft_putnbr_fd(sect->h_ceil, fd);
-			ft_putstr_fd("\tvertexes ", fd);
+			ft_putstr_fd(" vertex_num ", fd);
+			ft_putnbr_fd(sect->num_vertex, fd);
+			ft_putstr_fd(" vertexes ", fd);
 			write_vertex_sector(sect, all, fd);
 			ft_putchar_fd('\n', fd);
 		}
@@ -83,4 +87,5 @@ void		create_map(t_editor *edit)
 	fd = open(map_path, O_WRONLY | O_CREAT | O_TRUNC, S_IRWXU);
 	write_file(edit, fd);
 	close(fd);
+	ft_putendl("Map saved");
 }

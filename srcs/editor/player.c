@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/17 09:22:32 by nde-jesu          #+#    #+#             */
-/*   Updated: 2019/10/06 11:56:49 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2019/10/17 14:30:24 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,12 @@
 
 void	write_player(t_editor *edit, int fd)
 {	
-	ft_putstr_fd("player\ty ", fd);
+	ft_putstr_fd("player x ", fd);
 	if (edit->player.number == 1)
 	{
-		ft_putnbr_fd(edit->player.y, fd);
-		ft_putstr_fd(" x ", fd);
 		ft_putnbr_fd(edit->player.x, fd);
+		ft_putstr_fd(" y ", fd);
+		ft_putnbr_fd(edit->player.y, fd);
 	}
 	else
 	{
@@ -29,18 +29,6 @@ void	write_player(t_editor *edit, int fd)
 		ft_putnbr_fd(0, fd);
 	}
 	ft_putstr_fd("\n\n", fd);
-}
-
-void	print_player(t_editor *edit, int color)
-{
-	if (edit->player.number != 0)
-	{
-		put_pixel(edit->sdl, edit->player.x, edit->player.y, color);
-		put_pixel(edit->sdl, edit->player.x + 1, edit->player.y, color);
-		put_pixel(edit->sdl, edit->player.x, edit->player.y + 1, color);
-		put_pixel(edit->sdl, edit->player.x - 1, edit->player.y, color);
-		put_pixel(edit->sdl, edit->player.x, edit->player.y - 1, color);
-	}
 }
 
 void	place_player(t_editor **edit, int x, int y)
@@ -54,7 +42,7 @@ void	place_player(t_editor **edit, int x, int y)
 	if (player_sector != -1)
 	{
 		if ((*edit)->player.number == 1)
-			print_player((*edit), 0x000000);
+			print_vertex((*edit)->sdl, &(*edit)->player, 0x000000);
 		(*edit)->player.x = player.x;
 		(*edit)->player.y = player.y;
 		(*edit)->player.number = 1;

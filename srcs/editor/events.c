@@ -6,13 +6,30 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/13 20:22:28 by nde-jesu          #+#    #+#             */
-/*   Updated: 2019/10/15 10:50:16 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2019/10/17 14:55:33 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "editor.h"
 #include "SDL.h"
 #include "libft.h"
+
+int		is_saved(t_editor *edit)
+{
+	if (edit->sdl->save == 1)
+	{
+		ft_putendl("You didn't save, press Esc to quit");
+		edit->sdl->save = 2;
+		return (1);
+	}
+	else if (edit->sdl->save == 2)
+	{
+		ft_putendl("Exiting without saving");
+		return (0);
+	}
+	ft_putendl("Exiting...");
+	return (0);
+}
 
 void		print_line(t_editor *edit, int x, int y)
 {
@@ -26,11 +43,17 @@ void		print_line(t_editor *edit, int x, int y)
 
 void		print_all(t_editor *edit)
 {
+	t_vertex 	*mouse;
+	
 	print_grid(edit);
-	print_player(edit, 0xffffff);
-	print_ennemy(edit, 0xff0000);
-	print_object(edit, 0x00ff00);
+	if (edit->player.number != 0)
+		print_vertex(edit->sdl, &edit->player, 0xff00ff);
+	print_vertex(edit->sdl, edit->ennemi, 0xff0000);
+	print_vertex(edit->sdl, edit->object, 0x8b4513);
 	print_sector(edit);
+	print_vertex(edit->sdl, edit->vertex, 0xffff00);
+	mouse = create_vertex((edit->sdl->event.motion.x / edit->dist_grid) * edit->dist_grid, (edit->sdl->event.motion.y / edit->dist_grid) * edit->dist_grid);
+	print_vertex(edit->sdl, mouse, 0x0ff0f0);
 	print_line(edit, edit->sdl->event.motion.x, edit->sdl->event.motion.y);
 }
 
@@ -46,12 +69,21 @@ void		mouse_click(t_editor **edit, SDL_Event event)
 			get_object(edit, event.motion.x, event.motion.y);
 		else if ((*edit)->sett == portal)
 			create_portal(edit, event.motion.x, event.motion.y);
+		(*edit)->sdl->save = 1;
 }
 
 void		key_press(t_editor **edit, SDL_Event event)
 {
 	if (event.key.keysym.scancode == SDL_SCANCODE_ESCAPE)
-		(*edit)->finish = 0;
+	{
+		if (is_saved(*edit) == 0)
+			(*edit)->finish = 0;
+	}
+	if (event.key.keysym.scancode == SDL_SCANCODE_RETURN)
+	{
+		create_map(*edit);
+		(*edit)->sdl->save = 0;
+	}
 	if ((*edit)->sect_is_closed == 1)
 	{	
 		if (event.key.keysym.scancode == SDL_SCANCODE_1)
@@ -79,7 +111,10 @@ void		events(t_editor **edit)
 		while (SDL_PollEvent(&(sdl->event)))
 		{
 			if (sdl->event.type == SDL_QUIT)
-				(*edit)->finish = 0;
+			{
+				if (is_saved(*edit) == 0)
+					(*edit)->finish = 0;
+			}
 			if (sdl->event.type == SDL_KEYDOWN)
 				key_press(edit, sdl->event);
 			if (sdl->event.type == SDL_MOUSEBUTTONDOWN)

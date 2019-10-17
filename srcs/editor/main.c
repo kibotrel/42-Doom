@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/13 19:58:31 by nde-jesu          #+#    #+#             */
-/*   Updated: 2019/10/15 14:34:49 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2019/10/17 14:28:31 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,9 @@ void	init_editor(t_editor **edit)
 	if (!((*edit)->sdl->surf))
 		exit(1);
 	(*edit)->finish = 1;
-	(*edit)->player.number = 0;
+	(*edit)->player.number = -1;
 	(*edit)->last_vertex = create_vertex(-1, -1);
+	(*edit)->sdl->save = 2;
 	init_portals(edit);
 }
 
@@ -48,7 +49,7 @@ int		main(int ac, char **av)
 			exit(1);
         init_editor(&edit);
 		events(&edit);
-		create_map(edit);
+		// create_map(edit);
     }
 	return (1);
 }

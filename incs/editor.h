@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/13 19:59:45 by nde-jesu          #+#    #+#             */
-/*   Updated: 2019/10/15 14:35:02 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2019/10/17 13:57:07 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ typedef struct          s_sdl
     SDL_Window         	*win;
 	SDL_Surface			*surf;
     SDL_Event           event;
+	int					save;
 }                       t_sdl;
 
 typedef struct          s_editor
@@ -101,6 +102,7 @@ void		get_object(t_editor **edit, int x, int y);
 
 void		add_vertex(t_vertex **vertex, t_vertex *new, int count);
 
+void		print_vertex(t_sdl *sdl, t_vertex *to_print, int color);
 void		print_sector(t_editor *edit);
 void		print_player(t_editor *edit, int color);
 void		print_ennemy(t_editor *edit, int color);
