@@ -6,7 +6,7 @@
 /*   By: reda-con <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 14:00:52 by reda-con          #+#    #+#             */
-/*   Updated: 2019/10/17 16:33:00 by reda-con         ###   ########.fr       */
+/*   Updated: 2019/10/17 16:53:28 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void		verif_pl(t_point *pl, char **tab)
 		ft_putendl("ta mere");
 		return ;
 	}
-	if (tab[1] && tab[3] && !ft_strcmp(tab[1], "y") && ! ft_strcmp(tab[3], "x"))
+	if (tab[1] && tab[3] && !ft_strcmp(tab[1], "y") && !ft_strcmp(tab[3], "x"))
 		if (tab[2] && tab[4] && ft_isnumber(tab[2]) && ft_isnumber(tab[4]))
 			*pl = init_pt(ft_atoi(tab[2]), ft_atoi(tab[4]));
 }

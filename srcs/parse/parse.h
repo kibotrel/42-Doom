@@ -6,7 +6,7 @@
 /*   By: reda-con <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 14:27:11 by reda-con          #+#    #+#             */
-/*   Updated: 2019/10/17 16:32:49 by reda-con         ###   ########.fr       */
+/*   Updated: 2019/10/17 16:43:20 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,14 +39,18 @@ typedef struct	s_object
 	struct s_object	*next;
 }				t_object;
 
+typedef struct	s_height
+{
+	int			floor;
+	int			ceil;
+}				t_height;
+
 typedef struct	s_sector
 {
 	int				n;
-	int				h_floor;
-	int				h_ceil;
+	t_height		h;
 	int				size_vp;
-	int				*vertexes;
-	int				*portals;
+	int				**v_p;
 	struct s_sector	*next;
 }				t_sector;
 
