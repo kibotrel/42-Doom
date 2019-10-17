@@ -6,7 +6,7 @@
 /*   By: reda-con <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 16:50:27 by reda-con          #+#    #+#             */
-/*   Updated: 2019/10/16 16:51:29 by reda-con         ###   ########.fr       */
+/*   Updated: 2019/10/17 16:32:23 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,4 +50,12 @@ void		free_tab(char **t)
 		++i;
 	}
 	free(t);
+}
+
+void		init_parse(t_parse *p)
+{
+	p->v = NULL;
+	p->e = NULL;
+	p->o = NULL;
+	p->s = NULL;
 }

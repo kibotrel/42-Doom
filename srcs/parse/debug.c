@@ -6,7 +6,7 @@
 /*   By: reda-con <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 15:13:52 by reda-con          #+#    #+#             */
-/*   Updated: 2019/10/16 16:22:12 by reda-con         ###   ########.fr       */
+/*   Updated: 2019/10/17 16:19:19 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,4 +76,39 @@ void		print_tab(char **t)
 		++i;
 	}
 	ft_putchar('\n');
+}
+
+void		print_sec(t_sector **s)
+{
+	t_sector	*tmp;
+	int			i;
+
+	tmp = *s;
+	while (tmp)
+	{
+		ft_putstr("sector: number=");
+		ft_putnbr(tmp->n);
+		ft_putstr(" h_floor=");
+		ft_putnbr(tmp->h_floor);
+		ft_putstr(" h_ceil=");
+		ft_putnbr(tmp->h_ceil);
+		ft_putstr(" size_vp=");
+		ft_putnbr(tmp->size_vp);
+		i = -1;
+		ft_putstr(" vertexes=");
+		while (++i < tmp->size_vp)
+		{
+			ft_putnbr(tmp->vertexes[i]);
+			ft_putchar(' ');
+		}
+		i = -1;
+		ft_putstr(" portals=");
+		while (++i < tmp->size_vp)
+		{
+			ft_putnbr(tmp->portals[i]);
+			ft_putchar(' ');
+		}
+		ft_putchar('\n');
+		tmp = tmp->next;
+	}
 }

@@ -6,7 +6,7 @@
 /*   By: reda-con <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 14:00:52 by reda-con          #+#    #+#             */
-/*   Updated: 2019/10/17 13:12:26 by reda-con         ###   ########.fr       */
+/*   Updated: 2019/10/17 16:33:00 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,21 +46,23 @@ int			verif_blank(char **t)
 	return (0);
 }
 
-void		parse(char *l, t_vertex **v_s, t_ennemy **e_s, t_object **o_s, t_point *pl)
+void		parse(char *l, t_parse *par)
 {
 	char		**tab;
 
 	tab = ft_strsplit(l, ' ');
 	if (tab[0] && !ft_strcmp("vertex", tab[0]))
-		verif_ver(v_s, tab);
+		verif_ver(&par->v, tab);
 	else if (tab[0] && !ft_strcmp("ennemy", tab[0]))
-		verif_en(e_s, tab);
+		verif_en(&par->e, tab);
 	else if (tab[0] && !ft_strcmp("object", tab[0]))
-		verif_obj(o_s, tab);
+		verif_obj(&par->o, tab);
 	else if (tab[0] && !ft_strcmp("player", tab[0]))
-		verif_pl(pl, tab);
+		verif_pl(&par->p, tab);
+	else if (tab[0] && !ft_strcmp("sector", tab[0]))
+		verif_sec(&par->s, tab);
 	else if (!verif_blank(tab) || tab[0][0] == '#')
-		ft_putendl("is ok");
+		ft_putendl("is white space");
 	else
 		ft_putendl("ta race");
 	free_tab(tab);
@@ -71,30 +73,29 @@ int			main(int ac, char **av)
 	int		fd;
 	int		gnl;
 	char	*line;
-	t_vertex	*v;
-	t_ennemy	*e;
-	t_object	*o;
-	t_point		pl;
+	t_parse	par;
 
-	pl = init_pt(-1, -1);
+	init_parse(&par);
+	par.p = init_pt(-1, -1);
 	if (ac == 2)
 	{
 		if ((fd = open(av[1], O_RDONLY)) == -1)
 			return (1);
 		while ((gnl = ft_get_next_line(fd, &line)))
 		{
-			parse(line, &v, &e, &o, &pl);
+			parse(line, &par);
 			free(line);
 		}
 		if (gnl == -1)
 			return (1);
 		if (close(fd) == -1)
 			return (1);
-		print_vert(&v);
-		print_en(&e);
-		print_obj(&o);
+		print_vert(&par.v);
+		print_en(&par.e);
+		print_obj(&par.o);
+		print_sec(&par.s);
 		ft_putstr("player: ");
-		print_pt(pl);
+		print_pt(par.p);
 	}
 	return (0);
 }
