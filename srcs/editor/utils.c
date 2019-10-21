@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/13 20:41:22 by nde-jesu          #+#    #+#             */
-/*   Updated: 2019/10/17 13:37:40 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2019/10/21 14:58:58 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void	put_pixel(t_sdl *sdl, int x, int y, int color)
 	{
 		pixel = surf->pixels + y * surf->pitch
 			+ x * surf->format->BytesPerPixel;
-		*pixel = color;
+		*pixel = color;+
 	}
 }
 
