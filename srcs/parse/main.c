@@ -6,7 +6,7 @@
 /*   By: reda-con <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 14:00:52 by reda-con          #+#    #+#             */
-/*   Updated: 2019/10/21 16:36:23 by reda-con         ###   ########.fr       */
+/*   Updated: 2019/10/21 16:51:15 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ void		verif_pl(t_point *pl, char **tab)
 	{
 		if (tab[2] && tab[4] && ft_isnumber(tab[2]) && ft_isnumber(tab[4]))
 			*pl = init_pt(ft_atoi(tab[2]), ft_atoi(tab[4]));
-		exit(1);
+		else
+			exit(1);
 	}
 	else
 		exit(1);
@@ -63,7 +64,7 @@ void		parse(char *l, t_parse *par)
 		verif_pl(&par->p, tab);
 	else if (tab[0] && !ft_strcmp("sector", tab[0]))
 		verif_sec(&par->s, tab);
-	else if (verif_blank(tab) || tab[0][0] != '#')
+	else if (verif_blank(tab) && tab[0][0] != '#')
 	{
 		free_tab(tab);
 		exit(1);
@@ -84,7 +85,7 @@ int			main(int ac, char **av)
 	{
 		if ((fd = open(av[1], O_RDONLY)) == -1)
 			exit(1);
-		while ((gnl = ft_get_next_line(fd, &line)))
+		while ((gnl = ft_get_next_line(fd, &line)) == 1)
 		{
 			parse(line, &par);
 			free(line);
@@ -92,6 +93,8 @@ int			main(int ac, char **av)
 		if (gnl == -1)
 			exit(1);
 		if (close(fd) == -1)
+			exit(1);
+		if (par.p.x <= -1 || par.p.y <= -1)
 			exit(1);
 		print_vert(&par.v);
 		print_en(&par.e);
