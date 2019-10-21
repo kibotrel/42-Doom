@@ -6,7 +6,7 @@
 /*   By: reda-con <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 14:27:11 by reda-con          #+#    #+#             */
-/*   Updated: 2019/10/17 16:43:20 by reda-con         ###   ########.fr       */
+/*   Updated: 2019/10/21 16:19:58 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,12 +45,18 @@ typedef struct	s_height
 	int			ceil;
 }				t_height;
 
+typedef struct	s_ver_port
+{
+	int			size;
+	int			*vertex;
+	int			*portal;
+}				t_ver_port;
+
 typedef struct	s_sector
 {
 	int				n;
 	t_height		h;
-	int				size_vp;
-	int				**v_p;
+	t_ver_port		v_p;
 	struct s_sector	*next;
 }				t_sector;
 

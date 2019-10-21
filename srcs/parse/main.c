@@ -6,7 +6,7 @@
 /*   By: reda-con <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 14:00:52 by reda-con          #+#    #+#             */
-/*   Updated: 2019/10/17 16:53:28 by reda-con         ###   ########.fr       */
+/*   Updated: 2019/10/21 16:36:23 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,15 @@
 void		verif_pl(t_point *pl, char **tab)
 {
 	if (pl->x != -1 && pl->y != -1)
-	{
-		ft_putendl("ta mere");
-		return ;
-	}
+		exit(1);
 	if (tab[1] && tab[3] && !ft_strcmp(tab[1], "y") && !ft_strcmp(tab[3], "x"))
+	{
 		if (tab[2] && tab[4] && ft_isnumber(tab[2]) && ft_isnumber(tab[4]))
 			*pl = init_pt(ft_atoi(tab[2]), ft_atoi(tab[4]));
+		exit(1);
+	}
+	else
+		exit(1);
 }
 
 int			verif_blank(char **t)
@@ -61,10 +63,11 @@ void		parse(char *l, t_parse *par)
 		verif_pl(&par->p, tab);
 	else if (tab[0] && !ft_strcmp("sector", tab[0]))
 		verif_sec(&par->s, tab);
-	else if (!verif_blank(tab) || tab[0][0] == '#')
-		ft_putendl("is white space");
-	else
-		ft_putendl("ta race");
+	else if (verif_blank(tab) || tab[0][0] != '#')
+	{
+		free_tab(tab);
+		exit(1);
+	}
 	free_tab(tab);
 }
 
@@ -80,16 +83,16 @@ int			main(int ac, char **av)
 	if (ac == 2)
 	{
 		if ((fd = open(av[1], O_RDONLY)) == -1)
-			return (1);
+			exit(1);
 		while ((gnl = ft_get_next_line(fd, &line)))
 		{
 			parse(line, &par);
 			free(line);
 		}
 		if (gnl == -1)
-			return (1);
+			exit(1);
 		if (close(fd) == -1)
-			return (1);
+			exit(1);
 		print_vert(&par.v);
 		print_en(&par.e);
 		print_obj(&par.o);
