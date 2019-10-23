@@ -1,8 +1,7 @@
 # Objects directories - Files
 objs
 build
-sdl
-sdl_ttf
+SDL2*
 *.o
 
 # Static libraries - Headers

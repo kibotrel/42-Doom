@@ -6,17 +6,19 @@
 #    By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/10 16:16:29 by kibotrel          #+#    #+#              #
-#    Updated: 2019/10/16 01:46:00 by kibotrel         ###   ########.fr        #
+#    Updated: 2019/10/23 02:36:20 by demonwaves       ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 #---------------------------------- VARIABLES ---------------------------------#
 
+# Environment
+
+UNAME			= $(shell uname -s)
+
 # Executable / Library (Can be changed).
 
 FT				= libft.a
-SDL				= libsdl2.a
-TTF				= libsdl2_ttf.a
 BMP				= libbmp.a
 NAME			= doom-nukem
 
@@ -32,8 +34,6 @@ YELLOW			= \033[33m
 
 LFT_DIR			= libft
 LBMP_DIR		= libbmp
-BREW_DIR		= $(HOME)/.brew
-BREW_LIBS		= $(BREW_DIR)/lib
 
 # Project (Can be changed).
 
@@ -46,7 +46,6 @@ OBJS_DIR		= objs
 INCS_DIR		:= incs
 INCS_DIR		+= libft/incs
 INCS_DIR		+= libbmp/incs
-INCS_DIR		+= $(BREW_DIR)/include/SDL2
 
 # All the subdirectories used in the project
 # to organise source files (Can be changed).
@@ -66,8 +65,8 @@ OBJS_SUBDIRS	+= events
 
 LFT				= $(LFT_DIR)/$(FT)
 LBMP			= $(LBMP_DIR)/$(BMP)
-LSDL			= $(BREW_LIBS)/$(SDL)
-LTTF			= $(BREW_LIBS)/$(TTF)
+LSDL			= $(LSDL_DIR)/$(SDL)
+LTTF			= $(LTTF_DIR)/$(TTF)
 
 # Used header at each compilation to check file integrity (Can be changed).
 
@@ -112,6 +111,31 @@ SRCS			+= events/mouse.c
 SRCS			+= events/motion.c
 SRCS			+= events/keyboard.c
 
+#------------------------------ OPERATING SYSTEM ------------------------------#
+
+# Some changes have to be done depending on which OS we are currently
+# dealing with. Darwin is for macOS else would include at least Linux.
+
+ifeq ($(UNAME), Darwin)
+	SDL			= libsdl2.a
+	TTF			= libsdl2_ttf.a
+	LSDL_DIR	= $(HOME)/.brew/Cellar/sdl/2.0.10/lib
+	LTTF_DIR	= $(HOME)/.brew/Cellar/sdl_ttf/2.0.15/lib
+	INCS_DIR	+= $(HOME)/.brew/Cellar/sdl/2.0.10/include
+else
+	TAR			= tar -xf
+	SDL			= libSDL2.a
+	TTF			= libSDL2_ttf.a
+	CURL		= curl --output archive.tar
+	URL_SDL		= https://www.libsdl.org/release/SDL2-2.0.10.tar.gz
+	URL_TTF		= https://www.libsdl.org/projects/SDL_ttf/release/SDL2_ttf-2.0.15.tar.gz
+	SRCS_SDL	= SDL2-2.0.10
+	SRCS_TTF	= SDL2_ttf-2.0.15
+	LSDL_DIR	= /usr/local/lib
+	LTTF_DIR	= /usr/local/lib
+	INCS_DIR	+= /usr/local/include/SDL2
+endif
+
 #-------------------------------- MISCELANEOUS --------------------------------#
 
 # Some tricks in order to get the makefile doing his job (Can't be changed).
@@ -131,10 +155,11 @@ OBJS			= $(SRCS:.c=.o)
 
 # Linked libraries at compile time (Can be changed).
 
-LIBS			:= -L$(LFT_DIR) -lft
+LIBS			:= -L$(LSDL_DIR) -lSDL2
+LIBS			+= -L$(LTTF_DIR) -lSDL2_ttf
 LIBS			+= -L$(LBMP_DIR) -lbmp
-LIBS			+= -L$(BREW_LIBS) -lSDL2
-LIBS			+= -L$(BREW_LIBS) -lSDL2_ttf
+LIBS			+= -L$(LFT_DIR) -lft
+LIBS			+= -lm
 
 # Compilation flags (Can be changed).
 
@@ -152,9 +177,9 @@ $(D_OBJS)%.o: $(D_SRCS)%.c $(INCS)
 # Implicit make rule simply using dependancies
 # to compile our project (Can't be canged).
 
-all: $(NAME)
+all: $(OBJS_DIR) $(C_SUBDIRS) $(NAME)
 
-$(NAME): $(LSDL) $(LTTF) $(LFT) $(LBMP) $(OBJS_DIR) $(C_SUBDIRS) $(C_OBJS)
+$(NAME): $(LSDL) $(LTTF) $(LFT) $(LBMP) $(C_OBJS)
 	@echo "$(YELLOW)\n      - Building $(RESET)$(NAME) $(YELLOW)...\n$(RESET)"
 	@$(CC) $(CFLAGS) -o $(NAME) $(C_OBJS) $(LIBS)
 	@echo "$(GREEN)***   Project $(NAME) successfully compiled   ***\n$(RESET)"
@@ -163,12 +188,40 @@ $(NAME): $(LSDL) $(LTTF) $(LFT) $(LBMP) $(OBJS_DIR) $(C_SUBDIRS) $(C_OBJS)
 # anything on standard output (Can be changed).
 
 $(LSDL):
-	@echo "$(GREEN)***   Installing library $(SDL)   ...  ***\n$(RESET)"
-	@brew install sdl2 > /dev/null 2>&1
+	@if [ $(UNAME) = Darwin ]; then												\
+		echo "$(GREEN)***   Installing library $(SDL)   ...  ***\n$(RESET)";	\
+		brew install sdl2 > /dev/null 2>&1;										\
+	elif [ ! -d "$(SRCS_SDL)" ]; then											\
+		echo "$(GREEN)***   Installing library $(SDL)   ...  ***\n$(RESET)";	\
+		sudo apt-get install curl -y > /dev/null 2>&1;							\
+		echo "$(GREEN)***   Curl sources   ...   ***\n$(RESET)";				\
+		$(CURL) $(URL_SDL) > /dev/null 2>&1;									\
+		echo "$(GREEN)***   Unpacking sources   ...   ***\n$(RESET)";			\
+		$(TAR) archive.tar;	$(RM) archive.tar;									\
+		echo "$(GREEN)***   Configure library   ...   ***\n$(RESET)";			\
+		cd $(SRCS_SDL);	./configure > /dev/null 2>&1;							\
+		echo "$(GREEN)***   Compile library   ...   ***\n$(RESET)";				\
+		sudo make install -j > /dev/null 2>&1;									\
+		echo "$(GREEN)***   $(SDL) successfully compiled   ***\n$(RESET)";		\
+	fi
 
 $(LTTF):
-	@echo "$(GREEN)***   Installing library $(TTF)   ...  ***\n$(RESET)"
-	@brew install sdl2_ttf > /dev/null 2>&1
+	@if [ $(UNAME) = Darwin ]; then												\
+		echo "$(GREEN)***   Installing library $(TTF)   ...  ***\n$(RESET)";	\
+		brew install sdl2_ttf > /dev/null 2>&1;									\
+	elif [ ! -d "$(SRCS_TTF)" ]; then											\
+		echo "$(GREEN)***   Installing library $(TTF)   ...  ***\n$(RESET)";	\
+		echo "$(GREEN)***   Curl sources   ...   ***\n$(RESET)";				\
+		$(CURL) $(URL_TTF) > /dev/null 2>&1;									\
+		echo "$(GREEN)***   Unpacking sources   ...   ***\n$(RESET)";			\
+		$(TAR) archive.tar; $(RM) archive.tar;									\
+		sudo apt-get install libfreetype6-dev -y > /dev/null 2>&1;				\
+		echo "$(GREEN)***   Configure library   ...   ***\n$(RESET)";			\
+		cd $(SRCS_TTF);	./configure > /dev/null 2>&1;							\
+		echo "$(GREEN)***   Compile library   ...   ***\n$(RESET)";				\
+		sudo make install -j > /dev/null 2>&1;									\
+		echo "$(GREEN)***   $(TTF) successfully compiled   ***\n$(RESET)";		\
+	fi
 
 # Libraries installion using their own Makefile (Can be changed).
 
@@ -202,15 +255,31 @@ fclean: clean
 	@make -sC $(LBMP_DIR) fclean
 	@echo "$(GREEN)***   Deleting executable file from $(NAME)   ...   ***\n$(RESET)"
 	@$(RM) $(NAME)
-	@if [ -f "$(LSDL)" ]; then														\
-		echo "$(GREEN)***   Deleting library $(SDL)   ...  ***\n$(RESET)";			\
-		brew uninstall --ignore-dependencies sdl2 > /dev/null 2>&1;					\
+	@if [ -f "$(LSDL)" ]; then													\
+		if [ $(UNAME) = Darwin ]; then											\
+			brew uninstall --ignore-dependencies sdl2 > /dev/null 2>&1;			\
+		else																	\
+			echo "$(GREEN)***   Deleting library $(SDL)   ...  ***\n$(RESET)";	\
+		fi;																		\
 	fi
-	@if [ -f "$(LTTF)" ]; then														\
-		echo "$(GREEN)***   Deleting library $(TTF)   ...  ***\n$(RESET)";			\
-		brew uninstall sdl2_ttf > /dev/null 2>&1;									\
+	@if [ -f "$(LTTF)" ]; then													\
+		if [ $(UNAME) = Darwin ]; then											\
+			brew uninstall sdl2_ttf > /dev/null 2>&1;							\
+		else																	\
+			echo "$(GREEN)***   Deleting library $(TTF)   ...  ***\n$(RESET)";	\
+		fi;																		\
 	fi
-
+	@if [ $(UNAME) = Linux ]; then												\
+		if [ -d $(SRCS_SDL) ]; then												\
+			sudo rm -rf $(SRCS_SDL);											\
+		elif [ -d $(SRCS_TTF) ]; then											\
+			sudo rm -rf $(SRCS_TTF);											\
+		elif [ -f $(LSDL) ]; then												\
+			sudo $(RM) $(LSDL);													\
+		elif [ -f $(LTTF) ]; then												\
+			sudo $(RM) $(LTTF);													\
+		fi;																		\
+	fi
 # Re-compile everything (Can't be changed).
 
 re: fclean all
