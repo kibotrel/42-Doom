@@ -6,11 +6,12 @@
 /*   By: reda-con <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 14:00:52 by reda-con          #+#    #+#             */
-/*   Updated: 2019/10/23 18:06:06 by reda-con         ###   ########.fr       */
+/*   Updated: 2019/10/23 18:54:20 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parse.h"
+#include "doom.h"
 #include "../../libft/incs/libft.h"
 #include <sys/types.h>
 #include <sys/stat.h>
@@ -21,7 +22,7 @@
 int			verif_pl(t_point *pl, char **tab)
 {
 	if (pl->x != -1 && pl->y != -1)
-		exit(1);
+		return (1);
 	if (tab[1] && tab[3] && !ft_strcmp(tab[1], "y") && !ft_strcmp(tab[3], "x"))
 	{
 		if (tab[2] && tab[4] && ft_isnum(tab[2]) && ft_isnum(tab[4]))
@@ -75,19 +76,10 @@ void		parse(char *l, t_parse *par)
 		i += verif_sec(&par->s, tab);
 	else if (verif_blank(tab) && tab[0][0] != '#')
 		parse_err(tab);
-	if (i != 0)
-		parse_err(tab);
-	free_tab(tab);
+	i != 0 ? parse_err(tab) : free_tab(tab);
 }
 
-/*
-__attribute__((destructor)) void lol()
-{
-	while (1);
-}
-*/
-
-int			main(int ac, char **av)
+int			main_parse(char *file, t_env *env)
 {
 	int		fd;
 	int		gnl;
@@ -96,27 +88,19 @@ int			main(int ac, char **av)
 
 	init_parse(&par);
 	par.p = init_pt(-1, -1);
-	if (ac == 2)
+	if ((fd = open(file, O_RDONLY)) == -1)
+		exit(1);
+	while ((gnl = ft_get_next_line(fd, &line)) == 1)
 	{
-		if ((fd = open(av[1], O_RDONLY)) == -1)
-			exit(1);
-		while ((gnl = ft_get_next_line(fd, &line)) == 1)
-		{
-			parse(line, &par);
-			free(line);
-		}
-		if (gnl == -1)
-			exit(1);
-		if (close(fd) == -1)
-			exit(1);
-		if (par.p.x <= -1 || par.p.y <= -1)
-			exit(1);
-		print_vert(&par.v);
-		print_en(&par.e);
-		print_obj(&par.o);
-		print_sec(&par.s);
-		ft_putstr("player: ");
-		print_pt(par.p);
+		parse(line, &par);
+		free(line);
 	}
+	if (gnl == -1 || close(fd) || par.p.x <= -1 || par.p.y <= -1)
+		exit(1);
+	env->vertex = par.v;
+	env->entity = par.e;
+	env->sprite = par.o;
+	env->sector = par.s;
+	env->player = par.p;
 	return (0);
 }

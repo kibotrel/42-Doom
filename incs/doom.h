@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/16 11:54:10 by kibotrel          #+#    #+#             */
-/*   Updated: 2019/10/09 03:41:59 by kibotrel         ###   ########.fr       */
+/*   Updated: 2019/10/23 18:52:20 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include "SDL.h"
 # include "SDL_ttf.h"
 # include "bmp.h"
+# include "parse.h"
 
 /*
 **	Enumerators
@@ -60,12 +61,6 @@ typedef enum			e_status
 **	Structures
 */
 
-typedef struct		s_point
-{
-	int				x;
-	int				y;
-}					t_point;
-
 typedef struct		s_sdl
 {
 	t_bmp			bmp[NB_ASSETS];
@@ -100,6 +95,11 @@ typedef struct		s_env
 	t_sdl			sdl;
 	t_win			win;
 	t_data			data;
+	t_vertex		*vertex;
+	t_ennemy		*entity;
+	t_object		*sprite;
+	t_sector		*sector;
+	t_point			player;
 }					t_env;
 
 /*
@@ -228,4 +228,10 @@ void				police_color(SDL_Color *color, int r, int g, int b);
 
 void				scale_text(t_env *e, SDL_Rect *where, char *text, int pos);
 
+
+
+
+
+
+int					main_parse(char *file, t_env *env);
 #endif

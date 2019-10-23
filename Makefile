@@ -6,7 +6,7 @@
 #    By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/10 16:16:29 by kibotrel          #+#    #+#              #
-#    Updated: 2019/10/08 20:59:48 by kibotrel         ###   ########.fr        #
+#    Updated: 2019/10/23 18:28:23 by reda-con         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -58,6 +58,7 @@ OBJS_SUBDIRS	+= setup
 OBJS_SUBDIRS	+= clean
 OBJS_SUBDIRS	+= utils
 OBJS_SUBDIRS	+= events
+OBJS_SUBDIRS	+= parse
 
 #------------------------------------ FILES -----------------------------------#
 
@@ -72,6 +73,7 @@ LTTF			= $(BREW_LIBS)/$(TTF)
 
 INCS			:= incs/env.h
 INCS			+= incs/doom.h
+INCS			+= incs/parse.h
 
 # Source files (Can be changed)
 
@@ -96,6 +98,13 @@ SRCS			+= utils/graphic.c
 SRCS			+= events/mouse.c
 SRCS			+= events/motion.c
 SRCS			+= events/keyboard.c
+SRCS			+= parse/ennemy.c
+SRCS			+= parse/main.c
+SRCS			+= parse/object.c
+SRCS			+= parse/sector.c
+SRCS			+= parse/tools.c
+SRCS			+= parse/vertex.c
+SRCS			+= parse/debug.c
 
 #-------------------------------- MISCELANEOUS --------------------------------#
 
