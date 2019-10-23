@@ -6,7 +6,7 @@
 /*   By: reda-con <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 14:00:52 by reda-con          #+#    #+#             */
-/*   Updated: 2019/10/23 17:12:39 by reda-con         ###   ########.fr       */
+/*   Updated: 2019/10/23 18:06:06 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,10 +80,12 @@ void		parse(char *l, t_parse *par)
 	free_tab(tab);
 }
 
+/*
 __attribute__((destructor)) void lol()
 {
 	while (1);
 }
+*/
 
 int			main(int ac, char **av)
 {

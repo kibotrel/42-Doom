@@ -6,7 +6,7 @@
 /*   By: reda-con <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/17 16:35:58 by reda-con          #+#    #+#             */
-/*   Updated: 2019/10/23 17:04:28 by reda-con         ###   ########.fr       */
+/*   Updated: 2019/10/23 18:11:00 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,9 +77,7 @@ int			verif_vp(char **tab, t_ver_port *v_p, int j)
 	v_p->size = j;
 	while (++i < j)
 		if (!ft_isnum(tab[10 + i]) || !ft_isnum(tab[11 + j + i]))
-		{
 			return (1);
-		}
 	if (!(v_p->vertex = (int*)malloc(sizeof(int) * j)))
 		return (1);
 	if (!(v_p->portal = (int*)malloc(sizeof(int) * j)))
