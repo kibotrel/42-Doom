@@ -6,7 +6,7 @@
 /*   By: reda-con <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 15:13:52 by reda-con          #+#    #+#             */
-/*   Updated: 2019/10/21 16:30:49 by reda-con         ###   ########.fr       */
+/*   Updated: 2019/10/23 17:05:05 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,14 +99,14 @@ void		print_sec(t_sector **s)
 		while (++i < tmp->v_p.size)
 		{
 			ft_putnbr(tmp->v_p.vertex[i]);
-		ft_putchar(' ');
+			ft_putchar(' ');
 		}
 		i = -1;
 		ft_putstr(" portals=");
 		while (++i < tmp->v_p.size)
 		{
 			ft_putnbr(tmp->v_p.portal[i]);
-		ft_putchar(' ');
+			ft_putchar(' ');
 		}
 		ft_putchar('\n');
 		tmp = tmp->next;

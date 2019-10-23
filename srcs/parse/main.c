@@ -6,7 +6,7 @@
 /*   By: reda-con <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 14:00:52 by reda-con          #+#    #+#             */
-/*   Updated: 2019/10/21 17:02:28 by reda-con         ###   ########.fr       */
+/*   Updated: 2019/10/23 17:12:39 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,19 +18,20 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-void		verif_pl(t_point *pl, char **tab)
+int			verif_pl(t_point *pl, char **tab)
 {
 	if (pl->x != -1 && pl->y != -1)
 		exit(1);
 	if (tab[1] && tab[3] && !ft_strcmp(tab[1], "y") && !ft_strcmp(tab[3], "x"))
 	{
-		if (tab[2] && tab[4] && ft_isnumber(tab[2]) && ft_isnumber(tab[4]))
+		if (tab[2] && tab[4] && ft_isnum(tab[2]) && ft_isnum(tab[4]))
 			*pl = init_pt(ft_atoi(tab[2]), ft_atoi(tab[4]));
 		else
-			exit(1);
+			return (1);
 	}
 	else
-		exit(1);
+		return (1);
+	return (0);
 }
 
 int			verif_blank(char **t)
@@ -49,27 +50,39 @@ int			verif_blank(char **t)
 	return (0);
 }
 
+void		parse_err(char **tab)
+{
+	free_tab(tab);
+	exit(1);
+}
+
 void		parse(char *l, t_parse *par)
 {
 	char		**tab;
+	int			i;
 
+	i = 0;
 	tab = ft_strsplit(l, ' ');
 	if (tab[0] && !ft_strcmp("vertex", tab[0]))
-		verif_ver(&par->v, tab);
+		i += verif_ver(&par->v, tab);
 	else if (tab[0] && !ft_strcmp("ennemy", tab[0]))
-		verif_en(&par->e, tab);
+		i += verif_en(&par->e, tab);
 	else if (tab[0] && !ft_strcmp("object", tab[0]))
-		verif_obj(&par->o, tab);
+		i += verif_obj(&par->o, tab);
 	else if (tab[0] && !ft_strcmp("player", tab[0]))
-		verif_pl(&par->p, tab);
+		i += verif_pl(&par->p, tab);
 	else if (tab[0] && !ft_strcmp("sector", tab[0]))
-		verif_sec(&par->s, tab);
+		i += verif_sec(&par->s, tab);
 	else if (verif_blank(tab) && tab[0][0] != '#')
-	{
-		free_tab(tab);
-		exit(1);
-	}
+		parse_err(tab);
+	if (i != 0)
+		parse_err(tab);
 	free_tab(tab);
+}
+
+__attribute__((destructor)) void lol()
+{
+	while (1);
 }
 
 int			main(int ac, char **av)

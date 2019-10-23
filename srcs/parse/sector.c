@@ -6,7 +6,7 @@
 /*   By: reda-con <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/17 16:35:58 by reda-con          #+#    #+#             */
-/*   Updated: 2019/10/21 17:05:44 by reda-con         ###   ########.fr       */
+/*   Updated: 2019/10/23 17:04:28 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,26 @@ t_sector	*sec_new(int n, t_height h, t_ver_port v_p)
 	return (new);
 }
 
+void		free_sec(t_sector **s)
+{
+	t_sector	*tmp;
+	t_sector	*to_free;
+
+	if (*s == NULL)
+		return ;
+	to_free = *s;
+	tmp = *s;
+	while (tmp)
+	{
+		tmp = to_free->next;
+		free(to_free->v_p.vertex);
+		free(to_free->v_p.portal);
+		free(to_free);
+		to_free = tmp;
+	}
+	free(s);
+}
+
 void		sec_add_back(t_sector **s, int n, t_height h, t_ver_port v_p)
 {
 	t_sector	*tmp;
@@ -42,17 +62,11 @@ void		sec_add_back(t_sector **s, int n, t_height h, t_ver_port v_p)
 		while (tmp->next != NULL)
 			tmp = tmp->next;
 		if (!(tmp->next = sec_new(n, h, v_p)))
+		{
+			free_sec(s);
 			exit(1);
+		}
 	}
-}
-
-t_height	init_height(int f, int c)
-{
-	t_height	ret;
-
-	ret.floor = f;
-	ret.ceil = c;
-	return (ret);
 }
 
 int			verif_vp(char **tab, t_ver_port *v_p, int j)
@@ -62,7 +76,7 @@ int			verif_vp(char **tab, t_ver_port *v_p, int j)
 	i = -1;
 	v_p->size = j;
 	while (++i < j)
-		if (!ft_isnumber(tab[10 + i]) || !ft_isnumber(tab[11 + j + i]))
+		if (!ft_isnum(tab[10 + i]) || !ft_isnum(tab[11 + j + i]))
 		{
 			return (1);
 		}
@@ -82,31 +96,31 @@ int			verif_vp(char **tab, t_ver_port *v_p, int j)
 	return (0);
 }
 
-void		verif_sec(t_sector **s, char **tab)
+int			verif_sec(t_sector **s, char **t)
 {
 	t_ver_port	v_p;
 
-	if (tab[8] && ft_isnumber(tab[8]) && tab[7]\
-		&& !ft_strcmp("vertex_num", tab[7]))
+	if (t[8] && ft_isnum(t[8]) && t[7] && !ft_strcmp("vertex_num", t[7]))
 	{
-		if (tab[1] && tab[3] && tab[5] && tab[9] && tab[10 + ft_atoi(tab[8])]\
-			&& !ft_strcmp("number", tab[1])\
-			&& !ft_strcmp("h_floor", tab[3]) && !ft_strcmp("h_ceil", tab[5])\
-			&& !ft_strcmp("vertexes", tab[9])\
-			&& !ft_strcmp("portals", tab[9 + ft_atoi(tab[8]) + 1]))
+		if (t[1] && t[3] && t[5] && t[9] && t[10 + ft_atoi(t[8])]\
+			&& !ft_strcmp("number", t[1])\
+			&& !ft_strcmp("h_floor", t[3]) && !ft_strcmp("h_ceil", t[5])\
+			&& !ft_strcmp("vertexes", t[9])\
+			&& !ft_strcmp("portals", t[10 + ft_atoi(t[8])]))
 		{
-			if (verif_vp(tab, &v_p, ft_atoi(tab[8])))
+			if (verif_vp(t, &v_p, ft_atoi(t[8])))
 				exit(1);
-			if (tab[2] && tab[4] && tab[6] && ft_isnumber(tab[2])\
-					&& ft_isnumber(tab[4]) && ft_isnumber(tab[6]))
-				sec_add_back(s, ft_atoi(tab[2]),
-					init_height(ft_atoi(tab[4]), ft_atoi(tab[6])), v_p);
+			if (t[2] && t[4] && t[6] && ft_isnum(t[2])\
+					&& ft_isnum(t[4]) && ft_isnum(t[6]))
+				sec_add_back(s, ft_atoi(t[2]),
+					init_height(ft_atoi(t[4]), ft_atoi(t[6])), v_p);
 			else
-				exit(1);
+				return (1);
 		}
 		else
-			exit(1);
+			return (1);
 	}
 	else
-		exit(1);
+		return (1);
+	return (0);
 }

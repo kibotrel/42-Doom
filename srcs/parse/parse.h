@@ -6,7 +6,7 @@
 /*   By: reda-con <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 14:27:11 by reda-con          #+#    #+#             */
-/*   Updated: 2019/10/21 16:19:58 by reda-con         ###   ########.fr       */
+/*   Updated: 2019/10/23 17:02:23 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,12 +83,13 @@ void			print_sec(t_sector **s);
 */
 t_point			init_pt(int x, int y);
 void			free_tab(char **tab);
-int				ft_isnumber(char *num);
+int				ft_isnum(char *num);
 void			init_parse(t_parse *p);
+t_height		init_height(int g, int c);
 
-void			verif_ver(t_vertex **v_s, char **tab);
-void			verif_en(t_ennemy **e_s, char **tab);
-void			verif_obj(t_object **o_s, char **tab);
-void			verif_sec(t_sector **s_s, char **tab);
+int				verif_ver(t_vertex **v_s, char **tab);
+int				verif_en(t_ennemy **e_s, char **tab);
+int				verif_obj(t_object **o_s, char **tab);
+int				verif_sec(t_sector **s_s, char **tab);
 
 #endif

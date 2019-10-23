@@ -6,7 +6,7 @@
 /*   By: reda-con <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 16:50:27 by reda-con          #+#    #+#             */
-/*   Updated: 2019/10/17 16:32:23 by reda-con         ###   ########.fr       */
+/*   Updated: 2019/10/23 17:02:59 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ t_point		init_pt(int x, int y)
 	return (ret);
 }
 
-int			ft_isnumber(char *num)
+int			ft_isnum(char *num)
 {
 	size_t	i;
 
@@ -58,4 +58,13 @@ void		init_parse(t_parse *p)
 	p->e = NULL;
 	p->o = NULL;
 	p->s = NULL;
+}
+
+t_height	init_height(int f, int c)
+{
+	t_height	ret;
+
+	ret.floor = f;
+	ret.ceil = c;
+	return (ret);
 }

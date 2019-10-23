@@ -6,7 +6,7 @@
 /*   By: reda-con <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 16:20:55 by reda-con          #+#    #+#             */
-/*   Updated: 2019/10/21 16:59:26 by reda-con         ###   ########.fr       */
+/*   Updated: 2019/10/23 17:03:02 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,24 @@ t_vertex	*ver_new(t_point p)
 	return (new);
 }
 
+void		free_ver(t_vertex **v)
+{
+	t_vertex	*tmp;
+	t_vertex	*to_free;
+
+	if (*v == NULL)
+		return ;
+	to_free = *v;
+	tmp = *v;
+	while (tmp)
+	{
+		tmp = to_free->next;
+		free(to_free);
+		to_free = tmp;
+	}
+	free(v);
+}
+
 void		ver_add_back(t_vertex **v, t_point p)
 {
 	t_vertex	*tmp;
@@ -40,19 +58,23 @@ void		ver_add_back(t_vertex **v, t_point p)
 		while (tmp->next != NULL)
 			tmp = tmp->next;
 		if (!(tmp->next = ver_new(p)))
+		{
+			free_ver(v);
 			exit(1);
+		}
 	}
 }
 
-void		verif_ver(t_vertex **v_s, char **tab)
+int			verif_ver(t_vertex **v_s, char **tab)
 {
 	if (tab[1] && tab[3] && !ft_strcmp(tab[1], "y") && !ft_strcmp(tab[3], "x"))
 	{
-		if (tab[2] && tab[4] && ft_isnumber(tab[2]) && ft_isnumber(tab[4]))
+		if (tab[2] && tab[4] && ft_isnum(tab[2]) && ft_isnum(tab[4]))
 			ver_add_back(v_s, init_pt(ft_atoi(tab[2]), ft_atoi(tab[4])));
 		else
-			exit(1);
+			return (1);
 	}
 	else
-		exit(1);
+		return (1);
+	return (0);
 }
