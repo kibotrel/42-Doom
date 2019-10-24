@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 08:52:03 by nde-jesu          #+#    #+#             */
-/*   Updated: 2019/10/21 14:56:16 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2019/10/24 13:05:30 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,40 +46,50 @@ typedef enum		e_settings
 **	STRUCTS
 */
 
-typedef struct 		s_point
+typedef struct 		s_line
 {
-	int				x;
-	int				y;
-}					t_point;
-
-typedef struct		s_vertex
-{
-	t_point			coord;
-	int				vertex_number;
-	struct s_vertex	*next;
-}					t_vertex;
+		int			delta_x;
+		int			delta_y;
+		int			sign_x;
+		int			sign_y;
+		int			error;
+		int			error_2;
+}					t_line;
 
 typedef struct 		s_player
 {
-	t_point			coord;
-		
+	int				x;
+	int				y;
+	int				angle;
 }					t_player;
 
-typedef struct		s_wall
+typedef struct 		s_entity
 {
-	t_vertex		points[2];
-	t_bool			is_portal;
-	
-	struct s_wall	*next;
-}					t_wall;
+	int				x;
+	int				y;
+	int				type;
+	struct s_object	*next;
+}					t_entity;
+
+typedef struct		s_vertex
+{
+	int				x;
+	int				y;
+	int				vertex_number;
+	struct s_vertex	*next;
+}					t_vertex;
 
 typedef struct		s_sector
 {
 	t_vertex		*vertex;
 	int				vertex_count;
+	int				sector_number;
 
 	int				h_ceil;
 	int				f_floor;
+
+	t_bool			is_child;
+	int				*is_portal;
 
 	struct s_sector	*next;
 }					t_sector;
@@ -95,10 +105,23 @@ typedef struct		s_editor
 {
 	t_sdl			sdl;
 	t_settings		sett;
+	int				map_save;
+
 	t_sector		*sector;
-	t_wall			*wall;
+	t_player		player;
+	t_entity		*object;
+	t_entity		*enemy;
+
+	t_vertex		last_vertex;
+
+	t_vertex		portal_point[2];
+	t_sector		*which_sector;
+	t_vertex		*ab;
+	t_vertex		*cd;
 
 	int				dist_grid;
+	t_bool			sect_is_closed;
+	t_bool			finish;
 }					t_editor;
 
 #endif
