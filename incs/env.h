@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/16 11:54:25 by kibotrel          #+#    #+#             */
-/*   Updated: 2019/10/15 23:54:10 by kibotrel         ###   ########.fr       */
+/*   Updated: 2019/10/26 22:51:48 by demonwaves       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@
 **	Useful values
 */
 
-# define WIN_W			1920
-# define WIN_H			1080
+# define WIN_W			1280
+# define WIN_H			720
 # define RATIO_UI_X		8
 # define RATIO_UI_Y		9
 # define MAX_WIDTH		1920

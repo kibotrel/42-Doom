@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/16 11:58:26 by kibotrel          #+#    #+#             */
-/*   Updated: 2019/10/16 05:58:25 by kibotrel         ###   ########.fr       */
+/*   Updated: 2019/10/26 23:03:13 by demonwaves       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,15 +51,9 @@ static void	infos_setup(t_env *env)
 	env->data.ui.min.x = floor(env->w / RATIO_UI_X) * 5;
 	env->data.ui.max.y = env->h;
 	env->data.ui.max.x = floor(env->w / RATIO_UI_X) * 7;
-	if ((env->data.ui.background = get_dimensions(env->h)))
+	if ((env->data.ui.background = get_dimensions(env->h)) == -1)
 	 	clean(env, E_BKGD);
 	env->data.f_size = floor(env->w * MAX_FONT_SIZE / MAX_WIDTH);
-}
-
-static void		point(t_point *p, int x, int y)
-{
-	p->x = x;
-	p->y = y;
 }
 
 void		env_setup(t_env *env)
@@ -70,23 +64,4 @@ void		env_setup(t_env *env)
 	assets_paths(env);
 	error_messages(env);
 	infos_setup(env);
-
-	ft_bzero(&env->player, sizeof(t_player));
-	ft_bzero(&env->vertex, sizeof(t_point) * 4);
-	ft_bzero(&env->wall, sizeof(t_point) * 8);
-	ft_bzero(&env->cam, sizeof(t_cam));
-	env->player.pos.x = env->w / 2;
-	env->player.pos.y = env->h / 2;
-	env->cam.pos = env->player.pos;
-	env->cam.speed = 1.0;
-	env->vertex[0].y = env->h / 4;
-	env->vertex[0].x = env->w / 4;
-	env->vertex[1].y = env->h / 4;
-	env->vertex[1].x = env->w / 4 * 3;
-	env->vertex[2].y = env->h / 4 * 3;
-	env->vertex[2].x = env->w / 4 * 3;
-	env->vertex[3].y = env->h / 4 * 3;
-	env->vertex[3].x = env->w / 4;
-	point(&env->wall[0], 1240, 370);
-	point(&env->wall[1], 1240, 710);
 }

@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/11 14:21:04 by kibotrel          #+#    #+#             */
-/*   Updated: 2019/10/16 06:01:54 by kibotrel         ###   ########.fr       */
+/*   Updated: 2019/10/27 00:44:07 by demonwaves       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	reset_view(t_env *env)
 {
-	env->player.pos = env->cam.pos;
-	env->cam.angle = 0;
+	// Placeholder
+	angle = 0.0;
 }
 
 void	update_angle(t_env *env, double *angle)
