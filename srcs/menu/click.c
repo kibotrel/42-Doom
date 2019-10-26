@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/08 20:33:18 by kibotrel          #+#    #+#             */
-/*   Updated: 2019/10/16 02:59:37 by kibotrel         ###   ########.fr       */
+/*   Updated: 2019/10/26 23:46:43 by demonwaves       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 
 void	menu_click(t_env *env, t_ui ui, int x, int y)
 {
-	int	n;
-	int	box;
+	uint8_t	n;
+	uint8_t	box;
 
 	n = 1;
 	box = 0;

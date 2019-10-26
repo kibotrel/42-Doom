@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 18:02:10 by kibotrel          #+#    #+#             */
-/*   Updated: 2019/10/15 19:05:05 by kibotrel         ###   ########.fr       */
+/*   Updated: 2019/10/26 23:37:14 by demonwaves       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	hooks(t_env *env, t_sdl *sdl);
 
 void	menu(t_env *env);
 void	draw_ui(t_env *env);
-void	draw_button(t_env *env, t_ui ui, int color, int n);
+void	draw_button(t_env *env, t_ui ui, uint32_t color, uint8_t n);
 
 /*
 **	editor.c

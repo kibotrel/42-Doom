@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/16 11:54:18 by kibotrel          #+#    #+#             */
-/*   Updated: 2019/10/16 02:59:03 by kibotrel         ###   ########.fr       */
+/*   Updated: 2019/10/26 23:14:26 by demonwaves       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@
 
 static void	sdl_setup(t_env *env, t_sdl *sdl)
 {
-	int		asset;
-	int		config;
-	t_point	p;
+	int32_t		config;
+	uint32_t	asset;
+	t_pos		p;
 
 	p.x = env->w;
 	p.y = env->h;

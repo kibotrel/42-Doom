@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 19:08:43 by kibotrel          #+#    #+#             */
-/*   Updated: 2019/10/15 19:15:10 by kibotrel         ###   ########.fr       */
+/*   Updated: 2019/10/27 00:40:05 by demonwaves       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 **	env.c
 */
 
-void	clean(t_env *env, int error);
+void	clean(t_env *env, uint8_t error);
 
 /*
 **	sdl.c

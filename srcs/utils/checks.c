@@ -6,25 +6,25 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 01:42:15 by kibotrel          #+#    #+#             */
-/*   Updated: 2019/10/16 01:48:32 by kibotrel         ###   ########.fr       */
+/*   Updated: 2019/10/26 23:56:22 by demonwaves       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "SDL.h"
 #include "enums.h"
 
-int	dectect_input(int *input)
+int8_t	dectect_input(int32_t *input)
 {
-	int	i;
+	uint16_t	i;
 
-	i = -1;
-	while (++i < SDL_NUM_SCANCODES)
-		if (input[i])
+	i = 0;
+	while (i < SDL_NUM_SCANCODES)
+		if (input[i++])
 			return (1);
 	return (0);
 }
 
-int		get_dimensions(int height)
+int8_t	get_dimensions(int32_t height)
 {
 	if (height == 1080)
 		return (MENU_1080P);
@@ -38,7 +38,7 @@ int		get_dimensions(int height)
 		return (-1);
 }
 
-char	*get_string(int n)
+char	*get_string(uint8_t n)
 {
 	if (n == 1)
 		return ("GAME");

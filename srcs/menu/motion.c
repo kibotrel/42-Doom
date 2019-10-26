@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/08 20:34:23 by kibotrel          #+#    #+#             */
-/*   Updated: 2019/10/15 19:29:03 by kibotrel         ###   ########.fr       */
+/*   Updated: 2019/10/26 23:46:58 by demonwaves       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@
 
 void	menu_hover(t_env *env, t_ui ui, int x, int y)
 {
-	int	n;
-	int	button;
+	uint8_t	n;
+	uint8_t	button;
 
 	n = 1;
 	button = env->data.ui.button;

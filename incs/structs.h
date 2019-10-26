@@ -6,30 +6,31 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 18:48:17 by kibotrel          #+#    #+#             */
-/*   Updated: 2019/10/16 02:56:01 by kibotrel         ###   ########.fr       */
+/*   Updated: 2019/10/26 23:56:48 by demonwaves       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRUCTS_H
 # define STRUCTS_H
 
+# include <stdint.h>
 # include "SDL.h"
 # include "SDL_ttf.h"
 # include "bmp.h"
 # include "enums.h"
 
-typedef struct	s_point
-{
-	int			x;
-	int			y;
-}				t_point;
-
 typedef struct	s_pos
+{
+	int32_t		x;
+	int32_t		y;
+}				t_pos;
+
+typedef struct	s_vec3d
 {
 	double		x;
 	double		y;
 	double		z;
-}				t_pos;
+}				t_vec3d;
 
 /*
 **	Informations about the menu display.
@@ -37,10 +38,10 @@ typedef struct	s_pos
 
 typedef struct	s_ui
 {
-	int			button;						// Index to draw
-	int			background;					// Index in the asset list
-	t_point		min;						// Start point for buttons
-	t_point		max;						// End point for buttons
+	int8_t		background;					// Index in the asset list
+	uint8_t		button;						// Index to draw
+	t_pos		min;						// Start point for buttons
+	t_pos		max;						// End point for buttons
 }				t_ui;
 
 /*
@@ -49,9 +50,9 @@ typedef struct	s_ui
 
 typedef struct	s_data
 {
-	int			f_size;						// Font size
-	int 		w_size;						// Window size in bytes
 	t_ui		ui;							// Menu informations
+	uint8_t		f_size;						// Font size
+	uint32_t 	w_size;						// Window size in bytes
 }				t_data;
 
 /*
@@ -69,44 +70,19 @@ typedef struct	s_sdl
 }				t_sdl;
 
 /*
-**	Camera informations.
-*/
-
-typedef struct	s_cam
-{
-	t_pos		pos;						// Real player position
-	double		angle;						// What the player is seeing (degrees)
-	double		speed;						// Modify deplacement speed
-}				t_cam;
-
-/*
-**	Player informations.
-*/
-
-typedef struct	s_player
-{
-	t_pos		pos;					// Real player position
-}				t_player;
-
-/*
 **	Main structure.
 */
 
 typedef struct	s_env
 {
-	int			w;							// Width of the window
-	int			h;							// Height of the window
-	int			input[SDL_NUM_SCANCODES];	// Handle key inputs
 	char		*asset[NB_ASSETS];			// Array of path to assets
 	char		*error[NB_ERRORS];			// Array of error messages
-	t_cam		cam;
 	t_sdl		sdl;						// SDL structure
 	t_win		win;						// Enum for window state
 	t_data		data;						// Structure for miscelaneous informations
-
-	t_point		vertex[4];					// Rectangle that delimit the space
-	t_player	player;						// Player informations
-	t_point		wall[8];					// Array of points that goes in pair to from walls withing space
+	int32_t		w;							// Width of the window
+	int32_t		h;							// Height of the window
+	int32_t		input[SDL_NUM_SCANCODES];	// Handle key inputs
 }				t_env;
 
 #endif
