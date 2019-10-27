@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/08 20:34:23 by kibotrel          #+#    #+#             */
-/*   Updated: 2019/10/26 23:46:58 by demonwaves       ###   ########.fr       */
+/*   Updated: 2019/10/27 01:31:03 by demonwaves       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,9 @@ void	menu_hover(t_env *env, t_ui ui, int x, int y)
 			&& x >= ui.min.x && x <= ui.max.x)
 		{
 			draw_button(env, env->data.ui, RED, n);
-			police_color(&env->sdl.color, 255, 0, 0);
+			police_color(&env->sdl.color, 0xFF, 0x00, 0x00);
 			text_to_screen(env, &env->sdl, get_string(n), n);
-			police_color(&env->sdl.color, 255, 255, 255);
+			police_color(&env->sdl.color, 0xFF, 0xFF, 0xFF);
 			env->data.ui.button = n;
 			return ;
 		}

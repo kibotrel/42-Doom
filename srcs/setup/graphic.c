@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/16 11:54:18 by kibotrel          #+#    #+#             */
-/*   Updated: 2019/10/26 23:14:26 by demonwaves       ###   ########.fr       */
+/*   Updated: 2019/10/27 00:55:36 by demonwaves       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static void	ttf_setup(t_env *env, t_sdl *sdl)
 		clean(env, E_TTF_INIT);
 	if (!(sdl->font = TTF_OpenFont("assets/atlas.ttf", env->data.f_size)))
 		clean(env, E_TTF_FONT);
-	police_color(&sdl->color, 255, 255, 255);
+	police_color(&sdl->color, 0xFF, 0xFF, 0xFF);
 }
 
 void		graphic_setup(t_env *env, t_sdl *sdl)
