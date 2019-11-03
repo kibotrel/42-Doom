@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 18:48:17 by kibotrel          #+#    #+#             */
-/*   Updated: 2019/10/28 00:32:27 by demonwaves       ###   ########.fr       */
+/*   Updated: 2019/11/03 17:44:11 by demonwaves       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,10 +45,10 @@ typedef struct	s_vec3d
 
 typedef struct	s_ui
 {
-	int8_t		background;					// Index in the asset list
-	uint8_t		button;						// Index to draw
 	t_pos		min;						// Start point for buttons
 	t_pos		max;						// End point for buttons
+	int8_t		background;					// Index in the asset list
+	uint8_t		button;						// Index to draw
 }				t_ui;
 
 /*
@@ -86,6 +86,7 @@ typedef struct	s_cam
 	double		angle;						// Angle to look at
 	double		cos;						// cos(angle) for optimizations
 	double		sin;						// sin(angle) for optimizations
+	t_vec2d		fov;						// Field of view
 	t_vec3d		pos;						// Cam position in space
 	t_vec3d		speed;						// Motion vector for movement
 	uint32_t	sector;						// Which sector the player is in
@@ -97,12 +98,12 @@ typedef struct	s_cam
 
 typedef struct	s_sector
 {
-	t_pos		*vextex						// Array of vertices
+	t_pos		*vertex;					// Array of vertices
 	double		ceil;						// Ceilling height
 	double		floor;						// Floor height
-	uint32_t	points						// Number of vertices in the sector
-}
-
+	int32_t		*neighbor;					// Array of links with other sectors
+	uint32_t	points;						// Number of vertices in the sector
+}				t_sector;
 
 /*
 **	Main structure.
@@ -121,7 +122,7 @@ typedef struct	s_env
 	int32_t		h;							// Height of the window
 	int32_t		input[SDL_NUM_SCANCODES];	// Handle key inputs
 	uint32_t	zones;						// Number of sectors in the map
-	uint32_t	Ssetup;						// TEMPORARY
+	uint32_t	setup;						// TEMPORARY
 }				t_env;
 
 #endif

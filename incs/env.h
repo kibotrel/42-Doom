@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/16 11:54:25 by kibotrel          #+#    #+#             */
-/*   Updated: 2019/10/26 22:51:48 by demonwaves       ###   ########.fr       */
+/*   Updated: 2019/11/03 19:40:08 by demonwaves       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,16 @@
 
 # define WIN_W			1280
 # define WIN_H			720
+# define MAX_WIDTH		1920
 # define RATIO_UI_X		8
 # define RATIO_UI_Y		9
-# define MAX_WIDTH		1920
+# define VERTICAL_FOV	0.2
+# define CAM_STANDING	6.0
+# define CAM_KNEEHIGHT	2.0
+# define CAM_ABOVEHEAD	1.0
+# define CAM_CROUCHING	2.5
 # define MAX_FONT_SIZE	64
+# define HORIZONTAL_FOV	0.73
 
 /*
 ** String macros
