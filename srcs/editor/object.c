@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/17 11:51:23 by nde-jesu          #+#    #+#             */
-/*   Updated: 2019/10/06 11:54:02 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2019/10/17 14:30:37 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,32 +20,16 @@ void	write_object(t_editor *edit, int fd)
 	object = edit->object;
 	while (object)
 	{
-		ft_putstr_fd("object\tnumber ", fd);
+		ft_putstr_fd("object number ", fd);
 		ft_putnbr_fd(object->number, fd);
-		ft_putstr_fd(" y ", fd);
-		ft_putnbr_fd(object->y, fd);
 		ft_putstr_fd(" x ", fd);
 		ft_putnbr_fd(object->x, fd);
+		ft_putstr_fd(" y ", fd);
+		ft_putnbr_fd(object->y, fd);
 		ft_putchar_fd('\n', fd);
 		object = object->next;
 	}
 		ft_putchar_fd('\n', fd);
-}
-
-void	print_object(t_editor *edit, int color)
-{
-	t_vertex	*object;
-
-	object = edit->object;
-	while (object)
-	{
-		put_pixel(edit->sdl, object->x, object->y, color);
-		put_pixel(edit->sdl, object->x + 1, object->y, color);
-		put_pixel(edit->sdl, object->x, object->y + 1, color);
-		put_pixel(edit->sdl, object->x - 1, object->y, color);
-		put_pixel(edit->sdl, object->x, object->y - 1, color);
-		object = object->next;
-	}
 }
 
 void		add_object(t_vertex **object, t_vertex *new)

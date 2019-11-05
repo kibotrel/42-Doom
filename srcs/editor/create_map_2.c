@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/25 17:48:19 by nde-jesu          #+#    #+#             */
-/*   Updated: 2019/10/07 14:29:36 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2019/10/17 10:58:55 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,6 @@ void	write_vertex_sector(t_sector *sect, t_vertex *all, int fd)
 			ft_putchar_fd(' ', fd);
 		vertex = vertex->next;
 	}
-	ft_putchar_fd('\t', fd);
+	ft_putstr_fd(" portals ", fd);
 	write_portals(sect, fd);
-	ft_putchar_fd('\t', fd);
 }
