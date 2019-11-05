@@ -6,12 +6,14 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 08:47:35 by nde-jesu          #+#    #+#             */
-/*   Updated: 2019/10/24 13:42:26 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2019/11/05 15:52:00 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "editor_2.h"
+#include "editor.h"
 #include "libft.h"
+
+// PENSER AUX FREES ET METTRE LES FONCTIONS POSSIBLES EN STATIC
 
 void	init_portals(t_editor *editor)
 {
@@ -24,7 +26,7 @@ void	init_portals(t_editor *editor)
 	editor->cd = NULL;
 }
 
-void	sdl_init(t_sdl *sdl)
+static void	sdl_init(t_sdl *sdl)
 {
 	SDL_Init(SDL_INIT_VIDEO);
 	sdl->win = SDL_CreateWindow("DNME", SDL_WINDOWPOS_CENTERED,
@@ -36,15 +38,18 @@ void	sdl_init(t_sdl *sdl)
 		exit(1);		
 }
 
-void	init_editor(t_editor *editor)
+static void	init_editor(t_editor *editor)
 {
 	sdl_init(&editor->sdl);
 	editor->dist_grid = WIN_W / 50;
-	editor->sett = VERTEX;
-	editor->finish = FALSE;
+	editor->sett = SECTOR;
+	editor->finish = 0;
 	editor->last_vertex.x = -1;
 	editor->last_vertex.y = -1;
 	editor->map_save = 2;
+	editor->player.x = -1;
+	editor->player.y = -1;
+	editor->player.angle = 90;
 	init_portals(editor);
 }
 

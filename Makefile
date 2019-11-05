@@ -6,7 +6,7 @@
 #    By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/10 16:16:29 by kibotrel          #+#    #+#              #
-#    Updated: 2019/10/17 10:47:55 by nde-jesu         ###   ########.fr        #
+#    Updated: 2019/11/05 15:57:55 by nde-jesu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,16 +20,17 @@ SDL_DIR			= $(abspath sdl)
 LFT_DIR			= libft
 SRCS_DIR		= srcs
 OBJS_DIR		= objs
-INCS_DIR		= incs libft/incs sdl/include
+INCS_DIR		= incs_2 libft/incs sdl/include
 BUILD_DIR		= $(SDL_DIR)/build
 OBJS_SUBDIRS	= editor
 
 # Source files (Can be changed)
 
 LFT				= libft/libft.a
-INCS			= incs/editor.h
-SRCS			= editor/main.c editor/create_map.c editor/create_map_2.c editor/create_portal.c editor/ennemy.c editor/events.c editor/is_in_sect.c editor/object.c editor/player.c editor/sector.c editor/sector_2.c editor/utils.c editor/vertex.c
-
+# INCS			= incs/editor.h
+# SRCS			= editor/main.c editor/create_map.c editor/create_map_2.c editor/create_portal.c editor/ennemy.c editor/events.c editor/is_in_sect.c editor/object.c editor/player.c editor/sector.c editor/sector_2.c editor/utils.c editor/vertex.c
+INCS			= incs_2/editor.h
+SRCS			= editor_2/display_part1.c editor_2/display_part2.c editor_2/display_utils.c editor_2/elements_writing.c editor_2/entity.c editor_2/events.c editor_2/main.c editor_2/map_creation.c editor_2/portal_utils.c editor_2/portal.c editor_2/sector_check.c editor_2/sector_utils.c editor_2/sector.c editor_2/vertex.c
 # Some tricks in order to get the makefile doing his job the way I want (Can't be changed)
 
 D_SRCS			= $(addsuffix /, $(SRCS_DIR))
