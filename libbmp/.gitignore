@@ -1,0 +1,21 @@
+# Objects directories - Files
+objs
+*.o
+test
+*.bmp
+
+# Static libraries - Headers
+*.a
+*.gch
+
+# Executables - Scripts
+a.out
+exe
+.sh
+
+# Debug
+*.dSYM
+
+# Recovery
+*.swp
+.DS_Store
