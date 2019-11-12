@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 08:29:24 by nde-jesu          #+#    #+#             */
-/*   Updated: 2019/11/06 08:27:28 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2019/11/12 13:47:45 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,13 @@ void		add_vertex(t_vertex *vertex, t_vertex *new, int count)
 
 	if (count)
 		new->vertex_number = vertex_number++;
+	ft_putnbr(new->vertex_number);
 	if (!vertex)
 		vertex = new;
 	else
 	{
 		prev_vertex = vertex;
-		while (prev_vertex->next)
+		while (prev_vertex)
 			prev_vertex = prev_vertex->next;
 		prev_vertex->next = new;
 	}

@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 09:55:53 by nde-jesu          #+#    #+#             */
-/*   Updated: 2019/11/06 08:27:09 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2019/11/12 13:45:12 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ void	place_sector(t_editor *editor, int x, int y)
 	}
 	else
 	{
+		ft_putendl("oui");
 		add_vertex(sect->vertex, new, 0);
 		editor->sect_is_closed = 0;
 	}

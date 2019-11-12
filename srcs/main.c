@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 08:47:35 by nde-jesu          #+#    #+#             */
-/*   Updated: 2019/11/06 08:29:12 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2019/11/12 13:35:39 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,14 @@ static void	sdl_init(t_sdl *sdl)
 		exit(1);		
 }
 
+static void	init_chained_list(t_editor *editor)
+{
+	editor->enemy = NULL;
+	editor->sector = NULL;
+	editor->vertex = NULL;
+	editor->object = NULL;
+}
+
 static void	init_editor(t_editor *editor)
 {
 	sdl_init(&editor->sdl);
@@ -39,6 +47,8 @@ static void	init_editor(t_editor *editor)
 	editor->player.x = -1;
 	editor->player.y = -1;
 	editor->player.angle = 90;
+	editor->sect_is_closed = 0;
+	init_chained_list(editor);
 	init_portals(editor);
 }
 

@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 08:52:03 by nde-jesu          #+#    #+#             */
-/*   Updated: 2019/11/06 08:26:37 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2019/11/12 13:24:26 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -180,14 +180,12 @@ void		place_portal(t_editor *editor, int x, int y);
 
 //	sector_check.c
 
-int		intersects_count(t_vertex v1, t_vertex v2, t_vertex p1, t_vertex p2);
-int		is_in_sector(t_editor *edit, t_vertex point);
+int			intersects_count(t_vertex v1, t_vertex v2, t_vertex p1, t_vertex p2);
+int			is_in_sector(t_editor *edit, t_vertex point);
 
 //	sector_utils.c
 
-// t_sector	*get_last_sector(t_editor *editor);
-t_sector	*create_sector(void);
-// int			is_sector_complete(t_vertex *first, t_vertex *last);
+t_sector		*create_sector(void);
 
 //	sector.c
 

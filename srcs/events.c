@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 13:09:05 by nde-jesu          #+#    #+#             */
-/*   Updated: 2019/11/06 08:29:57 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2019/11/12 13:41:15 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,15 +30,16 @@ static int		is_saved(t_editor *editor)
 	ft_putendl("Exiting...");
 	return (0);
 }
-
+#include <stdio.h>
 static void	display_editor(t_editor *editor)
 {
 	t_vertex	mouse;
 
+	// printf("%d\n", editor->sett);
 	display_grid(editor);
 	display_player(editor->player, &editor->sdl);
-	// display_entities(&editor->sdl, editor->enemy, 0xff0000);
-	// display_entities(&editor->sdl, editor->object, 0x8b4513);
+	display_entities(&editor->sdl, editor->enemy, 0xff0000);
+	display_entities(&editor->sdl, editor->object, 0x8b4513);
 	display_sector(editor);
 	display_vertex(&editor->sdl, editor->vertex, 0xffff00);
 	if (editor->sett == SECTOR)
