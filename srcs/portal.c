@@ -6,13 +6,13 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 15:15:06 by nde-jesu          #+#    #+#             */
-/*   Updated: 2019/11/06 08:20:36 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2019/11/12 16:34:01 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "editor.h"
 
-static int			is_portal_closed(t_sector *sector, t_vertex *start, t_vertex *end)
+static int	is_portal_close(t_sector *sector, t_vertex *start, t_vertex *end)
 {
 	int			postion_closing_portal;
 	t_vertex	*sector_vertex;
@@ -25,9 +25,11 @@ static int			is_portal_closed(t_sector *sector, t_vertex *start, t_vertex *end)
 		return (-1);
 	while (vertex)
 	{
-		if ((vertex->next == NULL) && ((vertex == start && sector_vertex == end) || (vertex == end && sector_vertex == end)))
+		if ((vertex->next == NULL) && ((vertex == start && sector_vertex == end)
+			|| (vertex == end && sector_vertex == end)))
 			return (0);
-		if ((vertex == start && vertex->next == end) || (vertex == end && vertex->next == start))
+		if ((vertex == start && vertex->next == end)
+			|| (vertex == end && vertex->next == start))
 			return (postion_closing_portal);
 		++postion_closing_portal;
 		vertex = vertex->next;
@@ -35,7 +37,8 @@ static int			is_portal_closed(t_sector *sector, t_vertex *start, t_vertex *end)
 	return (-1);
 }
 
-static void		save_vertex(t_editor *editor, t_sector *sector, t_vertex *first_point, t_vertex *last_point)
+static void	save_vertex(t_editor *editor, t_sector *sector,
+		t_vertex *first_point, t_vertex *last_point)
 {
 	int		from;
 	int		dest;
@@ -48,32 +51,35 @@ static void		save_vertex(t_editor *editor, t_sector *sector, t_vertex *first_poi
 	}
 	else
 	{
-		if (compare_coordinates(first_point, editor->ab, editor->cd) == 0 || compare_coordinates(last_point, editor->ab, editor->cd) == 0)
+		if (compare_coordinates(first_point, editor->ab, editor->cd) == 0
+			|| compare_coordinates(last_point, editor->ab, editor->cd) == 0)
 			init_portals(editor);
 		else
 		{
 			dest = is_portal_closed(sector, first_point, last_point);
 			sector->is_portal[dest] = editor->which_sector->sector_number;
-			from = is_portal_closed(editor->which_sector, editor->ab, editor->cd);
+			from = is_portal_close(editor->which_sector, editor->ab,
+				editor->cd);
 			editor->which_sector->is_portal[from] = sector->sector_number;
 		}
-		
 	}
 }
 
-static int			check_vertex(t_editor *editor, t_vertex *vertex, t_sector *sector)
+static int	check_vertex(t_editor *editor, t_vertex *vertex, t_sector *sector)
 {
 	static int	n = 0;
 
 	if (vertex->next == NULL)
 	{
-		if (intersects_count(*vertex, *(sector->vertex), editor->portal_points[0], editor->portal_points[1]))
+		if (intersects_count(*vertex, *(sector->vertex),
+			editor->portal_points[0], editor->portal_points[1]))
 		{
 			save_vertex(editor, sector, vertex, sector->vertex);
 			++n;
 		}
 	}
-	else if (intersects_count(*vertex, *(vertex->next), editor->portal_points[0], editor->portal_points[1]))
+	else if (intersects_count(*vertex, *(vertex->next),
+		editor->portal_points[0], editor->portal_points[1]))
 	{
 		save_vertex(editor, sector, vertex, vertex->next);
 		n++;
@@ -86,7 +92,7 @@ static int			check_vertex(t_editor *editor, t_vertex *vertex, t_sector *sector)
 	return (0);
 }
 
-static int			vertex_intersect(t_editor *editor, t_sector *sector)
+static int	vertex_intersect(t_editor *editor, t_sector *sector)
 {
 	t_vertex	*vertex;
 

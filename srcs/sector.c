@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 09:55:53 by nde-jesu          #+#    #+#             */
-/*   Updated: 2019/11/12 13:45:12 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2019/11/12 16:58:34 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 static int			count_vertex_in_sector(t_vertex *vertex)
 {
 	int			count;
-	t_vertex 	*vert;
+	t_vertex	*vert;
 
 	count = 0;
 	vert = vertex;
@@ -34,7 +34,7 @@ static int			is_sector_complete(t_vertex *first, t_vertex *last)
 	return (0);
 }
 
-static t_sector	*get_last_sector(t_editor *editor)
+static t_sector		*get_last_sector(t_editor *editor)
 {
 	t_sector	*sect;
 
@@ -49,7 +49,7 @@ static t_sector	*get_last_sector(t_editor *editor)
 	return (sect);
 }
 
-void	place_sector(t_editor *editor, int x, int y)
+void				place_sector(t_editor *editor, int x, int y)
 {
 	t_vertex	*new;
 	t_sector	*sect;
@@ -59,9 +59,11 @@ void	place_sector(t_editor *editor, int x, int y)
 	if (is_sector_complete(sect->vertex, new))
 	{
 		sect->vertex_count = count_vertex_in_sector(sect->vertex);
-		if (!(sect->is_portal = (int*)ft_memalloc(sizeof(int) * sect->vertex_count)))
+		if (!(sect->is_portal = (int*)ft_memalloc(sizeof(int)
+			* sect->vertex_count)))
 			exit(1);
-		sect->is_portal = ft_memset(sect->is_portal, -1, sizeof(int) * sect->vertex_count);
+		sect->is_portal = ft_memset(sect->is_portal, -1, sizeof(int)
+			* sect->vertex_count);
 		if (sect->is_child != -1)
 			sect->is_portal[1] = sect->is_child;
 		sect->next = create_sector();
@@ -71,7 +73,6 @@ void	place_sector(t_editor *editor, int x, int y)
 	}
 	else
 	{
-		ft_putendl("oui");
 		add_vertex(sect->vertex, new, 0);
 		editor->sect_is_closed = 0;
 	}

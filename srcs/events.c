@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 13:09:05 by nde-jesu          #+#    #+#             */
-/*   Updated: 2019/11/12 13:41:15 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2019/11/12 16:52:53 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,11 @@ static int		is_saved(t_editor *editor)
 	ft_putendl("Exiting...");
 	return (0);
 }
-#include <stdio.h>
-static void	display_editor(t_editor *editor)
+
+static void		display_editor(t_editor *editor)
 {
 	t_vertex	mouse;
 
-	// printf("%d\n", editor->sett);
 	display_grid(editor);
 	display_player(editor->player, &editor->sdl);
 	display_entities(&editor->sdl, editor->enemy, 0xff0000);
@@ -44,14 +43,17 @@ static void	display_editor(t_editor *editor)
 	display_vertex(&editor->sdl, editor->vertex, 0xffff00);
 	if (editor->sett == SECTOR)
 	{
-		mouse.x = (editor->sdl.event.motion.x / editor->dist_grid) * editor->dist_grid;
-		mouse.y = (editor->sdl.event.motion.y / editor->dist_grid) * editor->dist_grid;
+		mouse.x = (editor->sdl.event.motion.x / editor->dist_grid)
+			* editor->dist_grid;
+		mouse.y = (editor->sdl.event.motion.y / editor->dist_grid)
+			* editor->dist_grid;
 		display_vertex(&editor->sdl, &mouse, 0x0ff0f0);
 	}
-	display_line(editor, editor->sdl.event.motion.x, editor->sdl.event.motion.y);
+	display_line(editor, editor->sdl.event.motion.x,
+		editor->sdl.event.motion.y);
 }
 
-static void	mouse(t_editor *editor, SDL_Event event)
+static void		mouse(t_editor *editor, SDL_Event event)
 {
 	if (editor->sett == SECTOR)
 		place_sector(editor, event.motion.x, event.motion.y);
@@ -66,7 +68,7 @@ static void	mouse(t_editor *editor, SDL_Event event)
 	editor->map_save = 1;
 }
 
-static void	keydown(t_editor *editor, SDL_Event event)
+static void		keydown(t_editor *editor, SDL_Event event)
 {
 	if (event.key.keysym.scancode == SDL_SCANCODE_ESCAPE)
 	{
@@ -93,7 +95,7 @@ static void	keydown(t_editor *editor, SDL_Event event)
 	}
 }
 
-void	events(t_editor *editor)
+void			events(t_editor *editor)
 {
 	while (editor->finish == 1)
 	{

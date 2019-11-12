@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 13:55:00 by nde-jesu          #+#    #+#             */
-/*   Updated: 2019/11/06 08:24:28 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2019/11/12 16:24:23 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int			is_sector_complete(t_vertex *first, t_vertex *last)
 t_sector	*create_sector(void)
 {
 	static int	sector_num = 0;
-	t_sector 	*sect;
+	t_sector	*sect;
 
 	sect = NULL;
 	if (!(sect = (t_sector*)ft_memalloc(sizeof(t_sector))))

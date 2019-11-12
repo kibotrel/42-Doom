@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 09:57:24 by nde-jesu          #+#    #+#             */
-/*   Updated: 2019/11/06 08:11:44 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2019/11/12 17:04:28 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 #include "libft.h"
 #include "editor.h"
 
-int		search_vertex_num(t_vertex *all, t_vertex *to_find)
+int				search_vertex_num(t_vertex *all, t_vertex *to_find)
 {
 	t_vertex	*vertex;
 
@@ -31,9 +31,9 @@ int		search_vertex_num(t_vertex *all, t_vertex *to_find)
 	return (-1);
 }
 
-void	write_portals(t_sector *sect, int fd)
+void			write_portals(t_sector *sect, int fd)
 {
-	int 	i;
+	int	i;
 
 	i = 0;
 	while (i < sect->vertex_count)
@@ -45,9 +45,9 @@ void	write_portals(t_sector *sect, int fd)
 	}
 }
 
-static void	write_sectors(t_sector *sector, t_vertex *all, int fd)
+static void		write_sectors(t_sector *sector, t_vertex *all, int fd)
 {
-	t_sector 	*sect;
+	t_sector	*sect;
 
 	sect = sector;
 	while (sect)
@@ -70,18 +70,18 @@ static void	write_sectors(t_sector *sector, t_vertex *all, int fd)
 	}
 }
 
-static void	write_file(t_editor *editor, int fd)
+static void		write_file(t_editor *editor, int fd)
 {
 	write_player(editor->player, *(editor->vertex), fd);
 	write_enemies(editor->enemy, fd);
-	write_objects(editor->object, fd);	
+	write_objects(editor->object, fd);
 	write_vertexes(editor->vertex, fd);
 	write_sectors(editor->sector, editor->vertex, fd);
 }
 
-void	create_map(t_editor *editor)
+void			create_map(t_editor *editor)
 {
-	int 	fd;
+	int		fd;
 
 	fd = open(MAP_PATH, O_WRONLY | O_CREAT | O_TRUNC, S_IRWXU);
 	write_file(editor, fd);

@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 12:14:01 by nde-jesu          #+#    #+#             */
-/*   Updated: 2019/11/05 15:30:22 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2019/11/12 17:48:44 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,9 @@ void	draw_line(SDL_Surface *surf, t_vertex start, t_vertex end, int color)
 	}
 }
 
-void    put_pixel(SDL_Surface *surf, int x, int y, int color)
+void	put_pixel(SDL_Surface *surf, int x, int y, int color)
 {
-	int				*pix;
+	int		*pix;
 
 	if ((x >= 0 && x <= WIN_W) && (y >= 0 && y <= WIN_H))
 	{

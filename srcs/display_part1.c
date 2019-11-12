@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 08:56:26 by nde-jesu          #+#    #+#             */
-/*   Updated: 2019/11/06 08:07:12 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2019/11/12 17:47:59 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ static void	draw_walls(t_sdl *sdl, t_sector *sect, t_vertex *vertex, int color)
 		put_pixel(sdl->surf, vertex->x, vertex->y, color);
 }
 
-void	display_sector(t_editor *editor)
+void		display_sector(t_editor *editor)
 {
 	int			i;
 	t_sector	*sect;
@@ -65,7 +65,7 @@ void	display_sector(t_editor *editor)
 	}
 }
 
-void	display_line(t_editor *editor, int x, int y)
+void		display_line(t_editor *editor, int x, int y)
 {
 	t_vertex	act_pos;
 
@@ -77,10 +77,10 @@ void	display_line(t_editor *editor, int x, int y)
 		draw_line(editor->sdl.surf, editor->last_vertex, act_pos, 0x0ff0f0);
 }
 
-void    display_grid(t_editor *editor)
+void		display_grid(t_editor *editor)
 {
-	int     x;
-	int     y;
+	int		x;
+	int		y;
 
 	y = 0;
 	while (y < WIN_H)

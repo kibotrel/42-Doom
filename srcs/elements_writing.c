@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 10:04:36 by nde-jesu          #+#    #+#             */
-/*   Updated: 2019/11/06 08:09:40 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2019/11/12 17:39:51 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	write_player(t_player player, t_vertex if_no_player, int fd)
 	ft_putstr_fd(" y ", fd);
 	ft_putnbr_fd(player.y, fd);
 	ft_putstr_fd(" angle ", fd);
-	ft_putnbr_fd(player.angle, fd);	
+	ft_putnbr_fd(player.angle, fd);
 	ft_putchar_fd('\n', fd);
 }
 
@@ -82,12 +82,12 @@ void	write_vertexes(t_vertex *vertexes, int fd)
 		ft_putchar_fd(' ', fd);
 		ft_putstr_fd("y ", fd);
 		ft_putnbr_fd(vertex->y, fd);
-		ft_putchar_fd('\n', fd);		
+		ft_putchar_fd('\n', fd);
 		vertex = vertex->next;
 	}
 }
 
- void	write_vertex_sector(t_sector *sect, t_vertex *all, int fd)
+void	write_vertex_sector(t_sector *sect, t_vertex *all, int fd)
 {
 	int			pos;
 	t_vertex	*vertex;

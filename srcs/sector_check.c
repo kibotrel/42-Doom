@@ -6,13 +6,13 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 15:01:10 by nde-jesu          #+#    #+#             */
-/*   Updated: 2019/11/06 08:23:01 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2019/11/12 16:41:27 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "editor.h"
 
-static int		is_left(t_vertex p0, t_vertex p1, t_vertex p2)
+static int	is_left(t_vertex p0, t_vertex p1, t_vertex p2)
 {
 	int		value;
 
@@ -25,7 +25,7 @@ static int		is_left(t_vertex p0, t_vertex p1, t_vertex p2)
 		return (2);
 }
 
-int		intersects_count(t_vertex v1, t_vertex v2, t_vertex p1, t_vertex p2)
+int			intersects_count(t_vertex v1, t_vertex v2, t_vertex p1, t_vertex p2)
 {
 	int		tab[4];
 
@@ -35,10 +35,10 @@ int		intersects_count(t_vertex v1, t_vertex v2, t_vertex p1, t_vertex p2)
 	tab[3] = is_left(p1, p2, v2);
 	if (tab[0] != tab[1] && tab[2] != tab[3])
 		return (1);
-	return (0);	
+	return (0);
 }
 
-static int		inters(t_vertex *prev_vertex, t_vertex point, t_vertex extreme)
+static int	inters(t_vertex *prev_vertex, t_vertex point, t_vertex extreme)
 {
 	int			intersections;
 	t_vertex	*vertex;
@@ -59,10 +59,10 @@ static int		inters(t_vertex *prev_vertex, t_vertex point, t_vertex extreme)
 	return (intersections);
 }
 
-int		is_in_sector(t_editor *edit, t_vertex point)
+int			is_in_sector(t_editor *edit, t_vertex point)
 {
 	int			intersects;
-	t_sector		*sect;
+	t_sector	*sect;
 	t_vertex	*vertex;
 	t_vertex	extreme;
 

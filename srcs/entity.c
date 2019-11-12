@@ -6,14 +6,14 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 14:55:17 by nde-jesu          #+#    #+#             */
-/*   Updated: 2019/11/06 08:19:22 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2019/11/12 17:41:49 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "editor.h"
 
-static t_entity	*create_entity(int x, int y, int type)
+static t_entity		*create_entity(int x, int y, int type)
 {
 	t_entity	*entity;
 
@@ -25,9 +25,9 @@ static t_entity	*create_entity(int x, int y, int type)
 	return (entity);
 }
 
-static void	add_enemy(t_entity *enemy, t_entity *new)
+static void			add_enemy(t_entity *enemy, t_entity *new)
 {
-	static int	enemy_num = 0;
+	static int		enemy_num = 0;
 	t_entity		*prev_enemy;
 
 	new->number = enemy_num++;
@@ -42,7 +42,7 @@ static void	add_enemy(t_entity *enemy, t_entity *new)
 	}
 }
 
-static void	add_object(t_entity *object, t_entity *new)
+static void			add_object(t_entity *object, t_entity *new)
 {
 	static int		object_num = 0;
 	t_entity		*prev_object;
@@ -59,7 +59,7 @@ static void	add_object(t_entity *object, t_entity *new)
 	}
 }
 
-void	place_entity(t_editor *editor, int x, int y, int type)
+void				place_entity(t_editor *editor, int x, int y, int type)
 {
 	t_entity	*new_entity;
 	t_vertex	check_sector;
@@ -77,7 +77,7 @@ void	place_entity(t_editor *editor, int x, int y, int type)
 	}
 }
 
-void	place_player(t_editor *editor, int x, int y)
+void				place_player(t_editor *editor, int x, int y)
 {
 	t_player	player;
 	t_vertex	check_sector;

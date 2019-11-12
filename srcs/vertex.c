@@ -6,16 +6,16 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 08:29:24 by nde-jesu          #+#    #+#             */
-/*   Updated: 2019/11/12 13:47:45 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2019/11/12 16:27:38 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "editor.h"
 #include "libft.h"
 
-t_vertex	*create_vertex(int x, int y)
+t_vertex		*create_vertex(int x, int y)
 {
-	t_vertex 	*new;
+	t_vertex	*new;
 
 	if (!(new = (t_vertex*)ft_memalloc(sizeof(t_vertex))))
 		exit(1);
@@ -24,10 +24,10 @@ t_vertex	*create_vertex(int x, int y)
 	return (new);
 }
 
-void		add_vertex(t_vertex *vertex, t_vertex *new, int count)
+void			add_vertex(t_vertex *vertex, t_vertex *new, int count)
 {
 	static int	vertex_number = 0;
-	t_vertex 	*prev_vertex;
+	t_vertex	*prev_vertex;
 
 	if (count)
 		new->vertex_number = vertex_number++;
@@ -59,10 +59,10 @@ static t_vertex	*is_vertex_double(t_vertex *vertex, int x, int y)
 	return (NULL);
 }
 
-t_vertex 	*get_vertex(t_editor *editor, int x, int y)
+t_vertex		*get_vertex(t_editor *editor, int x, int y)
 {
-	t_vertex 	*new_vertex;
-	
+	t_vertex	*new_vertex;
+
 	x = (x / editor->dist_grid) * editor->dist_grid;
 	y = (y / editor->dist_grid) * editor->dist_grid;
 	new_vertex = is_vertex_double(editor->vertex, x, y);
