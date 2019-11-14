@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 09:55:53 by nde-jesu          #+#    #+#             */
-/*   Updated: 2019/11/14 15:33:17 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2019/11/14 15:56:28 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,14 +79,14 @@ void				place_sector(t_editor *editor, int x, int y)
 		if (sect->is_child != -1)
 			sect->is_portal[1] = sect->is_child;
 		sect->next = create_sector();
-		editor->sect_is_closed = 1;
+		editor->sect_is_closed = true;
 		editor->last_vertex.x = -1;
 		editor->last_vertex.y = -1;
 	}
 	else
 	{
-		add_vertex(&sect->vertex, new, 0);
-		editor->sect_is_closed = 0;
+		add_vertex(&sect->vertex, new, false);
+		editor->sect_is_closed = false;
 	}
 	// oui(editor->sector);
 }
