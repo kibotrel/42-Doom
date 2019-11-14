@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 09:55:53 by nde-jesu          #+#    #+#             */
-/*   Updated: 2019/11/12 16:58:34 by reda-con         ###   ########.fr       */
+/*   Updated: 2019/11/14 09:51:27 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ static t_sector		*get_last_sector(t_editor *editor)
 		sect = sect->next;
 	return (sect);
 }
+#include <stdio.h>
 
 void				place_sector(t_editor *editor, int x, int y)
 {
@@ -58,6 +59,7 @@ void				place_sector(t_editor *editor, int x, int y)
 	sect = get_last_sector(editor);
 	if (is_sector_complete(sect->vertex, new))
 	{
+		printf("oui\n");
 		sect->vertex_count = count_vertex_in_sector(sect->vertex);
 		if (!(sect->is_portal = (int*)ft_memalloc(sizeof(int)
 			* sect->vertex_count)))
@@ -73,7 +75,9 @@ void				place_sector(t_editor *editor, int x, int y)
 	}
 	else
 	{
+		printf("non\n");
 		add_vertex(sect->vertex, new, 0);
 		editor->sect_is_closed = 0;
+		printf("%i %i %i\n", new->x, new->y, sect->sector_number);
 	}
 }

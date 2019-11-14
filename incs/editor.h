@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 08:52:03 by nde-jesu          #+#    #+#             */
-/*   Updated: 2019/11/12 13:24:26 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2019/11/14 10:16:20 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define EDITOR_H
 
 # include "SDL.h"
+# include <stdbool.h>
 
 /*
 **	MACROS
@@ -103,7 +104,7 @@ typedef struct		s_editor
 {
 	t_sdl			sdl;
 	t_settings		sett;
-	int				map_save;
+	bool			map_save;
 
 	t_sector		*sector;
 	t_vertex		*vertex;
@@ -119,8 +120,8 @@ typedef struct		s_editor
 	t_vertex		*cd;
 
 	int				dist_grid;
-	int				sect_is_closed;
-	int				finish;
+	bool			sect_is_closed;
+	bool			finish;
 }					t_editor;
 
 #endif

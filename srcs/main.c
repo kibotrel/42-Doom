@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 08:47:35 by nde-jesu          #+#    #+#             */
-/*   Updated: 2019/11/12 17:10:41 by reda-con         ###   ########.fr       */
+/*   Updated: 2019/11/14 10:25:10 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,14 +40,13 @@ static void		init_editor(t_editor *editor)
 	sdl_init(&editor->sdl);
 	editor->dist_grid = WIN_W / 50;
 	editor->sett = SECTOR;
-	editor->finish = 1;
+	editor->finish = false;
 	editor->last_vertex.x = -1;
 	editor->last_vertex.y = -1;
-	editor->map_save = 2;
+	editor->map_save = true;
 	editor->player.x = -1;
 	editor->player.y = -1;
 	editor->player.angle = 90;
-	editor->sect_is_closed = 0;
 	init_chained_list(editor);
 	init_portals(editor);
 }

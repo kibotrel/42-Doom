@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 14:05:19 by nde-jesu          #+#    #+#             */
-/*   Updated: 2019/11/12 17:13:52 by reda-con         ###   ########.fr       */
+/*   Updated: 2019/11/13 11:25:03 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,6 @@ void	display_entities(t_sdl *sdl, t_entity *entity, int color)
 	t_entity	*print;
 
 	print = entity;
-	if (!entity)
-		return ;
 	while (print)
 	{
 		put_pixel(sdl->surf, print->x, print->y, color);
