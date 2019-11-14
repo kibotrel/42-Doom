@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 08:52:03 by nde-jesu          #+#    #+#             */
-/*   Updated: 2019/11/14 15:56:34 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2019/11/14 17:31:53 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -196,5 +196,5 @@ void	place_sector(t_editor *editor, int x, int y);
 //	vertex.c
 
 t_vertex	*create_vertex(int x, int y);
-void		add_vertex(t_vertex **vertex, t_vertex *new, bool flag);
+void		add_vertex(t_vertex **vertex, int x, int y, bool flag, int *i);
 t_vertex 	*get_vertex(t_editor *editor, int x, int y);
