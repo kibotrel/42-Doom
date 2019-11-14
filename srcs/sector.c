@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 09:55:53 by nde-jesu          #+#    #+#             */
-/*   Updated: 2019/11/14 09:51:27 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2019/11/14 15:33:17 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,13 @@ static int			count_vertex_in_sector(t_vertex *vertex)
 	return (count);
 }
 
-static int			is_sector_complete(t_vertex *first, t_vertex *last)
+static bool			is_sector_complete(t_vertex *first, t_vertex *last)
 {
 	if (!first || !last)
-		return (0);
+		return (false);
 	if (first->x == last->x && first->y == last->y)
-		return (1);
-	return (0);
+		return (true);
+	return (false);
 }
 
 static t_sector		*get_last_sector(t_editor *editor)
@@ -49,6 +49,17 @@ static t_sector		*get_last_sector(t_editor *editor)
 	return (sect);
 }
 #include <stdio.h>
+void	oui(t_sector *editor)
+{
+	t_vertex *vertex;
+
+	vertex = editor->vertex;
+	while (vertex)
+	{
+		printf("%i\n", vertex->x);
+		vertex = vertex->next;
+	}
+}
 
 void				place_sector(t_editor *editor, int x, int y)
 {
@@ -57,9 +68,8 @@ void				place_sector(t_editor *editor, int x, int y)
 
 	new = get_vertex(editor, x, y);
 	sect = get_last_sector(editor);
-	if (is_sector_complete(sect->vertex, new))
+	if (is_sector_complete(sect->vertex, new) == true)
 	{
-		printf("oui\n");
 		sect->vertex_count = count_vertex_in_sector(sect->vertex);
 		if (!(sect->is_portal = (int*)ft_memalloc(sizeof(int)
 			* sect->vertex_count)))
@@ -75,9 +85,8 @@ void				place_sector(t_editor *editor, int x, int y)
 	}
 	else
 	{
-		printf("non\n");
-		add_vertex(sect->vertex, new, 0);
+		add_vertex(&sect->vertex, new, 0);
 		editor->sect_is_closed = 0;
-		printf("%i %i %i\n", new->x, new->y, sect->sector_number);
 	}
+	// oui(editor->sector);
 }

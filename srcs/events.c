@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 13:09:05 by nde-jesu          #+#    #+#             */
-/*   Updated: 2019/11/14 10:27:37 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2019/11/14 15:37:18 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ static void		display_editor(t_editor *editor)
 				* editor->dist_grid;
 		mouse.y = (editor->sdl.event.motion.y / editor->dist_grid)
 			* editor->dist_grid;
-		display_vertex(&editor->sdl, &mouse, 0x0ff0f0);
+		display_mouse(&editor->sdl, mouse, 0x0ff0f0);
 	}
 	display_line(editor, editor->sdl.event.motion.x,
 		editor->sdl.event.motion.y);

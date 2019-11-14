@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 08:52:03 by nde-jesu          #+#    #+#             */
-/*   Updated: 2019/11/14 10:16:20 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2019/11/14 15:15:40 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,6 +141,7 @@ void	display_sector(t_editor *editor);
 void	display_vertex(t_sdl *sdl, t_vertex *vertex, int color);
 void	display_entities(t_sdl *sdl, t_entity *entity, int color);
 void	display_player(t_player player, t_sdl *sdl);
+void	display_mouse(t_sdl *sdl, t_vertex mouse, int color);
 
 //	display_utils.c
 
@@ -195,5 +196,5 @@ void	place_sector(t_editor *editor, int x, int y);
 //	vertex.c
 
 t_vertex	*create_vertex(int x, int y);
-void		add_vertex(t_vertex *vertex, t_vertex *new, int count);
+void		add_vertex(t_vertex **vertex, t_vertex *new, int count);
 t_vertex 	*get_vertex(t_editor *editor, int x, int y);

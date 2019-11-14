@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 08:29:24 by nde-jesu          #+#    #+#             */
-/*   Updated: 2019/11/13 11:37:07 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2019/11/14 15:35:07 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,20 +24,22 @@ t_vertex		*create_vertex(int x, int y)
 	return (new);
 }
 
-void			add_vertex(t_vertex *vertex, t_vertex *new, int count)
+void			add_vertex(t_vertex **vertex, t_vertex *new, int count)
 {
 	static int	vertex_number = 0;
 	t_vertex	*prev_vertex;
 
+	ft_putendl("oui");
 	if (count)
 		new->vertex_number = vertex_number++;
-	if (!vertex)
-		vertex = new;
+	if (!*vertex)
+		*vertex = new;
 	else
 	{
-		prev_vertex = vertex;
+		prev_vertex = *vertex;
 		while (prev_vertex->next)
 			prev_vertex = prev_vertex->next;
+		
 		prev_vertex->next = new;
 	}
 }
@@ -68,7 +70,7 @@ t_vertex		*get_vertex(t_editor *editor, int x, int y)
 	if (!new_vertex)
 	{
 		new_vertex = create_vertex(x, y);
-		add_vertex(editor->vertex, new_vertex, 1);
+		add_vertex(&editor->vertex, new_vertex, 1);
 	}
 	editor->last_vertex.x = new_vertex->x;
 	editor->last_vertex.y = new_vertex->y;
