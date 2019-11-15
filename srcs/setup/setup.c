@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/16 11:58:26 by kibotrel          #+#    #+#             */
-/*   Updated: 2019/10/26 23:03:13 by demonwaves       ###   ########.fr       */
+/*   Updated: 2019/11/11 12:44:50 by demonwaves       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ static void	error_messages(t_env *env)
 	env->error[E_TTF_RENDER] = M_TTF_RENDER;
 	env->error[E_SDL_BLIT] = M_SDL_BLIT;
 	env->error[E_BMP_PARSE] = M_BMP_PARSE;
+	env->error[E_MALLOC] = M_MALLOC;
 	env->error[E_BKGD] = M_BKGD;
 }
 
@@ -61,6 +62,7 @@ void		env_setup(t_env *env)
 	ft_bzero(env, sizeof(t_env));
 	env->w = WIN_W;
 	env->h = WIN_H;
+	env->win = GAME; // TEMPORARY
 	assets_paths(env);
 	error_messages(env);
 	infos_setup(env);

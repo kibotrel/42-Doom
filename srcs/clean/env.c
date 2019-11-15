@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/08 19:29:45 by kibotrel          #+#    #+#             */
-/*   Updated: 2019/10/27 00:39:16 by demonwaves       ###   ########.fr       */
+/*   Updated: 2019/11/13 06:22:32 by demonwaves       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,25 @@
 
 static void	env_clean(t_env *env)
 {
-	uint32_t	asset;
+	uint32_t	i;
 
-	asset = 0;
-	while (asset < NB_ASSETS)
-	if (env->sdl.bmp[asset++].pixels)
-		free(env->sdl.bmp[asset - 1].pixels);
+	i = 0;
+	while (i < NB_ASSETS)
+	if (env->sdl.bmp[i++].pixels)
+		free(env->sdl.bmp[i - 1].pixels);
+	i = 0;
+	if (env->sector)
+	{
+		while (i < env->zones)
+		{
+			if (env->sector[i].vertex)
+				free(env->sector[i].vertex);
+			if (env->sector[i].neighbor)
+				free(env->sector[i].neighbor);
+			i++;
+		}
+		free(env->sector);
+	}
 }
 
 void		clean(t_env *env, uint8_t error)

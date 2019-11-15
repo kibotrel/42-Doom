@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 19:01:59 by kibotrel          #+#    #+#             */
-/*   Updated: 2019/11/03 15:29:56 by demonwaves       ###   ########.fr       */
+/*   Updated: 2019/11/11 11:12:44 by demonwaves       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,21 +45,12 @@ void	text_to_screen(t_env *env, t_sdl *sdl, char *text, uint8_t pos);
 void	paste_position(SDL_Rect *pos, t_pos scale);
 void	line_params(t_line *line, t_pos a, t_pos b);
 void	police_color(SDL_Color *color, uint8_t r, uint8_t g, uint8_t b);
-t_vec2d	vector2d(double x, double y);
-t_vec3d	vector3d(double x, double y, double z);
 
 /*
 **	maths.c
 */
 
 void	scale_text(t_env *e, SDL_Rect *where, char *text, uint8_t pos);
-double	cross(t_vec2d a, t_vec2d b);
-double	side(t_vec2d cam, t_vec2d a, t_vec2d b);
-double	bound(double x, double min, double max);
-uint8_t	overlap(double a, double b, double c, double d);
-uint8_t	hitbox(t_vec2d a, t_vec2d b, t_vec2d c, t_vec2d d);
-t_vec2d	intersect(t_vec2d a, t_vec2d b, t_vec2d c, t_vec2d d);
-
 
 /*
 **	checks.c

@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 18:48:17 by kibotrel          #+#    #+#             */
-/*   Updated: 2019/11/03 17:44:11 by demonwaves       ###   ########.fr       */
+/*   Updated: 2019/11/13 07:43:40 by demonwaves       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,35 +76,31 @@ typedef struct	s_data
 	uint32_t 	w_size;						// Window size in bytes
 }				t_data;
 
-/*
-**	Player informations.
-*/
-
 typedef struct	s_cam
 {
-	double		gap;						// Distance between angles
-	double		angle;						// Angle to look at
-	double		cos;						// cos(angle) for optimizations
-	double		sin;						// sin(angle) for optimizations
-	t_vec2d		fov;						// Field of view
-	t_vec3d		pos;						// Cam position in space
-	t_vec3d		speed;						// Motion vector for movement
-	uint32_t	sector;						// Which sector the player is in
+	double 		cos;
+	double		gap;
+	double 		sin;
+	double 		angle;
+	t_vec2d		fov;						// Perspective angle
+	t_vec3d		v;							// Velocity
+	t_vec3d		pos;
+	uint8_t		fall;
+	uint8_t		move;
+	uint8_t		sneak;
+	uint8_t		ground;						// Position
+	uint32_t	sector;						// Current location within the map
 }				t_cam;
 
-/*
-**	Sector informations
-*/
-
-typedef struct	s_sector
+typedef	struct	s_sector
 {
-	t_pos		*vertex;					// Array of vertices
-	double		ceil;						// Ceilling height
-	double		floor;						// Floor height
-	int32_t		*neighbor;					// Array of links with other sectors
-	uint32_t	points;						// Number of vertices in the sector
-}				t_sector;
+	int			*neighbor;					 // Each edge may have a corresponding neighboring sector
+	double		ceil;
+	double		floor;
+	t_vec2d		*vertex;
+	uint32_t	points;						 // How many vertexes there are
 
+}				t_sector;
 /*
 **	Main structure.
 */
@@ -113,16 +109,16 @@ typedef struct	s_env
 {
 	char		*asset[NB_ASSETS];			// Array of path to assets
 	char		*error[NB_ERRORS];			// Array of error messages
+	t_cam		cam;						// Engine point of view
 	t_sdl		sdl;						// SDL structure
 	t_win		win;						// Enum for window state
-	t_cam		cam;						// Camera informations
 	t_data		data;						// Structure for miscelaneous informations
-	t_sector	*sector;					// Array of sectors
 	int32_t		w;							// Width of the window
 	int32_t		h;							// Height of the window
 	int32_t		input[SDL_NUM_SCANCODES];	// Handle key inputs
-	uint32_t	zones;						// Number of sectors in the map
+	t_sector	*sector;					// Map informations
 	uint32_t	setup;						// TEMPORARY
+	uint32_t	zones;
 }				t_env;
 
 #endif

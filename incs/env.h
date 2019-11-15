@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/16 11:54:25 by kibotrel          #+#    #+#             */
-/*   Updated: 2019/11/03 19:40:08 by demonwaves       ###   ########.fr       */
+/*   Updated: 2019/11/11 12:43:51 by demonwaves       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,7 @@
 # define MAX_WIDTH		1920
 # define RATIO_UI_X		8
 # define RATIO_UI_Y		9
-# define VERTICAL_FOV	0.2
-# define CAM_STANDING	6.0
-# define CAM_KNEEHIGHT	2.0
-# define CAM_ABOVEHEAD	1.0
-# define CAM_CROUCHING	2.5
 # define MAX_FONT_SIZE	64
-# define HORIZONTAL_FOV	0.73
 
 /*
 ** String macros
@@ -37,6 +31,7 @@
 # define E_CODE			"\033[31;1mError:\033[0m "
 
 # define M_BKGD			E_CODE "Menu background not available"
+# define M_MALLOC		E_CODE "Can't allocate memory."
 # define M_SDL_WIN		E_CODE "Can't create SDL window."
 # define M_FILENAME		E_CODE "Incorrect filename (*.data)."
 # define M_TTF_FONT		E_CODE "Can't load the given font."

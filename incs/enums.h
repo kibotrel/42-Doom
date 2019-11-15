@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 17:59:50 by kibotrel          #+#    #+#             */
-/*   Updated: 2019/10/15 18:07:29 by kibotrel         ###   ########.fr       */
+/*   Updated: 2019/11/11 12:43:11 by demonwaves       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ typedef enum	e_status
 	E_SDL_BLIT,
 	E_BMP_PARSE,
 	E_BKGD,
+	E_MALLOC,
 	NB_ERRORS
 }				t_status;
 
