@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 08:29:24 by nde-jesu          #+#    #+#             */
-/*   Updated: 2019/11/14 17:36:23 by reda-con         ###   ########.fr       */
+/*   Updated: 2019/11/15 08:03:05 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,8 +65,6 @@ t_vertex		*get_vertex(t_editor *editor, int x, int y)
 {
 	t_vertex	*new_vertex;
 
-	x = (x / editor->dist_grid) * editor->dist_grid;
-	y = (y / editor->dist_grid) * editor->dist_grid;
 	new_vertex = is_vertex_double(editor->vertex, x, y);
 	if (!new_vertex)
 	{
