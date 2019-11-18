@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 08:56:26 by nde-jesu          #+#    #+#             */
-/*   Updated: 2019/11/12 17:47:59 by reda-con         ###   ########.fr       */
+/*   Updated: 2019/11/15 15:54:14 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ void		display_line(t_editor *editor, int x, int y)
 {
 	t_vertex	act_pos;
 
-	if (x < 0 || y < 0 || x > WIN_W || y > WIN_H)
+	if (x < 0 || y < 0 || x > EDIT_W || y > WIN_H)
 		return ;
 	act_pos.x = (x / editor->dist_grid) * editor->dist_grid;
 	act_pos.y = (y / editor->dist_grid) * editor->dist_grid;
@@ -86,7 +86,7 @@ void		display_grid(t_editor *editor)
 	while (y < WIN_H)
 	{
 		x = 0;
-		while (x < WIN_W)
+		while (x < EDIT_W)
 		{
 			if (x % editor->dist_grid == 0 && y % editor->dist_grid == 0)
 				put_pixel(editor->sdl.surf, x, y, 0x9c9c9c);

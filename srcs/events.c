@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 13:09:05 by nde-jesu          #+#    #+#             */
-/*   Updated: 2019/11/14 16:43:39 by reda-con         ###   ########.fr       */
+/*   Updated: 2019/11/18 15:08:22 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,29 @@ static bool		is_saved(t_editor *editor)
 		editor->map_save = true;
 		return (false);
 	}
-	else if (editor->map_save == true)
+	else
 	{
-		ft_putendl("Exiting without saving");
+		ft_putendl("Exiting...");
 		return (true);
 	}
-	ft_putendl("Exiting...");
-	return (true);
+}
+
+void			display_menu(SDL_Surface *s)
+{
+	int		x;
+	int		y;
+
+	x = EDIT_W;
+	while (x < (MENU_W + EDIT_W))
+	{
+		y = 0;
+		while (y < WIN_H)
+		{
+			put_pixel(s, x, y, 0x1e1e1e);
+			++y;
+		}
+		++x;
+	}
 }
 
 static void		display_editor(t_editor *editor)
@@ -51,6 +67,7 @@ static void		display_editor(t_editor *editor)
 	}
 	display_line(editor, editor->sdl.event.motion.x,
 		editor->sdl.event.motion.y);
+	display_menu(editor->sdl.surf);
 }
 
 static void		mouse(t_editor *editor, SDL_Event event)
