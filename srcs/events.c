@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 13:09:05 by nde-jesu          #+#    #+#             */
-/*   Updated: 2019/11/18 17:24:41 by reda-con         ###   ########.fr       */
+/*   Updated: 2019/11/19 13:03:26 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,15 @@ void			rectangle(t_vertex start, t_vertex end, int clr, SDL_Surface *s)
 	draw_line(s, init_vertex(start.x, end.y), end, clr);
 }
 
+void			blank_menu(SDL_Surface *s)
+{
+	rectangle(init_vertex(1340, 140), init_vertex(1510, 210), 0xffffff, s);
+	rectangle(init_vertex(1340, 240), init_vertex(1510, 310), 0xffffff, s);
+	rectangle(init_vertex(1340, 340), init_vertex(1510, 410), 0xffffff, s);
+	rectangle(init_vertex(1340, 440), init_vertex(1510, 510), 0xffffff, s);
+	rectangle(init_vertex(1340, 540), init_vertex(1510, 610), 0xffffff, s);
+}
+
 void			display_menu(SDL_Surface *s)
 {
 	int		x;
@@ -85,11 +94,7 @@ void			display_menu(SDL_Surface *s)
 	square(1400, 400, 0xff0000, s);
 	square(1400, 500, 0x8b4513, s);
 	square(1400, 600, 0x00ff00, s);
-	rectangle(init_vertex(1340, 140), init_vertex(1510, 210), 0xffffff, s);
-	rectangle(init_vertex(1340, 240), init_vertex(1510, 310), 0xffffff, s);
-	rectangle(init_vertex(1340, 340), init_vertex(1510, 410), 0xffffff, s);
-	rectangle(init_vertex(1340, 440), init_vertex(1510, 510), 0xffffff, s);
-	rectangle(init_vertex(1340, 540), init_vertex(1510, 610), 0xffffff, s);
+	blank_menu(s);
 }
 
 static void		display_editor(t_editor *editor)
@@ -102,7 +107,7 @@ static void		display_editor(t_editor *editor)
 	display_entities(&editor->sdl, editor->object, 0x8b4513);
 	display_sector(editor);
 	display_vertex(&editor->sdl, editor->vertex, 0xffff00);
-	if (editor->sett == SECTOR)
+	if (editor->sett == SECTOR && editor->sdl.event.motion.x <= EDIT_W)
 	{
 		mouse.x = (editor->sdl.event.motion.x / editor->dist_grid)
 				* editor->dist_grid;
@@ -112,11 +117,12 @@ static void		display_editor(t_editor *editor)
 	}
 	display_line(editor, editor->sdl.event.motion.x,
 		editor->sdl.event.motion.y);
-	display_menu(editor->sdl.surf);
 }
 
 static void		mouse(t_editor *editor, SDL_Event event)
 {
+	if (event.motion.x <= EDIT_W)
+	{
 	if (editor->sett == SECTOR)
 		place_sector(editor, event.motion.x, event.motion.y);
 	else if (editor->sett == PLAYER)
@@ -128,6 +134,23 @@ static void		mouse(t_editor *editor, SDL_Event event)
 	else if (editor->sett == PORTAL)
 		place_portal(editor, event.motion.x, event.motion.y);
 	editor->map_save = false;
+	}
+	else
+	{
+		if (event.motion.x >= 1340 && event.motion.x <= 1510)
+		{
+			if (event.motion.y >= 140 && event.motion.y < 210)
+				editor->sett = SECTOR;
+			else if (event.motion.y >= 240 && event.motion.y < 310)
+				editor->sett = PLAYER;
+			else if (event.motion.y >= 340 && event.motion.y < 410)
+				editor->sett = ENEMY;
+			else if (event.motion.y >= 440 && event.motion.y < 510)
+				editor->sett = OBJECT;
+			else if (event.motion.y >= 540 && event.motion.y < 610)
+				editor->sett = PORTAL;
+		}
+	}
 }
 
 static void		keydown(t_editor *editor, SDL_Event event)
@@ -157,11 +180,38 @@ static void		keydown(t_editor *editor, SDL_Event event)
 	}
 }
 
+void			non(t_sdl s)
+{
+	int		x;
+	int		y;
+
+	x = s.event.motion.x;
+	y = s.event.motion.y;
+	if (x >= 1340 && x <= 1510)
+	{
+		if (y >= 140 && y <= 210)
+			rectangle(init_vertex(1340, 140), init_vertex(1510, 210), 0x5f287e, s.surf);
+		else if (y >= 240 && y <= 310)
+			rectangle(init_vertex(1340, 240), init_vertex(1510, 310), 0x5f287e, s.surf);
+		else if (y >= 340 && y <= 410)
+			rectangle(init_vertex(1340, 340), init_vertex(1510, 410), 0x5f287e, s.surf);
+		else if (y >= 440 && y <= 510)
+			rectangle(init_vertex(1340, 440), init_vertex(1510, 510), 0x5f287e, s.surf);
+		else if (y >= 540 && y <= 610)
+			rectangle(init_vertex(1340, 540), init_vertex(1510, 610), 0x5f287e, s.surf);
+		else
+			blank_menu(s.surf);
+	}
+	else
+		blank_menu(s.surf);
+}
+
 void			events(t_editor *editor)
 {
+	display_menu(editor->sdl.surf);
 	while (editor->finish == false)
 	{
-		while (SDL_PollEvent(&(editor->	sdl.event)))
+		while (SDL_PollEvent(&(editor->sdl.event)))
 		{
 			if (editor->sdl.event.type == SDL_QUIT)
 			{
@@ -172,6 +222,8 @@ void			events(t_editor *editor)
 				keydown(editor, editor->sdl.event);
 			else if (editor->sdl.event.type == SDL_MOUSEBUTTONDOWN)
 				mouse(editor, editor->sdl.event);
+			else if (editor->sdl.event.type == SDL_MOUSEMOTION)
+				non(editor->sdl);
 		}
 		display_editor(editor);
 		if (SDL_UpdateWindowSurface(editor->sdl.win) != 0)
