@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 13:09:05 by nde-jesu          #+#    #+#             */
-/*   Updated: 2019/11/19 13:03:26 by reda-con         ###   ########.fr       */
+/*   Updated: 2019/11/19 13:10:34 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,74 +27,6 @@ static bool		is_saved(t_editor *editor)
 		ft_putendl("Exiting...");
 		return (true);
 	}
-}
-
-void			square(int x, int y, int color, SDL_Surface *s)
-{
-	int		i;
-	int		j;
-
-	i = x - 50;
-	while (i < x)
-	{
-		j = y - 50;
-		while (j < y)
-		{
-			put_pixel(s, i, j, color);
-			++j;
-		}
-		++i;
-	}
-}
-
-t_vertex		init_vertex(int x, int y)
-{
-	t_vertex	ret;
-
-	ret.x = x;
-	ret.y = y;
-	return (ret);
-}
-
-void			rectangle(t_vertex start, t_vertex end, int clr, SDL_Surface *s)
-{
-	draw_line(s, start, init_vertex(start.x, end.y), clr);
-	draw_line(s, init_vertex(end.x, start.y), end, clr);
-	draw_line(s, start, init_vertex(end.x, start.y), clr);
-	draw_line(s, init_vertex(start.x, end.y), end, clr);
-}
-
-void			blank_menu(SDL_Surface *s)
-{
-	rectangle(init_vertex(1340, 140), init_vertex(1510, 210), 0xffffff, s);
-	rectangle(init_vertex(1340, 240), init_vertex(1510, 310), 0xffffff, s);
-	rectangle(init_vertex(1340, 340), init_vertex(1510, 410), 0xffffff, s);
-	rectangle(init_vertex(1340, 440), init_vertex(1510, 510), 0xffffff, s);
-	rectangle(init_vertex(1340, 540), init_vertex(1510, 610), 0xffffff, s);
-}
-
-void			display_menu(SDL_Surface *s)
-{
-	int		x;
-	int		y;
-
-	x = EDIT_W;
-	while (x < (MENU_W + EDIT_W))
-	{
-		y = 0;
-		while (y < WIN_H)
-		{
-			put_pixel(s, x, y, 0x1e1e1e);
-			++y;
-		}
-		++x;
-	}
-	square(1400, 200, 0x0000ff, s);
-	square(1400, 300, 0xff00ff, s);
-	square(1400, 400, 0xff0000, s);
-	square(1400, 500, 0x8b4513, s);
-	square(1400, 600, 0x00ff00, s);
-	blank_menu(s);
 }
 
 static void		display_editor(t_editor *editor)
@@ -178,32 +110,6 @@ static void		keydown(t_editor *editor, SDL_Event event)
 		else if (event.key.keysym.scancode == SDL_SCANCODE_5)
 			editor->sett = PORTAL;
 	}
-}
-
-void			non(t_sdl s)
-{
-	int		x;
-	int		y;
-
-	x = s.event.motion.x;
-	y = s.event.motion.y;
-	if (x >= 1340 && x <= 1510)
-	{
-		if (y >= 140 && y <= 210)
-			rectangle(init_vertex(1340, 140), init_vertex(1510, 210), 0x5f287e, s.surf);
-		else if (y >= 240 && y <= 310)
-			rectangle(init_vertex(1340, 240), init_vertex(1510, 310), 0x5f287e, s.surf);
-		else if (y >= 340 && y <= 410)
-			rectangle(init_vertex(1340, 340), init_vertex(1510, 410), 0x5f287e, s.surf);
-		else if (y >= 440 && y <= 510)
-			rectangle(init_vertex(1340, 440), init_vertex(1510, 510), 0x5f287e, s.surf);
-		else if (y >= 540 && y <= 610)
-			rectangle(init_vertex(1340, 540), init_vertex(1510, 610), 0x5f287e, s.surf);
-		else
-			blank_menu(s.surf);
-	}
-	else
-		blank_menu(s.surf);
 }
 
 void			events(t_editor *editor)
