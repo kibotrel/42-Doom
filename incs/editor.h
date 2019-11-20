@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 08:52:03 by nde-jesu          #+#    #+#             */
-/*   Updated: 2019/11/19 13:20:39 by reda-con         ###   ########.fr       */
+/*   Updated: 2019/11/20 13:21:52 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -202,12 +202,14 @@ t_vertex 	*get_vertex(t_editor *editor, int x, int y);
 
 //	edit_menu.c
 
-void		display_menu(SDL_Surface *surf);
-void		non(t_sdl sdl);
+void		display_menu(SDL_Surface *surf, int sett);
+void		motion(t_sdl sdl, int sett);
+void		sett_square(int sett, SDL_Surface *s);
 
 //	edit_menu_tools.c
 
 void		square(int x, int y, int clr, SDL_Surface *surf);
-void		blank_menu(SDL_Surface *surf);
+void		blank_menu(SDL_Surface *surf, int set);
 void		rectangle(t_vertex start, t_vertex end, int clr, SDL_Surface *surf);
 t_vertex	init_vertex(int x, int y);
+void		clic_editor_menu(int x, int y, t_editor *editor);
