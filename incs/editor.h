@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 08:52:03 by nde-jesu          #+#    #+#             */
-/*   Updated: 2019/11/20 13:21:52 by reda-con         ###   ########.fr       */
+/*   Updated: 2019/11/20 17:08:10 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -165,6 +165,10 @@ void	place_entity(t_editor *editor, int x, int y, int type);
 //	events.c
 
 void	events(t_editor *editor);
+
+//	events_tools.c
+
+void	next_keydown(SDL_Event event, SDL_Surface *surf, t_editor *editor);
 
 //	map_creation.c
 

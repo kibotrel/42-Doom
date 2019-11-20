@@ -6,7 +6,7 @@
 #    By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/10 16:16:29 by kibotrel          #+#    #+#              #
-#    Updated: 2019/11/19 13:18:03 by reda-con         ###   ########.fr        #
+#    Updated: 2019/11/20 17:06:39 by reda-con         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -128,6 +128,7 @@ SRCS			+= sector.c
 SRCS			+= vertex.c
 SRCS			+= edit_menu.c
 SRCS			+= edit_menu_tools.c
+SRCS			+= events_tools.c
 
 
 #------------------------------ OPERATING SYSTEM ------------------------------#

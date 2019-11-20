@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 13:09:05 by nde-jesu          #+#    #+#             */
-/*   Updated: 2019/11/20 13:21:35 by reda-con         ###   ########.fr       */
+/*   Updated: 2019/11/20 17:10:01 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ static void		mouse(t_editor *editor, SDL_Event event)
 			place_portal(editor, event.motion.x, event.motion.y);
 		editor->map_save = false;
 	}
-	else
+	else if (editor->sect_is_closed == true)
 		clic_editor_menu(event.motion.x, event.motion.y, editor);
 }
 
@@ -85,16 +85,8 @@ static void		keydown(t_editor *editor, SDL_Event event)
 	}
 	if (editor->sect_is_closed == true)
 	{
-		if (event.key.keysym.scancode == SDL_SCANCODE_1)
-			editor->sett = SECTOR;
-		else if (event.key.keysym.scancode == SDL_SCANCODE_2)
-			editor->sett = PLAYER;
-		else if (event.key.keysym.scancode == SDL_SCANCODE_3)
-			editor->sett = ENEMY;
-		else if (event.key.keysym.scancode == SDL_SCANCODE_4)
-			editor->sett = OBJECT;
-		else if (event.key.keysym.scancode == SDL_SCANCODE_5)
-			editor->sett = PORTAL;
+		next_keydown(event, editor->sdl.surf, editor);
+		blank_menu(editor->sdl.surf, editor->sett);
 	}
 }
 
