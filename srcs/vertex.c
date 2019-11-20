@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 08:29:24 by nde-jesu          #+#    #+#             */
-/*   Updated: 2019/11/15 15:55:40 by reda-con         ###   ########.fr       */
+/*   Updated: 2019/11/20 18:07:47 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,15 @@ t_vertex		*create_vertex(int x, int y)
 	return (new);
 }
 
-void			add_vertex(t_vertex **vertex, int x, int y, bool flag, int *i)
+void			add_vertex(t_vertex **vertex, int x, int y, bool flag)
 {
 	static int	vertex_number = 0;
 	t_vertex	*prev_vertex;
+	t_vertex 	*new;
 
+	new = create_vertex(x, y);
 	if (flag)
-		*i = vertex_number++;
+		new->vertex_number = vertex_number++;
 	if (!*vertex)
 		*vertex = create_vertex(x, y);
 	else
@@ -41,7 +43,7 @@ void			add_vertex(t_vertex **vertex, int x, int y, bool flag, int *i)
 		{
 			prev_vertex = prev_vertex->next;
 		}
-		prev_vertex->next = create_vertex(x, y);
+		prev_vertex->next = new;
 	}
 }
 
@@ -69,7 +71,7 @@ t_vertex		*get_vertex(t_editor *editor, int x, int y)
 	if (!new_vertex)
 	{
 		new_vertex = create_vertex(x, y);
-		add_vertex(&editor->vertex, x, y, true, &new_vertex->vertex_number);
+		add_vertex(&editor->vertex, x, y, true);
 	}
 	editor->last_vertex.x = new_vertex->x;
 	editor->last_vertex.y = new_vertex->y;

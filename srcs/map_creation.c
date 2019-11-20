@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 09:57:24 by nde-jesu          #+#    #+#             */
-/*   Updated: 2019/11/12 17:04:28 by reda-con         ###   ########.fr       */
+/*   Updated: 2019/11/20 18:13:58 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,13 @@ int				search_vertex_num(t_vertex *all, t_vertex *to_find)
 	}
 	return (-1);
 }
-
+#include <stdio.h>
 void			write_portals(t_sector *sect, int fd)
 {
 	int	i;
 
 	i = 0;
+	printf("%d\n", sect->vertex_count);
 	while (i < sect->vertex_count)
 	{
 		ft_putnbr_fd(sect->is_portal[i], fd);
@@ -66,6 +67,7 @@ static void		write_sectors(t_sector *sector, t_vertex *all, int fd)
 			write_vertex_sector(sect, all, fd);
 			ft_putchar_fd('\n', fd);
 		}
+		ft_putchar_fd('\n', fd);
 		sect = sect->next;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 10:04:36 by nde-jesu          #+#    #+#             */
-/*   Updated: 2019/11/12 17:39:51 by reda-con         ###   ########.fr       */
+/*   Updated: 2019/11/20 18:21:37 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	write_player(t_player player, t_vertex if_no_player, int fd)
 	ft_putnbr_fd(player.y, fd);
 	ft_putstr_fd(" angle ", fd);
 	ft_putnbr_fd(player.angle, fd);
-	ft_putchar_fd('\n', fd);
+	ft_putstr_fd("\n\n", fd);
 }
 
 void	write_enemies(t_entity *enemies, int fd)
@@ -47,6 +47,8 @@ void	write_enemies(t_entity *enemies, int fd)
 		ft_putchar_fd('\n', fd);
 		enemy = enemy->next;
 	}
+	if (enemy)
+		ft_putchar_fd('\n', fd);
 }
 
 void	write_objects(t_entity *objects, int fd)
@@ -67,6 +69,8 @@ void	write_objects(t_entity *objects, int fd)
 		ft_putchar_fd('\n', fd);
 		object = object->next;
 	}
+	if (object)
+		ft_putchar_fd('\n', fd);
 }
 
 void	write_vertexes(t_vertex *vertexes, int fd)
@@ -85,6 +89,8 @@ void	write_vertexes(t_vertex *vertexes, int fd)
 		ft_putchar_fd('\n', fd);
 		vertex = vertex->next;
 	}
+	if (vertex)
+		ft_putchar_fd('\n', fd);
 }
 
 void	write_vertex_sector(t_sector *sect, t_vertex *all, int fd)
@@ -95,6 +101,8 @@ void	write_vertex_sector(t_sector *sect, t_vertex *all, int fd)
 	vertex = sect->vertex;
 	while (vertex)
 	{
+		if (vertex)
+			printf("%d\n", vertex->vertex_number);
 		pos = search_vertex_num(all, vertex);
 		ft_putnbr_fd(pos, fd);
 		if (vertex->next)

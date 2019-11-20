@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 09:55:53 by nde-jesu          #+#    #+#             */
-/*   Updated: 2019/11/15 08:03:13 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2019/11/20 18:16:28 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,11 @@ static int			count_vertex_in_sector(t_vertex *vertex)
 
 	count = 0;
 	vert = vertex;
-	while (vert && count++)
+	while (vert)
+	{
 		vert = vert->next;
+		++count;
+	}
 	return (count);
 }
 
@@ -59,6 +62,7 @@ void	oui(t_sector *editor)
 		printf("%i\n", vertex->x);
 		vertex = vertex->next;
 	}
+		printf("\n");
 }
 
 void				place_sector(t_editor *editor, int x, int y)
@@ -87,7 +91,7 @@ void				place_sector(t_editor *editor, int x, int y)
 	}
 	else
 	{
-		add_vertex(&sect->vertex, x, y, false, &new->vertex_number);
+		add_vertex(&sect->vertex, x, y, false);
 		editor->sect_is_closed = false;
 	}
 	// oui(editor->sector);

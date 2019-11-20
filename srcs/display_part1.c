@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 08:56:26 by nde-jesu          #+#    #+#             */
-/*   Updated: 2019/11/15 15:54:14 by reda-con         ###   ########.fr       */
+/*   Updated: 2019/11/20 17:40:50 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,15 @@
 
 static int	get_wall_color(t_sector *sect, int *i)
 {
+	int	color;
+
 	if (sect->is_portal != NULL && *i >= sect->vertex_count)
 		*i = 0;
 	if (sect->is_portal != NULL && sect->is_portal[*i] != -1)
-		return (0x00ff00);
+		color = 0x00ff00;
 	else
-		return (0x0000ff);
+		color = 0x0000ff;
+	return (color);
 }
 
 static void	draw_walls(t_sdl *sdl, t_sector *sect, t_vertex *vertex, int color)
