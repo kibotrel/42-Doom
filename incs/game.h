@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 21:22:14 by kibotrel          #+#    #+#             */
-/*   Updated: 2019/11/13 04:31:53 by demonwaves       ###   ########.fr       */
+/*   Updated: 2019/11/19 16:28:26 by vivi             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,12 @@
 
 #include "structs.h"
 
+typedef struct  s_item
+{
+	int sector;
+	int sx1;
+	int sx2;
+}               t_item;
 /*
 **	keyboard.c
 */
