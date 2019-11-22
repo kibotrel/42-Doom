@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 13:09:05 by nde-jesu          #+#    #+#             */
-/*   Updated: 2019/11/20 17:10:01 by reda-con         ###   ########.fr       */
+/*   Updated: 2019/11/22 15:59:04 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ void			events(t_editor *editor)
 		{
 			if (editor->sdl.event.type == SDL_QUIT)
 			{
-				if (is_saved(editor) == true)
+				// if (is_saved(editor) == true)
 					editor->finish = true;
 			}
 			else if (editor->sdl.event.type == SDL_KEYDOWN)

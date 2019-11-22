@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 08:52:03 by nde-jesu          #+#    #+#             */
-/*   Updated: 2019/11/20 18:08:03 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2019/11/22 15:45:20 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,8 @@ typedef enum		e_settings
 	PORTAL, // Transform a wall into a portal
 	PLAYER, // Place the player
 	ENEMY, // Place enemies
-	OBJECT // Place objects
+	OBJECT, // Place objects
+	HEIGHT
 }					t_settings;
 
 /*
