@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 09:55:53 by nde-jesu          #+#    #+#             */
-/*   Updated: 2019/11/20 18:16:28 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2019/11/22 15:17:39 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,19 +51,6 @@ static t_sector		*get_last_sector(t_editor *editor)
 		sect = sect->next;
 	return (sect);
 }
-#include <stdio.h>
-void	oui(t_sector *editor)
-{
-	t_vertex *vertex;
-
-	vertex = editor->vertex;
-	while (vertex)
-	{
-		printf("%i\n", vertex->x);
-		vertex = vertex->next;
-	}
-		printf("\n");
-}
 
 void				place_sector(t_editor *editor, int x, int y)
 {
@@ -94,5 +81,4 @@ void				place_sector(t_editor *editor, int x, int y)
 		add_vertex(&sect->vertex, x, y, false);
 		editor->sect_is_closed = false;
 	}
-	// oui(editor->sector);
 }

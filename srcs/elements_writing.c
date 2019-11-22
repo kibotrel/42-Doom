@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 10:04:36 by nde-jesu          #+#    #+#             */
-/*   Updated: 2019/11/20 18:21:37 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2019/11/22 15:21:30 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	write_enemies(t_entity *enemies, int fd)
 		ft_putchar_fd('\n', fd);
 		enemy = enemy->next;
 	}
-	if (enemy)
+	if (enemies)
 		ft_putchar_fd('\n', fd);
 }
 
@@ -69,7 +69,7 @@ void	write_objects(t_entity *objects, int fd)
 		ft_putchar_fd('\n', fd);
 		object = object->next;
 	}
-	if (object)
+	if (objects)
 		ft_putchar_fd('\n', fd);
 }
 
@@ -89,7 +89,7 @@ void	write_vertexes(t_vertex *vertexes, int fd)
 		ft_putchar_fd('\n', fd);
 		vertex = vertex->next;
 	}
-	if (vertex)
+	if (vertexes)
 		ft_putchar_fd('\n', fd);
 }
 
@@ -101,8 +101,6 @@ void	write_vertex_sector(t_sector *sect, t_vertex *all, int fd)
 	vertex = sect->vertex;
 	while (vertex)
 	{
-		if (vertex)
-			printf("%d\n", vertex->vertex_number);
 		pos = search_vertex_num(all, vertex);
 		ft_putnbr_fd(pos, fd);
 		if (vertex->next)

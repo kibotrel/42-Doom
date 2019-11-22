@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 09:57:24 by nde-jesu          #+#    #+#             */
-/*   Updated: 2019/11/20 18:13:58 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2019/11/22 15:20:56 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,13 +30,12 @@ int				search_vertex_num(t_vertex *all, t_vertex *to_find)
 	}
 	return (-1);
 }
-#include <stdio.h>
+
 void			write_portals(t_sector *sect, int fd)
 {
 	int	i;
 
 	i = 0;
-	printf("%d\n", sect->vertex_count);
 	while (i < sect->vertex_count)
 	{
 		ft_putnbr_fd(sect->is_portal[i], fd);
@@ -67,18 +66,22 @@ static void		write_sectors(t_sector *sector, t_vertex *all, int fd)
 			write_vertex_sector(sect, all, fd);
 			ft_putchar_fd('\n', fd);
 		}
-		ft_putchar_fd('\n', fd);
 		sect = sect->next;
+		if (sect)
+			ft_putchar_fd('\n', fd);
 	}
 }
 
 static void		write_file(t_editor *editor, int fd)
 {
-	write_player(editor->player, *(editor->vertex), fd);
-	write_enemies(editor->enemy, fd);
-	write_objects(editor->object, fd);
-	write_vertexes(editor->vertex, fd);
-	write_sectors(editor->sector, editor->vertex, fd);
+	if (editor->vertex)
+	{
+		write_player(editor->player, *(editor->vertex), fd);
+		write_enemies(editor->enemy, fd);
+		write_objects(editor->object, fd);
+		write_vertexes(editor->vertex, fd);
+		write_sectors(editor->sector, editor->vertex, fd);
+	}
 }
 
 void			create_map(t_editor *editor)
