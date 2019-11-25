@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/18 14:38:11 by kibotrel          #+#    #+#             */
-/*   Updated: 2019/11/20 20:42:04 by vivi             ###   ########.fr       */
+/*   Updated: 2019/11/25 23:44:56 by demonwaves       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,9 +76,11 @@ static void	temporary_setup(t_env *env)
 	env->setup = 0;
 	env->zones = 1; //PARSER
 	ft_bzero(&env->cam, sizeof(t_cam));
-	env->cam.pos = v3d(6, 6, 0); //PARSER
+	env->cam.pos = v3d(2, 6, 0); //PARSER
 	env->cam.fov = v2d(0.75 * env->h, 0.2 * env->h);
 	env->cam.angle = 0;//PARSER
+	env->cam.cos = cos(env->cam.angle);
+	env->cam.sin = sin(env->cam.angle);
 	env->cam.sector = 0; //PARSER
 	env->cam.fall = 1;
 	if (!(env->sector = (t_sector*)malloc(sizeof(t_sector) * env->zones)))
@@ -99,20 +101,6 @@ static void	temporary_setup(t_env *env)
 	env->cam.pos.z = env->sector[env->cam.sector].floor + EyeHeight;
 }
 
-void		prompt(t_env *env)
-{
-	printf("NumSectors : %d\n", env->zones);
-	for (unsigned a = 0; a < env->zones; ++a)
-	{
-		for (unsigned b = 0; b < env->sector[a].points; ++b)
-		{
-			printf("sectors[%u].vertex[%u]    : [%.2f,%.2f]\n", a, b, env->sector[a].vertex[b].y, env->sector[a].vertex[b].x);
-			printf("sectors[%u].neighbors[%u] : [%d]\n",  a, b, env->sector[a].neighbor[b]);
-		}
-		printf("sectors[%u].npoints      : [%u]\n", a, env->sector[a].points);
-	}
-}
-
 void		game(t_env *env)
 {
 	if (!env->setup)
@@ -120,10 +108,8 @@ void		game(t_env *env)
 		SDL_SetWindowTitle(env->sdl.win, TITLE_GAME);
 		temporary_setup(env);
 	}
-	prompt(env);
-	exit(0);
 	t_item queue[32], *head=queue, *tail=queue;
-	int ytop[env->w], ybottom[env->w], renderedsectors[env->zones], i = 0;
+	int ytop[1280]={0}, ybottom[1280], renderedsectors[env->zones], i = 0;
 
 	for(int x = 0; x < env->w; ++x)
 		ybottom[x] = env->h - 1;
@@ -144,7 +130,6 @@ void		game(t_env *env)
 		const t_sector* const sect = &env->sector[now.sector];
 		for(unsigned s = 0; s < sect->points; ++s)
 		{
-			printf("Loop %u walls\n", i);
 			float vx1 = sect->vertex[s].x - env->cam.pos.x;
 			float vy1 = sect->vertex[s].y - env->cam.pos.y;
 			float vx2 = sect->vertex[(s + 1) % sect->points].x - env->cam.pos.x;
@@ -156,12 +141,7 @@ void		game(t_env *env)
 			float tx2 = vx2 * psin - vy2 * pcos;
 			float tz2 = vx2 * pcos + vy2 * psin;
 			if (tz1 <= 0 && tz2 <= 0)
-			{
-				printf("\tWall not even partially visible\n");
 				continue;
-			}
-			else
-				printf("\tWall at least partially visible\n");
 			if (tz1 <= 0 || tz2 <= 0)
 			{
 				float nearz = 1e-4f;
@@ -204,12 +184,7 @@ void		game(t_env *env)
 			int x1 = env->w / 2 - (int)(tx1 * xscale1);
 			int x2 = env->w / 2 - (int)(tx2 * xscale2);
 			if (x1 >= x2 || x2 < now.sx1 || x1 > now.sx2)
-			{
-				printf("\tWall not visible anymore after transformation\n");
 				continue;
-			}
-			else
-				printf("\tWall still visible\n");
 			float yceil = sect->ceil - env->cam.pos.z;
 			float yfloor = sect->floor - env->cam.pos.z;
 			int neighbor = sect->neighbor[s];
@@ -259,9 +234,7 @@ void		game(t_env *env)
 				}
 			}
 			if ( neighbor >= 0 && endx >= beginx && (head - tail + 33) % 32)
-			{
 				*head = (t_item){neighbor, beginx, endx};
-			}
 		}
 		++renderedsectors[now.sector];
 	}
