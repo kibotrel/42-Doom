@@ -6,70 +6,57 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 10:04:36 by nde-jesu          #+#    #+#             */
-/*   Updated: 2019/11/22 15:21:30 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2019/11/26 10:12:02 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "editor.h"
 #include "libft.h"
-
+#include <stdio.h>
 void	write_player(t_player player, t_vertex if_no_player, int fd)
 {
+	printf("%d\n", player.sector);
 	if (player.x == -1 && player.y == -1)
 	{
 		player.x = if_no_player.x;
 		player.y = if_no_player.y;
+		player.sector = 0;
 	}
 	ft_putstr_fd("player x ", fd);
 	ft_putnbr_fd(player.x, fd);
 	ft_putstr_fd(" y ", fd);
 	ft_putnbr_fd(player.y, fd);
+	ft_putstr_fd(" sector ", fd);
+	ft_putnbr_fd(player.sector, fd);
 	ft_putstr_fd(" angle ", fd);
 	ft_putnbr_fd(player.angle, fd);
 	ft_putstr_fd("\n\n", fd);
 }
 
-void	write_enemies(t_entity *enemies, int fd)
+void	write_entities(t_entity *entities, int fd, bool type)
 {
-	t_entity	*enemy;
+	t_entity	*entity;
 
-	enemy = enemies;
-	while (enemy)
+	entity = entities;
+	while (entity)
 	{
-		ft_putstr_fd("enemy number ", fd);
-		ft_putnbr_fd(enemy->number, fd);
+		if (type == true)
+			ft_putstr_fd("enemy number ", fd);
+		else
+			ft_putstr_fd("object number ", fd);
+		ft_putnbr_fd(entity->number, fd);
 		ft_putstr_fd(" x ", fd);
-		ft_putnbr_fd(enemy->x, fd);
+		ft_putnbr_fd(entity->x, fd);
 		ft_putstr_fd(" y ", fd);
-		ft_putnbr_fd(enemy->y, fd);
+		ft_putnbr_fd(entity->y, fd);
+		ft_putstr_fd(" sector ", fd);
+		ft_putnbr_fd(entity->sector, fd);
 		ft_putstr_fd(" type ", fd);
-		ft_putnbr_fd(enemy->type, fd);
+		ft_putnbr_fd(entity->type, fd);
 		ft_putchar_fd('\n', fd);
-		enemy = enemy->next;
+		entity = entity->next;
 	}
-	if (enemies)
-		ft_putchar_fd('\n', fd);
-}
-
-void	write_objects(t_entity *objects, int fd)
-{
-	t_entity	*object;
-
-	object = objects;
-	while (object)
-	{
-		ft_putstr_fd("object number ", fd);
-		ft_putnbr_fd(object->number, fd);
-		ft_putstr_fd(" x ", fd);
-		ft_putnbr_fd(object->x, fd);
-		ft_putstr_fd(" y ", fd);
-		ft_putnbr_fd(object->y, fd);
-		ft_putstr_fd(" type ", fd);
-		ft_putnbr_fd(object->type, fd);
-		ft_putchar_fd('\n', fd);
-		object = object->next;
-	}
-	if (objects)
+	if (entities)
 		ft_putchar_fd('\n', fd);
 }
 
@@ -80,8 +67,9 @@ void	write_vertexes(t_vertex *vertexes, int fd)
 	vertex = vertexes;
 	while (vertex)
 	{
-		ft_putstr_fd("vertex ", fd);
-		ft_putstr_fd("x ", fd);
+		ft_putstr_fd("vertex number ", fd);
+		ft_putnbr_fd(vertex->vertex_number, fd);
+		ft_putstr_fd(" x ", fd);
 		ft_putnbr_fd(vertex->x, fd);
 		ft_putchar_fd(' ', fd);
 		ft_putstr_fd("y ", fd);

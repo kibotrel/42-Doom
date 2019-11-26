@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 08:52:03 by nde-jesu          #+#    #+#             */
-/*   Updated: 2019/11/22 15:45:20 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2019/11/26 11:14:27 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ typedef enum		e_settings
 	PLAYER, // Place the player
 	ENEMY, // Place enemies
 	OBJECT, // Place objects
-	HEIGHT
+	MODIFY_SECTOR
 }					t_settings;
 
 /*
@@ -88,6 +88,8 @@ typedef struct		s_sector
 
 	int				h_ceil;
 	int				h_floor;
+
+	int				points_inside;
 
 	int				is_child;
 	int				*is_portal;
@@ -154,8 +156,7 @@ void	draw_line(SDL_Surface *surf, t_vertex start, t_vertex end, int color);
 
 void	write_vertex_sector(t_sector *sect, t_vertex *all, int fd);
 void	write_vertexes(t_vertex *vertexes, int fd);
-void	write_objects(t_entity *objects, int fd);
-void	write_enemies(t_entity *enemies, int fd);
+void	write_entities(t_entity *entities, int fd, bool type);
 void	write_player(t_player player, t_vertex if_no_player, int fd);
 
 //	entity.c
@@ -190,6 +191,12 @@ void		place_portal(t_editor *editor, int x, int y);
 
 int			intersects_count(t_vertex v1, t_vertex v2, t_vertex p1, t_vertex p2);
 int			is_in_sector(t_editor *edit, t_vertex point);
+bool		is_in_this_sector(t_vertex point, t_sector *sector);
+
+//	sector_check_2.c
+
+void			add_tmp_sector(t_sector *new, t_sector **lst);
+int				check_which_sector(t_sector *sectors);
 
 //	sector_utils.c
 
@@ -218,3 +225,7 @@ void		blank_menu(SDL_Surface *surf, int set);
 void		rectangle(t_vertex start, t_vertex end, int clr, SDL_Surface *surf);
 t_vertex	init_vertex(int x, int y);
 void		clic_editor_menu(int x, int y, t_editor *editor);
+
+//	height.c
+
+void	change_sector_height(t_editor *editor, int x, int y);

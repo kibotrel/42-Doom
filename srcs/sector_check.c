@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 15:01:10 by nde-jesu          #+#    #+#             */
-/*   Updated: 2019/11/15 15:55:30 by reda-con         ###   ########.fr       */
+/*   Updated: 2019/11/26 11:48:03 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,14 +59,29 @@ static int	inters(t_vertex *prev_vertex, t_vertex point, t_vertex extreme)
 	return (intersections);
 }
 
+#include <stdio.h>
+void	oui(t_sector *tmp)
+{
+	t_sector *sect;
+
+	sect = tmp;
+	while (sect)
+	{
+		printf("%d\n", sect->sector_number);
+		sect = sect->next;
+	}
+}
+
 int			is_in_sector(t_editor *edit, t_vertex point)
 {
 	int			intersects;
 	t_sector	*sect;
 	t_vertex	*vertex;
 	t_vertex	extreme;
+	t_sector	*tmp;
 
 	sect = edit->sector;
+	tmp = NULL;
 	while (sect)
 	{
 		extreme.x = EDIT_W;
@@ -74,8 +89,26 @@ int			is_in_sector(t_editor *edit, t_vertex point)
 		vertex = sect->vertex;
 		intersects = inters(vertex, point, extreme);
 		if (intersects % 2 == 1)
-			return (sect->sector_number);
+			add_tmp_sector(sect, &tmp);
 		sect = sect->next;
 	}
-	return (-1);
+	if (!tmp)
+		return (-1);
+	else
+		return (check_which_sector(tmp));
 }
+
+// bool	is_in_this_sector(t_vertex point, t_sector *sector)
+// {
+// 	int			intersects;
+// 	t_vertex	*vertex;
+// 	t_vertex	extreme;
+
+// 	extreme.x = EDIT_W;
+// 	extreme.y = point.y;
+// 	vertex = sector->vertex;
+// 	intersects = inters(vertex, point, extreme);
+// 	if (intersects % 2 == 1)
+// 		return (true);
+// 	return (false);
+// }

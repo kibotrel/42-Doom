@@ -6,7 +6,7 @@
 #    By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/10 16:16:29 by kibotrel          #+#    #+#              #
-#    Updated: 2019/11/20 17:06:39 by reda-con         ###   ########.fr        #
+#    Updated: 2019/11/25 14:29:44 by nde-jesu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -123,12 +123,14 @@ SRCS			+= map_creation.c
 SRCS			+= portal_utils.c
 SRCS			+= portal.c
 SRCS			+= sector_check.c
+SRCS			+= sector_check_2.c
 SRCS			+= sector_utils.c
 SRCS			+= sector.c
 SRCS			+= vertex.c
 SRCS			+= edit_menu.c
 SRCS			+= edit_menu_tools.c
 SRCS			+= events_tools.c
+SRCS			+= height.c
 
 
 #------------------------------ OPERATING SYSTEM ------------------------------#

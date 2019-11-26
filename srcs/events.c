@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 13:09:05 by nde-jesu          #+#    #+#             */
-/*   Updated: 2019/11/22 15:59:04 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2019/11/26 09:41:11 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,8 @@ static void		mouse(t_editor *editor, SDL_Event event)
 			place_entity(editor, event.motion.x, event.motion.y, 1);
 		else if (editor->sett == PORTAL)
 			place_portal(editor, event.motion.x, event.motion.y);
+		// else if (editor->sett == MODIFY_SECTOR)
+		// 	is_in_sector(editor, event.motion.x, event.motion.y);
 		editor->map_save = false;
 	}
 	else if (editor->sect_is_closed == true)
@@ -98,10 +100,7 @@ void			events(t_editor *editor)
 		while (SDL_PollEvent(&(editor->sdl.event)))
 		{
 			if (editor->sdl.event.type == SDL_QUIT)
-			{
-				// if (is_saved(editor) == true)
 					editor->finish = true;
-			}
 			else if (editor->sdl.event.type == SDL_KEYDOWN)
 				keydown(editor, editor->sdl.event);
 			else if (editor->sdl.event.type == SDL_MOUSEBUTTONDOWN)

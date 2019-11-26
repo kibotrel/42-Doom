@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 14:55:17 by nde-jesu          #+#    #+#             */
-/*   Updated: 2019/11/14 14:08:10 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2019/11/26 11:54:28 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,5 +91,6 @@ void				place_player(t_editor *editor, int x, int y)
 	{
 		editor->player.x = player.x;
 		editor->player.y = player.y;
+		editor->player.sector = player.sector;
 	}
 }

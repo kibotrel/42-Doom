@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 09:57:24 by nde-jesu          #+#    #+#             */
-/*   Updated: 2019/11/22 15:20:56 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2019/11/26 10:20:47 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,10 +64,11 @@ static void		write_sectors(t_sector *sector, t_vertex *all, int fd)
 			ft_putnbr_fd(sect->vertex_count, fd);
 			ft_putstr_fd(" vertexes ", fd);
 			write_vertex_sector(sect, all, fd);
-			ft_putchar_fd('\n', fd);
+			if (sect->next)
+				ft_putchar_fd('\n', fd);
 		}
 		sect = sect->next;
-		if (sect)
+		if (sector)
 			ft_putchar_fd('\n', fd);
 	}
 }
@@ -77,8 +78,8 @@ static void		write_file(t_editor *editor, int fd)
 	if (editor->vertex)
 	{
 		write_player(editor->player, *(editor->vertex), fd);
-		write_enemies(editor->enemy, fd);
-		write_objects(editor->object, fd);
+		write_entities(editor->enemy, fd, true);
+		write_entities(editor->object, fd, false);
 		write_vertexes(editor->vertex, fd);
 		write_sectors(editor->sector, editor->vertex, fd);
 	}
