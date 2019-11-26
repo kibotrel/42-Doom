@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/16 11:54:25 by kibotrel          #+#    #+#             */
-/*   Updated: 2019/11/11 12:43:51 by demonwaves       ###   ########.fr       */
+/*   Updated: 2019/11/26 05:39:58 by demonwaves       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,16 @@
 **	Useful values
 */
 
-# define WIN_W			1280
+# define CAM_H			6
 # define WIN_H			720
+# define WIN_W			1280
+# define SNEAK_H		2.5
+# define QUEUE_MAX		32
 # define MAX_WIDTH		1920
 # define RATIO_UI_X		8
 # define RATIO_UI_Y		9
+# define MARGIN_HEAD	1
+# define MARGIN_KNEE	2
 # define MAX_FONT_SIZE	64
 
 /*
@@ -47,7 +52,7 @@
 # define TXT_MENU		" - Menu"
 # define TXT_EDITOR		" - Editor"
 # define TXT_SETTINGS	" - Settings"
-# define TXT_WINDOW		"Doom-Nukem v0.0.3"
+# define TXT_WINDOW		"Doom-Nukem v0.1.1"
 
 # define TITLE_MENU		TXT_WINDOW TXT_MENU
 # define TITLE_GAME		TXT_WINDOW TXT_GAME

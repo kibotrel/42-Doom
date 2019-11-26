@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/19 16:28:40 by kibotrel          #+#    #+#             */
-/*   Updated: 2019/11/11 11:11:28 by demonwaves       ###   ########.fr       */
+/*   Updated: 2019/11/26 03:03:27 by demonwaves       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,4 +34,23 @@ void	paste_position(SDL_Rect *pos, t_pos scale)
 {
 	pos->x = scale.x;
 	pos->y = scale.y;
+}
+
+t_vec2d	v2d(double x, double y)
+{
+	t_vec2d	p;
+
+	p.x = x;
+	p.y = y;
+	return (p);
+}
+
+t_vec3d	v3d(double x, double y, double z)
+{
+	t_vec3d	p;
+
+	p.x = x;
+	p.y = y;
+	p.z = z;
+	return (p);
 }

@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/18 14:38:11 by kibotrel          #+#    #+#             */
-/*   Updated: 2019/11/25 23:44:56 by demonwaves       ###   ########.fr       */
+/*   Updated: 2019/11/26 02:36:13 by demonwaves       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,59 +17,6 @@
 #include "clean.h"
 #include "libft.h"
 #include "utils.h"
-
-#define EyeHeight	6    // Camera height from floor when standing
-#define DuckHeight	2.5  // And when crouching
-#define HeadMargin	1    // How much room there is above camera before the head hits the ceiling
-#define KneeHeight	2    // How tall obstacles the player can simply walk over without jumping
-
-#define min(a,b)										(((a) < (b)) ? (a) : (b))
-#define max(a,b)										(((a) > (b)) ? (a) : (b))
-#define clamp(a, mi,ma)									min(max(a,mi),ma)
-#define vxs(x0, y0, x1, y1)								((x0) * (y1) - (x1) * (y0))
-#define Overlap(a0,a1,b0,b1)							(min(a0, a1) <= max(b0, b1) && min(b0, b1) <= max(a0, a1))
-#define IntersectBox(x0, y0, x1, y1, x2, y2, x3, y3)	(Overlap(x0, x1, x2, x3) && Overlap(y0, y1, y2, y3))
-#define PointSide(px , py, x0 , y0, x1 , y1) 			vxs((x1) - (x0), (y1) - (y0), (px) - (x0), (py) - (y0))
-#define Intersect(x1, y1, x2, y2, x3, y3, x4, y4) 		((t_vec2d) {vxs(vxs(x1, y1, x2, y2), (x1) - (x2), vxs(x3, y3, x4, y4), (x3) - (x4)) / vxs((x1) - (x2), (y1)- (y2), (x3)- (x4), (y3)- (y4)), vxs(vxs(x1, y1, x2, y2), (y1) - (y2), vxs(x3, y3, x4, y4), (y3) - (y4)) / vxs((x1) - (x2), (y1) - (y2), (x3) - (x4), (y3) - (y4))})
-
-static t_vec2d v2d(double x, double y)
-{
-	t_vec2d	p;
-
-	p.x = x;
-	p.y = y;
-	return (p);
-}
-
-static t_vec3d v3d(double x, double y, double z)
-{
-	t_vec3d	p;
-
-	p.x = x;
-	p.y = y;
-	p.z = z;
-	return (p);
-}
-
-/* vline: Draw a vertical line on screen, with a different color pixel in top & bottom */
-static void draw_slice(t_env *env, int x, int y1, int y2, int top, int middle, int bottom)
-{
-	t_pos	p;
-
-	y1 = clamp(y1, 0, env->h - 1);
-	y2 = clamp(y2, 0, env->h - 1);
-	p.x = x;
-	p.y = y1;
-	if(y2 == y1)
-		draw_pixel(env, env->sdl.screen, p, middle);
-	else if(y2 > y1)
-	{
-		draw_pixel(env, env->sdl.screen, p, top);
-		while (++p.y < y2)
-			draw_pixel(env, env->sdl.screen, p, middle);
-		draw_pixel(env, env->sdl.screen, p, bottom);
-	}
-}
 
 static void	temporary_setup(t_env *env)
 {
@@ -98,7 +45,7 @@ static void	temporary_setup(t_env *env)
 	env->sector[0].points = 4;
 	for (unsigned i = 0; i < env->sector[0].points; i++)
 		env->sector[0].neighbor[i] = -1; //PARSER
-	env->cam.pos.z = env->sector[env->cam.sector].floor + EyeHeight;
+	env->cam.pos.z = env->sector[env->cam.sector].floor + CAM_H;
 }
 
 void		game(t_env *env)
@@ -108,135 +55,5 @@ void		game(t_env *env)
 		SDL_SetWindowTitle(env->sdl.win, TITLE_GAME);
 		temporary_setup(env);
 	}
-	t_item queue[32], *head=queue, *tail=queue;
-	int ytop[1280]={0}, ybottom[1280], renderedsectors[env->zones], i = 0;
-
-	for(int x = 0; x < env->w; ++x)
-		ybottom[x] = env->h - 1;
-	for(unsigned n = 0; n < env->zones; ++n)
-		renderedsectors[n] = 0;
-	*head = (t_item){env->cam.sector, 0, env->w - 1};
-	if (++head == queue + 32)
-		head = queue;
-    while(i == 0 || head != tail)
-	{
-		i = 1;
-		const t_item now = *tail;
-		if (++tail == queue + 32)
-			tail = queue;
-		if (renderedsectors[now.sector] & 0x21)
-			continue;
-		++renderedsectors[now.sector];
-		const t_sector* const sect = &env->sector[now.sector];
-		for(unsigned s = 0; s < sect->points; ++s)
-		{
-			float vx1 = sect->vertex[s].x - env->cam.pos.x;
-			float vy1 = sect->vertex[s].y - env->cam.pos.y;
-			float vx2 = sect->vertex[(s + 1) % sect->points].x - env->cam.pos.x;
-			float vy2 = sect->vertex[(s + 1) % sect->points].y - env->cam.pos.y;
-			float pcos = env->cam.cos;
-			float psin = env->cam.sin;
-			float tx1 = vx1 * psin - vy1 * pcos;
-			float tz1 = vx1 * pcos + vy1 * psin;
-			float tx2 = vx2 * psin - vy2 * pcos;
-			float tz2 = vx2 * pcos + vy2 * psin;
-			if (tz1 <= 0 && tz2 <= 0)
-				continue;
-			if (tz1 <= 0 || tz2 <= 0)
-			{
-				float nearz = 1e-4f;
-				float farz = 5;
-				float nearside = 1e-5f;
-				float farside = 20.f;
-				t_vec2d i1 = Intersect(tx1,tz1,tx2,tz2, -nearside,nearz, -farside,farz);
-	 			t_vec2d i2 = Intersect(tx1,tz1,tx2,tz2,  nearside,nearz,  farside,farz);
-				if (tz1 < nearz)
-				{
-					if (i1.y > 0)
-					{
-						tx1 = i1.x;
-						tz1 = i1.y;
-					}
-					else
-					{
-						tx1 = i2.x;
-						tz1 = i2.y;
-					}
-				}
- 				if (tz2 < nearz)
-				{
-					if (i1.y > 0)
-					{
-						tx2 = i1.x;
-						tz2 = i1.y;
-					}
-					else
-					{
-						tx2 = i2.x;
-						tz2 = i2.y;
-					}
-				}
-			}
-			float xscale1 = env->cam.fov.x / tz1;
-			float yscale1 = env->cam.fov.y / tz1;
-			float xscale2 = env->cam.fov.x / tz2;
-			float yscale2 = env->cam.fov.y / tz2;
-			int x1 = env->w / 2 - (int)(tx1 * xscale1);
-			int x2 = env->w / 2 - (int)(tx2 * xscale2);
-			if (x1 >= x2 || x2 < now.sx1 || x1 > now.sx2)
-				continue;
-			float yceil = sect->ceil - env->cam.pos.z;
-			float yfloor = sect->floor - env->cam.pos.z;
-			int neighbor = sect->neighbor[s];
-			float nyceil = 0;
-			float nyfloor = 0;
-			if (neighbor >= 0)
-			{
-				nyceil  = env->sector[neighbor].ceil  - env->cam.pos.z;
-				nyfloor = env->sector[neighbor].floor - env->cam.pos.z;
-			}
-			#define Yaw(y , z) (y + z * env->cam.gap)
-			int y1a = env->h / 2 - (int)(Yaw(yceil, tz1) * yscale1);
-			int y1b = env->h / 2 - (int)(Yaw(yfloor, tz1) * yscale1);
-			int y2a = env->h / 2 - (int)(Yaw(yceil, tz2) * yscale2);
-			int y2b = env->h / 2 - (int)(Yaw(yfloor, tz2) * yscale2);
-			int ny1a = env->h / 2 - (int)(Yaw(nyceil, tz1) * yscale1);
-			int ny1b = env->h / 2 - (int)(Yaw(nyfloor, tz1) * yscale1);
-			int ny2a = env->h / 2 - (int)(Yaw(nyceil, tz2) * yscale2);
-			int ny2b = env->h / 2 - (int)(Yaw(nyfloor, tz2) * yscale2);
-			int beginx = max(x1, now.sx1);
-			int endx = min(x2, now.sx2);
-			for(int x = beginx; x <= endx; ++x)
-			{
-				int z = ((x - x1) * (tz2 - tz1) / (x2 - x1) + tz1) * 8;
-				int ya = (x - x1) * (y2a - y1a) / (x2 - x1) + y1a;
-				int cya = clamp(ya, ytop[x],ybottom[x]);
-				int yb = (x - x1) * (y2b - y1b) / (x2 - x1) + y1b;
-				int cyb = clamp(yb, ytop[x], ybottom[x]);
-				draw_slice(env, x, ytop[x], cya - 1, 0x111111 ,0x222222,0x111111);
-				draw_slice(env, x, cyb + 1, ybottom[x], 0x0000FF,0x0000AA,0x0000FF);
-				if (neighbor >= 0)
-				{
-					int nya = (x - x1) * (ny2a - ny1a) / (x2 - x1) + ny1a;
-					int cnya = clamp(nya, ytop[x],ybottom[x]);
-					int nyb = (x - x1) * (ny2b - ny1b) / (x2 - x1) + ny1b;
-					int cnyb = clamp(nyb, ytop[x], ybottom[x]);
-					unsigned r1 = 0x010101 * (255 - z), r2 = 0x040007 * (31 - z / 8);
-					draw_slice(env, x, cya, cnya - 1, 0, x == x1 || x == x2 ? 0 : r1, 0);
-					ytop[x] = clamp(max(cya, cnya), ytop[x], env->h - 1);
-					draw_slice(env, x, cnyb + 1, cyb, 0, x == x1 || x == x2 ? 0 : r2, 0);
-					ybottom[x] = clamp(min(cyb, cnyb), 0, ybottom[x]);
-				}
-				else
-				{
-					unsigned r = 0x010101 * (255-z);
-					draw_slice(env, x, cya, cyb, 0, x == x1 || x == x2 ? 0 : r, 0);
-				}
-			}
-			if ( neighbor >= 0 && endx >= beginx && (head - tail + 33) % 32)
-				*head = (t_item){neighbor, beginx, endx};
-		}
-		++renderedsectors[now.sector];
-	}
-	//	physics_engine(env);
+	engine(env);
 }

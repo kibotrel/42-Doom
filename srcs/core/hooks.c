@@ -6,27 +6,15 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/16 12:45:38 by kibotrel          #+#    #+#             */
-/*   Updated: 2019/11/25 23:36:24 by demonwaves       ###   ########.fr       */
+/*   Updated: 2019/11/26 02:39:09 by demonwaves       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "env.h"
 #include "core.h"
 #include "clean.h"
+#include "utils.h"
 #include "events.h"
-
-#define HeadMargin	1
-#define KneeHeight	2
-#define EyeHeight	6
-#define DuckHeight	2.5
-#define min(a,b)										(((a) < (b)) ? (a) : (b))
-#define max(a,b)										(((a) > (b)) ? (a) : (b))
-#define clamp(a, mi,ma)									min(max(a,mi),ma)
-#define vxs(x0, y0, x1, y1)								((x0) * (y1) - (x1) * (y0))
-#define Overlap(a0,a1,b0,b1)							(min(a0, a1) <= max(b0, b1) && min(b0, b1) <= max(a0, a1))
-#define IntersectBox(x0, y0, x1, y1, x2, y2, x3, y3)	(Overlap(x0, x1, x2, x3) && Overlap(y0, y1, y2, y3))
-#define PointSide(px , py, x0 , y0, x1 , y1) 			vxs((x1) - (x0), (y1) - (y0), (px) - (x0), (py) - (y0))
-#define Intersect(x1, y1, x2, y2, x3, y3, x4, y4) 		((t_vec2d) {vxs(vxs(x1, y1, x2, y2), (x1) - (x2), vxs(x3, y3, x4, y4), (x3) - (x4)) / vxs((x1) - (x2), (y1)- (y2), (x3)- (x4), (y3)- (y4)), vxs(vxs(x1, y1, x2, y2), (y1) - (y2), vxs(x3, y3, x4, y4), (y3) - (y4)) / vxs((x1) - (x2), (y1) - (y2), (x3) - (x4), (y3) - (y4))})
 
 
 /* MovePlayer(dx,dy): Moves the player by (dx,dy) in the map, and
@@ -84,7 +72,7 @@ void	hooks(t_env *env, t_sdl *sdl)
 			clean(env, E_SDL_UPDATE);
 		if (env->win == GAME)
 		{
-			float eyeheight = env->cam.sneak ? DuckHeight : EyeHeight;
+			float eyeheight = env->cam.sneak ? SNEAK_H : CAM_H;
 			// Vertical collisions
 			env->cam.ground = !env->cam.fall;
 			if (env->cam.fall) //gravity
@@ -128,7 +116,7 @@ void	hooks(t_env *env, t_sdl *sdl)
 						float hole_low = sect->neighbor[s] < 0 ?  9e9 : max(sect->floor, env->sector[sect->neighbor[s]].floor);
 						float hole_high = sect->neighbor[s] < 0 ? -9e9 : min(sect->ceil, env->sector[sect->neighbor[s]].ceil);
 						/* Check whether we're bumping into a wall. */
-						if (hole_high < env->cam.pos.z + HeadMargin || hole_low > env->cam.pos.z - eyeheight + KneeHeight)
+						if (hole_high < env->cam.pos.z + MARGIN_HEAD || hole_low > env->cam.pos.z - eyeheight + MARGIN_KNEE)
 						{
 							/* Bumps into a wall! Slide along the wall. */
 							/* This formula is from Wikipedia article "vector projection". */

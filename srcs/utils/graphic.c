@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/17 11:08:34 by kibotrel          #+#    #+#             */
-/*   Updated: 2019/10/26 23:36:42 by demonwaves       ###   ########.fr       */
+/*   Updated: 2019/11/26 02:31:40 by demonwaves       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,5 +75,24 @@ void	draw_line(t_env *env, t_pos start, t_pos end, uint32_t color)
 		}
 		if (p.x >= 0 && p.x <= env->w && p.y >= 0 && p.y <= env->h)
 			draw_pixel(env, env->sdl.screen, p, color);
+	}
+}
+
+void	draw_slice(t_env *env, int x, int y1, int y2, int top, int middle, int bottom)
+{
+	t_pos		p;
+
+	y1 = clamp(y1, 0, env->h - 1);
+	y2 = clamp(y2, 0, env->h - 1);
+	p.x = x;
+	p.y = y1;
+	if(y2 == y1)
+		draw_pixel(env, env->sdl.screen, p, middle);
+	else if(y2 > y1)
+	{
+		draw_pixel(env, env->sdl.screen, p, top);
+		while (++p.y < y2)
+			draw_pixel(env, env->sdl.screen, p, middle);
+		draw_pixel(env, env->sdl.screen, p, bottom);
 	}
 }
