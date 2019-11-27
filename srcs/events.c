@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 13:09:05 by nde-jesu          #+#    #+#             */
-/*   Updated: 2019/11/27 15:34:34 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2019/11/27 17:11:05 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,13 +89,13 @@ static void		keydown(t_editor *editor, SDL_Event event)
 	if (editor->sect_is_closed == true)
 	{
 		next_keydown(event, editor->sdl.surf, editor);
-		blank_menu(editor->sdl.surf, editor->sett);
+		blank_menu(editor->sdl.surf, editor->sett, editor->sdl);
 	}
 }
 
 void			events(t_editor *editor)
 {
-	display_menu(editor->sdl.surf, editor->sett);
+	blank_menu(editor->sdl.surf, editor->sett, editor->sdl);
 	while (editor->finish == false)
 	{
 		while (SDL_PollEvent(&(editor->sdl.event)))
@@ -108,7 +108,6 @@ void			events(t_editor *editor)
 				mouse(editor, editor->sdl.event);
 			else if (editor->sdl.event.type == SDL_MOUSEMOTION)
 				motion(editor->sdl, editor->sett);
-			sett_square(editor->sett, editor->sdl.surf, &editor->sdl);
 		}
 		display_editor(editor);
 		if (SDL_UpdateWindowSurface(editor->sdl.win) != 0)
