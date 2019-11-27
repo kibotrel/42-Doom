@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 13:09:05 by nde-jesu          #+#    #+#             */
-/*   Updated: 2019/11/27 10:24:40 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2019/11/27 12:54:44 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static bool		is_saved(t_editor *editor)
 		return (true);
 	}
 }
-#include <stdio.h>
+
 static void		display_editor(t_editor *editor)
 {
 	t_vertex	mouse;
@@ -46,8 +46,6 @@ static void		display_editor(t_editor *editor)
 		mouse.y = (editor->sdl.event.motion.y / editor->dist_grid)
 			* editor->dist_grid;
 		display_mouse(&editor->sdl, mouse, 0x0ff0f0);
-		if (editor->sdl.event.type == SDL_MOUSEBUTTONDOWN && editor->sdl.event.button.button == SDL_BUTTON_RIGHT)
-			printf("mouse : %d %d\n", mouse.x, mouse.y);
 	}
 	display_line(editor, editor->sdl.event.motion.x,
 			editor->sdl.event.motion.y);
