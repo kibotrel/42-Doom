@@ -6,7 +6,7 @@
 /*   By: reda-con <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2009/11/19 13:07:32 by reda-con          #+#    #+#             */
-/*   Updated: 2019/11/20 15:10:01 by reda-con         ###   ########.fr       */
+/*   Updated: 2019/11/27 14:42:04 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,46 +32,53 @@ void			clic_editor_menu(int x, int y, t_editor *editor)
 
 void			sett_square(int sett, SDL_Surface *s)
 {
-	rectangle(init_vertex(1350, 150), init_vertex(1400, 200), 0x1e1e1e, s);
-	rectangle(init_vertex(1350, 250), init_vertex(1400, 300), 0x1e1e1e, s);
-	rectangle(init_vertex(1350, 350), init_vertex(1400, 400), 0x1e1e1e, s);
-	rectangle(init_vertex(1350, 450), init_vertex(1400, 500), 0x1e1e1e, s);
-	rectangle(init_vertex(1350, 550), init_vertex(1400, 600), 0x1e1e1e, s);
 	if (sett == SECTOR)
-		rectangle(init_vertex(1350, 150), init_vertex(1400, 200), 0xffa500, s);
-	else if (sett == PLAYER)
-		rectangle(init_vertex(1350, 250), init_vertex(1400, 300), 0xffa500, s);
-	else if (sett == ENEMY)
-		rectangle(init_vertex(1350, 350), init_vertex(1400, 400), 0xffa500, s);
-	else if (sett == OBJECT)
-		rectangle(init_vertex(1350, 450), init_vertex(1400, 500), 0xffa500, s);
-	else if (sett == PORTAL)
-		rectangle(init_vertex(1350, 550), init_vertex(1400, 600), 0xffa500, s);
+	{
+		square(1600, 200, 0xff0000, s);
+		rectangle(init_vertex(1540, 140), init_vertex(1710, 210), 0xffffff, s);
+		square(1600, 300, 0xffff00, s);
+		rectangle(init_vertex(1540, 240), init_vertex(1710, 310), 0xffffff, s);
+		square(1600, 400, 0x177013, s);
+		rectangle(init_vertex(1540, 340), init_vertex(1710, 410), 0xffffff, s);
+	}
+	if (sett == PLAYER)
+	{
+		square(1600, 200, 0xff0000, s);
+		rectangle(init_vertex(1540, 140), init_vertex(1710, 210), 0xffffff, s);
+		square(1600, 300, 0xffff00, s);
+		rectangle(init_vertex(1540, 240), init_vertex(1710, 310), 0xffffff, s);
+	}
+	if (sett == ENEMY)
+	{
+		square(1600, 200, 0xff0000, s);
+		rectangle(init_vertex(1540, 140), init_vertex(1710, 210), 0xffffff, s);
+		square(1600, 300, 0xffff00, s);
+		rectangle(init_vertex(1540, 240), init_vertex(1710, 310), 0xffffff, s);
+		square(1600, 400, 0x177013, s);
+		rectangle(init_vertex(1540, 340), init_vertex(1710, 410), 0xffffff, s);
+		square(1600, 500, 0xff00ff, s);
+		rectangle(init_vertex(1540, 440), init_vertex(1710, 510), 0xffffff, s);
+		square(1600, 600, 0x00ffff, s);
+		rectangle(init_vertex(1540, 540), init_vertex(1710, 610), 0xffffff, s);
+	}
+	if (sett == OBJECT)
+	{
+		square(1600, 200, 0xff0000, s);
+		rectangle(init_vertex(1540, 140), init_vertex(1710, 210), 0xffffff, s);
+		square(1600, 300, 0xffff00, s);
+		rectangle(init_vertex(1540, 240), init_vertex(1710, 310), 0xffffff, s);
+		square(1600, 400, 0x177013, s);
+		rectangle(init_vertex(1540, 340), init_vertex(1710, 410), 0xffffff, s);
+		square(1600, 500, 0xff00ff, s);
+		rectangle(init_vertex(1540, 440), init_vertex(1710, 510), 0xffffff, s);
+		square(1600, 600, 0x00ffff, s);
+		rectangle(init_vertex(1540, 540), init_vertex(1710, 610), 0xffffff, s);
+	}
 }
 
 void			display_menu(SDL_Surface *s, int set)
 {
-	int		x;
-	int		y;
-
-	x = EDIT_W;
-	while (x < (MENU_W + EDIT_W))
-	{
-		y = 0;
-		while (y < WIN_H)
-		{
-			put_pixel(s, x, y, 0x1e1e1e);
-			++y;
-		}
-		++x;
-	}
-	square(1400, 200, 0x0000ff, s);
-	square(1400, 300, 0xff00ff, s);
-	square(1400, 400, 0xff0000, s);
-	square(1400, 500, 0x8b4513, s);
-	square(1400, 600, 0x00ff00, s);
 	blank_menu(s, set);
-	rectangle(init_vertex(1340, 140), init_vertex(1510, 210), 0x5f287e, s);
 }
 
 void			motion(t_sdl s, int set)
