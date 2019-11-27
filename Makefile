@@ -6,7 +6,7 @@
 #    By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/10 16:16:29 by kibotrel          #+#    #+#              #
-#    Updated: 2019/11/25 14:29:44 by nde-jesu         ###   ########.fr        #
+#    Updated: 2019/11/27 14:49:16 by nde-jesu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -131,6 +131,7 @@ SRCS			+= edit_menu.c
 SRCS			+= edit_menu_tools.c
 SRCS			+= events_tools.c
 SRCS			+= height.c
+SRCS			+= text.c
 
 
 #------------------------------ OPERATING SYSTEM ------------------------------#

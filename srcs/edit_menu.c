@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   edit_menu.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: reda-con <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2009/11/19 13:07:32 by reda-con          #+#    #+#             */
-/*   Updated: 2019/11/27 14:42:04 by reda-con         ###   ########.fr       */
+/*   Updated: 2019/11/27 15:24:46 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void			clic_editor_menu(int x, int y, t_editor *editor)
 	}
 }
 
-void			sett_square(int sett, SDL_Surface *s)
+void			sett_square(int sett, SDL_Surface *s, t_sdl *sdl)
 {
 	if (sett == SECTOR)
 	{
@@ -41,27 +41,14 @@ void			sett_square(int sett, SDL_Surface *s)
 		square(1600, 400, 0x177013, s);
 		rectangle(init_vertex(1540, 340), init_vertex(1710, 410), 0xffffff, s);
 	}
-	if (sett == PLAYER)
+	else if (sett == PLAYER)
 	{
 		square(1600, 200, 0xff0000, s);
 		rectangle(init_vertex(1540, 140), init_vertex(1710, 210), 0xffffff, s);
 		square(1600, 300, 0xffff00, s);
 		rectangle(init_vertex(1540, 240), init_vertex(1710, 310), 0xffffff, s);
 	}
-	if (sett == ENEMY)
-	{
-		square(1600, 200, 0xff0000, s);
-		rectangle(init_vertex(1540, 140), init_vertex(1710, 210), 0xffffff, s);
-		square(1600, 300, 0xffff00, s);
-		rectangle(init_vertex(1540, 240), init_vertex(1710, 310), 0xffffff, s);
-		square(1600, 400, 0x177013, s);
-		rectangle(init_vertex(1540, 340), init_vertex(1710, 410), 0xffffff, s);
-		square(1600, 500, 0xff00ff, s);
-		rectangle(init_vertex(1540, 440), init_vertex(1710, 510), 0xffffff, s);
-		square(1600, 600, 0x00ffff, s);
-		rectangle(init_vertex(1540, 540), init_vertex(1710, 610), 0xffffff, s);
-	}
-	if (sett == OBJECT)
+	else if (sett == ENEMY)
 	{
 		square(1600, 200, 0xff0000, s);
 		rectangle(init_vertex(1540, 140), init_vertex(1710, 210), 0xffffff, s);
@@ -74,6 +61,20 @@ void			sett_square(int sett, SDL_Surface *s)
 		square(1600, 600, 0x00ffff, s);
 		rectangle(init_vertex(1540, 540), init_vertex(1710, 610), 0xffffff, s);
 	}
+	else if (sett == OBJECT)
+	{
+		square(1600, 200, 0xff0000, s);
+		rectangle(init_vertex(1540, 140), init_vertex(1710, 210), 0xffffff, s);
+		square(1600, 300, 0xffff00, s);
+		rectangle(init_vertex(1540, 240), init_vertex(1710, 310), 0xffffff, s);
+		square(1600, 400, 0x177013, s);
+		rectangle(init_vertex(1540, 340), init_vertex(1710, 410), 0xffffff, s);
+		square(1600, 500, 0xff00ff, s);
+		rectangle(init_vertex(1540, 440), init_vertex(1710, 510), 0xffffff, s);
+		square(1600, 600, 0x00ffff, s);
+		rectangle(init_vertex(1540, 540), init_vertex(1710, 610), 0xffffff, s);
+	}
+	print_param_in_param(sdl, sett);
 }
 
 void			display_menu(SDL_Surface *s, int set)

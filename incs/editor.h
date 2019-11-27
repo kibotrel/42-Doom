@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 08:52:03 by nde-jesu          #+#    #+#             */
-/*   Updated: 2019/11/27 13:29:46 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2019/11/27 15:35:06 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -221,7 +221,7 @@ t_vertex 	*get_vertex(t_editor *editor, int x, int y);
 
 void		display_menu(SDL_Surface *surf, int sett);
 void		motion(t_sdl sdl, int sett);
-void		sett_square(int sett, SDL_Surface *s);
+void		sett_square(int sett, SDL_Surface *s, t_sdl *sdl);
 
 //	edit_menu_tools.c
 
@@ -234,3 +234,8 @@ void		clic_editor_menu(int x, int y, t_editor *editor);
 //	height.c
 
 void	change_sector_height(t_editor *editor, int x, int y);
+
+//	text.c
+
+void	print_param_to_screen(t_sdl *sdl);
+void	print_param_in_param(t_sdl *sdl, t_settings sett);
