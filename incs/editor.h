@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 08:52:03 by nde-jesu          #+#    #+#             */
-/*   Updated: 2019/11/26 11:14:27 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2019/11/27 10:55:29 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ typedef struct 		s_entity
 	int				type;
 	int				number;
 	int				sector;
+	struct s_entity	*prev;
 	struct s_entity	*next;
 }					t_entity;
 
@@ -94,6 +95,7 @@ typedef struct		s_sector
 	int				is_child;
 	int				*is_portal;
 
+	struct s_sector *prev;
 	struct s_sector	*next;
 }					t_sector;
 

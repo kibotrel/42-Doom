@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 14:55:17 by nde-jesu          #+#    #+#             */
-/*   Updated: 2019/11/26 11:54:28 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2019/11/27 11:14:47 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ static void			add_enemy(t_entity **enemy, t_entity *new)
 		prev_enemy = *enemy;
 		while (prev_enemy->next)
 			prev_enemy = prev_enemy->next;
+		new->prev = prev_enemy;
 		prev_enemy->next = new;
 	}
 }
@@ -55,6 +56,7 @@ static void			add_object(t_entity **object, t_entity *new)
 		prev_object = *object;
 		while (prev_object->next)
 			prev_object = prev_object->next;
+		new->prev = prev_object;
 		prev_object->next = new;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 09:55:53 by nde-jesu          #+#    #+#             */
-/*   Updated: 2019/11/26 11:48:25 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2019/11/27 11:15:15 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ static t_sector		*get_last_sector(t_editor *editor)
 		sect = sect->next;
 	return (sect);
 }
-
+// #include <stdio.h>
 // void		check_points_inside(t_editor *editor, t_sector *sector)
 // {
 // 	int			x;
@@ -69,14 +69,17 @@ static t_sector		*get_last_sector(t_editor *editor)
 // 				point.x = x;
 // 				point.y = y;
 // 				if (is_in_this_sector(point, sector) == true)
-// 					++sector->points_inside;
+// 			 	{
+// 				 	++sector->points_inside;
+// 					printf("%d %d\n", x ,y);
+// 				}
 // 			}
 // 			++x;
 // 		}
 // 		++y;
 // 	}
 // }
-// #include <stdio.h>
+
 void				place_sector(t_editor *editor, int x, int y)
 {
 	t_vertex	*new;
@@ -97,11 +100,12 @@ void				place_sector(t_editor *editor, int x, int y)
 		if (sect->is_child != -1)
 			sect->is_portal[1] = sect->is_child;
 		sect->next = create_sector();
+		sect->next->prev = sect;
 		editor->sect_is_closed = true;
 		editor->last_vertex.x = -1;
 		editor->last_vertex.y = -1;
 		// check_points_inside(editor, sect);
-		printf("%d\n", sect->points_inside);
+		// printf("%d\n", sect->points_inside);
 	}
 	else
 	{
