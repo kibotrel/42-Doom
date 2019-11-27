@@ -6,15 +6,16 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 08:52:03 by nde-jesu          #+#    #+#             */
-/*   Updated: 2019/11/27 10:55:29 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2019/11/27 13:29:46 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef EDITOR_H
 # define EDITOR_H
 
-# include "SDL.h"
 # include <stdbool.h>
+# include "SDL.h"
+# include "SDL_ttf.h"
 
 /*
 **	MACROS
@@ -104,6 +105,8 @@ typedef	struct		s_sdl
 	SDL_Window		*win; //editor window
 	SDL_Surface		*surf; //Surface for the window
 	SDL_Event		event;// Mouse and keyboard events
+	TTF_Font		*font;
+	SDL_Color		color;
 }					t_sdl;
 
 typedef struct		s_editor

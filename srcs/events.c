@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 13:09:05 by nde-jesu          #+#    #+#             */
-/*   Updated: 2019/11/27 12:54:44 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2019/11/27 13:57:12 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,25 @@ static bool		is_saved(t_editor *editor)
 	{
 		ft_putendl("Exiting...");
 		return (true);
+	}
+}
+
+void	print_param_to_screen(t_sdl *sdl)
+{
+	SDL_Rect	where;
+	SDL_Surface	*tmp;
+	int			i;
+	char	*text[5] = {"Sector", "Player", "Enemy", "Object", "Portal"};
+
+	i = 0;
+	where.x = 1410;
+	where.y = 155;
+	while (i < 5)
+	{
+		tmp = TTF_RenderText_Solid(sdl->font, text[i], sdl->color);
+		SDL_BlitSurface(tmp, 0, sdl->surf, &where);
+		where.y = where.y + 100;
+		i++;
 	}
 }
 
@@ -49,6 +68,7 @@ static void		display_editor(t_editor *editor)
 	}
 	display_line(editor, editor->sdl.event.motion.x,
 			editor->sdl.event.motion.y);
+	print_param_to_screen(&editor->sdl);
 }
 
 static void		mouse(t_editor *editor, SDL_Event event)
