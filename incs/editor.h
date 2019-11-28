@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 08:52:03 by nde-jesu          #+#    #+#             */
-/*   Updated: 2019/11/27 17:13:24 by reda-con         ###   ########.fr       */
+/*   Updated: 2019/11/28 17:22:30 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@
 # define MENU_W 500
 # define WIN_H 720
 # define MAP_PATH "./map/editor_map.data"
+# define PRPL 0x5f287e
 
 /* 
 **	ENUMS
@@ -219,17 +220,17 @@ t_vertex 	*get_vertex(t_editor *editor, int x, int y);
 
 //	edit_menu.c
 
-void		display_menu(SDL_Surface *surf, int sett);
 void		motion(t_sdl sdl, int sett);
-void		sett_square(int sett, SDL_Surface *s, t_sdl *sdl);
+void		blank_menu(SDL_Surface *surf, int set, t_sdl sdl);
+void		clic_editor_menu(int x, int y, t_editor *editor);
 
 //	edit_menu_tools.c
 
 void		square(int x, int y, int clr, SDL_Surface *surf);
-void		blank_menu(SDL_Surface *surf, int set, t_sdl sdl);
 void		rectangle(t_vertex start, t_vertex end, int clr, SDL_Surface *surf);
 t_vertex	init_vertex(int x, int y);
-void		clic_editor_menu(int x, int y, t_editor *editor);
+void		draw_back_ground(SDL_Surface *surf);
+void		next_blank_menu(int set, SDL_Surface *surf);
 
 //	height.c
 

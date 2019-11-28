@@ -6,11 +6,35 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2009/11/19 13:07:32 by reda-con          #+#    #+#             */
-/*   Updated: 2019/11/27 17:15:27 by reda-con         ###   ########.fr       */
+/*   Updated: 2019/11/28 17:20:49 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "editor.h"
+
+void			blank_menu(SDL_Surface *s, int set, t_sdl sdl)
+{
+	int		clr;
+
+	draw_back_ground(s);
+	clr = ((set != SECTOR) ? 0xffffff : 0x289655);
+	rectangle(init_vertex(1340, 140), init_vertex(1510, 210), clr, s);
+	clr = ((set != PLAYER) ? 0xffffff : 0x177489);
+	rectangle(init_vertex(1340, 240), init_vertex(1510, 310), clr, s);
+	clr = ((set != ENEMY) ? 0xffffff : 0x090875);
+	rectangle(init_vertex(1340, 340), init_vertex(1510, 410), clr, s);
+	clr = ((set != OBJECT) ? 0xffffff : 0x146595);
+	rectangle(init_vertex(1340, 440), init_vertex(1510, 510), clr, s);
+	clr = ((set != PORTAL) ? 0xffffff : 0x177013);
+	rectangle(init_vertex(1340, 540), init_vertex(1510, 610), clr, s);
+	next_blank_menu(set, s);
+	rectangle(init_vertex(1350, 250), init_vertex(1400, 300), 0xffa500, s);
+	rectangle(init_vertex(1350, 150), init_vertex(1400, 200), 0xffa500, s);
+	rectangle(init_vertex(1350, 450), init_vertex(1400, 500), 0xffa500, s);
+	rectangle(init_vertex(1350, 350), init_vertex(1400, 400), 0xffa500, s);
+	rectangle(init_vertex(1350, 550), init_vertex(1400, 600), 0xffa500, s);
+	print_param_in_param(&sdl, set);
+}
 
 void			clic_editor_menu(int x, int y, t_editor *editor)
 {
@@ -30,46 +54,51 @@ void			clic_editor_menu(int x, int y, t_editor *editor)
 	}
 }
 
-#include <stdio.h>
+void			next_motion(t_sdl s, int set)
+{
+	int		y;
+
+	y = s.event.motion.y;
+	if (set != PORTAL && y >= 140 && y <= 210)
+		rectangle(init_vertex(1540, 140), init_vertex(1710, 210), PRPL, s.surf);
+	else if (set != PORTAL && y >= 240 && y <= 310)
+		rectangle(init_vertex(1540, 240), init_vertex(1710, 310), PRPL, s.surf);
+	else if (set != PORTAL && y >= 340 && y <= 410)
+		rectangle(init_vertex(1540, 340), init_vertex(1710, 410), PRPL, s.surf);
+	else if ((set == ENEMY || set == OBJECT) && y >= 440 && y <= 510)
+		rectangle(init_vertex(1540, 440), init_vertex(1710, 510), PRPL, s.surf);
+	else if ((set == ENEMY || set == OBJECT) && y >= 540 && y <= 610)
+		rectangle(init_vertex(1540, 540), init_vertex(1710, 610), PRPL, s.surf);
+	else if ((set == ENEMY || set == OBJECT) && y >= 640 && y <= 710)
+		rectangle(init_vertex(1540, 640), init_vertex(1710, 710), PRPL, s.surf);
+	else
+		blank_menu(s.surf, set, s);
+}
+
 void			motion(t_sdl s, int set)
 {
 	if (s.event.motion.x >= 1340 && s.event.motion.x <= 1510)
 	{
 		if ((s.event.motion.y >= 140 && s.event.motion.y <= 210))
 			rectangle(init_vertex(1340, 140), init_vertex(1510, 210),\
-				0x5f287e, s.surf);
+					PRPL, s.surf);
 		else if (s.event.motion.y >= 240 && s.event.motion.y <= 310)
 			rectangle(init_vertex(1340, 240), init_vertex(1510, 310),\
-				0x5f287e, s.surf);
+					PRPL, s.surf);
 		else if (s.event.motion.y >= 340 && s.event.motion.y <= 410)
 			rectangle(init_vertex(1340, 340), init_vertex(1510, 410),\
-				0x5f287e, s.surf);
+					PRPL, s.surf);
 		else if (s.event.motion.y >= 440 && s.event.motion.y <= 510)
 			rectangle(init_vertex(1340, 440), init_vertex(1510, 510),\
-				0x5f287e, s.surf);
+					PRPL, s.surf);
 		else if (s.event.motion.y >= 540 && s.event.motion.y <= 610)
 			rectangle(init_vertex(1340, 540), init_vertex(1510, 610),\
-				0x5f287e, s.surf);
+					PRPL, s.surf);
 		else
 			blank_menu(s.surf, set, s);
 	}
 	else if (s.event.motion.x >= 1540 && s.event.motion.x <= 1710)
-	{
-		if (set != PORTAL && s.event.motion.y >= 140 && s.event.motion.y <= 210)
-			rectangle(init_vertex(1540, 140), init_vertex(1710, 210), 0x5f287e, s.surf);
-		else if (set != PORTAL && s.event.motion.y >= 240 && s.event.motion.y <= 310)
-			rectangle(init_vertex(1540, 240), init_vertex(1710, 310), 0x5f287e, s.surf);
-		else if (set != PORTAL && s.event.motion.y >= 340 && s.event.motion.y <= 410)
-			rectangle(init_vertex(1540, 340), init_vertex(1710, 410), 0x5f287e, s.surf);
-		else if ((set == ENEMY || set == OBJECT) && s.event.motion.y >= 440 && s.event.motion.y <= 510)
-			rectangle(init_vertex(1540, 440), init_vertex(1710, 510), 0x5f287e, s.surf);
-		else if ((set == ENEMY || set == OBJECT) && s.event.motion.y >= 540 && s.event.motion.y <= 610)
-			rectangle(init_vertex(1540, 540), init_vertex(1710, 610), 0x5f287e, s.surf);
-		else if ((set == ENEMY || set == OBJECT) && s.event.motion.y >= 640 && s.event.motion.y <= 710)
-			rectangle(init_vertex(1540, 640), init_vertex(1710, 710), 0x5f287e, s.surf);
-		else
-			blank_menu(s.surf, set, s);
-	}
+		next_motion(s, set);
 	else
 		blank_menu(s.surf, set, s);
 }
