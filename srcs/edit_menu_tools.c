@@ -6,7 +6,7 @@
 /*   By: reda-con <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/19 13:14:01 by reda-con          #+#    #+#             */
-/*   Updated: 2019/11/27 17:14:26 by reda-con         ###   ########.fr       */
+/*   Updated: 2019/11/27 17:25:02 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,11 +66,11 @@ void			blank_menu(SDL_Surface *s, int set, t_sdl sdl)
 	if (set != SECTOR)
 		rectangle(init_vertex(1340, 140), init_vertex(1510, 210), 0xffffff, s);
 	else
-		rectangle(init_vertex(1340, 140), init_vertex(1510, 210), 0x0000ff, s);
+		rectangle(init_vertex(1340, 140), init_vertex(1510, 210), 0x289655, s);
 	if (set != PLAYER)
 		rectangle(init_vertex(1340, 240), init_vertex(1510, 310), 0xffffff, s);
 	else
-		rectangle(init_vertex(1340, 240), init_vertex(1510, 310), 0xff00ff, s);
+		rectangle(init_vertex(1340, 240), init_vertex(1510, 310), 0x177489, s);
 	if (set != ENEMY)
 		rectangle(init_vertex(1340, 340), init_vertex(1510, 410), 0xffffff, s);
 	else
@@ -78,7 +78,7 @@ void			blank_menu(SDL_Surface *s, int set, t_sdl sdl)
 		square(1600, 500, 0xff00ff, s);
 		square(1600, 600, 0x00ffff, s);
 		square(1600, 700, 0x0000ff, s);
-		rectangle(init_vertex(1340, 340), init_vertex(1510, 410), 0xff0000, s);
+		rectangle(init_vertex(1340, 340), init_vertex(1510, 410), 0x090875, s);
 		rectangle(init_vertex(1540, 440), init_vertex(1710, 510), 0xffffff, s);
 		rectangle(init_vertex(1540, 540), init_vertex(1710, 610), 0xffffff, s);
 		rectangle(init_vertex(1540, 640), init_vertex(1710, 710), 0xffffff, s);
@@ -93,7 +93,7 @@ void			blank_menu(SDL_Surface *s, int set, t_sdl sdl)
 		rectangle(init_vertex(1540, 440), init_vertex(1710, 510), 0xffffff, s);
 		rectangle(init_vertex(1540, 540), init_vertex(1710, 610), 0xffffff, s);
 		rectangle(init_vertex(1540, 640), init_vertex(1710, 710), 0xffffff, s);
-		rectangle(init_vertex(1340, 440), init_vertex(1510, 510), 0x8b4513, s);
+		rectangle(init_vertex(1340, 440), init_vertex(1510, 510), 0x146595, s);
 	}
 	if (set != PORTAL)
 	{
