@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 08:47:35 by nde-jesu          #+#    #+#             */
-/*   Updated: 2019/11/27 13:45:14 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2019/12/02 10:19:39 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static void		sdl_init(t_sdl *sdl)
 {
 	if (SDL_Init(SDL_INIT_VIDEO) != 0)
 		exit(1);
-	sdl->win = SDL_CreateWindow("DNME", SDL_WINDOWPOS_CENTERED,
+	sdl->win = SDL_CreateWindow(TITLE, SDL_WINDOWPOS_CENTERED,
 		SDL_WINDOWPOS_CENTERED, EDIT_W + MENU_W, WIN_H, 0);
 	if (sdl->win == NULL)
 		exit(1);

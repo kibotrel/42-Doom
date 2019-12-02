@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/27 14:44:48 by nde-jesu          #+#    #+#             */
-/*   Updated: 2019/11/27 15:36:56 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2019/11/29 07:58:16 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,7 @@ void	print_param_to_screen(t_sdl *sdl)
 
 void	print_param_in_param(t_sdl *sdl, t_settings sett)
 {
-	// char	*sector[3] = {"Floor", "Roof", "Text"};
-	// char	*player[3] = {"R.Left", "R.Right", "Del"};
-	// char	*entity[6] = {"C.Left", "C.Right", "R.Left", "R.Right", "Del", "Type"};
-	char 	*tab[3][6] = {{"Floor", "Roof", "Text"}, {"R.Left", "R.Right", "Del"},{"C.Left", "C.Right", "R.Left", "R.Right", "Del", "Type"}};
+	char 	*tab[3][6] = {{"Floor", "Roof", "Text"}, {"R.Left", "R.Right", "Del"},{"Prev", "Next", "R.Left", "R.Right", "Del", "Type"}};
 	SDL_Rect	where;
 	SDL_Surface	*tmp;
 	int 		i;

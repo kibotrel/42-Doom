@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 08:52:03 by nde-jesu          #+#    #+#             */
-/*   Updated: 2019/11/28 17:22:30 by reda-con         ###   ########.fr       */
+/*   Updated: 2019/12/02 11:15:12 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@
 # define WIN_H 720
 # define MAP_PATH "./map/editor_map.data"
 # define PRPL 0x5f287e
+# define TITLE "Doom-Nukem v0.1.1 - Editor"
 
 /* 
 **	ENUMS
@@ -68,6 +69,7 @@ typedef struct 		s_entity
 {
 	int				x;
 	int				y;
+	int				angle;
 	int				type;
 	int				number;
 	int				sector;
@@ -220,7 +222,7 @@ t_vertex 	*get_vertex(t_editor *editor, int x, int y);
 
 //	edit_menu.c
 
-void		motion(t_sdl sdl, int sett);
+void		motion(t_editor *editor, t_sdl sdl, int sett);
 void		blank_menu(SDL_Surface *surf, int set, t_sdl sdl);
 void		clic_editor_menu(int x, int y, t_editor *editor);
 
@@ -240,3 +242,12 @@ void	change_sector_height(t_editor *editor, int x, int y);
 
 void	print_param_to_screen(t_sdl *sdl);
 void	print_param_in_param(t_sdl *sdl, t_settings sett);
+
+//	player.c
+
+void	delete_player(t_player *player);
+void 	rotate_player(t_player *player, bool rotation);
+
+//	delete.c
+
+void	clear_editor(t_editor *editor);
