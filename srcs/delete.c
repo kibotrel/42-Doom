@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/22 15:46:27 by nde-jesu          #+#    #+#             */
-/*   Updated: 2019/12/02 11:20:29 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2019/12/09 13:37:09 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,51 +15,63 @@
 
 static void	delete_vertex(t_vertex **vertex)
 {
-	t_vertex 	*tmp;
-	t_vertex	*del;
+	t_vertex	*tmp;
+	t_vertex	*to_del;
 
-	tmp = *vertex;
-	del = tmp;
+	if (*vertex == NULL)
+		return ;
+	to_del = NULL;
+	tmp = NULL;
+	to_del = *vertex;
+	tmp = to_del;
 	while (tmp)
 	{
-		tmp = tmp->next;
-		free(del);
-		del = NULL;
-		del = tmp;
+		tmp = to_del->next;
+		free(to_del);
+		to_del = tmp;
 	}
-}
-
-static void	delete_entity(t_entity **entity)
-{
-	t_entity 	*tmp;
-	t_entity	*del;
-
-	tmp = *entity;
-	del = tmp;
-	while (tmp)
-	{
-		tmp = tmp->next;
-		free(del);
-		del = NULL;
-		del = tmp;
-	}
+	*vertex = NULL;
 }
 
 static void	delete_sector(t_sector **sectors)
 {
-	t_sector 	*tmp;
-	t_sector 	*next;
+	t_sector		*tmp;
+	t_sector		*to_del;
 
-	tmp = *sectors;
-	next = tmp;
-	while (next)
+	if (*sectors == NULL)
+		return ;
+	to_del = NULL;
+	tmp = NULL;
+	to_del = *sectors;
+	tmp = to_del;
+	while (tmp)
 	{
-		next = next->next;
-		delete_vertex(&tmp->vertex);
-		free(tmp);
-		tmp = NULL;
-		tmp = next;
+		tmp = to_del->next;
+		delete_vertex(&to_del->vertex);
+		free(to_del);
+		to_del = tmp;
 	}
+	*sectors = NULL;
+}
+
+static void	delete_entity(t_entity **entity)
+{
+	t_entity	*tmp;
+	t_entity	*to_del;
+
+	if (*entity == NULL)
+		return ;
+	to_del = NULL;
+	tmp = NULL;
+	to_del = *entity;
+	tmp = to_del;
+	while (tmp)
+	{
+		tmp = to_del->next;
+		free(to_del);
+		to_del = tmp;
+	}
+	*entity = NULL;
 }
 
 void	clear_editor(t_editor *editor)
