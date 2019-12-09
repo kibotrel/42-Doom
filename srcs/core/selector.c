@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/18 14:21:13 by kibotrel          #+#    #+#             */
-/*   Updated: 2019/10/15 19:26:58 by kibotrel         ###   ########.fr       */
+/*   Updated: 2019/12/09 06:07:50 by demonwaves       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,10 @@ void	selector(t_env *env)
 	if (env->win == MENU)
 		menu(env);
 	else if (env->win == GAME)
+	{
+		SDL_ShowCursor(SDL_DISABLE);
 		game(env);
+	}
 	else if (env->win == EDITOR)
 		editor(env);
 	else if (env->win == SETTINGS)

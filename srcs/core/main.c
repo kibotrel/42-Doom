@@ -6,16 +6,17 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/16 11:53:54 by kibotrel          #+#    #+#             */
-/*   Updated: 2019/10/15 19:24:09 by kibotrel         ###   ########.fr       */
+/*   Updated: 2019/12/09 06:38:47 by demonwaves       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "env.h"
 #include "core.h"
+#include "game.h"
 #include "libft.h"
 #include "clean.h"
 #include "setup.h"
 #include "utils.h"
-
 
 static int	prechecks(int ac, char **av)
 {
@@ -37,8 +38,20 @@ int			main(int ac, char **av)
 			graphic_setup(&env, &env.sdl);
 		else
 			clean(&env, E_FILENAME);
-		selector(&env);
-		hooks(&env, &env.sdl);
+		while (1)
+		{
+			selector(&env);
+			if (SDL_UpdateWindowSurface(env.sdl.win))
+				clean(&env, E_SDL_UPDATE);
+			if (env.win != GAME)
+				global_hooks(&env, &env.sdl);
+			else
+			{
+				SDL_WarpMouseInWindow(env.sdl.win, env.w / 2, env.h / 2);
+				physics(&env);
+				game_hooks(&env);
+			}
+		}
 	}
 	else
 		usage();
