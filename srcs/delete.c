@@ -6,14 +6,14 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/22 15:46:27 by nde-jesu          #+#    #+#             */
-/*   Updated: 2019/12/10 12:00:28 by reda-con         ###   ########.fr       */
+/*   Updated: 2019/12/10 15:54:22 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "editor.h"
 
-static void	delete_vertex(t_vertex **vertex)
+static void		delete_vertex(t_vertex **vertex)
 {
 	t_vertex	*tmp;
 	t_vertex	*to_del;
@@ -33,7 +33,7 @@ static void	delete_vertex(t_vertex **vertex)
 	*vertex = NULL;
 }
 
-static void	delete_sector(t_sector **sectors)
+static void		delete_sector(t_sector **sectors)
 {
 	t_sector		*tmp;
 	t_sector		*to_del;
@@ -54,7 +54,7 @@ static void	delete_sector(t_sector **sectors)
 	*sectors = NULL;
 }
 
-static void	delete_entity(t_entity **entity)
+static void		delete_entity(t_entity **entity)
 {
 	t_entity	*tmp;
 	t_entity	*to_del;
@@ -74,7 +74,7 @@ static void	delete_entity(t_entity **entity)
 	*entity = NULL;
 }
 
-void	clear_editor(t_editor *editor)
+void			clear_editor(t_editor *editor)
 {
 	delete_player(&editor->player);
 	if (editor->sector)

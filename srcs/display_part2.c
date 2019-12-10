@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 14:05:19 by nde-jesu          #+#    #+#             */
-/*   Updated: 2019/12/10 15:15:19 by reda-con         ###   ########.fr       */
+/*   Updated: 2019/12/10 16:27:50 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,12 +48,12 @@ void	next_display_entities(t_sdl *sdl, t_entity *entity, int color)
 	}
 }
 
-void	display_entities(t_sdl *sdl, t_entity *entity, int color)
+void	display_entities(t_sdl *sdl, t_entity *entity, int color, bool fl)
 {
 	t_entity	*print;
 
 	print = entity;
-	if (entity)
+	if (entity && fl == true)
 		rectangle(init_vertex(entity->x - 2, entity->y - 2),
 			init_vertex(entity->x + 2, entity->y + 2), 0xffff00, sdl->surf);
 	while (print)

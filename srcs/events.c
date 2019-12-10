@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 13:09:05 by nde-jesu          #+#    #+#             */
-/*   Updated: 2019/12/10 15:07:05 by reda-con         ###   ########.fr       */
+/*   Updated: 2019/12/10 16:31:12 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,16 @@ static void		display_editor(t_editor *editor)
 
 	display_grid(editor);
 	display_player(editor->player, &editor->sdl);
-	display_entities(&editor->sdl, editor->enemy, 0xff0000);
-	display_entities(&editor->sdl, editor->object, 0x8b4513);
+	if (editor->sett == ENEMY)
+	{
+		display_entities(&editor->sdl, editor->enemy, 0xff0000, true);
+		display_entities(&editor->sdl, editor->object, 0x8b4513, false);
+	}
+	if (editor->sett == OBJECT)
+	{
+		display_entities(&editor->sdl, editor->enemy, 0xff0000, false);
+		display_entities(&editor->sdl, editor->object, 0x8b4513, true);
+	}
 	display_sector(editor);
 	display_vertex(&editor->sdl, editor->vertex, 0xffff00);
 	if (editor->sett == SECTOR && editor->sdl.event.motion.x <= EDIT_W)
