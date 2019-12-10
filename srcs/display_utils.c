@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 12:14:01 by nde-jesu          #+#    #+#             */
-/*   Updated: 2019/11/18 15:07:07 by reda-con         ###   ########.fr       */
+/*   Updated: 2019/12/10 17:50:58 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,5 +47,32 @@ void	put_pixel(SDL_Surface *surf, int x, int y, int color)
 	{
 		pix = surf->pixels + y * surf->pitch + x * surf->format->BytesPerPixel;
 		*pix = color;
+	}
+}
+
+double			deg_to_rad(int deg)
+{
+	return (deg * M_PI / 180);
+}
+
+void			put_fov(SDL_Surface *surf, t_vertex pt, int agl, int color)
+{
+	size_t		i;
+	int			angle;
+	t_vertex	p0;
+	t_vertex	p1;
+
+	i = 0;
+	while (i < 100)
+	{
+		p0 = init_vertex(cos(deg_to_rad(agl)) * 5 + pt.x,
+			-sin(deg_to_rad(agl)) * 5 + pt.y);
+		angle = agl + i - 50;
+		angle = angle > 360 ? angle - 360 : angle;
+		angle = angle < 0 ? angle + 360 : angle;
+		p1 = init_vertex(-cos(deg_to_rad(angle)) * 5 + pt.x,
+			sin(deg_to_rad(angle)) * 5 + pt.y);
+		draw_line(surf, p0, p1, color);
+		++i;
 	}
 }

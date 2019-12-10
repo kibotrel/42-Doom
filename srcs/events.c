@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 13:09:05 by nde-jesu          #+#    #+#             */
-/*   Updated: 2019/12/10 16:31:12 by reda-con         ###   ########.fr       */
+/*   Updated: 2019/12/10 17:38:27 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,35 +29,33 @@ static bool		is_saved(t_editor *editor)
 	}
 }
 
-static void		display_editor(t_editor *editor)
+static void		display_editor(t_editor *edit)
 {
-	t_vertex	mouse;
+	t_vertex	mse;
 
-	display_grid(editor);
-	display_player(editor->player, &editor->sdl);
-	if (editor->sett == ENEMY)
+	display_grid(edit);
+	display_player(edit->player, &edit->sdl);
+	if (edit->sett != OBJECT)
 	{
-		display_entities(&editor->sdl, editor->enemy, 0xff0000, true);
-		display_entities(&editor->sdl, editor->object, 0x8b4513, false);
+		edit->sett == ENEMY ? display_entities(&edit->sdl, edit->enemy, R, true)
+			: display_entities(&edit->sdl, edit->enemy, R, false);
+		display_entities(&edit->sdl, edit->object, 0x8b4513, false);
 	}
-	if (editor->sett == OBJECT)
+	else if (edit->sett != ENEMY)
 	{
-		display_entities(&editor->sdl, editor->enemy, 0xff0000, false);
-		display_entities(&editor->sdl, editor->object, 0x8b4513, true);
+		display_entities(&edit->sdl, edit->enemy, R, false);
+		display_entities(&edit->sdl, edit->object, 0x8b4513, true);
 	}
-	display_sector(editor);
-	display_vertex(&editor->sdl, editor->vertex, 0xffff00);
-	if (editor->sett == SECTOR && editor->sdl.event.motion.x <= EDIT_W)
+	display_sector(edit);
+	display_vertex(&edit->sdl, edit->vertex, 0xffff00);
+	if (edit->sett == SECTOR && edit->sdl.event.motion.x <= EDIT_W)
 	{
-		mouse.x = (editor->sdl.event.motion.x / editor->dist_grid)
-			* editor->dist_grid;
-		mouse.y = (editor->sdl.event.motion.y / editor->dist_grid)
-			* editor->dist_grid;
-		display_mouse(&editor->sdl, mouse, 0x0ff0f0);
+		mse.x = (edit->sdl.event.motion.x / edit->dist_grid) * edit->dist_grid;
+		mse.y = (edit->sdl.event.motion.y / edit->dist_grid) * edit->dist_grid;
+		display_mouse(&edit->sdl, mse, 0x0ff0f0);
 	}
-	display_line(editor, editor->sdl.event.motion.x,
-			editor->sdl.event.motion.y);
-	print_param_to_screen(&editor->sdl);
+	display_line(edit, edit->sdl.event.motion.x, edit->sdl.event.motion.y);
+	print_param_to_screen(&edit->sdl);
 }
 
 static void		mouse(t_editor *editor, SDL_Event event)

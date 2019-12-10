@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 14:05:19 by nde-jesu          #+#    #+#             */
-/*   Updated: 2019/12/10 16:27:50 by reda-con         ###   ########.fr       */
+/*   Updated: 2019/12/10 17:57:00 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,38 +14,7 @@
 
 void	display_player(t_player player, t_sdl *sdl)
 {
-	if (player.x != -1)
-	{
-		put_pixel(sdl->surf, player.x, player.y, 0xff00ff);
-		put_pixel(sdl->surf, player.x + 1, player.y, 0xff00ff);
-		put_pixel(sdl->surf, player.x, player.y + 1, 0xff00ff);
-		put_pixel(sdl->surf, player.x + 1, player.y + 1, 0xff00ff);
-		put_pixel(sdl->surf, player.x - 1, player.y, 0xff00ff);
-		put_pixel(sdl->surf, player.x + 1, player.y - 1, 0xff00ff);
-		put_pixel(sdl->surf, player.x - 1, player.y + 1, 0xff00ff);
-		put_pixel(sdl->surf, player.x, player.y - 1, 0xff00ff);
-		put_pixel(sdl->surf, player.x - 1, player.y - 1, 0xff00ff);
-	}
-}
-
-void	next_display_entities(t_sdl *sdl, t_entity *entity, int color)
-{
-	t_entity	*print;
-
-	print = entity;
-	while (print)
-	{
-		put_pixel(sdl->surf, print->x, print->y, color);
-		put_pixel(sdl->surf, print->x + 1, print->y, color);
-		put_pixel(sdl->surf, print->x, print->y + 1, color);
-		put_pixel(sdl->surf, print->x + 1, print->y + 1, color);
-		put_pixel(sdl->surf, print->x - 1, print->y, color);
-		put_pixel(sdl->surf, print->x + 1, print->y - 1, color);
-		put_pixel(sdl->surf, print->x - 1, print->y + 1, color);
-		put_pixel(sdl->surf, print->x, print->y - 1, color);
-		put_pixel(sdl->surf, print->x - 1, print->y - 1, color);
-		print = print->prev;
-	}
+	put_fov(sdl->surf, init_vertex(player.x, player.y), player.angle, 0xff00ff);
 }
 
 void	display_entities(t_sdl *sdl, t_entity *entity, int color, bool fl)
@@ -53,23 +22,19 @@ void	display_entities(t_sdl *sdl, t_entity *entity, int color, bool fl)
 	t_entity	*print;
 
 	print = entity;
-	if (entity && fl == true)
-		rectangle(init_vertex(entity->x - 2, entity->y - 2),
-			init_vertex(entity->x + 2, entity->y + 2), 0xffff00, sdl->surf);
 	while (print)
 	{
-		put_pixel(sdl->surf, print->x, print->y, color);
-		put_pixel(sdl->surf, print->x + 1, print->y, color);
-		put_pixel(sdl->surf, print->x, print->y + 1, color);
-		put_pixel(sdl->surf, print->x + 1, print->y + 1, color);
-		put_pixel(sdl->surf, print->x - 1, print->y, color);
-		put_pixel(sdl->surf, print->x + 1, print->y - 1, color);
-		put_pixel(sdl->surf, print->x - 1, print->y + 1, color);
-		put_pixel(sdl->surf, print->x, print->y - 1, color);
-		put_pixel(sdl->surf, print->x - 1, print->y - 1, color);
+		put_fov(sdl->surf, init_vertex(print->x, print->y), print->angle, color);
+		print = print->prev;
+	}
+	print = entity;
+	while (print)
+	{
+		put_fov(sdl->surf, init_vertex(print->x, print->y), print->angle, color);
 		print = print->next;
 	}
-	next_display_entities(sdl, entity, color);
+	if (entity && fl == true)
+		put_fov(sdl->surf, init_vertex(entity->x, entity->y), entity->angle, 0xffff00);
 }
 
 void	display_vertex(t_sdl *sdl, t_vertex *vertex, int color)

@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 08:52:03 by nde-jesu          #+#    #+#             */
-/*   Updated: 2019/12/10 16:27:23 by reda-con         ###   ########.fr       */
+/*   Updated: 2019/12/10 17:38:34 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 **	MACROS
 */
 
+#define R 0xff0000
 # define EDIT_W 1280
 # define MENU_W 500
 # define WIN_H 720
@@ -258,3 +259,4 @@ void				clear_editor(t_editor *editor);
 void				rotate_entity(t_entity *entity, bool rotation);
 void				move_in_entities(t_entity **entity, bool way);
 void				del_entity(t_entity **entity);
+void				put_fov(SDL_Surface *surf, t_vertex pt, int agl, int color);
