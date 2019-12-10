@@ -1,9 +1,4 @@
 Changer hauteur sol et plafond par secteur.
 Choisir une texture de secteur.
 Choisir type d'ennemi et d'objet.
-Supprimer un objet ou ennemi en particulier.
-Bouger entre les objets et ennemi.
-Afficher en surbrillance l'ennemi ou l'objet sur lequel on est.
-Savoir en permanence sur quelle entitee on est (Un pointeur dans t_editor).
-Rotate joueur et ennemis.
 Pouvoir charger une map dans l'editeur.
