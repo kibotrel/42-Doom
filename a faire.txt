@@ -2,3 +2,9 @@ Changer hauteur sol et plafond par secteur.
 Choisir une texture de secteur.
 Choisir type d'ennemi et d'objet.
 Pouvoir charger une map dans l'editeur.
+Selectionner secteur (afficher les murs en une autre couleur)
+Indiquer l'angle des entites
+Norme
+Faire le clean si sa crash (meme si sa plantera jamais)
+Un petit bouton dans un coin pour clean l'editeur ?
+C'est deja pas mal, mais si y'a d'autres trucs a faire, pensez a le rajouter svp
