@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 08:47:35 by nde-jesu          #+#    #+#             */
-/*   Updated: 2019/12/02 10:19:39 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2019/12/10 18:12:50 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,8 @@ static void		init_editor(t_editor *editor)
 	editor->last_vertex.x = -1;
 	editor->last_vertex.y = -1;
 	editor->map_save = true;
-	editor->player.x = -1;
-	editor->player.y = -1;
+	editor->player.x = -5;
+	editor->player.y = -5;
 	editor->player.angle = 90;
 	init_chained_list(editor);
 	init_portals(editor);

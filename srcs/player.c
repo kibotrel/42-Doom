@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/02 08:16:31 by nde-jesu          #+#    #+#             */
-/*   Updated: 2019/12/10 17:55:42 by reda-con         ###   ########.fr       */
+/*   Updated: 2019/12/10 18:12:44 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ void	rotate_entity(t_entity *entity, bool rotation)
 
 void	delete_player(t_player *player)
 {
-	player->x = -1;
-	player->y = -1;
+	player->x = -5;
+	player->y = -5;
 	player->angle = 90;
 	player->sector = -1;
 }
