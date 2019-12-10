@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/27 14:44:48 by nde-jesu          #+#    #+#             */
-/*   Updated: 2019/12/10 15:20:57 by reda-con         ###   ########.fr       */
+/*   Updated: 2019/12/10 15:53:30 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	print_param_to_screen(t_sdl *sdl)
 	{
 		tmp = TTF_RenderText_Solid(sdl->font, first_params[i], sdl->color);
 		SDL_BlitSurface(tmp, 0, sdl->surf, &where);
-		tmp = TTF_RenderText_Solid(sdl->font, i + '1', sdl->color);
+		tmp = TTF_RenderText_Solid(sdl->font, number[i], sdl->color);
 		where.x -= 45;
 		SDL_BlitSurface(tmp, 0, sdl->surf, &where);
 		where.x += 45;
