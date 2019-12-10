@@ -6,13 +6,13 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 10:04:36 by nde-jesu          #+#    #+#             */
-/*   Updated: 2019/11/26 10:12:02 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2019/12/10 15:11:55 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "editor.h"
 #include "libft.h"
-#include <stdio.h>
+
 void	write_player(t_player player, t_vertex if_no_player, int fd)
 {
 	printf("%d\n", player.sector);

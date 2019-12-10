@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2009/11/19 13:07:32 by reda-con          #+#    #+#             */
-/*   Updated: 2019/12/02 09:37:33 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2019/12/10 13:02:44 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,41 +40,75 @@ void			clic_editor_menu(int x, int y, t_editor *editor)
 {
 	if (x >= 1340 && x <= 1510)
 	{
-		if (y >= 140 && y < 210)
+		if (y >= 140 && y <= 210)
 			editor->sett = SECTOR;
-		else if (y >= 240 && y < 310)
+		else if (y >= 240 && y <= 310)
 			editor->sett = PLAYER;
-		else if (y >= 340 && y < 410)
+		else if (y >= 340 && y <= 410)
 			editor->sett = ENEMY;
-		else if (y >= 440 && y < 510)
+		else if (y >= 440 && y <= 510)
 			editor->sett = OBJECT;
-		else if (y >= 540 && y < 610)
+		else if (y >= 540 && y <= 610)
 			editor->sett = PORTAL;
 		blank_menu(editor->sdl.surf, editor->sett, editor->sdl);
 	}
+	else if (x >= 1540 && x <= 1710)
+	{
+		if (y >= 140 && y <= 210)
+		{
+			if (editor->sett == PLAYER)
+				rotate_player(&editor->player, true);
+			else if (editor->sett == ENEMY)
+				move_in_entities(&editor->enemy, false);
+			else if (editor->sett == OBJECT)
+				move_in_entities(&editor->object, false);
+		}
+		else if (y >= 240 && y <= 310)
+		{
+			if (editor->sett == PLAYER)
+				rotate_player(&editor->player, false);
+			else if (editor->sett == ENEMY)
+				move_in_entities(&editor->enemy, true);
+			else if (editor->sett == OBJECT)
+				move_in_entities(&editor->object, true);
+		}
+		else if (y >= 340 && y <= 410)
+		{
+			if (editor->sett == PLAYER)
+				delete_player(&editor->player);
+			else if (editor->sett == ENEMY)
+				rotate_entity(editor->enemy, true);
+			else if (editor->sett == OBJECT)
+				rotate_entity(editor->object, true);
+		}
+		else if (y >= 440 && y <= 510)
+		{
+			if (editor->sett == ENEMY)
+				rotate_entity(editor->enemy, false);
+			else if (editor->sett == OBJECT)
+				rotate_entity(editor->object, false);
+		}
+		else if (y >= 540 && y <= 610)
+		{
+			if (editor->sett == ENEMY)
+				del_entity(&editor->enemy);
+			else if (editor->sett == OBJECT)
+				del_entity(&editor->object);
+		}
+	}
 }
-#include <stdio.h>
-void			next_motion(t_editor *editor, t_sdl s, int set)
+
+void			next_motion(t_sdl s, int set)
 {
 	int		y;
 
 	y = s.event.motion.y;
 	if (set != PORTAL && y >= 140 && y <= 210)
-	{			
 		rectangle(init_vertex(1540, 140), init_vertex(1710, 210), PRPL, s.surf);
-		if (set == PLAYER)
-		rotate_player(&editor->player, true);
-	}
 	else if (set != PORTAL && y >= 240 && y <= 310)
-	{
 		rectangle(init_vertex(1540, 240), init_vertex(1710, 310), PRPL, s.surf);
-		rotate_player(&editor->player, false);
-	}
 	else if (set != PORTAL && y >= 340 && y <= 410)
-	{
 		rectangle(init_vertex(1540, 340), init_vertex(1710, 410), PRPL, s.surf);
-		delete_player(&editor->player);
-	}
 	else if ((set == ENEMY || set == OBJECT) && y >= 440 && y <= 510)
 		rectangle(init_vertex(1540, 440), init_vertex(1710, 510), PRPL, s.surf);
 	else if ((set == ENEMY || set == OBJECT) && y >= 540 && y <= 610)
@@ -85,7 +119,7 @@ void			next_motion(t_editor *editor, t_sdl s, int set)
 		blank_menu(s.surf, set, s);
 }
 
-void			motion(t_editor *editor, t_sdl s, int set)
+void			motion(t_sdl s, int set)
 {
 	if (s.event.motion.x >= 1340 && s.event.motion.x <= 1510)
 	{
@@ -108,7 +142,7 @@ void			motion(t_editor *editor, t_sdl s, int set)
 			blank_menu(s.surf, set, s);
 	}
 	else if (s.event.motion.x >= 1540 && s.event.motion.x <= 1710)
-		next_motion(editor, s, set);
+		next_motion(s, set);
 	else
 		blank_menu(s.surf, set, s);
 }

@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/02 08:16:31 by nde-jesu          #+#    #+#             */
-/*   Updated: 2019/12/02 11:18:16 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2019/12/10 14:41:02 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 void	rotate_entity(t_entity *entity, bool rotation)
 {
+	if (!entity)
+		return ;
 	if (rotation == true)
 		++entity->angle;
 	else
@@ -34,6 +36,8 @@ void	delete_player(t_player *player)
 
 void rotate_player(t_player *player, bool rotation)
 {
+	if (!player)
+		return ;
 	if (rotation == true)
 		++player->angle;
 	else
@@ -44,18 +48,50 @@ void rotate_player(t_player *player, bool rotation)
 		player->angle = 360;
 }
 
-t_entity	*move_in_entities(t_entity *entity, bool way)
+void		move_in_entities(t_entity **entity, bool way)
 {
+	t_entity	*tmp;
+
+	if (!*entity)
+		return ;
+	tmp = *entity;
 	if (way == true)
 	{
-		if (entity->next)
-			return (entity->next);
-		return (entity);
+		if (tmp->next)
+			tmp = tmp->next;
 	}
 	else
 	{
-		if (entity->prev)
-			return (entity->prev);
-		return (entity);		
+		if (tmp->prev)
+			tmp = tmp->prev;
 	}
+	*entity = tmp;
+}
+
+void		del_entity(t_entity **entity)
+{
+	t_entity	*tf;
+	t_entity	*tmp;
+	t_entity	*tmp2;
+
+	if (*entity == NULL)
+		return ;
+	tmp = NULL;
+	tmp2 = NULL;
+	tf = *entity;
+	if (tf->prev)
+		tmp = tf->prev;
+	if (tf->next)
+		tmp2 = tf->next;
+	free(tf);
+	if (tmp)
+		tmp->next = tmp2;
+	if (tmp2)
+		tmp2->prev = tmp;
+	if (tmp)
+		*entity = tmp;
+	else if (tmp2)
+		*entity = tmp2;
+	else
+		*entity = NULL;
 }

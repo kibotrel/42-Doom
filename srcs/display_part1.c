@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 08:56:26 by nde-jesu          #+#    #+#             */
-/*   Updated: 2019/11/26 11:06:11 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2019/12/10 15:10:58 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ void		display_line(t_editor *editor, int x, int y)
 	if (editor->last_vertex.x != -1 && editor->last_vertex.y != -1)
 		draw_line(editor->sdl.surf, editor->last_vertex, act_pos, 0x0ff0f0);
 }
-#include <stdio.h>
+
 void		display_grid(t_editor *editor)
 {
 	int		x;
