@@ -6,7 +6,7 @@
 /*   By: reda-con <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/19 13:14:01 by reda-con          #+#    #+#             */
-/*   Updated: 2019/11/28 17:23:00 by reda-con         ###   ########.fr       */
+/*   Updated: 2019/12/11 14:57:29 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,15 +28,6 @@ void			square(int x, int y, int color, SDL_Surface *s)
 		}
 		++i;
 	}
-}
-
-t_vertex		init_vertex(int x, int y)
-{
-	t_vertex	ret;
-
-	ret.x = x;
-	ret.y = y;
-	return (ret);
 }
 
 void			rectangle(t_vertex start, t_vertex end, int clr, SDL_Surface *s)

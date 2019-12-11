@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 13:09:05 by nde-jesu          #+#    #+#             */
-/*   Updated: 2019/12/10 17:38:27 by reda-con         ###   ########.fr       */
+/*   Updated: 2019/12/11 15:39:56 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static void		display_editor(t_editor *edit)
 	t_vertex	mse;
 
 	display_grid(edit);
-	display_player(edit->player, &edit->sdl);
+	put_fov(sdl->surf, init_vertex(player.x, player.y), player.angle, 0xff00ff);
 	if (edit->sett != OBJECT)
 	{
 		edit->sett == ENEMY ? display_entities(&edit->sdl, edit->enemy, R, true)

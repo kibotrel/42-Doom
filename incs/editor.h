@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 08:52:03 by nde-jesu          #+#    #+#             */
-/*   Updated: 2019/12/10 17:38:34 by reda-con         ###   ########.fr       */
+/*   Updated: 2019/12/11 15:40:22 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 **	MACROS
 */
 
-#define R 0xff0000
+# define R 0xff0000
 # define EDIT_W 1280
 # define MENU_W 500
 # define WIN_H 720
@@ -153,7 +153,6 @@ void				display_sector(t_editor *editor);
 
 void				display_vertex(t_sdl *sdl, t_vertex *vertex, int color);
 void				display_entities(t_sdl *sdl, t_entity *entity, int color, bool fl);
-void				display_player(t_player player, t_sdl *sdl);
 void				display_mouse(t_sdl *sdl, t_vertex mouse, int color);
 
 //	display_utils.c
@@ -172,6 +171,10 @@ void				write_player(t_player player, t_vertex if_no_player, int fd);
 
 void				place_player(t_editor *editor, int x, int y);
 void				place_entity(t_editor *editor, int x, int y, int type);
+
+//	entity2.c
+
+void				change_ent_type(t_entity *ent);
 
 //	events.c
 

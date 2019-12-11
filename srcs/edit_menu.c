@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2009/11/19 13:07:32 by reda-con          #+#    #+#             */
-/*   Updated: 2019/12/10 17:17:33 by reda-con         ###   ########.fr       */
+/*   Updated: 2019/12/11 15:17:33 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,63 @@ void			blank_menu(SDL_Surface *s, int set, t_sdl sdl)
 	print_param_in_param(&sdl, set);
 }
 
+void			next_sec_clic_menu_editor(int y, t_editor *editor)
+{
+	if (y >= 340 && y <= 410)
+	{
+		if (editor->sett == PLAYER)
+			delete_player(&editor->player);
+		else if (editor->sett == ENEMY)
+			rotate_entity(editor->enemy, true);
+		else if (editor->sett == OBJECT)
+			rotate_entity(editor->object, true);
+	}
+	else if (y >= 440 && y <= 510)
+	{
+		if (editor->sett == ENEMY)
+			rotate_entity(editor->enemy, false);
+		else if (editor->sett == OBJECT)
+			rotate_entity(editor->object, false);
+	}
+	else if (y >= 540 && y <= 610)
+	{
+		if (editor->sett == ENEMY)
+			del_entity(&editor->enemy);
+		else if (editor->sett == OBJECT)
+			del_entity(&editor->object);
+	}
+	else if (y >= 640 && y <= 710)
+	{
+		if (editor->sett == ENEMY)
+			change_ent_type(editor->enemy);
+		if (editor->sett == OBJECT)
+			change_ent_type(editor->object);
+	}
+}
+
+void			sec_clic_menu_editor(int y, t_editor *editor)
+{
+	if (y >= 140 && y <= 210)
+	{
+		if (editor->sett == PLAYER)
+			rotate_player(&editor->player, true);
+		else if (editor->sett == ENEMY)
+			move_in_entities(&editor->enemy, false);
+		else if (editor->sett == OBJECT)
+			move_in_entities(&editor->object, false);
+	}
+	else if (y >= 240 && y <= 310)
+	{
+		if (editor->sett == PLAYER)
+			rotate_player(&editor->player, false);
+		else if (editor->sett == ENEMY)
+			move_in_entities(&editor->enemy, true);
+		else if (editor->sett == OBJECT)
+			move_in_entities(&editor->object, true);
+	}
+	next_sec_clic_menu_editor(y, editor);
+}
+
 void			clic_editor_menu(int x, int y, t_editor *editor)
 {
 	if (x >= 1340 && x <= 1510)
@@ -54,47 +111,7 @@ void			clic_editor_menu(int x, int y, t_editor *editor)
 	}
 	else if (x >= 1540 && x <= 1710)
 	{
-		if (y >= 140 && y <= 210)
-		{
-			if (editor->sett == PLAYER)
-				rotate_player(&editor->player, true);
-			else if (editor->sett == ENEMY)
-				move_in_entities(&editor->enemy, false);
-			else if (editor->sett == OBJECT)
-				move_in_entities(&editor->object, false);
-		}
-		else if (y >= 240 && y <= 310)
-		{
-			if (editor->sett == PLAYER)
-				rotate_player(&editor->player, false);
-			else if (editor->sett == ENEMY)
-				move_in_entities(&editor->enemy, true);
-			else if (editor->sett == OBJECT)
-				move_in_entities(&editor->object, true);
-		}
-		else if (y >= 340 && y <= 410)
-		{
-			if (editor->sett == PLAYER)
-				delete_player(&editor->player);
-			else if (editor->sett == ENEMY)
-				rotate_entity(editor->enemy, true);
-			else if (editor->sett == OBJECT)
-				rotate_entity(editor->object, true);
-		}
-		else if (y >= 440 && y <= 510)
-		{
-			if (editor->sett == ENEMY)
-				rotate_entity(editor->enemy, false);
-			else if (editor->sett == OBJECT)
-				rotate_entity(editor->object, false);
-		}
-		else if (y >= 540 && y <= 610)
-		{
-			if (editor->sett == ENEMY)
-				del_entity(&editor->enemy);
-			else if (editor->sett == OBJECT)
-				del_entity(&editor->object);
-		}
+		sec_clic_menu_editor(y, editor);
 	}
 }
 

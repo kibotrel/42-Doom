@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 14:55:17 by nde-jesu          #+#    #+#             */
-/*   Updated: 2019/12/02 09:12:59 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2019/12/11 14:18:33 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ void				place_entity(t_editor *editor, int x, int y, int type)
 	t_entity	*new_entity;
 	t_vertex	check_sector;
 
-	new_entity = create_entity(x, y, 1);
+	new_entity = create_entity(x, y, 0);
 	check_sector.x = x;
 	check_sector.y = y;
 	new_entity->sector = is_in_sector(editor, check_sector);
