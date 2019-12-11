@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 08:52:03 by nde-jesu          #+#    #+#             */
-/*   Updated: 2019/12/11 15:40:22 by reda-con         ###   ########.fr       */
+/*   Updated: 2019/12/11 16:41:26 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,7 +147,7 @@ void				init_portals(t_editor *editor);
 
 void				display_grid(t_editor *editor);
 void				display_line(t_editor *editor, int x, int y);
-void				display_sector(t_editor *editor);
+void				display_sector(t_sdl *sdl, t_sector *sectors, bool fl);
 
 //	display_part2.c
 

@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/27 14:44:48 by nde-jesu          #+#    #+#             */
-/*   Updated: 2019/12/10 15:53:30 by reda-con         ###   ########.fr       */
+/*   Updated: 2019/12/10 16:13:17 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void	print_param_in_param(t_sdl *sdl, t_settings sett)
 	}
 	else
 		j = 2;
-		max = 6;
+	max = 6;
 	where.x = 1610;
 	where.y = 155;
 	while (i < max)

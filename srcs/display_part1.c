@@ -6,22 +6,22 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 08:56:26 by nde-jesu          #+#    #+#             */
-/*   Updated: 2019/12/10 15:10:58 by reda-con         ###   ########.fr       */
+/*   Updated: 2019/12/11 16:47:24 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "editor.h"
 
-static int	get_wall_color(t_sector *sect, int *i)
+static int	get_wall_color(t_sector *sect, int *i, bool fl)
 {
 	int	color;
 
 	if (sect->is_portal != NULL && *i >= sect->vertex_count)
 		*i = 0;
 	if (sect->is_portal != NULL && sect->is_portal[*i] != -1)
-		color = 0x00ff00;
-	else
 		color = 0x0000ff;
+	else
+		fl == true ? color = 0x8b4513 : 0x00ff00;
 	return (color);
 }
 
@@ -48,23 +48,47 @@ static void	draw_walls(t_sdl *sdl, t_sector *sect, t_vertex *vertex, int color)
 		put_pixel(sdl->surf, vertex->x, vertex->y, color);
 }
 
-void		display_sector(t_editor *editor)
+void		display_sector(t_sdl *sdl, t_sector *sectors, bool fl)
 {
 	int			i;
 	t_sector	*sect;
 	t_vertex	*vertex;
+	(void)fl;
 
-	sect = editor->sector;
+	sect = sectors;
 	while (sect)
 	{
 		i = 0;
 		vertex = sect->vertex;
 		while (vertex && ++i)
 		{
-			draw_walls(&editor->sdl, sect, vertex, get_wall_color(sect, &i));
+			draw_walls(sdl, sect, vertex, get_wall_color(sect, &i, false));
 			vertex = vertex->next;
 		}
 		sect = sect->next;
+	}
+	sect = sectors;
+	while (sect)
+	{
+		i = 0;
+		vertex = sect->vertex;
+		while (vertex && ++i)
+		{
+			draw_walls(sdl, sect, vertex, get_wall_color(sect, &i, false));
+			vertex = vertex->next;
+		}
+		sect = sect->prev;
+	}
+	if (sectors && fl == true)
+	{
+		i = 0;
+		sect = sectors;
+		vertex = sect->vertex;
+		while (vertex && ++i)
+		{
+			draw_walls(sdl, sectors, vertex, get_wall_color(sect, &i, true));
+			vertex = vertex->next;
+		}
 	}
 }
 

@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 13:09:05 by nde-jesu          #+#    #+#             */
-/*   Updated: 2019/12/11 15:39:56 by reda-con         ###   ########.fr       */
+/*   Updated: 2019/12/11 16:41:06 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static void		display_editor(t_editor *edit)
 	t_vertex	mse;
 
 	display_grid(edit);
-	put_fov(sdl->surf, init_vertex(player.x, player.y), player.angle, 0xff00ff);
+	put_fov(edit->sdl.surf, init_vertex(edit->player.x, edit->player.y), edit->player.angle, 0xff00ff);
 	if (edit->sett != OBJECT)
 	{
 		edit->sett == ENEMY ? display_entities(&edit->sdl, edit->enemy, R, true)
@@ -46,7 +46,8 @@ static void		display_editor(t_editor *edit)
 		display_entities(&edit->sdl, edit->enemy, R, false);
 		display_entities(&edit->sdl, edit->object, 0x8b4513, true);
 	}
-	display_sector(edit);
+	edit->sett == SECTOR ? display_sector(&edit->sdl, edit->sector, true)
+		: display_sector(&edit->sdl, edit->sector, false);
 	display_vertex(&edit->sdl, edit->vertex, 0xffff00);
 	if (edit->sett == SECTOR && edit->sdl.event.motion.x <= EDIT_W)
 	{
