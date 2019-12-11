@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   edit_menu_tools.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: reda-con <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/19 13:14:01 by reda-con          #+#    #+#             */
-/*   Updated: 2019/12/11 14:57:29 by reda-con         ###   ########.fr       */
+/*   Updated: 2019/12/11 17:15:55 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,14 +58,16 @@ void			draw_back_ground(SDL_Surface *s)
 
 void			next_blank_menu(int set, SDL_Surface *s)
 {
-	if (set == ENEMY || set == OBJECT)
+	if (set == ENEMY || set == OBJECT || set == SECTOR)
 	{
 		square(1600, 500, 0xff00ff, s);
 		square(1600, 600, 0x00ffff, s);
-		square(1600, 700, 0x0000ff, s);
+		if (set != SECTOR)
+			square(1600, 700, 0x0000ff, s);
 		rectangle(init_vertex(1540, 440), init_vertex(1710, 510), 0xffffff, s);
 		rectangle(init_vertex(1540, 540), init_vertex(1710, 610), 0xffffff, s);
-		rectangle(init_vertex(1540, 640), init_vertex(1710, 710), 0xffffff, s);
+		if (set != SECTOR)
+			rectangle(init_vertex(1540, 640), init_vertex(1710, 710), 0xffffff, s);
 	}
 	if (set != PORTAL)
 	{

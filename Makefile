@@ -6,7 +6,7 @@
 #    By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/10 16:16:29 by kibotrel          #+#    #+#              #
-#    Updated: 2019/12/11 15:19:21 by reda-con         ###   ########.fr        #
+#    Updated: 2019/12/11 17:22:33 by nde-jesu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -135,6 +135,7 @@ SRCS			+= text.c
 SRCS			+= player.c
 SRCS			+= delete.c
 SRCS			+= entity2.c
+SRCS			+= sector_2.c
 
 
 #------------------------------ OPERATING SYSTEM ------------------------------#

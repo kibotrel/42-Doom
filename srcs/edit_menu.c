@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2009/11/19 13:07:32 by reda-con          #+#    #+#             */
-/*   Updated: 2019/12/11 15:17:33 by reda-con         ###   ########.fr       */
+/*   Updated: 2019/12/11 17:21:54 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,8 @@ void			sec_clic_menu_editor(int y, t_editor *editor)
 			move_in_entities(&editor->enemy, false);
 		else if (editor->sett == OBJECT)
 			move_in_entities(&editor->object, false);
+		else if (editor->sett == SECTOR)
+			move_in_sector(&editor->sector, false);
 	}
 	else if (y >= 240 && y <= 310)
 	{
@@ -89,6 +91,8 @@ void			sec_clic_menu_editor(int y, t_editor *editor)
 			move_in_entities(&editor->enemy, true);
 		else if (editor->sett == OBJECT)
 			move_in_entities(&editor->object, true);
+		else if (editor->sett == SECTOR)
+			move_in_sector(&editor->sector, true);
 	}
 	next_sec_clic_menu_editor(y, editor);
 }

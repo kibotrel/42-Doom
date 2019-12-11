@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 08:52:03 by nde-jesu          #+#    #+#             */
-/*   Updated: 2019/12/11 16:41:26 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2019/12/11 17:20:00 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -261,5 +261,6 @@ void				clear_editor(t_editor *editor);
 //
 void				rotate_entity(t_entity *entity, bool rotation);
 void				move_in_entities(t_entity **entity, bool way);
+void				move_in_sector(t_sector **sector, bool way);
 void				del_entity(t_entity **entity);
 void				put_fov(SDL_Surface *surf, t_vertex pt, int agl, int color);
