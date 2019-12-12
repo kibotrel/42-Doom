@@ -6,12 +6,21 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 08:29:24 by nde-jesu          #+#    #+#             */
-/*   Updated: 2019/11/20 18:07:47 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2019/12/11 15:37:54 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "editor.h"
 #include "libft.h"
+
+t_vertex		init_vertex(int x, int y)
+{
+	t_vertex	ret;
+
+	ret.x = x;
+	ret.y = y;
+	return (ret);
+}
 
 t_vertex		*create_vertex(int x, int y)
 {
@@ -29,7 +38,7 @@ void			add_vertex(t_vertex **vertex, int x, int y, bool flag)
 {
 	static int	vertex_number = 0;
 	t_vertex	*prev_vertex;
-	t_vertex 	*new;
+	t_vertex	*new;
 
 	new = create_vertex(x, y);
 	if (flag)

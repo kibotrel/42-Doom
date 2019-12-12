@@ -6,35 +6,31 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 14:05:19 by nde-jesu          #+#    #+#             */
-/*   Updated: 2019/12/10 17:57:00 by reda-con         ###   ########.fr       */
+/*   Updated: 2019/12/11 15:40:03 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "editor.h"
 
-void	display_player(t_player player, t_sdl *sdl)
-{
-	put_fov(sdl->surf, init_vertex(player.x, player.y), player.angle, 0xff00ff);
-}
-
-void	display_entities(t_sdl *sdl, t_entity *entity, int color, bool fl)
+void	display_entities(t_sdl *sdl, t_entity *entity, int clr, bool fl)
 {
 	t_entity	*print;
 
 	print = entity;
 	while (print)
 	{
-		put_fov(sdl->surf, init_vertex(print->x, print->y), print->angle, color);
+		put_fov(sdl->surf, init_vertex(print->x, print->y), print->angle, clr);
 		print = print->prev;
 	}
 	print = entity;
 	while (print)
 	{
-		put_fov(sdl->surf, init_vertex(print->x, print->y), print->angle, color);
+		put_fov(sdl->surf, init_vertex(print->x, print->y), print->angle, clr);
 		print = print->next;
 	}
 	if (entity && fl == true)
-		put_fov(sdl->surf, init_vertex(entity->x, entity->y), entity->angle, 0xffff00);
+		put_fov(sdl->surf, init_vertex(entity->x, entity->y),
+				entity->angle, 0xffff00);
 }
 
 void	display_vertex(t_sdl *sdl, t_vertex *vertex, int color)

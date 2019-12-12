@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 08:52:03 by nde-jesu          #+#    #+#             */
-/*   Updated: 2019/12/10 17:38:34 by reda-con         ###   ########.fr       */
+/*   Updated: 2019/12/11 17:20:00 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 **	MACROS
 */
 
-#define R 0xff0000
+# define R 0xff0000
 # define EDIT_W 1280
 # define MENU_W 500
 # define WIN_H 720
@@ -147,13 +147,12 @@ void				init_portals(t_editor *editor);
 
 void				display_grid(t_editor *editor);
 void				display_line(t_editor *editor, int x, int y);
-void				display_sector(t_editor *editor);
+void				display_sector(t_sdl *sdl, t_sector *sectors, bool fl);
 
 //	display_part2.c
 
 void				display_vertex(t_sdl *sdl, t_vertex *vertex, int color);
 void				display_entities(t_sdl *sdl, t_entity *entity, int color, bool fl);
-void				display_player(t_player player, t_sdl *sdl);
 void				display_mouse(t_sdl *sdl, t_vertex mouse, int color);
 
 //	display_utils.c
@@ -172,6 +171,10 @@ void				write_player(t_player player, t_vertex if_no_player, int fd);
 
 void				place_player(t_editor *editor, int x, int y);
 void				place_entity(t_editor *editor, int x, int y, int type);
+
+//	entity2.c
+
+void				change_ent_type(t_entity *ent);
 
 //	events.c
 
@@ -258,5 +261,6 @@ void				clear_editor(t_editor *editor);
 //
 void				rotate_entity(t_entity *entity, bool rotation);
 void				move_in_entities(t_entity **entity, bool way);
+void				move_in_sector(t_sector **sector, bool way);
 void				del_entity(t_entity **entity);
 void				put_fov(SDL_Surface *surf, t_vertex pt, int agl, int color);

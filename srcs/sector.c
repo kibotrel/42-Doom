@@ -6,14 +6,14 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 09:55:53 by nde-jesu          #+#    #+#             */
-/*   Updated: 2019/11/27 13:15:19 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2019/12/11 16:03:50 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "editor.h"
 
-static int			count_vertex_in_sector(t_vertex *vertex)
+static int		count_vertex_in_sector(t_vertex *vertex)
 {
 	int			count;
 	t_vertex	*vert;
@@ -28,7 +28,7 @@ static int			count_vertex_in_sector(t_vertex *vertex)
 	return (count);
 }
 
-static bool			is_sector_complete(t_vertex *first, t_vertex *last)
+static bool		is_sector_complete(t_vertex *first, t_vertex *last)
 {
 	if (!first || !last)
 		return (false);
@@ -37,7 +37,7 @@ static bool			is_sector_complete(t_vertex *first, t_vertex *last)
 	return (false);
 }
 
-static t_sector		*get_last_sector(t_editor *editor)
+static t_sector	*get_last_sector(t_editor *editor)
 {
 	t_sector	*sect;
 
@@ -52,7 +52,23 @@ static t_sector		*get_last_sector(t_editor *editor)
 	return (sect);
 }
 
-void				place_sector(t_editor *editor, int x, int y)
+void			next_place_sector(t_editor *edit, t_sector *sect)
+{
+	sect->vertex_count = count_vertex_in_sector(sect->vertex);
+	if (!(sect->is_portal = (int*)ft_memalloc(sizeof(int)
+					* sect->vertex_count)))
+		exit(1);
+	sect->is_portal = ft_memset(sect->is_portal, -1, sizeof(int)
+			* sect->vertex_count);
+	if (sect->is_child != -1)
+		sect->is_portal[1] = sect->is_child;
+	sect->next = create_sector();
+	sect->next->prev = sect;
+	edit->sect_is_closed = true;
+	edit->last_vertex = init_vertex(-1, -1);
+}
+
+void			place_sector(t_editor *editor, int x, int y)
 {
 	t_vertex	*new;
 	t_sector	*sect;
@@ -62,21 +78,7 @@ void				place_sector(t_editor *editor, int x, int y)
 	new = get_vertex(editor, x, y);
 	sect = get_last_sector(editor);
 	if (is_sector_complete(sect->vertex, new) == true)
-	{
-		sect->vertex_count = count_vertex_in_sector(sect->vertex);
-		if (!(sect->is_portal = (int*)ft_memalloc(sizeof(int)
-			* sect->vertex_count)))
-			exit(1);
-		sect->is_portal = ft_memset(sect->is_portal, -1, sizeof(int)
-			* sect->vertex_count);
-		if (sect->is_child != -1)
-			sect->is_portal[1] = sect->is_child;
-		sect->next = create_sector();
-		sect->next->prev = sect;
-				editor->sect_is_closed = true;
-		editor->last_vertex.x = -1;
-		editor->last_vertex.y = -1;
-	}
+		next_place_sector(editor, sect);
 	else
 	{
 		add_vertex(&sect->vertex, x, y, false);

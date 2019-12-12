@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 12:14:01 by nde-jesu          #+#    #+#             */
-/*   Updated: 2019/12/11 14:59:19 by lojesu           ###   ########.fr       */
+/*   Updated: 2019/12/12 14:03:53 by lojesu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,12 +52,12 @@ void	put_pixel(SDL_Surface *surf, int x, int y, int color)
 	}
 }
 
-double			deg_to_rad(int deg)
+double	deg_to_rad(int deg)
 {
 	return (deg * M_PI / 180);
 }
 
-void			put_fov(SDL_Surface *surf, t_vertex pt, int agl, int color)
+void	put_fov(SDL_Surface *surf, t_vertex pt, int agl, int color)
 {
 	size_t		i;
 	int			angle;

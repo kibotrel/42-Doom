@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/27 14:44:48 by nde-jesu          #+#    #+#             */
-/*   Updated: 2019/12/10 15:53:30 by reda-con         ###   ########.fr       */
+/*   Updated: 2019/12/11 17:18:43 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	print_param_to_screen(t_sdl *sdl)
 
 void	print_param_in_param(t_sdl *sdl, t_settings sett)
 {
-	char 	*tab[3][6] = {{"Floor", "Roof", "Text"}, {"R.Left", "R.Right", "Del"},{"Prev", "Next", "R.Left", "R.Right", "Del", "Type"}};
+	char 	*tab[3][6] = {{"Prev", "Next", "Floor", "Roof", "Text"}, {"R.Left", "R.Right", "Del"},{"Prev", "Next", "R.Left", "R.Right", "Del", "Type"}};
 	SDL_Rect	where;
 	SDL_Surface	*tmp;
 	int 		i;
@@ -50,14 +50,19 @@ void	print_param_in_param(t_sdl *sdl, t_settings sett)
 	if (sett == SECTOR || sett == PLAYER)
 	{
 		if (sett == SECTOR)
+		{
+			max = 5;
 			j = 0;
+		}
 		else
+		{
+			max = 3;
 			j = 1;
-		max = 3;
+		}
 	}
 	else
 		j = 2;
-		max = 6;
+	max = 6;
 	where.x = 1610;
 	where.y = 155;
 	while (i < max)

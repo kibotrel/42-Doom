@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 15:01:10 by nde-jesu          #+#    #+#             */
-/*   Updated: 2019/12/10 15:18:57 by reda-con         ###   ########.fr       */
+/*   Updated: 2019/12/11 17:36:45 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,18 @@ int			is_in_sector(t_editor *edit, t_vertex point)
 			return (sect->sector_number);
 			// add_tmp_sector(sect, &tmp);
 		sect = sect->next;
+	}
+	sect = edit->sector;
+	while (sect)
+	{
+		extreme.x = EDIT_W;
+		extreme.y = point.y;
+		vertex = sect->vertex;
+		intersects = inters(vertex, point, extreme);
+		if (intersects % 2 == 1)
+			return (sect->sector_number);
+			// add_tmp_sector(sect, &tmp);
+		sect = sect->prev;
 	}
 	// if (!tmp)
 		return (-1);
