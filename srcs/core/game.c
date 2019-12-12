@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/18 14:38:11 by kibotrel          #+#    #+#             */
-/*   Updated: 2019/12/09 07:46:33 by demonwaves       ###   ########.fr       */
+/*   Updated: 2019/12/12 04:19:54 by demonwaves       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,10 @@
 #include "libft.h"
 #include "utils.h"
 
-#define EyeHeight	6    // Camera height from floor when standing
-#define DuckHeight	2.5  // And when crouching
-
 static void	temporary_setup(t_env *env)
 {
 	env->setup = 1;
-	env->zones = 2; //PARSER
+	env->zones = 3; //PARSER
 	ft_bzero(&env->cam, sizeof(t_cam));
 	env->cam.pos = v3d(2, 6, 0); //PARSER
 	env->cam.fov = v2d(0.75 * env->h, 0.2 * env->h);
@@ -35,42 +32,69 @@ static void	temporary_setup(t_env *env)
 	env->cam.fall = 1;
 	if (!(env->sector = (t_sector*)malloc(sizeof(t_sector) * env->zones)))
 		clean(env, E_MALLOC);
-	if (!(env->sector[0].vertex = (t_vec2d*)malloc(sizeof(t_vec2d) * 4)))
+	if (!(env->sector[0].vertex = (t_vec2d*)malloc(sizeof(t_vec2d) * 6)))
 		clean(env, E_MALLOC);
-	if (!(env->sector[0].neighbor = (int32_t*)malloc(sizeof(int32_t) * 4)))
+	if (!(env->sector[0].neighbor = (int32_t*)malloc(sizeof(int32_t) * 6)))
 		clean(env, E_MALLOC);
-	if (!(env->sector[1].vertex = (t_vec2d*)malloc(sizeof(t_vec2d) * 4)))
+	if (!(env->sector[1].vertex = (t_vec2d*)malloc(sizeof(t_vec2d) * 9)))
 		clean(env, E_MALLOC);
-	if (!(env->sector[1].neighbor = (int32_t*)malloc(sizeof(int32_t) * 4)))
+	if (!(env->sector[1].neighbor = (int32_t*)malloc(sizeof(int32_t) * 9)))
+		clean(env, E_MALLOC);
+	if (!(env->sector[2].vertex = (t_vec2d*)malloc(sizeof(t_vec2d) * 5)))
+		clean(env, E_MALLOC);
+	if (!(env->sector[2].neighbor = (int32_t*)malloc(sizeof(int32_t) * 5)))
 		clean(env, E_MALLOC);
 
 	env->sector[0].ceil = 20;
-	env->sector[0].floor = 0;
-
+	env->sector[0].floor = 5;
+	env->sector[0].points = 6;
 	env->sector[0].vertex[0] = v2d(0,0); //PARSER
 	env->sector[0].vertex[1] = v2d(10,0); //PARSER
-	env->sector[0].vertex[2] = v2d(10,10); //PARSER
-	env->sector[0].vertex[3] = v2d(0,10); //PARSER
+	env->sector[0].vertex[2] = v2d(10,3); //PARSER
+	env->sector[0].vertex[3] = v2d(10,7); //PARSER
+	env->sector[0].vertex[4] = v2d(10,10); //PARSER
+	env->sector[0].vertex[5] = v2d(0,10); //PARSER
 
-	env->sector[0].points = 4;
-
-	env->sector[1].ceil = 22;
-	env->sector[1].floor = 2;
-
+	env->sector[1].ceil = 16;
+	env->sector[1].floor = -2;
+	env->sector[1].points = 9;
 	env->sector[1].vertex[0] = v2d(10,0); //PARSER
-	env->sector[1].vertex[1] = v2d(20,0); //PARSER
-	env->sector[1].vertex[2] = v2d(20,10); //PARSER
-	env->sector[1].vertex[3] = v2d(10,10); //PARSER
+	env->sector[1].vertex[1] = v2d(15,0); //PARSER
+	env->sector[1].vertex[2] = v2d(15,2.5); //PARSER
+	env->sector[1].vertex[3] = v2d(17.5,5); //PARSER
+	env->sector[1].vertex[4] = v2d(20,5); // PARSER
+	env->sector[1].vertex[5] = v2d(20,10); //PARSER
+	env->sector[1].vertex[6] = v2d(10,10); // PARSER
+	env->sector[1].vertex[7] = v2d(10,7); //PARSER
+	env->sector[1].vertex[8] = v2d(10,3); //PARSER
 
-	env->sector[1].points = 4;
+	env->sector[2].ceil = 26;
+	env->sector[2].floor = 0;
+	env->sector[2].points = 5;
+	env->sector[2].vertex[0] = v2d(15,0); //PARSER
+	env->sector[2].vertex[1] = v2d(20,0); //PARSER
+	env->sector[2].vertex[2] = v2d(20,5); //PARSER
+	env->sector[2].vertex[3] = v2d(17.5,5); //PARSER
+	env->sector[2].vertex[4] = v2d(15,2.5); //PARSER
 
-	for (unsigned i = 0; i < env->sector[0].points; i++)
-		env->sector[0].neighbor[i] = -1; //PARSER
-	for (unsigned i = 0; i < env->sector[1].points; i++)
-		env->sector[1].neighbor[i] = -1; //PARSER
-	env->sector[0].neighbor[1] = 1;
-	env->sector[1].neighbor[3] = 0;
-	env->cam.pos.z = env->sector[env->cam.sector].floor + EyeHeight;
+	for (unsigned i = 0; i < 9; i++)
+	{
+		if (i < env->sector[0].points)
+			env->sector[0].neighbor[i] = -1;
+		if (i < env->sector[1].points)
+			env->sector[1].neighbor[i] = -1;
+		if (i < env->sector[2].points)
+			env->sector[2].neighbor[i] = -1;
+	}
+	env->sector[0].neighbor[2] = 1;
+	env->sector[1].neighbor[1] = 2;
+	env->sector[1].neighbor[2] = 2;
+	env->sector[1].neighbor[3] = 2;
+	env->sector[1].neighbor[7] = 0;
+	env->sector[2].neighbor[2] = 1;
+	env->sector[2].neighbor[3] = 1;
+	env->sector[2].neighbor[4] = 1;
+	env->cam.pos.z = env->sector[env->cam.sector].floor + CAM_H;
 }
 
 void		game(t_env *env)
@@ -206,11 +230,10 @@ void		game(t_env *env)
 			if ( neighbor >= 0 && endx >= beginx && (head - tail + 33) % 32)
 			{
 				*head = (t_item){neighbor, beginx, endx};
-				if (++head == queue+32)
+				if (++head == queue + 32)
 					head = queue;
 			}
 		}
 		++renderedsectors[now.sector];
 	}
-	//	physics_engine(env);
 }
