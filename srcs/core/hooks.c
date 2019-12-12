@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/16 12:45:38 by kibotrel          #+#    #+#             */
-/*   Updated: 2019/12/09 06:39:10 by demonwaves       ###   ########.fr       */
+/*   Updated: 2019/12/12 03:09:43 by demonwaves       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void	game_hooks(t_env *env)
 			case SDL_QUIT: clean(env, NOTHING);
 		}
 	env->cam.angle += x * 0.03f;
-	env->cam.gap = clamp(env->cam.gap - y * 0.05f, -5, 5);
+	env->cam.gap = clamp(env->cam.gap - y * 0.05f, -10, 10);
 	env->cam.gap = env->cam.gap - env->cam.v.z * 0.5f;
 	printf("%f,%f |", env->cam.angle, env->cam.gap);
 	MovePlayer(env, 0, 0);
