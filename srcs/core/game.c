@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/18 14:38:11 by kibotrel          #+#    #+#             */
-/*   Updated: 2019/12/12 04:19:54 by demonwaves       ###   ########.fr       */
+/*   Updated: 2019/12/12 10:24:38 by demonwaves       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,8 +142,8 @@ void		game(t_env *env)
 				float farz = 5;
 				float nearside = 1e-5f;
 				float farside = 20.f;
-				t_vec2d i1 = Intersect(tx1,tz1,tx2,tz2, -nearside,nearz, -farside,farz);
-	 			t_vec2d i2 = Intersect(tx1,tz1,tx2,tz2,  nearside,nearz,  farside,farz);
+				t_vec2d i1 = intersect(tx1,tz1,tx2,tz2, -nearside,nearz, -farside,farz);
+	 			t_vec2d i2 = intersect(tx1,tz1,tx2,tz2,  nearside,nearz,  farside,farz);
 				if (tz1 < nearz)
 				{
 					if (i1.y > 0)
@@ -189,37 +189,36 @@ void		game(t_env *env)
 				nyceil  = env->sector[neighbor].ceil  - env->cam.pos.z;
 				nyfloor = env->sector[neighbor].floor - env->cam.pos.z;
 			}
-			#define Yaw(y , z) (y + z * env->cam.gap)
-			int y1a = env->h / 2 - (int)(Yaw(yceil, tz1) * yscale1);
-			int y1b = env->h / 2 - (int)(Yaw(yfloor, tz1) * yscale1);
-			int y2a = env->h / 2 - (int)(Yaw(yceil, tz2) * yscale2);
-			int y2b = env->h / 2 - (int)(Yaw(yfloor, tz2) * yscale2);
-			int ny1a = env->h / 2 - (int)(Yaw(nyceil, tz1) * yscale1);
-			int ny1b = env->h / 2 - (int)(Yaw(nyfloor, tz1) * yscale1);
-			int ny2a = env->h / 2 - (int)(Yaw(nyceil, tz2) * yscale2);
-			int ny2b = env->h / 2 - (int)(Yaw(nyfloor, tz2) * yscale2);
-			int beginx = max(x1, now.sx1);
-			int endx = min(x2, now.sx2);
+			int y1a = env->h / 2 - (int)(gap(yceil, tz1, env->cam.gap) * yscale1);
+			int y1b = env->h / 2 - (int)(gap(yfloor, tz1, env->cam.gap) * yscale1);
+			int y2a = env->h / 2 - (int)(gap(yceil, tz2, env->cam.gap) * yscale2);
+			int y2b = env->h / 2 - (int)(gap(yfloor, tz2, env->cam.gap) * yscale2);
+			int ny1a = env->h / 2 - (int)(gap(nyceil, tz1, env->cam.gap) * yscale1);
+			int ny1b = env->h / 2 - (int)(gap(nyfloor, tz1, env->cam.gap) * yscale1);
+			int ny2a = env->h / 2 - (int)(gap(nyceil, tz2, env->cam.gap) * yscale2);
+			int ny2b = env->h / 2 - (int)(gap(nyfloor, tz2, env->cam.gap) * yscale2);
+			int beginx = fmax(x1, now.sx1);
+			int endx = fmin(x2, now.sx2);
 			for(int x = beginx; x <= endx; ++x)
 			{
 				int z = ((x - x1) * (tz2 - tz1) / (x2 - x1) + tz1) * 8;
 				int ya = (x - x1) * (y2a - y1a) / (x2 - x1) + y1a;
-				int cya = clamp(ya, ytop[x],ybottom[x]);
+				int cya = bound(ya, ytop[x],ybottom[x]);
 				int yb = (x - x1) * (y2b - y1b) / (x2 - x1) + y1b;
-				int cyb = clamp(yb, ytop[x], ybottom[x]);
+				int cyb = bound(yb, ytop[x], ybottom[x]);
 				draw_slice(env, x, ytop[x], cya - 1, 0x111111 ,0x222222,0x111111);
 				draw_slice(env, x, cyb + 1, ybottom[x], 0x0000FF,0x0000AA,0x0000FF);
 				if (neighbor >= 0)
 				{
 					int nya = (x - x1) * (ny2a - ny1a) / (x2 - x1) + ny1a;
-					int cnya = clamp(nya, ytop[x],ybottom[x]);
+					int cnya = bound(nya, ytop[x],ybottom[x]);
 					int nyb = (x - x1) * (ny2b - ny1b) / (x2 - x1) + ny1b;
-					int cnyb = clamp(nyb, ytop[x], ybottom[x]);
+					int cnyb = bound(nyb, ytop[x], ybottom[x]);
 					unsigned r1 = 0x010101 * (255 - z), r2 = 0x040007 * (31 - z / 8);
 					draw_slice(env, x, cya, cnya - 1, 0, x == x1 || x == x2 ? 0 : r1, 0);
-					ytop[x] = clamp(max(cya, cnya), ytop[x], env->h - 1);
+					ytop[x] = bound(fmax(cya, cnya), ytop[x], env->h - 1);
 					draw_slice(env, x, cnyb + 1, cyb, 0, x == x1 || x == x2 ? 0 : r2, 0);
-					ybottom[x] = clamp(min(cyb, cnyb), 0, ybottom[x]);
+					ybottom[x] = bound(fmin(cyb, cnyb), 0, ybottom[x]);
 				}
 				else
 				{

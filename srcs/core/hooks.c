@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/16 12:45:38 by kibotrel          #+#    #+#             */
-/*   Updated: 2019/12/12 03:09:43 by demonwaves       ###   ########.fr       */
+/*   Updated: 2019/12/12 10:27:35 by demonwaves       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,11 +64,8 @@ void	game_hooks(t_env *env)
 			case SDL_QUIT: clean(env, NOTHING);
 		}
 	env->cam.angle += x * 0.03f;
-	env->cam.gap = clamp(env->cam.gap - y * 0.05f, -10, 10);
-	env->cam.gap = env->cam.gap - env->cam.v.z * 0.5f;
-	printf("%f,%f |", env->cam.angle, env->cam.gap);
-	MovePlayer(env, 0, 0);
-	printf(" %f,%f\n", env->cam.angle, env->cam.gap);
+	env->cam.gap = bound(env->cam.gap - y * 0.05, -10, 10) - env->cam.v.z * 0.5;
+	move(env, 0, 0);
 	float move_vec[2] = {0.f, 0.f};
 	// printf("%f, %f\n", env->cam.cos, env->cam.sin);
 	if (env->input[SDL_SCANCODE_W])

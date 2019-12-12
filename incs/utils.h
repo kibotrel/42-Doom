@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 19:01:59 by kibotrel          #+#    #+#             */
-/*   Updated: 2019/11/26 05:30:45 by demonwaves       ###   ########.fr       */
+/*   Updated: 2019/12/12 10:24:16 by demonwaves       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,19 +50,23 @@ t_vec2d	v2d(double x, double y);
 t_vec3d	v3d(double x, double y, double z);
 
 /*
-**	maths.c
+**	maths_0.c
 */
 
-int		Overlap(double a0, double a1, double b0, double b1);
-int		IntersectBox(double x0, double y0, double x1, double y1, double x2, double y2, double x3, double y3);
+int		hitbox(double x0, double y0, double x1, double y1, double x2, double y2, double x3, double y3);
 void	scale_text(t_env *e, SDL_Rect *where, char *text, uint8_t pos);
-double	min(double a, double b);
-double	max(double a, double b);
-double	Yaw(double y, double z, double current_gap);
+double	gap(double y, double z, double current_gap);
 double	vxs(double x0, double y0, double x1, double y1);
-double	clamp(double value, double minimum, double maximum);
-double	PointSide(double px, double py, double x0, double y0, double x1, double y1);
-t_vec2d	Intersect(double x1, double y1, double x2, double y2, double x3, double y3, double x4, double y4);
+double	bound(double value, double minimum, double maximum);
+
+/*
+**	maths_1.c
+*/
+
+int		overlap(double a0, double a1, double b0, double b1);
+void	vproj(t_vec3d *v, t_vec2d v1, t_vec2d v2);
+double	side(double px, double py, double x0, double y0, double x1, double y1);
+t_vec2d	intersect(double x1, double y1, double x2, double y2, double x3, double y3, double x4, double y4);
 
 /*
 **	checks.c
