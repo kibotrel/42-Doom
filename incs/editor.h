@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 08:52:03 by nde-jesu          #+#    #+#             */
-/*   Updated: 2019/12/11 17:20:00 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2019/12/12 17:43:54 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,16 @@ typedef enum		e_settings
 	PLAYER, // Place the player
 	ENEMY, // Place enemies
 	OBJECT, // Place objects
-	MODIFY_SECTOR
 }					t_settings;
+
+typedef enum		e_presets
+{
+	NONE,
+	SECTOR_FLOOR,
+	SECTOR_CEIL,
+	SECTOR_TEXT,
+	ENTITY_TYPE
+}					t_presets;
 
 /*
 **	STRUCTS
@@ -91,6 +99,7 @@ typedef struct		s_sector
 	t_vertex		*vertex;
 	int				vertex_count;
 	int				sector_number;
+	int				texture;
 
 	int				h_ceil;
 	int				h_floor;
@@ -117,6 +126,7 @@ typedef struct		s_editor
 {
 	t_sdl			sdl;
 	t_settings		sett;
+	t_presets		presets;
 	bool			map_save;
 
 	t_sector		*sector;
@@ -244,7 +254,7 @@ void				change_sector_height(t_editor *editor, int x, int y);
 
 //	text.c
 
-void				print_param_to_screen(t_sdl *sdl);
+void				print_param_to_screen(t_sdl *sdl, t_settings sett, t_editor *editor);
 void				print_param_in_param(t_sdl *sdl, t_settings sett);
 
 //	player.c

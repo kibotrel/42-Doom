@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 13:09:05 by nde-jesu          #+#    #+#             */
-/*   Updated: 2019/12/11 16:41:06 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2019/12/12 17:10:36 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static bool		is_saved(t_editor *editor)
 		return (true);
 	}
 }
-
+#include <stdio.h>
 static void		display_editor(t_editor *edit)
 {
 	t_vertex	mse;
@@ -56,7 +56,7 @@ static void		display_editor(t_editor *edit)
 		display_mouse(&edit->sdl, mse, 0x0ff0f0);
 	}
 	display_line(edit, edit->sdl.event.motion.x, edit->sdl.event.motion.y);
-	print_param_to_screen(&edit->sdl);
+	print_param_to_screen(&edit->sdl, edit->sett, edit);
 }
 
 static void		mouse(t_editor *editor, SDL_Event event)
@@ -73,8 +73,6 @@ static void		mouse(t_editor *editor, SDL_Event event)
 			place_entity(editor, event.motion.x, event.motion.y, 1);
 		else if (editor->sett == PORTAL)
 			place_portal(editor, event.motion.x, event.motion.y);
-		// else if (editor->sett == MODIFY_SECTOR)
-		// 	is_in_sector(editor, event.motion.x, event.motion.y);
 		editor->map_save = false;
 	}
 	else if (editor->sect_is_closed == true)

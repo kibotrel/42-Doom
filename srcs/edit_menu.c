@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2009/11/19 13:07:32 by reda-con          #+#    #+#             */
-/*   Updated: 2019/12/11 17:59:26 by reda-con         ###   ########.fr       */
+/*   Updated: 2019/12/12 17:45:03 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,8 @@ void			next_sec_clic_menu_editor(int y, t_editor *editor)
 			rotate_entity(editor->enemy, true);
 		else if (editor->sett == OBJECT)
 			rotate_entity(editor->object, true);
+		else if (editor->sett == SECTOR)
+			editor->presets = SECTOR_FLOOR;
 	}
 	else if (y >= 440 && y <= 510)
 	{
@@ -53,6 +55,8 @@ void			next_sec_clic_menu_editor(int y, t_editor *editor)
 			rotate_entity(editor->enemy, false);
 		else if (editor->sett == OBJECT)
 			rotate_entity(editor->object, false);
+		else if (editor->sett == SECTOR)
+			editor->presets = SECTOR_CEIL;
 	}
 	else if (y >= 540 && y <= 610)
 	{
@@ -60,13 +64,13 @@ void			next_sec_clic_menu_editor(int y, t_editor *editor)
 			del_entity(&editor->enemy);
 		else if (editor->sett == OBJECT)
 			del_entity(&editor->object);
+		else if (editor->sett == SECTOR)
+			editor->presets = SECTOR_TEXT;
 	}
 	else if (y >= 640 && y <= 710)
 	{
-		if (editor->sett == ENEMY)
-			change_ent_type(editor->enemy);
-		if (editor->sett == OBJECT)
-			change_ent_type(editor->object);
+		if (editor->sett == ENEMY || editor->sett == OBJECT)
+			editor->presets = ENTITY_TYPE;
 	}
 }
 
@@ -101,6 +105,7 @@ void			clic_editor_menu(int x, int y, t_editor *editor)
 {
 	if (x >= 1340 && x <= 1510)
 	{
+		editor->presets = NONE;
 		if (y >= 140 && y <= 210)
 			editor->sett = SECTOR;
 		else if (y >= 240 && y <= 310)
