@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/16 12:45:38 by kibotrel          #+#    #+#             */
-/*   Updated: 2019/12/12 10:27:35 by demonwaves       ###   ########.fr       */
+/*   Updated: 2019/12/12 10:56:42 by demonwaves       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	global_hooks(t_env *env, t_sdl *sdl)
 			clean(env, NOTHING);
 		if (env->sdl.event.type == SDL_KEYDOWN)
 		{
-			//printf("%d\n", sdl->event.key.keysym.scancode);
+			// printf("%d\n", sdl->event.key.keysym.scancode);
 			env->input[sdl->event.key.keysym.scancode] = 1;
 		}
 		if (env->sdl.event.type == SDL_KEYUP)
@@ -44,6 +44,7 @@ void	game_hooks(t_env *env)
 {
 	SDL_Event ev;
 	int x = 0,y = 0;
+	physics(env);
 	while(SDL_PollEvent(&ev))
 		switch(ev.type)
 		{
@@ -56,6 +57,7 @@ void	game_hooks(t_env *env)
 					case SDL_SCANCODE_A: env->input[SDL_SCANCODE_A] = ev.type==SDL_KEYDOWN; break;
 					case SDL_SCANCODE_D: env->input[SDL_SCANCODE_D] = ev.type==SDL_KEYDOWN; break;
 					case SDL_SCANCODE_BACKSPACE: {env->win = MENU; SDL_ShowCursor(SDL_ENABLE); break;}
+					case SDL_SCANCODE_SPACE: {if (env->cam.ground) {env->cam.v.z += 0.5; env->cam.fall = 1;}break;}
 					case SDL_SCANCODE_ESCAPE: clean(env, NOTHING);
 					default: break;
 				}

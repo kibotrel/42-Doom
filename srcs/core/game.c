@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/18 14:38:11 by kibotrel          #+#    #+#             */
-/*   Updated: 2019/12/12 10:24:38 by demonwaves       ###   ########.fr       */
+/*   Updated: 2019/12/12 10:55:34 by demonwaves       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 
 static void	temporary_setup(t_env *env)
 {
+	SDL_ShowCursor(SDL_DISABLE);
 	env->setup = 1;
 	env->zones = 3; //PARSER
 	ft_bzero(&env->cam, sizeof(t_cam));
@@ -46,7 +47,7 @@ static void	temporary_setup(t_env *env)
 		clean(env, E_MALLOC);
 
 	env->sector[0].ceil = 20;
-	env->sector[0].floor = 5;
+	env->sector[0].floor = 2;
 	env->sector[0].points = 6;
 	env->sector[0].vertex[0] = v2d(0,0); //PARSER
 	env->sector[0].vertex[1] = v2d(10,0); //PARSER

@@ -6,15 +6,13 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/10 16:47:31 by kibotrel          #+#    #+#             */
-/*   Updated: 2019/12/12 10:27:19 by demonwaves       ###   ########.fr       */
+/*   Updated: 2019/12/12 10:48:22 by demonwaves       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <math.h>
 #include "game.h"
-#include "libft.h"
 #include "utils.h"
-#include "structs.h"
 
 void move(t_env *env, float x, float y)
 {

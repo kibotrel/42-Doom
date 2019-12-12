@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 21:22:14 by kibotrel          #+#    #+#             */
-/*   Updated: 2019/12/12 10:26:23 by demonwaves       ###   ########.fr       */
+/*   Updated: 2019/12/12 10:46:29 by demonwaves       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,6 @@ void	move(t_env *env, float dx, float dy);
 **	camera.c
 */
 
-void	reset_view(t_env *env);
-void	update_angle(t_env *env, double *angle);
 
 /*
 **	engine.c

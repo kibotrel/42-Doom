@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/16 11:54:25 by kibotrel          #+#    #+#             */
-/*   Updated: 2019/11/26 05:39:58 by demonwaves       ###   ########.fr       */
+/*   Updated: 2019/12/12 10:54:13 by demonwaves       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@
 # define TXT_MENU		" - Menu"
 # define TXT_EDITOR		" - Editor"
 # define TXT_SETTINGS	" - Settings"
-# define TXT_WINDOW		"Doom-Nukem v0.1.1"
+# define TXT_WINDOW		"Doom-Nukem v0.2.1"
 
 # define TITLE_MENU		TXT_WINDOW TXT_MENU
 # define TITLE_GAME		TXT_WINDOW TXT_GAME
