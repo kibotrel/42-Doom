@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/11 16:04:00 by nde-jesu          #+#    #+#             */
-/*   Updated: 2019/12/11 16:05:58 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2019/12/12 15:34:05 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	move_in_sector(t_sector **sector, bool way)
 	tmp = *sector;
 	if (way == true)
 	{
-		if (tmp->next)
+		if (tmp->next->next)
 			tmp = tmp->next;
 	}
 	else

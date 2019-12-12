@@ -6,18 +6,23 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 08:56:26 by nde-jesu          #+#    #+#             */
-/*   Updated: 2019/12/11 17:10:31 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2019/12/12 15:37:35 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "editor.h"
 #include "libft.h"
+
 static int	get_wall_color(t_sector *sect, int *i, bool fl)
 {
 	if (sect->is_portal != NULL && *i >= sect->vertex_count)
 		*i = 0;
 	if (sect->is_portal != NULL && sect->is_portal[*i] != -1)
+	{
+		if (fl == true)
+			return (0x00ff83);
 		return (0x00ff00);
+	}
 	else
 	{
 		if (fl == true)
@@ -41,10 +46,10 @@ static void	draw_walls(t_sdl *sdl, t_sector *sect, t_vertex *vertex, int color)
 		draw_line(sdl->surf, start, end, color);
 	}
 	else if (sect->next)
-	{
 		end.x = sect->vertex->x;
 		end.y = sect->vertex->y;
 		draw_line(sdl->surf, start, end, color);
+	{	
 	}
 	else
 		put_pixel(sdl->surf, vertex->x, vertex->y, color);
