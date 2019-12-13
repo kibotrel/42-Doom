@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2009/11/19 13:07:32 by reda-con          #+#    #+#             */
-/*   Updated: 2019/12/13 09:54:38 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2019/12/13 10:15:13 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,12 +127,11 @@ void			clic_editor_menu(int x, int y, t_editor *editor)
 			editor->sett = OBJECT;
 		else if (y >= 540 && y <= 610)
 			editor->sett = PORTAL;
-		blank_menu(editor->sdl.surf, editor->sett, editor->sdl, editor->presets);
 	}
 	else if (x >= 1540 && x <= 1710)
-	{
 		sec_clic_menu_editor(x, y, editor);
-	}
+	if (editor->presets != NONE)
+		blank_menu(editor->sdl.surf, editor->sett, editor->sdl, editor->presets);
 }
 
 static void			next_motion(t_sdl s, int set, t_presets preset)

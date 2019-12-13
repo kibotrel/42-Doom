@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/22 15:46:27 by nde-jesu          #+#    #+#             */
-/*   Updated: 2019/12/10 15:54:22 by reda-con         ###   ########.fr       */
+/*   Updated: 2019/12/13 10:16:07 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,4 +90,5 @@ void			clear_editor(t_editor *editor)
 	editor->last_vertex.y = -1;
 	init_portals(editor);
 	editor->sect_is_closed = false;
+	blank_menu(editor->sdl.surf, editor->sett, editor->sdl, editor->presets);
 }
