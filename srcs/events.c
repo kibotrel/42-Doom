@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 13:09:05 by nde-jesu          #+#    #+#             */
-/*   Updated: 2019/12/12 17:10:36 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2019/12/13 08:51:55 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ static bool		is_saved(t_editor *editor)
 		return (true);
 	}
 }
-#include <stdio.h>
 static void		display_editor(t_editor *edit)
 {
 	t_vertex	mse;
@@ -96,13 +95,13 @@ static void		keydown(t_editor *editor, SDL_Event event)
 	if (editor->sect_is_closed == true)
 	{
 		next_keydown(event, editor->sdl.surf, editor);
-		blank_menu(editor->sdl.surf, editor->sett, editor->sdl);
+		blank_menu(editor->sdl.surf, editor->sett, editor->sdl, editor->presets);
 	}
 }
 
 void			events(t_editor *editor)
 {
-	blank_menu(editor->sdl.surf, editor->sett, editor->sdl);
+	blank_menu(editor->sdl.surf, editor->sett, editor->sdl, editor->presets);
 	while (editor->finish == false)
 	{
 		while (SDL_PollEvent(&(editor->sdl.event)))
@@ -114,7 +113,7 @@ void			events(t_editor *editor)
 			else if (editor->sdl.event.type == SDL_MOUSEBUTTONDOWN)
 				mouse(editor, editor->sdl.event);
 			else if (editor->sdl.event.type == SDL_MOUSEMOTION)
-				motion(editor->sdl, editor->sett);
+				motion(editor->sdl, editor->sett, editor->presets);
 		}
 		display_editor(editor);
 		if (SDL_UpdateWindowSurface(editor->sdl.win) != 0)

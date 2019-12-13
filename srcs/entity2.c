@@ -3,22 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   entity2.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: reda-con <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/11 14:24:32 by reda-con          #+#    #+#             */
-/*   Updated: 2019/12/11 15:14:40 by reda-con         ###   ########.fr       */
+/*   Updated: 2019/12/13 09:21:16 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "editor.h"
-
-void			change_ent_type(t_entity *ent)
-{
-	if (ent->type < 3)
-		++ent->type;
-	else
-		ent->type = 0;
-}
 
 void		del_entity(t_entity **entity)
 {

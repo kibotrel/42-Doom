@@ -6,12 +6,27 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/27 14:44:48 by nde-jesu          #+#    #+#             */
-/*   Updated: 2019/12/12 17:46:09 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2019/12/13 09:07:19 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "editor.h"
+
+static void	print_more_minus(t_sdl *sdl)
+{
+	SDL_Rect	where;
+	SDL_Surface	*tmp;
+
+	where.x = 1420;
+	where.y = 50;
+	tmp = TTF_RenderText_Solid(sdl->font, "-", sdl->color);
+	SDL_BlitSurface(tmp, 0, sdl->surf, &where);
+	where.x = 1615;
+	where.y = 55;
+	tmp = TTF_RenderText_Solid(sdl->font, "+", sdl->color);
+	SDL_BlitSurface(tmp, 0, sdl->surf, &where);
+}
 
 static void	print_sector_values(t_sdl *sdl, t_sector *sector, t_presets presets)
 {
@@ -27,10 +42,11 @@ static void	print_sector_values(t_sdl *sdl, t_sector *sector, t_presets presets)
 		print = ft_itoa(sector->texture);
 	else
 		return ;
-	where.x = 1500;
+	where.x = 1510;
 	where.y = 50;
 	tmp = TTF_RenderText_Solid(sdl->font, print, sdl->color);
 	SDL_BlitSurface(tmp, 0, sdl->surf, &where);
+	print_more_minus(sdl);
 }
 
 static void	print_entity_value(t_sdl *sdl, t_entity *to_print, t_presets presets)
@@ -43,10 +59,11 @@ static void	print_entity_value(t_sdl *sdl, t_entity *to_print, t_presets presets
 		print = ft_itoa(to_print->type);
 	else
 		return ;
-	where.x = 1500;
+	where.x = 1510;
 	where.y = 50;
 	tmp = TTF_RenderText_Solid(sdl->font, print, sdl->color);
 	SDL_BlitSurface(tmp, 0, sdl->surf, &where);
+	print_more_minus(sdl);
 }
 
 void	print_param_to_screen(t_sdl *sdl, t_settings sett, t_editor *editor)

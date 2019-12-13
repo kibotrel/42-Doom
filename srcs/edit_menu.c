@@ -6,13 +6,13 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2009/11/19 13:07:32 by reda-con          #+#    #+#             */
-/*   Updated: 2019/12/12 17:45:03 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2019/12/13 09:54:38 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "editor.h"
 
-void			blank_menu(SDL_Surface *s, int set, t_sdl sdl)
+void			blank_menu(SDL_Surface *s, int set, t_sdl sdl, t_presets preset)
 {
 	int		clr;
 
@@ -33,10 +33,17 @@ void			blank_menu(SDL_Surface *s, int set, t_sdl sdl)
 	rectangle(init_vertex(1350, 450), init_vertex(1400, 500), 0xffa500, s);
 	rectangle(init_vertex(1350, 350), init_vertex(1400, 400), 0xffa500, s);
 	rectangle(init_vertex(1350, 550), init_vertex(1400, 600), 0xffa500, s);
+	if (preset != NONE)
+	{
+		rectangle(init_vertex(1399, 49), init_vertex(1450, 100), 0xffa500, s);
+		rectangle(init_vertex(1599, 49), init_vertex(1650, 100), 0xffa500, s);
+		square(1450, 100, 0x8d33ff, s);
+		square(1650, 100, 0x8d33ff, s);
+	}
 	print_param_in_param(&sdl, set);
 }
 
-void			next_sec_clic_menu_editor(int y, t_editor *editor)
+void			next_sec_clic_menu_editor(int x, int y, t_editor *editor)
 {
 	if (y >= 340 && y <= 410)
 	{
@@ -72,9 +79,13 @@ void			next_sec_clic_menu_editor(int y, t_editor *editor)
 		if (editor->sett == ENEMY || editor->sett == OBJECT)
 			editor->presets = ENTITY_TYPE;
 	}
+	else if (x >= 1450 && y >= 100 && x < 1500 && y < 150 && editor->presets != NONE)
+		change_value(editor, editor->presets, false);
+	else if (x >= 1650 && y >= 100 && x < 1700 && y < 150 && editor->presets != NONE)
+		change_value(editor, editor->presets, true);
 }
 
-void			sec_clic_menu_editor(int y, t_editor *editor)
+void			sec_clic_menu_editor(int x, int y, t_editor *editor)
 {
 	if (y >= 140 && y <= 210)
 	{
@@ -98,7 +109,7 @@ void			sec_clic_menu_editor(int y, t_editor *editor)
 		else if (editor->sett == SECTOR)
 			move_in_sector(&editor->sector, true);
 	}
-	next_sec_clic_menu_editor(y, editor);
+	next_sec_clic_menu_editor(x, y, editor);
 }
 
 void			clic_editor_menu(int x, int y, t_editor *editor)
@@ -116,15 +127,15 @@ void			clic_editor_menu(int x, int y, t_editor *editor)
 			editor->sett = OBJECT;
 		else if (y >= 540 && y <= 610)
 			editor->sett = PORTAL;
-		blank_menu(editor->sdl.surf, editor->sett, editor->sdl);
+		blank_menu(editor->sdl.surf, editor->sett, editor->sdl, editor->presets);
 	}
 	else if (x >= 1540 && x <= 1710)
 	{
-		sec_clic_menu_editor(y, editor);
+		sec_clic_menu_editor(x, y, editor);
 	}
 }
 
-void			next_motion(t_sdl s, int set)
+static void			next_motion(t_sdl s, int set, t_presets preset)
 {
 	int		y;
 
@@ -142,10 +153,10 @@ void			next_motion(t_sdl s, int set)
 	else if ((set == ENEMY || set == OBJECT) && y >= 640 && y <= 710)
 		rectangle(init_vertex(1540, 640), init_vertex(1710, 710), PRPL, s.surf);
 	else
-		blank_menu(s.surf, set, s);
+		blank_menu(s.surf, set, s, preset);
 }
 
-void			motion(t_sdl s, int set)
+void			motion(t_sdl s, int set, t_presets preset)
 {
 	if (s.event.motion.x >= 1340 && s.event.motion.x <= 1510)
 	{
@@ -165,10 +176,10 @@ void			motion(t_sdl s, int set)
 			rectangle(init_vertex(1340, 540), init_vertex(1510, 610),\
 					PRPL, s.surf);
 		else
-			blank_menu(s.surf, set, s);
+			blank_menu(s.surf, set, s, preset);
 	}
 	else if (s.event.motion.x >= 1540 && s.event.motion.x <= 1710)
-		next_motion(s, set);
+		next_motion(s, set, preset);
 	else
-		blank_menu(s.surf, set, s);
+		blank_menu(s.surf, set, s, preset);
 }

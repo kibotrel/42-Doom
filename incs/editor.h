@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 08:52:03 by nde-jesu          #+#    #+#             */
-/*   Updated: 2019/12/12 17:43:54 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2019/12/13 09:18:22 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -193,6 +193,7 @@ void				events(t_editor *editor);
 //	events_tools.c
 
 void				next_keydown(SDL_Event event, SDL_Surface *surf, t_editor *editor);
+void 				change_value(t_editor *editor, t_presets presets, bool fl);
 
 //	map_creation.c
 
@@ -236,8 +237,8 @@ t_vertex			*get_vertex(t_editor *editor, int x, int y);
 
 //	edit_menu.c
 
-void				motion(t_sdl sdl, int sett);	
-void				blank_menu(SDL_Surface *surf, int set, t_sdl sdl);
+void				motion(t_sdl sdl, int sett, t_presets preset);	
+void				blank_menu(SDL_Surface *surf, int set, t_sdl sdl, t_presets preset);
 void				clic_editor_menu(int x, int y, t_editor *editor);
 
 //	edit_menu_tools.c
