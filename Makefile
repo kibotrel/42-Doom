@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+         #
+#    By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/10 16:16:29 by kibotrel          #+#    #+#              #
-#    Updated: 2019/12/12 10:07:21 by demonwaves       ###   ########.fr        #
+#    Updated: 2019/12/13 08:12:07 by nde-jesu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -122,9 +122,10 @@ SRCS			+= events/keyboard.c
 ifeq ($(UNAME), Darwin)
 	SDL			= libsdl2.a
 	TTF			= libsdl2_ttf.a
-	LSDL_DIR	= $(HOME)/.brew/Cellar/sdl/2.0.10/lib
-	LTTF_DIR	= $(HOME)/.brew/Cellar/sdl_ttf/2.0.15/lib
-	INCS_DIR	+= $(HOME)/.brew/Cellar/sdl/2.0.10/include
+	LSDL_DIR	= $(HOME)/.brew/Cellar/sdl2/2.0.10/lib
+	LTTF_DIR	= $(HOME)/.brew/Cellar/sdl2_ttf/2.0.15/lib
+	INCS_DIR	+= $(HOME)/.brew/Cellar/sdl2/2.0.10/include/SDL2
+	INCS_DIR	+= $(HOME)/.brew/Cellar/sdl2_ttf/2.0.15/include/SDL2
 else
 	TAR			= tar -xf
 	SDL			= libSDL2.a
