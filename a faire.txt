@@ -1,5 +1,3 @@
-Changer hauteur sol et plafond par secteur.
-Choisir une texture de secteur.
 Choisir type d'ennemi et d'objet.
 Pouvoir charger une map dans l'editeur.
 Norme
