@@ -1,6 +1,7 @@
 Choisir type d'ennemi et d'objet.
 Pouvoir charger une map dans l'editeur.
 Norme
+devoir save apres avoir rotate un ennemi/objet/player
 Faire le clean si sa crash (meme si sa plantera jamais)
 Un petit bouton dans un coin pour clean l'editeur ?
 C'est deja pas mal, mais si y'a d'autres trucs a faire, pensez a le rajouter svp
