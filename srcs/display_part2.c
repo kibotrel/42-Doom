@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 14:05:19 by nde-jesu          #+#    #+#             */
-/*   Updated: 2019/12/11 15:40:03 by reda-con         ###   ########.fr       */
+/*   Updated: 2019/12/13 15:40:06 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,4 +64,19 @@ void	display_mouse(t_sdl *sdl, t_vertex mouse, int color)
 	put_pixel(sdl->surf, mouse.x - 1, mouse.y + 1, color);
 	put_pixel(sdl->surf, mouse.x, mouse.y - 1, color);
 	put_pixel(sdl->surf, mouse.x - 1, mouse.y - 1, color);
+}
+
+void	wich_entity_to_display(t_editor *edit)
+{
+	if (edit->sett != OBJECT)
+	{
+		edit->sett == ENEMY ? display_entities(&edit->sdl, edit->enemy, R, true)
+			: display_entities(&edit->sdl, edit->enemy, R, false);
+		display_entities(&edit->sdl, edit->object, 0x8b4513, false);
+	}
+	else if (edit->sett != ENEMY)
+	{
+		display_entities(&edit->sdl, edit->enemy, R, false);
+		display_entities(&edit->sdl, edit->object, 0x8b4513, true);
+	}
 }

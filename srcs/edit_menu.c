@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2009/11/19 13:07:32 by reda-con          #+#    #+#             */
-/*   Updated: 2019/12/13 14:05:33 by reda-con         ###   ########.fr       */
+/*   Updated: 2019/12/13 15:24:46 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,125 +27,41 @@ void			blank_menu(SDL_Surface *s, int set, t_sdl sdl, int preset)
 	rectangle(init_vertex(1340, 440), init_vertex(1510, 510), clr, s);
 	clr = ((set != PORTAL) ? 0xffffff : 0x177013);
 	rectangle(init_vertex(1340, 540), init_vertex(1510, 610), clr, s);
-	if (set == SECTOR)
-	{
-		clr = ((preset != SECTOR_FLOOR) ? 0xffffff : 0x177013);
-		rectangle(init_vertex(1540, 340), init_vertex(1710, 410), clr, s);
-		clr = ((preset != SECTOR_CEIL) ? 0xffffff : 0x177013);
-		rectangle(init_vertex(1540, 440), init_vertex(1710, 510), clr, s);
-		clr = ((preset != SECTOR_TEXT) ? 0xffffff : 0x177013);
-		rectangle(init_vertex(1540, 540), init_vertex(1710, 610), clr, s);
-	}
-	if (set == ENEMY || set == OBJECT)
-	{
-		clr = ((preset != ENTITY_TYPE) ? 0xffffff : 0x177013);
-		rectangle(init_vertex(1540, 640), init_vertex(1710, 710), clr, s);
-	}
 	next_blank_menu(set, s);
+	sec_blank_menu(s, set, preset);
 	rectangle(init_vertex(1350, 250), init_vertex(1400, 300), 0xffa500, s);
 	rectangle(init_vertex(1350, 150), init_vertex(1400, 200), 0xffa500, s);
 	rectangle(init_vertex(1350, 450), init_vertex(1400, 500), 0xffa500, s);
 	rectangle(init_vertex(1350, 350), init_vertex(1400, 400), 0xffa500, s);
 	rectangle(init_vertex(1350, 550), init_vertex(1400, 600), 0xffa500, s);
-	if (preset != NONE)
-	{
-		rectangle(init_vertex(1399, 49), init_vertex(1450, 100), 0xffa500, s);
-		rectangle(init_vertex(1599, 49), init_vertex(1650, 100), 0xffa500, s);
-		square(1450, 100, 0x8d33ff, s);
-		square(1650, 100, 0x8d33ff, s);
-	}
 	print_param_in_param(&sdl, set);
 }
 
-void			next_sec_clic_menu_editor(int y, t_editor *editor)
-{
-	if (y >= 340 && y <= 410)
-	{
-		if (editor->sett == PLAYER)
-			delete_player(&editor->player);
-		else if (editor->sett == ENEMY)
-			rotate_entity(editor->enemy, true);
-		else if (editor->sett == OBJECT)
-			rotate_entity(editor->object, true);
-		else if (editor->sett == SECTOR)
-			editor->presets = SECTOR_FLOOR;
-	}
-	else if (y >= 440 && y <= 510)
-	{
-		if (editor->sett == ENEMY)
-			rotate_entity(editor->enemy, false);
-		else if (editor->sett == OBJECT)
-			rotate_entity(editor->object, false);
-		else if (editor->sett == SECTOR)
-			editor->presets = SECTOR_CEIL;
-	}
-	else if (y >= 540 && y <= 610)
-	{
-		if (editor->sett == ENEMY)
-			del_entity(&editor->enemy);
-		else if (editor->sett == OBJECT)
-			del_entity(&editor->object);
-		else if (editor->sett == SECTOR)
-			editor->presets = SECTOR_TEXT;
-	}
-	else if (y >= 640 && y <= 710)
-	{
-		if (editor->sett == ENEMY || editor->sett == OBJECT)
-			editor->presets = ENTITY_TYPE;
-	}
-}
-
-void			sec_clic_menu_editor(int y, t_editor *editor)
-{
-	if (y >= 140 && y <= 210)
-	{
-		if (editor->sett == PLAYER)
-			rotate_player(&editor->player, true);
-		else if (editor->sett == ENEMY)
-			move_in_entities(&editor->enemy, false);
-		else if (editor->sett == OBJECT)
-			move_in_entities(&editor->object, false);
-		else if (editor->sett == SECTOR)
-			move_in_sector(&editor->sector, false);
-		editor->presets = NONE;
-	}
-	else if (y >= 240 && y <= 310)
-	{
-		if (editor->sett == PLAYER)
-			rotate_player(&editor->player, false);
-		else if (editor->sett == ENEMY)
-			move_in_entities(&editor->enemy, true);
-		else if (editor->sett == OBJECT)
-			move_in_entities(&editor->object, true);
-		else if (editor->sett == SECTOR)
-			move_in_sector(&editor->sector, true);
-		editor->presets = NONE;
-	}
-	next_sec_clic_menu_editor(y, editor);
-}
-
-void			clic_editor_menu(int x, int y, t_editor *editor)
+void			fst_clic_editor_menu(int y, t_editor *editor)
 {
 	int		fl;
 
 	fl = -1;
+	if (y >= 140 && y <= 210)
+		fl = SECTOR;
+	else if (y >= 240 && y <= 310)
+		fl = PLAYER;
+	else if (y >= 340 && y <= 410)
+		fl = ENEMY;
+	else if (y >= 440 && y <= 510)
+		fl = OBJECT;
+	else if (y >= 540 && y <= 610)
+		fl = PORTAL;
+	if (fl != -1)
+		editor->sett = fl;
+	if (fl != -1)
+		editor->presets = NONE;
+}
+
+void			clic_editor_menu(int x, int y, t_editor *editor)
+{
 	if (x >= 1340 && x <= 1510)
-	{
-		if (y >= 140 && y <= 210)
-			fl = SECTOR;
-		else if (y >= 240 && y <= 310)
-			fl = PLAYER;
-		else if (y >= 340 && y <= 410)
-			fl = ENEMY;
-		else if (y >= 440 && y <= 510)
-			fl = OBJECT;
-		else if (y >= 540 && y <= 610)
-			fl = PORTAL;
-		if (fl != -1)
-			editor->sett = fl;
-		if (fl != -1)
-			editor->presets = NONE;
-	}
+		fst_clic_editor_menu(y, editor);
 	else if (x >= 1540 && x <= 1710)
 		sec_clic_menu_editor(y, editor);
 	if (y >= 50 && y <= 100)
@@ -158,7 +74,7 @@ void			clic_editor_menu(int x, int y, t_editor *editor)
 	blank_menu(editor->sdl.surf, editor->sett, editor->sdl, editor->presets);
 }
 
-static void			next_motion(t_sdl s, int set, int preset)
+static void		next_motion(t_sdl s, int set, int preset)
 {
 	int		y;
 

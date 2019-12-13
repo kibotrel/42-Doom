@@ -6,13 +6,13 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/20 17:05:02 by reda-con          #+#    #+#             */
-/*   Updated: 2019/12/13 09:51:32 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2019/12/13 15:26:03 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "editor.h"
 
-void	next_keydown(SDL_Event event, SDL_Surface *s, t_editor *editor)
+void		next_keydown(SDL_Event event, SDL_Surface *s, t_editor *editor)
 {
 	if (event.key.keysym.scancode == SDL_SCANCODE_1)
 	{
@@ -64,7 +64,8 @@ static void	change_type(int *to_change, bool fl)
 	else if (*to_change > 3)
 		--*to_change;
 }
-void change_value(t_editor *editor, t_presets presets, bool fl)
+
+void		change_value(t_editor *editor, t_presets presets, bool fl)
 {
 	if (presets == SECTOR_FLOOR)
 		change_height(&editor->sector->h_floor, fl);

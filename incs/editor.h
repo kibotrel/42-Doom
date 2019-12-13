@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 08:52:03 by nde-jesu          #+#    #+#             */
-/*   Updated: 2019/12/13 14:07:08 by reda-con         ###   ########.fr       */
+/*   Updated: 2019/12/13 15:32:36 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,8 +148,6 @@ typedef struct		s_editor
 	bool			finish;
 }					t_editor;
 
-#endif
-
 //	main.c
 
 void				init_portals(t_editor *editor);
@@ -159,12 +157,15 @@ void				init_portals(t_editor *editor);
 void				display_grid(t_editor *editor);
 void				display_line(t_editor *editor, int x, int y);
 void				display_sector(t_sdl *sdl, t_sector *sectors, bool fl);
+void				draw_walls(t_sdl *sdl, t_sector *s, t_vertex *v, int clr);
+int					get_wall_color(t_sector *sect, int *i, bool fl);
 
 //	display_part2.c
 
 void				display_vertex(t_sdl *sdl, t_vertex *vertex, int color);
 void				display_entities(t_sdl *sdl, t_entity *entity, int color, bool fl);
 void				display_mouse(t_sdl *sdl, t_vertex mouse, int color);
+void				wich_entity_to_display(t_editor *edit);
 
 //	display_utils.c
 
@@ -230,6 +231,10 @@ t_sector			*create_sector(void);
 
 void				place_sector(t_editor *editor, int x, int y);
 
+//	sector_2.c
+
+void				next_display_sector(t_sdl *sdl, t_sector *sectors);
+
 //	vertex.c
 
 t_vertex			*create_vertex(int x, int y);
@@ -241,6 +246,11 @@ t_vertex			*get_vertex(t_editor *editor, int x, int y);
 void				motion(t_sdl sdl, int sett, int preset);
 void				blank_menu(SDL_Surface *surf, int set, t_sdl sdl, int preset);
 void				clic_editor_menu(int x, int y, t_editor *editor);
+
+//	sec_edit_menu.c
+
+void				sec_blank_menu(SDL_Surface *surf, int set, int preset);
+void				sec_clic_menu_editor(int y, t_editor *editor);
 
 //	edit_menu_tools.c
 
@@ -276,3 +286,5 @@ void				move_in_entities(t_entity **entity, bool way);
 void				move_in_sector(t_sector **sector, bool way);
 void				del_entity(t_entity **entity);
 void				put_fov(SDL_Surface *surf, t_vertex pt, int agl, int color);
+
+#endif

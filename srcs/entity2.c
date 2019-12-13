@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/11 14:24:32 by reda-con          #+#    #+#             */
-/*   Updated: 2019/12/13 10:10:48 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2019/12/13 14:51:11 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void		move_in_entities(t_entity **entity, bool way)
 	*entity = tmp;
 }
 
-void	rotate_entity(t_entity *entity, bool rotation)
+void		rotate_entity(t_entity *entity, bool rotation)
 {
 	if (!entity)
 		return ;

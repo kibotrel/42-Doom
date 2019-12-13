@@ -6,12 +6,26 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/27 14:44:48 by nde-jesu          #+#    #+#             */
-/*   Updated: 2019/12/13 09:07:19 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2019/12/13 15:15:07 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "editor.h"
+
+static char const	*g_first_params[5] = {
+	"Sector", "Player", "Enemy", "Object", "Portal"
+};
+
+static char const	*g_number[5] = {
+	"1", "2", "3", "4", "5"
+};
+
+static char const	*g_tab[3][6] = {
+	{"Prev", "Next", "Floor", "Roof", "Text"},
+	{"R.Left", "R.Right", "Del"},
+	{"Prev", "Next", "R.Left", "R.Right", "Del", "Type"}
+};
 
 static void	print_more_minus(t_sdl *sdl)
 {
@@ -32,7 +46,7 @@ static void	print_sector_values(t_sdl *sdl, t_sector *sector, t_presets presets)
 {
 	SDL_Rect	where;
 	SDL_Surface	*tmp;
-	char	*print;
+	char		*print;
 
 	if (presets == SECTOR_FLOOR)
 		print = ft_itoa(sector->h_floor);
@@ -49,11 +63,11 @@ static void	print_sector_values(t_sdl *sdl, t_sector *sector, t_presets presets)
 	print_more_minus(sdl);
 }
 
-static void	print_entity_value(t_sdl *sdl, t_entity *to_print, t_presets presets)
+static void	print_entity_value(t_sdl *sdl, t_entity *to_print, int presets)
 {
 	SDL_Rect	where;
 	SDL_Surface	*tmp;
-	char	*print;
+	char		*print;
 
 	if (presets == ENTITY_TYPE && to_print)
 		print = ft_itoa(to_print->type);
@@ -66,22 +80,20 @@ static void	print_entity_value(t_sdl *sdl, t_entity *to_print, t_presets presets
 	print_more_minus(sdl);
 }
 
-void	print_param_to_screen(t_sdl *sdl, t_settings sett, t_editor *editor)
+void		print_param_to_screen(t_sdl *sdl, t_settings sett, t_editor *editor)
 {
 	SDL_Rect	where;
 	SDL_Surface	*tmp;
 	int			i;
-	char	*first_params[5] = {"Sector", "Player", "Enemy", "Object", "Portal"};
-	char	*number[5] = {"1", "2", "3", "4", "5"};
-	
+
 	i = 0;
 	where.x = 1410;
 	where.y = 155;
 	while (i < 5)
 	{
-		tmp = TTF_RenderText_Solid(sdl->font, first_params[i], sdl->color);
+		tmp = TTF_RenderText_Solid(sdl->font, g_first_params[i], sdl->color);
 		SDL_BlitSurface(tmp, 0, sdl->surf, &where);
-		tmp = TTF_RenderText_Solid(sdl->font, number[i], sdl->color);
+		tmp = TTF_RenderText_Solid(sdl->font, g_number[i], sdl->color);
 		where.x -= 45;
 		SDL_BlitSurface(tmp, 0, sdl->surf, &where);
 		where.x += 45;
@@ -96,41 +108,31 @@ void	print_param_to_screen(t_sdl *sdl, t_settings sett, t_editor *editor)
 		print_entity_value(sdl, editor->enemy, editor->presets);
 }
 
-void	print_param_in_param(t_sdl *sdl, t_settings sett)
+void		print_param_in_param(t_sdl *sdl, t_settings sett)
 {
-	char 	*tab[3][6] = {{"Prev", "Next", "Floor", "Roof", "Text"}, {"R.Left", "R.Right", "Del"},{"Prev", "Next", "R.Left", "R.Right", "Del", "Type"}};
 	SDL_Rect	where;
 	SDL_Surface	*tmp;
-	int 		i;
+	int			i;
 	int			max;
 	int			j;
 
 	if (sett == PORTAL)
 		return ;
-	i = 0;
+	i = -1;
 	if (sett == SECTOR || sett == PLAYER)
 	{
-		if (sett == SECTOR)
-		{
-			max = 5;
-			j = 0;
-		}
-		else
-		{
-			max = 3;
-			j = 1;
-		}
+		j = (sett == SECTOR) ? 0 : 1;
+		max = (sett == SECTOR) ? 5 : 3;
 	}
 	else
 		j = 2;
 	max = 6;
 	where.x = 1610;
 	where.y = 155;
-	while (i < max)
+	while (++i < max)
 	{
-		tmp = TTF_RenderText_Solid(sdl->font, tab[j][i], sdl->color);
+		tmp = TTF_RenderText_Solid(sdl->font, g_tab[j][i], sdl->color);
 		SDL_BlitSurface(tmp, 0, sdl->surf, &where);
 		where.y = where.y + 100;
-		i++;
 	}
 }

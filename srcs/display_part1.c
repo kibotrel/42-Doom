@@ -6,14 +6,14 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 08:56:26 by nde-jesu          #+#    #+#             */
-/*   Updated: 2019/12/12 16:01:09 by lojesu           ###   ########.fr       */
+/*   Updated: 2019/12/13 15:22:15 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "editor.h"
 #include "libft.h"
 
-static int	get_wall_color(t_sector *sect, int *i, bool fl)
+int		get_wall_color(t_sector *sect, int *i, bool fl)
 {
 	if (sect->is_portal != NULL && *i >= sect->vertex_count)
 		*i = 0;
@@ -32,7 +32,7 @@ static int	get_wall_color(t_sector *sect, int *i, bool fl)
 	return (0x0000ff);
 }
 
-static void	draw_walls(t_sdl *sdl, t_sector *sect, t_vertex *vertex, int color)
+void	draw_walls(t_sdl *sdl, t_sector *sect, t_vertex *vertex, int color)
 {
 	t_vertex	start;
 	t_vertex	end;
@@ -61,30 +61,7 @@ void		display_sector(t_sdl *sdl, t_sector *sectors, bool fl)
 	t_sector	*sect;
 	t_vertex	*vertex;
 
-	sect = sectors;
-	while (sect)
-	{
-		i = 0;
-		vertex = sect->vertex;
-		while (vertex && ++i)
-		{
-			draw_walls(sdl, sect, vertex, get_wall_color(sect, &i, false));
-			vertex = vertex->next;
-		}
-		sect = sect->next;
-	}
-	sect = sectors;
-	while (sect)
-	{
-		i = 0;
-		vertex = sect->vertex;
-		while (vertex && ++i)
-		{
-			draw_walls(sdl, sect, vertex, get_wall_color(sect, &i, false));
-			vertex = vertex->next;
-		}
-		sect = sect->prev;
-	}
+	next_display_sector(sdl, sectors);
 	if (sectors && fl == true)
 	{
 		i = 0;

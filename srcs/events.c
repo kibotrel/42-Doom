@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 13:09:05 by nde-jesu          #+#    #+#             */
-/*   Updated: 2019/12/13 10:22:18 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2019/12/13 15:43:20 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ static bool		is_saved(t_editor *editor)
 		return (true);
 	}
 }
+
 static void		display_editor(t_editor *edit)
 {
 	t_vertex	mse;
@@ -35,18 +36,9 @@ static void		display_editor(t_editor *edit)
 
 	display_grid(edit);
 	clr = (edit->sett == PLAYER) ? 0xffff00 : 0xff00ff;
-	put_fov(edit->sdl.surf, init_vertex(edit->player.x, edit->player.y), edit->player.angle, clr);
-	if (edit->sett != OBJECT)
-	{
-		edit->sett == ENEMY ? display_entities(&edit->sdl, edit->enemy, R, true)
-			: display_entities(&edit->sdl, edit->enemy, R, false);
-		display_entities(&edit->sdl, edit->object, 0x8b4513, false);
-	}
-	else if (edit->sett != ENEMY)
-	{
-		display_entities(&edit->sdl, edit->enemy, R, false);
-		display_entities(&edit->sdl, edit->object, 0x8b4513, true);
-	}
+	put_fov(edit->sdl.surf, init_vertex(edit->player.x, edit->player.y),
+			edit->player.angle, clr);
+	wich_entity_to_display(edit);
 	edit->sett == SECTOR ? display_sector(&edit->sdl, edit->sector, true)
 		: display_sector(&edit->sdl, edit->sector, false);
 	display_vertex(&edit->sdl, edit->vertex, 0xffff00);
@@ -80,24 +72,24 @@ static void		mouse(t_editor *editor, SDL_Event event)
 		clic_editor_menu(event.motion.x, event.motion.y, editor);
 }
 
-static void		keydown(t_editor *editor, SDL_Event event)
+static void		keydown(t_editor *edit, SDL_Event event)
 {
 	if (event.key.keysym.scancode == SDL_SCANCODE_DELETE)
-		clear_editor(editor);
+		clear_editor(edit);
 	if (event.key.keysym.scancode == SDL_SCANCODE_ESCAPE)
 	{
-		if (is_saved(editor) == true)
-			editor->finish = true;
+		if (is_saved(edit) == true)
+			edit->finish = true;
 	}
 	if (event.key.keysym.scancode == SDL_SCANCODE_RETURN)
 	{
-		create_map(editor);
-		editor->map_save = true;
+		create_map(edit);
+		edit->map_save = true;
 	}
-	if (editor->sect_is_closed == true)
+	if (edit->sect_is_closed == true)
 	{
-		next_keydown(event, editor->sdl.surf, editor);
-		blank_menu(editor->sdl.surf, editor->sett, editor->sdl, editor->presets);
+		next_keydown(event, edit->sdl.surf, edit);
+		blank_menu(edit->sdl.surf, edit->sett, edit->sdl, edit->presets);
 	}
 }
 
@@ -109,7 +101,7 @@ void			events(t_editor *editor)
 		while (SDL_PollEvent(&(editor->sdl.event)))
 		{
 			if (editor->sdl.event.type == SDL_QUIT)
-					editor->finish = true;
+				editor->finish = true;
 			else if (editor->sdl.event.type == SDL_KEYDOWN)
 				keydown(editor, editor->sdl.event);
 			else if (editor->sdl.event.type == SDL_MOUSEBUTTONDOWN)
