@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 08:52:03 by nde-jesu          #+#    #+#             */
-/*   Updated: 2019/12/13 09:18:22 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2019/12/13 14:07:08 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 */
 
 # define R 0xff0000
+# define WHITE 0xffffff
 # define EDIT_W 1280
 # define MENU_W 500
 # define WIN_H 720
@@ -237,8 +238,8 @@ t_vertex			*get_vertex(t_editor *editor, int x, int y);
 
 //	edit_menu.c
 
-void				motion(t_sdl sdl, int sett, t_presets preset);	
-void				blank_menu(SDL_Surface *surf, int set, t_sdl sdl, t_presets preset);
+void				motion(t_sdl sdl, int sett, int preset);
+void				blank_menu(SDL_Surface *surf, int set, t_sdl sdl, int preset);
 void				clic_editor_menu(int x, int y, t_editor *editor);
 
 //	edit_menu_tools.c
@@ -269,7 +270,7 @@ void				clear_editor(t_editor *editor);
 
 
 //tmp
-//
+
 void				rotate_entity(t_entity *entity, bool rotation);
 void				move_in_entities(t_entity **entity, bool way);
 void				move_in_sector(t_sector **sector, bool way);

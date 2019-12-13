@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/19 13:14:01 by reda-con          #+#    #+#             */
-/*   Updated: 2019/12/13 12:12:55 by reda-con         ###   ########.fr       */
+/*   Updated: 2019/12/13 14:06:54 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,9 +65,8 @@ void			next_blank_menu(int set, SDL_Surface *s)
 		if (set != SECTOR)
 		{
 			square(1600, 700, 0x0000ff, s);
-			rectangle(init_vertex(1540, 640), init_vertex(1710, 710), 0xffffff, s);
-			rectangle(init_vertex(1540, 440), init_vertex(1710, 510), 0xffffff, s);
-			rectangle(init_vertex(1540, 540), init_vertex(1710, 610), 0xffffff, s);
+			rectangle(init_vertex(1540, 440), init_vertex(1710, 510), WHITE, s);
+			rectangle(init_vertex(1540, 540), init_vertex(1710, 610), WHITE, s);
 		}
 	}
 	if (set != PORTAL)
@@ -75,10 +74,10 @@ void			next_blank_menu(int set, SDL_Surface *s)
 		square(1600, 200, 0x181279, s);
 		square(1600, 300, 0x261017, s);
 		square(1600, 400, 0x270139, s);
-		rectangle(init_vertex(1540, 140), init_vertex(1710, 210), 0xffffff, s);
-		rectangle(init_vertex(1540, 240), init_vertex(1710, 310), 0xffffff, s);
+		rectangle(init_vertex(1540, 140), init_vertex(1710, 210), WHITE, s);
+		rectangle(init_vertex(1540, 240), init_vertex(1710, 310), WHITE, s);
 		if (set != SECTOR)
-			rectangle(init_vertex(1540, 340), init_vertex(1710, 410), 0xffffff, s);
-		rectangle(init_vertex(1340, 540), init_vertex(1510, 610), 0xffffff, s);
+			rectangle(init_vertex(1540, 340), init_vertex(1710, 410), WHITE, s);
+		rectangle(init_vertex(1340, 540), init_vertex(1510, 610), WHITE, s);
 	}
 }
