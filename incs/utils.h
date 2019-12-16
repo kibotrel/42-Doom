@@ -6,13 +6,14 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 19:01:59 by kibotrel          #+#    #+#             */
-/*   Updated: 2019/12/16 11:48:51 by demonwaves       ###   ########.fr       */
+/*   Updated: 2019/12/16 21:08:12 by demonwaves       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef UTILS_H
 # define UTILS_H
 
+# include "game.h"
 # include "structs.h"
 
 typedef struct		s_line
@@ -40,7 +41,7 @@ void	text_to_screen(t_env *env, t_sdl *sdl, char *text, uint8_t pos);
 void	draw_slice(t_env *env, int x, int y1, int y2, int top, int middle, int bottom);
 
 /*
-**	data.c
+**	data_0.c
 */
 
 void	paste_position(SDL_Rect *pos, t_pos scale);
@@ -48,6 +49,12 @@ void	line_params(t_line *line, t_pos a, t_pos b);
 void	police_color(SDL_Color *color, uint8_t r, uint8_t g, uint8_t b);
 t_vec2d	v2d(double x, double y);
 t_vec3d	v3d(double x, double y, double z);
+
+/*
+**	data_1.c
+*/
+
+t_item	item(uint32_t sector, uint32_t min, uint32_t max);
 
 /*
 **	maths_0.c
@@ -76,5 +83,13 @@ t_vec2d	intersect(double x1, double y1, double x2, double y2, double x3, double 
 char	*get_string(uint8_t n);
 int8_t	dectect_input(int32_t *input);
 int8_t	get_dimensions(int32_t height);
+int8_t	cycle_check(t_game *var, t_item *now);
+
+/*
+**	engine.c
+*/
+
+void	bound_view(t_game *var);
+void	transform(t_cam *cam, t_game *var, t_vec2d p1, t_vec2d p2);
 
 #endif

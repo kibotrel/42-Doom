@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/18 14:38:11 by kibotrel          #+#    #+#             */
-/*   Updated: 2019/12/16 15:20:22 by lojesu           ###   ########.fr       */
+/*   Updated: 2019/12/16 21:13:49 by demonwaves       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,8 @@
 #include "game.h"
 #include "clean.h"
 #include "libft.h"
+#include "setup.h"
 #include "utils.h"
-
-uint32_t	color_mul(uint32_t color, double mul);	//a mettre dans un .h
-uint32_t	color_add(uint32_t color, double add);	//a mettre dans un .h
 
 static void	temporary_setup(t_env *env)
 {
@@ -102,141 +100,14 @@ static void	temporary_setup(t_env *env)
 
 void		game(t_env *env)
 {
+	t_game	var;
+
 	if (!env->setup)
 	{
 		SDL_ShowCursor(SDL_DISABLE);
 		SDL_SetWindowTitle(env->sdl.win, TITLE_GAME);
 		temporary_setup(env); // Won't last since parsing should replace it
 	}
-	t_item queue[32], *head=queue, *tail=queue;
-	int ytop[1280]={0}, ybottom[1280], renderedsectors[env->zones], i = 0;
-
-	for(int x = 0; x < env->w; ++x)
-		ybottom[x] = env->h - 1;
-	for(unsigned n = 0; n < env->zones; ++n)
-		renderedsectors[n] = 0;
-	*head = (t_item){env->cam.sector, 0, env->w - 1};
-	if (++head == queue + 32)
-		head = queue;
-    while(i == 0 || head != tail)
-	{
-		i = 1;
-		const t_item now = *tail;
-		if (++tail == queue + 32)
-			tail = queue;
-		if (renderedsectors[now.sector] > 31)
-			continue;
-		++renderedsectors[now.sector];
-		const t_sector* const sect = &env->sector[now.sector];
-		for(unsigned s = 0; s < sect->points; ++s)
-		{
-			float vx1 = sect->vertex[s].x - env->cam.pos.x;
-			float vy1 = sect->vertex[s].y - env->cam.pos.y;
-			float vx2 = sect->vertex[(s + 1) % sect->points].x - env->cam.pos.x;
-			float vy2 = sect->vertex[(s + 1) % sect->points].y - env->cam.pos.y;
-			float tx1 = vx1 * env->cam.sin - vy1 * env->cam.cos;
-			float tz1 = vx1 * env->cam.cos + vy1 * env->cam.sin;
-			float tx2 = vx2 * env->cam.sin - vy2 * env->cam.cos;
-			float tz2 = vx2 * env->cam.cos + vy2 * env->cam.sin;
-			if (tz1 <= 0 && tz2 <= 0)
-				continue;
-			if (tz1 <= 0 || tz2 <= 0)
-			{
-				float nearz = 1e-4f;
-				float farz = 5;
-				float nearside = 1e-5f;
-				float farside = 20.f;
-				t_vec2d i1 = intersect(tx1,tz1,tx2,tz2, -nearside,nearz, -farside,farz);
-	 			t_vec2d i2 = intersect(tx1,tz1,tx2,tz2,  nearside,nearz,  farside,farz);
-				if (tz1 < nearz)
-				{
-					if (i1.y > 0)
-					{
-						tx1 = i1.x;
-						tz1 = i1.y;
-					}
-					else
-					{
-						tx1 = i2.x;
-						tz1 = i2.y;
-					}
-				}
- 				if (tz2 < nearz)
-				{
-					if (i1.y > 0)
-					{
-						tx2 = i1.x;
-						tz2 = i1.y;
-					}
-					else
-					{
-						tx2 = i2.x;
-						tz2 = i2.y;
-					}
-				}
-			}
-			float xscale1 = env->cam.fov.x / tz1;
-			float yscale1 = env->cam.fov.y / tz1;
-			float xscale2 = env->cam.fov.x / tz2;
-			float yscale2 = env->cam.fov.y / tz2;
-			int x1 = env->w / 2 - (int)(tx1 * xscale1);
-			int x2 = env->w / 2 - (int)(tx2 * xscale2);
-			if (x1 >= x2 || x2 < now.sx1 || x1 > now.sx2)
-				continue;
-			float yceil = sect->ceil - env->cam.pos.z;
-			float yfloor = sect->floor - env->cam.pos.z;
-			int neighbor = sect->neighbor[s];
-			float nyceil = 0;
-			float nyfloor = 0;
-			if (neighbor >= 0)
-			{
-				nyceil  = env->sector[neighbor].ceil  - env->cam.pos.z;
-				nyfloor = env->sector[neighbor].floor - env->cam.pos.z;
-			}
-			int y1a = env->h / 2 - (int)(gap(yceil, tz1, env->cam.gap) * yscale1);
-			int y1b = env->h / 2 - (int)(gap(yfloor, tz1, env->cam.gap) * yscale1);
-			int y2a = env->h / 2 - (int)(gap(yceil, tz2, env->cam.gap) * yscale2);
-			int y2b = env->h / 2 - (int)(gap(yfloor, tz2, env->cam.gap) * yscale2);
-			int ny1a = env->h / 2 - (int)(gap(nyceil, tz1, env->cam.gap) * yscale1);
-			int ny1b = env->h / 2 - (int)(gap(nyfloor, tz1, env->cam.gap) * yscale1);
-			int ny2a = env->h / 2 - (int)(gap(nyceil, tz2, env->cam.gap) * yscale2);
-			int ny2b = env->h / 2 - (int)(gap(nyfloor, tz2, env->cam.gap) * yscale2);
-			int beginx = fmax(x1, now.sx1);
-			int endx = fmin(x2, now.sx2);
-			for(int x = beginx; x <= endx; ++x)
-			{
-				int z = ((x - x1) * (tz2 - tz1) / (x2 - x1) + tz1) * 8;
-				int ya = (x - x1) * (y2a - y1a) / (x2 - x1) + y1a;
-				int cya = bound(ya, ytop[x],ybottom[x]);
-				int yb = (x - x1) * (y2b - y1b) / (x2 - x1) + y1b;
-				int cyb = bound(yb, ytop[x], ybottom[x]);
-				draw_slice(env, x, ytop[x], cya - 1, 0x111111 ,0x222222,0x111111);//plafond
-				draw_slice(env, x, cyb + 1, ybottom[x], 0x0000FF,0x0000AA,0x0000FF);//sol
-				if (neighbor >= 0)
-				{
-					int nya = (x - x1) * (ny2a - ny1a) / (x2 - x1) + ny1a;
-					int cnya = bound(nya, ytop[x],ybottom[x]);
-					int nyb = (x - x1) * (ny2b - ny1b) / (x2 - x1) + ny1b;
-					int cnyb = bound(nyb, ytop[x], ybottom[x]);
-					unsigned r1 = 0x010101 * (255 - z), r2 = 0x040007 * (31 - z / 8);
-					draw_slice(env, x, cya, cnya - 1, 0, x == x1 || x == x2 ? 0 : r1, 0);
-					ytop[x] = bound(fmax(cya, cnya), ytop[x], env->h - 1);
-					draw_slice(env, x, cnyb + 1, cyb, 0, x == x1 || x == x2 ? 0 : r2, 0);
-					ybottom[x] = bound(fmin(cyb, cnyb), 0, ybottom[x]);
-				}
-				else
-				{
-					unsigned r = color_add(0xFFFFFF, -z);//0xFF0000 * (255-z);//texture
-					draw_slice(env, x, cya, cyb, 0, x == x1 || x == x2 ? 0 : r, 0);//mur
-				}
-			}
-			if ( neighbor >= 0 && endx >= beginx && (head - tail + 33) % 32)
-			{
-				*head = (t_item){neighbor, beginx, endx};
-				if (++head == queue + 32)
-					head = queue;
-			}
-		}
-		++renderedsectors[now.sector];
-	}
+	game_setup(env, &var);
+	graphics(env, &var);
 }
