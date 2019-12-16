@@ -84,6 +84,6 @@ void		horizontal_movement(t_env *env, t_vec3d p, t_vec3d vel, double view)
 		}
 		i++;
 	}
-	move(env, vel.x, vel.y);
+	update_cam(env, vel.x, vel.y);
 	env->cam.fall = 1;
 }

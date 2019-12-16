@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/10 16:47:31 by kibotrel          #+#    #+#             */
-/*   Updated: 2019/12/12 10:48:22 by demonwaves       ###   ########.fr       */
+/*   Updated: 2019/12/16 12:18:40 by demonwaves       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,28 +14,39 @@
 #include "game.h"
 #include "utils.h"
 
-void move(t_env *env, float x, float y)
+void	jump(t_cam *cam)
 {
-	uint32_t	i;
-	t_sector	*s = &env->sector[env->cam.sector];
-	t_vec2d		*v = s->vertex;
-	t_vec3d		pos;
-	t_vec3d		vel;
-
-	i = 0;
-	vel = v3d(x, y, 0);
-	pos = v3d(env->cam.pos.x, env->cam.pos.y, 0);
-	while (i < s->points)
+	if (cam->ground)
 	{
-		if (s->neighbor[i] >= 0 && check_collisions(pos, vel, v[i], v[i + 1]))
-		{
-			env->cam.sector = s->neighbor[i];
-			break;
-		}
-		i++;
+		cam->v.z += 0.65;
+		cam->fall = 1;
 	}
-	env->cam.pos.x += x;
-	env->cam.pos.y += y;
-	env->cam.sin = sin(env->cam.angle);
-	env->cam.cos = cos(env->cam.angle);
+}
+
+void	move(t_env *env)
+{
+	t_vec2d		v;
+
+	v = v2d(0, 0);
+	if (env->input[SDL_SCANCODE_W])
+	{
+		v.x += env->cam.cos * 0.2;
+		v.y += env->cam.sin * 0.2;
+	}
+	if (env->input[SDL_SCANCODE_S])
+	{
+		v.x -= env->cam.cos * 0.2;
+		v.y -= env->cam.sin * 0.2;
+	}
+	if (env->input[SDL_SCANCODE_A])
+	{
+		v.x += env->cam.sin * 0.2;
+		v.y -= env->cam.cos * 0.2;
+	}
+	if (env->input[SDL_SCANCODE_D])
+	{
+		v.x -= env->cam.sin * 0.2;
+		v.y += env->cam.cos * 0.2;
+	}
+	velocity(env, &env->cam, v);
 }

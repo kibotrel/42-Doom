@@ -19,7 +19,6 @@ int		hitbox(double x0, double y0, double x1, double y1, double x2, double y2, do
 	return ((overlap(x0, x1, x2, x3) && overlap(y0, y1, y2, y3)));
 }
 
-
 void	vproj(t_vec3d *v, t_vec2d v1, t_vec2d v2)
 {
 	t_vec2d		w;	// Wall vector
@@ -27,4 +26,19 @@ void	vproj(t_vec3d *v, t_vec2d v1, t_vec2d v2)
 	w = v2d(v2.x - v1.x, v2.y - v1.y);
 	v->x = w.x * (v->x * w.x + w.y * v->y) / (pow(w.x, 2) + pow(w.y, 2));
 	v->y = w.y * (v->x * w.x + w.y * v->y) / (pow(w.x, 2) + pow(w.y, 2));
+}
+
+void	velocity(t_env *env, t_cam *cam, t_vec2d v)
+{
+	int		move;
+	double	speed;
+
+	if (env->input[SDL_SCANCODE_W] || env->input[SDL_SCANCODE_S]
+		|| env->input[SDL_SCANCODE_A] || env->input[SDL_SCANCODE_D])
+		move = 1;
+	speed = (move ? 0.4 : 0.2);
+	cam->v.x = cam->v.x * (1 - speed) + v.x * speed;
+	cam->v.y = cam->v.y * (1 - speed) + v.y * speed;
+	if (move)
+		env->cam.move = 1;
 }

@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/18 14:38:11 by kibotrel          #+#    #+#             */
-/*   Updated: 2019/12/16 15:15:59 by lojesu           ###   ########.fr       */
+/*   Updated: 2019/12/16 15:20:22 by lojesu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ uint32_t	color_add(uint32_t color, double add);	//a mettre dans un .h
 
 static void	temporary_setup(t_env *env)
 {
-	SDL_ShowCursor(SDL_DISABLE);
 	env->setup = 1;
 	env->zones = 3; //PARSER
 	ft_bzero(&env->cam, sizeof(t_cam));
@@ -105,8 +104,9 @@ void		game(t_env *env)
 {
 	if (!env->setup)
 	{
+		SDL_ShowCursor(SDL_DISABLE);
 		SDL_SetWindowTitle(env->sdl.win, TITLE_GAME);
-		temporary_setup(env);
+		temporary_setup(env); // Won't last since parsing should replace it
 	}
 	t_item queue[32], *head=queue, *tail=queue;
 	int ytop[1280]={0}, ybottom[1280], renderedsectors[env->zones], i = 0;
