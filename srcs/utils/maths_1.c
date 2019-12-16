@@ -36,6 +36,8 @@ void	velocity(t_env *env, t_cam *cam, t_vec2d v)
 	if (env->input[SDL_SCANCODE_W] || env->input[SDL_SCANCODE_S]
 		|| env->input[SDL_SCANCODE_A] || env->input[SDL_SCANCODE_D])
 		move = 1;
+	else
+		move = 0;
 	speed = (move ? 0.4 : 0.2);
 	cam->v.x = cam->v.x * (1 - speed) + v.x * speed;
 	cam->v.y = cam->v.y * (1 - speed) + v.y * speed;
