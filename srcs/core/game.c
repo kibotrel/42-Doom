@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/18 14:38:11 by kibotrel          #+#    #+#             */
-/*   Updated: 2019/12/12 10:55:34 by demonwaves       ###   ########.fr       */
+/*   Updated: 2019/12/16 15:15:59 by lojesu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,9 @@
 #include "clean.h"
 #include "libft.h"
 #include "utils.h"
+
+uint32_t	color_mul(uint32_t color, double mul);	//a mettre dans un .h
+uint32_t	color_add(uint32_t color, double add);	//a mettre dans un .h
 
 static void	temporary_setup(t_env *env)
 {
@@ -207,8 +210,8 @@ void		game(t_env *env)
 				int cya = bound(ya, ytop[x],ybottom[x]);
 				int yb = (x - x1) * (y2b - y1b) / (x2 - x1) + y1b;
 				int cyb = bound(yb, ytop[x], ybottom[x]);
-				draw_slice(env, x, ytop[x], cya - 1, 0x111111 ,0x222222,0x111111);
-				draw_slice(env, x, cyb + 1, ybottom[x], 0x0000FF,0x0000AA,0x0000FF);
+				draw_slice(env, x, ytop[x], cya - 1, 0x111111 ,0x222222,0x111111);//plafond
+				draw_slice(env, x, cyb + 1, ybottom[x], 0x0000FF,0x0000AA,0x0000FF);//sol
 				if (neighbor >= 0)
 				{
 					int nya = (x - x1) * (ny2a - ny1a) / (x2 - x1) + ny1a;
@@ -223,8 +226,8 @@ void		game(t_env *env)
 				}
 				else
 				{
-					unsigned r = 0x010101 * (255-z);
-					draw_slice(env, x, cya, cyb, 0, x == x1 || x == x2 ? 0 : r, 0);
+					unsigned r = color_add(0xFFFFFF, -z);//0xFF0000 * (255-z);//texture
+					draw_slice(env, x, cya, cyb, 0, x == x1 || x == x2 ? 0 : r, 0);//mur
 				}
 			}
 			if ( neighbor >= 0 && endx >= beginx && (head - tail + 33) % 32)
