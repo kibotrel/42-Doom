@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 19:01:59 by kibotrel          #+#    #+#             */
-/*   Updated: 2019/12/12 10:24:16 by demonwaves       ###   ########.fr       */
+/*   Updated: 2019/12/16 11:48:51 by demonwaves       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ double	bound(double value, double minimum, double maximum);
 
 int		overlap(double a0, double a1, double b0, double b1);
 void	vproj(t_vec3d *v, t_vec2d v1, t_vec2d v2);
+void	velocity(t_env *env, t_cam *cam, t_vec2d v);
 double	side(double px, double py, double x0, double y0, double x1, double y1);
 t_vec2d	intersect(double x1, double y1, double x2, double y2, double x3, double y3, double x4, double y4);
 

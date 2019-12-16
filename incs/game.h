@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 21:22:14 by kibotrel          #+#    #+#             */
-/*   Updated: 2019/12/12 10:46:29 by demonwaves       ###   ########.fr       */
+/*   Updated: 2019/12/16 12:08:11 by demonwaves       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,13 +33,14 @@ void	game_keyboard(t_env *env);
 **	movement.c
 */
 
-void	move(t_env *env, float dx, float dy);
-
+void	jump(t_cam *cam);
+void	move(t_env *env);
 /*
 **	camera.c
 */
 
-
+void	cam_motion(t_env *env, t_cam *cam, int x, int y);
+void	update_cam(t_env *env, float dx, float dy);
 /*
 **	engine.c
 */
