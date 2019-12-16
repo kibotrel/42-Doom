@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/16 11:53:54 by kibotrel          #+#    #+#             */
-/*   Updated: 2019/12/16 11:28:48 by demonwaves       ###   ########.fr       */
+/*   Updated: 2019/12/16 16:40:50 by demonwaves       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,10 +42,7 @@ int			main(int ac, char **av)
 		{
 			selector(&env);
 			if (env.win == GAME)
-			// {
 				physics(&env);
-			// 	game_hooks(&env);
-			// }
 			global_hooks(&env, &env.sdl);
 			if (SDL_UpdateWindowSurface(env.sdl.win))
 				clean(&env, E_SDL_UPDATE);

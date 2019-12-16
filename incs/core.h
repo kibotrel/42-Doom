@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 18:02:10 by kibotrel          #+#    #+#             */
-/*   Updated: 2019/12/09 06:22:49 by demonwaves       ###   ########.fr       */
+/*   Updated: 2019/12/16 16:41:08 by demonwaves       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ void	game(t_env *env);
 **	hooks.c
 */
 
-void	game_hooks(t_env *env);
 void	global_hooks(t_env *env, t_sdl *sdl);
 
 /*

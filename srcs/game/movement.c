@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/10 16:47:31 by kibotrel          #+#    #+#             */
-/*   Updated: 2019/12/16 12:18:40 by demonwaves       ###   ########.fr       */
+/*   Updated: 2019/12/16 16:32:04 by demonwaves       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	jump(t_cam *cam)
 {
 	if (cam->ground)
 	{
-		cam->v.z += 0.65;
+		cam->v.z += 0.75;
 		cam->fall = 1;
 	}
 }
