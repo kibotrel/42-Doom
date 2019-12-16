@@ -3,14 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+         #
+#    By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/10 16:16:29 by kibotrel          #+#    #+#              #
-<<<<<<< HEAD
-#    Updated: 2019/12/16 11:18:00 by demonwaves       ###   ########.fr        #
-=======
-#    Updated: 2019/12/13 08:12:07 by nde-jesu         ###   ########.fr        #
->>>>>>> 19f803deed7dd6ec3f12edf49e60de52320dd44f
+#    Updated: 2019/12/16 14:49:51 by demonwaves       ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
