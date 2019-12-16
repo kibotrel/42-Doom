@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 10:04:36 by nde-jesu          #+#    #+#             */
-/*   Updated: 2019/12/10 15:11:55 by reda-con         ###   ########.fr       */
+/*   Updated: 2019/12/16 12:18:03 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,7 @@
 
 void	write_player(t_player player, t_vertex if_no_player, int fd)
 {
-	printf("%d\n", player.sector);
-	if (player.x == -1 && player.y == -1)
+	if (player.x < 0 && player.y < 0)
 	{
 		player.x = if_no_player.x;
 		player.y = if_no_player.y;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sec_edit_menu.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: reda-con <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/13 14:39:32 by reda-con          #+#    #+#             */
-/*   Updated: 2019/12/13 14:48:20 by reda-con         ###   ########.fr       */
+/*   Updated: 2019/12/16 12:13:08 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,12 +43,16 @@ void			next_next_sec_clic_menu_editor(int y, t_editor *editor)
 {
 	if (y >= 540 && y <= 610)
 	{
+		editor->map_save = false;
 		if (editor->sett == ENEMY)
 			del_entity(&editor->enemy);
 		else if (editor->sett == OBJECT)
 			del_entity(&editor->object);
 		else if (editor->sett == SECTOR)
+		{
 			editor->presets = SECTOR_TEXT;
+			editor->map_save = true;		
+		}
 	}
 	else if (y >= 640 && y <= 710)
 	{
@@ -61,6 +65,7 @@ void			next_sec_clic_menu_editor(int y, t_editor *editor)
 {
 	if (y >= 340 && y <= 410)
 	{
+		editor->map_save = false;
 		if (editor->sett == PLAYER)
 			delete_player(&editor->player);
 		else if (editor->sett == ENEMY)
@@ -68,16 +73,23 @@ void			next_sec_clic_menu_editor(int y, t_editor *editor)
 		else if (editor->sett == OBJECT)
 			rotate_entity(editor->object, true);
 		else if (editor->sett == SECTOR)
+		{
 			editor->presets = SECTOR_FLOOR;
+			editor->map_save = true;	
+		}
 	}
 	else if (y >= 440 && y <= 510)
 	{
+		editor->map_save = false;
 		if (editor->sett == ENEMY)
 			rotate_entity(editor->enemy, false);
 		else if (editor->sett == OBJECT)
 			rotate_entity(editor->object, false);
 		else if (editor->sett == SECTOR)
+		{
 			editor->presets = SECTOR_CEIL;
+			editor->map_save = true;
+		}
 	}
 	next_next_sec_clic_menu_editor(y, editor);
 }
@@ -87,7 +99,10 @@ void			sec_clic_menu_editor(int y, t_editor *editor)
 	if (y >= 140 && y <= 210)
 	{
 		if (editor->sett == PLAYER)
+		{
 			rotate_player(&editor->player, true);
+			editor->map_save = false;
+		}
 		else if (editor->sett == ENEMY)
 			move_in_entities(&editor->enemy, false);
 		else if (editor->sett == OBJECT)
@@ -99,7 +114,10 @@ void			sec_clic_menu_editor(int y, t_editor *editor)
 	else if (y >= 240 && y <= 310)
 	{
 		if (editor->sett == PLAYER)
+		{
 			rotate_player(&editor->player, false);
+			editor->map_save = false;
+		}		
 		else if (editor->sett == ENEMY)
 			move_in_entities(&editor->enemy, true);
 		else if (editor->sett == OBJECT)
