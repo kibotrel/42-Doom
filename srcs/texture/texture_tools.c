@@ -1,4 +1,9 @@
+#include "vector.h"
+#include "texture.h"
+#include "clean.h"
 #include <stdint.h>
+#include <fcntl.h>
+#include <unistd.h>
 
 uint32_t    color_mul(uint32_t color, double mul)
 {
@@ -40,4 +45,59 @@ uint32_t    color_add(uint32_t color, double add)
     g < 0 ? g = 0 : g;
     b < 0 ? b = 0 : b;
     return ((r << 16) | (g << 8) | b);
+}
+
+static int  rgb_to_hex(uint8_t r, uint8_t g, uint8_t b)
+{
+    return (b << 16 ^ g << 8 ^ r);
+}
+
+void        read_bmp(int *ret, char *path, char *buff, int buff_size)
+{
+    t_vector   bmp;
+    int     fd;
+    size_t  start;
+    int     tmp;
+
+    tmp = 0;
+    if ((fd = open(path, O_RDONLY)) == -1)
+        return ;
+    bmp = v_new(sizeof(uint8_t));
+    while ((tmp = read(fd, buff, buff_size)) > 0)
+        v_append_raw(&bmp, buff, tmp);
+    start = v_size(&bmp) - buff_size;
+    tmp = 0;
+    while (start + tmp < (size_t)v_size(&bmp))
+    {
+        ret[tmp / 3] = rgb_to_hex(*(char *)v_get(&bmp, tmp + start),
+                *(char *)v_get(&bmp, tmp + 1 + start),
+                *(char *)v_get(&bmp, tmp + 2 + start));
+        tmp += 3;
+    }
+    v_del(&bmp);
+    close(fd);
+}
+
+void	draw_texture(t_env *env, int x, int y1, int y2, int top, int *middle, int bottom)
+{
+	t_pos       p;
+	size_t		i;
+
+    y1 = bound(y1, 0, env->h - 1);
+    y2 = bound(y2, 0, env->h - 1);
+    p.x = x;
+    p.y = y1;
+	i = 0;
+    /*if(y2 == y1)
+        draw_pixel(env, env->sdl.screen, p, middle);*/
+    if(y2 > y1)
+    {
+        draw_pixel(env, env->sdl.screen, p, top);
+        while (++p.y < y2)
+		{
+            draw_pixel(env, env->sdl.screen, p, middle[i * 64 + x % 64 ]);
+			i++;
+		}
+        draw_pixel(env, env->sdl.screen, p, bottom);
+    }
 }

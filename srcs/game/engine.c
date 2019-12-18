@@ -2,7 +2,10 @@
 #include "env.h"
 #include "game.h"
 #include "utils.h"
+#include "texture.h"
 
+
+#include <stdio.h>
 void	physics(t_env *env)
 {
 	double		sight; // State and height of the camera (standing or crouching)
@@ -16,9 +19,6 @@ void	physics(t_env *env)
 	if (env->cam.move)
 		horizontal_movement(env, env->cam.pos, env->cam.v, sight);
 }
-
-uint32_t	color_mul(uint32_t color, double mul);	//a mettre dans un .h
-uint32_t	color_add(uint32_t color, double add);	//a mettre dans un .h
 
 void	graphics(t_env *env, t_game *var)
 {
@@ -111,8 +111,10 @@ void	graphics(t_env *env, t_game *var)
 				}
 				else
 				{
-					unsigned r = color_add(0xFFFFFF, -z);//0xFF0000 * (255-z);//texture
-					draw_slice(env, x, cya, cyb, 0, x == border[0] || x == border[1] ? 0 : r, 0);//mur
+					int		text[BMP_SIZE];
+					texture(text);
+					//unsigned r = color_add(0xEEEEEE, -z);//texture
+					draw_texture(env, x, cya, cyb, 0, x == border[0] || x == border[1] ? 0 : text, 0);//mur
 				}
 			}
 			if (neighbor >= 0 && end >= start && (var->head - var->tail + 33) % 32)
