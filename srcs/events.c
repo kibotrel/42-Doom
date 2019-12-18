@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 13:09:05 by nde-jesu          #+#    #+#             */
-/*   Updated: 2019/12/13 15:43:20 by reda-con         ###   ########.fr       */
+/*   Updated: 2019/12/18 16:28:52 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ static void		display_editor(t_editor *edit)
 	}
 	display_line(edit, edit->sdl.event.motion.x, edit->sdl.event.motion.y);
 	print_param_to_screen(&edit->sdl, edit->sett, edit);
+	draw_bmp(0, 0, &edit->sdl, edit->sdl.bmp[0]);
 }
 
 static void		mouse(t_editor *editor, SDL_Event event)

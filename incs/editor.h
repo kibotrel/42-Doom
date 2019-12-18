@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 08:52:03 by nde-jesu          #+#    #+#             */
-/*   Updated: 2019/12/13 15:32:36 by reda-con         ###   ########.fr       */
+/*   Updated: 2019/12/18 16:28:06 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include <stdbool.h>
 # include "SDL.h"
 # include "SDL_ttf.h"
-
+#include "bmp.h"
 /*
 **	MACROS
 */
@@ -116,6 +116,8 @@ typedef struct		s_sector
 
 typedef	struct		s_sdl
 {
+	char			*assets[3];
+	t_bmp			bmp[3];
 	SDL_Window		*win; //editor window
 	SDL_Surface		*surf; //Surface for the window
 	SDL_Event		event;// Mouse and keyboard events
@@ -286,5 +288,6 @@ void				move_in_entities(t_entity **entity, bool way);
 void				move_in_sector(t_sector **sector, bool way);
 void				del_entity(t_entity **entity);
 void				put_fov(SDL_Surface *surf, t_vertex pt, int agl, int color);
+void				draw_bmp(int x, int y, t_sdl *sdl, t_bmp img);
 
 #endif
