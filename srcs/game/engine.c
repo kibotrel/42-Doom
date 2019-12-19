@@ -24,6 +24,8 @@ void	graphics(t_env *env, t_game *var)
 {
 	uint32_t	i;
 	t_item		now;
+					int		text[BMP_SIZE];
+					texture(text);
 
 	i = 0;
 	while(i++ == 0 || var->head != var->tail)
@@ -111,10 +113,9 @@ void	graphics(t_env *env, t_game *var)
 				}
 				else
 				{
-					int		text[BMP_SIZE];
-					texture(text);
-					//unsigned r = color_add(0xEEEEEE, -z);//texture
-					draw_texture(env, x, cya, cyb, 0, x == border[0] || x == border[1] ? 0 : text, 0);//mur
+				//	unsigned r = color_add(0xEEEEEE, -z);//texture
+					draw_texture(env, x, cya, cyb, 0, text, 0);//mur
+				//	draw_slice(env, x, cya, cyb, 0, x == border[0] || x == border[1] ? 0 : r, 0);//mur
 				}
 			}
 			if (neighbor >= 0 && end >= start && (var->head - var->tail + 33) % 32)
