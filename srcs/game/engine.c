@@ -114,7 +114,7 @@ void	graphics(t_env *env, t_game *var)
 				else
 				{
 				//	unsigned r = color_add(0xEEEEEE, -z);//texture
-					draw_texture(env, x, cya, cyb, 0, text, 0);//mur
+					draw_texture(env, x, cya, cyb, z, 0, text, 0);//mur
 				//	draw_slice(env, x, cya, cyb, 0, x == border[0] || x == border[1] ? 0 : r, 0);//mur
 				}
 			}

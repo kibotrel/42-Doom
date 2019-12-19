@@ -78,7 +78,7 @@ void        read_bmp(int *ret, char *path, char *buff, int buff_size)
     close(fd);
 }
 #include <stdio.h>
-void	draw_texture(t_env *env, int x, int y1, int y2, int top, int *middle, int bottom)
+void	draw_texture(t_env *env, int x, int y1, int y2, int z, int top, int *middle, int bottom)
 {
 	t_pos       p;
 
@@ -86,15 +86,12 @@ void	draw_texture(t_env *env, int x, int y1, int y2, int top, int *middle, int b
     y2 = bound(y2, 0, env->h - 1);
     p.x = x;
     p.y = y1;
-    /*if(y2 == y1)
-        draw_pixel(env, env->sdl.screen, p, middle);*/
     if (y2 > y1)
     {
         draw_pixel(env, env->sdl.screen, p, top);
         while (++p.y < y2)
 		{
-			printf("p.y = %i | y2 = %i --- x = %i\n", p.y, y2, x);
-            draw_pixel(env, env->sdl.screen, p, middle[(p.y % 64) * 64 + x % 64]);
+            draw_pixel(env, env->sdl.screen, p, color_add(middle[BMP_SIZE-1 - ((p.y % 64) * 64 + x % 64)], FOG));
 		}
         draw_pixel(env, env->sdl.screen, p, bottom);
     }
