@@ -24,9 +24,9 @@ void	graphics(t_env *env, t_game *var)
 {
 	uint32_t	i;
 	t_item		now;
-	t_bmp		bmp;
+	/*t_bmp		bmp;
 
-	bmp_to_array("/Users/lojesu/exo42/42-Doom/srcs/texture/wall1.bmp", &bmp);
+	bmp_to_array("/Users/lojesu/exo42/42-Doom/srcs/texture/wall1.bmp", &bmp);*/
 	i = 0;
 	while(i++ == 0 || var->head != var->tail)
 	{
@@ -113,9 +113,9 @@ void	graphics(t_env *env, t_game *var)
 				}
 				else
 				{
-					//unsigned r = color_add(0xEEEEEE, -z);//texture
-					draw_texture(env, x, cya, cyb, z, bmp.pixels);//mur
-					//draw_slice(env, x, cya, cyb, 0, x == border[0] || x == border[1] ? 0 : r, 0);//mur
+					unsigned r = color_add(0xEEEEEE, -z);//texture
+					//draw_texture(env, x, cya, cyb, z, bmp.pixels);//mur
+					draw_slice(env, x, cya, cyb, 0, x == border[0] || x == border[1] ? 0 : r, 0);//mur
 				}
 			}
 			if (neighbor >= 0 && end >= start && (var->head - var->tail + 33) % 32)
