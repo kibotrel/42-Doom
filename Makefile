@@ -6,7 +6,7 @@
 #    By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/10 16:16:29 by kibotrel          #+#    #+#              #
-#    Updated: 2019/12/18 14:48:45 by lojesu           ###   ########.fr        #
+#    Updated: 2019/12/22 14:25:46 by lojesu           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,6 @@ UNAME			= $(shell uname -s)
 
 FT				= libft.a
 BMP				= libbmp.a
-VEC				= libvec.a
 NAME			= doom-nukem
 
 # Color codes (Can be changed).
@@ -35,7 +34,6 @@ YELLOW			= \033[33m
 
 LFT_DIR			= libft
 LBMP_DIR		= libbmp
-LVEC_DIR		= libvec
 
 # Project (Can be changed).
 
@@ -48,7 +46,6 @@ OBJS_DIR		= objs
 INCS_DIR		:= incs
 INCS_DIR		+= libft/incs
 INCS_DIR		+= libbmp/incs
-INCS_DIR		+= libvec/inc
 
 # All the subdirectories used in the project
 # to organise source files (Can be changed).
@@ -71,7 +68,6 @@ LFT				= $(LFT_DIR)/$(FT)
 LBMP			= $(LBMP_DIR)/$(BMP)
 LSDL			= $(LSDL_DIR)/$(SDL)
 LTTF			= $(LTTF_DIR)/$(TTF)
-LVEC			= $(LVEC_DIR)/$(VEC)
 
 # Used header at each compilation to check file integrity (Can be changed).
 
@@ -122,7 +118,6 @@ SRCS			+= events/mouse.c
 SRCS			+= events/motion.c
 SRCS			+= events/keyboard.c
 SRCS			+= texture/texture_tools.c
-SRCS			+= texture/texture.c
 
 #------------------------------ OPERATING SYSTEM ------------------------------#
 
@@ -173,7 +168,6 @@ LIBS			:= -L$(LSDL_DIR) -lSDL2
 LIBS			+= -L$(LTTF_DIR) -lSDL2_ttf
 LIBS			+= -L$(LBMP_DIR) -lbmp
 LIBS			+= -L$(LFT_DIR) -lft
-LIBS			+= -L$(LVEC_DIR) -lvec
 LIBS			+= -lm
 
 # Compilation flags (Can be changed).
@@ -194,7 +188,7 @@ $(D_OBJS)%.o: $(D_SRCS)%.c $(INCS)
 
 all: $(OBJS_DIR) $(C_SUBDIRS) $(NAME)
 
-$(NAME): $(LSDL) $(LTTF) $(LFT) $(LBMP) $(LVEC) $(C_OBJS)
+$(NAME): $(LSDL) $(LTTF) $(LFT) $(LBMP) $(C_OBJS)
 	@echo "$(YELLOW)\n      - Building $(RESET)$(NAME) $(YELLOW)...\n$(RESET)"
 	@$(CC) $(CFLAGS) -o $(NAME) $(C_OBJS) $(LIBS)
 	@echo "$(GREEN)***   Project $(NAME) successfully compiled   ***\n$(RESET)"
@@ -246,8 +240,6 @@ $(LFT):
 $(LBMP):
 	@make -sC $(LBMP_DIR) -j
 
-$(LVEC):
-	@make -sC $(LVEC_DIR) -j
 
 # Rules used to create folders if they aren't already existing (Can be changed).
 
@@ -262,7 +254,6 @@ $(C_SUBDIRS):
 clean:
 	@make -sC $(LFT_DIR) clean
 	@make -sC $(LBMP_DIR) clean
-	@make -sC $(LVEC_DIR) clean
 	@echo "$(GREEN)***   Deleting all object from $(NAME)   ...   ***\n$(RESET)"
 	@$(RM) $(C_OBJS)
 
@@ -272,7 +263,6 @@ clean:
 fclean: clean
 	@make -sC $(LFT_DIR) fclean
 	@make -sC $(LBMP_DIR) fclean
-	@make -sC $(LVEC_DIR) fclean
 	@echo "$(GREEN)***   Deleting executable file from $(NAME)   ...   ***\n$(RESET)"
 	@$(RM) $(NAME)
 	@if [ -f "$(LSDL)" ]; then													\
