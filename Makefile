@@ -6,7 +6,7 @@
 #    By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/10 16:16:29 by kibotrel          #+#    #+#              #
-#    Updated: 2019/12/22 14:25:46 by lojesu           ###   ########.fr        #
+#    Updated: 2020/01/02 18:00:13 by demonwaves       ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -102,6 +102,7 @@ SRCS			+= menu/motion.c
 SRCS			+= clean/env.c
 SRCS			+= clean/sdl.c
 SRCS			+= clean/ttf.c
+SRCS			+= clean/engine.c
 SRCS			+= setup/game.c
 SRCS			+= setup/setup.c
 SRCS			+= setup/graphic.c
@@ -112,7 +113,8 @@ SRCS			+= utils/maths_1.c
 SRCS			+= utils/usage.c
 SRCS			+= utils/checks.c
 SRCS			+= utils/engine.c
-SRCS			+= utils/graphic.c
+SRCS			+= utils/graphic_0.c
+SRCS			+= utils/graphic_1.c
 SRCS			+= editor/keyboard.c
 SRCS			+= events/mouse.c
 SRCS			+= events/motion.c

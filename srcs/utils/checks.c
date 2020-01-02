@@ -6,11 +6,12 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 01:42:15 by kibotrel          #+#    #+#             */
-/*   Updated: 2019/12/16 21:07:31 by demonwaves       ###   ########.fr       */
+/*   Updated: 2020/01/02 18:13:23 by demonwaves       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "game.h"
+#include "utils.h"
 
 int8_t	dectect_input(int32_t *input)
 {
@@ -51,7 +52,7 @@ char	*get_string(uint8_t n)
 		return (NULL);
 }
 
-int8_t	cycle_check(t_game *var, t_item *now)
+int8_t	cycle_check(t_env *env, t_game *var, t_item *now)
 {
 	*now = *var->tail;
 	if (++var->tail == var->queue + 32)
@@ -60,7 +61,18 @@ int8_t	cycle_check(t_game *var, t_item *now)
 		return (1);
 	else
 	{
+		var->s = &env->sector[now->sector];
 		var->render[now->sector]++;
 		return (0);
+	}
+}
+
+void	check_depth(t_game *var, int32_t start, int32_t end)
+{
+	if (var->n >= 0 && end >= start && (var->head - var->tail + 33) % 32)
+	{
+		*var->head = item(var->n, start, end);
+		if (++var->head == var->queue + 32)
+			var->head = var->queue;
 	}
 }

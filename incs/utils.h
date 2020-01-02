@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 19:01:59 by kibotrel          #+#    #+#             */
-/*   Updated: 2019/12/16 21:08:12 by demonwaves       ###   ########.fr       */
+/*   Updated: 2020/01/02 18:03:17 by demonwaves       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ typedef struct		s_line
 void	usage(void);
 
 /*
-**	graphic.c
+**	graphic_0.c
 */
 
 void	draw_background(t_env *env, t_sdl *sdl, t_bmp img);
@@ -39,6 +39,12 @@ void	draw_line(t_env *env, t_pos a, t_pos b, uint32_t color);
 void	draw_pixel(t_env *env, SDL_Surface *win, t_pos p, uint32_t c);
 void	text_to_screen(t_env *env, t_sdl *sdl, char *text, uint8_t pos);
 void	draw_slice(t_env *env, int x, int y1, int y2, int top, int middle, int bottom);
+
+/*
+**	graphic_1.c
+*/
+
+void	draw_screen(t_env *env, t_game *var);
 
 /*
 **	data_0.c
@@ -81,15 +87,17 @@ t_vec2d	intersect(double x1, double y1, double x2, double y2, double x3, double 
 */
 
 char	*get_string(uint8_t n);
+void	check_depth(t_game *var, int32_t start, int32_t end);
 int8_t	dectect_input(int32_t *input);
 int8_t	get_dimensions(int32_t height);
-int8_t	cycle_check(t_game *var, t_item *now);
+int8_t	cycle_check(t_env *env, t_game *var, t_item *now);
 
 /*
 **	engine.c
 */
 
-void	bound_view(t_game *var);
-void	transform(t_cam *cam, t_game *var, t_vec2d p1, t_vec2d p2);
+void	transform(t_cam *cam, t_game *var, uint32_t i);
+uint8_t	bound_view(t_game *var);
+uint8_t	scale(t_env *env, t_game *var, t_item *now);
 
 #endif

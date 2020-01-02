@@ -6,14 +6,14 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 19:08:43 by kibotrel          #+#    #+#             */
-/*   Updated: 2019/10/27 00:40:05 by demonwaves       ###   ########.fr       */
+/*   Updated: 2020/01/02 18:01:18 by demonwaves       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CLEAN_H
 # define CLEAN_H
 
-#include "structs.h"
+#include "game.h"
 
 /*
 **	env.c
@@ -32,5 +32,11 @@ void	sdl_clean(t_sdl *sdl);
 */
 
 void	ttf_clean(t_sdl *sdl);
+
+/*
+**	engine.c
+*/
+
+void	engine_clean(t_game *var);
 
 #endif

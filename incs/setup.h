@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 18:43:02 by kibotrel          #+#    #+#             */
-/*   Updated: 2019/12/16 18:34:51 by demonwaves       ###   ########.fr       */
+/*   Updated: 2020/01/02 18:02:09 by demonwaves       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,6 @@ void	graphic_setup(t_env *env, t_sdl *sdl);
 */
 
 void	game_setup(t_env *env, t_game *var);
+void	draw_setup(t_env *env, t_game *var, t_item *now, uint32_t i);
 
 #endif

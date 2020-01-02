@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 21:22:14 by kibotrel          #+#    #+#             */
-/*   Updated: 2019/12/16 21:13:45 by demonwaves       ###   ########.fr       */
+/*   Updated: 2020/01/02 18:01:47 by demonwaves       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,18 +25,32 @@ typedef struct	s_item
 
 typedef struct	s_game
 {
+	int			n;
+	int			end;
 	int			*top;
+	int			y[2];
+	int			depth;
+	int			ny[2];
+	int			start;
+	int			now[4];
 	int			*bottom;
 	int			*render;
+	int			next[4];
+	int			side[2];
+	int			unbound[2];
 	double		farz;
 	double		nearz;
 	double		farside;
 	double		nearside;
+	double		ceil[2];
+	double		floor[2];
 	t_item		*head;
 	t_item		*tail;
 	t_item		queue[32];
 	t_vec2d		t[2];
 	t_vec2d		v[2];
+	t_vec2d		size[2];
+	t_sector	*s;
 }				t_game;
 /*
 **	keyboard.c
