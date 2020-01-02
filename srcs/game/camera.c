@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/11 14:21:04 by kibotrel          #+#    #+#             */
-/*   Updated: 2019/12/16 16:31:36 by demonwaves       ###   ########.fr       */
+/*   Updated: 2020/01/02 19:00:57 by demonwaves       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,4 +52,17 @@ void	update_cam(t_env *env, float x, float y)
 	env->cam.pos.y += y;
 	env->cam.sin = sin(env->cam.angle);
 	env->cam.cos = cos(env->cam.angle);
+}
+
+void	cam_height(t_env *env, int32_t crouch)
+{
+	if (crouch)
+	{
+		env->cam.fall = 1;
+		env->cam.sneak = 1;
+	}
+	else
+	{
+		env->cam.sneak = 0;
+	}
 }

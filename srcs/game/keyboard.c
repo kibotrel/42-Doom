@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/10 15:11:44 by kibotrel          #+#    #+#             */
-/*   Updated: 2019/12/16 16:03:29 by demonwaves       ###   ########.fr       */
+/*   Updated: 2020/01/02 19:02:08 by demonwaves       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,4 +25,5 @@ void	game_keyboard(t_env *env)
 	}
 	if (env->input[SDL_SCANCODE_SPACE])
 		jump(&env->cam);
+	cam_height(env, env->input[SDL_SCANCODE_LSHIFT]);
 }

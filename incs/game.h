@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 21:22:14 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/01/02 18:01:47 by demonwaves       ###   ########.fr       */
+/*   Updated: 2020/01/02 18:45:42 by demonwaves       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,8 +68,10 @@ void	move(t_env *env);
 **	camera.c
 */
 
-void	cam_motion(t_env *env, t_cam *cam, int x, int y);
+void	cam_height(t_env *env, int32_t crouch);
 void	update_cam(t_env *env, float dx, float dy);
+void	cam_motion(t_env *env, t_cam *cam, int x, int y);
+
 /*
 **	engine.c
 */
