@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/13 14:39:32 by reda-con          #+#    #+#             */
-/*   Updated: 2020/01/06 08:37:44 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/01/06 13:42:29 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void			sec_blank_menu(SDL_Surface *s, int set, int preset)
 	}
 }
 
-void			next_next_sec_clic_menu_editor(int y, t_editor *editor)
+static void		next_next_sec_clic_menu_editor(int y, t_editor *editor)
 {
 	if (y >= 540 && y <= 610)
 	{
@@ -61,7 +61,7 @@ void			next_next_sec_clic_menu_editor(int y, t_editor *editor)
 	}
 }
 
-void			next_sec_clic_menu_editor(int y, t_editor *editor)
+static void		next_sec_clic_menu_editor(int y, t_editor *editor)
 {
 	if (y >= 340 && y <= 410)
 	{
@@ -78,19 +78,7 @@ void			next_sec_clic_menu_editor(int y, t_editor *editor)
 			editor->map_save = true;
 		}
 	}
-	else if (y >= 440 && y <= 510)
-	{
-		editor->map_save = false;
-		if (editor->sett == ENEMY)
-			rotate_entity(editor->enemy, false);
-		else if (editor->sett == OBJECT)
-			rotate_entity(editor->object, false);
-		else if (editor->sett == SECTOR)
-		{
-			editor->presets = SECTOR_CEIL;
-			editor->map_save = true;
-		}
-	}
+	sec_clic_menu_editor_tool(y, editor);
 	next_next_sec_clic_menu_editor(y, editor);
 }
 
@@ -111,20 +99,6 @@ void			sec_clic_menu_editor(int y, t_editor *editor)
 			move_in_sector(&editor->sector, false);
 		editor->presets = NONE;
 	}
-	else if (y >= 240 && y <= 310)
-	{
-		if (editor->sett == PLAYER)
-		{
-			rotate_player(&editor->player, false);
-			editor->map_save = false;
-		}
-		else if (editor->sett == ENEMY)
-			move_in_entities(&editor->enemy, true);
-		else if (editor->sett == OBJECT)
-			move_in_entities(&editor->object, true);
-		else if (editor->sett == SECTOR)
-			move_in_sector(&editor->sector, true);
-		editor->presets = NONE;
-	}
+	sec_clic_menu_editor_tool(y, editor);
 	next_sec_clic_menu_editor(y, editor);
 }

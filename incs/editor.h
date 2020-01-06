@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 08:52:03 by nde-jesu          #+#    #+#             */
-/*   Updated: 2020/01/06 08:31:24 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/01/06 13:35:25 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -276,6 +276,12 @@ void				clic_editor_menu(int x, int y, t_editor *editor);
 */
 void				sec_blank_menu(SDL_Surface *surf, int set, int preset);
 void				sec_clic_menu_editor(int y, t_editor *editor);
+
+/*
+**	sec_edit_menu_tools.c
+*/
+void				sec_clic_menu_editor_tool(int y, t_editor *e);
+void				next_sec_clic_menu_editor_tool(int y, t_editor *e);
 
 /*
 **	edit_menu_tools.c

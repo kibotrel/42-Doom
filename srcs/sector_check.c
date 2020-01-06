@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 15:01:10 by nde-jesu          #+#    #+#             */
-/*   Updated: 2020/01/06 08:38:24 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/01/06 13:50:48 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,27 @@ static int	inters(t_vertex *prev_vertex, t_vertex point, t_vertex extreme)
 	return (intersections);
 }
 
+static	int	prev_is_in_sector(t_editor *edit, t_vertex point)
+{
+	int			intersects;
+	t_sector	*sect;
+	t_vertex	*vertex;
+	t_vertex	extreme;
+
+	sect = edit->sector;
+	while (sect)
+	{
+		extreme.x = EDIT_W;
+		extreme.y = point.y;
+		vertex = sect->vertex;
+		intersects = inters(vertex, point, extreme);
+		if (intersects % 2 == 1)
+			return (sect->sector_number);
+		sect = sect->prev;
+	}
+	return (-1);
+}
+
 int			is_in_sector(t_editor *edit, t_vertex point)
 {
 	int			intersects;
@@ -77,16 +98,5 @@ int			is_in_sector(t_editor *edit, t_vertex point)
 			return (sect->sector_number);
 		sect = sect->next;
 	}
-	sect = edit->sector;
-	while (sect)
-	{
-		extreme.x = EDIT_W;
-		extreme.y = point.y;
-		vertex = sect->vertex;
-		intersects = inters(vertex, point, extreme);
-		if (intersects % 2 == 1)
-			return (sect->sector_number);
-		sect = sect->prev;
-	}
-	return (-1);
+	return (prev_is_in_sector(edit, point));
 }

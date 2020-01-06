@@ -6,13 +6,13 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/11 16:04:00 by nde-jesu          #+#    #+#             */
-/*   Updated: 2019/12/13 15:20:45 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/01/06 13:44:39 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "editor.h"
 
-void	move_in_sector(t_sector **sector, bool way)
+void			move_in_sector(t_sector **sector, bool way)
 {
 	t_sector *tmp;
 
@@ -32,7 +32,27 @@ void	move_in_sector(t_sector **sector, bool way)
 	*sector = tmp;
 }
 
-void	next_display_sector(t_sdl *sdl, t_sector *sectors)
+static void		prev_display_sector(t_sdl *sdl, t_sector *sectors)
+{
+	t_sector	*sect;
+	int			i;
+	t_vertex	*vertex;
+
+	sect = sectors;
+	while (sect)
+	{
+		i = 0;
+		vertex = sect->vertex;
+		while (vertex && ++i)
+		{
+			draw_walls(sdl, sect, vertex, get_wall_color(sect, &i, false));
+			vertex = vertex->next;
+		}
+		sect = sect->prev;
+	}
+}
+
+void			next_display_sector(t_sdl *sdl, t_sector *sectors)
 {
 	t_sector	*sect;
 	int			i;
@@ -50,16 +70,5 @@ void	next_display_sector(t_sdl *sdl, t_sector *sectors)
 		}
 		sect = sect->next;
 	}
-	sect = sectors;
-	while (sect)
-	{
-		i = 0;
-		vertex = sect->vertex;
-		while (vertex && ++i)
-		{
-			draw_walls(sdl, sect, vertex, get_wall_color(sect, &i, false));
-			vertex = vertex->next;
-		}
-		sect = sect->prev;
-	}
+	prev_display_sector(sdl, sectors);
 }
