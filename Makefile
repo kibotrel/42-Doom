@@ -6,7 +6,7 @@
 #    By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/10 16:16:29 by kibotrel          #+#    #+#              #
-#    Updated: 2019/12/13 14:40:22 by reda-con         ###   ########.fr        #
+#    Updated: 2020/01/06 08:35:19 by nde-jesu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -130,7 +130,6 @@ SRCS			+= vertex.c
 SRCS			+= edit_menu.c
 SRCS			+= edit_menu_tools.c
 SRCS			+= events_tools.c
-SRCS			+= height.c
 SRCS			+= text.c
 SRCS			+= player.c
 SRCS			+= delete.c

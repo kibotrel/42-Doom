@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/13 14:39:32 by reda-con          #+#    #+#             */
-/*   Updated: 2019/12/16 12:13:08 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/01/06 08:37:44 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void			next_next_sec_clic_menu_editor(int y, t_editor *editor)
 		else if (editor->sett == SECTOR)
 		{
 			editor->presets = SECTOR_TEXT;
-			editor->map_save = true;		
+			editor->map_save = true;
 		}
 	}
 	else if (y >= 640 && y <= 710)
@@ -75,7 +75,7 @@ void			next_sec_clic_menu_editor(int y, t_editor *editor)
 		else if (editor->sett == SECTOR)
 		{
 			editor->presets = SECTOR_FLOOR;
-			editor->map_save = true;	
+			editor->map_save = true;
 		}
 	}
 	else if (y >= 440 && y <= 510)
@@ -117,7 +117,7 @@ void			sec_clic_menu_editor(int y, t_editor *editor)
 		{
 			rotate_player(&editor->player, false);
 			editor->map_save = false;
-		}		
+		}
 		else if (editor->sett == ENEMY)
 			move_in_entities(&editor->enemy, true);
 		else if (editor->sett == OBJECT)
