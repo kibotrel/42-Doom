@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 08:47:35 by nde-jesu          #+#    #+#             */
-/*   Updated: 2020/01/07 14:12:13 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/01/07 14:50:56 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,6 @@
 #include "libft.h"
 
 // PENSER AUX FREES ET METTRE LES FONCTIONS POSSIBLES EN STATIC
-
-void			draw_bmp(int x, int y, t_sdl *sdl, t_bmp img)
-{
-	int	x_tmp;
-
-	x_tmp = x;
-	while (++y < img.height)
-	{
-		x = x_tmp;
-		while (++x < img.width)
-		{
-			if (x < EDIT_W && y < WIN_H)
-				put_pixel(sdl->surf, x, y, img.pixels[x + y * img.width]);
-		}
-	}
-}
 
 static void		sdl_init(t_sdl *sdl, t_editor *edit)
 {
@@ -49,13 +33,9 @@ static void		sdl_init(t_sdl *sdl, t_editor *edit)
 	sdl->color.r = 0xff;
 	sdl->color.g = 0xff;
 	sdl->color.b = 0xff;
-	ft_bzero(sdl->assets, sizeof(char*));
-	sdl->assets[0] = "./map/1.bmp";
-	sdl->assets[1] = "./map/2.bmp";
-	sdl->assets[2] = "./map/3.bmp";
-	bmp_to_array(sdl->assets[0], &sdl->bmp[0]);
-	bmp_to_array(sdl->assets[1], &sdl->bmp[1]);
-	bmp_to_array(sdl->assets[2], &sdl->bmp[2]);
+	bmp_to_array("./map/1.bmp", &sdl->bmp[0]);
+	bmp_to_array("./map/2.bmp", &sdl->bmp[1]);
+	bmp_to_array("./map/3.bmp", &sdl->bmp[2]);
 }
 
 static void		init_chained_list(t_editor *editor)

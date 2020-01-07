@@ -1,31 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   clean.c                                            :+:      :+:    :+:   */
+/*   picture.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/07 14:14:22 by reda-con          #+#    #+#             */
-/*   Updated: 2020/01/07 14:51:34 by nde-jesu         ###   ########.fr       */
+/*   Created: 2020/01/07 14:09:35 by nde-jesu          #+#    #+#             */
+/*   Updated: 2020/01/07 14:22:16 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "editor.h"
 
-void			clean(t_editor *edit)
+void	print_picture(t_editor *editor, int x, int y, t_bmp img)
 {
-	clear_editor(edit);
-	if (edit->which_sector)
-		free(edit->which_sector);
-	if (edit->ab)
-		free(edit->ab);
-	if (edit->cd)
-		free(edit->cd);
-	if (edit->sdl.win)
-		free(edit->sdl.win);
-	if (edit->sdl.surf)
-		free(edit->sdl.surf);
-	if (edit->sdl.font)
-		free(edit->sdl.font);
-	exit(1);
+	int xa;
+	int	ya;		
+
+	ya = y - 1;
+	while (++ya < img.height)
+	{
+		xa = x - 1;
+		while (xa < img.width)
+			put_pixel(editor->surf, xa, ya, img.pixels[xa + ya * img.width]);
+	}
 }

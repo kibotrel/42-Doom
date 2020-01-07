@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/27 14:44:48 by nde-jesu          #+#    #+#             */
-/*   Updated: 2019/12/13 15:15:07 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/01/07 15:22:09 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,21 @@ static void	print_more_minus(t_sdl *sdl)
 	SDL_BlitSurface(tmp, 0, sdl->surf, &where);
 }
 
+void	print_picture(t_sdl *sdl, int x, int y, t_bmp img)
+{
+	int xa;
+	int	ya;		
+
+	ya = y - 1;
+	while (++ya < img.height)
+	{
+		xa = x - 1;
+		while (++xa < img.width)
+			if (xa < EDIT_W && y < WIN_H)
+				put_pixel(sdl->surf, xa, ya, img.pixels[xa + ya * img.width]);
+	}
+}
+
 static void	print_sector_values(t_sdl *sdl, t_sector *sector, t_presets presets)
 {
 	SDL_Rect	where;
@@ -53,7 +68,16 @@ static void	print_sector_values(t_sdl *sdl, t_sector *sector, t_presets presets)
 	else if (presets == SECTOR_CEIL)
 		print = ft_itoa(sector->h_ceil);
 	else if (presets == SECTOR_TEXT)
-		print = ft_itoa(sector->texture);
+	{
+		if (sector->texture == 0)
+			print_picture(sdl, 1, 1, sdl->bmp[0]);
+		else if (sector->texture == 1)
+			print_picture(sdl, 0, 0, sdl->bmp[1]);
+		else
+			print_picture(sdl, 1510, 50, sdl->bmp[2]);
+		print_more_minus(sdl);
+		return ;
+	}
 	else
 		return ;
 	where.x = 1510;

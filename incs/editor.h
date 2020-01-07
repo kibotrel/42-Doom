@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 08:52:03 by nde-jesu          #+#    #+#             */
-/*   Updated: 2020/01/07 14:10:39 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/01/07 14:50:33 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,7 +114,6 @@ typedef struct		s_sector
 
 typedef	struct		s_sdl
 {
-	char			*assets[3];
 	t_bmp			bmp[3];
 	SDL_Window		*win;
 	SDL_Surface		*surf;
@@ -325,7 +324,6 @@ void				move_in_entities(t_entity **entity, bool way);
 void				move_in_sector(t_sector **sector, bool way);
 void				del_entity(t_entity **entity);
 void				put_fov(SDL_Surface *surf, t_vertex pt, int agl, int color);
-void				draw_bmp(int x, int y, t_sdl *sdl, t_bmp img);
 void				clean(t_editor *e);
 
 #endif
