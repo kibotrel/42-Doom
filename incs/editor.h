@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 08:52:03 by nde-jesu          #+#    #+#             */
-/*   Updated: 2020/01/06 13:35:25 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/01/07 14:10:39 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -259,8 +259,9 @@ void				next_display_sector(t_sdl *sdl, t_sector *sectors);
 /*
 **	vertex.c
 */
-t_vertex			*create_vertex(int x, int y);
-void				add_vertex(t_vertex **vertex, int x, int y, bool flag);
+t_vertex			*create_vertex(t_vertex v, t_editor *e);
+void				add_vertex(t_vertex **vertex, t_vertex v,
+	bool flag, t_editor *e);
 t_vertex			*get_vertex(t_editor *editor, int x, int y);
 
 /*
@@ -325,5 +326,6 @@ void				move_in_sector(t_sector **sector, bool way);
 void				del_entity(t_entity **entity);
 void				put_fov(SDL_Surface *surf, t_vertex pt, int agl, int color);
 void				draw_bmp(int x, int y, t_sdl *sdl, t_bmp img);
+void				clean(t_editor *e);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/22 15:46:27 by nde-jesu          #+#    #+#             */
-/*   Updated: 2019/12/13 10:16:07 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/01/07 14:15:09 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ static void		delete_sector(t_sector **sectors)
 	{
 		tmp = to_del->next;
 		delete_vertex(&to_del->vertex);
+		free(to_del->is_portal);
 		free(to_del);
 		to_del = tmp;
 	}

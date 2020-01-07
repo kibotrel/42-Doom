@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 15:15:06 by nde-jesu          #+#    #+#             */
-/*   Updated: 2019/11/22 15:14:37 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/01/07 14:08:10 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,7 +111,7 @@ void		place_portal(t_editor *editor, int x, int y)
 	t_vertex	*point;
 	t_sector	*sector;
 
-	point = create_vertex(x, y);
+	point = create_vertex(init_vertex(x, y), editor);
 	if (editor->portal_points[0].x == -1)
 		editor->portal_points[0] = *point;
 	else if (editor->portal_points[1].x == -1)

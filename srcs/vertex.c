@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 08:29:24 by nde-jesu          #+#    #+#             */
-/*   Updated: 2019/12/11 15:37:54 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/01/07 14:18:12 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,29 +22,30 @@ t_vertex		init_vertex(int x, int y)
 	return (ret);
 }
 
-t_vertex		*create_vertex(int x, int y)
+t_vertex		*create_vertex(t_vertex v, t_editor *edit)
 {
 	t_vertex	*new;
 
 	if (!(new = (t_vertex*)ft_memalloc(sizeof(t_vertex))))
-		exit(1);
-	new->x = x;
-	new->y = y;
+		clean(edit);
+	new->x = v.x;
+	new->y = v.y;
 	new->next = NULL;
 	return (new);
 }
 
-void			add_vertex(t_vertex **vertex, int x, int y, bool flag)
+void			add_vertex(t_vertex **vertex, t_vertex v,
+	bool flag, t_editor *edit)
 {
 	static int	vertex_number = 0;
 	t_vertex	*prev_vertex;
 	t_vertex	*new;
 
-	new = create_vertex(x, y);
+	new = create_vertex(v, edit);
 	if (flag)
 		new->vertex_number = vertex_number++;
 	if (!*vertex)
-		*vertex = create_vertex(x, y);
+		*vertex = create_vertex(v, edit);
 	else
 	{
 		prev_vertex = *vertex;
@@ -79,8 +80,8 @@ t_vertex		*get_vertex(t_editor *editor, int x, int y)
 	new_vertex = is_vertex_double(editor->vertex, x, y);
 	if (!new_vertex)
 	{
-		new_vertex = create_vertex(x, y);
-		add_vertex(&editor->vertex, x, y, true);
+		new_vertex = create_vertex(init_vertex(x, y), editor);
+		add_vertex(&editor->vertex, init_vertex(x, y), true, editor);
 	}
 	editor->last_vertex.x = new_vertex->x;
 	editor->last_vertex.y = new_vertex->y;

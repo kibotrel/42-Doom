@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 08:47:35 by nde-jesu          #+#    #+#             */
-/*   Updated: 2020/01/06 08:36:04 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/01/07 14:12:13 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,21 +31,21 @@ void			draw_bmp(int x, int y, t_sdl *sdl, t_bmp img)
 	}
 }
 
-static void		sdl_init(t_sdl *sdl)
+static void		sdl_init(t_sdl *sdl, t_editor *edit)
 {
 	if (SDL_Init(SDL_INIT_VIDEO) != 0)
-		exit(1);
+		clean(edit);
 	sdl->win = SDL_CreateWindow(TITLE, SDL_WINDOWPOS_CENTERED,
 		SDL_WINDOWPOS_CENTERED, EDIT_W + MENU_W, WIN_H, 0);
 	if (sdl->win == NULL)
-		exit(1);
+		clean(edit);
 	sdl->surf = SDL_GetWindowSurface(sdl->win);
 	if (sdl->surf == NULL)
-		exit(1);
+		clean(edit);
 	if (TTF_Init() != 0)
-		exit(1);
+		clean(edit);
 	if (!(sdl->font = TTF_OpenFont("map/font.ttf", 30)))
-		exit(1);
+		clean(edit);
 	sdl->color.r = 0xff;
 	sdl->color.g = 0xff;
 	sdl->color.b = 0xff;
@@ -68,7 +68,7 @@ static void		init_chained_list(t_editor *editor)
 
 static void		init_editor(t_editor *editor)
 {
-	sdl_init(&editor->sdl);
+	sdl_init(&editor->sdl, editor);
 	editor->dist_grid = EDIT_W / 50;
 	editor->sett = SECTOR;
 	editor->presets = NONE;

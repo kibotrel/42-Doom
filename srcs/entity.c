@@ -6,19 +6,19 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 14:55:17 by nde-jesu          #+#    #+#             */
-/*   Updated: 2019/12/11 14:18:33 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/01/07 14:11:28 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "editor.h"
 
-static t_entity		*create_entity(int x, int y, int type)
+static t_entity		*create_entity(int x, int y, int type, t_editor *edit)
 {
 	t_entity	*entity;
 
 	if (!(entity = (t_entity*)ft_memalloc(sizeof(t_entity))))
-		exit(1);
+		clean(edit);
 	entity->x = x;
 	entity->y = y;
 	entity->type = type;
@@ -67,7 +67,7 @@ void				place_entity(t_editor *editor, int x, int y, int type)
 	t_entity	*new_entity;
 	t_vertex	check_sector;
 
-	new_entity = create_entity(x, y, 0);
+	new_entity = create_entity(x, y, 0, editor);
 	check_sector.x = x;
 	check_sector.y = y;
 	new_entity->sector = is_in_sector(editor, check_sector);
