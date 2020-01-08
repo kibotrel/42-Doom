@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/11 14:21:04 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/01/08 06:06:22 by vivi             ###   ########.fr       */
+/*   Updated: 2020/01/08 06:11:34 by vivi             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	cam_motion(t_env *env, t_cam *cam, int x, int y)
 {
 	t_vec2d		p;
 
-	if (cam->ground != cam->fly)
+	if (cam->ground || cam->fly)
 	{
 		p = v2d(0, 0);
 		p.x -= (env->w / 2 - x) / 12;
