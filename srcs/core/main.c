@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/16 11:53:54 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/01/02 18:16:33 by demonwaves       ###   ########.fr       */
+/*   Updated: 2020/01/08 02:52:18 by vivi             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,8 @@ int			main(int ac, char **av)
 			global_hooks(&env, &env.sdl);
 			if (SDL_UpdateWindowSurface(env.sdl.win))
 				clean(&env, E_SDL_UPDATE);
-		//	SDL_Delay(); Framerate locking
+			SDL_Delay(16);
+
 		}
 	}
 	else
