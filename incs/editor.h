@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 08:52:03 by nde-jesu          #+#    #+#             */
-/*   Updated: 2020/01/07 14:50:33 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/01/08 14:28:11 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,7 +114,7 @@ typedef struct		s_sector
 
 typedef	struct		s_sdl
 {
-	t_bmp			bmp[3];
+	t_bmp			bmp[3][4];
 	SDL_Window		*win;
 	SDL_Surface		*surf;
 	SDL_Event		event;
@@ -325,5 +325,11 @@ void				move_in_sector(t_sector **sector, bool way);
 void				del_entity(t_entity **entity);
 void				put_fov(SDL_Surface *surf, t_vertex pt, int agl, int color);
 void				clean(t_editor *e);
+void				print_more_minus(t_sdl *sdl);
 
+/*
+**	picture.c
+*/
+void				print_params_image(t_editor *edit, t_presets presets, t_settings sett);
+void				print_picture(t_sdl *sdl, int x, int y, t_bmp img);
 #endif

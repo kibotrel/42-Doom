@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 08:47:35 by nde-jesu          #+#    #+#             */
-/*   Updated: 2020/01/07 14:50:56 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/01/08 14:24:28 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,22 @@
 #include "libft.h"
 
 // PENSER AUX FREES ET METTRE LES FONCTIONS POSSIBLES EN STATIC
+
+static void		img_init(t_sdl *sdl)
+{
+	bmp_to_array("./map/texture_1.bmp", &sdl->bmp[0][0]);
+	bmp_to_array("./map/texture_2.bmp", &sdl->bmp[0][1]);
+	bmp_to_array("./map/texture_3.bmp", &sdl->bmp[0][2]);
+	bmp_to_array("./map/texture_4.bmp", &sdl->bmp[0][3]);
+	bmp_to_array("./map/object_1.bmp", &sdl->bmp[1][0]);
+	bmp_to_array("./map/object_2.bmp", &sdl->bmp[1][1]);
+	bmp_to_array("./map/object_3.bmp", &sdl->bmp[1][2]);
+	bmp_to_array("./map/object_4.bmp", &sdl->bmp[1][3]);
+	bmp_to_array("./map/enemy_1.bmp", &sdl->bmp[2][0]);
+	bmp_to_array("./map/enemy_2.bmp", &sdl->bmp[2][1]);
+	bmp_to_array("./map/enemy_3.bmp", &sdl->bmp[2][2]);
+	bmp_to_array("./map/enemy_4.bmp", &sdl->bmp[2][3]);
+}
 
 static void		sdl_init(t_sdl *sdl, t_editor *edit)
 {
@@ -33,9 +49,7 @@ static void		sdl_init(t_sdl *sdl, t_editor *edit)
 	sdl->color.r = 0xff;
 	sdl->color.g = 0xff;
 	sdl->color.b = 0xff;
-	bmp_to_array("./map/1.bmp", &sdl->bmp[0]);
-	bmp_to_array("./map/2.bmp", &sdl->bmp[1]);
-	bmp_to_array("./map/3.bmp", &sdl->bmp[2]);
+	img_init(sdl);
 }
 
 static void		init_chained_list(t_editor *editor)
