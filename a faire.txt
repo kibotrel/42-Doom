@@ -3,3 +3,6 @@ Norme
 Faire le clean si sa crash (meme si sa plantera jamais)
 Un petit bouton dans un coin pour clean l'editeur ?
 C'est deja pas mal, mais si y'a d'autres trucs a faire, pensez a le rajouter svp
+
+Delete toutes la liste chainee (Revenir au debut de la chaine avant de delete)
+Voir pourquoi on saute une entite dans next

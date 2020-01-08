@@ -6,7 +6,11 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/27 14:44:48 by nde-jesu          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2020/01/08 11:23:41 by reda-con         ###   ########.fr       */
+=======
+/*   Updated: 2020/01/08 14:31:05 by nde-jesu         ###   ########.fr       */
+>>>>>>> f81eebed4a780638cfc5c0c1b8a95bf99bdb6a35
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +31,7 @@ static char const	*g_tab[3][6] = {
 	{"Prev", "Next", "R.Left", "R.Right", "Del", "Type"}
 };
 
-static void	print_more_minus(t_sdl *sdl)
+void	print_more_minus(t_sdl *sdl)
 {
 	SDL_Rect	where;
 	SDL_Surface	*tmp;
@@ -42,21 +46,6 @@ static void	print_more_minus(t_sdl *sdl)
 	SDL_BlitSurface(tmp, 0, sdl->surf, &where);
 }
 
-void	print_picture(t_sdl *sdl, int x, int y, t_bmp img)
-{
-	int		xa;
-	int		ya;
-
-	ya = y - 1;
-	while (++ya < img.height)
-	{
-		xa = x - 1;
-		while (++xa < img.width)
-			if (xa < EDIT_W && y < WIN_H)
-				put_pixel(sdl->surf, xa, ya, img.pixels[xa + ya * img.width]);
-	}
-}
-
 static void	print_sector_values(t_sdl *sdl, t_sector *sector, t_presets presets)
 {
 	SDL_Rect	where;
@@ -67,34 +56,6 @@ static void	print_sector_values(t_sdl *sdl, t_sector *sector, t_presets presets)
 		print = ft_itoa(sector->h_floor);
 	else if (presets == SECTOR_CEIL)
 		print = ft_itoa(sector->h_ceil);
-	else if (presets == SECTOR_TEXT)
-	{
-	//	if (sector->texture == 0)
-	//		print_picture(sdl, 1, 1, sdl->bmp[0]);
-	//	else if (sector->texture == 1)
-	//		print_picture(sdl, 0, 0, sdl->bmp[1]);
-	//	else
-	//		print_picture(sdl, 1510, 50, sdl->bmp[2]);
-		print_more_minus(sdl);
-		return ;
-	}
-	else
-		return ;
-	where.x = 1510;
-	where.y = 50;
-	tmp = TTF_RenderText_Solid(sdl->font, print, sdl->color);
-	SDL_BlitSurface(tmp, 0, sdl->surf, &where);
-	print_more_minus(sdl);
-}
-
-static void	print_entity_value(t_sdl *sdl, t_entity *to_print, int presets)
-{
-	SDL_Rect	where;
-	SDL_Surface	*tmp;
-	char		*print;
-
-	if (presets == ENTITY_TYPE && to_print)
-		print = ft_itoa(to_print->type);
 	else
 		return ;
 	where.x = 1510;
@@ -126,10 +87,7 @@ void		print_param_to_screen(t_sdl *sdl, t_settings sett, t_editor *editor)
 	}
 	if (sett == SECTOR && editor->presets != NONE)
 		print_sector_values(sdl, editor->sector, editor->presets);
-	else if (sett == OBJECT)
-		print_entity_value(sdl, editor->object, editor->presets);
-	else if (sett == ENEMY)
-		print_entity_value(sdl, editor->enemy, editor->presets);
+	print_params_image(editor, editor->presets, editor->sett);
 }
 
 void		print_param_in_param(t_sdl *sdl, t_settings sett)
