@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 08:52:03 by nde-jesu          #+#    #+#             */
-/*   Updated: 2020/01/07 14:50:33 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/01/08 11:08:13 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -315,6 +315,8 @@ void				rotate_player(t_player *player, bool rotation);
 **	delete.c
 */
 void				clear_editor(t_editor *editor);
+void				delete_vertex(t_vertex **vertex);
+void				delete_sector(t_sector **sector);
 
 /*
 **	tmp

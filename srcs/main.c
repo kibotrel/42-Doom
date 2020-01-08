@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 08:47:35 by nde-jesu          #+#    #+#             */
-/*   Updated: 2020/01/07 14:50:56 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/01/08 15:06:08 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,10 @@
 #include "libft.h"
 
 // PENSER AUX FREES ET METTRE LES FONCTIONS POSSIBLES EN STATIC
+//__attribute__((destructor)) void oui()
+//{
+//	while (1);
+//}
 
 static void		sdl_init(t_sdl *sdl, t_editor *edit)
 {
@@ -33,9 +37,9 @@ static void		sdl_init(t_sdl *sdl, t_editor *edit)
 	sdl->color.r = 0xff;
 	sdl->color.g = 0xff;
 	sdl->color.b = 0xff;
-	bmp_to_array("./map/1.bmp", &sdl->bmp[0]);
-	bmp_to_array("./map/2.bmp", &sdl->bmp[1]);
-	bmp_to_array("./map/3.bmp", &sdl->bmp[2]);
+//	bmp_to_array("./map/1.bmp", &sdl->bmp[0]);
+//	bmp_to_array("./map/2.bmp", &sdl->bmp[1]);
+//	bmp_to_array("./map/3.bmp", &sdl->bmp[2]);
 }
 
 static void		init_chained_list(t_editor *editor)

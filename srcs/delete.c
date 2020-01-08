@@ -6,14 +6,14 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/22 15:46:27 by nde-jesu          #+#    #+#             */
-/*   Updated: 2020/01/07 14:15:09 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/01/08 13:06:27 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "editor.h"
 
-static void		delete_vertex(t_vertex **vertex)
+void				delete_vertex(t_vertex **vertex)
 {
 	t_vertex	*tmp;
 	t_vertex	*to_del;
@@ -33,7 +33,7 @@ static void		delete_vertex(t_vertex **vertex)
 	*vertex = NULL;
 }
 
-static void		delete_sector(t_sector **sectors)
+void				delete_sector(t_sector **sectors)
 {
 	t_sector		*tmp;
 	t_sector		*to_del;
@@ -43,12 +43,15 @@ static void		delete_sector(t_sector **sectors)
 	to_del = NULL;
 	tmp = NULL;
 	to_del = *sectors;
+	while (to_del->prev)
+		to_del = to_del->prev;
+	tmp = to_del;
 	tmp = to_del;
 	while (tmp)
 	{
 		tmp = to_del->next;
-		delete_vertex(&to_del->vertex);
 		free(to_del->is_portal);
+		delete_vertex(&to_del->vertex);
 		free(to_del);
 		to_del = tmp;
 	}
@@ -65,6 +68,8 @@ static void		delete_entity(t_entity **entity)
 	to_del = NULL;
 	tmp = NULL;
 	to_del = *entity;
+	while (to_del->prev)
+		to_del = to_del->prev;
 	tmp = to_del;
 	while (tmp)
 	{

@@ -6,7 +6,7 @@
 /*   By: reda-con <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/06 13:31:57 by reda-con          #+#    #+#             */
-/*   Updated: 2020/01/06 13:32:58 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/01/08 14:53:23 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,15 +35,17 @@ void	next_sec_clic_menu_editor_tool(int y, t_editor *editor)
 {
 	if (y >= 440 && y <= 510)
 	{
-		editor->map_save = false;
 		if (editor->sett == ENEMY)
 			rotate_entity(editor->enemy, false);
-		else if (editor->sett == OBJECT)
+		if (editor->sett == ENEMY)
+			editor->map_save = false;
+		if (editor->sett == OBJECT)
 			rotate_entity(editor->object, false);
-		else if (editor->sett == SECTOR)
-		{
+		if (editor->sett == OBJECT)
+			editor->map_save = false;
+		if (editor->sett != SECTOR)
+			editor->presets = NONE;
+		else
 			editor->presets = SECTOR_CEIL;
-			editor->map_save = true;
-		}
 	}
 }

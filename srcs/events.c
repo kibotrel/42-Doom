@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 13:09:05 by nde-jesu          #+#    #+#             */
-/*   Updated: 2020/01/07 14:45:03 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/01/08 10:42:01 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,4 +113,5 @@ void			events(t_editor *editor)
 		if (SDL_UpdateWindowSurface(editor->sdl.win) != 0)
 			clean(editor);
 	}
+	clean(editor);
 }

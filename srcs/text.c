@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/27 14:44:48 by nde-jesu          #+#    #+#             */
-/*   Updated: 2020/01/07 15:22:09 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/01/08 11:23:41 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,8 @@ static void	print_more_minus(t_sdl *sdl)
 
 void	print_picture(t_sdl *sdl, int x, int y, t_bmp img)
 {
-	int xa;
-	int	ya;		
+	int		xa;
+	int		ya;
 
 	ya = y - 1;
 	while (++ya < img.height)
@@ -69,12 +69,12 @@ static void	print_sector_values(t_sdl *sdl, t_sector *sector, t_presets presets)
 		print = ft_itoa(sector->h_ceil);
 	else if (presets == SECTOR_TEXT)
 	{
-		if (sector->texture == 0)
-			print_picture(sdl, 1, 1, sdl->bmp[0]);
-		else if (sector->texture == 1)
-			print_picture(sdl, 0, 0, sdl->bmp[1]);
-		else
-			print_picture(sdl, 1510, 50, sdl->bmp[2]);
+	//	if (sector->texture == 0)
+	//		print_picture(sdl, 1, 1, sdl->bmp[0]);
+	//	else if (sector->texture == 1)
+	//		print_picture(sdl, 0, 0, sdl->bmp[1]);
+	//	else
+	//		print_picture(sdl, 1510, 50, sdl->bmp[2]);
 		print_more_minus(sdl);
 		return ;
 	}
