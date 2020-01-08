@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 19:01:59 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/01/02 18:03:17 by demonwaves       ###   ########.fr       */
+/*   Updated: 2020/01/08 04:46:31 by vivi             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ double	side(double px, double py, double x0, double y0, double x1, double y1);
 t_vec2d	intersect(double x1, double y1, double x2, double y2, double x3, double y3, double x4, double y4);
 
 /*
-**	checks.c
+**	checks_00.c
 */
 
 char	*get_string(uint8_t n);
@@ -91,6 +91,12 @@ void	check_depth(t_game *var, int32_t start, int32_t end);
 int8_t	dectect_input(int32_t *input);
 int8_t	get_dimensions(int32_t height);
 int8_t	cycle_check(t_env *env, t_game *var, t_item *now);
+
+/*
+**	checks_01.c
+*/
+
+void	speed_check(t_env *env);
 
 /*
 **	engine.c

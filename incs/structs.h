@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 18:48:17 by kibotrel          #+#    #+#             */
-/*   Updated: 2019/11/13 07:43:40 by demonwaves       ###   ########.fr       */
+/*   Updated: 2020/01/08 03:40:30 by vivi             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,7 @@ typedef struct	s_cam
 	double		gap;
 	double 		sin;
 	double 		angle;
+	double		speed;
 	t_vec2d		fov;						// Perspective angle
 	t_vec3d		v;							// Velocity
 	t_vec3d		pos;

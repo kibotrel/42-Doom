@@ -6,7 +6,7 @@
 #    By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/10 16:16:29 by kibotrel          #+#    #+#              #
-#    Updated: 2020/01/02 18:00:13 by demonwaves       ###   ########.fr        #
+#    Updated: 2020/01/08 04:48:00 by vivi             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -111,7 +111,8 @@ SRCS			+= utils/data_1.c
 SRCS			+= utils/maths_0.c
 SRCS			+= utils/maths_1.c
 SRCS			+= utils/usage.c
-SRCS			+= utils/checks.c
+SRCS			+= utils/checks_00.c
+SRCS			+= utils/checks_01.c
 SRCS			+= utils/engine.c
 SRCS			+= utils/graphic_0.c
 SRCS			+= utils/graphic_1.c

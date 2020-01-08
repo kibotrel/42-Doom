@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/11 14:21:04 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/01/08 02:28:08 by vivi             ###   ########.fr       */
+/*   Updated: 2020/01/08 04:50:30 by vivi             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,9 +60,11 @@ void	cam_height(t_env *env, int32_t crouch)
 	{
 		env->cam.fall = 1;
 		env->cam.sneak = 1;
+		env->cam.speed = 0.5;
 	}
 	else
 	{
 		env->cam.sneak = 0;
+		env->cam.speed = 1;
 	}
 }
