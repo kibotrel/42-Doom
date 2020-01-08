@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/16 11:58:26 by kibotrel          #+#    #+#             */
-/*   Updated: 2019/11/11 12:44:50 by demonwaves       ###   ########.fr       */
+/*   Updated: 2020/01/08 05:54:48 by vivi             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,11 @@
 #include "setup.h"
 #include "utils.h"
 
+static void	time_track(t_env *env)
+{
+	ft_bzero(&env->tick, sizeof(t_time));
+	ft_bzero(&env->tick.fly, sizeof(t_tick));
+}
 static void	error_messages(t_env *env)
 {
 	ft_bzero(env->error, sizeof(char*));
@@ -66,4 +71,5 @@ void		env_setup(t_env *env)
 	assets_paths(env);
 	error_messages(env);
 	infos_setup(env);
+	time_track(env);
 }

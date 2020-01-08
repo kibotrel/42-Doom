@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/18 14:38:11 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/01/08 03:41:02 by vivi             ###   ########.fr       */
+/*   Updated: 2020/01/08 05:37:17 by vivi             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ static void	temporary_setup(t_env *env)
 	env->cam.cos = cos(env->cam.angle);
 	env->cam.sin = sin(env->cam.angle);
 	env->cam.sector = 0; //PARSER
+	env->cam.fly = -1;
 	env->cam.fall = 1;
 	env->cam.speed = 1;
 	if (!(env->sector = (t_sector*)malloc(sizeof(t_sector) * env->zones)))

@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/11 14:21:04 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/01/08 04:50:30 by vivi             ###   ########.fr       */
+/*   Updated: 2020/01/08 06:06:22 by vivi             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	cam_motion(t_env *env, t_cam *cam, int x, int y)
 {
 	t_vec2d		p;
 
-	if (cam->ground)
+	if (cam->ground != cam->fly)
 	{
 		p = v2d(0, 0);
 		p.x -= (env->w / 2 - x) / 12;
@@ -56,7 +56,11 @@ void	update_cam(t_env *env, double x, double y)
 
 void	cam_height(t_env *env, int32_t crouch)
 {
-	if (crouch)
+	if (env->cam.fly > 0 && crouch)
+	{
+		env->cam.pos.z -= 0.25;
+	}
+	else if (crouch)
 	{
 		env->cam.fall = 1;
 		env->cam.sneak = 1;

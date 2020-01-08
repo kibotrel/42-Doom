@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 18:48:17 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/01/08 03:40:30 by vivi             ###   ########.fr       */
+/*   Updated: 2020/01/08 05:55:08 by vivi             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,7 @@ typedef struct	s_cam
 	t_vec2d		fov;						// Perspective angle
 	t_vec3d		v;							// Velocity
 	t_vec3d		pos;
+	int8_t		fly;
 	uint8_t		fall;
 	uint8_t		move;
 	uint8_t		sneak;
@@ -102,6 +103,22 @@ typedef	struct	s_sector
 	uint32_t	points;						 // How many vertexes there are
 
 }				t_sector;
+
+/*
+** Time tracking
+*/
+
+typedef struct	s_tick
+{
+	uint32_t	new;
+	uint32_t	old;
+}				t_tick;
+
+typedef struct	s_time
+{
+	t_tick		fly;
+}				t_time;
+
 /*
 **	Main structure.
 */
@@ -114,6 +131,7 @@ typedef struct	s_env
 	t_sdl		sdl;						// SDL structure
 	t_win		win;						// Enum for window state
 	t_data		data;						// Structure for miscelaneous informations
+	t_time		tick;
 	int32_t		w;							// Width of the window
 	int32_t		h;							// Height of the window
 	int32_t		input[SDL_NUM_SCANCODES];	// Handle key inputs

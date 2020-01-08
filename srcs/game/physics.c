@@ -38,7 +38,8 @@ void		vertical_movement(t_env *env, t_sector sector, double cam_height)
 {
 	double	newz; // The player altitude at the next frame
 
-	env->cam.v.z -= 0.05;
+	if (env->cam.fly < 0)
+		env->cam.v.z -= 0.05;
 	newz = env->cam.pos.z + env->cam.v.z;
 	// Falling stop condition
 	if (env->cam.v.z < 0 && newz < sector.floor + cam_height)
