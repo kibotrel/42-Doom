@@ -19,14 +19,17 @@ static void	draw_ceil_and_floor(t_env *env, t_game *var, int32_t x)
 	var->unbound[1] = (x - start) * (p[3] - p[1]) / (end - start) + p[1];
 	var->y[0] = bound(var->unbound[0], var->top[x], var->bottom[x]);
 	var->y[1] = bound(var->unbound[1], var->top[x], var->bottom[x]);
-	draw_slice(env, x, var->top[x], var->y[0] - 1, 0x111111, 0x222222, 0x111111); // Ceil
-	draw_slice(env, x, var->y[1] + 1, var->bottom[x], 0x0000FF, 0x0000AA, 0x0000FF); // Floor
+	draw_slice(env, x, var->top[x], var->y[0] - 1, 0, 0x222222, 0); // Ceil
+	draw_slice(env, x, var->y[1] + 1, var->bottom[x], 0, 0x0000AA, 0); // Floor
 }
 
 static void	draw_transitions(t_env *env, t_game *var, int32_t x)
 {
 	uint32_t	r1 = 0x010101 * (255 - var->depth);
 	uint32_t	r2 = 0x040007 * (31 - var->depth / 8);
+
+	r1 = (255 - var->depth < 0 ? 0 : r1);
+	r2 = (31 - var->depth / 8 < 0 ? 0 : r2);
 
 	int32_t		*p;
 	int32_t		end;
