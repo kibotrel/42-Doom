@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/11 14:21:04 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/01/02 19:00:57 by demonwaves       ###   ########.fr       */
+/*   Updated: 2020/01/08 02:28:08 by vivi             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	cam_motion(t_env *env, t_cam *cam, int x, int y)
 	}
 }
 
-void	update_cam(t_env *env, float x, float y)
+void	update_cam(t_env *env, double x, double y)
 {
 	uint32_t	i;
 	t_sector	*s = &env->sector[env->cam.sector];
@@ -41,7 +41,7 @@ void	update_cam(t_env *env, float x, float y)
 	pos = v3d(env->cam.pos.x, env->cam.pos.y, 0);
 	while (i < s->points)
 	{
-		if (s->neighbor[i] >= 0 && check_collisions(pos, vel, v[i], v[i + 1]))
+		if (s->neighbor[i] >= 0 && check_collisions(pos, vel, v[i], v[(i + 1) % s->points]))
 		{
 			env->cam.sector = s->neighbor[i];
 			break;

@@ -24,8 +24,8 @@ static void	find_height(t_env *env, double *hole, uint32_t s)
 	neighbor = env->sector[cam].neighbor[s];
 	if (neighbor < 0)
 	{
-		hole[0] = 9e9;
-		hole[1] = -9e9;
+		hole[0] = 10000;
+		hole[1] = -10000;
 	}
 	else
 	{
@@ -64,21 +64,22 @@ void		vertical_movement(t_env *env, t_sector sector, double cam_height)
 void		horizontal_movement(t_env *env, t_vec3d p, t_vec3d vel, double view)
 {
 	uint32_t	i;
+	uint32_t	points;
 	double		hole[2];
 	t_vec2d*	v = env->sector[env->cam.sector].vertex;
 
 	i = 0;
-	while (i < env->sector[env->cam.sector].points)
+	points = env->sector[env->cam.sector].points;
+	while (i < points)
 	{
 		// Check if the player is about to cross an edge
-		if (check_collisions(p, vel, v[i], v[i + 1]))
+		if (check_collisions(p, vel, v[i], v[(i + 1) % points]))
 		{
 			find_height(env, hole, i);
 			// Check if the height of both neighbor floor and ceil allow the player to go throw the hole
 			if (hole[0] > p.z - view + MARGIN_KNEE || hole[1] < p.z + MARGIN_HEAD)
 			{
-				// vector projection to slide on the wall
-				vproj(&vel, v2d(v[i].x, v[i].y), v2d(v[i + 1].x, v[i + 1].y));
+				vel.x = 0; vel.y = 0; //Need to implement inverse normal vector to slide along the wall
 				env->cam.move = 0;
 			}
 		}
