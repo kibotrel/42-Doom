@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/10 16:47:31 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/01/08 05:41:48 by vivi             ###   ########.fr       */
+/*   Updated: 2020/01/09 08:13:38 by vivi             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,18 +38,18 @@ void	move(t_env *env)
 	}
 	if (env->input[SDL_SCANCODE_S])
 	{
-		v.x -= env->cam.cos * (0.2 * env->cam.speed);
-		v.y -= env->cam.sin * (0.2 * env->cam.speed);
+		v.x -= env->cam.cos * (0.1 * env->cam.speed);
+		v.y -= env->cam.sin * (0.1 * env->cam.speed);
 	}
 	if (env->input[SDL_SCANCODE_A])
 	{
-		v.x += env->cam.sin * (0.2 * env->cam.speed);
-		v.y -= env->cam.cos * (0.2 * env->cam.speed);
+		v.x += env->cam.sin * (0.15 * env->cam.speed);
+		v.y -= env->cam.cos * (0.15 * env->cam.speed);
 	}
 	if (env->input[SDL_SCANCODE_D])
 	{
-		v.x -= env->cam.sin * (0.2 * env->cam.speed);
-		v.y += env->cam.cos * (0.2 * env->cam.speed);
+		v.x -= env->cam.sin * (0.15 * env->cam.speed);
+		v.y += env->cam.cos * (0.15 * env->cam.speed);
 	}
 	velocity(env, &env->cam, v);
 }
