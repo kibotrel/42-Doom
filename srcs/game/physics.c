@@ -1,12 +1,16 @@
+#include <limits.h>
 #include "env.h"
 #include "game.h"
 #include "utils.h"
 
-int32_t		check_collisions(t_vec3d p, t_vec3d v, t_vec2d w1, t_vec2d w2)
+int32_t		check_collisions(t_vec2d old, t_vec2d v, t_vec2d w1, t_vec2d w2)
 {
-	if (hitbox(p.x, p.y, p.x + v.x, p.y + v.y, w1.x, w1.y, w2.x, w2.y))
+	t_vec2d		new;
+
+	new = v2d(old.x + v.x, old.y + v.y);
+	if (hitbox(old, new, w1, w2))
 	{
-		if (side(p.x + v.x, + p.y + v.y, w1.x, w1.y, w2.x, w2.y) < 0)
+		if (side(new, w1, w2) < 0)
 			return (1);
 		else
 			return (0);
@@ -24,8 +28,8 @@ static void	find_height(t_env *env, double *hole, uint32_t s)
 	neighbor = env->sector[cam].neighbor[s];
 	if (neighbor < 0)
 	{
-		hole[0] = 10000;
-		hole[1] = -10000;
+		hole[0] = INT_MAX;
+		hole[1] = INT_MIN;
 	}
 	else
 	{
@@ -36,12 +40,11 @@ static void	find_height(t_env *env, double *hole, uint32_t s)
 
 void		vertical_movement(t_env *env, t_sector sector, double cam_height)
 {
-	double	newz; // The player altitude at the next frame
+	double	newz;
 
 	if (env->cam.fly < 0)
 		env->cam.v.z -= 0.05;
 	newz = env->cam.pos.z + env->cam.v.z;
-	// Falling stop condition
 	if (env->cam.v.z < 0 && newz < sector.floor + cam_height)
 	{
 		env->cam.pos.z = sector.floor + cam_height;
@@ -49,20 +52,18 @@ void		vertical_movement(t_env *env, t_sector sector, double cam_height)
 		env->cam.fall = 0;
 		env->cam.ground = 1;
 	}
-	// Jump stop condition
 	else if (env->cam.v.z > 0 && newz > sector.ceil)
 	{
 		env->cam.v.z = 0;
 		env->cam.fall = 1;
 	}
-	// If moving (along z axis) after stop conditions, update player position
 	if (env->cam.fall)
 	{
 		env->cam.pos.z += env->cam.v.z;
 		env->cam.move = 1;
 	}
 }
-void		horizontal_movement(t_env *env, t_vec3d p, t_vec3d vel, double view)
+void		horizontal_movement(t_env *env, t_vec2d p, t_vec2d vel, double view)
 {
 	uint32_t	i;
 	uint32_t	points;
@@ -73,12 +74,11 @@ void		horizontal_movement(t_env *env, t_vec3d p, t_vec3d vel, double view)
 	points = env->sector[env->cam.sector].points;
 	while (i < points)
 	{
-		// Check if the player is about to cross an edge
 		if (check_collisions(p, vel, v[i], v[(i + 1) % points]))
 		{
 			find_height(env, hole, i);
-			// Check if the height of both neighbor floor and ceil allow the player to go throw the hole
-			if (hole[0] > p.z - view + MARGIN_KNEE || hole[1] < p.z + MARGIN_HEAD)
+			if (hole[0] > env->cam.pos.z - view + MARGIN_KNEE
+				|| hole[1] < env->cam.pos.z + MARGIN_HEAD)
 			{
 				vel.x = 0; vel.y = 0; //Need to implement inverse normal vector to slide along the wall
 				env->cam.move = 0;
@@ -86,6 +86,6 @@ void		horizontal_movement(t_env *env, t_vec3d p, t_vec3d vel, double view)
 		}
 		i++;
 	}
-	update_cam(env, vel.x, vel.y);
+	update_cam(env, vel);
 	env->cam.fall = 1;
 }

@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 18:43:02 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/01/02 18:02:09 by demonwaves       ###   ########.fr       */
+/*   Updated: 2020/01/09 08:18:05 by vivi             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define SETUP_H
 
 # include "game.h"
-# include "structs.h"
 
 /*
 **	setup.c

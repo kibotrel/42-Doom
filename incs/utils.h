@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 19:01:59 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/01/08 04:46:31 by vivi             ###   ########.fr       */
+/*   Updated: 2020/01/09 09:35:19 by vivi             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define UTILS_H
 
 # include "game.h"
-# include "structs.h"
 
 typedef struct		s_line
 {
@@ -66,10 +65,10 @@ t_item	item(uint32_t sector, uint32_t min, uint32_t max);
 **	maths_0.c
 */
 
-int		hitbox(double x0, double y0, double x1, double y1, double x2, double y2, double x3, double y3);
+int		hitbox(t_vec2d v0, t_vec2d v1, t_vec2d v2, t_vec2d v3);
 void	scale_text(t_env *e, SDL_Rect *where, char *text, uint8_t pos);
 double	gap(double y, double z, double current_gap);
-double	vxs(double x0, double y0, double x1, double y1);
+double	vxs(t_vec2d v0, t_vec2d v1);
 double	bound(double value, double minimum, double maximum);
 
 /*
@@ -79,8 +78,8 @@ double	bound(double value, double minimum, double maximum);
 int		overlap(double a0, double a1, double b0, double b1);
 void	vproj(t_vec3d *v, t_vec2d v1, t_vec2d v2);
 void	velocity(t_env *env, t_cam *cam, t_vec2d v);
-double	side(double px, double py, double x0, double y0, double x1, double y1);
-t_vec2d	intersect(double x1, double y1, double x2, double y2, double x3, double y3, double x4, double y4);
+double	side(t_vec2d p, t_vec2d v0, t_vec2d v1);
+t_vec2d	intersect(t_vec2d v1, t_vec2d v2, t_vec2d v3, t_vec2d v4);
 
 /*
 **	checks_00.c

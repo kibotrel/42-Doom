@@ -6,11 +6,10 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/16 11:53:54 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/01/08 04:17:50 by vivi             ###   ########.fr       */
+/*   Updated: 2020/01/09 08:50:10 by vivi             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "env.h"
 #include "core.h"
 #include "game.h"
 #include "libft.h"
@@ -20,12 +19,12 @@
 
 static int	prechecks(int ac, char **av)
 {
+	// If ac == 2, a map is sent to the program
+	// replace ft_isvalidname by a parser call + check the name inside
+	// function prototype should be modified to get env in this scope
+
 	return ((ac == 2 ? ft_isvalidname(av[1], ".data") : 1));
 }
-
-/*
-**	Don't forget to add a map parser there if ac == 2
-*/
 
 int			main(int ac, char **av)
 {

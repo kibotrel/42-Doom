@@ -6,15 +6,12 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/16 12:45:38 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/01/08 05:44:05 by vivi             ###   ########.fr       */
+/*   Updated: 2020/01/09 08:26:18 by vivi             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "env.h"
-#include "core.h"
 #include "game.h"
 #include "clean.h"
-#include "utils.h"
 #include "events.h"
 
 void	global_hooks(t_env *env, t_sdl *sdl)

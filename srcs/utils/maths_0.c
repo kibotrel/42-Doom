@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/19 18:18:26 by kibotrel          #+#    #+#             */
-/*   Updated: 2019/12/12 10:04:33 by demonwaves       ###   ########.fr       */
+/*   Updated: 2020/01/09 09:00:15 by vivi             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,9 @@ double	bound(double value, double minimum, double maximum)
 	return (fmin(fmax(value, minimum), maximum));
 }
 
-double	vxs(double x0, double y0, double x1, double y1)
+double	vxs(t_vec2d v0, t_vec2d v1)
 {
-	return (x0 * y1 - x1 * y0);
+	return (v0.x * v1.y - v1.x * v0.y);
 }
 
 int		overlap(double a0, double a1, double b0, double b1)

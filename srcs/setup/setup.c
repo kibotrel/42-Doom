@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/16 11:58:26 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/01/08 05:54:48 by vivi             ###   ########.fr       */
+/*   Updated: 2020/01/09 08:52:56 by vivi             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ static void	infos_setup(t_env *env)
 {
 	ft_bzero(env->input, sizeof(int) * SDL_NUM_SCANCODES);
 	ft_bzero(&env->data.ui, sizeof(t_ui));
+	ft_bzero(&env->cam, sizeof(t_cam));
 	env->data.ui.min.y = floor(env->h / RATIO_UI_Y);
 	env->data.ui.min.x = floor(env->w / RATIO_UI_X) * 5;
 	env->data.ui.max.y = env->h;
@@ -60,6 +61,9 @@ static void	infos_setup(t_env *env)
 	if ((env->data.ui.background = get_dimensions(env->h)) == -1)
 	 	clean(env, E_BKGD);
 	env->data.f_size = floor(env->w * MAX_FONT_SIZE / MAX_WIDTH);
+	env->cam.fly = -1;
+	env->cam.fall = 1;
+	env->cam.speed = 1;
 }
 
 void		env_setup(t_env *env)

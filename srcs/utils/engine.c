@@ -18,31 +18,40 @@ void	transform(t_cam *cam, t_game *var, uint32_t i)
 
 uint8_t	bound_view(t_game *var)
 {
+	t_vec2d	i[2];
+	t_vec2d tmp[4];
+
+	tmp[0] = v2d(-var->nearside, var->nearz);
+	tmp[1] = v2d(-var->farside, var->farz);
+	tmp[2] = v2d(var->nearside, var->nearz);
+	tmp[3] = v2d(var->farside,var->farz);
 	if (var->t[0].y <= 0 && var->t[1].y <= 0)
 		return (0);
 	if (var->t[0].y <= 0 || var->t[1].y <= 0)
 	{
-		t_vec2d i1 = intersect(var->t[0].x,var->t[0].y,var->t[1].x,var->t[1].y, -var->nearside,var->nearz, -var->farside,var->farz);
-		t_vec2d i2 = intersect(var->t[0].x,var->t[0].y,var->t[1].x,var->t[1].y, var->nearside,var->nearz, var->farside,var->farz);
+		i[0] = intersect(var->t[0], var->t[1], tmp[0], tmp[1]);
+		i[1] = intersect(var->t[0], var->t[1], tmp[2], tmp[3]);
 		if (var->t[0].y < var->nearz)
-			var->t[0] = (i1.y > 0 ? v2d(i1.x, i1.y) : v2d(i2.x, i2.y));
+			var->t[0] = (i[0].y > 0 ? i[0] : i[1]);
 		if (var->t[1].y < var->nearz)
-			var->t[1] = (i1.y > 0 ? v2d(i1.x, i1.y) : v2d(i2.x, i2.y));
+			var->t[1] = (i[0].y > 0 ? i[0] : i[1]);
 	}
 	return (1);
 }
 
-uint8_t	scale(t_env *env, t_game *var, t_item *now)
+uint8_t	scale(t_env *env, t_game *v, t_item *now)
 {
-	var->size[0] = v2d(env->cam.fov.x / var->t[0].y, env->cam.fov.y / var->t[0].y);
-	var->size[1] = v2d(env->cam.fov.x / var->t[1].y, env->cam.fov.y / var->t[1].y);
-	var->side[0] = env->w / 2 - floor(var->t[0].x * var->size[0].x);
-	var->side[1] = env->w / 2 - floor(var->t[1].x * var->size[1].x);
-	if (var->side[0] >= var->side[1]|| var->side[1] < now->min || var->side[0] > now->max)
+	v->size[0] = v2d(env->cam.fov.x / v->t[0].y, env->cam.fov.y / v->t[0].y);
+	v->size[1] = v2d(env->cam.fov.x / v->t[1].y, env->cam.fov.y / v->t[1].y);
+	v->side[0] = env->w / 2 - floor(v->t[0].x * v->size[0].x);
+	v->side[1] = env->w / 2 - floor(v->t[1].x * v->size[1].x);
+	if (v->side[0] >= v->side[1]
+		|| v->side[1] < now->min
+		|| v->side[0] > now->max)
 		return (0);
 	else
 	{
-		var->render[now->sector]++;
+		v->render[now->sector]++;
 		return (1);
 	}
 }

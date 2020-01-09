@@ -6,13 +6,11 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/10 15:11:44 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/01/08 05:59:36 by vivi             ###   ########.fr       */
+/*   Updated: 2020/01/09 08:33:07 by vivi             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "core.h"
 #include "game.h"
-#include "libft.h"
 #include "utils.h"
 
 void	game_keyboard(t_env *env)

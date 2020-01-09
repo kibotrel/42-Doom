@@ -14,9 +14,9 @@ void			game_setup(t_env *env, t_game *var)
 	var->top = malloc(sizeof(int) * env->w);
 	var->bottom = malloc(sizeof(int) * env->w);
 	var->render = malloc(sizeof(int) * env->zones);
-	var->nearz = 1e-4;
+	var->nearz = 0.0001;
 	var->farz = 5;
-	var->nearside = 1e-5;
+	var->nearside = 0.00001;
 	var->farside = 20;
 	while ((int32_t)i < env->w)
 	{

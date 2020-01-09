@@ -6,17 +6,16 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/10 16:47:31 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/01/09 08:13:38 by vivi             ###   ########.fr       */
+/*   Updated: 2020/01/09 10:05:22 by vivi             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <math.h>
-#include "game.h"
 #include "utils.h"
 
 void	jump(t_env *env, t_cam *cam)
 {
-	if (cam->fly > 0 && env->sector[cam->sector].ceil - cam->pos.z > MARGIN_HEAD)
+	if (cam->fly > 0
+		&& env->sector[cam->sector].ceil - cam->pos.z > MARGIN_HEAD)
 		cam->pos.z += 0.25;
 	else if (cam->ground)
 	{

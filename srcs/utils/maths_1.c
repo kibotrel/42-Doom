@@ -1,22 +1,35 @@
 #include <math.h>
 #include "utils.h"
 
-t_vec2d	intersect(double x1, double y1, double x2, double y2, double x3, double y3, double x4, double y4)
+t_vec2d	intersect(t_vec2d v1, t_vec2d v2, t_vec2d v3, t_vec2d v4)
 {
 	t_vec2d	p;
+	t_vec2d	tmp[6];
 
-	p.x = vxs(vxs(x1, y1, x2, y2), x1 - x2, vxs(x3, y3, x4, y4), x3 - x4) / vxs(x1 - x2, y1 - y2, x3 - x4, y3 - y4);
-	p.y = vxs(vxs(x1, y1, x2, y2), y1 - y2, vxs(x3, y3, x4, y4), y3 - y4) / vxs(x1 - x2, y1 - y2, x3 - x4, y3 - y4);
+	tmp[0] = v2d(vxs(v1, v2), v1.x - v2.x);
+	tmp[1] = v2d(vxs(v3, v4), v3.x - v4.x);
+	tmp[2] = v2d(v1.x - v2.x, v1.y - v2.y);
+	tmp[3] = v2d(v3.x - v4.x, v3.y - v4.y);
+	tmp[4] = v2d(vxs(v1, v2), v1.y - v2.y);
+	tmp[5] = v2d(vxs(v3, v4), v3.y - v4.y);
+	p.x = vxs(tmp[0], tmp[1]) / vxs(tmp[2], tmp[3]);
+	p.y = vxs(tmp[4], tmp[5]) / vxs(tmp[2], tmp[3]);
+
 	return (p);
 }
-double	side(double px, double py, double x0, double y0, double x1, double y1)
+double	side(t_vec2d p, t_vec2d v0, t_vec2d v1)
 {
-	return (vxs(x1 - x0, y1 - y0, px - x0, py - y0));
+	t_vec2d tmp[2];
+
+	tmp[0] = v2d(v1.x - v0.x, v1.y - v0.y);
+	tmp[1] = v2d(p.x - v0.x, p.y - v0.y);
+	return (vxs(tmp[0], tmp[1]));
 }
 
-int		hitbox(double x0, double y0, double x1, double y1, double x2, double y2, double x3, double y3)
+int		hitbox(t_vec2d v0, t_vec2d v1, t_vec2d v2, t_vec2d v3)
 {
-	return ((overlap(x0, x1, x2, x3) && overlap(y0, y1, y2, y3)));
+	return ((overlap(v0.x, v1.x, v2.x, v3.x)
+			&& overlap(v0.y, v1.y, v2.y, v3.y)));
 }
 
 void	vproj(t_vec3d *v, t_vec2d v1, t_vec2d v2)

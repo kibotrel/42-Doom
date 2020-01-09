@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/18 14:38:11 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/01/08 05:37:17 by vivi             ###   ########.fr       */
+/*   Updated: 2020/01/09 10:04:01 by vivi             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,18 +21,14 @@
 
 static void	temporary_setup(t_env *env)
 {
-	env->setup = 1;
-	env->zones = 13; //PARSER
-	ft_bzero(&env->cam, sizeof(t_cam));
-	env->cam.pos = v3d(4, 4, 0); //PARSER
+	env->setup = 1; // NEED TO STAY HERE
+	env->zones = 13;
+	env->cam.pos = v3d(4, 4, 0);
 	env->cam.fov = v2d(0.75 * env->h, 0.2 * env->h);
-	env->cam.angle = 0;//PARSER
+	env->cam.angle = 0;
 	env->cam.cos = cos(env->cam.angle);
 	env->cam.sin = sin(env->cam.angle);
-	env->cam.sector = 0; //PARSER
-	env->cam.fly = -1;
-	env->cam.fall = 1;
-	env->cam.speed = 1;
+	env->cam.sector = 0;
 	if (!(env->sector = (t_sector*)malloc(sizeof(t_sector) * env->zones)))
 		clean(env, E_MALLOC);
 	if (!(env->sector[0].vertex = (t_vec2d*)malloc(sizeof(t_vec2d) * 6)))
@@ -91,108 +87,108 @@ static void	temporary_setup(t_env *env)
 	env->sector[0].ceil = 36;
 	env->sector[0].floor = 16;
 	env->sector[0].points = 6;
-	env->sector[0].vertex[0] = v2d(0,0); //PARSER
-	env->sector[0].vertex[1] = v2d(12,0); //PARSER
-	env->sector[0].vertex[2] = v2d(12,5); //PARSER
-	env->sector[0].vertex[3] = v2d(12,10); //PARSER
-	env->sector[0].vertex[4] = v2d(12,15); //PARSER
-	env->sector[0].vertex[5] = v2d(0,15); //PARSER
+	env->sector[0].vertex[0] = v2d(0,0);
+	env->sector[0].vertex[1] = v2d(12,0);
+	env->sector[0].vertex[2] = v2d(12,5);
+	env->sector[0].vertex[3] = v2d(12,10);
+	env->sector[0].vertex[4] = v2d(12,15);
+	env->sector[0].vertex[5] = v2d(0,15);
 
 	env->sector[1].ceil = 36;
 	env->sector[1].floor = 14;
 	env->sector[1].points = 4;
-	env->sector[1].vertex[0] = v2d(12,5); //PARSER
-	env->sector[1].vertex[1] = v2d(18,5); //PARSER
-	env->sector[1].vertex[2] = v2d(18,10); //PARSER
-	env->sector[1].vertex[3] = v2d(12,10); //PARSER
+	env->sector[1].vertex[0] = v2d(12,5);
+	env->sector[1].vertex[1] = v2d(18,5);
+	env->sector[1].vertex[2] = v2d(18,10);
+	env->sector[1].vertex[3] = v2d(12,10);
 
 	env->sector[2].ceil = 36;
 	env->sector[2].floor = 16;
 	env->sector[2].points = 4;
-	env->sector[2].vertex[0] = v2d(12,0); //PARSER
-	env->sector[2].vertex[1] = v2d(18,0); //PARSER
-	env->sector[2].vertex[2] = v2d(18,5); //PARSER
-	env->sector[2].vertex[3] = v2d(12,5); //PARSER
+	env->sector[2].vertex[0] = v2d(12,0);
+	env->sector[2].vertex[1] = v2d(18,0);
+	env->sector[2].vertex[2] = v2d(18,5);
+	env->sector[2].vertex[3] = v2d(12,5);
 
 	env->sector[3].ceil = 36;
 	env->sector[3].floor = 16;
 	env->sector[3].points = 4;
-	env->sector[3].vertex[0] = v2d(12,10); //PARSER
-	env->sector[3].vertex[1] = v2d(18,10); //PARSER
-	env->sector[3].vertex[2] = v2d(18,15); //PARSER
-	env->sector[3].vertex[3] = v2d(12,15); //PARSER
+	env->sector[3].vertex[0] = v2d(12,10);
+	env->sector[3].vertex[1] = v2d(18,10);
+	env->sector[3].vertex[2] = v2d(18,15);
+	env->sector[3].vertex[3] = v2d(12,15);
 
 	env->sector[4].ceil = 32;
 	env->sector[4].floor = 12;
 	env->sector[4].points = 4;
-	env->sector[4].vertex[0] = v2d(18,5); //PARSER
-	env->sector[4].vertex[1] = v2d(21,5); //PARSER
-	env->sector[4].vertex[2] = v2d(21,10); //PARSER
-	env->sector[4].vertex[3] = v2d(18,10); //PARSER
+	env->sector[4].vertex[0] = v2d(18,5);
+	env->sector[4].vertex[1] = v2d(21,5);
+	env->sector[4].vertex[2] = v2d(21,10);
+	env->sector[4].vertex[3] = v2d(18,10);
 
 	env->sector[5].ceil = 30;
 	env->sector[5].floor = 10;
 	env->sector[5].points = 3;
-	env->sector[5].vertex[0] = v2d(21,5); //PARSER
-	env->sector[5].vertex[1] = v2d(24,5); //PARSER
-	env->sector[5].vertex[2] = v2d(21,10); //PARSER
+	env->sector[5].vertex[0] = v2d(21,5);
+	env->sector[5].vertex[1] = v2d(24,5);
+	env->sector[5].vertex[2] = v2d(21,10);
 
 	env->sector[6].ceil = 28;
 	env->sector[6].floor = 8;
 	env->sector[6].points = 3;
-	env->sector[6].vertex[0] = v2d(24,5); //PARSER
-	env->sector[6].vertex[1] = v2d(27,5); //PARSER
-	env->sector[6].vertex[2] = v2d(21,10); //PARSER
+	env->sector[6].vertex[0] = v2d(24,5);
+	env->sector[6].vertex[1] = v2d(27,5);
+	env->sector[6].vertex[2] = v2d(21,10);
 
 	env->sector[7].ceil = 26;
 	env->sector[7].floor = 6;
 	env->sector[7].points = 3;
-	env->sector[7].vertex[0] = v2d(27,5); //PARSER
-	env->sector[7].vertex[1] = v2d(30,7.5); //PARSER
-	env->sector[7].vertex[2] = v2d(21,10); //PARSER
+	env->sector[7].vertex[0] = v2d(27,5);
+	env->sector[7].vertex[1] = v2d(30,7.5);
+	env->sector[7].vertex[2] = v2d(21,10);
 
 	env->sector[8].ceil = 24;
 	env->sector[8].floor = 4;
 	env->sector[8].points = 3;
-	env->sector[8].vertex[0] = v2d(30,7.5); //PARSER
-	env->sector[8].vertex[1] = v2d(30,10); //PARSER
-	env->sector[8].vertex[2] = v2d(21,10); //PARSER
+	env->sector[8].vertex[0] = v2d(30,7.5);
+	env->sector[8].vertex[1] = v2d(30,10);
+	env->sector[8].vertex[2] = v2d(21,10);
 
 	env->sector[9].ceil = 22;
 	env->sector[9].floor = 2;
 	env->sector[9].points = 4;
-	env->sector[9].vertex[0] = v2d(21,10); //PARSER
-	env->sector[9].vertex[1] = v2d(30,10); //PARSER
-	env->sector[9].vertex[2] = v2d(30,12.5); //PARSER
-	env->sector[9].vertex[3] = v2d(21,12.5); //PARSER
+	env->sector[9].vertex[0] = v2d(21,10);
+	env->sector[9].vertex[1] = v2d(30,10);
+	env->sector[9].vertex[2] = v2d(30,12.5);
+	env->sector[9].vertex[3] = v2d(21,12.5);
 
 	env->sector[10].ceil = 20;
 	env->sector[10].floor = 0;
 	env->sector[10].points = 8;
-	env->sector[10].vertex[0] = v2d(21,12.5); //PARSER
-	env->sector[10].vertex[1] = v2d(30,12.5); //PARSER
-	env->sector[10].vertex[2] = v2d(30,22.5); //PARSER
-	env->sector[10].vertex[3] = v2d(30,25); //PARSER
-	env->sector[10].vertex[4] = v2d(30,75); //PARSER
-	env->sector[10].vertex[5] = v2d(21,75); //PARSER
-	env->sector[10].vertex[6] = v2d(21,25); //PARSER
-	env->sector[10].vertex[7] = v2d(21,22.5); //PARSER
+	env->sector[10].vertex[0] = v2d(21,12.5);
+	env->sector[10].vertex[1] = v2d(30,12.5);
+	env->sector[10].vertex[2] = v2d(30,22.5);
+	env->sector[10].vertex[3] = v2d(30,25);
+	env->sector[10].vertex[4] = v2d(30,75);
+	env->sector[10].vertex[5] = v2d(21,75);
+	env->sector[10].vertex[6] = v2d(21,25);
+	env->sector[10].vertex[7] = v2d(21,22.5);
 
 	env->sector[11].ceil = 20;
 	env->sector[11].floor = 4;
 	env->sector[11].points = 4;
-	env->sector[11].vertex[0] = v2d(30,22.5); //PARSER
-	env->sector[11].vertex[1] = v2d(40,22.5); //PARSER
-	env->sector[11].vertex[2] = v2d(45,25); //PARSER
-	env->sector[11].vertex[3] = v2d(30,25); //PARSER
+	env->sector[11].vertex[0] = v2d(30,22.5);
+	env->sector[11].vertex[1] = v2d(40,22.5);
+	env->sector[11].vertex[2] = v2d(45,25);
+	env->sector[11].vertex[3] = v2d(30,25);
 
 	env->sector[12].ceil = 6;
 	env->sector[12].floor = 0;
 	env->sector[12].points = 4;
-	env->sector[12].vertex[0] = v2d(10,22.5); //PARSER
-	env->sector[12].vertex[1] = v2d(21,22.5); //PARSER
-	env->sector[12].vertex[2] = v2d(21,25); //PARSER
-	env->sector[12].vertex[3] = v2d(10,25); //PARSER
+	env->sector[12].vertex[0] = v2d(10,22.5);
+	env->sector[12].vertex[1] = v2d(21,22.5);
+	env->sector[12].vertex[2] = v2d(21,25);
+	env->sector[12].vertex[3] = v2d(10,25);
 	for (unsigned i = 0; i < 8; i++)
 	{
 		if (i < env->sector[0].points)
