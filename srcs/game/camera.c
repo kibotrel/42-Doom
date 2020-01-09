@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/11 14:21:04 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/01/08 06:11:34 by vivi             ###   ########.fr       */
+/*   Updated: 2020/01/09 08:10:26 by vivi             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void	update_cam(t_env *env, double x, double y)
 
 void	cam_height(t_env *env, int32_t crouch)
 {
-	if (env->cam.fly > 0 && crouch)
+	if (env->cam.fly > 0 && crouch && env->cam.pos.z > env->sector[env->cam.sector].floor + MARGIN_KNEE)
 	{
 		env->cam.pos.z -= 0.25;
 	}
