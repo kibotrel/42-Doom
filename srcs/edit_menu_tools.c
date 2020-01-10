@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/19 13:14:01 by reda-con          #+#    #+#             */
-/*   Updated: 2019/12/13 14:06:54 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/01/10 11:07:06 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,26 +58,18 @@ void			draw_back_ground(SDL_Surface *s)
 
 void			next_blank_menu(int set, SDL_Surface *s)
 {
-	if (set == ENEMY || set == OBJECT || set == SECTOR)
+	if (set != PORTAL && set != PLAYER)
 	{
-		square(1600, 500, 0xff00ff, s);
-		square(1600, 600, 0x00ffff, s);
-		if (set != SECTOR)
-		{
-			square(1600, 700, 0x0000ff, s);
-			rectangle(init_vertex(1540, 440), init_vertex(1710, 510), WHITE, s);
-			rectangle(init_vertex(1540, 540), init_vertex(1710, 610), WHITE, s);
-		}
+		square(1600, 400, 0xff00ff, s);
+		square(1600, 500, 0x00ffff, s);
+		rectangle(init_vertex(1540, 340), init_vertex(1710, 410), WHITE, s);
+		rectangle(init_vertex(1540, 440), init_vertex(1710, 510), WHITE, s);
 	}
 	if (set != PORTAL)
 	{
 		square(1600, 200, 0x181279, s);
 		square(1600, 300, 0x261017, s);
-		square(1600, 400, 0x270139, s);
 		rectangle(init_vertex(1540, 140), init_vertex(1710, 210), WHITE, s);
 		rectangle(init_vertex(1540, 240), init_vertex(1710, 310), WHITE, s);
-		if (set != SECTOR)
-			rectangle(init_vertex(1540, 340), init_vertex(1710, 410), WHITE, s);
-		rectangle(init_vertex(1340, 540), init_vertex(1510, 610), WHITE, s);
 	}
 }

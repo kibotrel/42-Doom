@@ -6,7 +6,7 @@
 /*   By: reda-con <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/06 13:31:57 by reda-con          #+#    #+#             */
-/*   Updated: 2020/01/08 14:53:23 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/01/10 10:46:19 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,16 +18,15 @@ void	sec_clic_menu_editor_tool(int y, t_editor *editor)
 	{
 		if (editor->sett == PLAYER)
 		{
-			rotate_player(&editor->player, false);
+			delete_player(&editor->player);
 			editor->map_save = false;
 		}
-		else if (editor->sett == ENEMY)
-			move_in_entities(&editor->enemy, true);
-		else if (editor->sett == OBJECT)
-			move_in_entities(&editor->object, true);
+		else if (editor->sett == ENEMY || editor->sett == OBJECT)
+			editor->presets = ENTITY_ROTATE;
 		else if (editor->sett == SECTOR)
-			move_in_sector(&editor->sector, true);
-		editor->presets = NONE;
+			editor->presets = SECTOR_FLOOR;
+		if (editor->sett == PORTAL || editor->sett == PLAYER)
+			editor->presets = NONE;
 	}
 }
 
@@ -36,16 +35,12 @@ void	next_sec_clic_menu_editor_tool(int y, t_editor *editor)
 	if (y >= 440 && y <= 510)
 	{
 		if (editor->sett == ENEMY)
-			rotate_entity(editor->enemy, false);
-		if (editor->sett == ENEMY)
-			editor->map_save = false;
-		if (editor->sett == OBJECT)
-			rotate_entity(editor->object, false);
-		if (editor->sett == OBJECT)
-			editor->map_save = false;
-		if (editor->sett != SECTOR)
-			editor->presets = NONE;
+			editor->presets = ENTITY_TYPE;
+		else if (editor->sett == OBJECT)
+			editor->presets = ENTITY_TYPE;
+		else if (editor->sett == SECTOR)
+			editor->presets = SECTOR_TEXT;
 		else
-			editor->presets = SECTOR_CEIL;
+			editor->presets = NONE;
 	}
 }

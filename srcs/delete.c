@@ -6,14 +6,14 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/22 15:46:27 by nde-jesu          #+#    #+#             */
-/*   Updated: 2020/01/08 13:06:27 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/01/10 12:56:23 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "editor.h"
 
-void				delete_vertex(t_vertex **vertex)
+void			delete_vertex(t_vertex **vertex)
 {
 	t_vertex	*tmp;
 	t_vertex	*to_del;
@@ -33,7 +33,7 @@ void				delete_vertex(t_vertex **vertex)
 	*vertex = NULL;
 }
 
-void				delete_sector(t_sector **sectors)
+void			delete_sector(t_sector **sectors)
 {
 	t_sector		*tmp;
 	t_sector		*to_del;

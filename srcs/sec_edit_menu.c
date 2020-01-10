@@ -6,30 +6,46 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/13 14:39:32 by reda-con          #+#    #+#             */
-/*   Updated: 2020/01/08 15:14:09 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/01/10 12:59:47 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "editor.h"
 
-void			sec_blank_menu(SDL_Surface *s, int set, int preset)
+void			blank_sect(int set, int preset, SDL_Surface *s)
 {
 	int		clr;
 
 	if (set == SECTOR)
 	{
+		clr = ((preset != SECTOR_MOVE) ? 0xffffff : 0x177013);
+		rectangle(init_vertex(1540, 140), init_vertex(1710, 210), clr, s);
 		clr = ((preset != SECTOR_FLOOR) ? 0xffffff : 0x177013);
-		rectangle(init_vertex(1540, 340), init_vertex(1710, 410), clr, s);
+		rectangle(init_vertex(1540, 240), init_vertex(1710, 310), clr, s);
 		clr = ((preset != SECTOR_CEIL) ? 0xffffff : 0x177013);
-		rectangle(init_vertex(1540, 440), init_vertex(1710, 510), clr, s);
+		rectangle(init_vertex(1540, 340), init_vertex(1710, 410), clr, s);
 		clr = ((preset != SECTOR_TEXT) ? 0xffffff : 0x177013);
-		rectangle(init_vertex(1540, 540), init_vertex(1710, 610), clr, s);
+		rectangle(init_vertex(1540, 440), init_vertex(1710, 510), clr, s);
 	}
-	if (set == ENEMY || set == OBJECT)
+}
+
+void			sec_blank_menu(SDL_Surface *s, int set, int preset)
+{
+	int		clr;
+
+	if (set == OBJECT || set == ENEMY)
 	{
 		clr = ((preset != ENTITY_TYPE) ? 0xffffff : 0x177013);
-		rectangle(init_vertex(1540, 640), init_vertex(1710, 710), clr, s);
+		rectangle(init_vertex(1540, 440), init_vertex(1710, 510), clr, s);
+		clr = ((preset != ENTITY_ROTATE) ? 0xffffff : 0x177013);
+		rectangle(init_vertex(1540, 240), init_vertex(1710, 310), clr, s);
+		clr = ((preset != ENTITY_MOVE) ? 0xffffff : 0x177013);
+		rectangle(init_vertex(1540, 140), init_vertex(1710, 210), clr, s);
 	}
+	if (set == PLAYER)
+		clr = ((preset != PLAYER_ROTATE) ? 0xffffff : 0x177013);
+	if (set == PLAYER)
+		rectangle(init_vertex(1540, 140), init_vertex(1710, 210), clr, s);
 	if (preset != NONE)
 	{
 		rectangle(init_vertex(1399, 49), init_vertex(1450, 100), 0xffa500, s);
@@ -39,9 +55,9 @@ void			sec_blank_menu(SDL_Surface *s, int set, int preset)
 	}
 }
 
-static void		next_next_sec_clic_menu_editor(int y, t_editor *editor)
+static void		next_sec_clic_menu_editor(int y, t_editor *editor)
 {
-	if (y >= 540 && y <= 610)
+	if (y >= 340 && y <= 410)
 	{
 		if (editor->sett == ENEMY)
 			del_entity(&editor->enemy);
@@ -51,43 +67,12 @@ static void		next_next_sec_clic_menu_editor(int y, t_editor *editor)
 			del_entity(&editor->object);
 		if (editor->sett == OBJECT)
 			editor->map_save = false;
-		if (editor->sett != SECTOR)
-			editor->presets = NONE;
-		else
-			editor->presets = SECTOR_TEXT;
-	}
-	else if (y >= 640 && y <= 710)
-	{
-		if (editor->sett == ENEMY || editor->sett == OBJECT)
-			editor->presets = ENTITY_TYPE;
+		if (editor->sett == SECTOR)
+			editor->presets = SECTOR_CEIL;
 		else
 			editor->presets = NONE;
-	}
-}
-
-static void		next_sec_clic_menu_editor(int y, t_editor *editor)
-{
-	if (y >= 340 && y <= 410)
-	{
-		if (editor->sett == PLAYER)
-			delete_player(&editor->player);
-		if (editor->sett == PLAYER)
-			editor->map_save = false;
-		if (editor->sett == ENEMY)
-			rotate_entity(editor->enemy, true);
-		if (editor->sett == ENEMY)
-			editor->map_save = false;
-		if (editor->sett == OBJECT)
-			rotate_entity(editor->object, true);
-		if (editor->sett == OBJECT)
-			editor->map_save = false;
-		if (editor->sett != SECTOR)
-			editor->presets = NONE;
-		else
-			editor->presets = SECTOR_FLOOR;
 	}
 	next_sec_clic_menu_editor_tool(y, editor);
-	next_next_sec_clic_menu_editor(y, editor);
 }
 
 void			sec_clic_menu_editor(int y, t_editor *editor)
@@ -95,15 +80,11 @@ void			sec_clic_menu_editor(int y, t_editor *editor)
 	if (y >= 140 && y <= 210)
 	{
 		if (editor->sett == PLAYER)
-			rotate_player(&editor->player, true);
-		if (editor->sett == PLAYER)
-			editor->map_save = false;
-		if (editor->sett == ENEMY)
-			move_in_entities(&editor->enemy, false);
-		if (editor->sett == OBJECT)
-			move_in_entities(&editor->object, false);
+			editor->presets = PLAYER_ROTATE;
+		if (editor->sett == ENEMY || editor->sett == OBJECT)
+			editor->presets = ENTITY_MOVE;
 		if (editor->sett == SECTOR)
-			move_in_sector(&editor->sector, false);
+			editor->presets = SECTOR_MOVE;
 	}
 	sec_clic_menu_editor_tool(y, editor);
 	next_sec_clic_menu_editor(y, editor);

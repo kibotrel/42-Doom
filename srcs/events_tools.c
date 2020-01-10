@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/20 17:05:02 by reda-con          #+#    #+#             */
-/*   Updated: 2019/12/13 15:26:03 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/01/10 11:40:50 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,8 +73,20 @@ void		change_value(t_editor *editor, t_presets presets, bool fl)
 		change_height(&editor->sector->h_ceil, fl);
 	else if (presets == SECTOR_TEXT)
 		change_type(&editor->sector->texture, fl);
-	else if (presets == ENTITY_TYPE && editor->sett == ENEMY)
+	else if (presets == SECTOR_MOVE)
+		move_in_sector(&editor->sector, fl);
+	else if (presets == ENTITY_TYPE && editor->sett == ENEMY && editor->enemy)
 		change_type(&editor->enemy->type, fl);
-	else if (presets == ENTITY_TYPE && editor->sett == OBJECT)
+	else if (presets == ENTITY_TYPE && editor->sett == OBJECT && editor->object)
 		change_type(&editor->object->type, fl);
+	else if (presets == ENTITY_MOVE && editor->sett == ENEMY)
+		move_in_entities(&editor->enemy, fl);
+	else if (presets == ENTITY_MOVE && editor->sett == OBJECT)
+		move_in_entities(&editor->object, fl);
+	else if (presets == ENTITY_ROTATE && editor->sett == ENEMY)
+		rotate_entity(editor->enemy, fl);
+	else if (presets == ENTITY_ROTATE && editor->sett == ENEMY)
+		rotate_entity(editor->object, fl);
+	else if (presets == PLAYER_ROTATE)
+		rotate_player(&editor->player, fl);
 }

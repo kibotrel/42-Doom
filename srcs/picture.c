@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/07 14:09:35 by nde-jesu          #+#    #+#             */
-/*   Updated: 2020/01/08 15:19:14 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/01/10 12:50:31 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,15 +42,11 @@ void	print_params_image(t_editor *edit, t_presets presets, t_settings sett)
 	}
 	else if (sett == OBJECT && presets == ENTITY_TYPE)
 	{
-		if (!edit->object)
-			return ;
 		i = 1;
 		j = edit->object->type;
 	}
 	else if (sett == ENEMY && presets == ENTITY_TYPE)
 	{
-		if (!edit->enemy)
-			return ;
 		i = 2;
 		j = edit->enemy->type;
 	}

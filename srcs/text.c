@@ -6,11 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/27 14:44:48 by nde-jesu          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2020/01/08 11:23:41 by reda-con         ###   ########.fr       */
-=======
-/*   Updated: 2020/01/08 14:31:05 by nde-jesu         ###   ########.fr       */
->>>>>>> f81eebed4a780638cfc5c0c1b8a95bf99bdb6a35
+/*   Updated: 2020/01/10 12:56:57 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +21,13 @@ static char const	*g_number[5] = {
 	"1", "2", "3", "4", "5"
 };
 
-static char const	*g_tab[3][6] = {
-	{"Prev", "Next", "Floor", "Roof", "Text"},
-	{"R.Left", "R.Right", "Del"},
-	{"Prev", "Next", "R.Left", "R.Right", "Del", "Type"}
+static char const	*g_tab[3][4] = {
+	{"Select.", "Floor", "Roof", "Text"},
+	{"Rotate", "Del"},
+	{"Select.", "Rotate", "Del", "Type"}
 };
 
-void	print_more_minus(t_sdl *sdl)
+void		print_more_minus(t_sdl *sdl)
 {
 	SDL_Rect	where;
 	SDL_Surface	*tmp;
@@ -56,8 +52,6 @@ static void	print_sector_values(t_sdl *sdl, t_sector *sector, t_presets presets)
 		print = ft_itoa(sector->h_floor);
 	else if (presets == SECTOR_CEIL)
 		print = ft_itoa(sector->h_ceil);
-	else
-		return ;
 	where.x = 1510;
 	where.y = 50;
 	tmp = TTF_RenderText_Solid(sdl->font, print, sdl->color);
@@ -85,9 +79,11 @@ void		print_param_to_screen(t_sdl *sdl, t_settings sett, t_editor *editor)
 		where.y = where.y + 100;
 		i++;
 	}
-	if (sett == SECTOR && editor->presets != NONE)
+	if (sett != PORTAL && editor->presets != NONE)
 		print_sector_values(sdl, editor->sector, editor->presets);
-	print_params_image(editor, editor->presets, editor->sett);
+	if (editor->presets == ENTITY_TYPE && ((sett == ENEMY && editor->enemy)
+		|| (sett == OBJECT && editor->object)))
+		print_params_image(editor, editor->presets, editor->sett);
 }
 
 void		print_param_in_param(t_sdl *sdl, t_settings sett)
@@ -104,11 +100,11 @@ void		print_param_in_param(t_sdl *sdl, t_settings sett)
 	if (sett == SECTOR || sett == PLAYER)
 	{
 		j = (sett == SECTOR) ? 0 : 1;
-		max = (sett == SECTOR) ? 5 : 3;
+		max = (sett == SECTOR) ? 4 : 3;
 	}
 	else
 		j = 2;
-	max = 6;
+	max = 4;
 	where.x = 1610;
 	where.y = 155;
 	while (++i < max)

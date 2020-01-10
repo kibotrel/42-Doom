@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 08:52:03 by nde-jesu          #+#    #+#             */
-/*   Updated: 2020/01/08 15:17:10 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/01/10 10:08:29 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,11 @@ typedef enum		e_presets
 	SECTOR_FLOOR,
 	SECTOR_CEIL,
 	SECTOR_TEXT,
-	ENTITY_TYPE
+	SECTOR_MOVE,
+	ENTITY_TYPE,
+	ENTITY_MOVE,
+	ENTITY_ROTATE,
+	PLAYER_ROTATE
 }					t_presets;
 /*
 **	STRUCTS
