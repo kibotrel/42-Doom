@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/11 14:24:32 by reda-con          #+#    #+#             */
-/*   Updated: 2020/01/08 14:42:30 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/01/10 15:22:22 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void		rotate_entity(t_entity *entity, bool rotation)
 {
 	if (!entity)
 		return ;
-	if (rotation == true)
+	if (rotation == false)
 		entity->angle += 10;
 	else
 		entity->angle -= 10;

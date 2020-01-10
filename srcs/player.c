@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/02 08:16:31 by nde-jesu          #+#    #+#             */
-/*   Updated: 2019/12/13 10:10:39 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/01/10 15:21:48 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	rotate_player(t_player *player, bool rotation)
 {
 	if (!player)
 		return ;
-	if (rotation == true)
+	if (rotation == false)
 		player->angle += 10;
 	else
 		player->angle -= 10;

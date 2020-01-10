@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/27 14:44:48 by nde-jesu          #+#    #+#             */
-/*   Updated: 2020/01/10 14:56:49 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/01/10 15:20:38 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,16 @@ static void	print_sector_values(t_sdl *sdl, t_sector *sector, t_presets presets)
 	else if (presets == SECTOR_CEIL)
 		print = ft_itoa(sector->h_ceil);
 	where.x = 1510;
+	if (presets == ENTITY_MOVE || presets == SECTOR_MOVE)
+	{
+		print = "Prev./Next";
+		where.x = 1453;
+	}
+	if (presets == PLAYER_ROTATE || presets == ENTITY_ROTATE)
+	{
+		print = "Left/Right";
+		where.x = 1455;
+	}
 	where.y = 50;
 	tmp = TTF_RenderText_Solid(sdl->font, print, sdl->color);
 	SDL_BlitSurface(tmp, 0, sdl->surf, &where);
@@ -82,7 +92,7 @@ void		print_param_to_screen(t_sdl *sdl, t_settings sett, t_editor *editor)
 	if (sett != PORTAL && editor->presets != NONE)
 		print_sector_values(sdl, editor->sector, editor->presets);
 	if ((editor->presets == ENTITY_TYPE && ((sett == ENEMY && editor->enemy)
-			|| (sett == OBJECT && editor->object)))
+					|| (sett == OBJECT && editor->object)))
 			|| editor->presets == SECTOR_TEXT)
 		print_params_image(editor, editor->presets, editor->sett);
 }
