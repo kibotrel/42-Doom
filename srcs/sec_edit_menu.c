@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/13 14:39:32 by reda-con          #+#    #+#             */
-/*   Updated: 2020/01/10 12:59:47 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/01/10 14:50:59 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ void			sec_blank_menu(SDL_Surface *s, int set, int preset)
 {
 	int		clr;
 
+	blank_sect(set, preset, s);
 	if (set == OBJECT || set == ENEMY)
 	{
 		clr = ((preset != ENTITY_TYPE) ? 0xffffff : 0x177013);

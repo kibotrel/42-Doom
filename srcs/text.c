@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/27 14:44:48 by nde-jesu          #+#    #+#             */
-/*   Updated: 2020/01/10 12:56:57 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/01/10 14:56:49 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,8 +81,9 @@ void		print_param_to_screen(t_sdl *sdl, t_settings sett, t_editor *editor)
 	}
 	if (sett != PORTAL && editor->presets != NONE)
 		print_sector_values(sdl, editor->sector, editor->presets);
-	if (editor->presets == ENTITY_TYPE && ((sett == ENEMY && editor->enemy)
-		|| (sett == OBJECT && editor->object)))
+	if ((editor->presets == ENTITY_TYPE && ((sett == ENEMY && editor->enemy)
+			|| (sett == OBJECT && editor->object)))
+			|| editor->presets == SECTOR_TEXT)
 		print_params_image(editor, editor->presets, editor->sett);
 }
 
