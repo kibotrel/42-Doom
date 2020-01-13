@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 08:52:03 by nde-jesu          #+#    #+#             */
-/*   Updated: 2020/01/13 11:42:56 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/01/13 11:54:10 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,9 @@ typedef enum		e_presets
 	ENTITY_TYPE,
 	ENTITY_MOVE,
 	ENTITY_ROTATE,
-	PLAYER_ROTATE
+	PLAYER_ROTATE,
+	PORTAL_MOVE,
+	PORTAL_TYPE
 }					t_presets;
 /*
 **	STRUCTS
@@ -101,7 +103,7 @@ typedef struct		s_vertex
 typedef struct		s_portal
 {
 	t_vertex		extrems[2];
-	bool			type;
+	int				type;
 	struct s_portal	*prev;
 	struct s_portal	*next;
 }					t_portal;
