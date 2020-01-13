@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/20 17:05:02 by reda-con          #+#    #+#             */
-/*   Updated: 2020/01/10 11:40:50 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/01/13 08:10:44 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ void		change_value(t_editor *editor, t_presets presets, bool fl)
 		move_in_entities(&editor->object, fl);
 	else if (presets == ENTITY_ROTATE && editor->sett == ENEMY)
 		rotate_entity(editor->enemy, fl);
-	else if (presets == ENTITY_ROTATE && editor->sett == ENEMY)
+	else if (presets == ENTITY_ROTATE && editor->sett == OBJECT)
 		rotate_entity(editor->object, fl);
 	else if (presets == PLAYER_ROTATE)
 		rotate_player(&editor->player, fl);
