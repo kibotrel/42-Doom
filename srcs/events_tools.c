@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/20 17:05:02 by reda-con          #+#    #+#             */
-/*   Updated: 2020/01/13 08:10:44 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/01/13 11:55:02 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,15 +53,21 @@ static void	change_height(int *to_change, bool fl)
 		--*to_change;
 }
 
-static void	change_type(int *to_change, bool fl)
+static void	change_type(int *to_change, bool fl, t_presets preset)
 {
+	int		max;
+
+	if (preset == PORTAL)
+		max = 1;
+	else
+		max = 3;
 	if (fl == false)
 		--*to_change;
 	else
 		++*to_change;
 	if (*to_change < 0)
 		++*to_change;
-	else if (*to_change > 3)
+	else if (*to_change > max)
 		--*to_change;
 }
 
@@ -72,13 +78,13 @@ void		change_value(t_editor *editor, t_presets presets, bool fl)
 	else if (presets == SECTOR_CEIL)
 		change_height(&editor->sector->h_ceil, fl);
 	else if (presets == SECTOR_TEXT)
-		change_type(&editor->sector->texture, fl);
+		change_type(&editor->sector->texture, fl, presets);
 	else if (presets == SECTOR_MOVE)
 		move_in_sector(&editor->sector, fl);
 	else if (presets == ENTITY_TYPE && editor->sett == ENEMY && editor->enemy)
-		change_type(&editor->enemy->type, fl);
+		change_type(&editor->enemy->type, fl, presets);
 	else if (presets == ENTITY_TYPE && editor->sett == OBJECT && editor->object)
-		change_type(&editor->object->type, fl);
+		change_type(&editor->object->type, fl, presets);
 	else if (presets == ENTITY_MOVE && editor->sett == ENEMY)
 		move_in_entities(&editor->enemy, fl);
 	else if (presets == ENTITY_MOVE && editor->sett == OBJECT)
@@ -89,4 +95,8 @@ void		change_value(t_editor *editor, t_presets presets, bool fl)
 		rotate_entity(editor->object, fl);
 	else if (presets == PLAYER_ROTATE)
 		rotate_player(&editor->player, fl);
+	else if (presets == PORTAL_MOVE)
+		move_in_portals(&editor->portal, fl);
+	else if (presets == PORTAL_TYPE)
+		change_type(&editor->portal->type, fl, presets);
 }
