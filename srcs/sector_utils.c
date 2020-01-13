@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 13:55:00 by nde-jesu          #+#    #+#             */
-/*   Updated: 2020/01/13 13:38:42 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/01/13 15:31:18 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,5 +37,7 @@ t_sector	*create_sector(t_editor *edit)
 	sect->texture = 0;
 	sect->next = NULL;
 	sect->prev = NULL;
+	sect->gravity = 5;
+	sect->viscosity = 2;
 	return (sect);
 }

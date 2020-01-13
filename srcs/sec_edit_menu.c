@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/13 14:39:32 by reda-con          #+#    #+#             */
-/*   Updated: 2020/01/13 11:56:25 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/01/13 15:27:12 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,10 @@ void			blank_sect(int set, int preset, SDL_Surface *s)
 		rectangle(init_vertex(1540, 340), init_vertex(1710, 410), clr, s);
 		clr = ((preset != SECTOR_TEXT) ? 0xffffff : 0x177013);
 		rectangle(init_vertex(1540, 440), init_vertex(1710, 510), clr, s);
+		clr = ((preset != SECTOR_GRAV) ? 0xffffff : 0x177013);
+		rectangle(init_vertex(1540, 540), init_vertex(1710, 610), clr, s);
+		clr = ((preset != SECTOR_VISC) ? 0xffffff : 0x177013);
+		rectangle(init_vertex(1540, 640), init_vertex(1710, 710), clr, s);
 	}
 }
 
@@ -63,6 +67,24 @@ void			sec_blank_menu(SDL_Surface *s, int set, int preset)
 	}
 }
 
+static void		part_5_sec_clic_menu_editor(int y, t_editor *editor)
+{
+	if (y >= 540 && y <= 610)
+	{
+		if (editor->sett == SECTOR)
+			editor->presets = SECTOR_GRAV;
+		else
+			editor->presets = NONE;
+	}
+	if (y >= 640 && y <= 710)
+	{
+		if (editor->sett == SECTOR)
+			editor->presets = SECTOR_VISC;
+		else
+			editor->presets = NONE;
+	}
+}
+
 static void		next_sec_clic_menu_editor(int y, t_editor *editor)
 {
 	if (y >= 340 && y <= 410)
@@ -81,6 +103,7 @@ static void		next_sec_clic_menu_editor(int y, t_editor *editor)
 			editor->presets = NONE;
 	}
 	next_sec_clic_menu_editor_tool(y, editor);
+	part_5_sec_clic_menu_editor(y, editor);
 }
 
 void			sec_clic_menu_editor(int y, t_editor *editor)

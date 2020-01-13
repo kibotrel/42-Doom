@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/27 14:44:48 by nde-jesu          #+#    #+#             */
-/*   Updated: 2020/01/13 13:21:28 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/01/13 15:32:51 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ static char const	*g_number[5] = {
 	"1", "2", "3", "4", "5"
 };
 
-static char const	*g_tab[4][4] = {
-	{"Select.", "Floor", "Roof", "Text"},
+static char const	*g_tab[4][6] = {
+	{"Select.", "Floor", "Roof", "Text", "Grav", "Visc"},
 	{"Rotate", "Del"},
 	{"Select.", "Rotate", "Del", "Type"},
 	{"Select.", "Type"}
@@ -49,12 +49,16 @@ static void	print_sector_values(t_sdl *sdl, t_sector *sector, t_presets presets)
 	SDL_Surface	*tmp;
 	char		*print;
 
+	where.x = 1510;
 	if (presets == SECTOR_FLOOR)
 		print = ft_itoa(sector->h_floor);
 	else if (presets == SECTOR_CEIL)
 		print = ft_itoa(sector->h_ceil);
-	where.x = 1510;
-	if (presets == ENTITY_MOVE || presets == SECTOR_MOVE || presets == PORTAL_MOVE)
+	else if (presets == SECTOR_GRAV)
+		print = ft_itoa(sector->gravity);
+	else if (presets == SECTOR_VISC)
+		print = ft_itoa(sector->viscosity);
+	else if (presets == ENTITY_MOVE || presets == SECTOR_MOVE || presets == PORTAL_MOVE)
 	{
 		print = "Prev./Next";
 		where.x = 1453;
@@ -116,7 +120,7 @@ void		print_param_in_param(t_sdl *sdl, t_settings sett)
 	i = -1;
 	where.x = 1610;
 	where.y = 155;
-	while (++i < 4 && g_tab[j][i])
+	while (++i < 6 && g_tab[j][i])
 	{
 		tmp = TTF_RenderText_Solid(sdl->font, g_tab[j][i], sdl->color);
 		SDL_BlitSurface(tmp, 0, sdl->surf, &where);

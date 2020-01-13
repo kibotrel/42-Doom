@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/20 17:05:02 by reda-con          #+#    #+#             */
-/*   Updated: 2020/01/13 14:43:51 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/01/13 15:20:14 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,6 +109,18 @@ void		change_portal_data(t_portal *portal, t_editor *edit)
 		printf("wall\n");
 }
 
+void		change_percentage(int *to_change, bool fl)
+{
+	if (fl == false)
+		--*to_change;
+	else
+		++*to_change;
+	if (*to_change < 0)
+		++*to_change;
+	else if (*to_change > 100)
+		--*to_change;
+}
+
 void		change_value(t_editor *editor, t_presets presets, bool fl)
 {
 	if (presets == SECTOR_FLOOR)
@@ -119,6 +131,10 @@ void		change_value(t_editor *editor, t_presets presets, bool fl)
 		change_type(&editor->sector->texture, fl, editor->sett);
 	else if (presets == SECTOR_MOVE)
 		move_in_sector(&editor->sector, fl);
+	else if (presets == SECTOR_GRAV)
+		change_percentage(&editor->sector->gravity, fl);
+	else if (presets == SECTOR_VISC)
+		change_percentage(&editor->sector->viscosity, fl);
 	else if (presets == ENTITY_TYPE && editor->sett == ENEMY && editor->enemy)
 		change_type(&editor->enemy->type, fl, editor->sett);
 	else if (presets == ENTITY_TYPE && editor->sett == OBJECT && editor->object)

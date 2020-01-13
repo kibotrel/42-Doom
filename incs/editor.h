@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 08:52:03 by nde-jesu          #+#    #+#             */
-/*   Updated: 2020/01/13 13:39:16 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/01/13 15:02:39 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,8 @@ typedef enum		e_presets
 	SECTOR_CEIL,
 	SECTOR_TEXT,
 	SECTOR_MOVE,
+	SECTOR_GRAV,
+	SECTOR_VISC,
 	ENTITY_TYPE,
 	ENTITY_MOVE,
 	ENTITY_ROTATE,
@@ -125,6 +127,8 @@ typedef struct		s_sector
 
 	struct s_sector *prev;
 	struct s_sector	*next;
+	int				gravity;
+	int				viscosity;
 }					t_sector;
 
 typedef	struct		s_sdl

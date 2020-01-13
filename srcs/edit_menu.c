@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2009/11/19 13:07:32 by reda-con          #+#    #+#             */
-/*   Updated: 2020/01/13 12:17:44 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/01/13 15:12:30 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,10 @@ static void		next_motion(t_sdl s, int set, int preset)
 		rectangle(init_vertex(1540, 340), init_vertex(1710, 410), PRPL, s.surf);
 	else if ((set != PORTAL && set != PLAYER) && y >= 440 && y <= 510)
 		rectangle(init_vertex(1540, 440), init_vertex(1710, 510), PRPL, s.surf);
+	else if (set == SECTOR && y >= 540 && y <= 610)
+		rectangle(init_vertex(1540, 540), init_vertex(1710, 610), PRPL, s.surf);
+	else if (set == SECTOR && y >= 640 && y <= 710)
+		rectangle(init_vertex(1540, 640), init_vertex(1710, 710), PRPL, s.surf);
 	else
 		blank_menu(s.surf, set, s, preset);
 }
