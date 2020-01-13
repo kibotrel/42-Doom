@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 08:47:35 by nde-jesu          #+#    #+#             */
-/*   Updated: 2020/01/10 15:45:14 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/01/13 11:28:18 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 // PENSER AUX FREES ET METTRE LES FONCTIONS POSSIBLES EN STATIC
 __attribute__((destructor)) void oui()
 {
+
 	while (1);
 }
 
@@ -62,6 +63,7 @@ static void		init_chained_list(t_editor *editor)
 	editor->sector = NULL;
 	editor->vertex = NULL;
 	editor->object = NULL;
+	editor->portal = NULL;
 }
 
 static void		init_editor(t_editor *editor)

@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 08:29:24 by nde-jesu          #+#    #+#             */
-/*   Updated: 2020/01/07 14:18:12 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/01/13 11:27:02 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ t_vertex		*create_vertex(t_vertex v, t_editor *edit)
 		clean(edit);
 	new->x = v.x;
 	new->y = v.y;
+	new->prev = NULL;
 	new->next = NULL;
 	return (new);
 }
@@ -45,14 +46,13 @@ void			add_vertex(t_vertex **vertex, t_vertex v,
 	if (flag)
 		new->vertex_number = vertex_number++;
 	if (!*vertex)
-		*vertex = create_vertex(v, edit);
+		*vertex = new;
 	else
 	{
 		prev_vertex = *vertex;
 		while (prev_vertex->next)
-		{
 			prev_vertex = prev_vertex->next;
-		}
+		new->prev = prev_vertex;
 		prev_vertex->next = new;
 	}
 }

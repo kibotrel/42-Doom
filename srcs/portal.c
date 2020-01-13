@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 15:15:06 by nde-jesu          #+#    #+#             */
-/*   Updated: 2020/01/07 14:08:10 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/01/13 11:25:31 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,8 @@ static int	is_portal_close(t_sector *sector, t_vertex *start, t_vertex *end)
 static void	save_vertex(t_editor *editor, t_sector *sector,
 		t_vertex *first_point, t_vertex *last_point)
 {
-	int		from;
-	int		dest;
+	int			from;
+	int			dest;
 
 	if (editor->which_sector == NULL)
 	{
@@ -58,6 +58,7 @@ static void	save_vertex(t_editor *editor, t_sector *sector,
 		{
 			dest = is_portal_close(sector, first_point, last_point);
 			sector->is_portal[dest] = editor->which_sector->sector_number;
+			add_portal(&editor->portal, *first_point, *last_point, editor);
 			from = is_portal_close(editor->which_sector, editor->ab,
 				editor->cd);
 			editor->which_sector->is_portal[from] = sector->sector_number;
@@ -118,6 +119,8 @@ void		place_portal(t_editor *editor, int x, int y)
 	{
 		editor->portal_points[1] = *point;
 		sector = editor->sector;
+		while (sector->prev)
+			sector = sector->prev;
 		while (sector)
 		{
 			if (vertex_intersect(editor, sector))

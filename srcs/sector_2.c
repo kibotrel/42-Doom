@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/11 16:04:00 by nde-jesu          #+#    #+#             */
-/*   Updated: 2020/01/06 13:44:39 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/01/13 11:42:28 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ static void		prev_display_sector(t_sdl *sdl, t_sector *sectors)
 		vertex = sect->vertex;
 		while (vertex && ++i)
 		{
-			draw_walls(sdl, sect, vertex, get_wall_color(sect, &i, false));
+			draw_walls(sdl, sect, vertex, 0x0000ff);
 			vertex = vertex->next;
 		}
 		sect = sect->prev;
@@ -65,7 +65,7 @@ void			next_display_sector(t_sdl *sdl, t_sector *sectors)
 		vertex = sect->vertex;
 		while (vertex && ++i)
 		{
-			draw_walls(sdl, sect, vertex, get_wall_color(sect, &i, false));
+			draw_walls(sdl, sect, vertex, 0x0000ff);
 			vertex = vertex->next;
 		}
 		sect = sect->next;

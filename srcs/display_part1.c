@@ -6,30 +6,31 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 08:56:26 by nde-jesu          #+#    #+#             */
-/*   Updated: 2020/01/06 08:33:27 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/01/13 11:42:44 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "editor.h"
 #include "libft.h"
 
-int		get_wall_color(t_sector *sect, int *i, bool fl)
+void	display_portals(t_portal *portal, t_sdl *sdl, int color, bool fl)
 {
-	if (sect->is_portal != NULL && *i >= sect->vertex_count)
-		*i = 0;
-	if (sect->is_portal != NULL && sect->is_portal[*i] != -1)
+	t_portal	*print;
+
+	print = portal;
+	while (print)
 	{
-		if (fl == true)
-			return (0x00ff83);
-		return (0x00ff00);
+		draw_line(sdl->surf, print->extrems[0], print->extrems[1], color);
+		print = print->prev;
 	}
-	else
+	print = portal;
+	while (print)
 	{
-		if (fl == true)
-			return (0xffff00);
-		return (0x0000ff);
+		draw_line(sdl->surf, print->extrems[0], print->extrems[1], color);
+		print = print->next;
 	}
-	return (0x0000ff);
+	if (portal && fl == true)
+		draw_line(sdl->surf, portal->extrems[0], portal->extrems[1], 0xffff00);
 }
 
 void	draw_walls(t_sdl *sdl, t_sector *sect, t_vertex *vertex, int color)
@@ -69,7 +70,7 @@ void	display_sector(t_sdl *sdl, t_sector *sectors, bool fl)
 		vertex = sect->vertex;
 		while (vertex && ++i)
 		{
-			draw_walls(sdl, sectors, vertex, get_wall_color(sect, &i, true));
+			draw_walls(sdl, sectors, vertex, 0xffff00);
 			vertex = vertex->next;
 		}
 	}

@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 13:09:05 by nde-jesu          #+#    #+#             */
-/*   Updated: 2020/01/08 15:19:47 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/01/13 11:39:51 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ static void		display_editor(t_editor *edit)
 	edit->sett == SECTOR ? display_sector(&edit->sdl, edit->sector, true)
 		: display_sector(&edit->sdl, edit->sector, false);
 	display_vertex(&edit->sdl, edit->vertex, 0xffff00);
+	display_portals(edit->portal, &edit->sdl, 0x00ff00, edit->sett == PORTAL);
 	if (edit->sett == SECTOR && edit->sdl.event.motion.x <= EDIT_W)
 	{
 		mse.x = (edit->sdl.event.motion.x / edit->dist_grid) * edit->dist_grid;

@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 08:52:03 by nde-jesu          #+#    #+#             */
-/*   Updated: 2020/01/10 10:08:29 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/01/13 11:42:56 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,16 @@ typedef struct		s_vertex
 	int				y;
 	int				vertex_number;
 	struct s_vertex	*next;
+	struct s_vertex	*prev;
 }					t_vertex;
+
+typedef struct		s_portal
+{
+	t_vertex		extrems[2];
+	bool			type;
+	struct s_portal	*prev;
+	struct s_portal	*next;
+}					t_portal;
 
 typedef struct		s_sector
 {
@@ -138,6 +147,7 @@ typedef struct		s_editor
 	t_player		player;
 	t_entity		*object;
 	t_entity		*enemy;
+	t_portal		*portal;
 
 	t_vertex		last_vertex;
 
@@ -162,7 +172,8 @@ void				display_grid(t_editor *editor);
 void				display_line(t_editor *editor, int x, int y);
 void				display_sector(t_sdl *sdl, t_sector *sectors, bool fl);
 void				draw_walls(t_sdl *sdl, t_sector *s, t_vertex *v, int clr);
-int					get_wall_color(t_sector *sect, int *i, bool fl);
+void				display_portals(t_portal *portal, t_sdl *sdl, int color,
+	bool fl);
 
 /*
 **	display_part2.c
@@ -225,6 +236,8 @@ void				create_map(t_editor *editor);
 int					compare_coordinates(t_vertex *point, t_vertex *a,
 	t_vertex *b);
 void				init_portals(t_editor *edit);
+void				add_portal(t_portal **portal, t_vertex v1, t_vertex v2,
+	t_editor *edit);
 
 /*
 **	portal.c
