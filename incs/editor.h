@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 08:52:03 by nde-jesu          #+#    #+#             */
-/*   Updated: 2020/01/13 11:54:10 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/01/13 12:10:06 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -240,6 +240,7 @@ int					compare_coordinates(t_vertex *point, t_vertex *a,
 void				init_portals(t_editor *edit);
 void				add_portal(t_portal **portal, t_vertex v1, t_vertex v2,
 	t_editor *edit);
+void		move_in_portals(t_portal **portal, bool way);
 
 /*
 **	portal.c

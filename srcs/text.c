@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/27 14:44:48 by nde-jesu          #+#    #+#             */
-/*   Updated: 2020/01/13 12:02:32 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/01/13 12:10:30 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ static char const	*g_number[5] = {
 static char const	*g_tab[4][4] = {
 	{"Select.", "Floor", "Roof", "Text"},
 	{"Rotate", "Del"},
-	{"Select.", "Rotate", "Del", "Type"}
-	{"Select.", "Type"},
+	{"Select.", "Rotate", "Del", "Type"},
+	{"Select.", "Type"}
 };
 
 void		print_more_minus(t_sdl *sdl)
