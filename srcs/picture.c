@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/07 14:09:35 by nde-jesu          #+#    #+#             */
-/*   Updated: 2020/01/10 12:50:31 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/01/13 13:31:16 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,11 @@ void	print_params_image(t_editor *edit, t_presets presets, t_settings sett)
 		i = 2;
 		j = edit->enemy->type;
 	}
+	else if (sett == PORTAL && presets == PORTAL_TYPE)
+		{
+			i = 3;
+			j = edit->portal->type;
+		}
 	else
 		return ;
 	print_picture(&edit->sdl, 1475, 30, edit->sdl.bmp[i][j]);

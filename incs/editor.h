@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 08:52:03 by nde-jesu          #+#    #+#             */
-/*   Updated: 2020/01/13 12:10:06 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/01/13 13:30:21 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,7 +129,7 @@ typedef struct		s_sector
 
 typedef	struct		s_sdl
 {
-	t_bmp			bmp[3][4];
+	t_bmp			bmp[4][4];
 	SDL_Window		*win;
 	SDL_Surface		*surf;
 	SDL_Event		event;

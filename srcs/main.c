@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 08:47:35 by nde-jesu          #+#    #+#             */
-/*   Updated: 2020/01/13 11:28:18 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/01/13 13:32:25 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ static void		img_init(t_sdl *sdl)
 	bmp_to_array("./map/enemy_2.bmp", &sdl->bmp[2][1]);
 	bmp_to_array("./map/enemy_3.bmp", &sdl->bmp[2][2]);
 	bmp_to_array("./map/enemy_4.bmp", &sdl->bmp[2][3]);
+	bmp_to_array("./map/portal_wall.bmp", &sdl->bmp[3][0]);
+	bmp_to_array("./map/portal_door.bmp", &sdl->bmp[3][1]);
 }
 
 static void		sdl_init(t_sdl *sdl, t_editor *edit)
