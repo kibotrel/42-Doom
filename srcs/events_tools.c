@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/20 17:05:02 by reda-con          #+#    #+#             */
-/*   Updated: 2020/01/13 11:55:02 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/01/13 12:25:28 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,11 +53,11 @@ static void	change_height(int *to_change, bool fl)
 		--*to_change;
 }
 
-static void	change_type(int *to_change, bool fl, t_presets preset)
+static void	change_type(int *to_change, bool fl, t_settings set)
 {
 	int		max;
 
-	if (preset == PORTAL)
+	if (set == PORTAL)
 		max = 1;
 	else
 		max = 3;
@@ -78,13 +78,13 @@ void		change_value(t_editor *editor, t_presets presets, bool fl)
 	else if (presets == SECTOR_CEIL)
 		change_height(&editor->sector->h_ceil, fl);
 	else if (presets == SECTOR_TEXT)
-		change_type(&editor->sector->texture, fl, presets);
+		change_type(&editor->sector->texture, fl, editor->sett);
 	else if (presets == SECTOR_MOVE)
 		move_in_sector(&editor->sector, fl);
 	else if (presets == ENTITY_TYPE && editor->sett == ENEMY && editor->enemy)
-		change_type(&editor->enemy->type, fl, presets);
+		change_type(&editor->enemy->type, fl, editor->sett);
 	else if (presets == ENTITY_TYPE && editor->sett == OBJECT && editor->object)
-		change_type(&editor->object->type, fl, presets);
+		change_type(&editor->object->type, fl, editor->sett);
 	else if (presets == ENTITY_MOVE && editor->sett == ENEMY)
 		move_in_entities(&editor->enemy, fl);
 	else if (presets == ENTITY_MOVE && editor->sett == OBJECT)
@@ -97,6 +97,6 @@ void		change_value(t_editor *editor, t_presets presets, bool fl)
 		rotate_player(&editor->player, fl);
 	else if (presets == PORTAL_MOVE)
 		move_in_portals(&editor->portal, fl);
-	else if (presets == PORTAL_TYPE)
-		change_type(&editor->portal->type, fl, presets);
+	else if (presets == PORTAL_TYPE && editor->portal)
+		change_type(&editor->portal->type, fl, editor->sett);
 }

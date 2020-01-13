@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2009/11/19 13:07:32 by reda-con          #+#    #+#             */
-/*   Updated: 2020/01/10 10:56:45 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/01/13 12:17:44 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,9 +79,9 @@ static void		next_motion(t_sdl s, int set, int preset)
 	int		y;
 
 	y = s.event.motion.y;
-	if (set != PORTAL && y >= 140 && y <= 210)
+	if (y >= 140 && y <= 210)
 		rectangle(init_vertex(1540, 140), init_vertex(1710, 210), PRPL, s.surf);
-	else if (set != PORTAL && y >= 240 && y <= 310)
+	else if (y >= 240 && y <= 310)
 		rectangle(init_vertex(1540, 240), init_vertex(1710, 310), PRPL, s.surf);
 	else if ((set != PORTAL && set != PLAYER) && y >= 340 && y <= 410)
 		rectangle(init_vertex(1540, 340), init_vertex(1710, 410), PRPL, s.surf);

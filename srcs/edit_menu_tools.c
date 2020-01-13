@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/19 13:14:01 by reda-con          #+#    #+#             */
-/*   Updated: 2020/01/10 11:07:06 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/01/13 12:15:55 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,11 +65,8 @@ void			next_blank_menu(int set, SDL_Surface *s)
 		rectangle(init_vertex(1540, 340), init_vertex(1710, 410), WHITE, s);
 		rectangle(init_vertex(1540, 440), init_vertex(1710, 510), WHITE, s);
 	}
-	if (set != PORTAL)
-	{
-		square(1600, 200, 0x181279, s);
-		square(1600, 300, 0x261017, s);
-		rectangle(init_vertex(1540, 140), init_vertex(1710, 210), WHITE, s);
-		rectangle(init_vertex(1540, 240), init_vertex(1710, 310), WHITE, s);
-	}
+	square(1600, 200, 0x181279, s);
+	square(1600, 300, 0x261017, s);
+	rectangle(init_vertex(1540, 140), init_vertex(1710, 210), WHITE, s);
+	rectangle(init_vertex(1540, 240), init_vertex(1710, 310), WHITE, s);
 }

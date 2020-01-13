@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/27 14:44:48 by nde-jesu          #+#    #+#             */
-/*   Updated: 2020/01/13 12:10:30 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/01/13 13:21:28 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,16 +54,18 @@ static void	print_sector_values(t_sdl *sdl, t_sector *sector, t_presets presets)
 	else if (presets == SECTOR_CEIL)
 		print = ft_itoa(sector->h_ceil);
 	where.x = 1510;
-	if (presets == ENTITY_MOVE || presets == SECTOR_MOVE)
+	if (presets == ENTITY_MOVE || presets == SECTOR_MOVE || presets == PORTAL_MOVE)
 	{
 		print = "Prev./Next";
 		where.x = 1453;
 	}
-	if (presets == PLAYER_ROTATE || presets == ENTITY_ROTATE)
+	else if (presets == PLAYER_ROTATE || presets == ENTITY_ROTATE)
 	{
 		print = "Left/Right";
 		where.x = 1455;
 	}
+	else
+		print = "	";
 	where.y = 50;
 	tmp = TTF_RenderText_Solid(sdl->font, print, sdl->color);
 	SDL_BlitSurface(tmp, 0, sdl->surf, &where);
@@ -90,11 +92,11 @@ void		print_param_to_screen(t_sdl *sdl, t_settings sett, t_editor *editor)
 		where.y = where.y + 100;
 		i++;
 	}
-	if (sett != PORTAL && editor->presets != NONE)
+	if (editor->presets != NONE)
 		print_sector_values(sdl, editor->sector, editor->presets);
 	if ((editor->presets == ENTITY_TYPE && ((sett == ENEMY && editor->enemy)
 					|| (sett == OBJECT && editor->object)))
-			|| editor->presets == SECTOR_TEXT)
+			|| editor->presets == SECTOR_TEXT || editor->presets == PORTAL_TYPE)
 		print_params_image(editor, editor->presets, editor->sett);
 }
 
@@ -103,25 +105,18 @@ void		print_param_in_param(t_sdl *sdl, t_settings sett)
 	SDL_Rect	where;
 	SDL_Surface	*tmp;
 	int			i;
-	int			max;
 	int			j;
 
 	if (sett == PORTAL)
-	{
 		j = 3;
-		max = 2;
-	}
-	i = -1;
-	if (sett == SECTOR || sett == PLAYER)
-	{
+	else if (sett == SECTOR || sett == PLAYER)
 		j = (sett == SECTOR) ? 0 : 1;
-		max = (sett == SECTOR) ? 4 : 3;
-	}
 	else
 		j = 2;
+	i = -1;
 	where.x = 1610;
 	where.y = 155;
-	while (++i < max)
+	while (++i < 4 && g_tab[j][i])
 	{
 		tmp = TTF_RenderText_Solid(sdl->font, g_tab[j][i], sdl->color);
 		SDL_BlitSurface(tmp, 0, sdl->surf, &where);
