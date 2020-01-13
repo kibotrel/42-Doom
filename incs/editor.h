@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 08:52:03 by nde-jesu          #+#    #+#             */
-/*   Updated: 2020/01/13 13:30:21 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/01/13 13:39:16 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -263,7 +263,7 @@ void				add_tmp_sector(t_sector *new, t_sector **lst);
 /*
 **	sector_utils.c
 */
-t_sector			*create_sector(void);
+t_sector			*create_sector(t_editor *editor);
 
 /*
 **	sector.c

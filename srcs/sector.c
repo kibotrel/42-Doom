@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 09:55:53 by nde-jesu          #+#    #+#             */
-/*   Updated: 2020/01/07 14:08:38 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/01/13 13:39:36 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static t_sector	*get_last_sector(t_editor *editor)
 
 	if (!(editor->sector))
 	{
-		editor->sector = create_sector();
+		editor->sector = create_sector(editor);
 		return (editor->sector);
 	}
 	sect = editor->sector;
@@ -62,7 +62,7 @@ void			next_place_sector(t_editor *edit, t_sector *sect)
 			* sect->vertex_count);
 	if (sect->is_child != -1)
 		sect->is_portal[1] = sect->is_child;
-	sect->next = create_sector();
+	sect->next = create_sector(edit);
 	sect->next->prev = sect;
 	edit->sect_is_closed = true;
 	edit->last_vertex = init_vertex(-1, -1);

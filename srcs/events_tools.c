@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/20 17:05:02 by reda-con          #+#    #+#             */
-/*   Updated: 2020/01/13 12:25:28 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/01/13 14:43:51 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,44 @@ static void	change_type(int *to_change, bool fl, t_settings set)
 		--*to_change;
 }
 
+void		change_portal_data(t_portal *portal, t_editor *edit)
+{
+	t_vertex	*vertex;
+	t_sector	*sector;
+	int			number;
+	int			i;
+
+	vertex = edit->vertex;
+	number = -1;
+	while (vertex)
+	{
+		if (vertex->x == portal->extrems[0].x && vertex->y == portal->extrems[0].y)
+			number = vertex->vertex_number;
+		vertex = vertex->next;
+	}
+	sector = edit->sector;
+	while (sector->prev)
+		sector = sector->prev;
+	while (sector && number != 0)
+	{
+		i = 0;
+		vertex = sector->vertex;
+		while (vertex)
+		{
+			--number;
+			if (number == 0)
+				break ;
+			++i;
+			vertex = vertex->next;
+		}
+		sector = sector->next;
+	}
+	if (portal->type == 1)
+		printf("door\n");
+	else
+		printf("wall\n");
+}
+
 void		change_value(t_editor *editor, t_presets presets, bool fl)
 {
 	if (presets == SECTOR_FLOOR)
@@ -98,5 +136,8 @@ void		change_value(t_editor *editor, t_presets presets, bool fl)
 	else if (presets == PORTAL_MOVE)
 		move_in_portals(&editor->portal, fl);
 	else if (presets == PORTAL_TYPE && editor->portal)
+	{
 		change_type(&editor->portal->type, fl, editor->sett);
+		change_portal_data(editor->portal, editor);
+	}
 }
