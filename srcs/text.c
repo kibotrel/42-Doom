@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/27 14:44:48 by nde-jesu          #+#    #+#             */
-/*   Updated: 2020/01/10 15:20:38 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/01/13 12:02:32 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,11 @@ static char const	*g_number[5] = {
 	"1", "2", "3", "4", "5"
 };
 
-static char const	*g_tab[3][4] = {
+static char const	*g_tab[4][4] = {
 	{"Select.", "Floor", "Roof", "Text"},
 	{"Rotate", "Del"},
 	{"Select.", "Rotate", "Del", "Type"}
+	{"Select.", "Type"},
 };
 
 void		print_more_minus(t_sdl *sdl)
@@ -106,7 +107,10 @@ void		print_param_in_param(t_sdl *sdl, t_settings sett)
 	int			j;
 
 	if (sett == PORTAL)
-		return ;
+	{
+		j = 3;
+		max = 2;
+	}
 	i = -1;
 	if (sett == SECTOR || sett == PLAYER)
 	{
@@ -115,7 +119,6 @@ void		print_param_in_param(t_sdl *sdl, t_settings sett)
 	}
 	else
 		j = 2;
-	max = 4;
 	where.x = 1610;
 	where.y = 155;
 	while (++i < max)
