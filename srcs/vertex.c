@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 08:29:24 by nde-jesu          #+#    #+#             */
-/*   Updated: 2020/01/13 11:27:02 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/01/14 15:50:11 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,13 +38,12 @@ t_vertex		*create_vertex(t_vertex v, t_editor *edit)
 void			add_vertex(t_vertex **vertex, t_vertex v,
 	bool flag, t_editor *edit)
 {
-	static int	vertex_number = 0;
 	t_vertex	*prev_vertex;
 	t_vertex	*new;
 
 	new = create_vertex(v, edit);
 	if (flag)
-		new->vertex_number = vertex_number++;
+		new->vertex_number = edit->count.vertex++;
 	if (!*vertex)
 		*vertex = new;
 	else

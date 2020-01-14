@@ -6,12 +6,21 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/22 15:46:27 by nde-jesu          #+#    #+#             */
-/*   Updated: 2020/01/10 12:56:23 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/01/14 15:58:34 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "editor.h"
+
+void			init_count(t_count *count)
+{
+	count->vertex = 0;
+	count->sector = 0;
+	count->enemy = 0;
+	count->portal = 0;
+	count->object = 0;
+}
 
 void			delete_vertex(t_vertex **vertex)
 {
@@ -33,6 +42,26 @@ void			delete_vertex(t_vertex **vertex)
 	*vertex = NULL;
 }
 
+void			delete_portals(t_portal **portal)
+{
+	t_portal	*tmp;
+	t_portal	*to_del;
+
+	if (*portal == NULL)
+		return ;
+	to_del = NULL;
+	tmp = NULL;
+	to_del = *portal;
+	tmp = to_del;
+	while (tmp)
+	{
+		tmp = to_del->next;
+		free(to_del);
+		to_del = tmp;
+	}
+	*portal = NULL;
+}
+
 void			delete_sector(t_sector **sectors)
 {
 	t_sector		*tmp;
@@ -51,7 +80,9 @@ void			delete_sector(t_sector **sectors)
 	{
 		tmp = to_del->next;
 		free(to_del->is_portal);
+		free(to_del->portal_type);
 		delete_vertex(&to_del->vertex);
+		delete_portals(&to_del->portal);
 		free(to_del);
 		to_del = tmp;
 	}
@@ -91,10 +122,14 @@ void			clear_editor(t_editor *editor)
 		delete_entity(&editor->enemy);
 	if (editor->object)
 		delete_entity(&editor->object);
+	if (editor->portals)
+		delete_portals(&editor->portals);
 	editor->sett = SECTOR;
 	editor->last_vertex.x = -1;
 	editor->last_vertex.y = -1;
 	init_portals(editor);
+	init_count(&editor->count);
 	editor->sect_is_closed = false;
 	blank_menu(editor->sdl.surf, editor->sett, editor->sdl, editor->presets);
+	editor->map_save = true;
 }

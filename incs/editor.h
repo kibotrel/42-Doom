@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 08:52:03 by nde-jesu          #+#    #+#             */
-/*   Updated: 2020/01/14 14:32:46 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/01/14 15:55:14 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,16 @@ typedef struct		s_line
 	int			error;
 	int			error_2;
 }					t_line;
+
+typedef struct 		s_count
+{
+	int				vertex;
+	int				sector;
+	int				enemy;
+	int				object;
+	int				portal;
+}					t_count;
+
 
 typedef struct		s_player
 {
@@ -145,6 +155,7 @@ typedef struct		s_editor
 	t_sdl			sdl;
 	t_settings		sett;
 	t_presets		presets;
+	t_count			count;
 	bool			map_save;
 
 	t_sector		*sector;
@@ -351,6 +362,7 @@ void				del_entity(t_entity **entity);
 void				put_fov(SDL_Surface *surf, t_vertex pt, int agl, int color);
 void				clean(t_editor *e);
 void				print_more_minus(t_sdl *sdl);
+void				init_count(t_count *count);
 
 /*
 **	picture.c

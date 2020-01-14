@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 13:55:00 by nde-jesu          #+#    #+#             */
-/*   Updated: 2020/01/14 14:32:40 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/01/14 16:01:35 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,11 @@ int			is_sector_complete(t_vertex *first, t_vertex *last)
 
 t_sector	*create_sector(t_editor *edit)
 {
-	static int	sector_num = 0;
 	t_sector	*sect;
 
 	if (!(sect = (t_sector*)ft_memalloc(sizeof(t_sector))))
 		clean(edit);
-	sect->sector_number = sector_num++;
+	sect->sector_number = edit->count.sector++;
 	sect->h_ceil = 20;
 	sect->h_floor = 0;
 	sect->vertex_count = 0;

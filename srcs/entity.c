@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 14:55:17 by nde-jesu          #+#    #+#             */
-/*   Updated: 2020/01/07 14:11:28 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/01/14 15:54:30 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,11 @@ static t_entity		*create_entity(int x, int y, int type, t_editor *edit)
 	return (entity);
 }
 
-static void			add_enemy(t_entity **enemy, t_entity *new)
+static void			add_enemy(t_entity **enemy, t_entity *new, t_count *count)
 {
-	static int		enemy_num = 0;
 	t_entity		*prev_enemy;
 
-	new->number = enemy_num++;
+	new->number = count->enemy++;
 	if (!*enemy)
 		*enemy = new;
 	else
@@ -44,12 +43,11 @@ static void			add_enemy(t_entity **enemy, t_entity *new)
 	}
 }
 
-static void			add_object(t_entity **object, t_entity *new)
+static void			add_object(t_entity **object, t_entity *new, t_count *count)
 {
-	static int		object_num = 0;
 	t_entity		*prev_object;
 
-	new->number = object_num++;
+	new->number = count->object++;
 	if (!*object)
 		*object = new;
 	else
@@ -74,9 +72,9 @@ void				place_entity(t_editor *editor, int x, int y, int type)
 	if (new_entity->sector != -1)
 	{
 		if (type == 0)
-			add_enemy(&editor->enemy, new_entity);
+			add_enemy(&editor->enemy, new_entity, &editor->count);
 		else if (type == 1)
-			add_object(&editor->object, new_entity);
+			add_object(&editor->object, new_entity, &editor->count);
 	}
 }
 

@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 15:15:06 by nde-jesu          #+#    #+#             */
-/*   Updated: 2020/01/14 14:34:52 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/01/14 15:52:44 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,26 +72,24 @@ static void	save_vertex(t_editor *editor, t_sector *sector,
 
 static int	check_vertex(t_editor *editor, t_vertex *vertex, t_sector *sector)
 {
-	static int	n = 0;
-
 	if (vertex->next == NULL)
 	{
 		if (intersects_count(*vertex, *(sector->vertex),
 			editor->portal_points[0], editor->portal_points[1]))
 		{
 			save_vertex(editor, sector, vertex, sector->vertex);
-			++n;
+			++editor->count.portal;
 		}
 	}
 	else if (intersects_count(*vertex, *(vertex->next),
 		editor->portal_points[0], editor->portal_points[1]))
 	{
 		save_vertex(editor, sector, vertex, vertex->next);
-		++n;
+		++editor->count.portal;
 	}
-	if (n == 2)
+	if (editor->count.portal == 2)
 	{
-		n = 0;
+		editor->count.portal = 0;
 		return (1);
 	}
 	return (0);

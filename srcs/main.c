@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 08:47:35 by nde-jesu          #+#    #+#             */
-/*   Updated: 2020/01/14 09:43:53 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/01/14 15:49:40 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,7 @@ static void		init_editor(t_editor *editor)
 	editor->player.angle = 90;
 	init_chained_list(editor);
 	init_portals(editor);
+	init_count(&editor->count);
 }
 
 int				main(void)

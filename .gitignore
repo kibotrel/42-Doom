@@ -3,6 +3,7 @@ objs
 build
 *.o
 SDL2-2.0.10
+.vscode
 
 # Static libraries - Headers
 *.a

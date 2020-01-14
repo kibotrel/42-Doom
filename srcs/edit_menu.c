@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2009/11/19 13:07:32 by reda-con          #+#    #+#             */
-/*   Updated: 2020/01/13 15:12:30 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/01/14 15:40:37 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ void			blank_menu(SDL_Surface *s, int set, t_sdl sdl, int preset)
 	rectangle(init_vertex(1350, 450), init_vertex(1400, 500), 0xffa500, s);
 	rectangle(init_vertex(1350, 350), init_vertex(1400, 400), 0xffa500, s);
 	rectangle(init_vertex(1350, 550), init_vertex(1400, 600), 0xffa500, s);
+	rectangle(init_vertex(1320, 660), init_vertex(1430, 710), 0xffffff, s);
 	print_param_in_param(&sdl, set);
 }
 
@@ -60,7 +61,9 @@ void			fst_clic_editor_menu(int y, t_editor *editor)
 
 void			clic_editor_menu(int x, int y, t_editor *editor)
 {
-	if (x >= 1340 && x <= 1510)
+	if (x >= 1320 && x <= 1430 && y >= 660 && y <= 710)
+		clear_editor(editor);
+	else if (x >= 1340 && x <= 1510)
 		fst_clic_editor_menu(y, editor);
 	else if (x >= 1540 && x <= 1710)
 		sec_clic_menu_editor(y, editor);
@@ -97,7 +100,10 @@ static void		next_motion(t_sdl s, int set, int preset)
 
 void			motion(t_sdl s, int set, int preset)
 {
-	if (s.event.motion.x >= 1340 && s.event.motion.x <= 1510)
+	if (s.event.motion.x >= 1320 && s.event.motion.x <= 1430 &&
+		s.event.motion.y >= 660 && s.event.motion.y <= 710)
+		rectangle(init_vertex(1320, 660), init_vertex(1430, 710), PRPL, s.surf);
+	else if (s.event.motion.x >= 1340 && s.event.motion.x <= 1510)
 	{
 		if ((s.event.motion.y >= 140 && s.event.motion.y <= 210))
 			rectangle(init_vertex(1340, 140), init_vertex(1510, 210),\
