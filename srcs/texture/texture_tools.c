@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 13:40:06 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/01/14 13:41:56 by kibotrel         ###   ########.fr       */
+/*   Updated: 2020/01/14 15:07:48 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,11 @@
 #include "utils.h"
 #include "texture.h"
 
-uint32_t    color_mul(uint32_t color, double mul)
+uint32_t	color_mul(uint32_t color, double mul)
 {
-	int     r;
-	int     g;
-	int     b;
+	int		r;
+	int		g;
+	int		b;
 
 	r = (color >> 16 & 0xFF);
 	g = (color >> 8 & 0xFF);
@@ -38,11 +38,11 @@ uint32_t    color_mul(uint32_t color, double mul)
 	return ((r << 16) | (g << 8) | b);
 }
 
-uint32_t    color_add(uint32_t color, double add)
+uint32_t	color_add(uint32_t color, double add)
 {
-	int     r;
-	int     g;
-	int     b;
+	int		r;
+	int		g;
+	int		b;
 
 	r = (color >> 16 & 0xFF);
 	g = (color >> 8 & 0xFF);
@@ -59,9 +59,9 @@ uint32_t    color_add(uint32_t color, double add)
 	return ((r << 16) | (g << 8) | b);
 }
 
-void	draw_texture(t_env *env, int x, int y1, int y2, int z, uint32_t *middle)
+void		draw_texture(t_env *env, int x, int y1, int y2, int z, uint32_t *middle)
 {
-	t_pos       p;
+	t_pos	p;
 
 	y1 = bound(y1, 0, env->h - 1);
 	y2 = bound(y2, 0, env->h - 1);
@@ -71,7 +71,8 @@ void	draw_texture(t_env *env, int x, int y1, int y2, int z, uint32_t *middle)
 	{
 		draw_pixel(env, env->sdl.screen, p, 0);
 		while (++p.y < y2)
-			draw_pixel(env, env->sdl.screen, p, color_add(middle[(p.y % 64) * 64 + x % 64], FOG));
+			draw_pixel(env, env->sdl.screen, p,
+						color_add(middle[(p.y % 64) * 64 + x % 64], FOG));
 		draw_pixel(env, env->sdl.screen, p, 0);
-    }
+	}
 }
