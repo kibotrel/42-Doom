@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 15:15:06 by nde-jesu          #+#    #+#             */
-/*   Updated: 2020/01/14 10:57:52 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/01/14 14:34:52 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static int	is_portal_close(t_sector *sector, t_vertex *start, t_vertex *end)
 	t_vertex	*sector_vertex;
 	t_vertex	*vertex;
 
-	postion_closing_portal = 1;
+	postion_closing_portal = 0;
 	sector_vertex = sector->vertex;
 	vertex = sector->vertex;
 	if (vertex == NULL)
@@ -27,7 +27,7 @@ static int	is_portal_close(t_sector *sector, t_vertex *start, t_vertex *end)
 	{
 		if ((vertex->next == NULL) && ((vertex == start && sector_vertex == end)
 			|| (vertex == end && sector_vertex == end)))
-			return (0);
+			return (sector->vertex_count - 1);
 		if ((vertex == start && vertex->next == end)
 			|| (vertex == end && vertex->next == start))
 			return (postion_closing_portal);

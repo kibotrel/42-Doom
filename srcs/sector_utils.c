@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 13:55:00 by nde-jesu          #+#    #+#             */
-/*   Updated: 2020/01/14 10:41:55 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/01/14 14:32:40 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ t_sector	*create_sector(t_editor *edit)
 	sect->sector_number = sector_num++;
 	sect->h_ceil = 20;
 	sect->h_floor = 0;
-	sect->points_inside = 0;
+	sect->vertex_count = 0;
 	sect->texture = 0;
 	sect->gravity = 5;
 	sect->viscosity = 2;

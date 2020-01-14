@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 08:52:03 by nde-jesu          #+#    #+#             */
-/*   Updated: 2020/01/14 10:00:03 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/01/14 14:32:46 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,8 +119,6 @@ typedef struct		s_sector
 
 	int				h_ceil;
 	int				h_floor;
-
-	int				points_inside;
 
 	t_portal		*portal;
 	int				*is_portal;
