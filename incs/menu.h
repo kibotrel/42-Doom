@@ -6,14 +6,14 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 21:24:54 by kibotrel          #+#    #+#             */
-/*   Updated: 2019/12/16 11:30:29 by demonwaves       ###   ########.fr       */
+/*   Updated: 2020/01/14 13:04:04 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GAME_H
-# define GAME_H
+#ifndef MENU_H
+# define MENU_H
 
-#include "structs.h"
+# include "structs.h"
 
 /*
 **	click.c

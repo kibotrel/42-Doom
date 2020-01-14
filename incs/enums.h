@@ -6,10 +6,9 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 17:59:50 by kibotrel          #+#    #+#             */
-/*   Updated: 2019/11/11 12:43:11 by demonwaves       ###   ########.fr       */
+/*   Updated: 2020/01/14 13:07:36 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #ifndef ENUMS_H
 # define ENUMS_H

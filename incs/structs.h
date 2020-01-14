@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 18:48:17 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/01/08 05:55:08 by vivi             ###   ########.fr       */
+/*   Updated: 2020/01/14 13:03:18 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ typedef struct	s_vec2d
 	double		y;
 }				t_vec2d;
 
-
 typedef struct	s_vec3d
 {
 	double		x;
@@ -45,10 +44,10 @@ typedef struct	s_vec3d
 
 typedef struct	s_ui
 {
-	t_pos		min;						// Start point for buttons
-	t_pos		max;						// End point for buttons
-	int8_t		background;					// Index in the asset list
-	uint8_t		button;						// Index to draw
+	t_pos		min;
+	t_pos		max;
+	int8_t		background;
+	uint8_t		button;
 }				t_ui;
 
 /*
@@ -57,12 +56,12 @@ typedef struct	s_ui
 
 typedef struct	s_sdl
 {
-	t_bmp		bmp[NB_ASSETS];				// List of assets
-	TTF_Font	*font;						// Loaded font
-	SDL_Event	event;						// Handle SDL events
-	SDL_Color	color;						// Font color
-	SDL_Window	*win;						// SDL Window
-	SDL_Surface	*screen;					// Window surface
+	t_bmp		bmp[NB_ASSETS];
+	TTF_Font	*font;
+	SDL_Event	event;
+	SDL_Color	color;
+	SDL_Window	*win;
+	SDL_Surface	*screen;
 }				t_sdl;
 
 /*
@@ -71,36 +70,36 @@ typedef struct	s_sdl
 
 typedef struct	s_data
 {
-	t_ui		ui;							// Menu informations
-	uint8_t		f_size;						// Font size
-	uint32_t 	w_size;						// Window size in bytes
+	t_ui		ui;
+	uint8_t		f_size;
+	uint32_t	w_size;
 }				t_data;
 
 typedef struct	s_cam
 {
-	double 		cos;
+	double		cos;
 	double		gap;
-	double 		sin;
-	double 		angle;
+	double		sin;
+	double		angle;
 	double		speed;
-	t_vec2d		fov;						// Perspective angle
-	t_vec3d		v;							// Velocity
+	t_vec2d		fov;
+	t_vec3d		v;
 	t_vec3d		pos;
 	int8_t		fly;
 	uint8_t		fall;
 	uint8_t		move;
 	uint8_t		sneak;
-	uint8_t		ground;						// Position
-	uint32_t	sector;						// Current location within the map
+	uint8_t		ground;
+	uint32_t	sector;
 }				t_cam;
 
 typedef	struct	s_sector
 {
-	int			*neighbor;					 // Each edge may have a corresponding neighboring sector
+	int			*neighbor;
 	double		ceil;
 	double		floor;
 	t_vec2d		*vertex;
-	uint32_t	points;						 // How many vertexes there are
+	uint32_t	points;
 
 }				t_sector;
 
@@ -125,18 +124,18 @@ typedef struct	s_time
 
 typedef struct	s_env
 {
-	char		*asset[NB_ASSETS];			// Array of path to assets
-	char		*error[NB_ERRORS];			// Array of error messages
-	t_cam		cam;						// Engine point of view
-	t_sdl		sdl;						// SDL structure
-	t_win		win;						// Enum for window state
-	t_data		data;						// Structure for miscelaneous informations
+	char		*asset[NB_ASSETS];
+	char		*error[NB_ERRORS];
+	t_cam		cam;
+	t_sdl		sdl;
+	t_win		win;
+	t_data		data;
 	t_time		tick;
-	int32_t		w;							// Width of the window
-	int32_t		h;							// Height of the window
-	int32_t		input[SDL_NUM_SCANCODES];	// Handle key inputs
-	t_sector	*sector;					// Map informations
-	uint32_t	setup;						// TEMPORARY
+	int32_t		w;
+	int32_t		h;
+	int32_t		input[SDL_NUM_SCANCODES];
+	t_sector	*sector;
+	uint32_t	setup;
 	uint32_t	zones;
 }				t_env;
 

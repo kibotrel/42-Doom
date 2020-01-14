@@ -6,14 +6,14 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 19:08:43 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/01/02 18:01:18 by demonwaves       ###   ########.fr       */
+/*   Updated: 2020/01/14 13:07:50 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CLEAN_H
 # define CLEAN_H
 
-#include "game.h"
+# include "game.h"
 
 /*
 **	env.c

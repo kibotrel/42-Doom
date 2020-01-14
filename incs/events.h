@@ -6,14 +6,14 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 19:25:01 by kibotrel          #+#    #+#             */
-/*   Updated: 2019/10/15 23:59:23 by kibotrel         ###   ########.fr       */
+/*   Updated: 2020/01/14 13:07:23 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef EVENTS_H
 # define EVENTS_H
 
-#include "structs.h"
+# include "structs.h"
 
 /*
 **	keyboard.c
