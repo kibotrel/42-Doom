@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 19:01:59 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/01/14 13:05:43 by kibotrel         ###   ########.fr       */
+/*   Updated: 2020/01/14 14:02:57 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,19 @@ typedef struct		s_line
 	int32_t			offset;
 }					t_line;
 
+typedef struct		s_palette
+{
+	int				top;
+	int				middle;
+	int				bottom;
+}					t_palette;
+
+typedef struct		s_height
+{
+	int				top;
+	int				bottom;
+}					t_height;
+
 /*
 **	usage.c
 */
@@ -33,13 +46,12 @@ void				usage(void);
 **	graphic_0.c
 */
 
+void				draw_slice(t_env *env, int x, t_height y, t_palette c);
 void				draw_background(t_env *env, t_sdl *sdl, t_bmp img);
 void				draw_line(t_env *env, t_pos a, t_pos b, uint32_t color);
 void				draw_pixel(t_env *env, SDL_Surface *w, t_pos p, uint32_t c);
 void				text_to_screen(t_env *env, t_sdl *sdl, char *txt,
 									uint8_t p);
-void				draw_slice(t_env *env, int x, int y1, int y2, int top,
-								int middle, int bottom);
 
 /*
 **	graphic_1.c
@@ -62,6 +74,8 @@ t_vec3d				v3d(double x, double y, double z);
 */
 
 t_item				item(uint32_t sector, uint32_t min, uint32_t max);
+t_height			lim(int y1, int y2);
+t_palette			flat(int top, int middle, int bottom);
 
 /*
 **	maths_0.c

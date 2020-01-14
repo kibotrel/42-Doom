@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   engine.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/01/14 13:32:37 by kibotrel          #+#    #+#             */
+/*   Updated: 2020/01/14 13:33:35 by kibotrel         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "game.h"
 #include "utils.h"
 
@@ -24,7 +36,7 @@ uint8_t	bound_view(t_game *var)
 	tmp[0] = v2d(-var->nearside, var->nearz);
 	tmp[1] = v2d(-var->farside, var->farz);
 	tmp[2] = v2d(var->nearside, var->nearz);
-	tmp[3] = v2d(var->farside,var->farz);
+	tmp[3] = v2d(var->farside, var->farz);
 	if (var->t[0].y <= 0 && var->t[1].y <= 0)
 		return (0);
 	if (var->t[0].y <= 0 || var->t[1].y <= 0)

@@ -6,17 +6,14 @@
 /*   By: lojesu <lojesu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/16 15:44:25 by lojesu            #+#    #+#             */
-/*   Updated: 2020/01/14 13:07:09 by kibotrel         ###   ########.fr       */
+/*   Updated: 2020/01/14 13:25:28 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef TEXTURE_H
 # define TEXTURE_H
 
-# include <stdint.h>
-# include "clean.h"
-# include "utils.h"
-
+# include "structs.h"
 # define FOG -z / 2
 
 /*

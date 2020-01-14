@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   maths_1.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/01/14 13:18:32 by kibotrel          #+#    #+#             */
+/*   Updated: 2020/01/14 13:19:39 by kibotrel         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <math.h>
 #include "utils.h"
 
@@ -14,9 +26,9 @@ t_vec2d	intersect(t_vec2d v1, t_vec2d v2, t_vec2d v3, t_vec2d v4)
 	tmp[5] = v2d(vxs(v3, v4), v3.y - v4.y);
 	p.x = vxs(tmp[0], tmp[1]) / vxs(tmp[2], tmp[3]);
 	p.y = vxs(tmp[4], tmp[5]) / vxs(tmp[2], tmp[3]);
-
 	return (p);
 }
+
 double	side(t_vec2d p, t_vec2d v0, t_vec2d v1)
 {
 	t_vec2d tmp[2];
@@ -34,7 +46,7 @@ int		hitbox(t_vec2d v0, t_vec2d v1, t_vec2d v2, t_vec2d v3)
 
 void	vproj(t_vec3d *v, t_vec2d v1, t_vec2d v2)
 {
-	t_vec2d		w;	// Wall vector
+	t_vec2d		w;
 
 	w = v2d(v2.x - v1.x, v2.y - v1.y);
 	v->x = w.x * (v->x * w.x + w.y * v->y) / (pow(w.x, 2) + pow(w.y, 2));
