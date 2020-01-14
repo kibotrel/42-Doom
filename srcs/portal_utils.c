@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 15:15:33 by nde-jesu          #+#    #+#             */
-/*   Updated: 2020/01/13 12:08:07 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/01/14 10:12:05 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ static t_portal	*create_portal(t_vertex v1, t_vertex v2, t_editor *edit)
 		clean(edit);
 	new->extrems[0] = v1;
 	new->extrems[1] = v2;
-	new->type = false;
+	new->type = 0;
 	new->prev = NULL;
 	new->next = NULL;
 	return (new);

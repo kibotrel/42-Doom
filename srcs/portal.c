@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 15:15:06 by nde-jesu          #+#    #+#             */
-/*   Updated: 2020/01/13 14:36:57 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/01/14 10:57:52 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,12 +58,14 @@ static void	save_vertex(t_editor *editor, t_sector *sector,
 			init_portals(editor);
 		else
 		{
-			add_portal(&editor->portal, *first_point, *last_point, editor);
 			dest = is_portal_close(sector, first_point, last_point);
 			sector->is_portal[dest] = editor->which_sector->sector_number;
 			from = is_portal_close(editor->which_sector, editor->ab,
 				editor->cd);
 			editor->which_sector->is_portal[from] = sector->sector_number;
+			add_portal(&sector->portal, *first_point, *last_point, editor);
+			add_portal(&editor->portals, *first_point, *last_point, editor);
+			add_portal(&editor->which_sector->portal, *first_point, *last_point, editor);
 		}
 	}
 }

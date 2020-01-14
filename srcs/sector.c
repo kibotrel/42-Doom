@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 09:55:53 by nde-jesu          #+#    #+#             */
-/*   Updated: 2020/01/13 13:39:36 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/01/14 10:04:38 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,11 @@ void			next_place_sector(t_editor *edit, t_sector *sect)
 		clean(edit);
 	sect->is_portal = ft_memset(sect->is_portal, -1, sizeof(int)
 			* sect->vertex_count);
-	if (sect->is_child != -1)
-		sect->is_portal[1] = sect->is_child;
+	if (!(sect->portal_type = (int*)ft_memalloc(sizeof(int)
+			* sect->vertex_count)))
+		clean(edit);
+	sect->portal_type = ft_memset(sect->portal_type, -1, sizeof(int)
+			* sect->vertex_count);
 	sect->next = create_sector(edit);
 	sect->next->prev = sect;
 	edit->sect_is_closed = true;

@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/07 14:09:35 by nde-jesu          #+#    #+#             */
-/*   Updated: 2020/01/13 13:31:16 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/01/14 09:46:53 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void	print_params_image(t_editor *edit, t_presets presets, t_settings sett)
 	else if (sett == PORTAL && presets == PORTAL_TYPE)
 		{
 			i = 3;
-			j = edit->portal->type;
+			j = edit->portals->type;
 		}
 	else
 		return ;

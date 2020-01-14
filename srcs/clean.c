@@ -6,24 +6,14 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/07 14:14:22 by reda-con          #+#    #+#             */
-/*   Updated: 2020/01/13 11:25:52 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/01/14 08:59:06 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "editor.h"
 
-void			afficher_portal(t_portal *portal)
-{
-	while (portal)
-	{
-		printf("oui\n");
-		portal = portal->next;
-	}
-}
-
 void			clean(t_editor *edit)
 {
-	afficher_portal(edit->portal);
 	clear_editor(edit);
 	if (edit->which_sector)
 		delete_sector(&edit->which_sector);

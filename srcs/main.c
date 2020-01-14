@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 08:47:35 by nde-jesu          #+#    #+#             */
-/*   Updated: 2020/01/14 08:26:35 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/01/14 09:43:53 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ static void		init_chained_list(t_editor *editor)
 	editor->sector = NULL;
 	editor->vertex = NULL;
 	editor->object = NULL;
-	editor->portal = NULL;
+	editor->portals = NULL;
 }
 
 static void		init_editor(t_editor *editor)

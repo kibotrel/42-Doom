@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 13:55:00 by nde-jesu          #+#    #+#             */
-/*   Updated: 2020/01/13 15:31:18 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/01/14 10:41:55 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,14 +30,13 @@ t_sector	*create_sector(t_editor *edit)
 	if (!(sect = (t_sector*)ft_memalloc(sizeof(t_sector))))
 		clean(edit);
 	sect->sector_number = sector_num++;
-	sect->is_child = -1;
 	sect->h_ceil = 20;
 	sect->h_floor = 0;
 	sect->points_inside = 0;
 	sect->texture = 0;
-	sect->next = NULL;
-	sect->prev = NULL;
 	sect->gravity = 5;
 	sect->viscosity = 2;
+	sect->next = NULL;
+	sect->prev = NULL;
 	return (sect);
 }

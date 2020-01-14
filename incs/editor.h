@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 08:52:03 by nde-jesu          #+#    #+#             */
-/*   Updated: 2020/01/14 08:25:11 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/01/14 10:00:03 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,8 +122,9 @@ typedef struct		s_sector
 
 	int				points_inside;
 
-	int				is_child;
+	t_portal		*portal;
 	int				*is_portal;
+	int				*portal_type;
 
 	struct s_sector *prev;
 	struct s_sector	*next;
@@ -153,7 +154,7 @@ typedef struct		s_editor
 	t_player		player;
 	t_entity		*object;
 	t_entity		*enemy;
-	t_portal		*portal;
+	t_portal		*portals;
 
 	t_vertex		last_vertex;
 
@@ -178,7 +179,7 @@ void				display_grid(t_editor *editor);
 void				display_line(t_editor *editor, int x, int y);
 void				display_sector(t_sdl *sdl, t_sector *sectors, bool fl);
 void				draw_walls(t_sdl *sdl, t_sector *s, t_vertex *v, int clr);
-void				display_portals(t_portal *portal, t_sdl *sdl, int color,
+void				display_portals(t_portal *portals, t_sdl *sdl, int color,
 	bool fl);
 
 /*
