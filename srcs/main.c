@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 08:47:35 by nde-jesu          #+#    #+#             */
-/*   Updated: 2020/01/13 13:32:25 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/01/14 08:26:35 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 #include "libft.h"
 
 // PENSER AUX FREES ET METTRE LES FONCTIONS POSSIBLES EN STATIC
-__attribute__((destructor)) void oui()
-{
+// __attribute__((destructor)) void oui()
+// {
 
-	while (1);
-}
+// 	while (1);
+// }
 
 static void		img_init(t_sdl *sdl)
 {

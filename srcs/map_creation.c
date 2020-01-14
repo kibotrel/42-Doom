@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 09:57:24 by nde-jesu          #+#    #+#             */
-/*   Updated: 2020/01/13 13:35:46 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/01/14 08:25:58 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,10 @@ static void		write_sectors(t_sector *sector, t_vertex *all, int fd)
 			ft_putnbr_fd(sect->h_floor, fd);
 			ft_putstr_fd(" h_ceil ", fd);
 			ft_putnbr_fd(sect->h_ceil, fd);
+			ft_putstr_fd(" gravity ", fd);
+			ft_putnbr_fd(sect->gravity, fd);
+			ft_putstr_fd(" viscosity ", fd);
+			ft_putnbr_fd(sect->viscosity, fd);
 			ft_putstr_fd(" vertex_num ", fd);
 			ft_putnbr_fd(sect->vertex_count, fd);
 			ft_putstr_fd(" vertexes ", fd);
