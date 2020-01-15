@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/22 15:46:27 by nde-jesu          #+#    #+#             */
-/*   Updated: 2020/01/14 15:58:34 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/01/15 15:28:23 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,7 +129,6 @@ void			clear_editor(t_editor *editor)
 	editor->last_vertex.y = -1;
 	init_portals(editor);
 	init_count(&editor->count);
-	editor->sect_is_closed = false;
 	blank_menu(editor->sdl.surf, editor->sett, editor->sdl, editor->presets);
 	editor->map_save = true;
 }

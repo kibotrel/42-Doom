@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2009/11/19 13:07:32 by reda-con          #+#    #+#             */
-/*   Updated: 2020/01/15 14:58:00 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/01/15 15:26:38 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,8 @@ void			blank_menu(SDL_Surface *s, int set, t_sdl sdl, int preset)
 	rectangle(init_vertex(1350, 450), init_vertex(1400, 500), 0xffa500, s);
 	rectangle(init_vertex(1350, 350), init_vertex(1400, 400), 0xffa500, s);
 	rectangle(init_vertex(1350, 550), init_vertex(1400, 600), 0xffa500, s);
-	rectangle(init_vertex(1320, 660), init_vertex(1430, 710), 0xffffff, s);
+	rectangle(init_vertex(1300, 660), init_vertex(1410, 710), 0xffffff, s);
+	rectangle(init_vertex(1420, 660), init_vertex(1530, 710), 0xffffff, s);
 	print_param_in_param(&sdl, set);
 }
 
@@ -61,8 +62,10 @@ void			fst_clic_editor_menu(int y, t_editor *editor)
 
 void			clic_editor_menu(int x, int y, t_editor *editor)
 {
-	if (x >= 1320 && x <= 1430 && y >= 660 && y <= 710)
+	if (x >= 1300 && x <= 1410 && y >= 660 && y <= 710)
 		clear_editor(editor);
+	else if (x >= 1420 && x <= 1530 && y >= 660 && y <= 710)
+		create_map(editor);
 	else if (x >= 1340 && x <= 1510)
 		fst_clic_editor_menu(y, editor);
 	else if (x >= 1540 && x <= 1710)
@@ -98,11 +101,26 @@ static void		next_motion(t_sdl s, int set, int preset)
 		blank_menu(s.surf, set, s, preset);
 }
 
+void			option_motion(t_sdl s, int set, int preset)
+{
+	int		x;
+	int		y;
+
+	x = s.event.motion.x;
+	y = s.event.motion.y;
+	if (x >= 1300 && x <= 1410 && y >= 660 && y <= 710)
+		rectangle(init_vertex(1300, 660), init_vertex(1410, 710), PRPL, s.surf);
+	else if (x > 1420 && x <= 1530 && y >= 660 && y <= 710)
+		rectangle(init_vertex(1420, 660), init_vertex(1530, 710), PRPL, s.surf);
+	else
+		blank_menu(s.surf, set, s, preset);
+}
+
 void			motion(t_sdl s, int set, int preset)
 {
-	if (s.event.motion.x >= 1320 && s.event.motion.x <= 1430 &&
-		s.event.motion.y >= 660 && s.event.motion.y <= 710)
-		rectangle(init_vertex(1320, 660), init_vertex(1430, 710), PRPL, s.surf);
+	if (s.event.motion.y >= 660 && s.event.motion.y <= 710 && ((s.event.motion.x >= 1300 && s.event.motion.x <= 1410)
+				|| (s.event.motion.x >= 1420 && s.event.motion.x <= 1530)))
+		option_motion(s, set, preset);
 	else if (s.event.motion.x >= 1340 && s.event.motion.x <= 1510)
 	{
 		if ((s.event.motion.y >= 140 && s.event.motion.y <= 210))

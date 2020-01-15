@@ -6,15 +6,15 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/27 14:44:48 by nde-jesu          #+#    #+#             */
-/*   Updated: 2020/01/15 14:51:08 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/01/15 15:24:13 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "editor.h"
 
-static char const	*g_first_params[6] = {
-	"Sector", "Player", "Enemy", "Object", "Portal", "Clear"
+static char const	*g_first_params[7] = {
+	"Sector", "Player", "Enemy", "Object", "Portal", "Clear", "Save"
 };
 
 static char const	*g_number[5] = {
@@ -96,9 +96,12 @@ void		print_param_to_screen(t_sdl *sdl, t_settings sett, t_editor *editor)
 		where.y = where.y + 100;
 		i++;
 	}
-	where.x = 1335;
+	where.x = 1315;
 	where.y = 665;
 	tmp = TTF_RenderText_Solid(sdl->font, g_first_params[5], sdl->color);
+	SDL_BlitSurface(tmp, 0, sdl->surf, &where);
+	where.x = 1445;
+	tmp = TTF_RenderText_Solid(sdl->font, g_first_params[6], sdl->color);
 	SDL_BlitSurface(tmp, 0, sdl->surf, &where);
 	if (editor->presets != NONE)
 		print_sector_values(sdl, editor->sector, editor->presets);
