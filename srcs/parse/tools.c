@@ -6,7 +6,7 @@
 /*   By: reda-con <reda-con@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 16:50:27 by reda-con          #+#    #+#             */
-/*   Updated: 2020/01/22 16:12:00 by kibotrel         ###   ########.fr       */
+/*   Updated: 2020/01/23 10:32:26 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 #include "libft.h"
 #include <stdlib.h>
 
-t_point		init_pt(int x, int y)
+t_vec2d		init_vec2d(int x, int y)
 {
-	t_point	ret;
+	t_vec2d	ret;
 
 	ret.x = x;
 	ret.y = y;
@@ -50,21 +50,4 @@ void		free_tab(char **t)
 		++i;
 	}
 	free(t);
-}
-
-void		init_parse(t_parse *p)
-{
-	p->v = NULL;
-	p->e = NULL;
-	p->o = NULL;
-	p->s = NULL;
-}
-
-t_height	init_height(int f, int c)
-{
-	t_height	ret;
-
-	ret.floor = f;
-	ret.ceil = c;
-	return (ret);
 }

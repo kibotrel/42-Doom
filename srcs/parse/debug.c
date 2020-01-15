@@ -6,62 +6,61 @@
 /*   By: reda-con <reda-con@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 15:13:52 by reda-con          #+#    #+#             */
-/*   Updated: 2020/01/22 16:11:10 by kibotrel         ###   ########.fr       */
+/*   Updated: 2020/01/23 10:32:12 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "parse.h"
 
-void		print_pt(t_point p)
+void		print_pt(t_vec2d p)
 {
 	ft_putstr("pt: x=");
 	ft_putnbr(p.x);
 	ft_putstr("; y=");
 	ft_putnbr(p.y);
-	ft_putchar('\n');
 }
 
-void		print_vert(t_vertex **v)
+void		print_plr(t_player p)
 {
-	t_vertex	*tmp;
+	ft_putstr("player: pos=");
+	print_pt(p.pos);
+	ft_putstr(" sector=");
+	ft_putnbr(p.sect);
+	ft_putstr(" angle=");
+	ft_putnbr(p.angle);
+		ft_putchar('\n');
+}
 
-	tmp = *v;
-	while (tmp)
+void		print_vert(t_vec2d *v, int max)
+{
+	int		i;
+
+	i = -1;
+	while (++i < max)
 	{
 		ft_putstr("vertex: ");
-		print_pt(tmp->pt);
-		tmp = tmp->next;
+		print_pt(v[i]);
+		ft_putchar('\n');
 	}
 }
 
-void		print_en(t_ennemy **e)
+void		print_en(t_entity *e, int max)
 {
-	t_ennemy	*tmp;
+	int		i;
 
-	tmp = *e;
-	while (tmp)
+	i = -1;
+	while (++i < max)
 	{
-		ft_putstr("ennemy: number=");
-		ft_putnbr(tmp->n);
-		ft_putstr(" ");
-		print_pt(tmp->pt);
-		tmp = tmp->next;
-	}
-}
-
-void		print_obj(t_object **o)
-{
-	t_object	*tmp;
-
-	tmp = *o;
-	while (tmp)
-	{
-		ft_putstr("object: number=");
-		ft_putnbr(tmp->n);
-		ft_putstr(" ");
-		print_pt(tmp->pt);
-		tmp = tmp->next;
+		ft_putstr("entity: post=");
+		print_pt(e[i].pos);
+		ft_putstr(" sect=");
+		ft_putnbr(e[i].sect);
+		ft_putstr(" angle=");
+		ft_putnbr(e[i].angle);
+		ft_putstr(" type=");
+		ft_putnbr(e[i].type);
+		ft_putchar('\n');
 	}
 }
 
@@ -78,37 +77,45 @@ void		print_tab(char **t)
 	ft_putchar('\n');
 }
 
-void		print_sec(t_sector **s)
+void		print_sec(t_sector *s, int max)
 {
-	t_sector	*tmp;
 	int			i;
+	int			j;
 
-	tmp = *s;
-	while (tmp)
+	i = -1;
+	while (++i < max)
 	{
-		ft_putstr("sector: number=");
-		ft_putnbr(tmp->n);
+		ft_putstr("sector: pts=");
+		ft_putnbr(s[i].pts);
 		ft_putstr(" h_floor=");
-		ft_putnbr(tmp->h.floor);
+		ft_putnbr(s[i].floor);
 		ft_putstr(" h_ceil=");
-		ft_putnbr(tmp->h.ceil);
-		ft_putstr(" size_vp=");
-		ft_putnbr(tmp->v_p.size);
+		ft_putnbr(s[i].ceil);
+		ft_putstr(" gravity=");
+		ft_putnbr(s[i].gravity);
+		ft_putstr(" viscosity=");
+		ft_putnbr(s[i].viscosity);
 		ft_putstr(" vertexes=");
-		i = -1;
-		while (++i < tmp->v_p.size)
+		j = -1;
+		while (++j < (int)s[i].pts)
 		{
-			ft_putnbr(tmp->v_p.vertex[i]);
+			print_pt(s[i].vert[j]);
+			ft_putchar(';');
+		}
+		j = -1;
+		ft_putstr(" portals=");
+		while (++j < (int)s[i].pts)
+		{
+			ft_putnbr(s[i].portal[j]);
 			ft_putchar(' ');
 		}
-		i = -1;
-		ft_putstr(" portals=");
-		while (++i < tmp->v_p.size)
+		j = -1;
+		ft_putstr(" portals type=");
+		while (++j < (int)s[i].pts)
 		{
-			ft_putnbr(tmp->v_p.portal[i]);
+			ft_putnbr(s[i].portal_type[j]);
 			ft_putchar(' ');
 		}
 		ft_putchar('\n');
-		tmp = tmp->next;
 	}
 }

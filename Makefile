@@ -6,7 +6,7 @@
 #    By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/10 16:16:29 by kibotrel          #+#    #+#              #
-#    Updated: 2020/01/22 16:09:45 by kibotrel         ###   ########.fr        #
+#    Updated: 2020/01/23 10:36:34 by reda-con         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -60,8 +60,6 @@ OBJS_SUBDIRS	+= utils
 OBJS_SUBDIRS	+= editor
 OBJS_SUBDIRS	+= events
 OBJS_SUBDIRS	+= texture
-
-
 
 #------------------------------------ FILES -----------------------------------#
 
