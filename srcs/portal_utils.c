@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 15:15:33 by nde-jesu          #+#    #+#             */
-/*   Updated: 2020/01/14 10:12:05 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/01/15 09:42:03 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,9 +64,6 @@ void		add_portal(t_portal **portal, t_vertex v1, t_vertex v2,
 		new->prev = prev_portal;
 		prev_portal->next = new;
 	}
-	
-
-
 }
 
 void		move_in_portals(t_portal **portal, bool way)

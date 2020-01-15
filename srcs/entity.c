@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 14:55:17 by nde-jesu          #+#    #+#             */
-/*   Updated: 2020/01/14 15:54:30 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/01/15 09:40:29 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ static t_entity		*create_entity(int x, int y, int type, t_editor *edit)
 	entity->y = y;
 	entity->type = type;
 	entity->angle = 90;
+	entity->prev = NULL;
+	entity->next = NULL;
 	return (entity);
 }
 

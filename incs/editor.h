@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 08:52:03 by nde-jesu          #+#    #+#             */
-/*   Updated: 2020/01/14 15:55:14 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/01/15 10:09:36 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,6 +126,8 @@ typedef struct		s_sector
 	int				vertex_count;
 	int				sector_number;
 	int				texture;
+	int				gravity;
+	int				viscosity;
 
 	int				h_ceil;
 	int				h_floor;
@@ -136,8 +138,7 @@ typedef struct		s_sector
 
 	struct s_sector *prev;
 	struct s_sector	*next;
-	int				gravity;
-	int				viscosity;
+
 }					t_sector;
 
 typedef	struct		s_sdl
@@ -369,4 +370,9 @@ void				init_count(t_count *count);
 */
 void				print_params_image(t_editor *edit, t_presets presets, t_settings sett);
 void				print_picture(t_sdl *sdl, int x, int y, t_bmp img);
+
+/*
+**	elements_number.c
+*/
+void				get_elements_number(t_editor *editor, int fd);
 #endif

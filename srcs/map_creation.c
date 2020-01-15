@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 09:57:24 by nde-jesu          #+#    #+#             */
-/*   Updated: 2020/01/14 12:53:53 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/01/15 10:17:32 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,8 @@ static void		write_sectors(t_sector *sector, t_vertex *all, int fd)
 	t_sector	*sect;
 
 	sect = sector;
+	while (sect->prev)
+		sect = sect->prev;
 	while (sect)
 	{
 		if (sect->vertex)
@@ -90,96 +92,28 @@ static void		write_file(t_editor *editor, int fd)
 {
 	if (editor->vertex)
 	{
+		get_elements_number(editor, fd);
 		write_player(editor->player, *(editor->vertex), fd);
-		write_entities(editor->enemy, fd, true);
-		write_entities(editor->object, fd, false);
-		write_vertexes(editor->vertex, fd);
-		write_sectors(editor->sector, editor->vertex, fd);
+		if (editor->enemy)
+			write_entities(editor->enemy, fd, true);
+		if (editor->object)
+			write_entities(editor->object, fd, false);
+		if (editor->vertex)
+			write_vertexes(editor->vertex, fd);
+		if (editor->sector)
+			write_sectors(editor->sector, editor->vertex, fd);
 	}
 }
-
-// static void			place_portal_type(t_portal *from, t_sector **all_portals)
-// {
-// 	t_sector	*sector;
-// 	t_portal	*p1;
-// 	t_portal	*p2;
-
-// 	sector = *all_portals;
-// 	p1 = from;
-// 	while (sector->prev)
-// 		sector = sector->prev;
-// 	while (sector)
-// 	{
-// 		p2 = sector->portal;
-// 		while (p2)
-// 		{
-// 			p2->type = p1->type;
-// 			p1 = p1->next;
-// 			p2 = p2->next;
-// 		}
-// 		sector = sector->next;
-// 	}
-// }
-
-// static void			fill_portal_tab(t_sector **sector)
-// {
-// 	t_portal	*port;
-// 	t_sector	*sect;
-// 	int			i;
-
-// 	sect = *sector;
-// 	while (sect->prev)
-// 		sect = sect->prev;
-// 	while (sect)
-// 	{
-// 		port = sect->portal;
-// 		i = -1;
-// 		while (++i < sect->vertex_count)
-// 		{
-// 			if (sect->is_portal[i] != -1)
-// 			{
-// 				sect->portal_type[i] = 1;
-// 				// if (port->next)
-// 					// port = port->next;
-// 			}
-// 		}
-// 		sect = sect->next;
-// 	}
-// }
-
-// void	oui(t_sector *sect)
-// {
-// 	t_sector *oui;
-// 	t_portal *non;
-
-// 	oui = sect;
-// 	while (oui->prev)
-// 		oui = oui->prev;
-// 	while (oui)
-// 	{
-// 		non = oui->portal;
-// 		while (non)
-// 		{
-// 			printf("peut etre\n");
-// 			non = non->next;
-// 		}
-// 		oui = oui->next;
-// 	}
-// }
 
 void			create_map(t_editor *editor)
 {
 	int		fd;
-
-	fd = open(MAP_PATH, O_WRONLY | O_CREAT | O_TRUNC, S_IRWXU);
-	// oui(editor->sector);
-	// if (editor->portals)
-	// {
-	// 	place_portal_type(editor->portals, &editor->sector);
-	// 	fill_portal_tab(&editor->sector);
-	// }
-	write_file(editor, fd);
-	if (close(fd) == -1)
-		exit(1);
-	ft_putendl("Map saved");
+	if (editor->sect_is_closed)
+	{
+		fd = open(MAP_PATH, O_WRONLY | O_CREAT | O_TRUNC, S_IRWXU);
+		write_file(editor, fd);
+		if (close(fd) == -1)
+			exit(1);
+		ft_putendl("Map saved");
+	}
 }

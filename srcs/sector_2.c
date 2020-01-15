@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/11 16:04:00 by nde-jesu          #+#    #+#             */
-/*   Updated: 2020/01/13 13:42:26 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/01/15 09:27:40 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,6 @@ void			next_display_sector(t_sdl *sdl, t_sector *sectors)
 	t_vertex	*vertex;
 
 	sect = sectors;
-	// while (sect->prev)
-		// sect = sect->prev;
 	while (sect)
 	{
 		i = 0;
