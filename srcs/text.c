@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/27 14:44:48 by nde-jesu          #+#    #+#             */
-/*   Updated: 2020/01/14 15:27:31 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/01/15 14:51:08 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,6 +106,13 @@ void		print_param_to_screen(t_sdl *sdl, t_settings sett, t_editor *editor)
 					|| (sett == OBJECT && editor->object)))
 			|| editor->presets == SECTOR_TEXT || (editor->presets == PORTAL_TYPE && editor->portals))
 		print_params_image(editor, editor->presets, editor->sett);
+	if (editor->sect_is_closed == false)
+	{
+		where.x = 1380;
+		where.y = 50;
+		tmp = TTF_RenderText_Solid(sdl->font, "Draw sector clockwise", sdl->color);
+		SDL_BlitSurface(tmp, 0, sdl->surf, &where);
+	}
 }
 
 void		print_param_in_param(t_sdl *sdl, t_settings sett)
