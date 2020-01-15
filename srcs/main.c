@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 08:47:35 by nde-jesu          #+#    #+#             */
-/*   Updated: 2020/01/15 14:05:27 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/01/15 15:09:09 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ static void		init_editor(t_editor *editor)
 	editor->sett = SECTOR;
 	editor->presets = NONE;
 	editor->finish = false;
-	editor->sect_is_closed = false;
+	editor->sect_is_closed = true;
 	editor->last_vertex.x = -1;
 	editor->last_vertex.y = -1;
 	editor->map_save = true;

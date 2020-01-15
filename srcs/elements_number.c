@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/15 09:51:03 by nde-jesu          #+#    #+#             */
-/*   Updated: 2020/01/15 10:18:28 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/01/15 15:12:58 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,20 @@ static int		count_entity(t_entity *all_entity)
 {
 	t_entity *entity;
 
+	if (!all_entity)
+		return (0);
 	entity = all_entity;
 	while (entity->next)
 		entity = entity->next;
 	return (entity->number + 1);
 }
 
-static int		count_sector(t_sector *all_sector)
+int		count_sector(t_sector *all_sector)
 {
 	t_sector	*sector;
 
+	if (!all_sector)
+		return (0);
 	sector = all_sector;
 	while (sector->next)
 		sector = sector->next;

@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 08:52:03 by nde-jesu          #+#    #+#             */
-/*   Updated: 2020/01/15 10:09:36 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/01/15 15:11:17 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -375,4 +375,5 @@ void				print_picture(t_sdl *sdl, int x, int y, t_bmp img);
 **	elements_number.c
 */
 void				get_elements_number(t_editor *editor, int fd);
+int					count_sector(t_sector *all_sector);
 #endif
