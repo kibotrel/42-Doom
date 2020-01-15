@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 13:09:05 by nde-jesu          #+#    #+#             */
-/*   Updated: 2020/01/14 09:43:00 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/01/15 15:02:50 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,8 @@ static void		mouse(t_editor *editor, SDL_Event event)
 {
 	if (event.motion.x <= EDIT_W && event.button.button == SDL_BUTTON_LEFT)
 	{
+		editor->presets = NONE;
+		blank_menu(editor->sdl.surf, editor->sett, editor->sdl, editor->presets);
 		if (editor->sett == SECTOR)
 			place_sector(editor, event.motion.x, event.motion.y);
 		else if (editor->sett == PLAYER)
@@ -69,7 +71,7 @@ static void		mouse(t_editor *editor, SDL_Event event)
 			place_portal(editor, event.motion.x, event.motion.y);
 		editor->map_save = false;
 	}
-	else if (editor->sect_is_closed == true)
+	else if (editor->sect_is_closed == true && event.motion.x > EDIT_W)
 		clic_editor_menu(event.motion.x, event.motion.y, editor);
 }
 
