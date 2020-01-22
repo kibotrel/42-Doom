@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/19 13:14:01 by reda-con          #+#    #+#             */
-/*   Updated: 2020/01/22 10:15:48 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/01/22 11:43:38 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,4 +76,31 @@ void			next_blank_menu(int set, SDL_Surface *s)
 	square(1600, 300, 0x261017, s);
 	rectangle(init_vertex(1540, 140), init_vertex(1710, 210), WHITE, s);
 	rectangle(init_vertex(1540, 240), init_vertex(1710, 310), WHITE, s);
+}
+
+void			blank_menu(SDL_Surface *s, int set, t_sdl sdl, int preset)
+{
+	int		clr;
+
+	draw_background(s);
+	clr = ((set != SECTOR) ? 0xffffff : 0x289655);
+	rectangle(init_vertex(1340, 140), init_vertex(1510, 210), clr, s);
+	clr = ((set != PLAYER) ? 0xffffff : 0x177489);
+	rectangle(init_vertex(1340, 240), init_vertex(1510, 310), clr, s);
+	clr = ((set != ENEMY) ? 0xffffff : 0x090875);
+	rectangle(init_vertex(1340, 340), init_vertex(1510, 410), clr, s);
+	clr = ((set != OBJECT) ? 0xffffff : 0x146595);
+	rectangle(init_vertex(1340, 440), init_vertex(1510, 510), clr, s);
+	clr = ((set != PORTAL) ? 0xffffff : 0x177013);
+	rectangle(init_vertex(1340, 540), init_vertex(1510, 610), clr, s);
+	next_blank_menu(set, s);
+	sec_blank_menu(s, set, preset);
+	rectangle(init_vertex(1350, 250), init_vertex(1400, 300), 0xffa500, s);
+	rectangle(init_vertex(1350, 150), init_vertex(1400, 200), 0xffa500, s);
+	rectangle(init_vertex(1350, 450), init_vertex(1400, 500), 0xffa500, s);
+	rectangle(init_vertex(1350, 350), init_vertex(1400, 400), 0xffa500, s);
+	rectangle(init_vertex(1350, 550), init_vertex(1400, 600), 0xffa500, s);
+	rectangle(init_vertex(1300, 660), init_vertex(1410, 710), 0xffffff, s);
+	rectangle(init_vertex(1420, 660), init_vertex(1530, 710), 0xffffff, s);
+	print_param_in_param(&sdl, set);
 }

@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 14:05:19 by nde-jesu          #+#    #+#             */
-/*   Updated: 2020/01/22 10:02:55 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/01/22 11:35:06 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static void	display_entities(t_sdl *sdl, t_entity *entity, int clr, bool fl)
 				entity->angle, 0xffff00);
 }
 
-void	display_vertex(t_sdl *sdl, t_vertex *vertex, int color)
+void		display_vertex(t_sdl *sdl, t_vertex *vertex, int color)
 {
 	t_vertex	*print;
 
@@ -53,7 +53,7 @@ void	display_vertex(t_sdl *sdl, t_vertex *vertex, int color)
 	}
 }
 
-void	display_mouse(t_sdl *sdl, t_vertex mouse, int color)
+void		display_mouse(t_sdl *sdl, t_vertex mouse, int color)
 {
 	put_pixel(sdl->surf, mouse.x, mouse.y, color);
 	put_pixel(sdl->surf, mouse.x + 1, mouse.y, color);
@@ -66,7 +66,7 @@ void	display_mouse(t_sdl *sdl, t_vertex mouse, int color)
 	put_pixel(sdl->surf, mouse.x - 1, mouse.y - 1, color);
 }
 
-void	which_entity_to_display(t_editor *edit)
+void		which_entity_to_display(t_editor *edit)
 {
 	if (edit->sett != OBJECT)
 	{

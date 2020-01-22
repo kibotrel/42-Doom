@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/27 14:44:48 by nde-jesu          #+#    #+#             */
-/*   Updated: 2020/01/22 08:58:05 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/01/22 11:40:01 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,8 @@ static void	print_sector_values(t_sdl *sdl, t_sector *sector, t_presets presets)
 		print = ft_itoa(sector->gravity);
 	else if (presets == SECTOR_VISC)
 		print = ft_itoa(sector->viscosity);
-	else if (presets == ENTITY_MOVE || presets == SECTOR_MOVE || presets == PORTAL_MOVE)
+	else if (presets == ENTITY_MOVE || presets == SECTOR_MOVE ||
+		presets == PORTAL_MOVE)
 	{
 		print = "Prev./Next";
 		where.x = 1453;
@@ -105,15 +106,17 @@ void		print_param_to_screen(t_sdl *sdl, t_settings sett, t_editor *editor)
 	SDL_BlitSurface(tmp, 0, sdl->surf, &where);
 	if (editor->presets != NONE && editor->sector)
 		print_sector_values(sdl, editor->sector, editor->presets);
-	if ((editor->presets == ENTITY_TYPE && ((sett == ENEMY && editor->enemy)
-					|| (sett == OBJECT && editor->object)))
-			|| editor->presets == SECTOR_TEXT || (editor->presets == PORTAL_TYPE && editor->portals))
+	if ((editor->presets == ENTITY_TYPE && ((sett == ENEMY && editor->enemy) ||
+		(sett == OBJECT && editor->object))) ||
+			editor->presets == SECTOR_TEXT ||
+				(editor->presets == PORTAL_TYPE && editor->portals))
 		print_params_image(editor, editor->presets, editor->sett);
 	if (editor->sect_is_closed == false)
 	{
 		where.x = 1380;
 		where.y = 50;
-		tmp = TTF_RenderText_Solid(sdl->font, "Draw sector clockwise", sdl->color);
+		tmp = TTF_RenderText_Solid(sdl->font, "Draw sector clockwise",
+			sdl->color);
 		SDL_BlitSurface(tmp, 0, sdl->surf, &where);
 	}
 }

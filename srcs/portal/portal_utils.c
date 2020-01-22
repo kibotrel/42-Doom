@@ -6,14 +6,14 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 15:15:33 by nde-jesu          #+#    #+#             */
-/*   Updated: 2020/01/22 10:24:34 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/01/22 11:47:55 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "editor.h"
 
-int			compare_coordinates(t_vertex *point, t_vertex *a, t_vertex *b)
+int				compare_coordinates(t_vertex *point, t_vertex *a, t_vertex *b)
 {
 	if (point->x == a->x && point->y == a->y)
 		return (1);
@@ -36,7 +36,7 @@ static t_portal	*create_portal(t_vertex v1, t_vertex v2, t_editor *edit)
 	return (new);
 }
 
-void		add_portal(t_portal **portal, t_vertex v1, t_vertex v2,
+void			add_portal(t_portal **portal, t_vertex v1, t_vertex v2,
 	t_editor *edit)
 {
 	t_portal	*new;
@@ -55,7 +55,7 @@ void		add_portal(t_portal **portal, t_vertex v1, t_vertex v2,
 	}
 }
 
-void		change_portal_type(t_sector *all, t_portal *portal, bool way)
+void			change_portal_type(t_sector *all, t_portal *portal, bool way)
 {
 	t_sector	*sector;
 	t_portal	*port;
@@ -68,8 +68,14 @@ void		change_portal_type(t_sector *all, t_portal *portal, bool way)
 		port = sector->portal;
 		while (port)
 		{
-			if ((portal->extrems[0].x == port->extrems[0].x && portal->extrems[0].y == port->extrems[0].y && portal->extrems[1].x == port->extrems[1].x && portal->extrems[1].y == port->extrems[1].y)
-				|| (portal->extrems[0].x == port->extrems[1].x && portal->extrems[0].y == port->extrems[1].y && portal->extrems[1].x == port->extrems[0].x && portal->extrems[1].y == port->extrems[0].y))
+			if ((portal->extrems[0].x == port->extrems[0].x &&
+				portal->extrems[0].y == port->extrems[0].y &&
+					portal->extrems[1].x == port->extrems[1].x &&
+						portal->extrems[1].y == port->extrems[1].y) ||
+							(portal->extrems[0].x == port->extrems[1].x &&
+								portal->extrems[0].y == port->extrems[1].y &&
+								portal->extrems[1].x == port->extrems[0].x &&
+									portal->extrems[1].y == port->extrems[0].y))
 			{
 				if (way == true)
 					++port->type;
@@ -77,8 +83,8 @@ void		change_portal_type(t_sector *all, t_portal *portal, bool way)
 					--port->type;
 				if (port->type > 1)
 					--port->type;
-				else if(port->type < 0)
-					++port->type; 
+				else if (port->type < 0)
+					++port->type;
 			}
 			port = port->next;
 		}
@@ -86,7 +92,7 @@ void		change_portal_type(t_sector *all, t_portal *portal, bool way)
 	}
 }
 
-void		move_in_portals(t_portal **portal, bool way)
+void			move_in_portals(t_portal **portal, bool way)
 {
 	t_portal	*tmp;
 

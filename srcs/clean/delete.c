@@ -6,23 +6,14 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/22 15:46:27 by nde-jesu          #+#    #+#             */
-/*   Updated: 2020/01/22 09:53:47 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/01/22 11:31:28 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "editor.h"
 
-void			init_count(t_count *count)
-{
-	count->vertex = 0;
-	count->sector = 0;
-	count->enemy = 0;
-	count->portal = 0;
-	count->object = 0;
-}
-
-void			delete_vertex(t_vertex **vertex)
+void				delete_vertex(t_vertex **vertex)
 {
 	t_vertex	*tmp;
 	t_vertex	*to_del;
@@ -62,7 +53,7 @@ static void			delete_portals(t_portal **portal)
 	*portal = NULL;
 }
 
-void			delete_sector(t_sector **sectors)
+void				delete_sector(t_sector **sectors)
 {
 	t_sector		*tmp;
 	t_sector		*to_del;
@@ -89,7 +80,7 @@ void			delete_sector(t_sector **sectors)
 	*sectors = NULL;
 }
 
-static void		delete_entity(t_entity **entity)
+static void			delete_entity(t_entity **entity)
 {
 	t_entity	*tmp;
 	t_entity	*to_del;
@@ -111,7 +102,7 @@ static void		delete_entity(t_entity **entity)
 	*entity = NULL;
 }
 
-void			clear_editor(t_editor *editor)
+void				clear_editor(t_editor *editor)
 {
 	delete_player(&editor->player);
 	if (editor->sector)

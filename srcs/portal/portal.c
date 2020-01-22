@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 15:15:06 by nde-jesu          #+#    #+#             */
-/*   Updated: 2020/01/22 11:01:21 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/01/22 11:45:09 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,8 @@ static void	save_vertex(t_editor *editor, t_sector *sector,
 			editor->which_sector->is_portal[from] = sector->sector_number;
 			add_portal(&editor->portals, *first_point, *last_point, editor);
 			add_portal(&sector->portal, *first_point, *last_point, editor);
-			add_portal(&editor->which_sector->portal, *last_point, *first_point, editor);
+			add_portal(&editor->which_sector->portal, *last_point, *first_point,
+				editor);
 		}
 	}
 }
@@ -113,7 +114,7 @@ void		place_portal(t_editor *editor, int x, int y)
 {
 	t_vertex	*point;
 	t_sector	*sector;
-	
+
 	if (count_sector(editor->sector) < 2)
 		return ;
 	point = create_vertex(init_vertex(x, y), editor);

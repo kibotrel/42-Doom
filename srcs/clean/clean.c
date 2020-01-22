@@ -6,11 +6,20 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/07 14:14:22 by reda-con          #+#    #+#             */
-/*   Updated: 2020/01/22 09:52:20 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/01/22 11:30:09 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "editor.h"
+
+void			init_count(t_count *count)
+{
+	count->vertex = 0;
+	count->sector = 0;
+	count->enemy = 0;
+	count->portal = 0;
+	count->object = 0;
+}
 
 void			clean(t_editor *editor)
 {

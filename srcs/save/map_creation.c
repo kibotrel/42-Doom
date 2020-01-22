@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 09:57:24 by nde-jesu          #+#    #+#             */
-/*   Updated: 2020/01/22 11:12:50 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/01/22 11:51:44 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,25 +17,11 @@
 #include "libft.h"
 #include "editor.h"
 
-int				search_vertex_num(t_vertex *all, t_vertex *to_find)
-{
-	t_vertex	*vertex;
-
-	vertex = all;
-	while (vertex)
-	{
-		if (vertex->x == to_find->x && vertex->y == to_find->y)
-			return (vertex->vertex_number);
-		vertex = vertex->next;
-	}
-	return (-1);
-}
-
-static void			write_portal_type(t_sector *sect)
+static void		write_portal_type(t_sector *sect)
 {
 	t_portal	*portal;
 	t_vertex	*vertex;
-	int	i;
+	int			i;
 
 	portal = sect->portal;
 	while (portal)
@@ -44,10 +30,11 @@ static void			write_portal_type(t_sector *sect)
 		vertex = sect->vertex;
 		while (vertex)
 		{
-			if (portal->extrems->x == vertex->x && portal->extrems->y == vertex->y)
+			if (portal->extrems->x == vertex->x &&
+				portal->extrems->y == vertex->y)
 				sect->portal_type[i] = portal->type;
 			vertex = vertex->next;
-			++i;	
+			++i;
 		}
 		portal = portal->next;
 	}

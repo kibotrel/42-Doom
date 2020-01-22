@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 08:52:03 by nde-jesu          #+#    #+#             */
-/*   Updated: 2020/01/22 11:11:55 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/01/22 11:50:37 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,15 +65,15 @@ typedef enum		e_presets
 
 typedef struct		s_line
 {
-	int			delta_x;
-	int			delta_y;
-	int			sign_x;
-	int			sign_y;
-	int			error;
-	int			error_2;
+	int				delta_x;
+	int				delta_y;
+	int				sign_x;
+	int				sign_y;
+	int				error;
+	int				error_2;
 }					t_line;
 
-typedef struct 		s_count
+typedef struct		s_count
 {
 	int				vertex;
 	int				sector;
@@ -81,7 +81,6 @@ typedef struct 		s_count
 	int				object;
 	int				portal;
 }					t_count;
-
 
 typedef struct		s_player
 {
@@ -181,185 +180,189 @@ typedef struct		s_editor
 /*
 **	setup/setup.c
 */
-void			init_editor(t_editor *editor);
-void			init_portals(t_editor *editor);
+void				init_editor(t_editor *editor);
+void				init_portals(t_editor *editor);
 
 /*
 **	clean/clean.c
 */
-void			clean(t_editor *editor);
+void				clean(t_editor *editor);
+void				init_count(t_count *count);
 
 /*
 **	clean/delete.c
 */
-void			init_count(t_count *count);
-void			delete_vertex(t_vertex **vertex);
-void			delete_sector(t_sector **sectors);
-void			clear_editor(t_editor *editor);
+void				delete_vertex(t_vertex **vertex);
+void				delete_sector(t_sector **sectors);
+void				clear_editor(t_editor *editor);
 
 /*
 **	core/events.c
 */
-void			events(t_editor *editor);
+void				events(t_editor *editor);
 
 /*
 **	core/events_tools.c
 */
-void			next_keydown(SDL_Event event, SDL_Surface *s, t_editor *editor);
-void			change_value(t_editor *editor, t_presets presets, bool fl);
+void				next_keydown(SDL_Event event, SDL_Surface *s,
+	t_editor *editor);
+void				change_value(t_editor *editor, t_presets presets, bool fl);
 
 /*
 **	display/display.c
 */
-void			display_grid(t_editor *editor);
-void			display_line(t_editor *editor, int x, int y);
-void			display_sector(t_sdl *sdl, t_sector *sectors, bool fl);
-void			draw_walls(t_sdl *sdl, t_sector *sect, t_vertex *vertex,
+void				display_grid(t_editor *editor);
+void				display_line(t_editor *editor, int x, int y);
+void				display_sector(t_sdl *sdl, t_sector *sectors, bool fl);
+void				draw_walls(t_sdl *sdl, t_sector *sect, t_vertex *vertex,
 	int color);
-void			display_portals(t_portal *portal, t_sdl *sdl, int color,
+void				display_portals(t_portal *portal, t_sdl *sdl, int color,
 	bool fl);
 
 /*
 **	display/display_part2.c
 */
-void			which_entity_to_display(t_editor *edit);
-void			display_mouse(t_sdl *sdl, t_vertex mouse, int color);
-void			display_vertex(t_sdl *sdl, t_vertex *vertex, int color);
+void				which_entity_to_display(t_editor *edit);
+void				display_mouse(t_sdl *sdl, t_vertex mouse, int color);
+void				display_vertex(t_sdl *sdl, t_vertex *vertex, int color);
 
 /*
 **	display/display_utils.c
 */
-void			put_fov(SDL_Surface *surf, t_vertex pt, int agl, int color);
-void			put_pixel(SDL_Surface *surf, int x, int y, int color);
-void			draw_line(SDL_Surface *surf, t_vertex start, t_vertex end,
+void				put_fov(SDL_Surface *surf, t_vertex pt, int agl, int color);
+void				put_pixel(SDL_Surface *surf, int x, int y, int color);
+void				draw_line(SDL_Surface *surf, t_vertex start, t_vertex end,
 	int color);
 
 /*
 **	entity/entity.c
 */
-void			place_player(t_editor *editor, int x, int y);
-void			place_entity(t_editor *editor, int x, int y, int type);
+void				place_player(t_editor *editor, int x, int y);
+void				place_entity(t_editor *editor, int x, int y, int type);
 
 /*
 **	entity/entity_part2.c
 */
-void			rotate_entity(t_entity *entity, bool rotation);
-void			move_in_entities(t_entity **entity, bool way);
-void			del_entity(t_entity **entity);
+void				rotate_entity(t_entity *entity, bool rotation);
+void				move_in_entities(t_entity **entity, bool way);
+void				del_entity(t_entity **entity);
 
 /*
 **	menu/picture.c
 */
-void			print_params_image(t_editor *edit, t_presets presets,
+void				print_params_image(t_editor *edit, t_presets presets,
 	t_settings sett);
 
 /*
 **	menu/text.c
 */
-void			print_param_in_param(t_sdl *sdl, t_settings sett);
-void			print_param_to_screen(t_sdl *sdl, t_settings sett,
+void				print_param_in_param(t_sdl *sdl, t_settings sett);
+void				print_param_to_screen(t_sdl *sdl, t_settings sett,
 	t_editor *editor);
-void			print_more_minus(t_sdl *sdl);
+void				print_more_minus(t_sdl *sdl);
 
 /*
 **	menu/edit_menu.c
 */
-void			motion(t_sdl s, int set, int preset);
-void			clic_editor_menu(int x, int y, t_editor *editor);
-void			blank_menu(SDL_Surface *s, int set, t_sdl sdl, int preset);
+void				motion(t_sdl s, int set, int preset);
+void				clic_editor_menu(int x, int y, t_editor *editor);
 
 /*
 **	menu/edit_menu_utils.c
 */
-void			next_blank_menu(int set, SDL_Surface *s);
-void			draw_background(SDL_Surface *s);
-void			rectangle(t_vertex start, t_vertex end, int clr,
+void				next_blank_menu(int set, SDL_Surface *s);
+void				draw_background(SDL_Surface *s);
+void				rectangle(t_vertex start, t_vertex end, int clr,
 	SDL_Surface *s);
-void			square(int x, int y, int color, SDL_Surface *s);
+void				square(int x, int y, int color, SDL_Surface *s);
+void				blank_menu(SDL_Surface *s, int set, t_sdl sdl, int preset);
 
 /*
 **	menu/sec_edit_menu.c
 */
-void			sec_clic_menu_editor(int y, t_editor *editor);
-void			sec_blank_menu(SDL_Surface *s, int set, int preset);
+void				sec_clic_menu_editor(int y, t_editor *editor);
+void				sec_blank_menu(SDL_Surface *s, int set, int preset);
 
 /*
 **	menu/sec_edit_menu_utils.c
 */
-void			next_sec_clic_menu_editor_tool(int y, t_editor *editor);
-void			sec_clic_menu_editor_tool(int y, t_editor *editor);
+void				next_sec_clic_menu_editor_tool(int y, t_editor *editor);
+void				sec_clic_menu_editor_tool(int y, t_editor *editor);
 
 /*
 **	player/player.c
 */
-void			rotate_player(t_player *player, bool rotation);
-void			delete_player(t_player *player);
+void				rotate_player(t_player *player, bool rotation);
+void				delete_player(t_player *player);
 
 /*
 **	portal/portal.c
 */
-void			place_portal(t_editor *editor, int x, int y);
+void				place_portal(t_editor *editor, int x, int y);
 
 /*
 **	portal/portal_utils.c
 */
-void			move_in_portals(t_portal **portal, bool way);
-void			change_portal_type(t_sector *all, t_portal *portal, bool way);
-void			add_portal(t_portal **portal, t_vertex v1, t_vertex v2,
+void				move_in_portals(t_portal **portal, bool way);
+void				change_portal_type(t_sector *all, t_portal *portal,
+	bool way);
+void				add_portal(t_portal **portal, t_vertex v1, t_vertex v2,
 	t_editor *edit);
-int				compare_coordinates(t_vertex *point, t_vertex *a, t_vertex *b);
+int					compare_coordinates(t_vertex *point, t_vertex *a,
+	t_vertex *b);
 
 /*
 **	save/map_creation.c
 */
-void			create_map(t_editor *editor);
-void			write_portals(t_sector *sect, int fd);
-int				search_vertex_num(t_vertex *all, t_vertex *to_find);
+void				create_map(t_editor *editor);
+void				write_portals(t_sector *sect, int fd);
 
 /*
 **	save/map_creation_part2.c
 */
-void			write_vertex_sector(t_sector *sect, t_vertex *all, int fd);
-void			write_vertexes(t_vertex *vertexes, int fd);
-void			write_entities(t_entity *entities, int fd, bool type);
-void			write_player(t_player player, t_vertex if_no_player, int fd);
+void				write_vertex_sector(t_sector *sect, t_vertex *all, int fd);
+void				write_vertexes(t_vertex *vertexes, int fd);
+void				write_entities(t_entity *entities, int fd, bool type);
+void				write_player(t_player player, t_vertex if_no_player,
+	int fd);
+int					search_vertex_num(t_vertex *all, t_vertex *to_find);
 
 /*
 **	save/map_creation_utils.c
 */
-void			get_elements_number(t_editor *editor, int fd);
-int				count_sector(t_sector *all_sector);
+void				get_elements_number(t_editor *editor, int fd);
+int					count_sector(t_sector *all_sector);
 
 /*
 **	sector/vertex.c
 */
-t_vertex		*get_vertex(t_editor *editor, int x, int y);
-void			add_vertex(t_vertex **vertex, t_vertex v,
+t_vertex			*get_vertex(t_editor *editor, int x, int y);
+void				add_vertex(t_vertex **vertex, t_vertex v,
 	bool flag, t_editor *edit);
-t_vertex		*create_vertex(t_vertex v, t_editor *edit);
-t_vertex		init_vertex(int x, int y);
+t_vertex			*create_vertex(t_vertex v, t_editor *edit);
+t_vertex			init_vertex(int x, int y);
 
 /*
 **	sector/sector.c
 */
-void			place_sector(t_editor *editor, int x, int y);
+void				place_sector(t_editor *editor, int x, int y);
 
 /*
 **	sector/sector_part2.c
 */
-void			next_display_sector(t_sdl *sdl, t_sector *sectors);
-void			move_in_sector(t_sector **sector, bool way);
+void				next_display_sector(t_sdl *sdl, t_sector *sectors);
+void				move_in_sector(t_sector **sector, bool way);
 
 /*
 **	sector/sector_utils.c
 */
-t_sector		*create_sector(t_editor *edit);
+t_sector			*create_sector(t_editor *edit);
 
 /*
 **	sector/sector_check.c
 */
-int				is_in_sector(t_editor *edit, t_vertex point);
-int				intersects_count(t_vertex v1, t_vertex v2, t_vertex p1,
+int					is_in_sector(t_editor *edit, t_vertex point);
+int					intersects_count(t_vertex v1, t_vertex v2, t_vertex p1,
 	t_vertex p2);
 
 #endif

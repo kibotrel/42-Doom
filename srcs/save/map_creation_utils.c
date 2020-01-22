@@ -6,12 +6,26 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/15 09:51:03 by nde-jesu          #+#    #+#             */
-/*   Updated: 2020/01/22 11:12:59 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/01/22 11:49:58 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "editor.h"
+
+int				search_vertex_num(t_vertex *all, t_vertex *to_find)
+{
+	t_vertex	*vertex;
+
+	vertex = all;
+	while (vertex)
+	{
+		if (vertex->x == to_find->x && vertex->y == to_find->y)
+			return (vertex->vertex_number);
+		vertex = vertex->next;
+	}
+	return (-1);
+}
 
 static int		count_entity(t_entity *all_entity)
 {
@@ -25,7 +39,7 @@ static int		count_entity(t_entity *all_entity)
 	return (entity->number + 1);
 }
 
-int		count_sector(t_sector *all_sector)
+int				count_sector(t_sector *all_sector)
 {
 	t_sector	*sector;
 
@@ -54,7 +68,7 @@ static int		count_vertex(t_vertex *all_vertex)
 	return (i);
 }
 
-void	get_elements_number(t_editor *editor, int fd)
+void			get_elements_number(t_editor *editor, int fd)
 {
 	ft_putstr_fd("total vertexes ", fd);
 	ft_putnbr_fd(count_vertex(editor->vertex), fd);

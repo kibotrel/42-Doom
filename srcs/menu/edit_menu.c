@@ -6,40 +6,13 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2009/11/19 13:07:32 by reda-con          #+#    #+#             */
-/*   Updated: 2020/01/22 10:15:44 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/01/22 11:42:34 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "editor.h"
 
-void			blank_menu(SDL_Surface *s, int set, t_sdl sdl, int preset)
-{
-	int		clr;
-
-	draw_background(s);
-	clr = ((set != SECTOR) ? 0xffffff : 0x289655);
-	rectangle(init_vertex(1340, 140), init_vertex(1510, 210), clr, s);
-	clr = ((set != PLAYER) ? 0xffffff : 0x177489);
-	rectangle(init_vertex(1340, 240), init_vertex(1510, 310), clr, s);
-	clr = ((set != ENEMY) ? 0xffffff : 0x090875);
-	rectangle(init_vertex(1340, 340), init_vertex(1510, 410), clr, s);
-	clr = ((set != OBJECT) ? 0xffffff : 0x146595);
-	rectangle(init_vertex(1340, 440), init_vertex(1510, 510), clr, s);
-	clr = ((set != PORTAL) ? 0xffffff : 0x177013);
-	rectangle(init_vertex(1340, 540), init_vertex(1510, 610), clr, s);
-	next_blank_menu(set, s);
-	sec_blank_menu(s, set, preset);
-	rectangle(init_vertex(1350, 250), init_vertex(1400, 300), 0xffa500, s);
-	rectangle(init_vertex(1350, 150), init_vertex(1400, 200), 0xffa500, s);
-	rectangle(init_vertex(1350, 450), init_vertex(1400, 500), 0xffa500, s);
-	rectangle(init_vertex(1350, 350), init_vertex(1400, 400), 0xffa500, s);
-	rectangle(init_vertex(1350, 550), init_vertex(1400, 600), 0xffa500, s);
-	rectangle(init_vertex(1300, 660), init_vertex(1410, 710), 0xffffff, s);
-	rectangle(init_vertex(1420, 660), init_vertex(1530, 710), 0xffffff, s);
-	print_param_in_param(&sdl, set);
-}
-
-static void			fst_clic_editor_menu(int y, t_editor *editor)
+static void		fst_clic_editor_menu(int y, t_editor *editor)
 {
 	int		fl;
 
@@ -101,7 +74,7 @@ static void		next_motion(t_sdl s, int set, int preset)
 		blank_menu(s.surf, set, s, preset);
 }
 
-static void			option_motion(t_sdl s, int set, int preset)
+static void		option_motion(t_sdl s, int set, int preset)
 {
 	int		x;
 	int		y;
@@ -118,25 +91,26 @@ static void			option_motion(t_sdl s, int set, int preset)
 
 void			motion(t_sdl s, int set, int preset)
 {
-	if (s.event.motion.y >= 660 && s.event.motion.y <= 710 && ((s.event.motion.x >= 1300 && s.event.motion.x <= 1410)
-				|| (s.event.motion.x >= 1420 && s.event.motion.x <= 1530)))
+	if (s.event.motion.y >= 660 && s.event.motion.y <= 710 &&
+		((s.event.motion.x >= 1300 && s.event.motion.x <= 1410) ||
+			(s.event.motion.x >= 1420 && s.event.motion.x <= 1530)))
 		option_motion(s, set, preset);
 	else if (s.event.motion.x >= 1340 && s.event.motion.x <= 1510)
 	{
 		if ((s.event.motion.y >= 140 && s.event.motion.y <= 210))
-			rectangle(init_vertex(1340, 140), init_vertex(1510, 210),\
+			rectangle(init_vertex(1340, 140), init_vertex(1510, 210),
 					PRPL, s.surf);
 		else if (s.event.motion.y >= 240 && s.event.motion.y <= 310)
-			rectangle(init_vertex(1340, 240), init_vertex(1510, 310),\
+			rectangle(init_vertex(1340, 240), init_vertex(1510, 310),
 					PRPL, s.surf);
 		else if (s.event.motion.y >= 340 && s.event.motion.y <= 410)
-			rectangle(init_vertex(1340, 340), init_vertex(1510, 410),\
+			rectangle(init_vertex(1340, 340), init_vertex(1510, 410),
 					PRPL, s.surf);
 		else if (s.event.motion.y >= 440 && s.event.motion.y <= 510)
-			rectangle(init_vertex(1340, 440), init_vertex(1510, 510),\
+			rectangle(init_vertex(1340, 440), init_vertex(1510, 510),
 					PRPL, s.surf);
 		else if (s.event.motion.y >= 540 && s.event.motion.y <= 610)
-			rectangle(init_vertex(1340, 540), init_vertex(1510, 610),\
+			rectangle(init_vertex(1340, 540), init_vertex(1510, 610),
 					PRPL, s.surf);
 		else
 			blank_menu(s.surf, set, s, preset);

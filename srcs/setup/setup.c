@@ -6,13 +6,13 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 09:23:28 by nde-jesu          #+#    #+#             */
-/*   Updated: 2020/01/22 10:24:43 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/01/22 11:53:09 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "editor.h"
 
-void		init_portals(t_editor *editor)
+void			init_portals(t_editor *editor)
 {
 	editor->portal_points[0].x = -1;
 	editor->portal_points[0].y = -1;
@@ -71,7 +71,7 @@ static void		init_chained_list(t_editor *editor)
 	editor->portals = NULL;
 }
 
-void		init_editor(t_editor *editor)
+void			init_editor(t_editor *editor)
 {
 	sdl_init(&editor->sdl, editor);
 	editor->dist_grid = EDIT_W / 50;

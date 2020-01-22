@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 12:14:01 by nde-jesu          #+#    #+#             */
-/*   Updated: 2020/01/22 10:04:18 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/01/22 11:34:31 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 #define ANGLE 80
 #define SIZE 6
 
-void	draw_line(SDL_Surface *surf, t_vertex start, t_vertex end, int color)
+void			draw_line(SDL_Surface *surf, t_vertex start, t_vertex end,
+	int color)
 {
 	t_line		line;
 
@@ -41,7 +42,7 @@ void	draw_line(SDL_Surface *surf, t_vertex start, t_vertex end, int color)
 	}
 }
 
-void	put_pixel(SDL_Surface *surf, int x, int y, int color)
+void			put_pixel(SDL_Surface *surf, int x, int y, int color)
 {
 	int		*pix;
 
@@ -57,7 +58,7 @@ static double	deg_to_rad(int deg)
 	return (deg * M_PI / 180);
 }
 
-void	put_fov(SDL_Surface *surf, t_vertex pt, int agl, int color)
+void			put_fov(SDL_Surface *surf, t_vertex pt, int agl, int color)
 {
 	size_t		i;
 	int			angle;
