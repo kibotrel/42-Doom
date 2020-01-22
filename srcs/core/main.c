@@ -1,33 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   clean.c                                            :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/07 14:14:22 by reda-con          #+#    #+#             */
-/*   Updated: 2020/01/14 08:59:06 by nde-jesu         ###   ########.fr       */
+/*   Created: 2019/10/16 08:47:35 by nde-jesu          #+#    #+#             */
+/*   Updated: 2020/01/22 09:44:09 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "editor.h"
+#include "libft.h"
 
-void			clean(t_editor *edit)
+// PENSER AUX FREES ET METTRE LES FONCTIONS POSSIBLES EN STATIC
+__attribute__((destructor)) void no_return()
 {
-	clear_editor(edit);
-	if (edit->which_sector)
-		delete_sector(&edit->which_sector);
-	if (edit->ab)
-		delete_vertex(&edit->ab);
-	if (edit->cd)
-		delete_vertex(&edit->cd);
-	if (edit->sdl.font)
-		TTF_CloseFont(edit->sdl.font);
-	if (edit->sdl.win)
-		SDL_DestroyWindow(edit->sdl.win);
-	if (edit->sdl.surf)
-		SDL_FreeSurface(edit->sdl.surf);
-	TTF_Quit();
-	SDL_Quit();
-	exit(1);
+	while (1);
+}
+
+int				main(void)
+{
+	t_editor	editor;
+
+	init_editor(&editor);
+	events(&editor);
+	return (1);
 }

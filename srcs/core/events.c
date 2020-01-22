@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 13:09:05 by nde-jesu          #+#    #+#             */
-/*   Updated: 2020/01/15 15:03:24 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/01/22 10:01:10 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static void		display_editor(t_editor *edit)
 	clr = (edit->sett == PLAYER) ? 0xffff00 : 0xff00ff;
 	put_fov(edit->sdl.surf, init_vertex(edit->player.x, edit->player.y),
 			edit->player.angle, clr);
-	wich_entity_to_display(edit);
+	which_entity_to_display(edit);
 	edit->sett == SECTOR ? display_sector(&edit->sdl, edit->sector, true)
 		: display_sector(&edit->sdl, edit->sector, false);
 	display_vertex(&edit->sdl, edit->vertex, 0xffff00);

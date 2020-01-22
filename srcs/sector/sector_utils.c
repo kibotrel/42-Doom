@@ -6,21 +6,12 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 13:55:00 by nde-jesu          #+#    #+#             */
-/*   Updated: 2020/01/14 16:01:35 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/01/22 10:59:47 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "editor.h"
-
-int			is_sector_complete(t_vertex *first, t_vertex *last)
-{
-	if (!first || !last)
-		return (0);
-	if (first->x == last->x && first->y == last->y)
-		return (1);
-	return (0);
-}
 
 t_sector	*create_sector(t_editor *edit)
 {

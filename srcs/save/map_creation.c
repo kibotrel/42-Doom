@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 09:57:24 by nde-jesu          #+#    #+#             */
-/*   Updated: 2020/01/21 11:31:32 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/01/22 11:12:50 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int				search_vertex_num(t_vertex *all, t_vertex *to_find)
 	return (-1);
 }
 
-void			get_portal_type(t_sector *sect)
+static void			write_portal_type(t_sector *sect)
 {
 	t_portal	*portal;
 	t_vertex	*vertex;
@@ -58,7 +58,7 @@ void			write_portals(t_sector *sect, int fd)
 	int	i;
 
 	i = 0;
-	get_portal_type(sect);
+	write_portal_type(sect);
 	while (i < sect->vertex_count)
 	{
 		ft_putnbr_fd(sect->is_portal[i], fd);
@@ -128,31 +128,12 @@ static void		write_file(t_editor *editor, int fd)
 	}
 }
 
-void			oui(t_editor *editor)
-{
-	t_sector 	*sector;
-	t_portal	*portal;
-	
-	sector = editor->sector;
-	while (sector)
-	{
-		printf("sector %d\n", sector->sector_number);		
-		portal = sector->portal;
-		while (portal)
-		{
-		printf("portal x %d y %d\n", portal->extrems->x, portal->extrems->y);
-		portal = portal->next;
-		}
-		sector = sector->next;
-	}
-}
-
 void			create_map(t_editor *editor)
 {
 	int		fd;
+
 	if (editor->sect_is_closed)
 	{
-		oui(editor);
 		fd = open(MAP_PATH, O_WRONLY | O_CREAT | O_TRUNC, S_IRWXU);
 		write_file(editor, fd);
 		if (close(fd) == -1)

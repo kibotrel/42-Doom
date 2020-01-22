@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 08:52:03 by nde-jesu          #+#    #+#             */
-/*   Updated: 2020/01/21 10:54:00 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/01/22 11:11:55 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 # define EDIT_W 1280
 # define MENU_W 500
 # define WIN_H 720
-# define MAP_PATH "./map/editor_map.data"
+# define MAP_PATH "./editor_map.data"
 # define PRPL 0x5f287e
 # define TITLE "Doom-Nukem v0.1.1 - Editor"
 
@@ -177,203 +177,189 @@ typedef struct		s_editor
 	bool			sect_is_closed;
 	bool			finish;
 }					t_editor;
-/*
-**	main.c
-*/
-void				init_portals(t_editor *editor);
 
 /*
-**	display_part1.c
+**	setup/setup.c
 */
-void				display_grid(t_editor *editor);
-void				display_line(t_editor *editor, int x, int y);
-void				display_sector(t_sdl *sdl, t_sector *sectors, bool fl);
-void				draw_walls(t_sdl *sdl, t_sector *s, t_vertex *v, int clr);
-void				display_portals(t_portal *portals, t_sdl *sdl, int color,
+void			init_editor(t_editor *editor);
+void			init_portals(t_editor *editor);
+
+/*
+**	clean/clean.c
+*/
+void			clean(t_editor *editor);
+
+/*
+**	clean/delete.c
+*/
+void			init_count(t_count *count);
+void			delete_vertex(t_vertex **vertex);
+void			delete_sector(t_sector **sectors);
+void			clear_editor(t_editor *editor);
+
+/*
+**	core/events.c
+*/
+void			events(t_editor *editor);
+
+/*
+**	core/events_tools.c
+*/
+void			next_keydown(SDL_Event event, SDL_Surface *s, t_editor *editor);
+void			change_value(t_editor *editor, t_presets presets, bool fl);
+
+/*
+**	display/display.c
+*/
+void			display_grid(t_editor *editor);
+void			display_line(t_editor *editor, int x, int y);
+void			display_sector(t_sdl *sdl, t_sector *sectors, bool fl);
+void			draw_walls(t_sdl *sdl, t_sector *sect, t_vertex *vertex,
+	int color);
+void			display_portals(t_portal *portal, t_sdl *sdl, int color,
 	bool fl);
 
 /*
-**	display_part2.c
+**	display/display_part2.c
 */
-void				display_vertex(t_sdl *sdl, t_vertex *vertex, int color);
-void				display_entities(t_sdl *sdl, t_entity *entity, int color,
-	bool fl);
-void				display_mouse(t_sdl *sdl, t_vertex mouse, int color);
-void				wich_entity_to_display(t_editor *edit);
+void			which_entity_to_display(t_editor *edit);
+void			display_mouse(t_sdl *sdl, t_vertex mouse, int color);
+void			display_vertex(t_sdl *sdl, t_vertex *vertex, int color);
 
 /*
-**	display_utils.c
+**	display/display_utils.c
 */
-void				put_pixel(SDL_Surface *surf, int x, int y, int color);
-void				draw_line(SDL_Surface *surf, t_vertex start, t_vertex end,
+void			put_fov(SDL_Surface *surf, t_vertex pt, int agl, int color);
+void			put_pixel(SDL_Surface *surf, int x, int y, int color);
+void			draw_line(SDL_Surface *surf, t_vertex start, t_vertex end,
 	int color);
 
 /*
-**	elements_writing.c
+**	entity/entity.c
 */
-void				write_vertex_sector(t_sector *sect, t_vertex *all, int fd);
-void				write_vertexes(t_vertex *vertexes, int fd);
-void				write_entities(t_entity *entities, int fd, bool type);
-void				write_player(t_player player, t_vertex if_no_player,
-	int fd);
+void			place_player(t_editor *editor, int x, int y);
+void			place_entity(t_editor *editor, int x, int y, int type);
 
 /*
-**	entity.c
+**	entity/entity_part2.c
 */
-void				place_player(t_editor *editor, int x, int y);
-void				place_entity(t_editor *editor, int x, int y, int type);
+void			rotate_entity(t_entity *entity, bool rotation);
+void			move_in_entities(t_entity **entity, bool way);
+void			del_entity(t_entity **entity);
 
 /*
-**	entity2.c
+**	menu/picture.c
 */
-void				change_ent_type(t_entity *ent);
+void			print_params_image(t_editor *edit, t_presets presets,
+	t_settings sett);
 
 /*
-**	events.c
+**	menu/text.c
 */
-void				events(t_editor *editor);
-
-/*
-**	events_tools.c
-*/
-void				next_keydown(SDL_Event event, SDL_Surface *surf,
+void			print_param_in_param(t_sdl *sdl, t_settings sett);
+void			print_param_to_screen(t_sdl *sdl, t_settings sett,
 	t_editor *editor);
-void				change_value(t_editor *editor, t_presets presets, bool fl);
+void			print_more_minus(t_sdl *sdl);
 
 /*
-**	map_creation.c
+**	menu/edit_menu.c
 */
-int					search_vertex_num(t_vertex *all, t_vertex *to_find);
-void				write_portals(t_sector *sect, int fd);
-void				create_map(t_editor *editor);
+void			motion(t_sdl s, int set, int preset);
+void			clic_editor_menu(int x, int y, t_editor *editor);
+void			blank_menu(SDL_Surface *s, int set, t_sdl sdl, int preset);
 
 /*
-**	portal_utils.c
+**	menu/edit_menu_utils.c
 */
-int					compare_coordinates(t_vertex *point, t_vertex *a,
-	t_vertex *b);
-void				init_portals(t_editor *edit);
-void				add_portal(t_portal **portal, t_vertex v1, t_vertex v2,
+void			next_blank_menu(int set, SDL_Surface *s);
+void			draw_background(SDL_Surface *s);
+void			rectangle(t_vertex start, t_vertex end, int clr,
+	SDL_Surface *s);
+void			square(int x, int y, int color, SDL_Surface *s);
+
+/*
+**	menu/sec_edit_menu.c
+*/
+void			sec_clic_menu_editor(int y, t_editor *editor);
+void			sec_blank_menu(SDL_Surface *s, int set, int preset);
+
+/*
+**	menu/sec_edit_menu_utils.c
+*/
+void			next_sec_clic_menu_editor_tool(int y, t_editor *editor);
+void			sec_clic_menu_editor_tool(int y, t_editor *editor);
+
+/*
+**	player/player.c
+*/
+void			rotate_player(t_player *player, bool rotation);
+void			delete_player(t_player *player);
+
+/*
+**	portal/portal.c
+*/
+void			place_portal(t_editor *editor, int x, int y);
+
+/*
+**	portal/portal_utils.c
+*/
+void			move_in_portals(t_portal **portal, bool way);
+void			change_portal_type(t_sector *all, t_portal *portal, bool way);
+void			add_portal(t_portal **portal, t_vertex v1, t_vertex v2,
 	t_editor *edit);
-void		move_in_portals(t_portal **portal, bool way);
+int				compare_coordinates(t_vertex *point, t_vertex *a, t_vertex *b);
 
 /*
-**	portal.c
+**	save/map_creation.c
 */
-void				place_portal(t_editor *editor, int x, int y);
+void			create_map(t_editor *editor);
+void			write_portals(t_sector *sect, int fd);
+int				search_vertex_num(t_vertex *all, t_vertex *to_find);
 
 /*
-**	sector_check.c
+**	save/map_creation_part2.c
 */
-int					intersects_count(t_vertex v1, t_vertex v2, t_vertex p1,
+void			write_vertex_sector(t_sector *sect, t_vertex *all, int fd);
+void			write_vertexes(t_vertex *vertexes, int fd);
+void			write_entities(t_entity *entities, int fd, bool type);
+void			write_player(t_player player, t_vertex if_no_player, int fd);
+
+/*
+**	save/map_creation_utils.c
+*/
+void			get_elements_number(t_editor *editor, int fd);
+int				count_sector(t_sector *all_sector);
+
+/*
+**	sector/vertex.c
+*/
+t_vertex		*get_vertex(t_editor *editor, int x, int y);
+void			add_vertex(t_vertex **vertex, t_vertex v,
+	bool flag, t_editor *edit);
+t_vertex		*create_vertex(t_vertex v, t_editor *edit);
+t_vertex		init_vertex(int x, int y);
+
+/*
+**	sector/sector.c
+*/
+void			place_sector(t_editor *editor, int x, int y);
+
+/*
+**	sector/sector_part2.c
+*/
+void			next_display_sector(t_sdl *sdl, t_sector *sectors);
+void			move_in_sector(t_sector **sector, bool way);
+
+/*
+**	sector/sector_utils.c
+*/
+t_sector		*create_sector(t_editor *edit);
+
+/*
+**	sector/sector_check.c
+*/
+int				is_in_sector(t_editor *edit, t_vertex point);
+int				intersects_count(t_vertex v1, t_vertex v2, t_vertex p1,
 	t_vertex p2);
-int					is_in_sector(t_editor *edit, t_vertex point);
-bool				is_in_this_sector(t_vertex point, t_sector *sector);
 
-/*
-**	sector_check_2.c
-*/
-void				add_tmp_sector(t_sector *new, t_sector **lst);
-
-/*
-**	sector_utils.c
-*/
-t_sector			*create_sector(t_editor *editor);
-
-/*
-**	sector.c
-*/
-void				place_sector(t_editor *editor, int x, int y);
-
-/*
-**	sector_2.c
-*/
-void				next_display_sector(t_sdl *sdl, t_sector *sectors);
-
-/*
-**	vertex.c
-*/
-t_vertex			*create_vertex(t_vertex v, t_editor *e);
-void				add_vertex(t_vertex **vertex, t_vertex v,
-	bool flag, t_editor *e);
-t_vertex			*get_vertex(t_editor *editor, int x, int y);
-
-/*
-**	edit_menu.c
-*/
-void				motion(t_sdl sdl, int sett, int preset);
-void				blank_menu(SDL_Surface *surf, int set, t_sdl sdl,
-	int preset);
-void				clic_editor_menu(int x, int y, t_editor *editor);
-
-/*
-**	sec_edit_menu.c
-*/
-void				sec_blank_menu(SDL_Surface *surf, int set, int preset);
-void				sec_clic_menu_editor(int y, t_editor *editor);
-
-/*
-**	sec_edit_menu_tools.c
-*/
-void				sec_clic_menu_editor_tool(int y, t_editor *e);
-void				next_sec_clic_menu_editor_tool(int y, t_editor *e);
-
-/*
-**	edit_menu_tools.c
-*/
-void				square(int x, int y, int clr, SDL_Surface *surf);
-void				rectangle(t_vertex start, t_vertex end, int clr,
-	SDL_Surface *surf);
-t_vertex			init_vertex(int x, int y);
-void				draw_back_ground(SDL_Surface *surf);
-void				next_blank_menu(int set, SDL_Surface *surf);
-
-/*
-**	height.c
-*/
-void				change_sector_height(t_editor *editor, int x, int y);
-
-/*
-**	text.c
-*/
-void				print_param_to_screen(t_sdl *sdl, t_settings sett,
-	t_editor *editor);
-void				print_param_in_param(t_sdl *sdl, t_settings sett);
-
-/*
-**	player.c
-*/
-void				delete_player(t_player *player);
-void				rotate_player(t_player *player, bool rotation);
-
-/*
-**	delete.c
-*/
-void				clear_editor(t_editor *editor);
-void				delete_vertex(t_vertex **vertex);
-void				delete_sector(t_sector **sector);
-
-/*
-**	tmp
-*/
-void				rotate_entity(t_entity *entity, bool rotation);
-void				move_in_entities(t_entity **entity, bool way);
-void				move_in_sector(t_sector **sector, bool way);
-void				del_entity(t_entity **entity);
-void				put_fov(SDL_Surface *surf, t_vertex pt, int agl, int color);
-void				clean(t_editor *e);
-void				print_more_minus(t_sdl *sdl);
-void				init_count(t_count *count);
-void				change_portal_type(t_sector *all, t_portal *portal, bool way);
-/*
-**	picture.c
-*/
-void				print_params_image(t_editor *edit, t_presets presets, t_settings sett);
-void				print_picture(t_sdl *sdl, int x, int y, t_bmp img);
-
-/*
-**	elements_number.c
-*/
-void				get_elements_number(t_editor *editor, int fd);
-int					count_sector(t_sector *all_sector);
 #endif

@@ -6,13 +6,13 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/13 14:39:32 by reda-con          #+#    #+#             */
-/*   Updated: 2020/01/13 15:27:12 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/01/22 10:18:39 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "editor.h"
 
-void			blank_sect(int set, int preset, SDL_Surface *s)
+static void			blank_sect(int set, int preset, SDL_Surface *s)
 {
 	int		clr;
 

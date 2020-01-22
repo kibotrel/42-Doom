@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   edit_menu_tools.c                                  :+:      :+:    :+:   */
+/*   edit_menu_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/19 13:14:01 by reda-con          #+#    #+#             */
-/*   Updated: 2020/01/13 15:26:02 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/01/22 10:15:48 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void			rectangle(t_vertex start, t_vertex end, int clr, SDL_Surface *s)
 	draw_line(s, init_vertex(start.x, end.y), end, clr);
 }
 
-void			draw_back_ground(SDL_Surface *s)
+void			draw_background(SDL_Surface *s)
 {
 	int		x;
 	int		y;

@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/07 14:09:35 by nde-jesu          #+#    #+#             */
-/*   Updated: 2020/01/22 09:07:52 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/01/22 10:09:25 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static int		get_portal_type(t_portal *portal, t_sector *sector)
 	return (0);
 }
 
-void	print_picture(t_sdl *sdl, int x, int y, t_bmp img)
+static void	print_picture(t_sdl *sdl, int x, int y, t_bmp img)
 {
 	int xa;
 	int	ya;

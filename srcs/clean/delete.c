@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/22 15:46:27 by nde-jesu          #+#    #+#             */
-/*   Updated: 2020/01/15 15:28:23 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/01/22 09:53:47 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void			delete_vertex(t_vertex **vertex)
 	*vertex = NULL;
 }
 
-void			delete_portals(t_portal **portal)
+static void			delete_portals(t_portal **portal)
 {
 	t_portal	*tmp;
 	t_portal	*to_del;

@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 09:55:53 by nde-jesu          #+#    #+#             */
-/*   Updated: 2020/01/14 10:04:38 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/01/22 10:39:24 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ static t_sector	*get_last_sector(t_editor *editor)
 	return (sect);
 }
 
-void			next_place_sector(t_editor *edit, t_sector *sect)
+static void			next_place_sector(t_editor *edit, t_sector *sect)
 {
 	sect->vertex_count = count_vertex_in_sector(sect->vertex);
 	if (!(sect->is_portal = (int*)ft_memalloc(sizeof(int)

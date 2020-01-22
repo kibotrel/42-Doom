@@ -6,13 +6,13 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 14:05:19 by nde-jesu          #+#    #+#             */
-/*   Updated: 2020/01/08 15:11:08 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/01/22 10:02:55 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "editor.h"
 
-void	display_entities(t_sdl *sdl, t_entity *entity, int clr, bool fl)
+static void	display_entities(t_sdl *sdl, t_entity *entity, int clr, bool fl)
 {
 	t_entity	*print;
 
@@ -66,7 +66,7 @@ void	display_mouse(t_sdl *sdl, t_vertex mouse, int color)
 	put_pixel(sdl->surf, mouse.x - 1, mouse.y - 1, color);
 }
 
-void	wich_entity_to_display(t_editor *edit)
+void	which_entity_to_display(t_editor *edit)
 {
 	if (edit->sett != OBJECT)
 	{

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   elements_number.c                                  :+:      :+:    :+:   */
+/*   map_creation_utils.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/15 09:51:03 by nde-jesu          #+#    #+#             */
-/*   Updated: 2020/01/15 15:12:58 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/01/22 11:12:59 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ static int		count_vertex(t_vertex *all_vertex)
 	t_vertex	*vertex;
 	int			i;
 
+	if (!all_vertex)
+		return (0);
 	vertex = all_vertex;
 	i = 0;
 	while (vertex)
@@ -55,24 +57,12 @@ static int		count_vertex(t_vertex *all_vertex)
 void	get_elements_number(t_editor *editor, int fd)
 {
 	ft_putstr_fd("total vertexes ", fd);
-	if (editor->vertex)
-		ft_putnbr_fd(count_vertex(editor->vertex), fd);
-	else
-		ft_putnbr_fd(0, fd);
+	ft_putnbr_fd(count_vertex(editor->vertex), fd);
 	ft_putstr_fd(" sectors ", fd);
-	if (editor->sector)
-		ft_putnbr_fd(count_sector(editor->sector), fd);
-	else
-		ft_putnbr_fd(0, fd);
+	ft_putnbr_fd(count_sector(editor->sector), fd);
 	ft_putstr_fd(" enemies ", fd);
-	if (editor->enemy)
-		ft_putnbr_fd(count_entity(editor->enemy), fd);
-	else
-		ft_putnbr_fd(0, fd);
+	ft_putnbr_fd(count_entity(editor->enemy), fd);
 	ft_putstr_fd(" objects ", fd);
-	if (editor->object)
-		ft_putnbr_fd(count_entity(editor->object), fd);
-	else
-		ft_putnbr_fd(0, fd);
+	ft_putnbr_fd(count_entity(editor->object), fd);
 	ft_putstr_fd("\n\n", fd);
 }

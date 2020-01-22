@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2009/11/19 13:07:32 by reda-con          #+#    #+#             */
-/*   Updated: 2020/01/15 15:26:38 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/01/22 10:15:44 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void			blank_menu(SDL_Surface *s, int set, t_sdl sdl, int preset)
 {
 	int		clr;
 
-	draw_back_ground(s);
+	draw_background(s);
 	clr = ((set != SECTOR) ? 0xffffff : 0x289655);
 	rectangle(init_vertex(1340, 140), init_vertex(1510, 210), clr, s);
 	clr = ((set != PLAYER) ? 0xffffff : 0x177489);
@@ -39,7 +39,7 @@ void			blank_menu(SDL_Surface *s, int set, t_sdl sdl, int preset)
 	print_param_in_param(&sdl, set);
 }
 
-void			fst_clic_editor_menu(int y, t_editor *editor)
+static void			fst_clic_editor_menu(int y, t_editor *editor)
 {
 	int		fl;
 
@@ -101,7 +101,7 @@ static void		next_motion(t_sdl s, int set, int preset)
 		blank_menu(s.surf, set, s, preset);
 }
 
-void			option_motion(t_sdl s, int set, int preset)
+static void			option_motion(t_sdl s, int set, int preset)
 {
 	int		x;
 	int		y;

@@ -6,13 +6,13 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/20 17:05:02 by reda-con          #+#    #+#             */
-/*   Updated: 2020/01/21 10:57:03 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/01/22 09:50:17 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "editor.h"
 
-void		next_keydown(SDL_Event event, SDL_Surface *s, t_editor *editor)
+void			next_keydown(SDL_Event event, SDL_Surface *s, t_editor *editor)
 {
 	if (event.key.keysym.scancode == SDL_SCANCODE_1)
 	{
@@ -41,7 +41,7 @@ void		next_keydown(SDL_Event event, SDL_Surface *s, t_editor *editor)
 	}
 }
 
-static void	change_height(int *to_change, bool fl)
+static void		change_height(int *to_change, bool fl)
 {
 	if (fl == false)
 		--*to_change;
@@ -53,7 +53,7 @@ static void	change_height(int *to_change, bool fl)
 		--*to_change;
 }
 
-static void	change_type(int *to_change, bool fl)
+static void		change_type(int *to_change, bool fl)
 {
 	int		max;
 
@@ -68,7 +68,7 @@ static void	change_type(int *to_change, bool fl)
 		--*to_change;
 }
 
-void		change_percentage(int *to_change, bool fl)
+static void		change_percentage(int *to_change, bool fl)
 {
 	if (fl == false)
 		--*to_change;
@@ -80,7 +80,7 @@ void		change_percentage(int *to_change, bool fl)
 		--*to_change;
 }
 
-void		change_value(t_editor *editor, t_presets presets, bool fl)
+void			change_value(t_editor *editor, t_presets presets, bool fl)
 {
 	if (presets == SECTOR_FLOOR)
 		change_height(&editor->sector->h_floor, fl);
