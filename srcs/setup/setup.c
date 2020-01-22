@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/16 11:58:26 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/01/09 08:52:56 by vivi             ###   ########.fr       */
+/*   Updated: 2020/01/22 15:30:51 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ static void	time_track(t_env *env)
 	ft_bzero(&env->tick, sizeof(t_time));
 	ft_bzero(&env->tick.fly, sizeof(t_tick));
 }
+
 static void	error_messages(t_env *env)
 {
 	ft_bzero(env->error, sizeof(char*));
@@ -59,19 +60,23 @@ static void	infos_setup(t_env *env)
 	env->data.ui.max.y = env->h;
 	env->data.ui.max.x = floor(env->w / RATIO_UI_X) * 7;
 	if ((env->data.ui.background = get_dimensions(env->h)) == -1)
-	 	clean(env, E_BKGD);
+		clean(env, E_BKGD);
 	env->data.f_size = floor(env->w * MAX_FONT_SIZE / MAX_WIDTH);
 	env->cam.fly = -1;
 	env->cam.fall = 1;
 	env->cam.speed = 1;
 }
 
+/*
+**	Modify env->win to MENU once done
+*/
+
 void		env_setup(t_env *env)
 {
 	ft_bzero(env, sizeof(t_env));
 	env->w = WIN_W;
 	env->h = WIN_H;
-	env->win = GAME; // TEMPORARY
+	env->win = GAME;
 	assets_paths(env);
 	error_messages(env);
 	infos_setup(env);

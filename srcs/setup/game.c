@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   game.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/01/22 15:29:00 by kibotrel          #+#    #+#             */
+/*   Updated: 2020/01/22 15:29:51 by kibotrel         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <math.h>
 #include "game.h"
 #include "libft.h"
@@ -57,7 +69,7 @@ void			draw_setup(t_env *env, t_game *var, t_item *now, uint32_t i)
 	var->n = var->s->neighbor[i];
 	if (var->n >= 0)
 	{
-		var->ceil[1]  = env->sector[var->n].ceil  - env->cam.pos.z;
+		var->ceil[1] = env->sector[var->n].ceil - env->cam.pos.z;
 		var->floor[1] = env->sector[var->n].floor - env->cam.pos.z;
 	}
 	i = 0;
@@ -69,5 +81,4 @@ void			draw_setup(t_env *env, t_game *var, t_item *now, uint32_t i)
 	}
 	var->start = fmax(var->side[0], now->min);
 	var->end = fmin(var->side[1], now->max);
-
 }
