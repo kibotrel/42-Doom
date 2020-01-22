@@ -6,19 +6,17 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/08 20:33:18 by kibotrel          #+#    #+#             */
-/*   Updated: 2019/10/08 21:35:28 by kibotrel         ###   ########.fr       */
+/*   Updated: 2020/01/22 15:28:08 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "core.h"
 #include "libft.h"
-#include "env.h"
-#include "doom.h"
 
 void	menu_click(t_env *env, t_ui ui, int x, int y)
 {
-	int	n;
-	int	box;
-	int	size;
+	uint8_t	n;
+	uint8_t	box;
 
 	n = 1;
 	box = 0;
@@ -29,8 +27,7 @@ void	menu_click(t_env *env, t_ui ui, int x, int y)
 			&& x >= ui.min.x && x <= ui.max.x)
 		{
 			env->win = box;
-			size = env->sdl.screen->h * env->sdl.screen->pitch;
-			ft_bzero(env->sdl.screen->pixels, size);
+			ft_bzero(env->sdl.screen->pixels, env->data.w_size);
 			selector(env);
 			break ;
 		}

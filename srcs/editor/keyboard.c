@@ -1,31 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   selector.c                                         :+:      :+:    :+:   */
+/*   keyboard.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/18 14:21:13 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/01/22 15:15:09 by kibotrel         ###   ########.fr       */
+/*   Created: 2019/10/10 16:26:14 by kibotrel          #+#    #+#             */
+/*   Updated: 2019/10/15 21:18:06 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "core.h"
-#include "clean.h"
 
-void	selector(t_env *env)
+void	editor_keyboard(t_env *env)
 {
-	if (env->win == MENU)
-		menu(env);
-	else if (env->win == GAME)
+	if (env->input[SDL_SCANCODE_BACKSPACE])
 	{
-		SDL_WarpMouseInWindow(env->sdl.win, env->w / 2, env->h / 2);
-		game(env);
+		env->win = MENU;
+		menu(env);
 	}
-	else if (env->win == EDITOR)
-		editor(env);
-	else if (env->win == SETTINGS)
-		settings(env);
-	else if (env->win == QUIT)
-		clean(env, NOTHING);
 }

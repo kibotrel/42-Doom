@@ -1,31 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   selector.c                                         :+:      :+:    :+:   */
+/*   usage.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/18 14:21:13 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/01/22 15:15:09 by kibotrel         ###   ########.fr       */
+/*   Created: 2019/09/19 15:29:59 by kibotrel          #+#    #+#             */
+/*   Updated: 2019/10/15 21:16:13 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "core.h"
-#include "clean.h"
+#include "libft.h"
 
-void	selector(t_env *env)
+void	usage(void)
 {
-	if (env->win == MENU)
-		menu(env);
-	else if (env->win == GAME)
-	{
-		SDL_WarpMouseInWindow(env->sdl.win, env->w / 2, env->h / 2);
-		game(env);
-	}
-	else if (env->win == EDITOR)
-		editor(env);
-	else if (env->win == SETTINGS)
-		settings(env);
-	else if (env->win == QUIT)
-		clean(env, NOTHING);
+	ft_putendl("usage: ./doom-nukem \'data-file\'");
 }

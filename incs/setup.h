@@ -1,31 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   selector.c                                         :+:      :+:    :+:   */
+/*   setup.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/18 14:21:13 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/01/22 15:15:09 by kibotrel         ###   ########.fr       */
+/*   Created: 2019/10/15 18:43:02 by kibotrel          #+#    #+#             */
+/*   Updated: 2020/01/22 15:34:04 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "core.h"
-#include "clean.h"
+#ifndef SETUP_H
+# define SETUP_H
 
-void	selector(t_env *env)
-{
-	if (env->win == MENU)
-		menu(env);
-	else if (env->win == GAME)
-	{
-		SDL_WarpMouseInWindow(env->sdl.win, env->w / 2, env->h / 2);
-		game(env);
-	}
-	else if (env->win == EDITOR)
-		editor(env);
-	else if (env->win == SETTINGS)
-		settings(env);
-	else if (env->win == QUIT)
-		clean(env, NOTHING);
-}
+# include "game.h"
+
+/*
+**	setup.c
+*/
+
+void	env_setup(t_env *env);
+
+/*
+**	graphic.c
+*/
+
+void	graphic_setup(t_env *env, t_sdl *sdl);
+
+/*
+**	game.c
+*/
+
+void	game_setup(t_env *env, t_game *var);
+void	draw_setup(t_env *env, t_game *var, t_item *now, uint32_t i);
+
+#endif

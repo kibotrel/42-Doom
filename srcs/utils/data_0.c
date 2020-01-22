@@ -1,56 +1,56 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   data.c                                             :+:      :+:    :+:   */
+/*   data_0.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/19 16:28:40 by kibotrel          #+#    #+#             */
-/*   Updated: 2019/10/09 03:47:05 by kibotrel         ###   ########.fr       */
+/*   Updated: 2020/01/14 13:34:45 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include "SDL.h"
-#include "doom.h"
+#include "utils.h"
 
-void	police_color(SDL_Color *color, int r, int g, int b)
+void	line_params(t_line *line, t_pos a, t_pos b)
+{
+	line->sign.y = (a.y < b.y ? 1 : -1);
+	line->sign.x = (a.x < b.x ? 1 : -1);
+	line->delta.y = abs(b.y - a.y);
+	line->delta.x = abs(b.x - a.x);
+	line->offset = line->delta.x - line->delta.y;
+	line->error = 0;
+}
+
+void	police_color(SDL_Color *color, uint8_t r, uint8_t g, uint8_t b)
 {
 	color->r = r;
 	color->g = g;
 	color->b = b;
 }
 
-void	paste_position(SDL_Rect *pos, int x, int y)
+void	paste_position(SDL_Rect *pos, t_pos scale)
 {
-	pos->x = x;
-	pos->y = y;
+	pos->x = scale.x;
+	pos->y = scale.y;
 }
 
-char	*get_string(int n)
+t_vec2d	v2d(double x, double y)
 {
-	if (n == 1)
-		return ("GAME");
-	if (n == 3)
-		return ("EDITOR");
-	if (n == 5)
-		return ("SETTINGS");
-	if (n == 7)
-		return ("QUIT");
-	else
-		return (NULL);
+	t_vec2d	p;
+
+	p.x = x;
+	p.y = y;
+	return (p);
 }
 
-int		get_dimensions(int height)
+t_vec3d	v3d(double x, double y, double z)
 {
-	if (height == 1080)
-		return (MENU_1080P);
-	if (height == 900)
-		return (MENU_900P);
-	if (height == 768)
-		return (MENU_768P);
-	if (height == 720)
-		return (MENU_720P);
-	else
-		return (-1);
+	t_vec3d	p;
+
+	p.x = x;
+	p.y = y;
+	p.z = z;
+	return (p);
 }

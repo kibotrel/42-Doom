@@ -6,30 +6,36 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/16 12:45:38 by kibotrel          #+#    #+#             */
-/*   Updated: 2019/10/08 19:42:23 by kibotrel         ###   ########.fr       */
+/*   Updated: 2020/01/22 15:03:56 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "SDL.h"
-#include "env.h"
-#include "doom.h"
+#include "game.h"
+#include "clean.h"
+#include "events.h"
 
-void	hooks(t_env *env, t_sdl *sdl)
+/*
+** printf("%d\n", sdl->event.key.keysym.scancode);
+*/
+
+void	global_hooks(t_env *env, t_sdl *sdl)
 {
-	while (1)
+	while (SDL_PollEvent(&sdl->event))
 	{
-		while (SDL_PollEvent(&sdl->event))
-		{
-			if (sdl->event.type == SDL_QUIT)
-				clean(env, NOTHING);
-			else if (sdl->event.type == SDL_KEYDOWN)
-				handle_keyboard(env, sdl);
-			else if (sdl->event.type == SDL_MOUSEBUTTONDOWN)
-				handle_mouse(env, sdl);
-			else if (sdl->event.type == SDL_MOUSEMOTION)
-				handle_motion(env, sdl);
-		}
-		if (SDL_UpdateWindowSurface(sdl->win))
-			clean(env, E_SDL_UPDATE);
+		if (sdl->event.type == SDL_QUIT)
+			clean(env, NOTHING);
+		if (env->sdl.event.type == SDL_KEYDOWN)
+			env->input[sdl->event.key.keysym.scancode] = 1;
+		if (env->sdl.event.type == SDL_KEYUP)
+			env->input[sdl->event.key.keysym.scancode] = 0;
+		if (sdl->event.type == SDL_MOUSEBUTTONDOWN)
+			handle_mouse(env, sdl);
+		if (sdl->event.type == SDL_MOUSEMOTION)
+			handle_motion(env, sdl);
+		if (env->sdl.event.window.event == SDL_WINDOWEVENT_CLOSE)
+			clean(env, NOTHING);
 	}
+	handle_keyboard(env);
+	if (env->win == GAME)
+		move(env);
 }

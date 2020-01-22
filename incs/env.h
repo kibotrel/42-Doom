@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/16 11:54:25 by kibotrel          #+#    #+#             */
-/*   Updated: 2019/10/09 03:37:09 by kibotrel         ###   ########.fr       */
+/*   Updated: 2020/01/14 13:13:38 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,46 +17,39 @@
 **	Useful values
 */
 
+# define CAM_H			6
+# define WIN_H			720
+# define WIN_W			1280
+# define SNEAK_H		2.5
+# define QUEUE_MAX		32
+# define MAX_WIDTH		1920
 # define RATIO_UI_X		8
 # define RATIO_UI_Y		9
-# define MAX_WIDTH		1920
+# define MARGIN_HEAD	1
+# define MARGIN_KNEE	2
 # define MAX_FONT_SIZE	64
 
 /*
-** Useful strings
+** String macros
 */
 
-# define E_CODE			"\033[31;1mError:\033[0m "
+# define M_BKGD			"\033[31;1mError:\033[0m Menu background not available"
+# define M_MALLOC		"\033[31;1mError:\033[0m Can't allocate memory."
+# define M_SDL_WIN		"\033[31;1mError:\033[0m Can't create SDL window."
+# define M_FILENAME		"\033[31;1mError:\033[0m Incorrect filename (*.data)."
+# define M_TTF_FONT		"\033[31;1mError:\033[0m Can't load the given font."
+# define M_TTF_INIT		"\033[31;1mError:\033[0m Can't init TTF connexion."
+# define M_SDL_BLIT		"\033[31;1mError:\033[0m Can't blit text on the screen."
+# define M_SDL_INIT		"\033[31;1mError:\033[0m Can't init SDL connexion."
+# define M_BMP_PARSE	"\033[31;1mError:\033[0m Can't load the given BMP file."
+# define M_SDL_UPDATE	"\033[31;1mError:\033[0m Can't update the given frame."
+# define M_TTF_RENDER	"\033[31;1mError:\033[0m Can't write text on surface."
+# define M_SDL_WINSURF	"\033[31;1mError:\033[0m Can't retrieve window surface."
 
-# define M_BKGD			E_CODE "Menu background not available"
-# define M_SDL_WIN		E_CODE "Can't create SDL window."
-# define M_FILENAME		E_CODE "Incorrect filename (*.data)."
-# define M_TTF_FONT		E_CODE "Can't load the given font."
-# define M_TTF_INIT		E_CODE "Can't initialize TTF connexion."
-# define M_SDL_BLIT		E_CODE "Can't blit text with the screen."
-# define M_SDL_INIT		E_CODE "Can't initialize SDL connexion."
-# define M_BMP_PARSE	E_CODE "Can't parse the given BMP file."
-# define M_SDL_UPDATE	E_CODE "Can't update the given frame."
-# define M_TTF_RENDER	E_CODE "Can't write text on SDL Surface."
-# define M_SDL_WINSURF	E_CODE "Can't retrieve SDL window's surface."
-
-/*
-**	Environement informations
-*/
-
-# define WIN_W			1920
-# define WIN_H			1080
-
-# define TXT_GAME		" - Game"
-# define TXT_MENU		" - Menu"
-# define TXT_EDITOR		" - Editor"
-# define TXT_SETTINGS	" - Settings"
-# define TXT_WINDOW		"Doom-Nukem v0.0.3"
-
-# define TITLE_MENU		TXT_WINDOW TXT_MENU
-# define TITLE_GAME		TXT_WINDOW TXT_GAME
-# define TITLE_EDITOR	TXT_WINDOW TXT_EDITOR
-# define TITLE_SETTINGS	TXT_WINDOW TXT_SETTINGS
+# define TITLE_MENU		"Doom-Nukem v0.2.1 - Menu"
+# define TITLE_GAME		"Doom-Nukem v0.2.1 - Game"
+# define TITLE_EDITOR	"Doom-Nukem v0.2.1 - Editor"
+# define TITLE_SETTINGS	"Doom-Nukem v0.2.1 - Settings"
 
 /*
 **	Color codes

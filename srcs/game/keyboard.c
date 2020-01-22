@@ -5,22 +5,33 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/16 15:23:52 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/01/22 15:15:43 by kibotrel         ###   ########.fr       */
+/*   Created: 2019/10/10 15:11:44 by kibotrel          #+#    #+#             */
+/*   Updated: 2020/01/22 15:26:09 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "game.h"
-#include "clean.h"
 #include "utils.h"
-#include "editor.h"
 
-void	handle_keyboard(t_env *env)
+/*
+** 	env->setup in Backspace to hide cursor again if user goes back into game
+*/
+
+void	game_keyboard(t_env *env)
 {
-	if (env->input[SDL_SCANCODE_ESCAPE])
-		clean(env, NOTHING);
-	if (env->win == GAME)
-		game_keyboard(env);
-	else if (env->win == EDITOR)
-		editor_keyboard(env);
+	if (env->input[SDL_SCANCODE_BACKSPACE])
+	{
+		env->win = MENU;
+		SDL_ShowCursor(SDL_ENABLE);
+	}
+	if (env->input[SDL_SCANCODE_F])
+	{
+		env->tick.fly.new = SDL_GetTicks();
+		if (env->tick.fly.new > env->tick.fly.old + 160)
+			env->cam.fly *= -1;
+		env->tick.fly.old = env->tick.fly.new;
+	}
+	if (env->input[SDL_SCANCODE_SPACE])
+		jump(env, &env->cam);
+	cam_height(env, env->input[SDL_SCANCODE_LSHIFT]);
 }

@@ -6,17 +6,18 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/08 20:34:23 by kibotrel          #+#    #+#             */
-/*   Updated: 2019/10/09 02:53:24 by kibotrel         ###   ########.fr       */
+/*   Updated: 2020/01/22 15:28:11 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "env.h"
-#include "doom.h"
+#include "core.h"
+#include "utils.h"
 
 void	menu_hover(t_env *env, t_ui ui, int x, int y)
 {
-	int	n;
-	int	button;
+	uint8_t	n;
+	uint8_t	button;
 
 	n = 1;
 	button = env->data.ui.button;
@@ -26,9 +27,9 @@ void	menu_hover(t_env *env, t_ui ui, int x, int y)
 			&& x >= ui.min.x && x <= ui.max.x)
 		{
 			draw_button(env, env->data.ui, RED, n);
-			police_color(&env->sdl.color, 255, 0, 0);
+			police_color(&env->sdl.color, 0xFF, 0x00, 0x00);
 			text_to_screen(env, &env->sdl, get_string(n), n);
-			police_color(&env->sdl.color, 255, 255, 255);
+			police_color(&env->sdl.color, 0xFF, 0xFF, 0xFF);
 			env->data.ui.button = n;
 			return ;
 		}

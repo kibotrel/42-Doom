@@ -1,31 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   selector.c                                         :+:      :+:    :+:   */
+/*   menu.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/18 14:21:13 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/01/22 15:15:09 by kibotrel         ###   ########.fr       */
+/*   Created: 2019/10/15 21:24:54 by kibotrel          #+#    #+#             */
+/*   Updated: 2020/01/14 13:04:04 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "core.h"
-#include "clean.h"
+#ifndef MENU_H
+# define MENU_H
 
-void	selector(t_env *env)
-{
-	if (env->win == MENU)
-		menu(env);
-	else if (env->win == GAME)
-	{
-		SDL_WarpMouseInWindow(env->sdl.win, env->w / 2, env->h / 2);
-		game(env);
-	}
-	else if (env->win == EDITOR)
-		editor(env);
-	else if (env->win == SETTINGS)
-		settings(env);
-	else if (env->win == QUIT)
-		clean(env, NOTHING);
-}
+# include "structs.h"
+
+/*
+**	click.c
+*/
+
+void	menu_click(t_env *env, t_ui ui, int x, int y);
+
+/*
+**	motion.c
+*/
+
+void	menu_hover(t_env *env, t_ui ui, int x, int y);
+void	cam_motion(t_env *env, t_cam *cam, int x, int y);
+
+#endif

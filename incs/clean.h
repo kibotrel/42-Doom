@@ -1,31 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   selector.c                                         :+:      :+:    :+:   */
+/*   clean.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/18 14:21:13 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/01/22 15:15:09 by kibotrel         ###   ########.fr       */
+/*   Created: 2019/10/15 19:08:43 by kibotrel          #+#    #+#             */
+/*   Updated: 2020/01/14 13:07:50 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "core.h"
-#include "clean.h"
+#ifndef CLEAN_H
+# define CLEAN_H
 
-void	selector(t_env *env)
-{
-	if (env->win == MENU)
-		menu(env);
-	else if (env->win == GAME)
-	{
-		SDL_WarpMouseInWindow(env->sdl.win, env->w / 2, env->h / 2);
-		game(env);
-	}
-	else if (env->win == EDITOR)
-		editor(env);
-	else if (env->win == SETTINGS)
-		settings(env);
-	else if (env->win == QUIT)
-		clean(env, NOTHING);
-}
+# include "game.h"
+
+/*
+**	env.c
+*/
+
+void	clean(t_env *env, uint8_t error);
+
+/*
+**	sdl.c
+*/
+
+void	sdl_clean(t_sdl *sdl);
+
+/*
+**	ttf.c
+*/
+
+void	ttf_clean(t_sdl *sdl);
+
+/*
+**	engine.c
+*/
+
+void	engine_clean(t_game *var);
+
+#endif

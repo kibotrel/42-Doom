@@ -1,9 +1,10 @@
 # Objects directories - Files
 objs
 build
-sdl
-sdl_ttf
+SDL2*
 *.o
+*.txt
+TODO*
 
 # Static libraries - Headers
 *.a

@@ -6,17 +6,16 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/08 19:56:17 by kibotrel          #+#    #+#             */
-/*   Updated: 2019/10/09 03:21:03 by kibotrel         ###   ########.fr       */
+/*   Updated: 2020/01/22 15:15:07 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "SDL.h"
 #include "env.h"
-#include "doom.h"
+#include "utils.h"
 
-void	draw_button(t_env *env, t_ui ui, int color, int n)
+void	draw_button(t_env *env, t_ui ui, uint32_t color, uint8_t n)
 {
-	t_point	p;
+	t_pos	p;
 
 	p.y = ui.min.y * n;
 	while (p.y <= ui.min.y * (n + 1))
@@ -35,7 +34,7 @@ void	draw_button(t_env *env, t_ui ui, int color, int n)
 
 void	draw_ui(t_env *env)
 {
-	int	i;
+	uint8_t	i;
 
 	i = 1;
 	while (i < RATIO_UI_Y)

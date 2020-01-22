@@ -6,21 +6,20 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/16 11:54:18 by kibotrel          #+#    #+#             */
-/*   Updated: 2019/10/09 03:32:22 by kibotrel         ###   ########.fr       */
+/*   Updated: 2020/01/22 15:30:00 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "SDL.h"
-#include "SDL_ttf.h"
-#include "bmp.h"
+#include "clean.h"
 #include "libft.h"
-#include "doom.h"
+#include "setup.h"
+#include "utils.h"
 
 static void	sdl_setup(t_env *env, t_sdl *sdl)
 {
-	int		asset;
-	int		config;
-	t_point	p;
+	int32_t		config;
+	uint32_t	asset;
+	t_pos		p;
 
 	p.x = env->w;
 	p.y = env->h;
@@ -35,6 +34,7 @@ static void	sdl_setup(t_env *env, t_sdl *sdl)
 	while (++asset < NB_ASSETS)
 		if (bmp_to_array(env->asset[asset], &sdl->bmp[asset]))
 			clean(env, E_BMP_PARSE);
+	env->data.w_size = sdl->screen->h * sdl->screen->pitch;
 }
 
 static void	ttf_setup(t_env *env, t_sdl *sdl)
@@ -43,7 +43,7 @@ static void	ttf_setup(t_env *env, t_sdl *sdl)
 		clean(env, E_TTF_INIT);
 	if (!(sdl->font = TTF_OpenFont("assets/atlas.ttf", env->data.f_size)))
 		clean(env, E_TTF_FONT);
-	police_color(&sdl->color, 255, 255, 255);
+	police_color(&sdl->color, 0xFF, 0xFF, 0xFF);
 }
 
 void		graphic_setup(t_env *env, t_sdl *sdl)
