@@ -6,11 +6,34 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/07 14:09:35 by nde-jesu          #+#    #+#             */
-/*   Updated: 2020/01/14 09:46:53 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/01/22 09:07:52 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "editor.h"
+
+static int		get_portal_type(t_portal *portal, t_sector *sector)
+{
+	t_sector *sect;
+	t_portal *port;
+
+	sect = sector;
+	while (sect->prev)
+		sect = sect->prev;
+	while (sect)
+	{
+		port = sect->portal;
+		while (port)
+		{
+			if (port->extrems[0].x == portal->extrems[0].x && port->extrems[0].y == portal->extrems[0].y &&
+				port->extrems[1].x == portal->extrems[1].x && port->extrems[1].y == portal->extrems[1].y)
+				return (port->type);
+			port = port->next;
+		}
+		sect = sect->next;
+	}
+	return (0);
+}
 
 void	print_picture(t_sdl *sdl, int x, int y, t_bmp img)
 {
@@ -35,6 +58,8 @@ void	print_params_image(t_editor *edit, t_presets presets, t_settings sett)
 	int		i;
 	int		j;
 
+	if (!edit->sector || !edit->object || !edit->enemy || !edit->portals)
+		return ;
 	if (sett == SECTOR && presets == SECTOR_TEXT)
 	{
 		i = 0;
@@ -53,7 +78,7 @@ void	print_params_image(t_editor *edit, t_presets presets, t_settings sett)
 	else if (sett == PORTAL && presets == PORTAL_TYPE)
 		{
 			i = 3;
-			j = edit->portals->type;
+			j = get_portal_type(edit->portals, edit->sector);
 		}
 	else
 		return ;

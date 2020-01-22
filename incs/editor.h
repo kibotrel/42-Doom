@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 08:52:03 by nde-jesu          #+#    #+#             */
-/*   Updated: 2020/01/15 15:11:17 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/01/21 10:54:00 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -364,7 +364,7 @@ void				put_fov(SDL_Surface *surf, t_vertex pt, int agl, int color);
 void				clean(t_editor *e);
 void				print_more_minus(t_sdl *sdl);
 void				init_count(t_count *count);
-
+void				change_portal_type(t_sector *all, t_portal *portal, bool way);
 /*
 **	picture.c
 */

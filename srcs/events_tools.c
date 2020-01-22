@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/20 17:05:02 by reda-con          #+#    #+#             */
-/*   Updated: 2020/01/14 10:22:59 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/01/21 10:57:03 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,14 +53,11 @@ static void	change_height(int *to_change, bool fl)
 		--*to_change;
 }
 
-static void	change_type(int *to_change, bool fl, t_settings set)
+static void	change_type(int *to_change, bool fl)
 {
 	int		max;
 
-	if (set == PORTAL)
-		max = 1;
-	else
-		max = 3;
+	max = 3;
 	if (fl == false)
 		--*to_change;
 	else
@@ -90,7 +87,7 @@ void		change_value(t_editor *editor, t_presets presets, bool fl)
 	else if (presets == SECTOR_CEIL)
 		change_height(&editor->sector->h_ceil, fl);
 	else if (presets == SECTOR_TEXT)
-		change_type(&editor->sector->texture, fl, editor->sett);
+		change_type(&editor->sector->texture, fl);
 	else if (presets == SECTOR_MOVE)
 		move_in_sector(&editor->sector, fl);
 	else if (presets == SECTOR_GRAV)
@@ -98,9 +95,9 @@ void		change_value(t_editor *editor, t_presets presets, bool fl)
 	else if (presets == SECTOR_VISC)
 		change_percentage(&editor->sector->viscosity, fl);
 	else if (presets == ENTITY_TYPE && editor->sett == ENEMY && editor->enemy)
-		change_type(&editor->enemy->type, fl, editor->sett);
+		change_type(&editor->enemy->type, fl);
 	else if (presets == ENTITY_TYPE && editor->sett == OBJECT && editor->object)
-		change_type(&editor->object->type, fl, editor->sett);
+		change_type(&editor->object->type, fl);
 	else if (presets == ENTITY_MOVE && editor->sett == ENEMY)
 		move_in_entities(&editor->enemy, fl);
 	else if (presets == ENTITY_MOVE && editor->sett == OBJECT)
@@ -114,5 +111,5 @@ void		change_value(t_editor *editor, t_presets presets, bool fl)
 	else if (presets == PORTAL_MOVE)
 		move_in_portals(&editor->portals, fl);
 	else if (presets == PORTAL_TYPE && editor->portals)
-		change_type(&editor->portals->type, fl, editor->sett);
+		change_portal_type(editor->sector, editor->portals, fl);
 }

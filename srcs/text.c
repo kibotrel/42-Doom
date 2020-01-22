@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/27 14:44:48 by nde-jesu          #+#    #+#             */
-/*   Updated: 2020/01/15 15:24:13 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/01/22 08:58:05 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,7 @@ void		print_param_to_screen(t_sdl *sdl, t_settings sett, t_editor *editor)
 	where.x = 1445;
 	tmp = TTF_RenderText_Solid(sdl->font, g_first_params[6], sdl->color);
 	SDL_BlitSurface(tmp, 0, sdl->surf, &where);
-	if (editor->presets != NONE)
+	if (editor->presets != NONE && editor->sector)
 		print_sector_values(sdl, editor->sector, editor->presets);
 	if ((editor->presets == ENTITY_TYPE && ((sett == ENEMY && editor->enemy)
 					|| (sett == OBJECT && editor->object)))
