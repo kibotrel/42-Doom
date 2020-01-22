@@ -6,11 +6,12 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/08 19:41:08 by kibotrel          #+#    #+#             */
-/*   Updated: 2019/12/16 11:35:02 by demonwaves       ###   ########.fr       */
+/*   Updated: 2020/01/22 15:16:51 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "menu.h" // Need to fix a bug with this include
+#include "game.h"
+#include "menu.h"
 
 void	handle_motion(t_env *env, t_sdl *sdl)
 {
