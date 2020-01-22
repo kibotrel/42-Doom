@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   physics.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/01/22 15:18:26 by kibotrel          #+#    #+#             */
+/*   Updated: 2020/01/22 15:19:53 by kibotrel         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <limits.h>
 #include "env.h"
 #include "game.h"
@@ -63,13 +75,19 @@ void		vertical_movement(t_env *env, t_sector sector, double cam_height)
 		env->cam.move = 1;
 	}
 }
+
+/*
+**	Need to replace vel = 0 by sliding algorithm
+*/
+
 void		horizontal_movement(t_env *env, t_vec2d p, t_vec2d vel, double view)
 {
 	uint32_t	i;
 	uint32_t	points;
 	double		hole[2];
-	t_vec2d*	v = env->sector[env->cam.sector].vertex;
+	t_vec2d		*v;
 
+	v = env->sector[env->cam.sector].vertex;
 	i = 0;
 	points = env->sector[env->cam.sector].points;
 	while (i < points)
@@ -80,7 +98,8 @@ void		horizontal_movement(t_env *env, t_vec2d p, t_vec2d vel, double view)
 			if (hole[0] > env->cam.pos.z - view + MARGIN_KNEE
 				|| hole[1] < env->cam.pos.z + MARGIN_HEAD)
 			{
-				vel.x = 0; vel.y = 0; //Need to implement inverse normal vector to slide along the wall
+				vel.x = 0;
+				vel.y = 0;
 				env->cam.move = 0;
 			}
 		}

@@ -6,19 +6,22 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/10 15:11:44 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/01/09 08:33:07 by vivi             ###   ########.fr       */
+/*   Updated: 2020/01/22 15:26:09 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "game.h"
 #include "utils.h"
 
+/*
+** 	env->setup in Backspace to hide cursor again if user goes back into game
+*/
+
 void	game_keyboard(t_env *env)
 {
 	if (env->input[SDL_SCANCODE_BACKSPACE])
 	{
 		env->win = MENU;
-		//env->setup = 0; // To hide cursor again if user goes back into game
 		SDL_ShowCursor(SDL_ENABLE);
 	}
 	if (env->input[SDL_SCANCODE_F])

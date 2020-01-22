@@ -3,6 +3,8 @@ objs
 build
 SDL2*
 *.o
+*.txt
+TODO*
 
 # Static libraries - Headers
 *.a

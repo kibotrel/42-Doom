@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   engine.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/01/22 15:22:56 by kibotrel          #+#    #+#             */
+/*   Updated: 2020/01/22 15:25:31 by kibotrel         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <math.h>
 #include "env.h"
 #include "game.h"
@@ -21,22 +33,25 @@ void	physics(t_env *env)
 		horizontal_movement(env, pos, vel, sight);
 }
 
+/*
+**	WORK IN PROGRESS TEXTURES
+**
+**	t_bmp		bmp;
+**	bmp_to_array("/Users/lojesu/exo42/42-Doom/srcs/texture/wall1.bmp", &bmp);
+**
+**	PS : Vu que la structure du code à changé, ce que tu es entrain de faire
+**	ce trouve maintenant dans draw_screen() tu auras surement besoin de
+**	changer le prototype mais tout y est !
+*/
+
 void	graphics(t_env *env, t_game *var)
 {
 	uint32_t	i;
 	uint32_t	j;
 	t_item		now;
 
-	//WORK IN PROGRESS TEXTURES
-
-	// t_bmp		bmp;
-	// bmp_to_array("/Users/lojesu/exo42/42-Doom/srcs/texture/wall1.bmp", &bmp);
-
-	// PS : Vu que la structure du code à changé, ce que tu es entrain de faire ce trouve maintenant dans
-	// draw_screen() tu auras surement besoin de changer le prototype mais tout y est !
-
 	i = 0;
-	while(i++ == 0 || var->head != var->tail)
+	while (i++ == 0 || var->head != var->tail)
 	{
 		j = 0;
 		if (cycle_check(env, var, &now))
@@ -50,7 +65,7 @@ void	graphics(t_env *env, t_game *var)
 				continue;
 			}
 			draw_setup(env, var, &now, j);
-			draw_screen(env, var); // <----- Affichage ici : Murs - Sols - Plafonds
+			draw_screen(env, var);
 			check_depth(var, var->start, var->end);
 			j++;
 		}

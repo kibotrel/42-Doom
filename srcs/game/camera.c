@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/11 14:21:04 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/01/09 10:04:56 by vivi             ###   ########.fr       */
+/*   Updated: 2020/01/22 15:22:49 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,14 @@ void	cam_motion(t_env *env, t_cam *cam, int x, int y)
 
 void	update_cam(t_env *env, t_vec2d vel)
 {
-	uint32_t	i;
-	t_sector	*s = &env->sector[env->cam.sector];
-	t_vec2d		*v = s->vertex;
 	t_vec2d		p;
+	t_vec2d		*v;
+	uint32_t	i;
+	t_sector	*s;
 
 	i = 0;
+	s = &env->sector[env->cam.sector];
+	v = s->vertex;
 	p = v2d(env->cam.pos.x, env->cam.pos.y);
 	while (i < s->points)
 	{
@@ -43,7 +45,7 @@ void	update_cam(t_env *env, t_vec2d vel)
 			&& check_collisions(p, vel, v[i], v[(i + 1) % s->points]))
 		{
 			env->cam.sector = s->neighbor[i];
-			break;
+			break ;
 		}
 		i++;
 	}
