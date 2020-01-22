@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   sector.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: reda-con <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: reda-con <reda-con@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/17 16:35:58 by reda-con          #+#    #+#             */
-/*   Updated: 2019/10/23 18:11:00 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/01/22 16:11:54 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parse.h"
-#include "../../libft/incs/libft.h"
+#include "libft.h"
 #include <stdlib.h>
 
 t_sector	*sec_new(int n, t_height h, t_ver_port v_p)

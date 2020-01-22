@@ -6,7 +6,7 @@
 #    By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/10 16:16:29 by kibotrel          #+#    #+#              #
-#    Updated: 2020/01/22 16:07:37 by kibotrel         ###   ########.fr        #
+#    Updated: 2020/01/22 16:09:45 by kibotrel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -55,10 +55,12 @@ OBJS_SUBDIRS	+= game
 OBJS_SUBDIRS	+= menu
 OBJS_SUBDIRS	+= setup
 OBJS_SUBDIRS	+= clean
+OBJS_SUBDIRS	+= parse
 OBJS_SUBDIRS	+= utils
 OBJS_SUBDIRS	+= editor
 OBJS_SUBDIRS	+= events
-OBJS_SUBDIRS	+= parse
+OBJS_SUBDIRS	+= texture
+
 
 
 #------------------------------------ FILES -----------------------------------#
@@ -77,6 +79,7 @@ INCS			+= incs/core.h
 INCS			+= incs/game.h
 INCS			+= incs/menu.h
 INCS			+= incs/clean.h
+INCS			+= incs/parse.h
 INCS			+= incs/enums.h
 INCS			+= incs/setup.h
 INCS			+= incs/utils.h
@@ -104,6 +107,13 @@ SRCS			+= clean/env.c
 SRCS			+= clean/sdl.c
 SRCS			+= clean/ttf.c
 SRCS			+= clean/engine.c
+SRCS			+= parse/ennemy.c
+SRCS			+= parse/main.c
+SRCS			+= parse/object.c
+SRCS			+= parse/sector.c
+SRCS			+= parse/tools.c
+SRCS			+= parse/vertex.c
+SRCS			+= parse/debug.c
 SRCS			+= setup/game.c
 SRCS			+= setup/setup.c
 SRCS			+= setup/graphic.c

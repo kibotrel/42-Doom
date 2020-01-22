@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/18 14:38:11 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/01/22 15:09:34 by kibotrel         ###   ########.fr       */
+/*   Updated: 2020/01/22 16:25:41 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ static void	temporary_setup(t_env *env)
 		clean(env, E_MALLOC);
 	if (!(env->sector[12].neighbor = (int32_t*)malloc(sizeof(int32_t) * 4)))
 		clean(env, E_MALLOC);
-	env->sector[0].ceil = 36;
+	env->sector[0].ceil = 64;
 	env->sector[0].floor = 16;
 	env->sector[0].points = 6;
 	env->sector[0].vertex[0] = v2d(0, 0);

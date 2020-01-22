@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/16 11:54:10 by kibotrel          #+#    #+#             */
-/*   Updated: 2019/10/23 18:52:20 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/01/22 16:12:32 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -228,10 +228,6 @@ void				police_color(SDL_Color *color, int r, int g, int b);
 
 void				scale_text(t_env *e, SDL_Rect *where, char *text, int pos);
 
-
-
-
-
-
 int					main_parse(char *file, t_env *env);
+
 #endif

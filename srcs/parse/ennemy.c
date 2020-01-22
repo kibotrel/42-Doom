@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ennemy.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: reda-con <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: reda-con <reda-con@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 16:20:25 by reda-con          #+#    #+#             */
-/*   Updated: 2019/10/23 17:02:30 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/01/22 16:11:19 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parse.h"
 #include <stdlib.h>
-#include "../../libft/incs/libft.h"
+#include "libft.h"
 
 t_ennemy	*en_new(int n, t_point pt)
 {
