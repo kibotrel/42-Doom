@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/16 11:54:25 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/01/23 17:32:19 by demonwaves       ###   ########.fr       */
+/*   Updated: 2020/01/23 21:14:59 by demonwaves       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@
 # define RATIO_UI_Y		9
 # define MARGIN_HEAD	1
 # define MARGIN_KNEE	2
+# define RATIO_GRID_X	56
+# define RATIO_GRID_Y	32
 # define MAX_FONT_SIZE	64
 
 /*

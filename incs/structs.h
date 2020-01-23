@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 18:48:17 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/01/23 19:44:55 by demonwaves       ###   ########.fr       */
+/*   Updated: 2020/01/23 21:07:51 by demonwaves       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,12 @@ typedef struct	s_ui
 	uint8_t		button;
 }				t_ui;
 
+typedef struct	s_grid
+{
+	t_pos		min;
+	t_pos		max;
+}				t_grid;
+
 /*
 ** Graphic library informations.
 */
@@ -57,7 +63,7 @@ typedef struct	s_ui
 typedef struct	s_sdl
 {
 	t_bmp		bmp[NB_ASSETS];
-	TTF_Font	*font;
+	TTF_Font	*font[2];
 	SDL_Event	event;
 	SDL_Color	color;
 	SDL_Window	*win;
@@ -71,7 +77,9 @@ typedef struct	s_sdl
 typedef struct	s_data
 {
 	t_ui		ui;
+	t_grid		grid;
 	uint8_t		f_size;
+	uint8_t		g_size;
 	uint32_t	fps;
 	uint32_t	w_size;
 }				t_data;

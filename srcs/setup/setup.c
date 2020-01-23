@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/16 11:58:26 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/01/23 19:56:39 by demonwaves       ###   ########.fr       */
+/*   Updated: 2020/01/23 21:56:02 by demonwaves       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,9 +62,14 @@ static void	infos_setup(t_env *env)
 	env->data.ui.min.x = floor(env->w / RATIO_UI_X) * 5;
 	env->data.ui.max.y = env->h;
 	env->data.ui.max.x = floor(env->w / RATIO_UI_X) * 7;
+	env->data.grid.min.y = floor(env->h / RATIO_GRID_Y);
+	env->data.grid.min.x = floor(env->w / RATIO_GRID_X);
+	env->data.grid.max.y = floor(env->h - RATIO_GRID_Y);
+	env->data.grid.max.x = floor(env->w - RATIO_GRID_X);
 	if ((env->data.ui.background = get_dimensions(env->h)) == -1)
 		clean(env, E_BKGD);
 	env->data.f_size = floor(env->w * MAX_FONT_SIZE / MAX_WIDTH);
+	env->data.g_size = env->data.f_size / 3;
 	env->cam.fly = -1;
 	env->cam.fall = 1;
 	env->cam.speed = 1;

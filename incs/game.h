@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 21:22:14 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/01/14 13:04:29 by kibotrel         ###   ########.fr       */
+/*   Updated: 2020/01/23 20:28:09 by demonwaves       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,12 +81,18 @@ void			physics(t_env *env);
 void			graphics(t_env *env, t_game *var);
 
 /*
-**	physics
+**	physics.c
 */
 
 void			vertical_movement(t_env *env, t_sector sector, double height);
 void			horizontal_movement(t_env *env, t_vec2d p, t_vec2d vel,
 									double view);
 int32_t			check_collisions(t_vec2d p, t_vec2d v, t_vec2d w1, t_vec2d w2);
+
+/*
+**	hud.c
+*/
+
+void			hud(t_env *env, t_game *var);
 
 #endif

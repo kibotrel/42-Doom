@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/18 14:38:11 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/01/23 20:22:58 by demonwaves       ###   ########.fr       */
+/*   Updated: 2020/01/23 20:29:05 by demonwaves       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -252,6 +252,6 @@ void		game(t_env *env)
 	}
 	game_setup(env, &var);
 	graphics(env, &var);
-	// hud(env, &var);
+	hud(env, &var);
 	engine_clean(&var);
 }
