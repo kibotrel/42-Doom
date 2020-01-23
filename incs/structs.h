@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 18:48:17 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/01/14 13:03:18 by kibotrel         ###   ########.fr       */
+/*   Updated: 2020/01/23 19:44:55 by demonwaves       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@ typedef struct	s_data
 {
 	t_ui		ui;
 	uint8_t		f_size;
+	uint32_t	fps;
 	uint32_t	w_size;
 }				t_data;
 
@@ -116,6 +117,8 @@ typedef struct	s_tick
 typedef struct	s_time
 {
 	t_tick		fly;
+	t_tick		fps;
+	t_tick		frame;
 }				t_time;
 
 /*

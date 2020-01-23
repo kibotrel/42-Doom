@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/16 11:58:26 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/01/22 16:22:54 by kibotrel         ###   ########.fr       */
+/*   Updated: 2020/01/23 19:56:39 by demonwaves       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ static void	time_track(t_env *env)
 {
 	ft_bzero(&env->tick, sizeof(t_time));
 	ft_bzero(&env->tick.fly, sizeof(t_tick));
+	ft_bzero(&env->tick.fps, sizeof(t_tick));
+	ft_bzero(&env->tick.frame, sizeof(t_tick));
 }
 
 static void	error_messages(t_env *env)
@@ -53,6 +55,7 @@ static void	assets_paths(t_env *env)
 static void	infos_setup(t_env *env)
 {
 	ft_bzero(env->input, sizeof(int) * SDL_NUM_SCANCODES);
+	ft_bzero(&env->data, sizeof(t_data));
 	ft_bzero(&env->data.ui, sizeof(t_ui));
 	ft_bzero(&env->cam, sizeof(t_cam));
 	env->data.ui.min.y = floor(env->h / RATIO_UI_Y);
