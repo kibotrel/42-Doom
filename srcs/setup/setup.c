@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/16 11:58:26 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/01/22 16:22:54 by kibotrel         ###   ########.fr       */
+/*   Updated: 2020/01/23 16:36:12 by lojesu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ static void	assets_paths(t_env *env)
 	env->asset[MENU_900P] = "assets/menu_900.bmp";
 	env->asset[MENU_768P] = "assets/menu_768.bmp";
 	env->asset[MENU_720P] = "assets/menu_720.bmp";
+	env->asset[WALL] = "assets/wall.bmp";
 }
 
 static void	infos_setup(t_env *env)

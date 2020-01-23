@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 13:21:31 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/01/14 14:02:03 by kibotrel         ###   ########.fr       */
+/*   Updated: 2020/01/23 18:31:29 by lojesu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,23 +59,25 @@ static void	draw_transitions(t_env *env, t_game *var, int32_t x)
 				flat(0, x == min || x == min ? 0 : r2, 0));
 }
 
-static void	draw_wall(t_env *env, t_game *var, int32_t *y, int32_t x)
+static void	draw_wall(t_env *env, t_game *var, int32_t *y, int32_t x, uint32_t *wall)
 {
 	int32_t		end;
 	int32_t		min;
-	uint32_t	r;
+//	uint32_t	r;
 
-	r = color_add(0xFFFFFF, -var->depth);
+	//r = color_add(0xFFFFFF, -var->depth);
 	end = var->side[1];
 	min = var->side[0];
-	draw_slice(env, x, lim(y[0], y[1]),
-				flat(0, x == min || x == end ? 0 : r, 0));
+//	draw_slice(env, x, lim(y[0], y[1]), flat(0, x == min || x == end ? 0 : r, 0));
+	draw_texture_slice(env, x, lim(y[0], y[1]), var, wall);
 }
 
 void		draw_screen(t_env *env, t_game *var)
 {
 	int32_t		x;
+	t_bmp		wall;
 
+	bmp_to_array("assets/wall.bmp", &wall);
 	x = var->start;
 	while (x <= var->end)
 	{
@@ -83,7 +85,7 @@ void		draw_screen(t_env *env, t_game *var)
 		if (var->n >= 0)
 			draw_transitions(env, var, x);
 		else
-			draw_wall(env, var, var->y, x);
+			draw_wall(env, var, var->y, x, wall.pixels);
 		x++;
 	}
 }

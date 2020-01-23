@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 17:59:50 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/01/14 13:07:36 by kibotrel         ###   ########.fr       */
+/*   Updated: 2020/01/23 16:36:35 by lojesu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ typedef enum	e_assets
 	MENU_900P,
 	MENU_768P,
 	MENU_720P,
+	WALL,
 	NB_ASSETS
 }				t_assets;
 

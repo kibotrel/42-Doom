@@ -6,7 +6,7 @@
 #    By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/10 16:16:29 by kibotrel          #+#    #+#              #
-#    Updated: 2020/01/22 16:09:45 by kibotrel         ###   ########.fr        #
+#    Updated: 2020/01/23 17:09:56 by lojesu           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -132,6 +132,7 @@ SRCS			+= events/mouse.c
 SRCS			+= events/motion.c
 SRCS			+= events/keyboard.c
 SRCS			+= texture/texture_tools.c
+SRCS			+= texture/texture.c
 
 #------------------------------ OPERATING SYSTEM ------------------------------#
 
