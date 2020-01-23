@@ -6,7 +6,7 @@
 #    By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/10 16:16:29 by kibotrel          #+#    #+#              #
-#    Updated: 2020/01/23 10:50:52 by reda-con         ###   ########.fr        #
+#    Updated: 2020/01/23 16:38:57 by reda-con         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -111,6 +111,8 @@ SRCS			+= parse/tools.c
 SRCS			+= parse/vertex.c
 SRCS			+= parse/debug.c
 SRCS			+= parse/entity.c
+SRCS			+= parse/total.c
+SRCS			+= parse/player_blank.c
 SRCS			+= setup/game.c
 SRCS			+= setup/setup.c
 SRCS			+= setup/graphic.c

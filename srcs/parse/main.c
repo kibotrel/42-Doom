@@ -6,7 +6,7 @@
 /*   By: reda-con <reda-con@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 14:00:52 by reda-con          #+#    #+#             */
-/*   Updated: 2020/01/23 15:46:06 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/01/23 17:01:00 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,82 +20,26 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-int			verif_player(t_player *pl, char **tab)
+void		parse_err(char **tab, t_parse *p)
 {
-	if (pl->pos.x != -1 && pl->pos.y != -1)
-		return (1);
-	if (tab[1] && tab[3] && tab [5] && tab [7] && !ft_strcmp(tab[1], "x")
-			&& !ft_strcmp(tab[3], "y") && !ft_strcmp(tab[5], "sector")
-			&& !ft_strcmp(tab[7], "angle"))
+	if (p->ver)
+		free(p->ver);
+	if (p->emy)
+		free(p->emy);
+	if (p->obj)
+		free(p->obj);
+	if (p->sec)
 	{
-		if (tab[2] && tab[4] && tab [6] && tab[8] && ft_isnum(tab[2])
-				&& ft_isnum(tab[4]) && ft_isnum(tab[6]) && ft_isnum(tab[8]))
-		{
-			pl->pos = init_vec2d(ft_atoi(tab[2]), ft_atoi(tab[4]));
-			pl->sect = ft_atoi(tab[6]);
-			pl->angle = ft_atoi(tab[8]);
-		}
-		else
-			return (1);
+		if (p->sec->neighbor)
+			free(p->sec->neighbor);
+		if (p->sec->portal_type)
+			free(p->sec->portal_type);
+		if (p->sec->vertex)
+			free(p->sec->vertex);
+		free(p->sec);
 	}
-	else
-		return (1);
-	return (0);
-}
-
-int			verif_blank(char **t)
-{
-	int		i;
-	int		j;
-
-	i = -1;
-	while (t[++i])
-	{
-		j = -1;
-		while (t[i][++j])
-			if (!ft_isspace(t[i][j]))
-				return (1);
-	}
-	return (0);
-}
-
-void		parse_err(char **tab)
-{
 	free_tab(tab);
 	exit(1);
-}
-
-void		init_total(t_total *total, char **tab, t_parse *par)
-{
-	total->vert = ft_atoi(tab[2]);
-	total->sect = ft_atoi(tab[4]);
-	total->emy = ft_atoi(tab[6]);
-	total->obj = ft_atoi(tab[8]);
-	if (!(par->ver = (t_vec2d*)malloc(sizeof(t_vec2d) * total->vert)))
-		parse_err(tab);
-	if (!(par->sec = (t_sector*)malloc(sizeof(t_sector) * total->sect)))
-		parse_err(tab);
-	if (!(par->emy = (t_entity*)malloc(sizeof(t_entity) * total->emy)))
-		parse_err(tab);
-	if (!(par->obj = (t_entity*)malloc(sizeof(t_entity) * total->obj)))
-		parse_err(tab);
-}
-
-int			verif_total(t_total *total, char **tab, t_parse *par)
-{
-	if (tab[1] && tab[3] && tab[5] && tab [7] && !ft_strcmp("vertexes", tab[1])
-			&& !ft_strcmp("sectors", tab[3]) && !ft_strcmp("enemies", tab[5])
-			&& !ft_strcmp("objects", tab[7]))
-	{
-		if (tab[2] && tab[4] && tab[6] && tab[8] && ft_isnum(tab[2])
-				&& ft_isnum(tab[4]) && ft_isnum(tab[6]) && ft_isnum(tab[8]))
-				init_total(total, tab, par);
-		else
-			return (1);
-	}
-	else
-		return (1);
-	return (0);
 }
 
 void		parse(char *l, t_parse *par)
@@ -116,10 +60,10 @@ void		parse(char *l, t_parse *par)
 	else if (tab[0] && !ft_strcmp("player", tab[0]))
 		i += verif_player(&par->plr, tab);
 	else if (tab[0] && !ft_strcmp("sector", tab[0]))
-		i += verif_sector(par->sec, tab, par->ver);
+		i += verif_sector(par->sec, tab, par->ver, par);
 	else if (verif_blank(tab) && tab[0][0] != '#')
-		parse_err(tab);
-	(i != 0) ? parse_err(tab) : free_tab(tab);
+		parse_err(tab, par);
+	(i != 0) ? parse_err(tab, par) : free_tab(tab);
 }
 
 int			main_parse(char *file, t_env *env)
@@ -144,10 +88,5 @@ int			main_parse(char *file, t_env *env)
 	env->cam.angle = par.plr.angle;
 	env->cam.pos = v3d(par.plr.pos.x, par.plr.pos.y, 0);
 	env->cam.sector = par.plr.sect;
-	print_plr(par.plr);
-	print_vert(par.ver, par.total.vert);
-	print_en(par.emy, par.total.emy);
-	print_en(par.obj, par.total.obj);
-	print_sec(par.sec, par.total.sect);
 	return (0);
 }

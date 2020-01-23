@@ -6,7 +6,7 @@
 /*   By: reda-con <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/15 11:06:28 by reda-con          #+#    #+#             */
-/*   Updated: 2020/01/23 10:01:42 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/01/23 16:34:16 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 int			verif_entity(t_entity *ent, char **tab)
 {
-	if (tab[1] && tab[3] && tab[5] && tab [7] && tab [9] && tab[11]
+	if (tab[1] && tab[3] && tab[5] && tab[7] && tab[9] && tab[11]
 			&& !ft_strcmp(tab[1], "number") && !ft_strcmp(tab[3], "x")
 			&& !ft_strcmp(tab[5], "y") && !ft_strcmp(tab[7], "sector")
 			&& !ft_strcmp(tab[9], "angle") && !ft_strcmp(tab[11], "type"))

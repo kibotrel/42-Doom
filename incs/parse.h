@@ -6,7 +6,7 @@
 /*   By: reda-con <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 14:27:11 by reda-con          #+#    #+#             */
-/*   Updated: 2020/01/23 11:39:18 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/01/23 16:57:09 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,8 +83,11 @@ void			init_parse(t_parse *p);
 
 int				verif_vertex(t_vec2d *vertex, char **tab);
 int				verif_entity(t_entity *ent, char **tab);
-int				verif_sector(t_sector *sector, char **tab, t_vec2d *vertex);
-void			parse_err(char **t);
+int				verif_sector(t_sector *s, char **tab, t_vec2d *v, t_parse *p);
+void			parse_err(char **t, t_parse *p);
 int				main_parse(char *file, t_env *env);
+int				verif_total(t_total *t, char **tab, t_parse *p);
+int				verif_player(t_player *p, char **tab);
+int				verif_blank(char **tab);
 
 #endif
