@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/18 14:38:11 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/01/22 16:25:41 by kibotrel         ###   ########.fr       */
+/*   Updated: 2020/01/23 11:36:36 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static void	temporary_setup(t_env *env)
 	env->cam.cos = cos(env->cam.angle);
 	env->cam.sin = sin(env->cam.angle);
 	env->cam.sector = 0;
-	if (!(env->sector = (t_sector*)malloc(sizeof(t_sector) * env->zones)))
+/*	if (!(env->sector = (t_sector*)malloc(sizeof(t_sector) * env->zones)))
 		clean(env, E_MALLOC);
 	if (!(env->sector[0].vertex = (t_vec2d*)malloc(sizeof(t_vec2d) * 6)))
 		clean(env, E_MALLOC);
@@ -237,6 +237,7 @@ static void	temporary_setup(t_env *env)
 	env->sector[10].neighbor[6] = 12;
 	env->sector[11].neighbor[3] = 10;
 	env->sector[12].neighbor[1] = 10;
+	*/
 	env->cam.pos.z = env->sector[env->cam.sector].floor + CAM_H;
 }
 

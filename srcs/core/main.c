@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/16 11:53:54 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/01/22 16:33:11 by kibotrel         ###   ########.fr       */
+/*   Updated: 2020/01/23 11:39:40 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include "clean.h"
 #include "setup.h"
 #include "utils.h"
+#include "parse.h"
 
 /*
 **	If ac == 2, a map is sent to the program
@@ -36,11 +37,11 @@ int			main(int ac, char **av)
 	{
 		env_setup(&env);
 		if (prechecks(ac, av))
-		// {
-		// 	if (ac == 2)
-		// 		main_parse(av[1], &env);
+		 {
+			if (ac == 2)
+		 		main_parse(av[1], &env);
 			graphic_setup(&env, &env.sdl);
-		// }
+		 }
 		else
 			clean(&env, E_FILENAME);
 		while (1)

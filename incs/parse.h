@@ -6,7 +6,7 @@
 /*   By: reda-con <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 14:27:11 by reda-con          #+#    #+#             */
-/*   Updated: 2020/01/15 14:38:15 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/01/23 11:39:18 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,7 @@
 # define PARSE_H
 
 # include <stdint.h>
-
-typedef struct	s_vec2d
-{
-	int			x;
-	int			y;
-}				t_vec2d;
+# include "core.h"
 
 typedef struct	s_entity
 {
@@ -36,6 +31,7 @@ typedef struct	s_player
 	int			angle;
 }				t_player;
 
+/*
 typedef struct	s_sector
 {
 	uint32_t		pts;
@@ -47,6 +43,7 @@ typedef struct	s_sector
 	int				*portal_type;
 	t_vec2d			*vert;
 }				t_sector;
+*/
 
 typedef struct	s_total
 {
@@ -88,5 +85,6 @@ int				verif_vertex(t_vec2d *vertex, char **tab);
 int				verif_entity(t_entity *ent, char **tab);
 int				verif_sector(t_sector *sector, char **tab, t_vec2d *vertex);
 void			parse_err(char **t);
+int				main_parse(char *file, t_env *env);
 
 #endif

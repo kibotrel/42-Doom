@@ -6,7 +6,7 @@
 /*   By: reda-con <reda-con@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/17 16:35:58 by reda-con          #+#    #+#             */
-/*   Updated: 2020/01/23 10:32:44 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/01/23 11:31:53 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,10 @@ int			verif_sector(t_sector *s, char **t, t_vec2d *ver)
 			s[ft_atoi(t[2])].ceil = ft_atoi(t[6]);
 			s[ft_atoi(t[2])].gravity = ft_atoi(t[8]) / 100;
 			s[ft_atoi(t[2])].viscosity = ft_atoi(t[10]) / 1000;
-			s[ft_atoi(t[2])].pts = i;
-			if (!(s[ft_atoi(t[2])].vert = (t_vec2d*)malloc(sizeof(t_vec2d) * i)))
+			s[ft_atoi(t[2])].points = i;
+			if (!(s[ft_atoi(t[2])].vertex = (t_vec2d*)malloc(sizeof(t_vec2d) * i)))
 				parse_err(t);
-			if (!(s[ft_atoi(t[2])].portal = (int*)malloc(sizeof(int) * i)))
+			if (!(s[ft_atoi(t[2])].neighbor = (int*)malloc(sizeof(int) * i)))
 				parse_err(t);
 			if (!(s[ft_atoi(t[2])].portal_type = (int*)malloc(sizeof(int) * i)))
 				parse_err(t);
@@ -49,11 +49,11 @@ int			verif_sector(t_sector *s, char **t, t_vec2d *ver)
 				while (j < i)
 				{
 					if (t[14 + j] && ft_isnum(t[14 + j]))
-						s[ft_atoi(t[2])].vert[j] = ver[ft_atoi(t[13 + j])];
+						s[ft_atoi(t[2])].vertex[j] = ver[ft_atoi(t[13 + j])];
 					else
 						return (1);
 					if (t[15 + i + j] && ft_isnum(t[15 + i + j]))
-						s[ft_atoi(t[2])].portal[j] = ft_atoi(t[15 + i + j]);
+						s[ft_atoi(t[2])].neighbor[j] = ft_atoi(t[15 + i + j]);
 					else
 						return (1);
 					if (t[16 + 2 * i] && ft_isnum(t[16 + 2 * i]))

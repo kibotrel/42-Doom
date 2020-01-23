@@ -6,7 +6,7 @@
 /*   By: reda-con <reda-con@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 15:13:52 by reda-con          #+#    #+#             */
-/*   Updated: 2020/01/23 10:32:12 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/01/23 11:32:55 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ void		print_sec(t_sector *s, int max)
 	while (++i < max)
 	{
 		ft_putstr("sector: pts=");
-		ft_putnbr(s[i].pts);
+		ft_putnbr(s[i].points);
 		ft_putstr(" h_floor=");
 		ft_putnbr(s[i].floor);
 		ft_putstr(" h_ceil=");
@@ -97,21 +97,21 @@ void		print_sec(t_sector *s, int max)
 		ft_putnbr(s[i].viscosity);
 		ft_putstr(" vertexes=");
 		j = -1;
-		while (++j < (int)s[i].pts)
+		while (++j < (int)s[i].points)
 		{
-			print_pt(s[i].vert[j]);
+			print_pt(s[i].vertex[j]);
 			ft_putchar(';');
 		}
 		j = -1;
 		ft_putstr(" portals=");
-		while (++j < (int)s[i].pts)
+		while (++j < (int)s[i].points)
 		{
-			ft_putnbr(s[i].portal[j]);
+			ft_putnbr(s[i].neighbor[j]);
 			ft_putchar(' ');
 		}
 		j = -1;
 		ft_putstr(" portals type=");
-		while (++j < (int)s[i].pts)
+		while (++j < (int)s[i].points)
 		{
 			ft_putnbr(s[i].portal_type[j]);
 			ft_putchar(' ');

@@ -6,7 +6,7 @@
 #    By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/10 16:16:29 by kibotrel          #+#    #+#              #
-#    Updated: 2020/01/23 10:36:34 by reda-con         ###   ########.fr        #
+#    Updated: 2020/01/23 10:50:52 by reda-con         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -88,6 +88,7 @@ INCS			+= incs/structs.h
 # Source files (Can be changed)
 
 SRCS			:= core/main.c
+SRCS			+= parse/main.c
 SRCS			+= core/game.c
 SRCS			+= core/menu.c
 SRCS			+= core/hooks.c
@@ -105,13 +106,11 @@ SRCS			+= clean/env.c
 SRCS			+= clean/sdl.c
 SRCS			+= clean/ttf.c
 SRCS			+= clean/engine.c
-SRCS			+= parse/ennemy.c
-SRCS			+= parse/main.c
-SRCS			+= parse/object.c
 SRCS			+= parse/sector.c
 SRCS			+= parse/tools.c
 SRCS			+= parse/vertex.c
 SRCS			+= parse/debug.c
+SRCS			+= parse/entity.c
 SRCS			+= setup/game.c
 SRCS			+= setup/setup.c
 SRCS			+= setup/graphic.c

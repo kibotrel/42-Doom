@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 18:48:17 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/01/14 13:03:18 by kibotrel         ###   ########.fr       */
+/*   Updated: 2020/01/23 11:27:45 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,8 @@ typedef struct	s_vec3d
 }				t_vec3d;
 
 /*
-**	Informations about the menu display.
-*/
+ **	Informations about the menu display.
+ */
 
 typedef struct	s_ui
 {
@@ -51,8 +51,8 @@ typedef struct	s_ui
 }				t_ui;
 
 /*
-** Graphic library informations.
-*/
+ ** Graphic library informations.
+ */
 
 typedef struct	s_sdl
 {
@@ -65,8 +65,8 @@ typedef struct	s_sdl
 }				t_sdl;
 
 /*
-** Miscelaneous informations.
-*/
+ ** Miscelaneous informations.
+ */
 
 typedef struct	s_data
 {
@@ -93,7 +93,8 @@ typedef struct	s_cam
 	uint32_t	sector;
 }				t_cam;
 
-typedef	struct	s_sector
+/*
+typedef struct	s_sector
 {
 	int			*neighbor;
 	double		ceil;
@@ -102,10 +103,23 @@ typedef	struct	s_sector
 	uint32_t	points;
 
 }				t_sector;
+*/
+
+typedef struct	s_sector
+{
+	uint32_t	points;
+	double		ceil;
+	double		floor;
+	double		gravity;
+	double		viscosity;
+	int			*neighbor;
+	int			*portal_type;
+	t_vec2d		*vertex;
+}				t_sector;
 
 /*
-** Time tracking
-*/
+ ** Time tracking
+ */
 
 typedef struct	s_tick
 {
@@ -119,8 +133,8 @@ typedef struct	s_time
 }				t_time;
 
 /*
-**	Main structure.
-*/
+ **	Main structure.
+ */
 
 typedef struct	s_env
 {

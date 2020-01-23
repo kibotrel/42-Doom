@@ -6,12 +6,12 @@
 /*   By: reda-con <reda-con@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 14:00:52 by reda-con          #+#    #+#             */
-/*   Updated: 2020/01/23 10:33:33 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/01/23 11:29:39 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parse.h"
-//#include "doom.h"
+#include "core.h"
 #include "../../libft/incs/libft.h"
 #include <sys/types.h>
 #include <sys/stat.h>
@@ -121,16 +121,15 @@ void		parse(char *l, t_parse *par)
 	(i != 0) ? parse_err(tab) : free_tab(tab);
 }
 
-int			main(int ac, char **av)
+int			main_parse(char *file, t_env *env)
 {
 	int		fd;
 	int		gnl;
 	char	*line;
 	t_parse	par;
 
-	(void)ac;
 	par.plr.pos = init_vec2d(-1, -1);
-	if ((fd = open(av[1], O_RDONLY)) == -1)
+	if ((fd = open(file, O_RDONLY)) == -1)
 		exit(1);
 	while ((gnl = ft_get_next_line(fd, &line)) == 1)
 	{
@@ -139,11 +138,7 @@ int			main(int ac, char **av)
 	}
 	if (gnl == -1 || close(fd) || par.plr.pos.x <= -1 || par.plr.pos.y <= -1)
 		exit(1);
-/*	env->vertex = par.v;
-	env->entity = par.e;
-	env->sprite = par.o;
-	env->sector = par.s;
-	env->player = par.p;*/
+	env->sector = par.sec;
 	print_plr(par.plr);
 	print_vert(par.ver, par.total.vert);
 	print_en(par.emy, par.total.emy);

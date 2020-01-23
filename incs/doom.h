@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/16 11:54:10 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/01/23 10:34:19 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/01/23 11:02:37 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include "SDL.h"
 # include "SDL_ttf.h"
-//# include "bmp.h"
+# include "bmp.h"
 # include "parse.h"
 
 /*
