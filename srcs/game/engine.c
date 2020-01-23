@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 15:22:56 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/01/22 15:25:31 by kibotrel         ###   ########.fr       */
+/*   Updated: 2020/01/23 17:28:35 by demonwaves       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,16 +33,16 @@ void	physics(t_env *env)
 		horizontal_movement(env, pos, vel, sight);
 }
 
-/*
-**	WORK IN PROGRESS TEXTURES
-**
-**	t_bmp		bmp;
-**	bmp_to_array("/Users/lojesu/exo42/42-Doom/srcs/texture/wall1.bmp", &bmp);
-**
-**	PS : Vu que la structure du code à changé, ce que tu es entrain de faire
-**	ce trouve maintenant dans draw_screen() tu auras surement besoin de
-**	changer le prototype mais tout y est !
-*/
+//
+//	WORK IN PROGRESS TEXTURES
+//
+//	t_bmp		bmp;
+//	bmp_to_array("/Users/lojesu/exo42/42-Doom/srcs/texture/wall1.bmp", &bmp);
+//
+//	PS : Vu que la structure du code à changé, ce que tu es entrain de faire
+//	ce trouve maintenant dans draw_screen() tu auras surement besoin de
+//	changer le prototype mais tout y est !
+//
 
 void	graphics(t_env *env, t_game *var)
 {

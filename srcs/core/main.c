@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/16 11:53:54 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/01/22 16:33:11 by kibotrel         ###   ########.fr       */
+/*   Updated: 2020/01/23 17:26:22 by demonwaves       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,11 @@
 #include "setup.h"
 #include "utils.h"
 
-/*
-**	If ac == 2, a map is sent to the program
-**	replace ft_isvalidname by a parser call + check the name inside
-**	function prototype should be modified to get env in this scope
-*/
+//
+//	If ac == 2, a map is sent to the program
+//	replace ft_isvalidname by a parser call + check the name inside
+//	function prototype should be modified to get env in this scope
+//
 
 static int	prechecks(int ac, char **av)
 {
@@ -51,6 +51,7 @@ int			main(int ac, char **av)
 			global_hooks(&env, &env.sdl);
 			if (SDL_UpdateWindowSurface(env.sdl.win))
 				clean(&env, E_SDL_UPDATE);
+			SDL_Delay(16);
 		}
 	}
 	else

@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/16 12:45:38 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/01/22 15:03:56 by kibotrel         ###   ########.fr       */
+/*   Updated: 2020/01/23 17:26:13 by demonwaves       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 #include "clean.h"
 #include "events.h"
 
-/*
-** printf("%d\n", sdl->event.key.keysym.scancode);
-*/
+//
+// printf("%d\n", sdl->event.key.keysym.scancode);
+//
 
 void	global_hooks(t_env *env, t_sdl *sdl)
 {
