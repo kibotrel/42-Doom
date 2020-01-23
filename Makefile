@@ -6,7 +6,7 @@
 #    By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/10 16:16:29 by kibotrel          #+#    #+#              #
-#    Updated: 2020/01/22 11:05:12 by nde-jesu         ###   ########.fr        #
+#    Updated: 2020/01/23 13:53:27 by nde-jesu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -61,6 +61,7 @@ OBJS_SUBDIRS	+= events
 OBJS_SUBDIRS	+= player
 OBJS_SUBDIRS	+= save
 OBJS_SUBDIRS	+= sector
+OBJS_SUBDIRS	+= portal
 
 #------------------------------------ FILES -----------------------------------#
 
