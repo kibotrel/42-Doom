@@ -6,14 +6,13 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 15:22:56 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/01/23 17:28:35 by demonwaves       ###   ########.fr       */
+/*   Updated: 2020/01/23 20:11:59 by demonwaves       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <math.h>
 #include "env.h"
 #include "game.h"
-#include "clean.h"
 #include "setup.h"
 #include "utils.h"
 
@@ -70,5 +69,4 @@ void	graphics(t_env *env, t_game *var)
 			j++;
 		}
 	}
-	engine_clean(var);
 }

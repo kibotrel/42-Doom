@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 19:01:59 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/01/23 20:02:47 by demonwaves       ###   ########.fr       */
+/*   Updated: 2020/01/23 20:16:43 by demonwaves       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ t_vec3d				v3d(double x, double y, double z);
 */
 
 void				fps_counter(t_env *env);
+void				side_infos(t_game *var);
 t_item				item(uint32_t sector, uint32_t min, uint32_t max);
 t_height			lim(int y1, int y2);
 t_palette			flat(int top, int middle, int bottom);
