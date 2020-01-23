@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 13:21:31 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/01/14 14:02:03 by kibotrel         ###   ########.fr       */
+/*   Updated: 2020/01/23 14:47:42 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,8 @@ static void	draw_wall(t_env *env, t_game *var, int32_t *y, int32_t x)
 	int32_t		min;
 	uint32_t	r;
 
-	r = color_add(0xFFFFFF, -var->depth);
+//	r = color_add(0xFFFFFF, -var->depth);
+	r = 0xff0000;
 	end = var->side[1];
 	min = var->side[0];
 	draw_slice(env, x, lim(y[0], y[1]),
