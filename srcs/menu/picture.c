@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/07 14:09:35 by nde-jesu          #+#    #+#             */
-/*   Updated: 2020/01/22 11:37:40 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/01/23 14:06:29 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void		print_params_image(t_editor *edit, t_presets presets,
 	int		i;
 	int		j;
 
-	if (!edit->sector || !edit->object || !edit->enemy || !edit->portals)
+	if (!edit->sector)
 		return ;
 	if (sett == SECTOR && presets == SECTOR_TEXT)
 	{
