@@ -6,7 +6,7 @@
 /*   By: reda-con <reda-con@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/17 16:35:58 by reda-con          #+#    #+#             */
-/*   Updated: 2020/01/23 11:31:53 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/01/23 16:17:33 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,22 +42,28 @@ int			verif_sector(t_sector *s, char **t, t_vec2d *ver)
 				parse_err(t);
 			if (!(s[ft_atoi(t[2])].portal_type = (int*)malloc(sizeof(int) * i)))
 				parse_err(t);
-			j = 0;
 			if (t[14 + i] && t[15 + 2 * i] && !ft_strcmp(t[14 + i], "portals")
 					&& !ft_strcmp(t[15 + 2 * i], "type"))
 			{
+			j = 0;
 				while (j < i)
 				{
 					if (t[14 + j] && ft_isnum(t[14 + j]))
-						s[ft_atoi(t[2])].vertex[j] = ver[ft_atoi(t[13 + j])];
+					{
+						s[ft_atoi(t[2])].vertex[j] = ver[ft_atoi(t[14 + j])];
+					}
 					else
 						return (1);
 					if (t[15 + i + j] && ft_isnum(t[15 + i + j]))
+					{
 						s[ft_atoi(t[2])].neighbor[j] = ft_atoi(t[15 + i + j]);
+					}
 					else
 						return (1);
-					if (t[16 + 2 * i] && ft_isnum(t[16 + 2 * i]))
+					if (t[16 + 2 * i + j] && ft_isnum(t[16 + 2 * i]))
+					{
 						s[ft_atoi(t[2])].portal_type[j] = ft_atoi(t[16 + 2 * i + j]);
+					}
 					else
 						return (1);
 					++j;
