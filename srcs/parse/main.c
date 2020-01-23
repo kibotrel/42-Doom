@@ -6,12 +6,13 @@
 /*   By: reda-con <reda-con@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 14:00:52 by reda-con          #+#    #+#             */
-/*   Updated: 2020/01/23 11:29:39 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/01/23 12:04:37 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parse.h"
 #include "core.h"
+#include "utils.h"
 #include "../../libft/incs/libft.h"
 #include <sys/types.h>
 #include <sys/stat.h>
@@ -138,7 +139,11 @@ int			main_parse(char *file, t_env *env)
 	}
 	if (gnl == -1 || close(fd) || par.plr.pos.x <= -1 || par.plr.pos.y <= -1)
 		exit(1);
+	env->zones = par.total.vert;
 	env->sector = par.sec;
+	env->cam.angle = par.plr.angle;
+	env->cam.pos = v3d(par.plr.pos.x, par.plr.pos.y, 0);
+	env->cam.sector = par.plr.sect;
 	print_plr(par.plr);
 	print_vert(par.ver, par.total.vert);
 	print_en(par.emy, par.total.emy);
