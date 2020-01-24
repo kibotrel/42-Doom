@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 13:55:00 by nde-jesu          #+#    #+#             */
-/*   Updated: 2020/01/22 10:59:47 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/01/24 11:31:06 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ t_sector	*create_sector(t_editor *edit)
 	sect->vertex_count = 0;
 	sect->texture = 0;
 	sect->gravity = 5;
-	sect->viscosity = 2;
+	sect->friction = 2;
 	sect->next = NULL;
 	sect->prev = NULL;
 	return (sect);

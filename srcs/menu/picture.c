@@ -6,10 +6,11 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/07 14:09:35 by nde-jesu          #+#    #+#             */
-/*   Updated: 2020/01/23 14:06:29 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/01/24 10:29:43 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 #include "editor.h"
 
 static int	get_portal_type(t_portal *portal, t_sector *sector)
@@ -86,5 +87,6 @@ void		print_params_image(t_editor *edit, t_presets presets,
 	else
 		return ;
 	print_picture(&edit->sdl, 1475, 30, edit->sdl.bmp[i][j]);
-	print_more_minus(&edit->sdl);
+	display_text(edit, &edit->sdl, init_vertex(1420, 50), "-");
+	display_text(edit, &edit->sdl, init_vertex(1615, 55), "+");
 }

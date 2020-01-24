@@ -6,15 +6,15 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/27 14:44:48 by nde-jesu          #+#    #+#             */
-/*   Updated: 2020/01/22 11:40:01 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/01/24 11:33:24 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "editor.h"
 
-static char const	*g_first_params[7] = {
-	"Sector", "Player", "Enemy", "Object", "Portal", "Clear", "Save"
+static char const	*g_first_params[8] = {
+	"Sector", "Player", "Enemy", "Object", "Portal", "Clear", "Save", "Draw Sector Clockwise"
 };
 
 static char const	*g_number[5] = {
@@ -22,65 +22,64 @@ static char const	*g_number[5] = {
 };
 
 static char const	*g_tab[4][6] = {
-	{"Select.", "Floor", "Roof", "Text", "Grav", "Visc"},
+	{"Select.", "Floor", "Roof", "Text", "Grav", "Frict"},
 	{"Rotate", "Del"},
 	{"Select.", "Rotate", "Del", "Type"},
 	{"Select.", "Type"}
 };
 
-void		print_more_minus(t_sdl *sdl)
+void	display_text(t_editor *edit, t_sdl *sdl, t_vertex pos, const char *text)
 {
 	SDL_Rect	where;
 	SDL_Surface	*tmp;
+	int			error;
 
-	where.x = 1420;
-	where.y = 50;
-	tmp = TTF_RenderText_Solid(sdl->font, "-", sdl->color);
-	SDL_BlitSurface(tmp, 0, sdl->surf, &where);
-	where.x = 1615;
-	where.y = 55;
-	tmp = TTF_RenderText_Solid(sdl->font, "+", sdl->color);
-	SDL_BlitSurface(tmp, 0, sdl->surf, &where);
+	where.x = pos.x;
+	where.y = pos.y;
+	error = 0;
+	if (!(tmp = TTF_RenderText_Solid(sdl->font, text, sdl->color)))
+		error = 1;
+	if (!error && SDL_BlitSurface(tmp, 0, sdl->surf, &where))
+		error = 2;
+	if (error != 1)
+		SDL_FreeSurface(tmp);
+	if (error)
+		clean(edit);
 }
 
-static void	print_sector_values(t_sdl *sdl, t_sector *sector, t_presets presets)
+static void	print_sector_values(t_sdl *sdl, t_sector *sector, t_presets presets,
+	t_editor *edit)
 {
-	SDL_Rect	where;
-	SDL_Surface	*tmp;
 	char		*print;
 
-	where.x = 1510;
+	print = NULL;
+	display_text(edit, sdl, init_vertex(1420, 50), "-");
+	display_text(edit, sdl, init_vertex(1615, 55), "+");
 	if (presets == SECTOR_FLOOR)
 		print = ft_itoa(sector->h_floor);
 	else if (presets == SECTOR_CEIL)
 		print = ft_itoa(sector->h_ceil);
 	else if (presets == SECTOR_GRAV)
 		print = ft_itoa(sector->gravity);
-	else if (presets == SECTOR_VISC)
-		print = ft_itoa(sector->viscosity);
+	else if (presets == SECTOR_FRICTION)
+		print = ft_itoa(sector->friction);
 	else if (presets == ENTITY_MOVE || presets == SECTOR_MOVE ||
 		presets == PORTAL_MOVE)
-	{
-		print = "Prev./Next";
-		where.x = 1453;
-	}
+		display_text(edit, sdl, init_vertex(1455, 50), "Prev./Next");
 	else if (presets == PLAYER_ROTATE || presets == ENTITY_ROTATE)
-	{
-		print = "Left/Right";
-		where.x = 1455;
-	}
+		display_text(edit, sdl, init_vertex(1455, 50), "Left/Right");
 	else
-		print = "";
-	where.y = 50;
-	tmp = TTF_RenderText_Solid(sdl->font, print, sdl->color);
-	SDL_BlitSurface(tmp, 0, sdl->surf, &where);
-	print_more_minus(sdl);
+		return ;
+	if (print)
+	{
+		display_text(edit, sdl, init_vertex(1510, 50), print);
+		free(print);
+	}
 }
 
 void		print_param_to_screen(t_sdl *sdl, t_settings sett, t_editor *editor)
 {
-	SDL_Rect	where;
-	SDL_Surface	*tmp;
+	t_vertex	where;
 	int			i;
 
 	i = 0;
@@ -88,43 +87,29 @@ void		print_param_to_screen(t_sdl *sdl, t_settings sett, t_editor *editor)
 	where.y = 155;
 	while (i < 5)
 	{
-		tmp = TTF_RenderText_Solid(sdl->font, g_first_params[i], sdl->color);
-		SDL_BlitSurface(tmp, 0, sdl->surf, &where);
-		tmp = TTF_RenderText_Solid(sdl->font, g_number[i], sdl->color);
+		display_text(editor, sdl, where, g_first_params[i]);
 		where.x -= 45;
-		SDL_BlitSurface(tmp, 0, sdl->surf, &where);
+		display_text(editor, sdl, where, g_number[i]);
 		where.x += 45;
 		where.y = where.y + 100;
 		i++;
 	}
-	where.x = 1315;
-	where.y = 665;
-	tmp = TTF_RenderText_Solid(sdl->font, g_first_params[5], sdl->color);
-	SDL_BlitSurface(tmp, 0, sdl->surf, &where);
-	where.x = 1445;
-	tmp = TTF_RenderText_Solid(sdl->font, g_first_params[6], sdl->color);
-	SDL_BlitSurface(tmp, 0, sdl->surf, &where);
+	display_text(editor, sdl, init_vertex(1315, 665), g_first_params[5]);
+	display_text(editor, sdl, init_vertex(1445, 665), g_first_params[6]);
 	if (editor->presets != NONE && editor->sector)
-		print_sector_values(sdl, editor->sector, editor->presets);
+		print_sector_values(sdl, editor->sector, editor->presets, editor);
 	if ((editor->presets == ENTITY_TYPE && ((sett == ENEMY && editor->enemy) ||
 		(sett == OBJECT && editor->object))) ||
 			editor->presets == SECTOR_TEXT ||
 				(editor->presets == PORTAL_TYPE && editor->portals))
 		print_params_image(editor, editor->presets, editor->sett);
 	if (editor->sect_is_closed == false)
-	{
-		where.x = 1380;
-		where.y = 50;
-		tmp = TTF_RenderText_Solid(sdl->font, "Draw sector clockwise",
-			sdl->color);
-		SDL_BlitSurface(tmp, 0, sdl->surf, &where);
-	}
+		display_text(editor, sdl, init_vertex(1380, 50), g_first_params[7]);
 }
 
-void		print_param_in_param(t_sdl *sdl, t_settings sett)
+void		print_param_in_param(t_editor *edit, t_sdl *sdl, t_settings sett)
 {
-	SDL_Rect	where;
-	SDL_Surface	*tmp;
+	t_vertex	where;
 	int			i;
 	int			j;
 
@@ -139,8 +124,7 @@ void		print_param_in_param(t_sdl *sdl, t_settings sett)
 	where.y = 155;
 	while (++i < 6 && g_tab[j][i])
 	{
-		tmp = TTF_RenderText_Solid(sdl->font, g_tab[j][i], sdl->color);
-		SDL_BlitSurface(tmp, 0, sdl->surf, &where);
+		display_text(edit, sdl, where, g_tab[j][i]);
 		where.y = where.y + 100;
 	}
 }

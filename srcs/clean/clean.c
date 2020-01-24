@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/07 14:14:22 by reda-con          #+#    #+#             */
-/*   Updated: 2020/01/22 14:16:47 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/01/24 10:26:00 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,12 +51,10 @@ void			clean(t_editor *editor)
 	}
 	if (editor->sdl.font)
 		TTF_CloseFont(editor->sdl.font);
-	if (editor->sdl.win)
-		SDL_DestroyWindow(editor->sdl.win);
 	if (editor->sdl.surf)
 		SDL_FreeSurface(editor->sdl.surf);
-	// if (editor)
-	// 	free(editor);
+	if (editor->sdl.win)
+		SDL_DestroyWindow(editor->sdl.win);
 	TTF_Quit();
 	SDL_Quit();
 	exit(1);

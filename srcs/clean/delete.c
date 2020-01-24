@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/22 15:46:27 by nde-jesu          #+#    #+#             */
-/*   Updated: 2020/01/22 13:53:32 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/01/24 11:22:11 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ static void			delete_portals(t_portal **portal)
 	to_del = NULL;
 	tmp = NULL;
 	to_del = *portal;
+	while (to_del->prev)
+		to_del = to_del->prev;
 	tmp = to_del;
 	while (tmp)
 	{
@@ -65,7 +67,6 @@ void				delete_sector(t_sector **sectors)
 	to_del = *sectors;
 	while (to_del->prev)
 		to_del = to_del->prev;
-	tmp = to_del;
 	tmp = to_del;
 	while (tmp)
 	{
@@ -120,6 +121,6 @@ void				clear_editor(t_editor *editor)
 	editor->last_vertex.y = -1;
 	init_portals(editor);
 	init_count(&editor->count);
-	blank_menu(editor->sdl.surf, editor->sett, editor->sdl, editor->presets);
+	blank_menu(editor->sdl.surf, editor->sett, editor, editor->presets);
 	editor->map_save = true;
 }

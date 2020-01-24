@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 13:09:05 by nde-jesu          #+#    #+#             */
-/*   Updated: 2020/01/22 10:01:10 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/01/24 11:28:17 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,7 @@ static void		mouse(t_editor *editor, SDL_Event event)
 	if (event.motion.x <= EDIT_W && event.button.button == SDL_BUTTON_LEFT)
 	{
 		editor->presets = NONE;
-		blank_menu(editor->sdl.surf, editor->sett, editor->sdl,
-				editor->presets);
+		blank_menu(editor->sdl.surf, editor->sett, editor, editor->presets);
 		if (editor->sett == SECTOR)
 			place_sector(editor, event.motion.x, event.motion.y);
 		else if (editor->sett == PLAYER)
@@ -93,13 +92,13 @@ static void		keydown(t_editor *edit, SDL_Event event)
 	if (edit->sect_is_closed == true)
 	{
 		next_keydown(event, edit->sdl.surf, edit);
-		blank_menu(edit->sdl.surf, edit->sett, edit->sdl, edit->presets);
+		blank_menu(edit->sdl.surf, edit->sett, edit, edit->presets);
 	}
 }
 
 void			events(t_editor *editor)
 {
-	blank_menu(editor->sdl.surf, editor->sett, editor->sdl, editor->presets);
+	blank_menu(editor->sdl.surf, editor->sett, editor, editor->presets);
 	while (editor->finish == false)
 	{
 		while (SDL_PollEvent(&(editor->sdl.event)))
@@ -111,7 +110,7 @@ void			events(t_editor *editor)
 			else if (editor->sdl.event.type == SDL_MOUSEBUTTONDOWN)
 				mouse(editor, editor->sdl.event);
 			else if (editor->sdl.event.type == SDL_MOUSEMOTION)
-				motion(editor->sdl, editor->sett, editor->presets);
+				motion(editor->sdl, editor->sett, editor->presets, editor);
 		}
 		display_editor(editor);
 		if (SDL_UpdateWindowSurface(editor->sdl.win) != 0)

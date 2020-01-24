@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 08:29:24 by nde-jesu          #+#    #+#             */
-/*   Updated: 2020/01/14 15:50:11 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/01/24 11:35:29 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,7 @@ t_vertex		*get_vertex(t_editor *editor, int x, int y)
 	{
 		new_vertex = create_vertex(init_vertex(x, y), editor);
 		add_vertex(&editor->vertex, init_vertex(x, y), true, editor);
+		free(new_vertex);
 	}
 	editor->last_vertex.x = new_vertex->x;
 	editor->last_vertex.y = new_vertex->y;

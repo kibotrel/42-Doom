@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 08:52:03 by nde-jesu          #+#    #+#             */
-/*   Updated: 2020/01/22 11:50:37 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/01/24 11:32:21 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ typedef enum		e_presets
 	SECTOR_TEXT,
 	SECTOR_MOVE,
 	SECTOR_GRAV,
-	SECTOR_VISC,
+	SECTOR_FRICTION,
 	ENTITY_TYPE,
 	ENTITY_MOVE,
 	ENTITY_ROTATE,
@@ -126,7 +126,7 @@ typedef struct		s_sector
 	int				sector_number;
 	int				texture;
 	int				gravity;
-	int				viscosity;
+	int				friction;
 
 	int				h_ceil;
 	int				h_floor;
@@ -256,15 +256,18 @@ void				print_params_image(t_editor *edit, t_presets presets,
 /*
 **	menu/text.c
 */
-void				print_param_in_param(t_sdl *sdl, t_settings sett);
+void				print_param_in_param(t_editor *edit, t_sdl *sdl,
+	t_settings sett);
 void				print_param_to_screen(t_sdl *sdl, t_settings sett,
 	t_editor *editor);
 void				print_more_minus(t_sdl *sdl);
+void	display_text(t_editor *edit, t_sdl *sdl, t_vertex pos,
+	const char *text);
 
 /*
 **	menu/edit_menu.c
 */
-void				motion(t_sdl s, int set, int preset);
+void				motion(t_sdl s, int set, int preset, t_editor *edit);
 void				clic_editor_menu(int x, int y, t_editor *editor);
 
 /*
@@ -275,7 +278,8 @@ void				draw_background(SDL_Surface *s);
 void				rectangle(t_vertex start, t_vertex end, int clr,
 	SDL_Surface *s);
 void				square(int x, int y, int color, SDL_Surface *s);
-void				blank_menu(SDL_Surface *s, int set, t_sdl sdl, int preset);
+void				blank_menu(SDL_Surface *s, int set, t_editor *edit,
+	int preset);
 
 /*
 **	menu/sec_edit_menu.c

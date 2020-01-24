@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/19 13:14:01 by reda-con          #+#    #+#             */
-/*   Updated: 2020/01/22 11:43:38 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/01/24 09:52:52 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ void			next_blank_menu(int set, SDL_Surface *s)
 	rectangle(init_vertex(1540, 240), init_vertex(1710, 310), WHITE, s);
 }
 
-void			blank_menu(SDL_Surface *s, int set, t_sdl sdl, int preset)
+void			blank_menu(SDL_Surface *s, int set, t_editor *edit, int preset)
 {
 	int		clr;
 
@@ -102,5 +102,5 @@ void			blank_menu(SDL_Surface *s, int set, t_sdl sdl, int preset)
 	rectangle(init_vertex(1350, 550), init_vertex(1400, 600), 0xffa500, s);
 	rectangle(init_vertex(1300, 660), init_vertex(1410, 710), 0xffffff, s);
 	rectangle(init_vertex(1420, 660), init_vertex(1530, 710), 0xffffff, s);
-	print_param_in_param(&sdl, set);
+	print_param_in_param(edit, &edit->sdl, set);
 }

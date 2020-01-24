@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/20 17:05:02 by reda-con          #+#    #+#             */
-/*   Updated: 2020/01/22 09:50:17 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/01/24 11:32:29 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,8 +92,8 @@ void			change_value(t_editor *editor, t_presets presets, bool fl)
 		move_in_sector(&editor->sector, fl);
 	else if (presets == SECTOR_GRAV)
 		change_percentage(&editor->sector->gravity, fl);
-	else if (presets == SECTOR_VISC)
-		change_percentage(&editor->sector->viscosity, fl);
+	else if (presets == SECTOR_FRICTION)
+		change_percentage(&editor->sector->friction, fl);
 	else if (presets == ENTITY_TYPE && editor->sett == ENEMY && editor->enemy)
 		change_type(&editor->enemy->type, fl);
 	else if (presets == ENTITY_TYPE && editor->sett == OBJECT && editor->object)

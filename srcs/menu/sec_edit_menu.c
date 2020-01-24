@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/13 14:39:32 by reda-con          #+#    #+#             */
-/*   Updated: 2020/01/22 11:38:54 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/01/24 11:32:43 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static void		blank_sect(int set, int preset, SDL_Surface *s)
 		rectangle(init_vertex(1540, 440), init_vertex(1710, 510), clr, s);
 		clr = ((preset != SECTOR_GRAV) ? 0xffffff : 0x177013);
 		rectangle(init_vertex(1540, 540), init_vertex(1710, 610), clr, s);
-		clr = ((preset != SECTOR_VISC) ? 0xffffff : 0x177013);
+		clr = ((preset != SECTOR_FRICTION) ? 0xffffff : 0x177013);
 		rectangle(init_vertex(1540, 640), init_vertex(1710, 710), clr, s);
 	}
 }
@@ -79,7 +79,7 @@ static void		part_5_sec_clic_menu_editor(int y, t_editor *editor)
 	if (y >= 640 && y <= 710)
 	{
 		if (editor->sett == SECTOR)
-			editor->presets = SECTOR_VISC;
+			editor->presets = SECTOR_FRICTION;
 		else
 			editor->presets = NONE;
 	}

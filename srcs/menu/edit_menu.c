@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2009/11/19 13:07:32 by reda-con          #+#    #+#             */
-/*   Updated: 2020/01/22 11:42:34 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/01/24 11:38:20 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,10 @@ void			clic_editor_menu(int x, int y, t_editor *editor)
 	if (x >= 1300 && x <= 1410 && y >= 660 && y <= 710)
 		clear_editor(editor);
 	else if (x >= 1420 && x <= 1530 && y >= 660 && y <= 710)
+	{
 		create_map(editor);
+		editor->map_save = true;
+	}
 	else if (x >= 1340 && x <= 1510)
 		fst_clic_editor_menu(y, editor);
 	else if (x >= 1540 && x <= 1710)
@@ -50,10 +53,10 @@ void			clic_editor_menu(int x, int y, t_editor *editor)
 		else if (x >= 1600 && x <= 1650)
 			change_value(editor, editor->presets, true);
 	}
-	blank_menu(editor->sdl.surf, editor->sett, editor->sdl, editor->presets);
+	blank_menu(editor->sdl.surf, editor->sett, editor, editor->presets);
 }
 
-static void		next_motion(t_sdl s, int set, int preset)
+static void		next_motion(t_sdl s, int set, int preset, t_editor *edit)
 {
 	int		y;
 
@@ -71,10 +74,10 @@ static void		next_motion(t_sdl s, int set, int preset)
 	else if (set == SECTOR && y >= 640 && y <= 710)
 		rectangle(init_vertex(1540, 640), init_vertex(1710, 710), PRPL, s.surf);
 	else
-		blank_menu(s.surf, set, s, preset);
+		blank_menu(s.surf, set, edit, preset);
 }
 
-static void		option_motion(t_sdl s, int set, int preset)
+static void		option_motion(t_sdl s, int set, int preset, t_editor *edit)
 {
 	int		x;
 	int		y;
@@ -86,15 +89,15 @@ static void		option_motion(t_sdl s, int set, int preset)
 	else if (x > 1420 && x <= 1530 && y >= 660 && y <= 710)
 		rectangle(init_vertex(1420, 660), init_vertex(1530, 710), PRPL, s.surf);
 	else
-		blank_menu(s.surf, set, s, preset);
+		blank_menu(s.surf, set, edit, preset);
 }
 
-void			motion(t_sdl s, int set, int preset)
+void			motion(t_sdl s, int set, int preset, t_editor *edit)
 {
 	if (s.event.motion.y >= 660 && s.event.motion.y <= 710 &&
 		((s.event.motion.x >= 1300 && s.event.motion.x <= 1410) ||
 			(s.event.motion.x >= 1420 && s.event.motion.x <= 1530)))
-		option_motion(s, set, preset);
+		option_motion(s, set, preset, edit);
 	else if (s.event.motion.x >= 1340 && s.event.motion.x <= 1510)
 	{
 		if ((s.event.motion.y >= 140 && s.event.motion.y <= 210))
@@ -113,10 +116,10 @@ void			motion(t_sdl s, int set, int preset)
 			rectangle(init_vertex(1340, 540), init_vertex(1510, 610),
 					PRPL, s.surf);
 		else
-			blank_menu(s.surf, set, s, preset);
+			blank_menu(s.surf, set, edit, preset);
 	}
 	else if (s.event.motion.x >= 1540 && s.event.motion.x <= 1710)
-		next_motion(s, set, preset);
+		next_motion(s, set, preset, edit);
 	else
-		blank_menu(s.surf, set, s, preset);
+		blank_menu(s.surf, set, edit, preset);
 }
