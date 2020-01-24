@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 21:22:14 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/01/23 16:38:54 by lojesu           ###   ########.fr       */
+/*   Updated: 2020/01/24 17:11:24 by lojesu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ typedef struct	s_game
 	t_vec2d		t[2];
 	t_vec2d		v[2];
 	t_vec2d		size[2];
+	t_vec2d		org[2];
 	t_sector	*s;
 }				t_game;
 /*
