@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 13:09:05 by nde-jesu          #+#    #+#             */
-/*   Updated: 2020/01/24 13:56:37 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/01/24 14:47:57 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,8 @@ static void		display_editor(t_editor *edit)
 		display_portals(edit->portals, &edit->sdl, 0x00ff00, edit->sett == PORTAL);
 	if (edit->sett == SECTOR && edit->sdl.event.motion.x <= EDIT_W)
 	{
-		mse.x = (edit->sdl.event.motion.x / edit->dist_grid) * edit->dist_grid;
-		mse.y = (edit->sdl.event.motion.y / edit->dist_grid) * edit->dist_grid;
+		mse.x = (edit->sdl.event.motion.x / edit->true_grid) * edit->true_grid;
+		mse.y = (edit->sdl.event.motion.y / edit->true_grid) * edit->true_grid;
 		display_mouse(&edit->sdl, mse, 0x0ff0f0);
 	}
 	display_line(edit, edit->sdl.event.motion.x, edit->sdl.event.motion.y);
@@ -80,6 +80,8 @@ static void		keydown(t_editor *edit, SDL_Event event)
 {
 	if (event.key.keysym.scancode == SDL_SCANCODE_DELETE)
 		clear_editor(edit);
+	if (event.key.keysym.scancode == SDL_SCANCODE_END)
+		edit->grid = !edit->grid;
 	if (event.key.keysym.scancode == SDL_SCANCODE_ESCAPE)
 	{
 		if (is_saved(edit) == true)
@@ -97,6 +99,19 @@ static void		keydown(t_editor *edit, SDL_Event event)
 	}
 }
 
+void			mousewheel(t_editor *editor, SDL_Event event)
+{
+	if (event.wheel.y > 0)
+		editor->dist_grid *= 2;
+	else if (event.wheel.y < 0)
+		editor->dist_grid /= 2;
+	if (editor->dist_grid < 25)
+		editor->dist_grid = 25;
+	if (editor->dist_grid > 100)
+		editor->dist_grid = 100 ;
+	editor->true_grid = EDIT_W / editor->dist_grid;
+}
+
 void			events(t_editor *editor)
 {
 	blank_menu(editor->sdl.surf, editor->sett, editor, editor->presets);
@@ -112,6 +127,8 @@ void			events(t_editor *editor)
 				mouse(editor, editor->sdl.event);
 			else if (editor->sdl.event.type == SDL_MOUSEMOTION)
 				motion(editor->sdl, editor->sett, editor->presets, editor);
+			else if (editor->sdl.event.type == SDL_MOUSEWHEEL)
+				mousewheel(editor, editor->sdl.event);
 		}
 		display_editor(editor);
 		if (SDL_UpdateWindowSurface(editor->sdl.win) != 0)

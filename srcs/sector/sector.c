@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 09:55:53 by nde-jesu          #+#    #+#             */
-/*   Updated: 2020/01/22 11:52:35 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/01/24 14:37:45 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,8 +76,8 @@ void			place_sector(t_editor *editor, int x, int y)
 	t_vertex	*new;
 	t_sector	*sect;
 
-	x = (x / editor->dist_grid) * editor->dist_grid;
-	y = (y / editor->dist_grid) * editor->dist_grid;
+	x = (x / editor->true_grid) * editor->true_grid;
+	y = (y / editor->true_grid) * editor->true_grid;
 	new = get_vertex(editor, x, y);
 	sect = get_last_sector(editor);
 	if (is_sector_complete(sect->vertex, new) == true)

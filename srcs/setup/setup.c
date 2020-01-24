@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 09:23:28 by nde-jesu          #+#    #+#             */
-/*   Updated: 2020/01/22 11:53:09 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/01/24 14:43:30 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,9 @@ static void		init_chained_list(t_editor *editor)
 void			init_editor(t_editor *editor)
 {
 	sdl_init(&editor->sdl, editor);
-	editor->dist_grid = EDIT_W / 50;
+	editor->dist_grid = 50;
+	editor->true_grid = EDIT_W / editor->dist_grid;
+	editor->grid = true;
 	editor->sett = SECTOR;
 	editor->presets = NONE;
 	editor->finish = false;

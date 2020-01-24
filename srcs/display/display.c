@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   display_part1.c                                    :+:      :+:    :+:   */
+/*   display.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 08:56:26 by nde-jesu          #+#    #+#             */
-/*   Updated: 2020/01/14 09:41:09 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/01/24 14:37:31 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,8 +82,8 @@ void	display_line(t_editor *editor, int x, int y)
 
 	if (x < 0 || y < 0 || x > EDIT_W || y > WIN_H)
 		return ;
-	act_pos.x = (x / editor->dist_grid) * editor->dist_grid;
-	act_pos.y = (y / editor->dist_grid) * editor->dist_grid;
+	act_pos.x = (x / editor->true_grid) * editor->true_grid;
+	act_pos.y = (y / editor->true_grid) * editor->true_grid;
 	if (editor->last_vertex.x != -1 && editor->last_vertex.y != -1)
 		draw_line(editor->sdl.surf, editor->last_vertex, act_pos, 0x0ff0f0);
 }
@@ -99,7 +99,8 @@ void	display_grid(t_editor *editor)
 		x = 0;
 		while (x < EDIT_W)
 		{
-			if (x % editor->dist_grid == 0 && y % editor->dist_grid == 0)
+			if (x % editor->true_grid == 0 && y % editor->true_grid == 0 &&
+				editor->grid)
 				put_pixel(editor->sdl.surf, x, y, 0x9c9c9c);
 			else
 				put_pixel(editor->sdl.surf, x, y, 0x000000);

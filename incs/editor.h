@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 08:52:03 by nde-jesu          #+#    #+#             */
-/*   Updated: 2020/01/24 11:32:21 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/01/24 14:38:08 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -172,7 +172,10 @@ typedef struct		s_editor
 	t_vertex		*ab;
 	t_vertex		*cd;
 
+	int				true_grid;
 	int				dist_grid;
+	bool			grid;
+
 	bool			sect_is_closed;
 	bool			finish;
 }					t_editor;
