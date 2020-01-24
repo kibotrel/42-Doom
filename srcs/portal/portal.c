@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 15:15:06 by nde-jesu          #+#    #+#             */
-/*   Updated: 2020/01/23 13:53:48 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/01/24 12:03:32 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,5 +136,5 @@ void		place_portal(t_editor *editor, int x, int y)
 		if (sector == NULL)
 			init_portals(editor);
 	}
-	delete_vertex(&point);
+	free(point);
 }

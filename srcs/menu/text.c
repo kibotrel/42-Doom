@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/27 14:44:48 by nde-jesu          #+#    #+#             */
-/*   Updated: 2020/01/24 11:42:21 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/01/24 11:59:36 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,20 +81,17 @@ static void	print_sector_values(t_sdl *sdl, t_sector *sector, t_presets presets,
 
 void		print_param_to_screen(t_sdl *sdl, t_settings sett, t_editor *editor)
 {
-	t_vertex	where;
+	t_vertex	pos;
 	int			i;
 
-	i = 0;
-	where.x = 1410;
-	where.y = 155;
-	while (i < 5)
+	i = -1;
+	pos.x = 1410;
+	pos.y = 155;
+	while (++i < 5)
 	{
-		display_text(editor, sdl, where, g_first_params[i]);
-		where.x -= 45;
-		display_text(editor, sdl, where, g_number[i]);
-		where.x += 45;
-		where.y = where.y + 100;
-		i++;
+		display_text(editor, sdl, pos, g_first_params[i]);
+		display_text(editor, sdl, init_vertex(pos.x - 45, pos.y), g_number[i]);
+		pos.y = pos.y + 100;
 	}
 	display_text(editor, sdl, init_vertex(1315, 665), g_first_params[5]);
 	display_text(editor, sdl, init_vertex(1445, 665), g_first_params[6]);
