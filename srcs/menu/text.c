@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/27 14:44:48 by nde-jesu          #+#    #+#             */
-/*   Updated: 2020/01/24 11:33:24 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/01/24 11:42:21 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 #include "editor.h"
 
 static char const	*g_first_params[8] = {
-	"Sector", "Player", "Enemy", "Object", "Portal", "Clear", "Save", "Draw Sector Clockwise"
+	"Sector", "Player", "Enemy", "Object", "Portal", "Clear", "Save",
+	"Draw Sector Clockwise"
 };
 
 static char const	*g_number[5] = {
@@ -28,7 +29,8 @@ static char const	*g_tab[4][6] = {
 	{"Select.", "Type"}
 };
 
-void	display_text(t_editor *edit, t_sdl *sdl, t_vertex pos, const char *text)
+void		display_text(t_editor *edit, t_sdl *sdl, t_vertex pos,
+	const char *text)
 {
 	SDL_Rect	where;
 	SDL_Surface	*tmp;
