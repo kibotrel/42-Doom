@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 19:01:59 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/01/23 20:16:43 by demonwaves       ###   ########.fr       */
+/*   Updated: 2020/01/24 12:05:17 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,12 @@ void				side_infos(t_game *var);
 t_item				item(uint32_t sector, uint32_t min, uint32_t max);
 t_height			lim(int y1, int y2);
 t_palette			flat(int top, int middle, int bottom);
+
+/*
+**	data_2.c
+*/
+
+char				*load_text(char *prefix, char *info);
 
 /*
 **	maths_0.c

@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/18 14:38:11 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/01/23 20:29:05 by demonwaves       ###   ########.fr       */
+/*   Updated: 2020/01/24 12:10:06 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -242,16 +242,12 @@ static void	temporary_setup(t_env *env)
 
 void		game(t_env *env)
 {
-	t_game	var;
-
 	if (!env->setup)
 	{
 		SDL_ShowCursor(SDL_DISABLE);
 		SDL_SetWindowTitle(env->sdl.win, TITLE_GAME);
 		temporary_setup(env);
 	}
-	game_setup(env, &var);
-	graphics(env, &var);
-	hud(env, &var);
-	engine_clean(&var);
+	graphics(env);
+	hud(env);
 }

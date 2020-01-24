@@ -1,43 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   setup.h                                            :+:      :+:    :+:   */
+/*   data_2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/15 18:43:02 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/01/24 14:27:58 by kibotrel         ###   ########.fr       */
+/*   Created: 2020/01/24 12:03:37 by kibotrel          #+#    #+#             */
+/*   Updated: 2020/01/24 15:06:03 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SETUP_H
-# define SETUP_H
+#include <stdlib.h>
+#include "libft.h"
 
-# include "game.h"
+char	*load_text(char *prefix, char *info)
+{
+	char	*string;
 
-/*
-**	setup.c
-*/
-
-void	env_setup(t_env *env);
-
-/*
-**	graphic.c
-*/
-
-void	graphic_setup(t_env *env, t_sdl *sdl);
-
-/*
-**	game.c
-*/
-
-void	game_setup(t_env *env, t_game *var);
-void	draw_setup(t_env *env, t_game *var, t_item *now, uint32_t i);
-
-/*
-**	hud.c
-*/
-
-void	hud_setup(t_env *env);
-
-#endif
+	string = ft_strjoin(prefix, info);
+	free(info);
+	return (string);
+}

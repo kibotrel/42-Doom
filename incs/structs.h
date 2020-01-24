@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 18:48:17 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/01/23 21:07:51 by demonwaves       ###   ########.fr       */
+/*   Updated: 2020/01/24 12:00:16 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,10 @@
 # include "SDL_ttf.h"
 # include "bmp.h"
 # include "enums.h"
+
+/*
+** Miscelaneous informations.
+*/
 
 typedef struct	s_pos
 {
@@ -38,10 +42,6 @@ typedef struct	s_vec3d
 	double		z;
 }				t_vec3d;
 
-/*
-**	Informations about the menu display.
-*/
-
 typedef struct	s_ui
 {
 	t_pos		min;
@@ -50,57 +50,35 @@ typedef struct	s_ui
 	uint8_t		button;
 }				t_ui;
 
+typedef struct	s_hud
+{
+	char		*fly;
+	char		*fps;
+	char		*pos;
+	char		*angle;
+	char		*height;
+	char		*sector;
+	char		*gravity;
+	char		*friction;
+	int8_t		debug;
+}				t_hud;
+
 typedef struct	s_grid
 {
 	t_pos		min;
 	t_pos		max;
 }				t_grid;
 
-/*
-** Graphic library informations.
-*/
-
-typedef struct	s_sdl
-{
-	t_bmp		bmp[NB_ASSETS];
-	TTF_Font	*font[2];
-	SDL_Event	event;
-	SDL_Color	color;
-	SDL_Window	*win;
-	SDL_Surface	*screen;
-}				t_sdl;
-
-/*
-** Miscelaneous informations.
-*/
-
 typedef struct	s_data
 {
 	t_ui		ui;
+	t_hud		hud;
 	t_grid		grid;
 	uint8_t		f_size;
 	uint8_t		g_size;
 	uint32_t	fps;
 	uint32_t	w_size;
 }				t_data;
-
-typedef struct	s_cam
-{
-	double		cos;
-	double		gap;
-	double		sin;
-	double		angle;
-	double		speed;
-	t_vec2d		fov;
-	t_vec3d		v;
-	t_vec3d		pos;
-	int8_t		fly;
-	uint8_t		fall;
-	uint8_t		move;
-	uint8_t		sneak;
-	uint8_t		ground;
-	uint32_t	sector;
-}				t_cam;
 
 typedef	struct	s_sector
 {
@@ -130,8 +108,36 @@ typedef struct	s_time
 }				t_time;
 
 /*
-**	Main structure.
+**	Main structures.
 */
+
+typedef struct	s_cam
+{
+	double		cos;
+	double		gap;
+	double		sin;
+	double		angle;
+	double		speed;
+	t_vec2d		fov;
+	t_vec3d		v;
+	t_vec3d		pos;
+	int8_t		fly;
+	uint8_t		fall;
+	uint8_t		move;
+	uint8_t		sneak;
+	uint8_t		ground;
+	uint32_t	sector;
+}				t_cam;
+
+typedef struct	s_sdl
+{
+	t_bmp		bmp[NB_ASSETS];
+	TTF_Font	*font[2];
+	SDL_Event	event;
+	SDL_Color	color;
+	SDL_Window	*win;
+	SDL_Surface	*screen;
+}				t_sdl;
 
 typedef struct	s_env
 {

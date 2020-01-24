@@ -6,13 +6,14 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 15:22:56 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/01/23 20:11:59 by demonwaves       ###   ########.fr       */
+/*   Updated: 2020/01/24 11:46:55 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <math.h>
 #include "env.h"
 #include "game.h"
+#include "clean.h"
 #include "setup.h"
 #include "utils.h"
 
@@ -43,30 +44,31 @@ void	physics(t_env *env)
 //	changer le prototype mais tout y est !
 //
 
-void	graphics(t_env *env, t_game *var)
+void	graphics(t_env *env)
 {
-	uint32_t	i;
-	uint32_t	j;
+	uint32_t	i[2];
+	t_game		var;
 	t_item		now;
 
-	i = 0;
-	while (i++ == 0 || var->head != var->tail)
+	i[0] = 0;
+	game_setup(env, &var);
+	while (i[0]++ == 0 || var.head != var.tail)
 	{
-		j = 0;
-		if (cycle_check(env, var, &now))
+		i[1] = 0;
+		if (cycle_check(env, &var, &now))
 			continue;
-		while (j < var->s->points)
+		while (i[1] < var.s->points)
 		{
-			transform(&env->cam, var, j);
-			if (!bound_view(var) || !scale(env, var, &now))
+			transform(&env->cam, &var, i[1]);
+			if (!bound_view(&var) || !scale(env, &var, &now))
 			{
-				j++;
+				i[1]++;
 				continue;
 			}
-			draw_setup(env, var, &now, j);
-			draw_screen(env, var);
-			check_depth(var, var->start, var->end);
-			j++;
+			draw_setup(env, &var, &now, i[1]++);
+			draw_screen(env, &var);
+			check_depth(&var, var.start, var.end);
 		}
 	}
+	engine_clean(&var);
 }

@@ -6,7 +6,7 @@
 #    By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/10 16:16:29 by kibotrel          #+#    #+#              #
-#    Updated: 2020/01/23 20:27:08 by demonwaves       ###   ########.fr        #
+#    Updated: 2020/01/24 12:10:54 by kibotrel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -115,11 +115,13 @@ SRCS			+= parse/sector.c
 SRCS			+= parse/tools.c
 SRCS			+= parse/vertex.c
 SRCS			+= parse/debug.c
+SRCS			+= setup/hud.c
 SRCS			+= setup/game.c
 SRCS			+= setup/setup.c
 SRCS			+= setup/graphic.c
 SRCS			+= utils/data_0.c
 SRCS			+= utils/data_1.c
+SRCS			+= utils/data_2.c
 SRCS			+= utils/maths_0.c
 SRCS			+= utils/maths_1.c
 SRCS			+= utils/usage.c

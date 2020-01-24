@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 21:22:14 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/01/23 20:28:09 by demonwaves       ###   ########.fr       */
+/*   Updated: 2020/01/24 11:41:07 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ void			cam_motion(t_env *env, t_cam *cam, int x, int y);
 */
 
 void			physics(t_env *env);
-void			graphics(t_env *env, t_game *var);
+void			graphics(t_env *env);
 
 /*
 **	physics.c
@@ -93,6 +93,6 @@ int32_t			check_collisions(t_vec2d p, t_vec2d v, t_vec2d w1, t_vec2d w2);
 **	hud.c
 */
 
-void			hud(t_env *env, t_game *var);
+void			hud(t_env *env);
 
 #endif
