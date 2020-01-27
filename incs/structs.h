@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 18:48:17 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/01/24 12:00:16 by kibotrel         ###   ########.fr       */
+/*   Updated: 2020/01/27 12:14:18 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,30 +50,22 @@ typedef struct	s_ui
 	uint8_t		button;
 }				t_ui;
 
-typedef struct	s_hud
-{
-	char		*fly;
-	char		*fps;
-	char		*pos;
-	char		*angle;
-	char		*height;
-	char		*sector;
-	char		*gravity;
-	char		*friction;
-	int8_t		debug;
-}				t_hud;
-
 typedef struct	s_grid
 {
 	t_pos		min;
 	t_pos		max;
 }				t_grid;
 
+typedef struct	s_hud
+{
+	int8_t		debug;
+}				t_hud;
+
 typedef struct	s_data
 {
 	t_ui		ui;
-	t_hud		hud;
 	t_grid		grid;
+	t_hud		hud;
 	uint8_t		f_size;
 	uint8_t		g_size;
 	uint32_t	fps;
@@ -87,7 +79,6 @@ typedef	struct	s_sector
 	double		floor;
 	t_vec2d		*vertex;
 	uint32_t	points;
-
 }				t_sector;
 
 /*
@@ -103,6 +94,7 @@ typedef struct	s_tick
 typedef struct	s_time
 {
 	t_tick		fly;
+	t_tick		debug;
 	t_tick		fps;
 	t_tick		frame;
 }				t_time;

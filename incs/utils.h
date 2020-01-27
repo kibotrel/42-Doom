@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 19:01:59 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/01/24 12:05:17 by kibotrel         ###   ########.fr       */
+/*   Updated: 2020/01/27 15:38:50 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,14 @@ void				text_to_screen(t_env *env, t_sdl *sdl, char *txt,
 */
 
 void				draw_screen(t_env *env, t_game *var);
+void				blur(t_env *env, SDL_Surface *win, t_pos p);
 
+/*
+**	graphic_2.c
+*/
+
+void				display_info(t_env *env, char *str, t_vec2d pos,
+									uint32_t mode);
 /*
 **	data_0.c
 */
@@ -121,7 +128,7 @@ int8_t				cycle_check(t_env *env, t_game *var, t_item *now);
 */
 
 void				speed_check(t_env *env);
-
+void				check_tick(t_tick *tick, int8_t *flag, uint32_t  offset);
 /*
 **	engine.c
 */

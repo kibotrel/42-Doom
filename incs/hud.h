@@ -1,23 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   hud.c                                              :+:      :+:    :+:   */
+/*   hud.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/24 11:32:02 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/01/24 15:07:17 by kibotrel         ###   ########.fr       */
+/*   Created: 2020/01/27 15:26:11 by kibotrel          #+#    #+#             */
+/*   Updated: 2020/01/27 15:27:42 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-#include "utils.h"
+#ifndef HUD_H
+# define HUD_H
 
-void	hud_setup(t_env *env)
-{
-	(void)hud;
-	ft_bzero(&env->data.hud, sizeof(t_hud));
-	//env->data.hud.fps = load_text("FPS : ", ft_itoa(env->data.fps));
-	// hud->sector = load_text("Sector : ", ft_itoa(env->cam.sector));
-	// hud->angle = load_text("Angle : ", ft_itoa((int)fabs(ft_degrees(env->cam.angle)) % 360));
-}
+# include "structs.h"
+/*
+**	debug.c
+*/
+
+void	debug_hud(t_env *env);
+
+#endif

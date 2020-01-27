@@ -6,7 +6,7 @@
 #    By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/10 16:16:29 by kibotrel          #+#    #+#              #
-#    Updated: 2020/01/24 12:10:54 by kibotrel         ###   ########.fr        #
+#    Updated: 2020/01/27 15:37:50 by kibotrel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,7 +50,8 @@ INCS_DIR		+= libbmp/incs
 # All the subdirectories used in the project
 # to organise source files (Can be changed).
 
-OBJS_SUBDIRS	:= core
+OBJS_SUBDIRS	:= hud
+OBJS_SUBDIRS	+= core
 OBJS_SUBDIRS	+= game
 OBJS_SUBDIRS	+= menu
 OBJS_SUBDIRS	+= setup
@@ -75,6 +76,7 @@ LTTF			= $(LTTF_DIR)/$(TTF)
 # Used header at each compilation to check file integrity (Can be changed).
 
 INCS			:= incs/env.h
+INCS			+= incs/hud.h
 INCS			+= incs/core.h
 INCS			+= incs/game.h
 INCS			+= incs/menu.h
@@ -89,7 +91,8 @@ INCS			+= incs/structs.h
 
 # Source files (Can be changed)
 
-SRCS			:= core/main.c
+SRCS			:= hud/debug.c
+SRCS			+= core/main.c
 SRCS			+= core/game.c
 SRCS			+= core/menu.c
 SRCS			+= core/hooks.c
@@ -115,7 +118,6 @@ SRCS			+= parse/sector.c
 SRCS			+= parse/tools.c
 SRCS			+= parse/vertex.c
 SRCS			+= parse/debug.c
-SRCS			+= setup/hud.c
 SRCS			+= setup/game.c
 SRCS			+= setup/setup.c
 SRCS			+= setup/graphic.c
@@ -130,6 +132,7 @@ SRCS			+= utils/checks_01.c
 SRCS			+= utils/engine.c
 SRCS			+= utils/graphic_0.c
 SRCS			+= utils/graphic_1.c
+SRCS			+= utils/graphic_2.c
 SRCS			+= editor/keyboard.c
 SRCS			+= events/mouse.c
 SRCS			+= events/motion.c
