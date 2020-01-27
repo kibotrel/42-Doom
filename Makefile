@@ -6,7 +6,7 @@
 #    By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/10 16:16:29 by kibotrel          #+#    #+#              #
-#    Updated: 2020/01/23 13:53:27 by nde-jesu         ###   ########.fr        #
+#    Updated: 2020/01/27 10:41:32 by nde-jesu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,18 +50,7 @@ INCS_DIR		+= libbmp/incs
 # All the subdirectories used in the project
 # to organise source files (Can be changed).
 
-OBJS_SUBDIRS	:= core
-OBJS_SUBDIRS	+= display
-OBJS_SUBDIRS	+= menu
-OBJS_SUBDIRS	+= setup
-OBJS_SUBDIRS	+= clean
-OBJS_SUBDIRS	+= utils
-OBJS_SUBDIRS	+= entity
-OBJS_SUBDIRS	+= events
-OBJS_SUBDIRS	+= player
-OBJS_SUBDIRS	+= save
-OBJS_SUBDIRS	+= sector
-OBJS_SUBDIRS	+= portal
+OBJS_SUBDIRS	:= editor
 
 #------------------------------------ FILES -----------------------------------#
 
@@ -115,34 +104,34 @@ INCS			:= incs/editor.h
 # SRCS			+= events/mouse.c
 # SRCS			+= events/motion.c
 # SRCS			+= events/keyboard.c
-SRCS			:= core/main.c
-SRCS			+= core/events.c
-SRCS			+= core/events_tools.c
-SRCS			+= setup/setup.c
-SRCS			+= clean/clean.c
-SRCS			+= clean/delete.c
-SRCS			+= display/display.c
-SRCS			+= display/display_part2.c
-SRCS			+= display/display_utils.c
-SRCS			+= entity/entity.c
-SRCS			+= entity/entity_part2.c
-SRCS			+= menu/edit_menu.c
-SRCS			+= menu/edit_menu_utils.c
-SRCS			+= menu/sec_edit_menu.c
-SRCS			+= menu/sec_edit_menu_utils.c
-SRCS			+= menu/picture.c
-SRCS			+= menu/text.c
-SRCS			+= player/player.c
-SRCS			+= portal/portal.c
-SRCS			+= portal/portal_utils.c
-SRCS			+= save/map_creation.c
-SRCS			+= save/map_creation_part2.c
-SRCS			+= save/map_creation_utils.c
-SRCS			+= sector/vertex.c
-SRCS			+= sector/sector.c
-SRCS			+= sector/sector_part2.c
-SRCS			+= sector/sector_check.c
-SRCS			+= sector/sector_utils.c
+SRCS			:= editor/main.c
+SRCS			+= editor/events.c
+SRCS			+= editor/events_tools.c
+SRCS			+= editor/setup.c
+SRCS			+= editor/clean.c
+SRCS			+= editor/delete.c
+SRCS			+= editor/display.c
+SRCS			+= editor/display_part2.c
+SRCS			+= editor/display_utils.c
+SRCS			+= editor/entity.c
+SRCS			+= editor/entity_part2.c
+SRCS			+= editor/edit_menu.c
+SRCS			+= editor/edit_menu_utils.c
+SRCS			+= editor/sec_edit_menu.c
+SRCS			+= editor/sec_edit_menu_utils.c
+SRCS			+= editor/picture.c
+SRCS			+= editor/text.c
+SRCS			+= editor/player.c
+SRCS			+= editor/portal.c
+SRCS			+= editor/portal_utils.c
+SRCS			+= editor/map_creation.c
+SRCS			+= editor/map_creation_part2.c
+SRCS			+= editor/map_creation_utils.c
+SRCS			+= editor/vertex.c
+SRCS			+= editor/sector.c
+SRCS			+= editor/sector_part2.c
+SRCS			+= editor/sector_check.c
+SRCS			+= editor/sector_utils.c
 
 #------------------------------ OPERATING SYSTEM ------------------------------#
 
