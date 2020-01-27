@@ -6,7 +6,7 @@
 #    By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/10 16:16:29 by kibotrel          #+#    #+#              #
-#    Updated: 2020/01/23 16:38:57 by reda-con         ###   ########.fr        #
+#    Updated: 2020/01/27 11:05:14 by kibotrel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -252,7 +252,6 @@ $(LFT):
 
 $(LBMP):
 	@make -sC $(LBMP_DIR) -j
-
 
 # Rules used to create folders if they aren't already existing (Can be changed).
 
