@@ -3,7 +3,7 @@
 #include "libft.h"
 
 #define WALL_SIZE 64
-#define WALL_UNIT 2048
+#define WALL_UNIT 4096
 
 t_scaler	scaler_init(int ya, int cya, int yb, int min_t, int max_t)
 {
@@ -21,25 +21,13 @@ static int scaler_next(t_scaler *i)
 	return i->result;
 }
 
-/*
-float vx1 = sect->vertex[s+0].x - player.where.x, vy1 = sect->vertex[s+0].y - player.where.y;
-float vx2 = sect->vertex[s+1].x - player.where.x, vy2 = sect->vertex[s+1].y - player.where.y;
-*//* Rotate them around the player's view *//*
-float pcos = player.anglecos, psin = player.anglesin;
-float tx1 = vx1 * psin - vy1 * pcos,  tz1 = vx1 * pcos + vy1 * psin;
-float tx2 = vx2 * psin - vy2 * pcos,  tz2 = vx2 * pcos + vy2 * psin;
-​
-int txtx = (u0*((x2-x)*tz2) + u1*((x-x1)*tz1)) / ((x2-x)*tz2 + (x-x1)*tz1);
-*/
-
-int		x_scale(t_env *env, t_game *var, int x, int *scale_x)
+int		x_scale(t_game *var, int x, int *scale_x)
 {
 	float	u0;
 	float	u1;
 
-	(void)env;
-	float tz1 = var->t[0].y;//vx1 * env->cam.cos + vy1 * env->cam.sin;
-	float tz2 = var->t[1].y;//vx2 * env->cam.cos + vy2 * env->cam.sin;
+	float tz1 = var->t[0].y;
+	float tz2 = var->t[1].y;
 	float wall_size = hypot(var->v[0].x - var->v[1].x, var->v[0].y - var->v[1].y);
 	if (fabs(var->t[1].x - var->t[0].x) > fabs(tz2 - tz1))
 	{
@@ -68,16 +56,35 @@ void    draw_texture_slice(t_env *env, int x, t_height h, t_game *var, uint32_t 
 	p.x = x;
 	p.y = h.top;
 	scaler = scaler_init(var->unbound[0], h.top, var->unbound[1], 0, 20 * fabs(var->ceil[0] - var->floor[0]));
-	if (x_scale(env, var, x, &scale_x))
-		return ;
+	x_scale(var, x, &scale_x);
 	if (h.bottom > h.top)
 	{
 		draw_pixel(env, env->sdl.screen, p, 0);
 		while (++p.y < h.bottom)
 		{
-			draw_pixel(env, env->sdl.screen, p,
-			wall[(scaler_next(&scaler) % WALL_SIZE) * WALL_SIZE + (scale_x % WALL_SIZE)]);
+			draw_pixel(env, env->sdl.screen, p, color_add(
+						wall[(scaler_next(&scaler) % WALL_SIZE) * WALL_SIZE + (scale_x % WALL_SIZE)], -var->depth));
 		}
+		draw_pixel(env, env->sdl.screen, p, 0);
+	}
+}
+
+void    draw_ceil_and_floor_slice(t_env *env, t_game *var, int x)
+{
+	t_pos       p;
+	t_height	h;
+
+	h.top = var->y[1] + 1;
+	h.bottom = var->bottom[x];
+	p.x = x;
+	p.y = h.top;
+	if (h.bottom == h.top)
+		draw_pixel(env, env->sdl.screen, p, color_scale(0x0000AA, color_add(0xFFFFFF, -var->depth), p.y - h.bottom, h.top - h.bottom));
+	else if (h.bottom > h.top)
+	{
+		draw_pixel(env, env->sdl.screen, p, 0);
+		while (++p.y < h.bottom)
+			draw_pixel(env, env->sdl.screen, p, color_scale(0x0000AA, color_add(0xFFFFFF, -var->depth), p.y - h.top, h.bottom - h.top));
 		draw_pixel(env, env->sdl.screen, p, 0);
 	}
 }
