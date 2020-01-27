@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/20 17:05:02 by reda-con          #+#    #+#             */
-/*   Updated: 2020/01/24 11:32:29 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/01/27 10:01:34 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,9 +47,9 @@ static void		change_height(int *to_change, bool fl)
 		--*to_change;
 	else
 		++*to_change;
-	if (*to_change < -10)
+	if (*to_change < -250)
 		++*to_change;
-	else if (*to_change > 50)
+	else if (*to_change > 250)
 		--*to_change;
 }
 
