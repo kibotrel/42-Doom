@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+         #
+#    By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/10 16:16:29 by kibotrel          #+#    #+#              #
-#    Updated: 2020/01/27 11:05:14 by kibotrel         ###   ########.fr        #
+#    Updated: 2020/01/27 13:48:25 by nde-jesu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -84,6 +84,7 @@ INCS			+= incs/utils.h
 INCS			+= incs/editor.h
 INCS			+= incs/events.h
 INCS			+= incs/structs.h
+INCS			+= incs/editor.h
 
 # Source files (Can be changed)
 
@@ -131,6 +132,35 @@ SRCS			+= events/mouse.c
 SRCS			+= events/motion.c
 SRCS			+= events/keyboard.c
 SRCS			+= texture/texture_tools.c
+SRCS			+= editor/editor.c
+SRCS			+= editor/events.c
+SRCS			+= editor/events_tools.c
+SRCS			+= editor/setup.c
+SRCS			+= editor/clean.c
+SRCS			+= editor/delete.c
+SRCS			+= editor/display.c
+SRCS			+= editor/display_part2.c
+SRCS			+= editor/display_utils.c
+SRCS			+= editor/entity.c
+SRCS			+= editor/entity_part2.c
+SRCS			+= editor/edit_menu.c
+SRCS			+= editor/edit_menu_utils.c
+SRCS			+= editor/sec_edit_menu.c
+SRCS			+= editor/sec_edit_menu_utils.c
+SRCS			+= editor/picture.c
+SRCS			+= editor/text.c
+SRCS			+= editor/player.c
+SRCS			+= editor/portal.c
+SRCS			+= editor/portal_utils.c
+SRCS			+= editor/map_creation.c
+SRCS			+= editor/map_creation_part2.c
+SRCS			+= editor/map_creation_utils.c
+SRCS			+= editor/vertex.c
+SRCS			+= editor/sector.c
+SRCS			+= editor/sector_part2.c
+SRCS			+= editor/sector_check.c
+SRCS			+= editor/sector_utils.c
+SRCS			+= editor/keyboard.c
 
 #------------------------------ OPERATING SYSTEM ------------------------------#
 

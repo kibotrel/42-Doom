@@ -25,9 +25,9 @@ static bool		is_sector_complete(t_vertex *first, t_vertex *last)
 	return (false);
 }
 
-static t_sector	*get_last_sector(t_editor *editor)
+static t_ed_sector	*get_last_sector(t_editor *editor)
 {
-	t_sector	*sect;
+	t_ed_sector	*sect;
 
 	if (!(editor->sector))
 	{
@@ -40,17 +40,17 @@ static t_sector	*get_last_sector(t_editor *editor)
 	return (sect);
 }
 
-static void		next_place_sector(t_editor *edit, t_sector *sect)
+static void		next_place_sector(t_editor *edit, t_ed_sector *sect)
 {
 	sect->vertex_count = count_vertex_in_sector(sect->vertex);
 	if (!(sect->is_portal = (int*)ft_memalloc(sizeof(int)
 					* sect->vertex_count)))
-		clean(edit);
+		clean_editor(edit);
 	sect->is_portal = ft_memset(sect->is_portal, -1, sizeof(int)
 			* sect->vertex_count);
 	if (!(sect->portal_type = (int*)ft_memalloc(sizeof(int)
 			* sect->vertex_count)))
-		clean(edit);
+		clean_editor(edit);
 	sect->portal_type = ft_memset(sect->portal_type, -1, sizeof(int)
 			* sect->vertex_count);
 	sect->next = create_sector(edit);
@@ -62,7 +62,7 @@ static void		next_place_sector(t_editor *edit, t_sector *sect)
 void			place_sector(t_editor *editor, int x, int y)
 {
 	t_vertex	*new;
-	t_sector	*sect;
+	t_ed_sector	*sect;
 
 	x = (x / editor->true_grid) * editor->true_grid;
 	y = (y / editor->true_grid) * editor->true_grid;

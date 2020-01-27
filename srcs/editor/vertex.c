@@ -15,7 +15,7 @@ t_vertex		*create_vertex(t_vertex v, t_editor *edit)
 	t_vertex	*new;
 
 	if (!(new = (t_vertex*)ft_memalloc(sizeof(t_vertex))))
-		clean(edit);
+		clean_editor(edit);
 	new->x = v.x;
 	new->y = v.y;
 	new->prev = NULL;

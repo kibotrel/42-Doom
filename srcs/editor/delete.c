@@ -43,10 +43,10 @@ static void			delete_portals(t_portal **portal)
 	*portal = NULL;
 }
 
-void				delete_sector(t_sector **sectors)
+void				delete_sector(t_ed_sector **sectors)
 {
-	t_sector		*tmp;
-	t_sector		*to_del;
+	t_ed_sector		*tmp;
+	t_ed_sector		*to_del;
 
 	if (*sectors == NULL)
 		return ;
@@ -69,10 +69,10 @@ void				delete_sector(t_sector **sectors)
 	*sectors = NULL;
 }
 
-static void			delete_entity(t_entity **entity)
+static void			delete_entity(t_ed_entity **entity)
 {
-	t_entity	*tmp;
-	t_entity	*to_del;
+	t_ed_entity	*tmp;
+	t_ed_entity	*to_del;
 
 	if (*entity == NULL)
 		return ;
@@ -109,6 +109,6 @@ void				clear_editor(t_editor *editor)
 	editor->last_vertex.y = -1;
 	init_portals(editor);
 	init_count(&editor->count);
-	blank_menu(editor->sdl.surf, editor->sett, editor, editor->presets);
+	blank_menu(editor->sdl.screen, editor->sett, editor, editor->presets);
 	editor->map_save = true;
 }

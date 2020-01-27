@@ -29,15 +29,15 @@ void		display_text(t_editor *edit, t_sdl *sdl, t_vertex pos,
 	error = 0;
 	if (!(tmp = TTF_RenderText_Solid(sdl->font, text, sdl->color)))
 		error = 1;
-	if (!error && SDL_BlitSurface(tmp, 0, sdl->surf, &where))
+	if (!error && SDL_BlitSurface(tmp, 0, sdl->screen, &where))
 		error = 2;
 	if (error != 1)
 		SDL_FreeSurface(tmp);
 	if (error)
-		clean(edit);
+		clean_editor(edit);
 }
 
-static void	print_sector_values(t_sdl *sdl, t_sector *sector, t_presets presets,
+static void	print_sector_values(t_sdl *sdl, t_ed_sector *sector, t_presets presets,
 	t_editor *edit)
 {
 	char		*print;
@@ -67,7 +67,7 @@ static void	print_sector_values(t_sdl *sdl, t_sector *sector, t_presets presets,
 	}
 }
 
-void		print_param_to_screen(t_sdl *sdl, t_settings sett, t_editor *editor)
+void		print_param_to_screen(t_env *env, t_settings sett, t_editor *editor)
 {
 	t_vertex	pos;
 	int			i;
@@ -77,21 +77,21 @@ void		print_param_to_screen(t_sdl *sdl, t_settings sett, t_editor *editor)
 	pos.y = 155;
 	while (++i < 5)
 	{
-		display_text(editor, sdl, pos, g_first_params[i]);
-		display_text(editor, sdl, init_vertex(pos.x - 45, pos.y), g_number[i]);
+		display_text(editor, &env->sdl, pos, g_first_params[i]);
+		display_text(editor, &env->sdl, init_vertex(pos.x - 45, pos.y), g_number[i]);
 		pos.y = pos.y + 100;
 	}
-	display_text(editor, sdl, init_vertex(1315, 665), g_first_params[5]);
-	display_text(editor, sdl, init_vertex(1445, 665), g_first_params[6]);
+	display_text(editor, &env->sdl, init_vertex(1315, 665), g_first_params[5]);
+	display_text(editor, &env->sdl, init_vertex(1445, 665), g_first_params[6]);
 	if (editor->presets != NONE && editor->sector)
 		print_sector_values(sdl, editor->sector, editor->presets, editor);
 	if ((editor->presets == ENTITY_TYPE && ((sett == ENEMY && editor->enemy) ||
 		(sett == OBJECT && editor->object))) ||
 			editor->presets == SECTOR_TEXT ||
 				(editor->presets == PORTAL_TYPE && editor->portals))
-		print_params_image(editor, editor->presets, editor->sett);
+		print_params_image(editor, editor->presets, editor->sett, env);
 	if (editor->sect_is_closed == false)
-		display_text(editor, sdl, init_vertex(1380, 50), g_first_params[7]);
+		display_text(editor, &env->sdl, init_vertex(1380, 50), g_first_params[7]);
 }
 
 void		print_param_in_param(t_editor *edit, t_sdl *sdl, t_settings sett)

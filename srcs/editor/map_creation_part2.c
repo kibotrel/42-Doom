@@ -1,7 +1,7 @@
 #include "editor.h"
 #include "libft.h"
 
-void	write_player(t_player player, t_vertex if_no_player, int fd)
+void	write_player(t_ed_player player, t_vertex if_no_player, int fd)
 {
 	if (player.x < 0 && player.y < 0)
 	{
@@ -20,9 +20,9 @@ void	write_player(t_player player, t_vertex if_no_player, int fd)
 	ft_putstr_fd("\n\n", fd);
 }
 
-void	write_entities(t_entity *entities, int fd, bool type)
+void	write_entities(t_ed_entity *entities, int fd, bool type)
 {
-	t_entity	*entity;
+	t_ed_entity	*entity;
 
 	entity = entities;
 	while (entity->prev)
@@ -70,7 +70,7 @@ void	write_vertexes(t_vertex *vertexes, int fd)
 		ft_putchar_fd('\n', fd);
 }
 
-void	write_vertex_sector(t_sector *sect, t_vertex *all, int fd)
+void	write_vertex_sector(t_ed_sector *sect, t_vertex *all, int fd)
 {
 	int			pos;
 	t_vertex	*vertex;

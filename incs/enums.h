@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   enums.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 17:59:50 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/01/14 13:07:36 by kibotrel         ###   ########.fr       */
+/*   Updated: 2020/01/27 11:28:09 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,20 @@ typedef enum	e_assets
 	MENU_900P,
 	MENU_768P,
 	MENU_720P,
+	ED_TEXT_1,
+	ED_TEXT_2,
+	ED_TEXT_3,
+	ED_TEXT_4,
+	ED_OBJ_1,
+	ED_OBJ_2,
+	ED_OBJ_3,
+	ED_OBJ_4,
+	ED_ENEMY_1,
+	ED_ENEMY_2,
+	ED_ENEMY_3,
+	ED_ENEMY_4,
+	ED_PORTAL_DOOR,
+	ED_PORTAL_WALL,
 	NB_ASSETS
 }				t_assets;
 
@@ -60,5 +74,36 @@ typedef enum	e_status
 	E_MALLOC,
 	NB_ERRORS
 }				t_status;
+
+/*
+**	Enums needed by the editor
+*/
+
+typedef enum		e_settings
+{
+	SECTOR,
+	WALL,
+	PORTAL,
+	PLAYER,
+	ENEMY,
+	OBJECT,
+}					t_settings;
+
+typedef enum		e_presets
+{
+	NONE,
+	SECTOR_FLOOR,
+	SECTOR_CEIL,
+	SECTOR_TEXT,
+	SECTOR_MOVE,
+	SECTOR_GRAV,
+	SECTOR_FRICTION,
+	ENTITY_TYPE,
+	ENTITY_MOVE,
+	ENTITY_ROTATE,
+	PLAYER_ROTATE,
+	PORTAL_MOVE,
+	PORTAL_TYPE
+}					t_presets;
 
 #endif

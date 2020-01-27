@@ -1,12 +1,12 @@
 #include "libft.h"
 #include "editor.h"
 
-static t_entity		*create_entity(int x, int y, int type, t_editor *edit)
+static t_ed_entity		*create_entity(int x, int y, int type, t_editor *edit)
 {
-	t_entity	*entity;
+	t_ed_entity	*entity;
 
-	if (!(entity = (t_entity*)ft_memalloc(sizeof(t_entity))))
-		clean(edit);
+	if (!(entity = (t_ed_entity*)ft_memalloc(sizeof(t_ed_entity))))
+		clean_editor(edit);
 	entity->x = x;
 	entity->y = y;
 	entity->type = type;
@@ -16,9 +16,9 @@ static t_entity		*create_entity(int x, int y, int type, t_editor *edit)
 	return (entity);
 }
 
-static void			add_enemy(t_entity **enemy, t_entity *new, t_count *count)
+static void			add_enemy(t_ed_entity **enemy, t_ed_entity *new, t_count *count)
 {
-	t_entity		*prev_enemy;
+	t_ed_entity		*prev_enemy;
 
 	new->number = count->enemy++;
 	if (!*enemy)
@@ -33,9 +33,9 @@ static void			add_enemy(t_entity **enemy, t_entity *new, t_count *count)
 	}
 }
 
-static void			add_object(t_entity **object, t_entity *new, t_count *count)
+static void			add_object(t_ed_entity **object, t_ed_entity *new, t_count *count)
 {
-	t_entity		*prev_object;
+	t_ed_entity		*prev_object;
 
 	new->number = count->object++;
 	if (!*object)
@@ -52,7 +52,7 @@ static void			add_object(t_entity **object, t_entity *new, t_count *count)
 
 void				place_entity(t_editor *editor, int x, int y, int type)
 {
-	t_entity	*new_entity;
+	t_ed_entity	*new_entity;
 	t_vertex	check_sector;
 
 	new_entity = create_entity(x, y, 0, editor);
@@ -70,7 +70,7 @@ void				place_entity(t_editor *editor, int x, int y, int type)
 
 void				place_player(t_editor *editor, int x, int y)
 {
-	t_player	player;
+	t_ed_player	player;
 	t_vertex	check_sector;
 
 	player.x = x;

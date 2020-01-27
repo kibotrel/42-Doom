@@ -20,13 +20,13 @@ void			square(int x, int y, int color, SDL_Surface *s)
 
 void			rectangle(t_vertex start, t_vertex end, int clr, SDL_Surface *s)
 {
-	draw_line(s, start, init_vertex(start.x, end.y), clr);
-	draw_line(s, init_vertex(end.x, start.y), end, clr);
-	draw_line(s, start, init_vertex(end.x, start.y), clr);
-	draw_line(s, init_vertex(start.x, end.y), end, clr);
+	draw_ed_line(s, start, init_vertex(start.x, end.y), clr);
+	draw_ed_line(s, init_vertex(end.x, start.y), end, clr);
+	draw_ed_line(s, start, init_vertex(end.x, start.y), clr);
+	draw_ed_line(s, init_vertex(start.x, end.y), end, clr);
 }
 
-void			draw_background(SDL_Surface *s)
+void			draw_ed_background(SDL_Surface *s)
 {
 	int		x;
 	int		y;
@@ -70,7 +70,7 @@ void			blank_menu(SDL_Surface *s, int set, t_editor *edit, int preset)
 {
 	int		clr;
 
-	draw_background(s);
+	draw_ed_background(s);
 	clr = ((set != SECTOR) ? 0xffffff : 0x289655);
 	rectangle(init_vertex(1340, 140), init_vertex(1510, 210), clr, s);
 	clr = ((set != PLAYER) ? 0xffffff : 0x177489);

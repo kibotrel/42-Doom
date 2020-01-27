@@ -41,7 +41,7 @@ void			clic_editor_menu(int x, int y, t_editor *editor)
 		else if (x >= 1600 && x <= 1650)
 			change_value(editor, editor->presets, true);
 	}
-	blank_menu(editor->sdl.surf, editor->sett, editor, editor->presets);
+	blank_menu(editor->sdl.screen, editor->sett, editor, editor->presets);
 }
 
 static void		next_motion(t_sdl s, int set, int preset, t_editor *edit)
@@ -50,19 +50,19 @@ static void		next_motion(t_sdl s, int set, int preset, t_editor *edit)
 
 	y = s.event.motion.y;
 	if (y >= 140 && y <= 210)
-		rectangle(init_vertex(1540, 140), init_vertex(1710, 210), PRPL, s.surf);
+		rectangle(init_vertex(1540, 140), init_vertex(1710, 210), PRPL, s.screen);
 	else if (y >= 240 && y <= 310)
-		rectangle(init_vertex(1540, 240), init_vertex(1710, 310), PRPL, s.surf);
+		rectangle(init_vertex(1540, 240), init_vertex(1710, 310), PRPL, s.screen);
 	else if ((set != PORTAL && set != PLAYER) && y >= 340 && y <= 410)
-		rectangle(init_vertex(1540, 340), init_vertex(1710, 410), PRPL, s.surf);
+		rectangle(init_vertex(1540, 340), init_vertex(1710, 410), PRPL, s.screen);
 	else if ((set != PORTAL && set != PLAYER) && y >= 440 && y <= 510)
-		rectangle(init_vertex(1540, 440), init_vertex(1710, 510), PRPL, s.surf);
+		rectangle(init_vertex(1540, 440), init_vertex(1710, 510), PRPL, s.screen);
 	else if (set == SECTOR && y >= 540 && y <= 610)
-		rectangle(init_vertex(1540, 540), init_vertex(1710, 610), PRPL, s.surf);
+		rectangle(init_vertex(1540, 540), init_vertex(1710, 610), PRPL, s.screen);
 	else if (set == SECTOR && y >= 640 && y <= 710)
-		rectangle(init_vertex(1540, 640), init_vertex(1710, 710), PRPL, s.surf);
+		rectangle(init_vertex(1540, 640), init_vertex(1710, 710), PRPL, s.screen);
 	else
-		blank_menu(s.surf, set, edit, preset);
+		blank_menu(s.screen, set, edit, preset);
 }
 
 static void		option_motion(t_sdl s, int set, int preset, t_editor *edit)
@@ -73,14 +73,14 @@ static void		option_motion(t_sdl s, int set, int preset, t_editor *edit)
 	x = s.event.motion.x;
 	y = s.event.motion.y;
 	if (x >= 1300 && x <= 1410 && y >= 660 && y <= 710)
-		rectangle(init_vertex(1300, 660), init_vertex(1410, 710), PRPL, s.surf);
+		rectangle(init_vertex(1300, 660), init_vertex(1410, 710), PRPL, s.screen);
 	else if (x > 1420 && x <= 1530 && y >= 660 && y <= 710)
-		rectangle(init_vertex(1420, 660), init_vertex(1530, 710), PRPL, s.surf);
+		rectangle(init_vertex(1420, 660), init_vertex(1530, 710), PRPL, s.screen);
 	else
-		blank_menu(s.surf, set, edit, preset);
+		blank_menu(s.screen, set, edit, preset);
 }
 
-void			motion(t_sdl s, int set, int preset, t_editor *edit)
+void			editor_motion(t_sdl s, int set, int preset, t_editor *edit)
 {
 	if (s.event.motion.y >= 660 && s.event.motion.y <= 710 &&
 		((s.event.motion.x >= 1300 && s.event.motion.x <= 1410) ||
@@ -90,24 +90,24 @@ void			motion(t_sdl s, int set, int preset, t_editor *edit)
 	{
 		if ((s.event.motion.y >= 140 && s.event.motion.y <= 210))
 			rectangle(init_vertex(1340, 140), init_vertex(1510, 210),
-					PRPL, s.surf);
+					PRPL, s.screen);
 		else if (s.event.motion.y >= 240 && s.event.motion.y <= 310)
 			rectangle(init_vertex(1340, 240), init_vertex(1510, 310),
-					PRPL, s.surf);
+					PRPL, s.screen);
 		else if (s.event.motion.y >= 340 && s.event.motion.y <= 410)
 			rectangle(init_vertex(1340, 340), init_vertex(1510, 410),
-					PRPL, s.surf);
+					PRPL, s.screen);
 		else if (s.event.motion.y >= 440 && s.event.motion.y <= 510)
 			rectangle(init_vertex(1340, 440), init_vertex(1510, 510),
-					PRPL, s.surf);
+					PRPL, s.screen);
 		else if (s.event.motion.y >= 540 && s.event.motion.y <= 610)
 			rectangle(init_vertex(1340, 540), init_vertex(1510, 610),
-					PRPL, s.surf);
+					PRPL, s.screen);
 		else
-			blank_menu(s.surf, set, edit, preset);
+			blank_menu(s.screen, set, edit, preset);
 	}
 	else if (s.event.motion.x >= 1540 && s.event.motion.x <= 1710)
 		next_motion(s, set, preset, edit);
 	else
-		blank_menu(s.surf, set, edit, preset);
+		blank_menu(s.screen, set, edit, preset);
 }

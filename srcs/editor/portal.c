@@ -1,6 +1,6 @@
 #include "editor.h"
 
-static int	is_portal_close(t_sector *sector, t_vertex *start, t_vertex *end)
+static int	is_portal_close(t_ed_sector *sector, t_vertex *start, t_vertex *end)
 {
 	int			postion_closing_portal;
 	t_vertex	*sector_vertex;
@@ -25,7 +25,7 @@ static int	is_portal_close(t_sector *sector, t_vertex *start, t_vertex *end)
 	return (-1);
 }
 
-static void	save_vertex(t_editor *editor, t_sector *sector,
+static void	save_vertex(t_editor *editor, t_ed_sector *sector,
 		t_vertex *first_point, t_vertex *last_point)
 {
 	int			from;
@@ -57,7 +57,7 @@ static void	save_vertex(t_editor *editor, t_sector *sector,
 	}
 }
 
-static int	check_vertex(t_editor *editor, t_vertex *vertex, t_sector *sector)
+static int	check_vertex(t_editor *editor, t_vertex *vertex, t_ed_sector *sector)
 {
 	if (vertex->next == NULL)
 	{
@@ -82,7 +82,7 @@ static int	check_vertex(t_editor *editor, t_vertex *vertex, t_sector *sector)
 	return (0);
 }
 
-static int	vertex_intersect(t_editor *editor, t_sector *sector)
+static int	vertex_intersect(t_editor *editor, t_ed_sector *sector)
 {
 	t_vertex	*vertex;
 
@@ -99,7 +99,7 @@ static int	vertex_intersect(t_editor *editor, t_sector *sector)
 void		place_portal(t_editor *editor, int x, int y)
 {
 	t_vertex	*point;
-	t_sector	*sector;
+	t_ed_sector	*sector;
 
 	if (count_sector(editor->sector) < 2)
 		return ;

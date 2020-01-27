@@ -1,6 +1,6 @@
 #include "editor.h"
 
-void	delete_player(t_player *player)
+void	delete_player(t_ed_player *player)
 {
 	player->x = -5;
 	player->y = -5;
@@ -8,7 +8,7 @@ void	delete_player(t_player *player)
 	player->sector = -1;
 }
 
-void	rotate_player(t_player *player, bool rotation)
+void	rotate_player(t_ed_player *player, bool rotation)
 {
 	if (!player)
 		return ;

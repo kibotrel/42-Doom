@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/16 11:54:25 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/01/14 13:13:38 by kibotrel         ###   ########.fr       */
+/*   Updated: 2020/01/27 12:07:44 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,10 @@
 # define MARGIN_HEAD	1
 # define MARGIN_KNEE	2
 # define MAX_FONT_SIZE	64
+# define MENU_W 		500
+# define EDIT_W 		1280
+#define ANGLE 80
+#define SIZE 6
 
 /*
 ** String macros
@@ -51,11 +55,14 @@
 # define TITLE_EDITOR	"Doom-Nukem v0.2.1 - Editor"
 # define TITLE_SETTINGS	"Doom-Nukem v0.2.1 - Settings"
 
+# define MAP_PATH 		"./editor_map.data"
+
 /*
 **	Color codes
 */
 
 # define RED			0xFF0000
 # define WHITE			0xFFFFFF
+# define PRPL 			0x5f287e
 
 #endif

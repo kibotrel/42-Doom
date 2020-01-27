@@ -1,10 +1,10 @@
 #include "editor.h"
 
-void		del_entity(t_entity **entity)
+void		del_entity(t_ed_entity **entity)
 {
-	t_entity	*tf;
-	t_entity	*tmp;
-	t_entity	*tmp2;
+	t_ed_entity	*tf;
+	t_ed_entity	*tmp;
+	t_ed_entity	*tmp2;
 
 	if (*entity == NULL)
 		return ;
@@ -28,9 +28,9 @@ void		del_entity(t_entity **entity)
 		*entity = NULL;
 }
 
-void		move_in_entities(t_entity **entity, bool way)
+void		move_in_entities(t_ed_entity **entity, bool way)
 {
-	t_entity	*tmp;
+	t_ed_entity	*tmp;
 
 	if (!*entity)
 		return ;
@@ -48,7 +48,7 @@ void		move_in_entities(t_entity **entity, bool way)
 	*entity = tmp;
 }
 
-void		rotate_entity(t_entity *entity, bool rotation)
+void		rotate_entity(t_ed_entity *entity, bool rotation)
 {
 	if (!entity)
 		return ;

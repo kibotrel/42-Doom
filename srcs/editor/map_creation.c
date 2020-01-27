@@ -5,7 +5,7 @@
 #include "libft.h"
 #include "editor.h"
 
-static void		write_portal_type(t_sector *sect)
+static void		write_portal_type(t_ed_sector *sect)
 {
 	t_portal	*portal;
 	t_vertex	*vertex;
@@ -28,7 +28,7 @@ static void		write_portal_type(t_sector *sect)
 	}
 }
 
-void			write_portals(t_sector *sect, int fd)
+void			write_portals(t_ed_sector *sect, int fd)
 {
 	int	i;
 
@@ -52,9 +52,9 @@ void			write_portals(t_sector *sect, int fd)
 	}
 }
 
-static void		write_sectors(t_sector *sector, t_vertex *all, int fd)
+static void		write_sectors(t_ed_sector *sector, t_vertex *all, int fd)
 {
-	t_sector	*sect;
+	t_ed_sector	*sect;
 
 	sect = sector;
 	while (sect->prev)
@@ -113,6 +113,7 @@ void			create_map(t_editor *editor)
 		write_file(editor, fd);
 		if (close(fd) == -1)
 			exit(1);
+		editor->map_save = true;
 		ft_putendl("Map saved");
 	}
 }

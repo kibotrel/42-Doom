@@ -50,7 +50,7 @@ static int	inters(t_vertex *prev_vertex, t_vertex point, t_vertex extreme)
 static	int	prev_is_in_sector(t_editor *edit, t_vertex point)
 {
 	int			intersects;
-	t_sector	*sect;
+	t_ed_sector	*sect;
 	t_vertex	*vertex;
 	t_vertex	extreme;
 
@@ -71,7 +71,7 @@ static	int	prev_is_in_sector(t_editor *edit, t_vertex point)
 int			is_in_sector(t_editor *edit, t_vertex point)
 {
 	int			intersects;
-	t_sector	*sect;
+	t_ed_sector	*sect;
 	t_vertex	*vertex;
 	t_vertex	extreme;
 

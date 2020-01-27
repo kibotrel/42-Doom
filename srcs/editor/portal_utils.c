@@ -15,7 +15,7 @@ static t_portal	*create_portal(t_vertex v1, t_vertex v2, t_editor *edit)
 	t_portal	*new;
 
 	if (!(new = (t_portal*)ft_memalloc(sizeof(t_portal))))
-		clean(edit);
+		clean_editor(edit);
 	new->extrems[0] = v1;
 	new->extrems[1] = v2;
 	new->type = 0;
@@ -43,9 +43,9 @@ void			add_portal(t_portal **portal, t_vertex v1, t_vertex v2,
 	}
 }
 
-void			change_portal_type(t_sector *all, t_portal *portal, bool way)
+void			change_portal_type(t_ed_sector *all, t_portal *portal, bool way)
 {
-	t_sector	*sector;
+	t_ed_sector	*sector;
 	t_portal	*port;
 
 	sector = all;

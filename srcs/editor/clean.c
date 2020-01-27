@@ -9,7 +9,7 @@ void			init_count(t_count *count)
 	count->object = 0;
 }
 
-void			clean(t_editor *editor)
+void			clean_editor(t_editor *editor)
 {
 	clear_editor(editor);
 	if (editor->which_sector)
@@ -39,8 +39,8 @@ void			clean(t_editor *editor)
 	}
 	if (editor->sdl.font)
 		TTF_CloseFont(editor->sdl.font);
-	if (editor->sdl.surf)
-		SDL_FreeSurface(editor->sdl.surf);
+	if (editor->sdl.screen)
+		SDL_FreeSurface(editor->sdl.screen);
 	if (editor->sdl.win)
 		SDL_DestroyWindow(editor->sdl.win);
 	TTF_Quit();

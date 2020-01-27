@@ -15,9 +15,9 @@ int				search_vertex_num(t_vertex *all, t_vertex *to_find)
 	return (-1);
 }
 
-static int		count_entity(t_entity *all_entity)
+static int		count_entity(t_ed_entity *all_entity)
 {
-	t_entity *entity;
+	t_ed_entity *entity;
 
 	if (!all_entity)
 		return (0);
@@ -27,9 +27,9 @@ static int		count_entity(t_entity *all_entity)
 	return (entity->number + 1);
 }
 
-int				count_sector(t_sector *all_sector)
+int				count_sector(t_ed_sector *all_sector)
 {
-	t_sector	*sector;
+	t_ed_sector	*sector;
 
 	if (!all_sector)
 		return (0);

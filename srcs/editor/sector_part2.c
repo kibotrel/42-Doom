@@ -1,8 +1,8 @@
 #include "editor.h"
 
-void			move_in_sector(t_sector **sector, bool way)
+void			move_in_sector(t_ed_sector **sector, bool way)
 {
-	t_sector *tmp;
+	t_ed_sector *tmp;
 
 	if (!*sector)
 		return ;
@@ -20,9 +20,9 @@ void			move_in_sector(t_sector **sector, bool way)
 	*sector = tmp;
 }
 
-static void		prev_display_sector(t_sdl *sdl, t_sector *sectors)
+static void		prev_display_sector(t_sdl *sdl, t_ed_sector *sectors)
 {
-	t_sector	*sect;
+	t_ed_sector	*sect;
 	int			i;
 	t_vertex	*vertex;
 
@@ -40,9 +40,9 @@ static void		prev_display_sector(t_sdl *sdl, t_sector *sectors)
 	}
 }
 
-void			next_display_sector(t_sdl *sdl, t_sector *sectors)
+void			next_display_sector(t_sdl *sdl, t_ed_sector *sectors)
 {
-	t_sector	*sect;
+	t_ed_sector	*sect;
 	int			i;
 	t_vertex	*vertex;
 

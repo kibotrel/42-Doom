@@ -1,9 +1,9 @@
 #include "libft.h"
 #include "editor.h"
 
-static int	get_portal_type(t_portal *portal, t_sector *sector)
+static int	get_portal_type(t_portal *portal, t_ed_sector *sector)
 {
-	t_sector *sect;
+	t_ed_sector *sect;
 	t_portal *port;
 
 	sect = sector;
@@ -38,14 +38,14 @@ static void	print_picture(t_sdl *sdl, int x, int y, t_bmp img)
 		while (++xa < img.width)
 		{
 			if (xa + x < EDIT_W + MENU_W && ya + y < WIN_H)
-				put_pixel(sdl->surf, xa + x, ya + y,
+				put_pixel(sdl->screen, xa + x, ya + y,
 					img.pixels[xa + ya * img.width]);
 		}
 	}
 }
 
 void		print_params_image(t_editor *edit, t_presets presets,
-	t_settings sett)
+	t_settings sett, t_env *env)
 {
 	int		i;
 	int		j;
@@ -54,27 +54,27 @@ void		print_params_image(t_editor *edit, t_presets presets,
 		return ;
 	if (sett == SECTOR && presets == SECTOR_TEXT)
 	{
-		i = 0;
+		i = ED_TEXT_1;
 		j = edit->sector->texture;
 	}
 	else if (sett == OBJECT && presets == ENTITY_TYPE)
 	{
-		i = 1;
+		i = ED_OBJ_1;
 		j = edit->object->type;
 	}
 	else if (sett == ENEMY && presets == ENTITY_TYPE)
 	{
-		i = 2;
+		i = ED_ENEMY_1;
 		j = edit->enemy->type;
 	}
 	else if (sett == PORTAL && presets == PORTAL_TYPE)
 	{
-		i = 3;
+		i = ED_PORTAL_DOOR;
 		j = get_portal_type(edit->portals, edit->sector);
 	}
 	else
 		return ;
-	print_picture(&edit->sdl, 1475, 30, edit->sdl.bmp[i][j]);
-	display_text(edit, &edit->sdl, init_vertex(1420, 50), "-");
-	display_text(edit, &edit->sdl, init_vertex(1615, 55), "+");
+	print_picture(&env->sdl, 1475, 30, edit->sdl.bmp[i + j]);
+	display_text(edit, &env->sdl, init_vertex(1420, 50), "-");
+	display_text(edit, &env->sdl, init_vertex(1615, 55), "+");
 }
