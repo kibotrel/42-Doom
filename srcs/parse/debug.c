@@ -6,7 +6,7 @@
 /*   By: reda-con <reda-con@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 15:13:52 by reda-con          #+#    #+#             */
-/*   Updated: 2020/01/23 11:32:55 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/01/27 09:25:53 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,8 +93,8 @@ void		print_sec(t_sector *s, int max)
 		ft_putnbr(s[i].ceil);
 		ft_putstr(" gravity=");
 		ft_putnbr(s[i].gravity);
-		ft_putstr(" viscosity=");
-		ft_putnbr(s[i].viscosity);
+		ft_putstr(" friction=");
+		ft_putnbr(s[i].friction);
 		ft_putstr(" vertexes=");
 		j = -1;
 		while (++j < (int)s[i].points)

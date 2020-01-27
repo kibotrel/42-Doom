@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 18:48:17 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/01/23 11:27:45 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/01/27 09:25:58 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,7 +111,7 @@ typedef struct	s_sector
 	double		ceil;
 	double		floor;
 	double		gravity;
-	double		viscosity;
+	double		friction;
 	int			*neighbor;
 	int			*portal_type;
 	t_vec2d		*vertex;

@@ -6,7 +6,7 @@
 /*   By: reda-con <reda-con@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/17 16:35:58 by reda-con          #+#    #+#             */
-/*   Updated: 2020/01/23 16:57:57 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/01/27 09:25:43 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int			second_check(t_sector *s, char **t, t_vec2d *ver, t_parse *p)
 	s[ft_atoi(t[2])].floor = ft_atoi(t[4]);
 	s[ft_atoi(t[2])].ceil = ft_atoi(t[6]);
 	s[ft_atoi(t[2])].gravity = ft_atoi(t[8]) / 100;
-	s[ft_atoi(t[2])].viscosity = ft_atoi(t[10]) / 1000;
+	s[ft_atoi(t[2])].friction = ft_atoi(t[10]) / 1000;
 	s[ft_atoi(t[2])].points = i;
 	if (!(s[ft_atoi(t[2])].vertex = (t_vec2d*)malloc(sizeof(t_vec2d) * i)))
 		parse_err(t, p);
@@ -70,7 +70,7 @@ int			verif_sector(t_sector *s, char **t, t_vec2d *ver, t_parse *p)
 	if (t[1] && t[3] && t[5] && t[7] && t[9] && t[11] && t[13]
 			&& !ft_strcmp(t[1], "number") && !ft_strcmp(t[3], "h_floor")
 			&& !ft_strcmp(t[5], "h_ceil") && !ft_strcmp(t[7], "gravity")
-			&& !ft_strcmp(t[9], "viscosity")
+			&& !ft_strcmp(t[9], "friction")
 			&& !ft_strcmp(t[11], "vertex_num")
 			&& !ft_strcmp(t[13], "vertexes"))
 	{
