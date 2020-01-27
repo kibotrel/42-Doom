@@ -6,7 +6,7 @@
 /*   By: reda-con <reda-con@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/17 16:35:58 by reda-con          #+#    #+#             */
-/*   Updated: 2020/01/27 09:25:43 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/01/27 10:16:02 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,8 @@ int			second_check(t_sector *s, char **t, t_vec2d *ver, t_parse *p)
 	if (t[14 + i] && t[15 + 2 * i] && !ft_strcmp(t[14 + i], "portals")
 			&& !ft_strcmp(t[15 + 2 * i], "type"))
 	{
-		if (third_check(s, t, ver, i))
-			return (1);
+		if (third_check(s, t, ver, i)){ft_putendl("pas");
+			return (1);}
 	}
 	else
 		return (1);
@@ -78,8 +78,8 @@ int			verif_sector(t_sector *s, char **t, t_vec2d *ver, t_parse *p)
 				&& ft_isnum(t[2]) && ft_isnum(t[4]) && ft_isnum(t[6])
 				&& ft_isnum(t[8]) && ft_isnum(t[10]) && ft_isnum(t[12]))
 		{
-			if (second_check(s, t, ver, p))
-				return (1);
+			if (second_check(s, t, ver, p)){ft_putendl("sais");
+				return (1);}
 		}
 		else
 			return (1);
