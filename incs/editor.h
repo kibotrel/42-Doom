@@ -87,7 +87,7 @@ void				print_params_image(t_editor *edit, t_presets presets,
 **	menu/text.c
 */
 void				print_param_in_param(t_editor *edit, t_sdl *sdl,
-	t_settings sett);
+	t_settings sett, t_env *env);
 void				print_param_to_screen(t_env *env, t_settings sett,
 	t_editor *editor);
 void				print_more_minus(t_sdl *sdl);
@@ -141,7 +141,7 @@ void				move_in_portals(t_portal **portal, bool way);
 void				change_portal_type(t_ed_sector *all, t_portal *portal,
 	bool way);
 void				add_portal(t_portal **portal, t_vertex v1, t_vertex v2,
-	t_editor *edit);
+	t_editor *edit, t_env *env);
 int					compare_coordinates(t_vertex *point, t_vertex *a,
 	t_vertex *b);
 

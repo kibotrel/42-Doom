@@ -90,5 +90,5 @@ void			blank_menu(SDL_Surface *s, int set, t_editor *edit, int preset, t_env *en
 	rectangle(init_vertex(1350, 550), init_vertex(1400, 600), 0xffa500, s);
 	rectangle(init_vertex(1300, 660), init_vertex(1410, 710), 0xffffff, s);
 	rectangle(init_vertex(1420, 660), init_vertex(1530, 710), 0xffffff, s);
-	print_param_in_param(edit, &env->sdl, set);
+	print_param_in_param(edit, &env->sdl, set, env);
 }
