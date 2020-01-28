@@ -38,7 +38,7 @@ void			clean_editor(t_editor *editor, t_env *env)
 		free(editor->ab);
 	}
 	if (env->sdl.font)
-		TTF_CloseFont(env->sdl.font);
+		TTF_CloseFont(env->sdl.editor);
 	if (env->sdl.screen)
 		SDL_FreeSurface(env->sdl.screen);
 	if (env->sdl.win)

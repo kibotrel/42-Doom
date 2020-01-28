@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 18:48:17 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/01/27 13:58:48 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/01/28 16:03:16 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -165,6 +165,7 @@ typedef struct	s_sdl
 {
 	t_bmp		bmp[NB_ASSETS];
 	TTF_Font	*font;
+	TTF_Font	*editor;
 	SDL_Event	event;
 	SDL_Color	color;
 	SDL_Window	*win;

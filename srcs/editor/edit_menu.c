@@ -41,7 +41,7 @@ void			clic_editor_menu(int x, int y, t_editor *editor, t_env *env)
 		else if (x >= 1600 && x <= 1650)
 			change_value(editor, editor->presets, true);
 	}
-	blank_menu(env->sdl.screen, editor->sett, editor, editor->presets, env);
+	// blank_menu(env->sdl.screen, editor->sett, editor, editor->presets, env);
 }
 
 static void		next_motion(t_sdl s, int set, int preset, t_editor *edit, t_env *env)
@@ -108,6 +108,6 @@ void			editor_motion(t_sdl s, int set, int preset, t_editor *edit, t_env *env)
 	}
 	else if (s.event.motion.x >= 1540 && s.event.motion.x <= 1710)
 		next_motion(s, set, preset, edit, env);
-	else
-		blank_menu(s.screen, set, edit, preset, env);
+	// else
+		// blank_menu(s.screen, set, edit, preset, env);
 }
