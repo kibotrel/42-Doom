@@ -6,7 +6,7 @@
 #    By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/10 16:16:29 by kibotrel          #+#    #+#              #
-#    Updated: 2020/01/27 13:48:25 by nde-jesu         ###   ########.fr        #
+#    Updated: 2020/01/28 13:52:55 by reda-con         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -132,7 +132,7 @@ SRCS			+= events/mouse.c
 SRCS			+= events/motion.c
 SRCS			+= events/keyboard.c
 SRCS			+= texture/texture_tools.c
-SRCS			+= editor/editor.c
+SRCS			+= editor/editor_main.c
 SRCS			+= editor/events.c
 SRCS			+= editor/events_tools.c
 SRCS			+= editor/setup.c
@@ -160,7 +160,6 @@ SRCS			+= editor/sector.c
 SRCS			+= editor/sector_part2.c
 SRCS			+= editor/sector_check.c
 SRCS			+= editor/sector_utils.c
-SRCS			+= editor/keyboard.c
 
 #------------------------------ OPERATING SYSTEM ------------------------------#
 

@@ -25,71 +25,71 @@ static int	is_portal_close(t_ed_sector *sector, t_vertex *start, t_vertex *end)
 	return (-1);
 }
 
-static void	save_vertex(t_editor *editor, t_ed_sector *sector,
+static void	save_vertex(t_env *env, t_ed_sector *sector,
 		t_vertex *first_point, t_vertex *last_point)
 {
 	int			from;
 	int			dest;
 
-	if (editor->which_sector == NULL)
+	if (env->editor.which_sector == NULL)
 	{
-		editor->which_sector = sector;
-		editor->ab = first_point;
-		editor->cd = last_point;
+		env->editor.which_sector = sector;
+		env->editor.ab = first_point;
+		env->editor.cd = last_point;
 	}
 	else
 	{
-		if (compare_coordinates(first_point, editor->ab, editor->cd) == 0
-			|| compare_coordinates(last_point, editor->ab, editor->cd) == 0)
-			init_portals(editor);
+		if (compare_coordinates(first_point, env->editor.ab, env->editor.cd) == 0
+			|| compare_coordinates(last_point, env->editor.ab, env->editor.cd) == 0)
+			init_portals(&env->editor);
 		else
 		{
 			dest = is_portal_close(sector, first_point, last_point);
-			sector->is_portal[dest] = editor->which_sector->sector_number;
-			from = is_portal_close(editor->which_sector, editor->ab,
-				editor->cd);
-			editor->which_sector->is_portal[from] = sector->sector_number;
-			add_portal(&editor->portals, *first_point, *last_point, editor);
-			add_portal(&sector->portal, *first_point, *last_point, editor);
-			add_portal(&editor->which_sector->portal, *last_point, *first_point,
-				editor);
+			sector->is_portal[dest] = env->editor.which_sector->sector_number;
+			from = is_portal_close(env->editor.which_sector, env->editor.ab,
+				env->editor.cd);
+			env->editor.which_sector->is_portal[from] = sector->sector_number;
+			add_portal(&env->editor.portals, *first_point, *last_point, env);
+			add_portal(&sector->portal, *first_point, *last_point, env);
+			add_portal(&env->editor.which_sector->portal, *last_point, *first_point,
+				env);
 		}
 	}
 }
 
-static int	check_vertex(t_editor *editor, t_vertex *vertex, t_ed_sector *sector)
+static int	check_vertex(t_env *env, t_vertex *vertex, t_ed_sector *sector)
 {
 	if (vertex->next == NULL)
 	{
 		if (intersects_count(*vertex, *(sector->vertex),
-			editor->portal_points[0], editor->portal_points[1]))
+			env->editor.portal_points[0], env->editor.portal_points[1]))
 		{
-			save_vertex(editor, sector, vertex, sector->vertex);
-			++editor->count.portal;
+			save_vertex(env, sector, vertex, sector->vertex);
+			++env->editor.count.portal;
 		}
 	}
 	else if (intersects_count(*vertex, *(vertex->next),
-		editor->portal_points[0], editor->portal_points[1]))
+		env->editor.portal_points[0], env->editor.portal_points[1]))
 	{
-		save_vertex(editor, sector, vertex, vertex->next);
-		++editor->count.portal;
+		save_vertex(env, sector, vertex, vertex->next);
+		++env->editor.count.portal;
 	}
-	if (editor->count.portal == 2)
+	if (env->editor.count.portal == 2)
 	{
-		editor->count.portal = 0;
+		env->editor.count.portal = 0;
 		return (1);
 	}
 	return (0);
 }
 
-static int	vertex_intersect(t_editor *editor, t_ed_sector *sector)
+static int	vertex_intersect(t_env *env, t_ed_sector *sector)
 {
 	t_vertex	*vertex;
 
 	vertex = sector->vertex;
 	while (vertex)
 	{
-		if (check_vertex(editor, vertex, sector))
+		if (check_vertex(env, vertex, sector))
 			return (1);
 		vertex = vertex->next;
 	}
@@ -114,7 +114,7 @@ void		place_portal(t_editor *editor, int x, int y, t_env *env)
 			sector = sector->prev;
 		while (sector)
 		{
-			if (vertex_intersect(editor, sector))
+			if (vertex_intersect(env, sector))
 			{
 				init_portals(editor);
 				break ;

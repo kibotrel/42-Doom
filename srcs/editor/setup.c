@@ -21,7 +21,7 @@ static void		init_chained_list(t_editor *editor)
 	editor->portals = NULL;
 }
 
-void			init_editor(t_editor *editor)
+void			editor_setup(t_editor *editor)
 {
 	editor->dist_grid = 50;
 	editor->true_grid = EDIT_W / editor->dist_grid;

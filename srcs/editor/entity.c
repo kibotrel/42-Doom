@@ -62,9 +62,9 @@ void				place_entity(t_env *env, int x, int y, int type)
 	if (new_entity->sector != -1)
 	{
 		if (type == 0)
-			add_enemy(&editor->enemy, new_entity, &editor->count);
+			add_enemy(&env->editor.enemy, new_entity, &env->editor.count);
 		else if (type == 1)
-			add_object(&editor->object, new_entity, &editor->count);
+			add_object(&env->editor.object, new_entity, &env->editor.count);
 	}
 }
 

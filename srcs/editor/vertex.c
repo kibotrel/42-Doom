@@ -29,9 +29,9 @@ void			add_vertex(t_vertex **vertex, t_vertex v,
 	t_vertex	*prev_vertex;
 	t_vertex	*new;
 
-	new = create_vertex(v, env->edit, env);
+	new = create_vertex(v, &env->editor, env);
 	if (flag)
-		new->vertex_number = env->edit->count.vertex++;
+		new->vertex_number = env->editor.count.vertex++;
 	if (!*vertex)
 		*vertex = new;
 	else

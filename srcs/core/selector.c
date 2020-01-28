@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/18 14:21:13 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/01/22 15:15:09 by kibotrel         ###   ########.fr       */
+/*   Updated: 2020/01/28 13:57:11 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	selector(t_env *env)
 		game(env);
 	}
 	else if (env->win == EDITOR)
-		editor(env);
+		main_editor(env);
 	else if (env->win == SETTINGS)
 		settings(env);
 	else if (env->win == QUIT)

@@ -25,12 +25,12 @@ static t_portal	*create_portal(t_vertex v1, t_vertex v2, t_editor *edit, t_env *
 }
 
 void			add_portal(t_portal **portal, t_vertex v1, t_vertex v2,
-	t_editor *edit, t_env *env)
+	t_env *env)
 {
 	t_portal	*new;
 	t_portal	*prev_portal;
 
-	new = create_portal(v1, v2, edit, env);
+	new = create_portal(v1, v2, &env->editor, env);
 	if (!*portal)
 		*portal = new;
 	else

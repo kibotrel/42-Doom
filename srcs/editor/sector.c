@@ -50,7 +50,7 @@ static void		next_place_sector(t_editor *edit, t_ed_sector *sect, t_env *env)
 			* sect->vertex_count);
 	if (!(sect->portal_type = (int*)ft_memalloc(sizeof(int)
 			* sect->vertex_count)))
-		clean_editor(edit. env);
+		clean_editor(edit, env);
 	sect->portal_type = ft_memset(sect->portal_type, -1, sizeof(int)
 			* sect->vertex_count);
 	sect->next = create_sector(edit, env);

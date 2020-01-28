@@ -68,7 +68,7 @@ void				draw_ed_line(SDL_Surface *surf, t_vertex start, t_vertex end,
 **	entity/entity.c
 */
 void				place_player(t_editor *editor, int x, int y);
-void				place_entity(t_editor *editor, int x, int y, int type, t_env *env);
+void				place_entity(t_env *env, int x, int y, int type);
 
 /*
 **	entity/entity_part2.c
@@ -141,7 +141,7 @@ void				move_in_portals(t_portal **portal, bool way);
 void				change_portal_type(t_ed_sector *all, t_portal *portal,
 	bool way);
 void				add_portal(t_portal **portal, t_vertex v1, t_vertex v2,
-	t_editor *edit, t_env *env);
+	t_env *env);
 int					compare_coordinates(t_vertex *point, t_vertex *a,
 	t_vertex *b);
 
