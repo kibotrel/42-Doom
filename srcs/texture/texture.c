@@ -68,23 +68,3 @@ void    draw_texture_slice(t_env *env, int x, t_height h, t_game *var, uint32_t 
 		draw_pixel(env, env->sdl.screen, p, 0);
 	}
 }
-
-void    draw_ceil_and_floor_slice(t_env *env, t_game *var, int x)
-{
-	t_pos       p;
-	t_height	h;
-
-	h.top = var->y[1] + 1;
-	h.bottom = var->bottom[x];
-	p.x = x;
-	p.y = h.top;
-	if (h.bottom == h.top)
-		draw_pixel(env, env->sdl.screen, p, color_scale(0x0000AA, color_add(0xFFFFFF, -var->depth), p.y - h.bottom, h.top - h.bottom));
-	else if (h.bottom > h.top)
-	{
-		draw_pixel(env, env->sdl.screen, p, 0);
-		while (++p.y < h.bottom)
-			draw_pixel(env, env->sdl.screen, p, color_scale(0x0000AA, color_add(0xFFFFFF, -var->depth), p.y - h.top, h.bottom - h.top));
-		draw_pixel(env, env->sdl.screen, p, 0);
-	}
-}
