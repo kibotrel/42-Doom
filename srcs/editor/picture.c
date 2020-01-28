@@ -74,7 +74,7 @@ void		print_params_image(t_editor *edit, t_presets presets,
 	}
 	else
 		return ;
-	print_picture(&env->sdl, 1475, 30, edit->sdl.bmp[i + j]);
-	display_text(edit, &env->sdl, init_vertex(1420, 50), "-");
-	display_text(edit, &env->sdl, init_vertex(1615, 55), "+");
+	print_picture(&env->sdl, 1475, 30, env->sdl.bmp[i + j]);
+	display_text(edit, &env->sdl, init_vertex(1420, 50), "-", env);
+	display_text(edit, &env->sdl, init_vertex(1615, 55), "+", env);
 }

@@ -64,7 +64,7 @@ void	display_sector(t_sdl *sdl, t_ed_sector *sectors, bool fl)
 	}
 }
 
-void	display_line(t_editor *editor, int x, int y)
+void	display_line(t_editor *editor, int x, int y, t_env *env)
 {
 	t_vertex	act_pos;
 
@@ -73,10 +73,10 @@ void	display_line(t_editor *editor, int x, int y)
 	act_pos.x = (x / editor->true_grid) * editor->true_grid;
 	act_pos.y = (y / editor->true_grid) * editor->true_grid;
 	if (editor->last_vertex.x != -1 && editor->last_vertex.y != -1)
-		draw_ed_line(editor->sdl.screen, editor->last_vertex, act_pos, 0x0ff0f0);
+		draw_ed_line(env->sdl.screen, editor->last_vertex, act_pos, 0x0ff0f0);
 }
 
-void	display_grid(t_editor *editor)
+void	display_grid(t_editor *editor, t_env *env)
 {
 	int		x;
 	int		y;
@@ -89,9 +89,9 @@ void	display_grid(t_editor *editor)
 		{
 			if (x % editor->true_grid == 0 && y % editor->true_grid == 0 &&
 				editor->grid)
-				put_pixel(editor->sdl.screen, x, y, 0x9c9c9c);
+				put_pixel(env->sdl.screen, x, y, 0x9c9c9c);
 			else
-				put_pixel(editor->sdl.screen, x, y, 0x000000);
+				put_pixel(env->sdl.screen, x, y, 0x000000);
 			++x;
 		}
 		++y;

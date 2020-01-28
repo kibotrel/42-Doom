@@ -91,7 +91,7 @@ static void			delete_entity(t_ed_entity **entity)
 	*entity = NULL;
 }
 
-void				clear_editor(t_editor *editor)
+void				clear_editor(t_editor *editor, t_env *env)
 {
 	delete_player(&editor->player);
 	if (editor->sector)
@@ -109,6 +109,6 @@ void				clear_editor(t_editor *editor)
 	editor->last_vertex.y = -1;
 	init_portals(editor);
 	init_count(&editor->count);
-	blank_menu(editor->sdl.screen, editor->sett, editor, editor->presets);
+	blank_menu(env->sdl.screen, editor->sett, editor, editor->presets, env);
 	editor->map_save = true;
 }

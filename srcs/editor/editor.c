@@ -3,5 +3,6 @@
 
 int				editor(t_env *env)
 {
-	events(&env->editor);
+	events(&env->editor, env);
+	return (0);
 }

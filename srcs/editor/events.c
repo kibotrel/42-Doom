@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 13:09:05 by nde-jesu          #+#    #+#             */
-/*   Updated: 2020/01/27 14:43:24 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/01/27 15:39:25 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,51 +29,51 @@ bool		is_saved(t_editor *editor)
 	}
 }
 
-static void		display_editor(t_editor *edit)
+static void		display_editor(t_editor *edit, t_env *env)
 {
 	t_vertex	mse;
 	int			clr;
 
-	display_grid(edit);
+	display_grid(edit, env);
 	clr = (edit->sett == PLAYER) ? 0xffff00 : 0xff00ff;
-	put_fov(edit->sdl.screen, init_vertex(edit->player.x, edit->player.y),
+	put_fov(env->sdl.screen, init_vertex(edit->player.x, edit->player.y),
 			edit->player.angle, clr);
-	which_entity_to_display(edit);
-	edit->sett == SECTOR ? display_sector(&edit->sdl, edit->sector, true)
-		: display_sector(&edit->sdl, edit->sector, false);
-	display_vertex(&edit->sdl, edit->vertex, 0xffff00);
+	which_entity_to_display(edit, env);
+	edit->sett == SECTOR ? display_sector(&env->sdl, edit->sector, true)
+		: display_sector(&env->sdl, edit->sector, false);
+	display_vertex(&env->sdl, edit->vertex, 0xffff00);
 	if (edit->sett == PORTAL)
-		display_portals(edit->portals, &edit->sdl, 0x00ff00, edit->sett == PORTAL);
-	if (edit->sett == SECTOR && edit->sdl.event.motion.x <= EDIT_W)
+		display_portals(edit->portals, &env->sdl, 0x00ff00, edit->sett == PORTAL);
+	if (edit->sett == SECTOR && env->sdl.event.motion.x <= EDIT_W)
 	{
-		mse.x = (edit->sdl.event.motion.x / edit->true_grid) * edit->true_grid;
-		mse.y = (edit->sdl.event.motion.y / edit->true_grid) * edit->true_grid;
-		display_mouse(&edit->sdl, mse, 0x0ff0f0);
+		mse.x = (env->sdl.event.motion.x / edit->true_grid) * edit->true_grid;
+		mse.y = (env->sdl.event.motion.y / edit->true_grid) * edit->true_grid;
+		display_mouse(&env->sdl, mse, 0x0ff0f0);
 	}
-	display_line(edit, edit->sdl.event.motion.x, edit->sdl.event.motion.y);
-	print_param_to_screen(&edit->sdl, edit->sett, edit);
+	display_line(edit, env->sdl.event.motion.x, env->sdl.event.motion.y, env);
+	print_param_to_screen(env, edit->sett, edit);
 }
 
-void		editor_click(t_editor *editor, SDL_Event event)
+void		editor_click(t_editor *editor, SDL_Event event, t_env *env)
 {
 	if (event.motion.x <= EDIT_W && event.button.button == SDL_BUTTON_LEFT)
 	{
 		editor->presets = NONE;
-		blank_menu(editor->sdl.screen, editor->sett, editor, editor->presets);
+		blank_menu(env->sdl.screen, editor->sett, editor, editor->presets, env);
 		if (editor->sett == SECTOR)
 			place_sector(editor, event.motion.x, event.motion.y);
 		else if (editor->sett == PLAYER)
 			place_player(editor, event.motion.x, event.motion.y);
 		else if (editor->sett == ENEMY)
-			place_entity(editor, event.motion.x, event.motion.y, 0);
+			place_entity(editor, event.motion.x, event.motion.y, 0, env);
 		else if (editor->sett == OBJECT)
-			place_entity(editor, event.motion.x, event.motion.y, 1);
+			place_entity(editor, event.motion.x, event.motion.y, 1, env);
 		else if (editor->sett == PORTAL)
 			place_portal(editor, event.motion.x, event.motion.y);
 		editor->map_save = false;
 	}
 	else if (editor->sect_is_closed == true && event.motion.x > EDIT_W)
-		clic_editor_menu(event.motion.x, event.motion.y, editor);
+		clic_editor_menu(event.motion.x, event.motion.y, editor, env);
 }
 
 void			editor_mousewheel(t_editor *editor, SDL_Event event)
@@ -89,12 +89,10 @@ void			editor_mousewheel(t_editor *editor, SDL_Event event)
 	editor->true_grid = EDIT_W / editor->dist_grid;
 }
 
-void			events(t_editor *editor, t_env)
+void			events(t_editor *editor, t_env *env)
 {
-		blank_menu(editor->sdl.screen, editor->sett, editor, editor->presets);
-		display_editor(editor);
-		if (SDL_UpdateWindowSurface(editor->sdl.win) != 0)
-			clean_editor(editor);
-	}
-	clean_editor(editor);
+		blank_menu(env->sdl.screen, editor->sett, editor, editor->presets, env);
+		display_editor(editor, env);
+		if (SDL_UpdateWindowSurface(env->sdl.win) != 0)
+			clean_editor(editor, env);
 }

@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/08 19:41:08 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/01/27 14:24:41 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/01/27 15:44:11 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,5 +21,5 @@ void	handle_motion(t_env *env, t_sdl *sdl)
 	if (env->win == GAME)
 		cam_motion(env, &env->cam, sdl->event.motion.x, sdl->event.motion.y);
 	if (env->win == EDITOR)
-		editor_motion(*sdl, env->editor.sett, env->editor.presets, &env->editor);
+		editor_motion(*sdl, env->editor.sett, env->editor.presets, &env->editor, env);
 }

@@ -13,7 +13,7 @@ void				init_portals(t_editor *editor);
 /*
 **	clean/clean.c
 */
-void				clean_editor(t_editor *editor);
+void				clean_editor(t_editor *editor, t_env *env);
 void				init_count(t_count *count);
 
 /*
@@ -21,15 +21,15 @@ void				init_count(t_count *count);
 */
 void				delete_vertex(t_vertex **vertex);
 void				delete_sector(t_ed_sector **sectors);
-void				clear_editor(t_editor *editor);
+void				clear_editor(t_editor *editor, t_env *env);
 
 /*
 **	core/events.c
 */
-void				events(t_editor *editor);
+void				events(t_editor *editor, t_env *env);
 bool				is_saved(t_editor *editor);
 void				editor_mousewheel(t_editor *editor, SDL_Event event);
-void				editor_click(t_editor *editor, SDL_Event event);
+void				editor_click(t_editor *editor, SDL_Event event, t_env *env);
 
 /*
 **	core/events_tools.c
@@ -41,8 +41,8 @@ void				change_value(t_editor *editor, t_presets presets, bool fl);
 /*
 **	display/display.c
 */
-void				display_grid(t_editor *editor);
-void				display_line(t_editor *editor, int x, int y);
+void				display_grid(t_editor *editor, t_env *env);
+void				display_line(t_editor *editor, int x, int y, t_env *env);
 void				display_sector(t_sdl *sdl, t_ed_sector *sectors, bool fl);
 void				draw_walls(t_sdl *sdl, t_ed_sector *sect, t_vertex *vertex,
 	int color);
@@ -52,7 +52,7 @@ void				display_portals(t_portal *portal, t_sdl *sdl, int color,
 /*
 **	display/display_part2.c
 */
-void				which_entity_to_display(t_editor *edit);
+void				which_entity_to_display(t_editor *edit, t_env *env);
 void				display_mouse(t_sdl *sdl, t_vertex mouse, int color);
 void				display_vertex(t_sdl *sdl, t_vertex *vertex, int color);
 
@@ -68,7 +68,7 @@ void				draw_ed_line(SDL_Surface *surf, t_vertex start, t_vertex end,
 **	entity/entity.c
 */
 void				place_player(t_editor *editor, int x, int y);
-void				place_entity(t_editor *editor, int x, int y, int type);
+void				place_entity(t_editor *editor, int x, int y, int type, t_env *env);
 
 /*
 **	entity/entity_part2.c
@@ -81,7 +81,7 @@ void				del_entity(t_ed_entity **entity);
 **	menu/picture.c
 */
 void				print_params_image(t_editor *edit, t_presets presets,
-	t_settings sett);
+	t_settings sett, t_env *env);
 
 /*
 **	menu/text.c
@@ -92,13 +92,13 @@ void				print_param_to_screen(t_env *env, t_settings sett,
 	t_editor *editor);
 void				print_more_minus(t_sdl *sdl);
 void	display_text(t_editor *edit, t_sdl *sdl, t_vertex pos,
-	const char *text);
+	const char *text, t_env *env);
 
 /*
 **	menu/edit_menu.c
 */
-void				editor_motion(t_sdl s, int set, int preset, t_editor *edit);
-void				clic_editor_menu(int x, int y, t_editor *editor);
+void				editor_motion(t_sdl s, int set, int preset, t_editor *edit, t_env *env);
+void				clic_editor_menu(int x, int y, t_editor *editor, t_env *env);
 
 /*
 **	menu/edit_menu_utils.c
@@ -109,7 +109,7 @@ void				rectangle(t_vertex start, t_vertex end, int clr,
 	SDL_Surface *s);
 void				square(int x, int y, int color, SDL_Surface *s);
 void				blank_menu(SDL_Surface *s, int set, t_editor *edit,
-	int preset);
+	int preset, t_env *env);
 
 /*
 **	menu/sec_edit_menu.c

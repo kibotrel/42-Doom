@@ -18,7 +18,7 @@ static char const	*g_tab[4][6] = {
 };
 
 void		display_text(t_editor *edit, t_sdl *sdl, t_vertex pos,
-	const char *text)
+	const char *text, t_env *env)
 {
 	SDL_Rect	where;
 	SDL_Surface	*tmp;
@@ -34,7 +34,7 @@ void		display_text(t_editor *edit, t_sdl *sdl, t_vertex pos,
 	if (error != 1)
 		SDL_FreeSurface(tmp);
 	if (error)
-		clean_editor(edit);
+		clean_editor(edit, env);
 }
 
 static void	print_sector_values(t_sdl *sdl, t_ed_sector *sector, t_presets presets,
