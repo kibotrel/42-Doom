@@ -132,7 +132,7 @@ void				delete_player(t_ed_player *player);
 /*
 **	portal/portal.c
 */
-void				place_portal(t_editor *editor, int x, int y);
+void				place_portal(t_editor *editor, int x, int y, t_env *env);
 
 /*
 **	portal/portal_utils.c
@@ -170,16 +170,16 @@ int					count_sector(t_ed_sector *all_sector);
 /*
 **	sector/vertex.c
 */
-t_vertex			*get_vertex(t_editor *editor, int x, int y);
+t_vertex			*get_vertex(t_editor *editor, int x, int y, t_env *env);
 void				add_vertex(t_vertex **vertex, t_vertex v,
-	bool flag, t_editor *edit);
-t_vertex			*create_vertex(t_vertex v, t_editor *edit);
+	bool flag, t_env *env);
+t_vertex			*create_vertex(t_vertex v, t_editor *edit, t_env *env);
 t_vertex			init_vertex(int x, int y);
 
 /*
 **	sector/sector.c
 */
-void				place_sector(t_editor *editor, int x, int y);
+void				place_sector(t_editor *editor, int x, int y, t_env *env);
 
 /*
 **	sector/sector_part2.c
@@ -190,7 +190,7 @@ void				move_in_sector(t_ed_sector **sector, bool way);
 /*
 **	sector/sector_utils.c
 */
-t_ed_sector			*create_sector(t_editor *edit);
+t_ed_sector			*create_sector(t_editor *edit, t_env *env);
 
 /*
 **	sector/sector_check.c

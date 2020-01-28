@@ -50,15 +50,15 @@ static void			add_object(t_ed_entity **object, t_ed_entity *new, t_count *count)
 	}
 }
 
-void				place_entity(t_editor *editor, int x, int y, int type, t_env *env)
+void				place_entity(t_env *env, int x, int y, int type)
 {
 	t_ed_entity	*new_entity;
 	t_vertex	check_sector;
 
-	new_entity = create_entity(x, y, 0, editor, env);
+	new_entity = create_entity(x, y, 0, &env->editor, env);
 	check_sector.x = x;
 	check_sector.y = y;
-	new_entity->sector = is_in_sector(editor, check_sector);
+	new_entity->sector = is_in_sector(&env->editor, check_sector);
 	if (new_entity->sector != -1)
 	{
 		if (type == 0)

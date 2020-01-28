@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 13:09:05 by nde-jesu          #+#    #+#             */
-/*   Updated: 2020/01/27 15:39:25 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/01/28 12:53:04 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void		editor_click(t_editor *editor, SDL_Event event, t_env *env)
 		editor->presets = NONE;
 		blank_menu(env->sdl.screen, editor->sett, editor, editor->presets, env);
 		if (editor->sett == SECTOR)
-			place_sector(editor, event.motion.x, event.motion.y);
+			place_sector(editor, event.motion.x, event.motion.y, env);
 		else if (editor->sett == PLAYER)
 			place_player(editor, event.motion.x, event.motion.y);
 		else if (editor->sett == ENEMY)
@@ -69,7 +69,7 @@ void		editor_click(t_editor *editor, SDL_Event event, t_env *env)
 		else if (editor->sett == OBJECT)
 			place_entity(editor, event.motion.x, event.motion.y, 1, env);
 		else if (editor->sett == PORTAL)
-			place_portal(editor, event.motion.x, event.motion.y);
+			place_portal(editor, event.motion.x, event.motion.y, env);
 		editor->map_save = false;
 	}
 	else if (editor->sect_is_closed == true && event.motion.x > EDIT_W)

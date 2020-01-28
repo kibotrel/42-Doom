@@ -96,14 +96,14 @@ static int	vertex_intersect(t_editor *editor, t_ed_sector *sector)
 	return (0);
 }
 
-void		place_portal(t_editor *editor, int x, int y)
+void		place_portal(t_editor *editor, int x, int y, t_env *env)
 {
 	t_vertex	*point;
 	t_ed_sector	*sector;
 
 	if (count_sector(editor->sector) < 2)
 		return ;
-	point = create_vertex(init_vertex(x, y), editor);
+	point = create_vertex(init_vertex(x, y), editor, env);
 	if (editor->portal_points[0].x == -1)
 		editor->portal_points[0] = *point;
 	else if (editor->portal_points[1].x == -1)
