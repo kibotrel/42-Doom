@@ -6,7 +6,7 @@
 #    By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/10 16:16:29 by kibotrel          #+#    #+#              #
-#    Updated: 2020/01/29 11:56:41 by kibotrel         ###   ########.fr        #
+#    Updated: 2020/01/29 12:03:54 by kibotrel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -111,6 +111,7 @@ SRCS			+= clean/sdl.c
 SRCS			+= clean/ttf.c
 SRCS			+= clean/engine.c
 SRCS			+= parse/sector.c
+SRCS			+= parse/main.c
 SRCS			+= parse/tools.c
 SRCS			+= parse/vertex.c
 SRCS			+= parse/debug.c
