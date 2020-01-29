@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/27 15:15:36 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/01/27 15:35:38 by kibotrel         ###   ########.fr       */
+/*   Updated: 2020/01/29 07:36:43 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ static void	informations(t_env *env)
 	display_info(env, load_text("Altitude: ", height), v2d(4.5, 5), 1);
 }
 
-void	debug_hud(t_env *env)
+void		debug_hud(t_env *env)
 {
 	background(env);
 	informations(env);

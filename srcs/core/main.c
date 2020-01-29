@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/16 11:53:54 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/01/24 15:05:45 by kibotrel         ###   ########.fr       */
+/*   Updated: 2020/01/29 07:30:36 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,9 @@
 #include "setup.h"
 #include "utils.h"
 
-//
 //	If ac == 2, a map is sent to the program
 //	replace ft_isvalidname by a parser call + check the name inside
 //	function prototype should be modified to get env in this scope
-//
 
 static int	prechecks(int ac, char **av)
 {
@@ -43,11 +41,7 @@ int			main(int ac, char **av)
 	{
 		env_setup(&env);
 		if (prechecks(ac, av))
-		// {
-		// 	if (ac == 2)
-		// 		main_parse(av[1], &env);
 			graphic_setup(&env, &env.sdl);
-		// }
 		else
 			clean(&env, E_FILENAME);
 		while (1)

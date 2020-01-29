@@ -6,14 +6,14 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 13:21:31 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/01/27 15:18:31 by kibotrel         ###   ########.fr       */
+/*   Updated: 2020/01/29 07:31:51 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "utils.h"
 #include "texture.h"
 
-void	blur(t_env *env, SDL_Surface *win, t_pos p)
+void		blur(t_env *env, SDL_Surface *win, t_pos p)
 {
 	int			*px;
 
