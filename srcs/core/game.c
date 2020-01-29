@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/18 14:38:11 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/01/23 16:18:08 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/01/29 11:59:36 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -240,8 +240,6 @@ static void	temporary_setup(t_env *env)
 
 void		game(t_env *env)
 {
-	t_game	var;
-
 	if (!env->setup)
 	{
 		SDL_ShowCursor(SDL_DISABLE);
@@ -252,6 +250,6 @@ void		game(t_env *env)
 	env->cam.sin = sin(env->cam.angle);
 	env->cam.pos.z = env->sector[env->cam.sector].floor + CAM_H;
 	}
-	game_setup(env, &var);
-	graphics(env, &var);
+	graphics(env);
+	hud(env);
 }

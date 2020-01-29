@@ -6,12 +6,23 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 13:21:31 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/01/23 14:47:42 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/01/29 12:02:40 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "utils.h"
 #include "texture.h"
+
+void		blur(t_env *env, SDL_Surface *win, t_pos p)
+{
+	int			*px;
+
+	if ((p.x >= 0 && p.x < env->w) && (p.y >= 0 && p.y < env->h))
+	{
+		px = win->pixels + p.y * win->pitch + p.x * win->format->BytesPerPixel;
+		*px = color_add(*px, -45);
+	}
+}
 
 static void	draw_ceil_and_floor(t_env *env, t_game *var, int32_t x)
 {

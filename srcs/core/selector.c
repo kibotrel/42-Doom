@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/18 14:21:13 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/01/28 13:57:11 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/01/29 12:00:20 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 void	selector(t_env *env)
 {
+	env->tick.frame.old = env->tick.frame.new;
 	if (env->win == MENU)
 		menu(env);
 	else if (env->win == GAME)

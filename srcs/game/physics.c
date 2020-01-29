@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 15:18:26 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/01/29 10:56:32 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/01/29 12:01:44 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,9 +76,9 @@ void		vertical_movement(t_env *env, t_sector sector, double cam_height)
 	}
 }
 
-/*
-**	Need to replace vel = 0 by sliding algorithm
-*/
+//
+//	Need to replace vel = 0 by sliding algorithm
+//
 
 void		horizontal_movement(t_env *env, t_vec2d p, t_vec2d vel, double view)
 {

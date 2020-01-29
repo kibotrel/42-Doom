@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+         #
+#    By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/10 16:16:29 by kibotrel          #+#    #+#              #
-#    Updated: 2020/01/28 13:52:55 by reda-con         ###   ########.fr        #
+#    Updated: 2020/01/29 11:56:41 by kibotrel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,7 +50,8 @@ INCS_DIR		+= libbmp/incs
 # All the subdirectories used in the project
 # to organise source files (Can be changed).
 
-OBJS_SUBDIRS	:= core
+OBJS_SUBDIRS	:= hud
+OBJS_SUBDIRS	+= core
 OBJS_SUBDIRS	+= game
 OBJS_SUBDIRS	+= menu
 OBJS_SUBDIRS	+= setup
@@ -73,6 +74,7 @@ LTTF			= $(LTTF_DIR)/$(TTF)
 # Used header at each compilation to check file integrity (Can be changed).
 
 INCS			:= incs/env.h
+INCS			+= incs/hud.h
 INCS			+= incs/core.h
 INCS			+= incs/game.h
 INCS			+= incs/menu.h
@@ -88,17 +90,18 @@ INCS			+= incs/editor.h
 
 # Source files (Can be changed)
 
-SRCS			:= core/main.c
-SRCS			+= parse/main.c
+SRCS			:= hud/debug.c
+SRCS			+= core/main.c
 SRCS			+= core/game.c
 SRCS			+= core/menu.c
 SRCS			+= core/hooks.c
 SRCS			+= core/editor.c
 SRCS			+= core/selector.c
 SRCS			+= core/settings.c
+SRCS			+= game/hud.c
+SRCS			+= game/camera.c
 SRCS			+= game/engine.c
 SRCS			+= game/physics.c
-SRCS			+= game/camera.c
 SRCS			+= game/movement.c
 SRCS			+= game/keyboard.c
 SRCS			+= menu/click.c
@@ -117,16 +120,28 @@ SRCS			+= parse/player_blank.c
 SRCS			+= setup/game.c
 SRCS			+= setup/setup.c
 SRCS			+= setup/graphic.c
+SRCS			+= utils/usage.c
 SRCS			+= utils/data_0.c
 SRCS			+= utils/data_1.c
+SRCS			+= utils/data_2.c
+SRCS			+= utils/engine.c
+SRCS			+= utils/floats.c
 SRCS			+= utils/maths_0.c
 SRCS			+= utils/maths_1.c
-SRCS			+= utils/usage.c
+SRCS			+= utils/ft_power.c
 SRCS			+= utils/checks_00.c
 SRCS			+= utils/checks_01.c
-SRCS			+= utils/engine.c
 SRCS			+= utils/graphic_0.c
 SRCS			+= utils/graphic_1.c
+SRCS			+= utils/graphic_2.c
+SRCS			+= utils/ft_strdel.c
+SRCS			+= utils/ft_add_str.c
+SRCS			+= utils/ft_mul_str.c
+SRCS			+= utils/ft_realloc.c
+SRCS			+= utils/ft_power_str.c
+SRCS			+= utils/ft_strjoin_free.c
+SRCS			+= utils/ft_str_binary_to_nb.c
+SRCS			+= utils/ft_str_mantisse_to_nb.c
 SRCS			+= editor/keyboard.c
 SRCS			+= events/mouse.c
 SRCS			+= events/motion.c

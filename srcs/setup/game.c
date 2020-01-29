@@ -6,14 +6,26 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 15:29:00 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/01/22 15:29:51 by kibotrel         ###   ########.fr       */
+/*   Updated: 2020/01/23 20:23:46 by demonwaves       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <math.h>
 #include "game.h"
+#include "clean.h"
 #include "libft.h"
 #include "utils.h"
+
+static uint8_t	area_setup(t_env *env, t_game *var)
+{
+	if (!(var->top = malloc(sizeof(int) * env->w)))
+		return (0);
+	if (!(var->bottom = malloc(sizeof(int) * env->w)))
+		return (0);
+	if (!(var->render = malloc(sizeof(int) * env->zones)))
+		return (0);
+	return (1);
+}
 
 void			game_setup(t_env *env, t_game *var)
 {
@@ -22,14 +34,13 @@ void			game_setup(t_env *env, t_game *var)
 	i = 0;
 	ft_bzero(var, sizeof(t_game));
 	var->head = var->queue;
-	var->tail = var->queue;
-	var->top = malloc(sizeof(int) * env->w);
-	var->bottom = malloc(sizeof(int) * env->w);
-	var->render = malloc(sizeof(int) * env->zones);
-	var->nearz = 0.0001;
-	var->farz = 5;
-	var->nearside = 0.00001;
-	var->farside = 20;
+	var->tail = var->head;
+	if (!area_setup(env, var))
+	{
+		engine_clean(var);
+		clean(env, E_MALLOC);
+	}
+	side_infos(var);
 	while ((int32_t)i < env->w)
 	{
 		if (i < env->zones)

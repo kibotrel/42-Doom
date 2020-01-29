@@ -1,37 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   setup.h                                            :+:      :+:    :+:   */
+/*   hud.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/15 18:43:02 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/01/27 11:30:38 by kibotrel         ###   ########.fr       */
+/*   Created: 2020/01/24 11:32:06 by kibotrel          #+#    #+#             */
+/*   Updated: 2020/01/27 15:31:01 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SETUP_H
-# define SETUP_H
+#include "hud.h"
+#include "game.h"
+#include "clean.h"
+#include "libft.h"
+#include "setup.h"
+#include "utils.h"
 
-# include "game.h"
+//Position
+//Gravity
+//Viscosity
 
-/*
-**	setup.c
-*/
-
-void	env_setup(t_env *env);
-
-/*
-**	graphic.c
-*/
-
-void	graphic_setup(t_env *env, t_sdl *sdl);
-
-/*
-**	game.c
-*/
-
-void	game_setup(t_env *env, t_game *var);
-void	draw_setup(t_env *env, t_game *var, t_item *now, uint32_t i);
-
-#endif
+void	hud(t_env *env)
+{
+	if (env->data.hud.debug > 0)
+		debug_hud(env);
+}

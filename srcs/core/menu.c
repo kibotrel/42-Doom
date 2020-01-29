@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/08 19:56:17 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/01/22 15:15:07 by kibotrel         ###   ########.fr       */
+/*   Updated: 2020/01/29 07:31:19 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,15 +39,23 @@ void	draw_ui(t_env *env)
 	i = 1;
 	while (i < RATIO_UI_Y)
 	{
-		draw_button(env, env->data.ui, WHITE, i);
-		text_to_screen(env, &env->sdl, get_string(i), i);
+		if (i != env->data.ui.button)
+		{
+			draw_button(env, env->data.ui, WHITE, i);
+			text_to_screen(env, &env->sdl, get_string(i), i);
+		}
 		i += 2;
 	}
 }
 
 void	menu(t_env *env)
 {
-	SDL_SetWindowTitle(env->sdl.win, TITLE_MENU);
-	draw_background(env, &env->sdl, env->sdl.bmp[env->data.ui.background]);
+	if (env->setup < 2)// It should be !env->setup in the end
+	{
+		env->setup = 2;// = 1 in the end
+		env->data.ui.button = 0;
+		SDL_SetWindowTitle(env->sdl.win, TITLE_MENU);
+		draw_background(env, &env->sdl, env->sdl.bmp[env->data.ui.background]);
+	}
 	draw_ui(env);
 }

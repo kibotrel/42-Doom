@@ -1,22 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ttf.c                                              :+:      :+:    :+:   */
+/*   ft_strdel.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: roster <roster@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/08 19:27:47 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/01/29 07:29:38 by kibotrel         ###   ########.fr       */
+/*   Created: 2018/11/15 07:34:19 by roster            #+#    #+#             */
+/*   Updated: 2020/01/29 06:55:15 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "structs.h"
+#include <stdlib.h>
 
-void	ttf_clean(t_sdl *sdl)
+void	ft_strdel(char **s)
 {
-	if (sdl->font[0])
-		TTF_CloseFont(sdl->font[0]);
-	if (sdl->font[1])
-		TTF_CloseFont(sdl->font[1]);
-	TTF_Quit();
+	if (s == NULL)
+		return ;
+	free(*s);
+	*s = NULL;
 }
