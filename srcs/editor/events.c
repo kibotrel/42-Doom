@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 13:09:05 by nde-jesu          #+#    #+#             */
-/*   Updated: 2020/01/28 13:16:41 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/01/29 11:27:25 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,4 @@ void			events(t_editor *editor, t_env *env)
 {
 		blank_menu(env->sdl.screen, editor->sett, editor, editor->presets, env);
 		display_editor(editor, env);
-		if (SDL_UpdateWindowSurface(env->sdl.win) != 0)
-			clean_editor(editor, env);
 }

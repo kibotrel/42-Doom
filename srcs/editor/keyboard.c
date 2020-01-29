@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   keyboard.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/10 16:26:14 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/01/29 12:01:10 by kibotrel         ###   ########.fr       */
+/*   Updated: 2020/01/29 13:01:52 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,10 @@ void	editor_keyboard(t_env *env, t_editor *edit)
 	{
 		if (is_saved(edit) == true)
 		{
+			SDL_SetWindowSize(env->sdl.win, env->w, env->h);
+			env->sdl.screen = SDL_GetWindowSurface(env->sdl.win);
 			env->win = MENU;
-			menu(env);
+			env->setup = 0;
 		}
 	}
 	if(env->input[SDL_SCANCODE_DELETE])
