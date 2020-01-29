@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 19:01:59 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/01/29 07:20:12 by kibotrel         ###   ########.fr       */
+/*   Updated: 2020/01/29 08:33:36 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ t_palette			flat(int top, int middle, int bottom);
 **	data_2.c
 */
 
-char				*load_text(char *prefix, char *info);
+char				*load_text(char *prefix, char *info, int mode);
 
 /*
 **	maths_0.c

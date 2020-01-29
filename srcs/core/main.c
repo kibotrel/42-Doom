@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/16 11:53:54 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/01/29 07:30:36 by kibotrel         ###   ########.fr       */
+/*   Updated: 2020/01/29 09:33:30 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,9 @@
 //	If ac == 2, a map is sent to the program
 //	replace ft_isvalidname by a parser call + check the name inside
 //	function prototype should be modified to get env in this scope
+
+// __attribute__((destructor)) void no_end(void);
+// void no_end(){while(1);}
 
 static int	prechecks(int ac, char **av)
 {
