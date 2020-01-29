@@ -27,7 +27,7 @@ void		display_text(t_editor *edit, t_sdl *sdl, t_vertex pos,
 	where.x = pos.x;
 	where.y = pos.y;
 	error = 0;
-	if (!(tmp = TTF_RenderText_Solid(sdl->editor, text, sdl->color)))
+	if (!(tmp = TTF_RenderText_Solid(sdl->font[2], text, sdl->color)))
 		error = 1;
 	if (!error && SDL_BlitSurface(tmp, 0, sdl->screen, &where))
 		error = 2;

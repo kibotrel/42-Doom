@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 18:48:17 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/01/29 13:04:25 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/01/29 13:07:16 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -240,7 +240,7 @@ typedef struct	s_cam
 typedef struct	s_sdl
 {
 	t_bmp		bmp[NB_ASSETS];
-	TTF_Font	*font[2];
+	TTF_Font	*font[3];
 	SDL_Event	event;
 	SDL_Color	color;
 	SDL_Window	*win;
