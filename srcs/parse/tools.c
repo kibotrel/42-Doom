@@ -6,7 +6,7 @@
 /*   By: reda-con <reda-con@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 16:50:27 by reda-con          #+#    #+#             */
-/*   Updated: 2020/01/27 09:25:41 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/01/29 11:46:16 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int			ft_isnum(char *num)
 	if (!num)
 		return (0);
 	i = 0;
-	if (num[i] == '-')
+	if (num[i] == '-' || num[i] == '+')
 		i++;
 	while (ft_isdigit(num[i]))
 		i++;
