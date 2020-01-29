@@ -6,7 +6,7 @@
 #    By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/10 16:16:29 by kibotrel          #+#    #+#              #
-#    Updated: 2020/01/27 15:37:50 by kibotrel         ###   ########.fr        #
+#    Updated: 2020/01/29 07:26:03 by kibotrel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -100,9 +100,9 @@ SRCS			+= core/editor.c
 SRCS			+= core/selector.c
 SRCS			+= core/settings.c
 SRCS			+= game/hud.c
+SRCS			+= game/camera.c
 SRCS			+= game/engine.c
 SRCS			+= game/physics.c
-SRCS			+= game/camera.c
 SRCS			+= game/movement.c
 SRCS			+= game/keyboard.c
 SRCS			+= menu/click.c
@@ -111,28 +111,39 @@ SRCS			+= clean/env.c
 SRCS			+= clean/sdl.c
 SRCS			+= clean/ttf.c
 SRCS			+= clean/engine.c
-SRCS			+= parse/ennemy.c
-SRCS			+= parse/main.c
-SRCS			+= parse/object.c
-SRCS			+= parse/sector.c
-SRCS			+= parse/tools.c
-SRCS			+= parse/vertex.c
-SRCS			+= parse/debug.c
+# SRCS			+= parse/main.c
+# SRCS			+= parse/debug.c
+# SRCS			+= parse/tools.c
+# SRCS			+= parse/ennemy.c
+# SRCS			+= parse/object.c
+# SRCS			+= parse/sector.c
+# SRCS			+= parse/vertex.c
+# SRCS			+= parse/ennemy.c
 SRCS			+= setup/game.c
 SRCS			+= setup/setup.c
 SRCS			+= setup/graphic.c
+SRCS			+= utils/usage.c
 SRCS			+= utils/data_0.c
 SRCS			+= utils/data_1.c
 SRCS			+= utils/data_2.c
+SRCS			+= utils/engine.c
+SRCS			+= utils/floats.c
 SRCS			+= utils/maths_0.c
 SRCS			+= utils/maths_1.c
-SRCS			+= utils/usage.c
+SRCS			+= utils/ft_power.c
 SRCS			+= utils/checks_00.c
 SRCS			+= utils/checks_01.c
-SRCS			+= utils/engine.c
 SRCS			+= utils/graphic_0.c
 SRCS			+= utils/graphic_1.c
 SRCS			+= utils/graphic_2.c
+SRCS			+= utils/ft_strdel.c
+SRCS			+= utils/ft_add_str.c
+SRCS			+= utils/ft_mul_str.c
+SRCS			+= utils/ft_realloc.c
+SRCS			+= utils/ft_power_str.c
+SRCS			+= utils/ft_strjoin_free.c
+SRCS			+= utils/ft_str_binary_to_nb.c
+SRCS			+= utils/ft_str_mantisse_to_nb.c
 SRCS			+= editor/keyboard.c
 SRCS			+= events/mouse.c
 SRCS			+= events/motion.c

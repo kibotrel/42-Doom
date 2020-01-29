@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 19:01:59 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/01/27 15:38:50 by kibotrel         ###   ########.fr       */
+/*   Updated: 2020/01/29 07:20:12 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,6 +129,7 @@ int8_t				cycle_check(t_env *env, t_game *var, t_item *now);
 
 void				speed_check(t_env *env);
 void				check_tick(t_tick *tick, int8_t *flag, uint32_t  offset);
+
 /*
 **	engine.c
 */
@@ -137,4 +138,63 @@ void				transform(t_cam *cam, t_game *var, uint32_t i);
 uint8_t				bound_view(t_game *var);
 uint8_t				scale(t_env *env, t_game *var, t_item *now);
 
+/*
+**	floats.c
+*/
+
+char				*ft_dtoa(double d);
+
+/*
+**	ft_strjoin_free.c
+*/
+
+char				*ft_strjoin_free(char *s1, char *s2, int mod);
+
+/*
+**	ft_strdel.c
+*/
+
+void				ft_strdel(char **s);
+
+/*
+**	ft_power.c
+*/
+
+double				ft_power(double nb, int power);
+
+/*
+**	ft_str_binary_to_nb.c
+*/
+
+char				*ft_str_binary_to_nb(char *bin, int mod);
+
+/*
+**	ft_str_mantisse_to_nb.c
+*/
+
+char				*ft_str_mantisse_to_nb(char *m, int mod);
+
+/*
+**	ft_add_str.c
+*/
+
+char				*ft_add_str(char *s1, char *s2, int mod);
+
+/*
+**	ft_power_str.c
+*/
+
+char				*ft_power_str(size_t power, size_t base);
+
+/*
+**	ft_mul_str.c
+*/
+
+char				*ft_mul_str(char *s1, char *s2, int mod);
+
+/*
+**	ft_realloc.c
+*/
+
+char				*ft_realloc(char *s, size_t size, size_t mod);
 #endif
