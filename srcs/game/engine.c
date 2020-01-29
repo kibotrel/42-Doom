@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 15:22:56 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/01/24 11:46:55 by kibotrel         ###   ########.fr       */
+/*   Updated: 2020/01/29 10:08:54 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,14 @@ void	physics(t_env *env)
 	double		sight;
 	t_vec2d		pos;
 	t_vec2d		vel;
+	t_sector	*sector;
 
+	sector = &env->sector[env->cam.sector];
 	pos = v2d(env->cam.pos.x, env->cam.pos.y);
 	vel = v2d(env->cam.v.x, env->cam.v.y);
 	sight = env->cam.sneak ? SNEAK_H : CAM_H;
+	while (sector->ceil <= sector->floor + sight)
+		sight -= 1;
 	env->cam.ground = !env->cam.fall;
 	if (env->cam.fall)
 		vertical_movement(env, env->sector[env->cam.sector], sight);
