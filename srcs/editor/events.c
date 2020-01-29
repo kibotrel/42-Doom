@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 13:09:05 by nde-jesu          #+#    #+#             */
-/*   Updated: 2020/01/28 16:00:47 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/01/29 11:27:25 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,5 @@ void			editor_mousewheel(t_editor *editor, SDL_Event event)
 void			events(t_editor *editor, t_env *env)
 {
 		blank_menu(env->sdl.screen, editor->sett, editor, editor->presets, env);
-		SDL_SetWindowSize(env->sdl.win, 1780, 720);
-		env->sdl.screen = SDL_GetWindowSurface(env->sdl.win);
 		display_editor(editor, env);
 }

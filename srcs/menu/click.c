@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   click.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/08 20:33:18 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/01/22 15:28:08 by kibotrel         ###   ########.fr       */
+/*   Updated: 2020/01/29 11:23:10 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ void	menu_click(t_env *env, t_ui ui, int x, int y)
 		{
 			env->win = box;
 			ft_bzero(env->sdl.screen->pixels, env->data.w_size);
-			selector(env);
 			break ;
 		}
 		n += 2;

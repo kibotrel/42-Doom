@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/10 16:26:14 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/01/28 16:00:00 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/01/29 12:01:09 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	editor_keyboard(t_env *env, t_editor *edit)
 			SDL_SetWindowSize(env->sdl.win, env->w, env->h);
 			env->sdl.screen = SDL_GetWindowSurface(env->sdl.win);
 			env->win = MENU;
-			menu(env);
+			env->setup = 0;
 		}
 	}
 	if(env->input[SDL_SCANCODE_DELETE])
