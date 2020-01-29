@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+         #
+#    By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/10 16:16:29 by kibotrel          #+#    #+#              #
-#    Updated: 2020/01/29 12:03:54 by kibotrel         ###   ########.fr        #
+#    Updated: 2020/01/29 13:10:24 by nde-jesu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -148,7 +148,6 @@ SRCS			+= events/mouse.c
 SRCS			+= events/motion.c
 SRCS			+= events/keyboard.c
 SRCS			+= texture/texture_tools.c
-SRCS			+= editor/editor_main.c
 SRCS			+= editor/events.c
 SRCS			+= editor/events_tools.c
 SRCS			+= editor/setup.c
