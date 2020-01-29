@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 18:48:17 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/01/29 13:02:39 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/01/29 13:04:25 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -173,24 +173,6 @@ typedef struct	s_data
 	uint32_t	fps;
 	uint32_t	w_size;
 }				t_data;
-
-typedef struct	s_cam
-{
-	double		cos;
-	double		gap;
-	double		sin;
-	double		angle;
-	double		speed;
-	t_vec2d		fov;
-	t_vec3d		v;
-	t_vec3d		pos;
-	int8_t		fly;
-	uint8_t		fall;
-	uint8_t		move;
-	uint8_t		sneak;
-	uint8_t		ground;
-	uint32_t	sector;
-}				t_cam;
 
 /*
 typedef struct	s_sector
