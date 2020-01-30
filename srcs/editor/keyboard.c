@@ -6,12 +6,13 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/10 16:26:14 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/01/29 13:32:15 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/01/30 11:21:44 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "editor.h"
 #include "core.h"
+#include "utils.h"
 
 void	editor_keyboard(t_env *env, t_editor *edit)
 {
@@ -31,13 +32,13 @@ void	editor_keyboard(t_env *env, t_editor *edit)
 	}
 	if(env->input[SDL_SCANCODE_DELETE])
 		clear_editor(edit, env);
-	if (env->input[SDL_SCANCODE_END])
-		edit->grid = !edit->grid;
 	if (env->input[SDL_SCANCODE_ESCAPE])
 		if (is_saved(edit) == true)
 			clear_editor(edit, env);
 	if (env->input[SDL_SCANCODE_RETURN])
 		create_map(edit);
-	if (edit->sect_is_closed == true)
-		blank_menu(env->sdl.screen, edit->sett, edit, edit->presets, env);
+	if (env->input[SDL_SCANCODE_END])
+		check_tick(&env->tick.editor, &edit->grid, 160);
+	if (env->input[SDL_SCANCODE_P])
+		check_tick(&env->tick.editor, &edit->display_portal, 160);
 }

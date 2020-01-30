@@ -53,8 +53,7 @@ static void	print_sector_values(t_sdl *sdl, t_ed_sector *sector, t_presets prese
 		print = ft_itoa(sector->gravity);
 	else if (presets == SECTOR_FRICTION)
 		print = ft_itoa(sector->friction);
-	else if (presets == ENTITY_MOVE || presets == SECTOR_MOVE ||
-		presets == PORTAL_MOVE)
+	else if (presets == ENTITY_MOVE || presets == PORTAL_MOVE)
 		display_text(edit, sdl, init_vertex(1455, 50), "Prev./Next", env);
 	else if (presets == PLAYER_ROTATE || presets == ENTITY_ROTATE)
 		display_text(edit, sdl, init_vertex(1455, 50), "Left/Right", env);
@@ -83,7 +82,7 @@ void		print_param_to_screen(t_env *env, t_settings sett, t_editor *editor)
 	}
 	display_text(editor, &env->sdl, init_vertex(1315, 665), g_first_params[5], env);
 	display_text(editor, &env->sdl, init_vertex(1445, 665), g_first_params[6], env);
-	if (editor->presets != NONE && editor->sector)
+	if (editor->presets > SECTOR_MOVE./ && editor->sector)
 		print_sector_values(&env->sdl, editor->sector, editor->presets, editor, env);
 	if ((editor->presets == ENTITY_TYPE && ((sett == ENEMY && editor->enemy) ||
 		(sett == OBJECT && editor->object))) ||

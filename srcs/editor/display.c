@@ -88,7 +88,7 @@ void	display_grid(t_editor *editor, t_env *env)
 		while (x < EDIT_W)
 		{
 			if (x % editor->true_grid == 0 && y % editor->true_grid == 0 &&
-				editor->grid)
+				editor->grid != -1)
 				put_pixel(env->sdl.screen, x, y, 0x9c9c9c);
 			else
 				put_pixel(env->sdl.screen, x, y, 0x000000);

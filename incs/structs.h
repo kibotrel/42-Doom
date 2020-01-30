@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 18:48:17 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/01/29 13:07:16 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/01/30 11:33:35 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,7 +114,8 @@ typedef struct		s_editor
 
 	int				true_grid;
 	int				dist_grid;
-	bool			grid;
+	int8_t			grid;
+	int8_t			display_portal;
 
 	bool			sect_is_closed;
 	bool			finish;
@@ -213,6 +214,7 @@ typedef struct	s_time
 	t_tick		debug;
 	t_tick		fps;
 	t_tick		frame;
+	t_tick		editor;
 }				t_time;
 
 /*

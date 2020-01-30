@@ -46,7 +46,7 @@ void			sec_blank_menu(SDL_Surface *s, int set, int preset)
 		clr = ((preset != PORTAL_TYPE) ? 0xffffff : 0x177013);
 		rectangle(init_vertex(1540, 240), init_vertex(1710, 310), clr, s);
 	}
-	if (preset != NONE)
+	if (preset != NONE && preset != SECTOR_MOVE)
 	{
 		rectangle(init_vertex(1399, 49), init_vertex(1450, 100), 0xffa500, s);
 		rectangle(init_vertex(1599, 49), init_vertex(1650, 100), 0xffa500, s);

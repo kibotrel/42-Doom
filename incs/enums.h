@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 17:59:50 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/01/27 11:28:09 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/01/30 12:02:03 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,10 +92,10 @@ typedef enum		e_settings
 typedef enum		e_presets
 {
 	NONE,
+	SECTOR_MOVE,
 	SECTOR_FLOOR,
 	SECTOR_CEIL,
 	SECTOR_TEXT,
-	SECTOR_MOVE,
 	SECTOR_GRAV,
 	SECTOR_FRICTION,
 	ENTITY_TYPE,

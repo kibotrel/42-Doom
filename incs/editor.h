@@ -185,7 +185,7 @@ void				place_sector(t_editor *editor, int x, int y, t_env *env);
 **	sector/sector_part2.c
 */
 void				next_display_sector(t_sdl *sdl, t_ed_sector *sectors);
-void				move_in_sector(t_ed_sector **sector, bool way);
+void				move_in_sector(t_editor *edit, int x, int y);
 
 /*
 **	sector/sector_utils.c

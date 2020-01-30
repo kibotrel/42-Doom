@@ -25,10 +25,11 @@ void			editor_setup(t_editor *editor)
 {
 	editor->dist_grid = 50;
 	editor->true_grid = EDIT_W / editor->dist_grid;
-	editor->grid = true;
+	editor->grid = 1;
 	editor->sett = SECTOR;
 	editor->presets = NONE;
 	editor->finish = false;
+	editor->display_portal = -1;
 	editor->sect_is_closed = true;
 	editor->last_vertex.x = -1;
 	editor->last_vertex.y = -1;

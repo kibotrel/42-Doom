@@ -1,4 +1,5 @@
 #include "editor.h"
+#include "env.h"
 
 static void		fst_clic_editor_menu(int y, t_editor *editor)
 {
@@ -85,8 +86,8 @@ void			editor_motion(t_sdl s, int set, int preset, t_editor *edit, t_env *env)
 {
 	if (s.event.motion.y >= 660 && s.event.motion.y <= 710 &&
 		((s.event.motion.x >= 1300 && s.event.motion.x <= 1410) ||
-			(s.event.motion.x >= 1420 && s.event.motion.x <= 1530))){printf("test\n");
-		option_motion(s, set, preset, edit, env);}
+			(s.event.motion.x >= 1420 && s.event.motion.x <= 1530)))
+		option_motion(s, set, preset, edit, env);
 	else if (s.event.motion.x >= 1340 && s.event.motion.x <= 1510)
 	{
 		if ((s.event.motion.y >= 140 && s.event.motion.y <= 210))

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hooks.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/16 12:45:38 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/01/23 17:26:13 by demonwaves       ###   ########.fr       */
+/*   Updated: 2020/01/30 11:30:32 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ void	global_hooks(t_env *env, t_sdl *sdl)
 			handle_mouse(env, sdl);
 		if (sdl->event.type == SDL_MOUSEMOTION)
 			handle_motion(env, sdl);
+		if (sdl->event.type == SDL_MOUSEWHEEL)
+			handle_mousewheel(env, sdl);
 		if (env->sdl.event.window.event == SDL_WINDOWEVENT_CLOSE)
 			clean(env, NOTHING);
 	}
