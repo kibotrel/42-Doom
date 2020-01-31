@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   setup.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/16 11:58:26 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/01/29 13:03:25 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/01/31 20:49:50 by demonwaves       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,7 @@ static void	infos_setup(t_env *env)
 	env->cam.fly = -1;
 	env->cam.fall = 1;
 	env->cam.speed = 1;
+	env->cam.fov = v2d(0.75 * env->h, 0.2 * env->h);
 }
 
 void		env_setup(t_env *env)
@@ -99,7 +100,7 @@ void		env_setup(t_env *env)
 	ft_bzero(env, sizeof(t_env));
 	env->w = WIN_W;
 	env->h = WIN_H;
-	env->win = MENU;
+	env->win = GAME;
 	assets_paths(env);
 	error_messages(env);
 	infos_setup(env);
