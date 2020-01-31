@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 19:01:59 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/01/29 08:33:36 by kibotrel         ###   ########.fr       */
+/*   Updated: 2020/01/31 20:37:36 by demonwaves       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,8 +64,8 @@ void				blur(t_env *env, SDL_Surface *win, t_pos p);
 **	graphic_2.c
 */
 
-void				display_info(t_env *env, char *str, t_vec2d pos,
-									uint32_t mode);
+void				info(t_env *env, char *str, t_vec2d pos, uint32_t mode);
+
 /*
 **	data_0.c
 */
@@ -90,7 +90,7 @@ t_palette			flat(int top, int middle, int bottom);
 **	data_2.c
 */
 
-char				*load_text(char *prefix, char *info, int mode);
+char				*txt(char *prefix, char *info, int mode);
 
 /*
 **	maths_0.c

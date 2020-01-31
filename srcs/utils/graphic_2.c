@@ -6,14 +6,14 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/27 15:35:56 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/01/27 15:37:29 by kibotrel         ###   ########.fr       */
+/*   Updated: 2020/01/31 20:27:06 by demonwaves       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "structs.h"
 
-void	display_info(t_env *env, char *str, t_vec2d pos, uint32_t mode)
+void	info(t_env *env, char *str, t_vec2d pos, uint32_t mode)
 {
 	t_vec		p;
 	SDL_Rect	where;

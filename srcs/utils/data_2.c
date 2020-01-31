@@ -6,14 +6,14 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/24 12:03:37 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/01/29 08:41:29 by kibotrel         ###   ########.fr       */
+/*   Updated: 2020/01/31 20:20:55 by demonwaves       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "libft.h"
 
-char	*load_text(char *prefix, char *info, int mode)
+char	*txt(char *prefix, char *info, int mode)
 {
 	char	*string;
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 18:48:17 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/01/29 13:07:16 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/01/31 21:23:00 by demonwaves       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -166,8 +166,8 @@ typedef struct	s_hud
 typedef struct	s_data
 {
 	t_ui		ui;
-	t_grid		grid;
 	t_hud		hud;
+	t_grid		grid;
 	uint8_t		f_size;
 	uint8_t		g_size;
 	uint32_t	fps;
