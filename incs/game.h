@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 21:22:14 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/01/31 22:18:53 by demonwaves       ###   ########.fr       */
+/*   Updated: 2020/01/31 23:01:23 by demonwaves       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ void			game_keyboard(t_env *env);
 **	movement.c
 */
 
+void			fly(t_env *env);
 void			move(t_env *env);
 void			jump(t_env *env, t_cam *cam);
 

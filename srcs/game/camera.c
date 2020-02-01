@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/11 14:21:04 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/01/31 22:18:01 by demonwaves       ###   ########.fr       */
+/*   Updated: 2020/01/31 23:39:15 by demonwaves       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,8 @@ void	cam_height(t_env *env, int32_t crouch)
 	}
 	else
 	{
+		if (env->cam.pos.z == env->sector[env->cam.sector].floor + SNEAK_H)
+			env->cam.pos.z = env->sector[env->cam.sector].floor + CAM_H;
 		env->cam.sneak = 0;
 		env->cam.speed = 1;
 	}

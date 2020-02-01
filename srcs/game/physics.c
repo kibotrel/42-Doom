@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 15:18:26 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/01/29 12:01:44 by kibotrel         ###   ########.fr       */
+/*   Updated: 2020/02/01 04:19:29 by demonwaves       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,10 +70,7 @@ void		vertical_movement(t_env *env, t_sector sector, double cam_height)
 		env->cam.fall = 1;
 	}
 	if (env->cam.fall)
-	{
 		env->cam.pos.z += env->cam.v.z;
-		env->cam.move = 1;
-	}
 }
 
 //
@@ -90,6 +87,7 @@ void		horizontal_movement(t_env *env, t_vec2d p, t_vec2d vel, double view)
 	v = env->sector[env->cam.sector].vertex;
 	i = 0;
 	points = env->sector[env->cam.sector].points;
+	update_velocity(&env->cam.v, &vel);
 	while (i < points)
 	{
 		if (check_collisions(p, vel, v[i], v[(i + 1) % points]))
@@ -98,13 +96,12 @@ void		horizontal_movement(t_env *env, t_vec2d p, t_vec2d vel, double view)
 			if (hole[0] > env->cam.pos.z - view + MARGIN_KNEE
 				|| hole[1] < env->cam.pos.z + MARGIN_HEAD)
 			{
-				vel.x = 0;
-				vel.y = 0;
+				vel.x = 0; vel.y = 0;
 				env->cam.move = 0;
 			}
 		}
 		i++;
 	}
-	update_cam(env, vel);
 	env->cam.fall = 1;
+	update_cam(env, vel);
 }

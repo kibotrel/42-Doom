@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/10 15:11:44 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/01/31 22:20:16 by demonwaves       ###   ########.fr       */
+/*   Updated: 2020/01/31 23:00:17 by demonwaves       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,5 @@ void	game_keyboard(t_env *env)
 	if (env->win == GAME && env->input[SDL_SCANCODE_GRAVE])
 		check_tick(&env->tick.debug, &env->data.hud.debug, 160);
 	if (env->win == GAME && env->input[SDL_SCANCODE_F])
-	{
-		check_tick(&env->tick.fly, &env->cam.fly, 160);
-		if (env->tick.fly.old == env->tick.fly.new)
-			env->cam.v.z = 0;
-	}
+		fly(env);
 }

@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 19:01:59 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/01/31 20:37:36 by demonwaves       ###   ########.fr       */
+/*   Updated: 2020/02/01 04:21:47 by demonwaves       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,7 @@ t_palette			flat(int top, int middle, int bottom);
 */
 
 char				*txt(char *prefix, char *info, int mode);
+void				update_velocity(t_vec3d *v, t_vec2d *vel);
 
 /*
 **	maths_0.c
