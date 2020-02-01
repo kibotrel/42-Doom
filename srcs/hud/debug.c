@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/27 15:15:36 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/01 04:38:28 by demonwaves       ###   ########.fr       */
+/*   Updated: 2020/02/01 13:17:55 by demonwaves       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ static void	cam_infos(t_env *env, t_cam *cam)
 	str[2] = (cam->ground ? ft_strdup("True") : ft_strdup("False"));
 	str[3] = (cam->sneak ? ft_strdup("True") : ft_strdup("False"));
 	str[4] = (v.x || v.y || v.z ? ft_strdup("True") : ft_strdup("False"));
-	str[5] = ft_itoa((inter(round((1 / (cam->fov.x / env->h)) * 56)), 30, 245);
+	str[5] = ft_itoa((inter(round((1 / (cam->fov.x / env->h)) * 56), 30, 245)));
 	// str[2] = ft_itoa((int)round((1 / (cam->fov.x / env->h)) * 50));
 	// str[3] = ft_itoa((int)fabs(ft_degrees(env->cam.angle)) % 360);
 
