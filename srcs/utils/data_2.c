@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/24 12:03:37 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/01 04:22:54 by demonwaves       ###   ########.fr       */
+/*   Updated: 2020/02/01 04:39:47 by demonwaves       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,4 +43,14 @@ void	update_velocity(t_vec3d *v, t_vec2d *vel)
 		v->y = 0;
 		vel->y = 0;
 	}
+}
+
+double	inter(double value, double min, double max)
+{
+	if (value < min)
+		return (min);
+	else if (value > max)
+		return (max);
+	else
+		return (value);
 }
