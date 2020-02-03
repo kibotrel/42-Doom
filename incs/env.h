@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/16 11:54:25 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/01/30 09:27:07 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/02/03 14:03:05 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,9 @@
 # define MAX_FONT_SIZE	64
 # define MENU_W 		500
 # define EDIT_W 		1280
-#define ANGLE 80
-#define SIZE 6
+# define EDIT_H			820
+# define ANGLE 			80
+# define SIZE 			6
 
 /*
 ** String macros
@@ -64,6 +65,7 @@
 */
 
 # define RED			0xFF0000
+# define GREEN			0x00FF00
 # define WHITE			0xFFFFFF
 # define PRPL 			0x5f287e
 

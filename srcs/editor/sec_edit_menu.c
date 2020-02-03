@@ -14,10 +14,12 @@ static void		blank_sect(int set, int preset, SDL_Surface *s)
 		rectangle(init_vertex(1540, 340), init_vertex(1710, 410), clr, s);
 		clr = ((preset != SECTOR_TEXT) ? 0xffffff : 0x177013);
 		rectangle(init_vertex(1540, 440), init_vertex(1710, 510), clr, s);
-		clr = ((preset != SECTOR_GRAV) ? 0xffffff : 0x177013);
+		clr = ((preset != SECTOR_TYPE) ? 0xffffff : 0x177013);
 		rectangle(init_vertex(1540, 540), init_vertex(1710, 610), clr, s);
-		clr = ((preset != SECTOR_FRICTION) ? 0xffffff : 0x177013);
+		clr = ((preset != SECTOR_GRAV) ? 0xffffff : 0x177013);
 		rectangle(init_vertex(1540, 640), init_vertex(1710, 710), clr, s);
+		clr = ((preset != SECTOR_FRICTION) ? 0xffffff : 0x177013);
+		rectangle(init_vertex(1540, 740), init_vertex(1710, 810), clr, s);
 	}
 }
 
@@ -60,11 +62,18 @@ static void		part_5_sec_clic_menu_editor(int y, t_editor *editor)
 	if (y >= 540 && y <= 610)
 	{
 		if (editor->sett == SECTOR)
-			editor->presets = SECTOR_GRAV;
+			editor->presets = SECTOR_TYPE;
 		else
 			editor->presets = NONE;
 	}
 	if (y >= 640 && y <= 710)
+	{
+		if (editor->sett == SECTOR)
+			editor->presets = SECTOR_GRAV;
+		else
+			editor->presets = NONE;
+	}
+	if (y >= 740 && y <= 810)
 	{
 		if (editor->sett == SECTOR)
 			editor->presets = SECTOR_FRICTION;

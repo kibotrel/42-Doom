@@ -58,6 +58,8 @@ void			next_blank_menu(int set, SDL_Surface *s)
 			rectangle(init_vertex(1540, 540), init_vertex(1710, 610), WHITE, s);
 			square(1600, 700, 0x8f58a4, s);
 			rectangle(init_vertex(1540, 640), init_vertex(1710, 710), WHITE, s);
+			square(1600, 800, 0x5872b1, s);
+			rectangle(init_vertex(1540, 740), init_vertex(1710, 810), WHITE, s);
 		}
 	}
 	square(1600, 200, 0x181279, s);
@@ -88,8 +90,8 @@ void			blank_menu(SDL_Surface *s, int set, t_editor *edit, int preset, t_env *en
 	rectangle(init_vertex(1350, 450), init_vertex(1400, 500), 0xffa500, s);
 	rectangle(init_vertex(1350, 350), init_vertex(1400, 400), 0xffa500, s);
 	rectangle(init_vertex(1350, 550), init_vertex(1400, 600), 0xffa500, s);
-	rectangle(init_vertex(1300, 660), init_vertex(1410, 710), 0xffffff, s);
-	rectangle(init_vertex(1420, 660), init_vertex(1530, 710), 0xffffff, s);
+	rectangle(init_vertex(1300, 760), init_vertex(1410, 810), 0xffffff, s);
+	rectangle(init_vertex(1420, 760), init_vertex(1530, 810), 0xffffff, s);
 	print_param_to_screen(env, edit->sett, edit);
-	print_param_in_param(edit, &env->sdl, set, env);
+	print_param_in_param(set, env);
 }

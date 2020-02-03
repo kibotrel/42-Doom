@@ -86,13 +86,11 @@ void				print_params_image(t_editor *edit, t_presets presets,
 /*
 **	menu/text.c
 */
-void				print_param_in_param(t_editor *edit, t_sdl *sdl,
-	t_settings sett, t_env *env);
+void				print_param_in_param(t_settings sett, t_env *env);
 void				print_param_to_screen(t_env *env, t_settings sett,
 	t_editor *editor);
 void				print_more_minus(t_sdl *sdl);
-void	display_text(t_editor *edit, t_sdl *sdl, t_vertex pos,
-	const char *text, t_env *env);
+void	display_text(int color, t_vertex pos, const char *text, t_env *env);
 
 /*
 **	menu/edit_menu.c

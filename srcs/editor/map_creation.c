@@ -65,6 +65,10 @@ static void		write_sectors(t_ed_sector *sector, t_vertex *all, int fd)
 		{
 			ft_putstr_fd("sector number ", fd);
 			ft_putnbr_fd(sect->sector_number, fd);
+			ft_putstr_fd(" texture ", fd);
+			ft_putnbr_fd(sect->texture, fd);
+			ft_putstr_fd(" type ", fd);
+			ft_putnbr_fd(sect->type, fd);
 			ft_putstr_fd(" h_floor ", fd);
 			ft_putnbr_fd(sect->h_floor, fd);
 			ft_putstr_fd(" h_ceil ", fd);

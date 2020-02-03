@@ -76,6 +76,8 @@ void			change_value(t_editor *editor, t_presets presets, bool fl)
 		change_height(&editor->sector->h_ceil, fl);
 	else if (presets == SECTOR_TEXT)
 		change_type(&editor->sector->texture, fl);
+	else if (presets == SECTOR_TYPE)
+		change_type(&editor->sector->type, fl);
 	else if (presets == SECTOR_GRAV)
 		change_percentage(&editor->sector->gravity, fl);
 	else if (presets == SECTOR_FRICTION)

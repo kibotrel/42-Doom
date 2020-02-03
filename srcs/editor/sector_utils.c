@@ -12,9 +12,11 @@ t_ed_sector	*create_sector(t_editor *edit, t_env *env)
 	sect->h_floor = 0;
 	sect->vertex_count = 0;
 	sect->texture = 0;
+	sect->type = 0;
 	sect->gravity = 10;
 	sect->friction = 50;
 	sect->next = NULL;
 	sect->prev = NULL;
 	return (sect);
 }
+

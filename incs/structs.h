@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 18:48:17 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/01/30 11:33:35 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/02/03 10:56:17 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,7 @@ typedef struct		s_ed_sector
 	int				vertex_count;
 	int				sector_number;
 	int				texture;
+	int				type;
 	int				gravity;
 	int				friction;
 
