@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+         #
+#    By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/10 16:16:29 by kibotrel          #+#    #+#              #
-#    Updated: 2020/01/29 13:10:24 by nde-jesu         ###   ########.fr        #
+#    Updated: 2020/02/04 01:44:58 by demonwaves       ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -118,6 +118,7 @@ SRCS			+= parse/debug.c
 SRCS			+= parse/entity.c
 SRCS			+= parse/total.c
 SRCS			+= parse/player_blank.c
+SRCS			+= setup/hud.c
 SRCS			+= setup/game.c
 SRCS			+= setup/setup.c
 SRCS			+= setup/graphic.c
@@ -125,6 +126,7 @@ SRCS			+= utils/usage.c
 SRCS			+= utils/data_0.c
 SRCS			+= utils/data_1.c
 SRCS			+= utils/data_2.c
+SRCS			+= utils/data_3.c
 SRCS			+= utils/engine.c
 SRCS			+= utils/floats.c
 SRCS			+= utils/maths_0.c

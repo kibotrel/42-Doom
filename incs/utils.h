@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 19:01:59 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/01 04:40:03 by demonwaves       ###   ########.fr       */
+/*   Updated: 2020/02/04 02:02:12 by demonwaves       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,9 +90,18 @@ t_palette			flat(int top, int middle, int bottom);
 **	data_2.c
 */
 
+char				*precision(double value, int precision);
 char				*txt(char *prefix, char *info, int mode);
 void				update_velocity(t_vec3d *v, t_vec2d *vel);
+void				dimensions(char **str, double x, double y, double z);
 double				inter(double value, double min, double max);
+
+/*
+**	data_3.c
+*/
+
+t_pos				p2d(int32_t x, int32_t y, int32_t base_x, int32_t base_y);
+
 /*
 **	maths_0.c
 */
