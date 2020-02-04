@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 18:48:17 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/01/31 21:23:00 by demonwaves       ###   ########.fr       */
+/*   Updated: 2020/02/04 06:39:55 by demonwaves       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -168,22 +168,12 @@ typedef struct	s_data
 	t_ui		ui;
 	t_hud		hud;
 	t_grid		grid;
+	double		life;
 	uint8_t		f_size;
 	uint8_t		g_size;
 	uint32_t	fps;
 	uint32_t	w_size;
 }				t_data;
-
-/*
-typedef struct	s_sector
-{
-	int			*neighbor;
-	double		ceil;
-	double		floor;
-	t_vec2d		*vertex;
-	uint32_t	points;
-}				t_sector;
-*/
 
 typedef struct	s_sector
 {

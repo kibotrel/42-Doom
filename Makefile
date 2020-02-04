@@ -6,7 +6,7 @@
 #    By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/10 16:16:29 by kibotrel          #+#    #+#              #
-#    Updated: 2020/02/04 04:35:26 by demonwaves       ###   ########.fr        #
+#    Updated: 2020/02/04 04:56:50 by demonwaves       ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -91,6 +91,7 @@ INCS			+= incs/editor.h
 # Source files (Can be changed)
 
 SRCS			:= hud/debug.c
+SRCS			+= hud/lifebar.c
 SRCS			+= hud/crosshair.c
 SRCS			+= core/main.c
 SRCS			+= core/game.c

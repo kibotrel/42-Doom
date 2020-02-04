@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/16 11:58:26 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/01/31 20:49:50 by demonwaves       ###   ########.fr       */
+/*   Updated: 2020/02/04 06:46:45 by demonwaves       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,7 @@ static void	infos_setup(t_env *env)
 	ft_bzero(&env->data.hud, sizeof(t_hud));
 	ft_bzero(&env->data.ui, sizeof(t_ui));
 	ft_bzero(&env->cam, sizeof(t_cam));
+	env->data.life = 100;
 	env->data.ui.min.y = floor(env->h / RATIO_UI_Y);
 	env->data.ui.min.x = floor(env->w / RATIO_UI_X) * 5;
 	env->data.ui.max.y = env->h;

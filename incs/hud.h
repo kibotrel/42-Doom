@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/27 15:26:11 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/04 04:36:21 by demonwaves       ###   ########.fr       */
+/*   Updated: 2020/02/04 04:51:08 by demonwaves       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,19 @@ typedef struct	s_dist
 **	debug.c
 */
 
-void	debug_hud(t_env *env);
+void			debug_hud(t_env *env);
 
 /*
 **	crosshair.c
 */
 
-void		crosshair(t_env *env);
-void		negative(SDL_Surface *win, t_pos p);
+void			crosshair(t_env *env);
+void			negative(SDL_Surface *win, t_pos p);
+
+/*
+**	lifebar.c
+*/
+
+void			lifebar(t_env *env);
 
 #endif
