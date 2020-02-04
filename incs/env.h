@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/16 11:54:25 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/03 23:09:37 by demonwaves       ###   ########.fr       */
+/*   Updated: 2020/02/04 21:45:51 by demonwaves       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,9 @@
 **	Useful values
 */
 
+# define SIZE			6
 # define CAM_H			6
+# define ANGLE 			80
 # define WIN_H			720
 # define WIN_W			1280
 # define SNEAK_H		2.5
@@ -32,8 +34,6 @@
 # define MAX_FONT_SIZE	64
 # define MENU_W 		500
 # define EDIT_W 		1280
-#define ANGLE 80
-#define SIZE 6
 
 /*
 ** String macros
@@ -52,10 +52,10 @@
 # define M_TTF_RENDER	"\033[31;1mError:\033[0m Can't write text on surface."
 # define M_SDL_WINSURF	"\033[31;1mError:\033[0m Can't retrieve window surface."
 
-# define TITLE_MENU		"Doom-Nukem v0.2.24 - Menu"
-# define TITLE_GAME		"Doom-Nukem v0.2.24 - Game"
-# define TITLE_EDITOR	"Doom-Nukem v0.2.24 - Editor"
-# define TITLE_SETTINGS	"Doom-Nukem v0.2.24 - Settings"
+# define TITLE_MENU		"Doom-Nukem v0.5.9 - Menu"
+# define TITLE_GAME		"Doom-Nukem v0.5.9 - Game"
+# define TITLE_EDITOR	"Doom-Nukem v0.5.9 - Editor"
+# define TITLE_SETTINGS	"Doom-Nukem v0.5.9 - Settings"
 
 # define MAP_PATH 		"./editor_map.data"
 
@@ -64,6 +64,9 @@
 */
 
 # define RED			0xFF0000
+# define GREEN			0x00FF00
+# define YELLOW			0xFFFF00
+# define ORANGE			0xFFA500
 # define WHITE			0xFFFFFF
 # define PRPL 			0x5f287e
 

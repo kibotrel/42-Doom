@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 01:42:15 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/01/14 13:34:43 by kibotrel         ###   ########.fr       */
+/*   Updated: 2020/02/04 20:10:34 by demonwaves       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,16 +26,10 @@ int8_t	dectect_input(int32_t *input)
 
 int8_t	get_dimensions(int32_t height)
 {
-	if (height == 1080)
-		return (MENU_1080P);
-	if (height == 900)
-		return (MENU_900P);
-	if (height == 768)
-		return (MENU_768P);
-	if (height == 720)
-		return (MENU_720P);
-	else
+	if (height != 1080 && height != 900 && height != 768 && height != 720)
 		return (-1);
+	else
+		return (1);
 }
 
 char	*get_string(uint8_t n)

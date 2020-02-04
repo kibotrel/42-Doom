@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   enums.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 17:59:50 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/01/27 11:28:09 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/02/04 20:29:04 by demonwaves       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,7 @@ typedef enum	e_win
 
 typedef enum	e_assets
 {
-	MENU_1080P,
-	MENU_900P,
-	MENU_768P,
-	MENU_720P,
+	BG_MENU,
 	ED_TEXT_1,
 	ED_TEXT_2,
 	ED_TEXT_3,
@@ -50,6 +47,13 @@ typedef enum	e_assets
 	ED_ENEMY_4,
 	ED_PORTAL_DOOR,
 	ED_PORTAL_WALL,
+	// SHOT_0,
+	// SHOT_0F,
+	// SHOT_1F,
+	// SHOT_1,
+	// SHOT_2,
+	// SHOT_3,
+	// SHOT_4,
 	NB_ASSETS
 }				t_assets;
 

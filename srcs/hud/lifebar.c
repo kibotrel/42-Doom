@@ -27,16 +27,18 @@ static void	draw_polygon(t_env *env, t_pos p[4], int thickness)
 
 static void	fill_bar(t_env *env, int border)
 {
-	int		i;
-	t_pos	p;
+	int			i;
+	t_pos		p;
+	uint32_t	color;
 
 	i = 0;
 	p.y = env->data.grid.min.y * 29;
+	color = life_state(env->data.life);
 	while (++p.y < env->data.grid.min.y * 31)
 	{
 		p.x = env->data.grid.min.x;
 		while (++p.x < border - 1)
-			draw_pixel(env, env->sdl.screen, p, color_add(RED, -i * 6));
+			draw_pixel(env, env->sdl.screen, p, color_add(color, -i * 6));
 		border--;
 		i++;
 	}

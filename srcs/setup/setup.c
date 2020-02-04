@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/16 11:58:26 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/04 06:46:45 by demonwaves       ###   ########.fr       */
+/*   Updated: 2020/02/04 20:09:37 by demonwaves       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,10 +48,7 @@ static void	error_messages(t_env *env)
 static void	assets_paths(t_env *env)
 {
 	ft_bzero(env->asset, sizeof(char*));
-	env->asset[MENU_1080P] = "assets/menu_1080.bmp";
-	env->asset[MENU_900P] = "assets/menu_900.bmp";
-	env->asset[MENU_768P] = "assets/menu_768.bmp";
-	env->asset[MENU_720P] = "assets/menu_720.bmp";
+	env->asset[BG_MENU] = background_path(env->w, env->h);
 	env->asset[ED_TEXT_1] = "./assets/texture_1.bmp";
 	env->asset[ED_TEXT_2] = "./assets/texture_2.bmp";
 	env->asset[ED_TEXT_3] = "./assets/texture_3.bmp";
@@ -85,7 +82,7 @@ static void	infos_setup(t_env *env)
 	env->data.grid.min.x = floor(env->w / RATIO_GRID_X);
 	env->data.grid.max.y = floor(env->h - RATIO_GRID_Y);
 	env->data.grid.max.x = floor(env->w - RATIO_GRID_X);
-	if ((env->data.ui.background = get_dimensions(env->h)) == -1)
+	if ((get_dimensions(env->h)) == -1)
 		clean(env, E_BKGD);
 	env->data.f_size = floor(env->w * MAX_FONT_SIZE / MAX_WIDTH);
 	env->data.g_size = env->data.f_size / 3;

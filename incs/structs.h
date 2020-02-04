@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 18:48:17 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/04 06:39:55 by demonwaves       ###   ########.fr       */
+/*   Updated: 2020/02/04 20:07:43 by demonwaves       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,7 +148,6 @@ typedef struct	s_ui
 {
 	t_pos		min;
 	t_pos		max;
-	int8_t		background;
 	uint8_t		button;
 }				t_ui;
 

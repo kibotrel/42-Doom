@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 19:01:59 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/04 07:14:11 by demonwaves       ###   ########.fr       */
+/*   Updated: 2020/02/04 21:39:51 by demonwaves       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,7 @@ double				inter(double value, double min, double max);
 */
 
 t_pos				p2d(int32_t x, int32_t y, int32_t base_x, int32_t base_y);
+uint32_t			life_state(double life);
 
 /*
 **	maths_0.c
@@ -138,9 +139,9 @@ int8_t				cycle_check(t_env *env, t_game *var, t_item *now);
 **	checks_01.c
 */
 
+char				*background_path(int w, int h);
 void				speed_check(t_env *env);
 void				check_tick(t_tick *tick, int8_t *flag, uint32_t  offset);
-
 /*
 **	engine.c
 */
