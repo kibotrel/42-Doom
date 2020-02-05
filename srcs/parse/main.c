@@ -6,7 +6,7 @@
 /*   By: reda-con <reda-con@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 14:00:52 by reda-con          #+#    #+#             */
-/*   Updated: 2020/01/27 10:14:26 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/02/05 09:19:33 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,17 +49,17 @@ void		parse(char *l, t_parse *par)
 
 	i = 0;
 	tab = ft_strsplit(l, ' ');
-	if (tab[0] && !ft_strcmp("total", tab[0])){
+	if (tab[0] && !ft_strcmp("total", tab[0])){ft_putendl("oui");
 		i += verif_total(&par->total, tab, par);}
-	else if (tab[0] && !ft_strcmp("vertex", tab[0])){
+	else if (tab[0] && !ft_strcmp("vertex", tab[0])){ft_putendl("non");
 		i += verif_vertex(par->ver, tab);}
-	else if (tab[0] && !ft_strcmp("enemy", tab[0])){
+	else if (tab[0] && !ft_strcmp("enemy", tab[0])){ft_putendl("peut");
 		i += verif_entity(par->emy, tab);}
-	else if (tab[0] && !ft_strcmp("object", tab[0])){
+	else if (tab[0] && !ft_strcmp("object", tab[0])){ft_putendl("etre");
 		i += verif_entity(par->obj, tab);}
-	else if (tab[0] && !ft_strcmp("player", tab[0])){
+	else if (tab[0] && !ft_strcmp("player", tab[0])){ft_putendl("je");
 		i += verif_player(&par->plr, tab);}
-	else if (tab[0] && !ft_strcmp("sector", tab[0])){
+	else if (tab[0] && !ft_strcmp("sector", tab[0])){ft_putendl("ne");
 		i += verif_sector(par->sec, tab, par->ver, par);}
 	else if (verif_blank(tab) && tab[0][0] != '#')
 		parse_err(tab, par);
