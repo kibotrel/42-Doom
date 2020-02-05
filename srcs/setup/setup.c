@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/16 11:58:26 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/01/29 13:03:25 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/02/03 13:11:21 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ static void	time_track(t_env *env)
 	ft_bzero(&env->tick.fps, sizeof(t_tick));
 	ft_bzero(&env->tick.frame, sizeof(t_tick));
 	ft_bzero(&env->tick.debug, sizeof(t_tick));
+	ft_bzero(&env->tick.test, sizeof(t_tick));
 }
 
 static void	error_messages(t_env *env)
@@ -105,4 +106,6 @@ void		env_setup(t_env *env)
 	infos_setup(env);
 	time_track(env);
 	editor_setup(&env->editor);
+	env->old_st_fl = 0;
+	env->st_fl = 1;
 }

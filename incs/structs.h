@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 18:48:17 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/01/29 13:07:16 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/02/03 14:07:39 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -187,6 +187,8 @@ typedef struct	s_sector
 
 typedef struct	s_sector
 {
+	int			type;
+	int			texture;
 	uint32_t	points;
 	double		ceil;
 	double		floor;
@@ -213,6 +215,7 @@ typedef struct	s_time
 	t_tick		debug;
 	t_tick		fps;
 	t_tick		frame;
+	t_tick		test;
 }				t_time;
 
 /*
@@ -263,6 +266,8 @@ typedef struct	s_env
 	t_sector	*sector;
 	uint32_t	setup;
 	uint32_t	zones;
+	int8_t		st_fl;
+	int8_t		old_st_fl;
 }				t_env;
 
 #endif
