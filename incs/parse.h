@@ -6,7 +6,7 @@
 /*   By: reda-con <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 14:27:11 by reda-con          #+#    #+#             */
-/*   Updated: 2020/01/23 16:57:09 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/02/03 13:02:37 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,5 +89,11 @@ int				main_parse(char *file, t_env *env);
 int				verif_total(t_total *t, char **tab, t_parse *p);
 int				verif_player(t_player *p, char **tab);
 int				verif_blank(char **tab);
+
+
+
+
+//
+void			sector_triger(t_env *env);
 
 #endif

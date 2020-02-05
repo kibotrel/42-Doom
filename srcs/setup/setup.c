@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/16 11:58:26 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/10 15:41:33 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/02/11 09:37:17 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,4 +103,6 @@ void		env_setup(t_env *env)
 	infos_setup(env);
 	time_track(env);
 	editor_setup(&env->editor);
+	env->old_st_fl = 0;
+	env->st_fl = 1;
 }
