@@ -103,7 +103,7 @@ void		place_portal(t_editor *editor, int x, int y, t_env *env)
 
 	if (count_sector(editor->sector) < 2)
 		return ;
-	point = create_vertex(init_vertex(x, y), editor, env);
+	point = create_vertex(init_vertex(x, y), editor, env, -1);
 	if (editor->portal_points[0].x == -1)
 		editor->portal_points[0] = *point;
 	else if (editor->portal_points[1].x == -1)

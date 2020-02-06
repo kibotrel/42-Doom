@@ -49,37 +49,41 @@ void	write_entities(t_ed_entity *entities, int fd, bool type)
 		ft_putchar_fd('\n', fd);
 }
 
-void	write_vertexes(t_vertex *vertexes, int fd)
+void	write_vertexes(t_ed_sector *vertexes, int fd)
 {
+	t_ed_sector	*sect;
 	t_vertex	*vertex;
 
-	vertex = vertexes;
-	while (vertex)
+	sect = vertexes;
+	while (sect)
 	{
-		ft_putstr_fd("vertex number ", fd);
-		ft_putnbr_fd(vertex->vertex_number, fd);
-		ft_putstr_fd(" x ", fd);
-		ft_putnbr_fd(vertex->x, fd);
-		ft_putchar_fd(' ', fd);
-		ft_putstr_fd("y ", fd);
-		ft_putnbr_fd(vertex->y, fd);
-		ft_putchar_fd('\n', fd);
-		vertex = vertex->next;
+		vertex = sect->vertex;
+		while (vertex)
+		{
+			ft_putstr_fd("vertex number ", fd);
+			ft_putnbr_fd(vertex->vertex_number, fd);
+			ft_putstr_fd(" x ", fd);
+			ft_putnbr_fd(vertex->x, fd);
+			ft_putchar_fd(' ', fd);
+			ft_putstr_fd("y ", fd);
+			ft_putnbr_fd(vertex->y, fd);
+			ft_putchar_fd('\n', fd);
+			vertex = vertex->next;
+		}
+		sect = sect->next;
 	}
-	if (vertexes)
+	if (vertexes->vertex)
 		ft_putchar_fd('\n', fd);
 }
 
-void	write_vertex_sector(t_ed_sector *sect, t_vertex *all, int fd)
+void	write_vertex_sector(t_ed_sector *sect, int fd)
 {
-	int			pos;
 	t_vertex	*vertex;
 
 	vertex = sect->vertex;
 	while (vertex)
 	{
-		pos = search_vertex_num(all, vertex);
-		ft_putnbr_fd(pos, fd);
+		ft_putnbr_fd(vertex->vertex_number, fd);
 		if (vertex->next)
 			ft_putchar_fd(' ', fd);
 		vertex = vertex->next;

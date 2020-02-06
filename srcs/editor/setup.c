@@ -16,7 +16,6 @@ static void		init_chained_list(t_editor *editor)
 {
 	editor->enemy = NULL;
 	editor->sector = NULL;
-	editor->vertex = NULL;
 	editor->object = NULL;
 	editor->portals = NULL;
 }
@@ -30,6 +29,7 @@ void			editor_setup(t_editor *editor)
 	editor->presets = NONE;
 	editor->finish = false;
 	editor->display_portal = -1;
+	editor->delete = -1;
 	editor->sect_is_closed = true;
 	editor->last_vertex.x = -1;
 	editor->last_vertex.y = -1;

@@ -20,6 +20,7 @@ void				init_count(t_count *count);
 **	clean/delete.c
 */
 void				delete_vertex(t_vertex **vertex);
+void				delete_vertex_sector(t_ed_sector **vertex);
 void				delete_sector(t_ed_sector **sectors);
 void				clear_editor(t_editor *editor, t_env *env);
 
@@ -54,7 +55,7 @@ void				display_portals(t_portal *portal, t_sdl *sdl, int color,
 */
 void				which_entity_to_display(t_editor *edit, t_env *env);
 void				display_mouse(t_sdl *sdl, t_vertex mouse, int color);
-void				display_vertex(t_sdl *sdl, t_vertex *vertex, int color);
+void				display_vertex(t_sdl *sdl, t_ed_sector *sector, int color);
 
 /*
 **	display/display_utils.c
@@ -152,8 +153,8 @@ void				write_portals(t_ed_sector *sect, int fd);
 /*
 **	save/map_creation_part2.c
 */
-void				write_vertex_sector(t_ed_sector *sect, t_vertex *all, int fd);
-void				write_vertexes(t_vertex *vertexes, int fd);
+void				write_vertex_sector(t_ed_sector *sect, int fd);
+void				write_vertexes(t_ed_sector *vertexes, int fd);
 void				write_entities(t_ed_entity *entities, int fd, bool type);
 void				write_player(t_ed_player player, t_vertex if_no_player,
 	int fd);
@@ -169,15 +170,16 @@ int					count_sector(t_ed_sector *all_sector);
 **	sector/vertex.c
 */
 t_vertex			*get_vertex(t_editor *editor, int x, int y, t_env *env);
-void				add_vertex(t_vertex **vertex, t_vertex v,
-	bool flag, t_env *env);
-t_vertex			*create_vertex(t_vertex v, t_editor *edit, t_env *env);
+void				add_vertex(t_vertex **vertex, t_vertex *new, t_env *env);
+t_vertex			*create_vertex(t_vertex v, t_editor *edit, t_env *env, int num);
 t_vertex			init_vertex(int x, int y);
 
 /*
 **	sector/sector.c
 */
 void				place_sector(t_editor *editor, int x, int y, t_env *env);
+int					count_vertex_in_sector(t_vertex *vertex);
+
 
 /*
 **	sector/sector_part2.c
@@ -189,6 +191,7 @@ void				move_in_sector(t_editor *edit, int x, int y);
 **	sector/sector_utils.c
 */
 t_ed_sector			*create_sector(t_editor *edit, t_env *env);
+void				delete_sector_in_progress(t_ed_sector **sector, t_editor *edit);
 
 /*
 **	sector/sector_check.c

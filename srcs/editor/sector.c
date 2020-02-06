@@ -1,7 +1,7 @@
 #include "libft.h"
 #include "editor.h"
 
-static int		count_vertex_in_sector(t_vertex *vertex)
+int		count_vertex_in_sector(t_vertex *vertex)
 {
 	int			count;
 	t_vertex	*vert;
@@ -72,7 +72,7 @@ void			place_sector(t_editor *editor, int x, int y, t_env *env)
 		next_place_sector(editor, sect, env);
 	else
 	{
-		add_vertex(&sect->vertex, init_vertex(x, y), false, env);
+		add_vertex(&sect->vertex, new, env);
 		editor->sect_is_closed = false;
 	}
 }

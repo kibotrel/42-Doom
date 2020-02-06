@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 18:48:17 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/03 10:56:17 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/02/05 11:42:28 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,108 +19,6 @@
 # include "SDL_ttf.h"
 # include "bmp.h"
 # include "enums.h"
-
-/*
-**	Editor structs
-*/
-
-typedef struct		s_count
-{
-	int				vertex;
-	int				sector;
-	int				enemy;
-	int				object;
-	int				portal;
-}					t_count;
-
-typedef struct		s_ed_player
-{
-	int				x;
-	int				y;
-	int				angle;
-	int				sector;
-}					t_ed_player;
-
-typedef struct		s_ed_entity
-{
-	int				x;
-	int				y;
-	int				angle;
-	int				type;
-	int				number;
-	int				sector;
-	struct s_ed_entity	*prev;
-	struct s_ed_entity	*next;
-}					t_ed_entity;
-
-typedef struct		s_vertex
-{
-	int				x;
-	int				y;
-	int				vertex_number;
-	struct s_vertex	*next;
-	struct s_vertex	*prev;
-}					t_vertex;
-
-typedef struct		s_portal
-{
-	t_vertex		extrems[2];
-	int				type;
-	struct s_portal	*prev;
-	struct s_portal	*next;
-}					t_portal;
-
-typedef struct		s_ed_sector
-{
-	t_vertex		*vertex;
-	int				vertex_count;
-	int				sector_number;
-	int				texture;
-	int				type;
-	int				gravity;
-	int				friction;
-
-	int				h_ceil;
-	int				h_floor;
-
-	t_portal		*portal;
-	int				*is_portal;
-	int				*portal_type;
-
-	struct s_ed_sector *prev;
-	struct s_ed_sector	*next;
-
-}					t_ed_sector;
-
-typedef struct		s_editor
-{
-	t_settings		sett;
-	t_presets		presets;
-	t_count			count;
-	bool			map_save;
-
-	t_ed_sector		*sector;
-	t_vertex		*vertex;
-	t_ed_player		player;
-	t_ed_entity		*object;
-	t_ed_entity		*enemy;
-	t_portal		*portals;
-
-	t_vertex		last_vertex;
-
-	t_vertex		portal_points[2];
-	t_ed_sector		*which_sector;
-	t_vertex		*ab;
-	t_vertex		*cd;
-
-	int				true_grid;
-	int				dist_grid;
-	int8_t			grid;
-	int8_t			display_portal;
-
-	bool			sect_is_closed;
-	bool			finish;
-}					t_editor;
 
 /*
 **	Position structs
@@ -217,6 +115,109 @@ typedef struct	s_time
 	t_tick		frame;
 	t_tick		editor;
 }				t_time;
+
+/*
+**	Editor structs
+*/
+
+typedef struct		s_count
+{
+	int				vertex;
+	int				sector;
+	int				enemy;
+	int				object;
+	int				portal;
+	t_tick			button;
+}					t_count;
+
+typedef struct		s_ed_player
+{
+	int				x;
+	int				y;
+	int				angle;
+	int				sector;
+}					t_ed_player;
+
+typedef struct		s_ed_entity
+{
+	int				x;
+	int				y;
+	int				angle;
+	int				type;
+	int				number;
+	int				sector;
+	struct s_ed_entity	*prev;
+	struct s_ed_entity	*next;
+}					t_ed_entity;
+
+typedef struct		s_vertex
+{
+	int				x;
+	int				y;
+	int				vertex_number;
+	struct s_vertex	*next;
+	struct s_vertex	*prev;
+}					t_vertex;
+
+typedef struct		s_portal
+{
+	t_vertex		extrems[2];
+	int				type;
+	struct s_portal	*prev;
+	struct s_portal	*next;
+}					t_portal;
+
+typedef struct		s_ed_sector
+{
+	t_vertex		*vertex;
+	int				vertex_count;
+	int				sector_number;
+	int				texture;
+	int				type;
+	int				gravity;
+	int				friction;
+
+	int				h_ceil;
+	int				h_floor;
+
+	t_portal		*portal;
+	int				*is_portal;
+	int				*portal_type;
+
+	struct s_ed_sector *prev;
+	struct s_ed_sector	*next;
+
+}					t_ed_sector;
+
+typedef struct		s_editor
+{
+	t_settings		sett;
+	t_presets		presets;
+	t_count			count;
+	bool			map_save;
+
+	t_ed_sector		*sector;
+	t_ed_player		player;
+	t_ed_entity		*object;
+	t_ed_entity		*enemy;
+	t_portal		*portals;
+
+	t_vertex		last_vertex;
+
+	t_vertex		portal_points[2];
+	t_ed_sector		*which_sector;
+	t_vertex		*ab;
+	t_vertex		*cd;
+
+	int				true_grid;
+	int				dist_grid;
+	int8_t			grid;
+	int8_t			display_portal;
+	int8_t			delete;
+
+	bool			sect_is_closed;
+	bool			finish;
+}					t_editor;
 
 /*
 **	Main structures.

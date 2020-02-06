@@ -52,13 +52,11 @@ void			write_portals(t_ed_sector *sect, int fd)
 	}
 }
 
-static void		write_sectors(t_ed_sector *sector, t_vertex *all, int fd)
+static void		write_sectors(t_ed_sector *sector, int fd)
 {
 	t_ed_sector	*sect;
 
 	sect = sector;
-	while (sect->prev)
-		sect = sect->prev;
 	while (sect)
 	{
 		if (sect->vertex)
@@ -80,7 +78,7 @@ static void		write_sectors(t_ed_sector *sector, t_vertex *all, int fd)
 			ft_putstr_fd(" vertex_num ", fd);
 			ft_putnbr_fd(sect->vertex_count, fd);
 			ft_putstr_fd(" vertexes ", fd);
-			write_vertex_sector(sect, all, fd);
+			write_vertex_sector(sect, fd);
 			if (sect->next)
 				ft_putchar_fd('\n', fd);
 		}
@@ -92,18 +90,23 @@ static void		write_sectors(t_ed_sector *sector, t_vertex *all, int fd)
 
 static void		write_file(t_editor *editor, int fd)
 {
-	if (editor->vertex)
+	t_ed_sector		*sector;
+
+	sector = editor->sector;
+	while (sector->prev)
+		sector = sector->prev;
+	if (sector->vertex)
 	{
 		get_elements_number(editor, fd);
-		write_player(editor->player, *(editor->vertex), fd);
+		write_player(editor->player, *(sector->vertex), fd);
 		if (editor->enemy)
 			write_entities(editor->enemy, fd, true);
 		if (editor->object)
 			write_entities(editor->object, fd, false);
-		if (editor->vertex)
-			write_vertexes(editor->vertex, fd);
-		if (editor->sector)
-			write_sectors(editor->sector, editor->vertex, fd);
+		if (sector)
+			write_vertexes(sector, fd);
+		if (sector)
+			write_sectors(sector, fd);
 	}
 }
 

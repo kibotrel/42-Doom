@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 13:09:05 by nde-jesu          #+#    #+#             */
-/*   Updated: 2020/01/30 11:57:00 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/02/05 11:42:05 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ static void		display_editor(t_editor *edit, t_env *env)
 	which_entity_to_display(edit, env);
 	edit->sett == SECTOR ? display_sector(&env->sdl, edit->sector, true)
 		: display_sector(&env->sdl, edit->sector, false);
-	display_vertex(&env->sdl, edit->vertex, 0xffff00);
+	display_vertex(&env->sdl, edit->sector, 0xffff00);
 	if (edit->sett == PORTAL || edit->display_portal == 1)
 	display_portals(edit->portals, &env->sdl, 0x00ff00, edit->sett == PORTAL);
 	if (edit->sett == SECTOR && env->sdl.event.motion.x <= EDIT_W && edit->presets == NONE)
@@ -50,7 +50,8 @@ static void		display_editor(t_editor *edit, t_env *env)
 		mse.y = (env->sdl.event.motion.y / edit->true_grid) * edit->true_grid;
 		display_mouse(&env->sdl, mse, 0x0ff0f0);
 	}
-	display_line(edit, env->sdl.event.motion.x, env->sdl.event.motion.y, env);
+	if (!edit->sect_is_closed)
+		display_line(edit, env->sdl.event.motion.x, env->sdl.event.motion.y, env);
 	print_param_to_screen(env, edit->sett, edit);
 }
 
