@@ -170,7 +170,7 @@ int					count_sector(t_ed_sector *all_sector);
 **	sector/vertex.c
 */
 t_vertex			*get_vertex(t_editor *editor, int x, int y, t_env *env);
-void				add_vertex(t_vertex **vertex, t_vertex *new, t_env *env);
+void				add_vertex(t_vertex **vertex, t_vertex *new);
 t_vertex			*create_vertex(t_vertex v, t_editor *edit, t_env *env, int num);
 t_vertex			init_vertex(int x, int y);
 

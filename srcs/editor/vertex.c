@@ -25,11 +25,10 @@ t_vertex		*create_vertex(t_vertex v, t_editor *edit, t_env *env, int num)
 	return (new);
 }
 
-void			add_vertex(t_vertex **vertex, t_vertex *v, t_env *env)
+void			add_vertex(t_vertex **vertex, t_vertex *v)
 {
 	t_vertex	*prev_vertex;
 
-(void)env;
 	if (!*vertex)
 		*vertex = v;
 	else
@@ -58,10 +57,7 @@ static t_vertex	*is_vertex_double(t_ed_sector *sector, int x, int y)
 		while (vert)
 		{
 			if (vert->x == x && vert->y == y)
-			{
-				printf("peut\n");
 				return (vert);
-			}
 			vert = vert->next;
 		}
 		sector = sector->next;

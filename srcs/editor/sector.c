@@ -72,7 +72,7 @@ void			place_sector(t_editor *editor, int x, int y, t_env *env)
 		next_place_sector(editor, sect, env);
 	else
 	{
-		add_vertex(&sect->vertex, new, env);
+		add_vertex(&sect->vertex, new);
 		editor->sect_is_closed = false;
 	}
 }

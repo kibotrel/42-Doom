@@ -20,47 +20,61 @@ t_ed_sector	*create_sector(t_editor *edit, t_env *env)
 	return (sect);
 }
 
-// static int		in_how_many_sector(t_vertex vertex, t_ed_sector *sector)
-// {
-// 	t_ed_sector	*sect;
-// 	t_vertex	*vert;
-// 	int			how_many;
+static int		oui(t_vertex *vertex, t_ed_sector *sector)
+{
+	t_ed_sector	*sect;
+	t_vertex	*vert_1;
+	t_vertex	*vert_2;
+	int			ret;
 
-// 	how_many = 0;
-// 	sect = sector;
-// 	while (sect->prev)
-// 		sect = sect->prev;
-// 	while (sect)
-// 	{
-// 		vert = sect->vertex;
-// 		while (vert)
-// 		{
-// 			if (vertex.x == vert->x && vertex.y == vert->y)
-// 				++how_many;
-// 			vert = vert->next;
-// 		}
-// 		sect = sect->next;
-// 	}
-// 	return (how_many);
-// }
+	ret = 0;
+	vert_1 = vertex;
+	while (vert_1)
+	{
+		while (sect->prev)
+			sect = sect->prev;
+		while (sect)
+		{
+			vert_2 = sect->vertex;
+			while (vert_2)
+			{
+				if (vert_2->x != vert_1->x && vert_2->y != vert_1->y)
+					++ret;
+			}
+		}
+		vert_1 = vert_1->next;
+	}
+}
 
 void	delete_sector_in_progress(t_ed_sector **sector,t_editor *edit)
 {
 	t_ed_sector	*sect;
+	t_ed_sector	*to_del;
 
 	if (edit->sect_is_closed)
 		return ;
 	sect = *sector;
 	while (sect->next)
 		sect = sect->next;
+	printf("avant %d\n", edit->count.vertex);
 	edit->count.vertex -= count_vertex_in_sector(sect->vertex);
-	--edit->count.sector;
-	printf("%d", sect->sector_number);
-	if (sect->prev)
-		sect = sect->prev;
-	free(sect->is_portal);
-	free(sect->portal_type);
-	delete_vertex(&sect->vertex);
-	free(sect);
+	printf("apres %d\n", edit->count.vertex);
+	to_del = sect;
+	delete_vertex(&to_del->vertex);
 	edit->sect_is_closed = true;
+	sect = *sector;
+	while (sect->prev)
+		sect = sect->prev;
+	t_vertex	*vertex;
+	while (sect)
+	{
+		vertex = sect->vertex;		
+		printf("sect %d\n", sect->sector_number);
+		while (vertex)
+		{
+			printf("vertex %d\n", vertex->vertex_number);
+			vertex = vertex->next;
+		}
+		sect = sect->next;
+	}
 }
