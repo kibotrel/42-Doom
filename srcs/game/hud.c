@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/24 11:32:06 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/06 21:41:08 by demonwaves       ###   ########.fr       */
+/*   Updated: 2020/02/06 22:56:16 by demonwaves       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,26 +15,40 @@
 #include "clean.h"
 #include "utils.h"
 
+uint32_t	weapon_frame(uint32_t frame)
+{
+	if (frame < 100)
+		return (1);
+	else if (frame < 175)
+		return (2);
+	else if (frame < 250)
+		return (3);
+	else if (frame < 300)
+		return (4);
+	else if (frame < 600)
+		return (5);
+	else if (frame < 750)
+		return (6);
+	else
+		return (0);
+}
+
 void	weapon(t_env *env, int offset)
 {
-	t_bmp		weapon;
 	t_pos		p;
 	t_pos		px;
+	t_bmp		weapon;
 	uint32_t	pos;
 
+	pos = 0;
 	if (env->data.shot)
 	{
-		if (bmp_to_array("assets/shotgun2.bmp", &weapon))
-			clean(env, E_BMP_PARSE);
 		env->tick.shot.new = SDL_GetTicks();
-		if (env->tick.shot.new - env->tick.shot.old > 320)
+		pos = weapon_frame(env->tick.shot.new - env->tick.shot.old);
+		if (!pos)
 			env->data.shot = 0;
 	}
-	else
-	{
-		if (bmp_to_array("assets/shot0_720.bmp", &weapon))
-			clean(env, E_BMP_PARSE);
-	}
+	weapon = env->sdl.bmp[SHOT_0 + pos];
 	p.y = -1;
 	while (++p.y < weapon.height)
 	{
@@ -48,7 +62,6 @@ void	weapon(t_env *env, int offset)
 				draw_pixel(env, env->sdl.screen, px, weapon.pixels[pos]);
 		}
 	}
-
 }
 
 void	hud(t_env *env)

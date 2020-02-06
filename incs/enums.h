@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 17:59:50 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/06 20:34:50 by demonwaves       ###   ########.fr       */
+/*   Updated: 2020/02/06 22:03:10 by demonwaves       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,13 +47,13 @@ typedef enum	e_assets
 	ED_ENEMY_4,
 	ED_PORTAL_DOOR,
 	ED_PORTAL_WALL,
-	// SHOT_0,
-	// SHOT_0F,
-	// SHOT_1F,
-	// SHOT_1,
-	// SHOT_2,
-	// SHOT_3,
-	// SHOT_4,
+	SHOT_0,
+	SHOT_1,
+	SHOT_2,
+	SHOT_3,
+	SHOT_4,
+	SHOT_5,
+	SHOT_6,
 	NB_ASSETS
 }				t_assets;
 
