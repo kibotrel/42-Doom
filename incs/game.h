@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 21:22:14 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/01/31 23:01:23 by demonwaves       ###   ########.fr       */
+/*   Updated: 2020/02/06 21:31:16 by demonwaves       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,5 +95,11 @@ int32_t			check_collisions(t_vec2d p, t_vec2d v, t_vec2d w1, t_vec2d w2);
 */
 
 void			hud(t_env *env);
+
+/*
+**	click.c
+*/
+
+void			game_click(t_env *env, int x, int y);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/16 12:45:38 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/01/23 17:26:13 by demonwaves       ###   ########.fr       */
+/*   Updated: 2020/02/06 21:30:55 by demonwaves       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,5 @@ void	global_hooks(t_env *env, t_sdl *sdl)
 			clean(env, NOTHING);
 	}
 	handle_keyboard(env);
-	if (env->win == GAME)
-		move(env);
+	env->win == GAME ? move(env) : 0;
 }

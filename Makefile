@@ -6,7 +6,7 @@
 #    By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/10 16:16:29 by kibotrel          #+#    #+#              #
-#    Updated: 2020/02/04 04:56:50 by demonwaves       ###   ########.fr        #
+#    Updated: 2020/02/06 21:31:30 by demonwaves       ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -101,6 +101,7 @@ SRCS			+= core/editor.c
 SRCS			+= core/selector.c
 SRCS			+= core/settings.c
 SRCS			+= game/hud.c
+SRCS			+= game/click.c
 SRCS			+= game/camera.c
 SRCS			+= game/engine.c
 SRCS			+= game/physics.c

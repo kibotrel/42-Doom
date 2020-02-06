@@ -6,11 +6,12 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/24 11:32:06 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/04 20:37:10 by demonwaves       ###   ########.fr       */
+/*   Updated: 2020/02/06 21:41:08 by demonwaves       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "hud.h"
+#include "game.h"
 #include "clean.h"
 #include "utils.h"
 
@@ -21,8 +22,19 @@ void	weapon(t_env *env, int offset)
 	t_pos		px;
 	uint32_t	pos;
 
-	if (bmp_to_array("assets/shot0_720.bmp", &weapon))
-		clean(env, E_BMP_PARSE);
+	if (env->data.shot)
+	{
+		if (bmp_to_array("assets/shotgun2.bmp", &weapon))
+			clean(env, E_BMP_PARSE);
+		env->tick.shot.new = SDL_GetTicks();
+		if (env->tick.shot.new - env->tick.shot.old > 320)
+			env->data.shot = 0;
+	}
+	else
+	{
+		if (bmp_to_array("assets/shot0_720.bmp", &weapon))
+			clean(env, E_BMP_PARSE);
+	}
 	p.y = -1;
 	while (++p.y < weapon.height)
 	{

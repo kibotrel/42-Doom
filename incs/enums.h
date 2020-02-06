@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 17:59:50 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/04 20:29:04 by demonwaves       ###   ########.fr       */
+/*   Updated: 2020/02/06 20:34:50 by demonwaves       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,5 +109,16 @@ typedef enum		e_presets
 	PORTAL_MOVE,
 	PORTAL_TYPE
 }					t_presets;
+
+/*
+**	Enum for game state
+*/
+
+typedef enum		e_state
+{
+	PLAY,
+	INVENTORY,
+	SCREENSHOT
+}					t_state;
 
 #endif
