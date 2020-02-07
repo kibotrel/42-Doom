@@ -13,8 +13,6 @@ void	sec_clic_menu_editor_tool(int y, t_editor *editor)
 			editor->presets = ENTITY_ROTATE;
 		else if (editor->sett == SECTOR)
 			editor->presets = SECTOR_FLOOR;
-		else if (editor->sett == PORTAL)
-			editor->presets = PORTAL_TYPE;
 		if (editor->sett == PLAYER)
 			editor->presets = NONE;
 	}

@@ -35,8 +35,6 @@ void				editor_click(t_editor *editor, SDL_Event event, t_env *env);
 /*
 **	core/events_tools.c
 */
-void				next_keydown(SDL_Event event, SDL_Surface *s,
-	t_editor *editor);
 void				change_value(t_editor *editor, t_presets presets, bool fl);
 
 /*
@@ -47,8 +45,7 @@ void				display_line(t_editor *editor, int x, int y, t_env *env);
 void				display_sector(t_sdl *sdl, t_ed_sector *sectors, bool fl);
 void				draw_walls(t_sdl *sdl, t_ed_sector *sect, t_vertex *vertex,
 	int color);
-void				display_portals(t_portal *portal, t_sdl *sdl, int color,
-	bool fl);
+void				display_portals(t_portal *portal, t_sdl *sdl, int color);
 
 /*
 **	display/display_part2.c
@@ -136,13 +133,11 @@ void				place_portal(t_editor *editor, int x, int y, t_env *env);
 /*
 **	portal/portal_utils.c
 */
-void				move_in_portals(t_portal **portal, bool way);
-void				change_portal_type(t_ed_sector *all, t_portal *portal,
-	bool way);
 void				add_portal(t_portal **portal, t_vertex v1, t_vertex v2,
 	t_env *env);
 int					compare_coordinates(t_vertex *point, t_vertex *a,
 	t_vertex *b);
+void			delete_portal(t_portal **portal, t_vertex v1, t_vertex v2);
 
 /*
 **	save/map_creation.c

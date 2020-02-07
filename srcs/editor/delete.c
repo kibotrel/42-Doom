@@ -87,9 +87,7 @@ void				delete_sector(t_ed_sector **sectors)
 	{
 		tmp = to_del->next;
 		free(to_del->is_portal);
-		free(to_del->portal_type);
 		delete_vertex(&to_del->vertex);
-		delete_portals(&to_del->portal);
 		free(to_del);
 		to_del = tmp;
 	}

@@ -5,47 +5,14 @@
 #include "libft.h"
 #include "editor.h"
 
-static void		write_portal_type(t_ed_sector *sect)
-{
-	t_portal	*portal;
-	t_vertex	*vertex;
-	int			i;
-
-	portal = sect->portal;
-	while (portal)
-	{
-		i = 0;
-		vertex = sect->vertex;
-		while (vertex)
-		{
-			if (portal->extrems->x == vertex->x &&
-				portal->extrems->y == vertex->y)
-				sect->portal_type[i] = portal->type;
-			vertex = vertex->next;
-			++i;
-		}
-		portal = portal->next;
-	}
-}
-
 void			write_portals(t_ed_sector *sect, int fd)
 {
 	int	i;
 
 	i = 0;
-	write_portal_type(sect);
 	while (i < sect->vertex_count)
 	{
 		ft_putnbr_fd(sect->is_portal[i], fd);
-		if (i + 1 < sect->vertex_count)
-			ft_putchar_fd(' ', fd);
-		++i;
-	}
-	i = 0;
-	ft_putstr_fd(" type ", fd);
-	while (i < sect->vertex_count)
-	{
-		ft_putnbr_fd(sect->portal_type[i], fd);
 		if (i + 1 < sect->vertex_count)
 			ft_putchar_fd(' ', fd);
 		++i;

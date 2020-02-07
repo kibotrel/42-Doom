@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 18:48:17 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/05 11:42:28 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/02/07 14:27:42 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -180,9 +180,7 @@ typedef struct		s_ed_sector
 	int				h_ceil;
 	int				h_floor;
 
-	t_portal		*portal;
 	int				*is_portal;
-	int				*portal_type;
 
 	struct s_ed_sector *prev;
 	struct s_ed_sector	*next;

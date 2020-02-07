@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/16 11:58:26 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/07 10:23:01 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/02/07 14:36:35 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,9 +65,6 @@ static void	assets_paths(t_env *env)
 	env->asset[ED_ENEMY_2] = "./assets/enemy_2.bmp";
 	env->asset[ED_ENEMY_3] = "./assets/enemy_3.bmp";
 	env->asset[ED_ENEMY_4] = "./assets/enemy_4.bmp";
-	env->asset[ED_PORTAL_DOOR] = "./assets/portal_wall.bmp";
-	env->asset[ED_PORTAL_WALL] = "./assets/portal_door.bmp";
-
 }
 
 static void	infos_setup(t_env *env)

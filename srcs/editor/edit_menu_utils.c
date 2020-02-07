@@ -62,10 +62,13 @@ void			next_blank_menu(int set, SDL_Surface *s)
 			rectangle(init_vertex(1540, 740), init_vertex(1710, 810), WHITE, s);
 		}
 	}
-	square(1600, 200, 0x181279, s);
-	square(1600, 300, 0x261017, s);
-	rectangle(init_vertex(1540, 140), init_vertex(1710, 210), WHITE, s);
-	rectangle(init_vertex(1540, 240), init_vertex(1710, 310), WHITE, s);
+	if (set != PORTAL)
+	{
+		square(1600, 200, 0x181279, s);
+		square(1600, 300, 0x261017, s);
+		rectangle(init_vertex(1540, 140), init_vertex(1710, 210), WHITE, s);
+		rectangle(init_vertex(1540, 240), init_vertex(1710, 310), WHITE, s);
+	}
 }
 
 void			blank_menu(SDL_Surface *s, int set, t_editor *edit, int preset, t_env *env)

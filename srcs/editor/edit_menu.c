@@ -51,9 +51,9 @@ static void		next_motion(t_sdl s, int set, int preset, t_editor *edit, t_env *en
 	int		y;
 
 	y = s.event.motion.y;
-	if (y >= 140 && y <= 210)
+	if (y >= 140 && y <= 210 && set != PORTAL)
 		rectangle(init_vertex(1540, 140), init_vertex(1710, 210), PRPL, s.screen);
-	else if (y >= 240 && y <= 310)
+	else if (y >= 240 && y <= 310 && set != PORTAL)
 		rectangle(init_vertex(1540, 240), init_vertex(1710, 310), PRPL, s.screen);
 	else if ((set != PORTAL && set != PLAYER) && y >= 340 && y <= 410)
 		rectangle(init_vertex(1540, 340), init_vertex(1710, 410), PRPL, s.screen);

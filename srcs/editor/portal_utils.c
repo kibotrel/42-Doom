@@ -24,6 +24,42 @@ static t_portal	*create_portal(t_vertex v1, t_vertex v2, t_editor *edit, t_env *
 	return (new);
 }
 
+void			delete_portal(t_portal **portal, t_vertex v1, t_vertex v2)
+{
+	t_portal	*tf;
+	t_portal	*tmp;
+	t_portal	*tmp2;
+
+	if (*portal == NULL)
+		return ;
+	tmp = NULL;
+	tmp2 = NULL;
+	tf = *portal;
+	while (tf)
+	{
+		if (tf->extrems[0].x == v1.x && tf->extrems[0].y == v1.y &&
+			tf->extrems[1].x == v2.x && tf->extrems[1].y == v2.y)
+		{
+			if (tf->prev)
+				tmp = tf->prev;
+			if (tf->next)
+				tmp2 = tf->next;
+			free(tf);
+			if (tmp)
+				tmp->next = tmp2;
+			if (tmp2)
+				tmp2->prev = tmp;
+			if (tmp)
+				*portal = tmp;
+			else if (tmp2)
+				*portal = tmp2;
+			else
+				*portal = NULL;
+		}
+		tf = tf->next;
+	}
+}
+
 void			add_portal(t_portal **portal, t_vertex v1, t_vertex v2,
 	t_env *env)
 {
@@ -41,61 +77,4 @@ void			add_portal(t_portal **portal, t_vertex v1, t_vertex v2,
 		new->prev = prev_portal;
 		prev_portal->next = new;
 	}
-}
-
-void			change_portal_type(t_ed_sector *all, t_portal *portal, bool way)
-{
-	t_ed_sector	*sector;
-	t_portal	*port;
-
-	sector = all;
-	while (sector->prev)
-		sector = sector->prev;
-	while (sector)
-	{
-		port = sector->portal;
-		while (port)
-		{
-			if ((portal->extrems[0].x == port->extrems[0].x &&
-				portal->extrems[0].y == port->extrems[0].y &&
-					portal->extrems[1].x == port->extrems[1].x &&
-						portal->extrems[1].y == port->extrems[1].y) ||
-							(portal->extrems[0].x == port->extrems[1].x &&
-								portal->extrems[0].y == port->extrems[1].y &&
-								portal->extrems[1].x == port->extrems[0].x &&
-									portal->extrems[1].y == port->extrems[0].y))
-			{
-				if (way == true)
-					++port->type;
-				else
-					--port->type;
-				if (port->type > 1)
-					--port->type;
-				else if (port->type < 0)
-					++port->type;
-			}
-			port = port->next;
-		}
-		sector = sector->next;
-	}
-}
-
-void			move_in_portals(t_portal **portal, bool way)
-{
-	t_portal	*tmp;
-
-	if (!*portal)
-		return ;
-	tmp = *portal;
-	if (way == true)
-	{
-		if (tmp->next)
-			tmp = tmp->next;
-	}
-	else
-	{
-		if (tmp->prev)
-			tmp = tmp->prev;
-	}
-	*portal = tmp;
 }

@@ -45,14 +45,21 @@ static void	save_vertex(t_env *env, t_ed_sector *sector,
 		else
 		{
 			dest = is_portal_close(sector, first_point, last_point);
-			sector->is_portal[dest] = env->editor.which_sector->sector_number;
 			from = is_portal_close(env->editor.which_sector, env->editor.ab,
 				env->editor.cd);
-			env->editor.which_sector->is_portal[from] = sector->sector_number;
-			add_portal(&env->editor.portals, *first_point, *last_point, env);
-			add_portal(&sector->portal, *first_point, *last_point, env);
-			add_portal(&env->editor.which_sector->portal, *last_point, *first_point,
-				env);
+			if (sector->is_portal[dest] == -1)
+			{
+				sector->is_portal[dest] = env->editor.which_sector->sector_number;
+				env->editor.which_sector->is_portal[from] = sector->sector_number;
+				add_portal(&env->editor.portals, *first_point, *last_point, env);
+			}
+			else
+			{
+				sector->is_portal[dest] = -1;
+				env->editor.which_sector->is_portal[from] = -1;
+				delete_portal(&env->editor.portals, *first_point, *last_point);
+			}
+			
 		}
 	}
 }

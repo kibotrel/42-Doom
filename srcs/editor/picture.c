@@ -1,31 +1,6 @@
 #include "libft.h"
 #include "editor.h"
 
-static int	get_portal_type(t_portal *portal, t_ed_sector *sector)
-{
-	t_ed_sector *sect;
-	t_portal *port;
-
-	sect = sector;
-	while (sect->prev)
-		sect = sect->prev;
-	while (sect)
-	{
-		port = sect->portal;
-		while (port)
-		{
-			if (port->extrems[0].x == portal->extrems[0].x &&
-				port->extrems[0].y == portal->extrems[0].y &&
-					port->extrems[1].x == portal->extrems[1].x &&
-						port->extrems[1].y == portal->extrems[1].y)
-				return (port->type);
-			port = port->next;
-		}
-		sect = sect->next;
-	}
-	return (0);
-}
-
 static void	print_picture(t_sdl *sdl, int x, int y, t_bmp img)
 {
 	int xa;
@@ -66,11 +41,6 @@ void		print_params_image(t_editor *edit, t_presets presets,
 	{
 		i = ED_ENEMY_1;
 		j = edit->enemy->type;
-	}
-	else if (sett == PORTAL && presets == PORTAL_TYPE)
-	{
-		i = ED_PORTAL_DOOR;
-		j = get_portal_type(edit->portals, edit->sector);
 	}
 	else
 		return ;

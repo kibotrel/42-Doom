@@ -1,7 +1,7 @@
 #include "editor.h"
 #include "libft.h"
 
-void	display_portals(t_portal *portal, t_sdl *sdl, int color, bool fl)
+void	display_portals(t_portal *portal, t_sdl *sdl, int color)
 {
 	t_portal	*print;
 
@@ -17,8 +17,6 @@ void	display_portals(t_portal *portal, t_sdl *sdl, int color, bool fl)
 		draw_ed_line(sdl->screen, print->extrems[0], print->extrems[1], color);
 		print = print->next;
 	}
-	if (portal && fl == true)
-		draw_ed_line(sdl->screen, portal->extrems[0], portal->extrems[1], 0xffff00);
 }
 
 void	draw_walls(t_sdl *sdl, t_ed_sector *sect, t_vertex *vertex, int color)

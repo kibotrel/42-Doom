@@ -41,13 +41,6 @@ void			sec_blank_menu(SDL_Surface *s, int set, int preset)
 		clr = ((preset != PLAYER_ROTATE) ? 0xffffff : 0x177013);
 	if (set == PLAYER)
 		rectangle(init_vertex(1540, 140), init_vertex(1710, 210), clr, s);
-	if (set == PORTAL)
-	{
-		clr = ((preset != PORTAL_MOVE) ? 0xffffff : 0x177013);
-		rectangle(init_vertex(1540, 140), init_vertex(1710, 210), clr, s);
-		clr = ((preset != PORTAL_TYPE) ? 0xffffff : 0x177013);
-		rectangle(init_vertex(1540, 240), init_vertex(1710, 310), clr, s);
-	}
 	if (preset != NONE && preset != SECTOR_MOVE)
 	{
 		rectangle(init_vertex(1399, 49), init_vertex(1450, 100), 0xffa500, s);
@@ -113,8 +106,6 @@ void			sec_clic_menu_editor(int y, t_editor *editor)
 			editor->presets = ENTITY_MOVE;
 		if (editor->sett == SECTOR)
 			editor->presets = SECTOR_MOVE;
-		if (editor->sett == PORTAL)
-			editor->presets = PORTAL_MOVE;
 	}
 	sec_clic_menu_editor_tool(y, editor);
 	next_sec_clic_menu_editor(y, editor);
