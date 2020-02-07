@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/24 11:32:06 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/06 22:56:16 by demonwaves       ###   ########.fr       */
+/*   Updated: 2020/02/07 09:59:36 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,10 @@ uint32_t	weapon_frame(uint32_t frame)
 		return (4);
 	else if (frame < 600)
 		return (5);
-	else if (frame < 750)
+	else if (frame < 800)
 		return (6);
+	else if (frame < 1000)
+		return (5);
 	else
 		return (0);
 }
