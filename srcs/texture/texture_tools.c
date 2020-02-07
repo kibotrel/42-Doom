@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 13:40:06 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/01/28 13:14:00 by lojesu           ###   ########.fr       */
+/*   Updated: 2020/02/07 14:59:41 by lojesu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,4 +57,24 @@ uint32_t	color_add(uint32_t color, double add)
 	g < 0 ? g = 0 : g;
 	b < 0 ? b = 0 : b;
 	return ((r << 16) | (g << 8) | b);
+}
+
+void		init_and_protect_variable_1(t_game *var, float w_size, float *u0, float *u1)
+{
+	double	protect;
+
+	protect = (var->org[1].x - var->org[0].x) != 0 ?
+		(var->org[1].x - var->org[0].x) : 1.0;
+	*u0 = (var->t[0].x - var->org[0].x) * (W_UNIT * w_size / W_SIZE) / protect;
+	*u1 = (var->t[1].x - var->org[0].x) * (W_UNIT * w_size / W_SIZE) / protect;
+}
+
+void		init_and_protect_variable_2(t_game *var, float w_size, float *u0, float *u1)
+{
+	double	protect;
+
+	protect = (var->org[1].y - var->org[0].y) != 0 ?
+		(var->org[1].y - var->org[0].y) : 1.0;
+	*u0 = (var->t[0].y - var->org[0].y) * (W_UNIT * w_size / W_SIZE) / protect;
+	*u1 = (var->t[1].y - var->org[0].y) * (W_UNIT * w_size / W_SIZE) / protect;
 }

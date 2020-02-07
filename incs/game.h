@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 21:22:14 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/01/24 17:11:24 by lojesu           ###   ########.fr       */
+/*   Updated: 2020/02/07 14:16:40 by lojesu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ typedef struct	s_game
 	int			next[4];
 	int			side[2];
 	int			unbound[2];
+	double		text_height;
 	double		farz;
 	double		nearz;
 	double		farside;
