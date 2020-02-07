@@ -103,10 +103,8 @@ static void		write_file(t_editor *editor, int fd)
 			write_entities(editor->enemy, fd, true);
 		if (editor->object)
 			write_entities(editor->object, fd, false);
-		if (sector)
-			write_vertexes(sector, fd);
-		if (sector)
-			write_sectors(sector, fd);
+		write_vertexes(sector, fd);
+		write_sectors(sector, fd);
 	}
 }
 
@@ -117,7 +115,8 @@ void			create_map(t_editor *editor)
 	if (editor->sect_is_closed)
 	{
 		fd = open(MAP_PATH, O_WRONLY | O_CREAT | O_TRUNC, S_IRWXU);
-		write_file(editor, fd);
+		if (editor->sector)
+			write_file(editor, fd);
 		if (close(fd) == -1)
 			exit(1);
 		editor->map_save = true;

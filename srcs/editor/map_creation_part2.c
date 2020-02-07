@@ -53,21 +53,27 @@ void	write_vertexes(t_ed_sector *vertexes, int fd)
 {
 	t_ed_sector	*sect;
 	t_vertex	*vertex;
+	int			count;
 
+	count = 0;
 	sect = vertexes;
 	while (sect)
 	{
 		vertex = sect->vertex;
 		while (vertex)
 		{
-			ft_putstr_fd("vertex number ", fd);
-			ft_putnbr_fd(vertex->vertex_number, fd);
-			ft_putstr_fd(" x ", fd);
-			ft_putnbr_fd(vertex->x, fd);
-			ft_putchar_fd(' ', fd);
-			ft_putstr_fd("y ", fd);
-			ft_putnbr_fd(vertex->y, fd);
-			ft_putchar_fd('\n', fd);
+			if (count <= vertex->vertex_number)
+			{
+				ft_putstr_fd("vertex number ", fd);
+				ft_putnbr_fd(vertex->vertex_number, fd);
+				ft_putstr_fd(" x ", fd);
+				ft_putnbr_fd(vertex->x, fd);
+				ft_putchar_fd(' ', fd);
+				ft_putstr_fd("y ", fd);
+				ft_putnbr_fd(vertex->y, fd);
+				ft_putchar_fd('\n', fd);
+				++count;
+			}
 			vertex = vertex->next;
 		}
 		sect = sect->next;

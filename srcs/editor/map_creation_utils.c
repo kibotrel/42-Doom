@@ -56,8 +56,9 @@ static int		count_vertex(t_ed_sector *all_vertex)
 		vertex = sect->vertex;
 		while (vertex)
 		{
+			if (i <= vertex->vertex_number)
+				++i;
 			vertex = vertex->next;
-			++i;
 		}
 		sect = sect->next;
 	}
@@ -66,13 +67,13 @@ static int		count_vertex(t_ed_sector *all_vertex)
 
 void			get_elements_number(t_editor *editor, int fd)
 {
-	ft_putstr_fd("total vertexes ", fd);
-	ft_putnbr_fd(count_vertex(editor->sector), fd);
-	ft_putstr_fd(" sectors ", fd);
-	ft_putnbr_fd(count_sector(editor->sector), fd);
-	ft_putstr_fd(" enemies ", fd);
-	ft_putnbr_fd(count_entity(editor->enemy), fd);
-	ft_putstr_fd(" objects ", fd);
-	ft_putnbr_fd(count_entity(editor->object), fd);
-	ft_putstr_fd("\n\n", fd);
+		ft_putstr_fd("total vertexes ", fd);
+		ft_putnbr_fd(count_vertex(editor->sector), fd);
+		ft_putstr_fd(" sectors ", fd);
+		ft_putnbr_fd(count_sector(editor->sector), fd); 
+		ft_putstr_fd(" enemies ", fd);
+		ft_putnbr_fd(count_entity(editor->enemy), fd);
+		ft_putstr_fd(" objects ", fd);
+		ft_putnbr_fd(count_entity(editor->object), fd);
+		ft_putstr_fd("\n\n", fd);
 }

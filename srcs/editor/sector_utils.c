@@ -26,55 +26,43 @@ static int		oui(t_vertex *vertex, t_ed_sector *sector)
 	t_vertex	*vert_1;
 	t_vertex	*vert_2;
 	int			ret;
+	int			minus;
 
 	ret = 0;
+	minus = 0;
 	vert_1 = vertex;
+	sect = sector;
 	while (vert_1)
 	{
 		while (sect->prev)
 			sect = sect->prev;
-		while (sect)
+		while (sect && sect->sector_number < sector->sector_number)
 		{
 			vert_2 = sect->vertex;
 			while (vert_2)
 			{
-				if (vert_2->x != vert_1->x && vert_2->y != vert_1->y)
-					++ret;
+				if (vert_2->x == vert_1->x && vert_2->y == vert_1->y)
+					++minus;
+				vert_2 = vert_2->next;
 			}
+			sect = sect->next;
 		}
+		++ret;
 		vert_1 = vert_1->next;
 	}
+	return (ret - minus);
 }
 
 void	delete_sector_in_progress(t_ed_sector **sector,t_editor *edit)
 {
 	t_ed_sector	*sect;
-	t_ed_sector	*to_del;
 
 	if (edit->sect_is_closed)
 		return ;
 	sect = *sector;
 	while (sect->next)
 		sect = sect->next;
-	printf("avant %d\n", edit->count.vertex);
-	edit->count.vertex -= count_vertex_in_sector(sect->vertex);
-	printf("apres %d\n", edit->count.vertex);
-	to_del = sect;
-	delete_vertex(&to_del->vertex);
+	edit->count.vertex -= oui(sect->vertex, sect);
+	delete_vertex(&sect->vertex);
 	edit->sect_is_closed = true;
-	sect = *sector;
-	while (sect->prev)
-		sect = sect->prev;
-	t_vertex	*vertex;
-	while (sect)
-	{
-		vertex = sect->vertex;		
-		printf("sect %d\n", sect->sector_number);
-		while (vertex)
-		{
-			printf("vertex %d\n", vertex->vertex_number);
-			vertex = vertex->next;
-		}
-		sect = sect->next;
-	}
 }
