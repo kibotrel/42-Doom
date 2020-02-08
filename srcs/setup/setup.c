@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/16 11:58:26 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/06 22:42:25 by demonwaves       ###   ########.fr       */
+/*   Updated: 2020/02/08 16:06:42 by vivi             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,13 +63,13 @@ static void	assets_paths(t_env *env)
 	env->asset[ED_ENEMY_4] = "./assets/enemy_4.bmp";
 	env->asset[ED_PORTAL_DOOR] = "./assets/portal_wall.bmp";
 	env->asset[ED_PORTAL_WALL] = "./assets/portal_door.bmp";
-	env->asset[SHOT_0] = "./assets/shot0_720.bmp";
-	env->asset[SHOT_1] = "./assets/shot1_720.bmp";
-	env->asset[SHOT_2] = "./assets/shot2_720.bmp";
-	env->asset[SHOT_3] = "./assets/shot3_720.bmp";
-	env->asset[SHOT_4] = "./assets/shot4_720.bmp";
-	env->asset[SHOT_5] = "./assets/shot5_720.bmp";
-	env->asset[SHOT_6] = "./assets/shot6_720.bmp";
+	env->asset[SHOT_0] = asset_frame(env->w, env->h, 0);
+	env->asset[SHOT_1] = asset_frame(env->w, env->h, 1);
+	env->asset[SHOT_2] = asset_frame(env->w, env->h, 2);
+	env->asset[SHOT_3] = asset_frame(env->w, env->h, 3);
+	env->asset[SHOT_4] = asset_frame(env->w, env->h, 4);
+	env->asset[SHOT_5] = asset_frame(env->w, env->h, 5);
+	env->asset[SHOT_6] = asset_frame(env->w, env->h, 6);
 }
 
 static void	infos_setup(t_env *env)
