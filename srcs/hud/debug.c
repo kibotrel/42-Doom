@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/27 15:15:36 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/04 03:15:56 by demonwaves       ###   ########.fr       */
+/*   Updated: 2020/02/10 03:45:42 by vivi             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,17 +17,13 @@
 
 static void	background(t_env *env)
 {
-	t_pos			p;
 	t_pos			min;
+	t_pos			vertex[2];
 
-	p.y = -1;
 	min = env->data.grid.min;
-	while (++p.y < min.y * 12)
-	{
-		p.x = -1;
-		while (++p.x < min.x * 21)
-			blur(env, env->sdl.screen, p);
-	}
+	vertex[0] = p2d(0, 0, min.x, min.y);
+	vertex[1] = p2d(21, 12, min.x, min.y);
+	blur_area(env, vertex[0], vertex[1]);
 	draw_line(env, p2d(4, 1, min.x, min.y), p2d(10, 1, min.x, min.y), WHITE);
 	draw_line(env, p2d(4, 2, min.x, min.y), p2d(10, 2, min.x, min.y), WHITE);
 	draw_line(env, p2d(4, 1, min.x, min.y), p2d(4, 2, min.x, min.y), WHITE);
@@ -82,6 +78,32 @@ static void	sector_infos(t_env *env, t_sector *sector)
 
 void		debug_hud(t_env *env)
 {
+	// t_pos	n;
+	// t_pos	end;
+	// t_pos	start;
+	//
+	// n.y = 0;
+	// while (++n.y <= RATIO_GRID_Y)
+	// {
+	// 	n.x = 0;
+	// 	while (++n.x <= RATIO_GRID_X + 1)
+	// 	{
+	// 		start.x = n.x * env->data.grid.min.x;
+	// 		start.y = n.y * env->data.grid.min.y;
+	// 		if (n.y == RATIO_GRID_Y)
+	// 			end.y = start.y;
+	// 		else
+	// 			end.y = (n.y + 1) * env->data.grid.min.y;
+	// 		end.x = start.x;
+	// 		draw_line(env, start, end, WHITE);
+	// 		if (n.x == RATIO_GRID_X + 1)
+	// 			end.x = start.x;
+	// 		else
+	// 			end.x = (n.x + 1) * env->data.grid.min.x;
+	// 		end.y = start.y;
+	// 		draw_line(env, start, end, WHITE);
+	// 	}
+	// }
 	background(env);
 	cam_infos(env, &env->cam);
 	sector_infos(env, &env->sector[env->cam.sector]);

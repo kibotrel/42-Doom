@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 19:01:59 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/08 16:05:37 by vivi             ###   ########.fr       */
+/*   Updated: 2020/02/10 03:43:27 by vivi             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,8 @@ void				blur(t_env *env, SDL_Surface *win, t_pos p);
 **	graphic_2.c
 */
 
+void				blur_area(t_env *env, t_pos min, t_pos max);
+void				draw_asset(t_env *env, t_bmp asset, t_pos shift);
 void				info(t_env *env, char *str, t_vec2d pos, uint32_t mode);
 
 /*
@@ -219,4 +221,5 @@ char				*ft_mul_str(char *s1, char *s2, int mod);
 */
 
 char				*ft_realloc(char *s, size_t size, size_t mod);
+
 #endif
