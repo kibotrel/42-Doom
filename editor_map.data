@@ -1,0 +1,17 @@
+total vertexes 7 sectors 2 enemies 0 objects 0
+
+player x 662 y 375 sector 0 angle 90
+
+vertex number 0 x 625 y 325
+vertex number 1 x 775 y 325
+vertex number 2 x 750 y 425
+vertex number 3 x 625 y 425
+vertex number 4 x 575 y 225
+vertex number 5 x 750 y 175
+vertex number 6 x 850 y 250
+
+sector number 0 h_floor -5 h_ceil 20 gravity 1 friction 50 vertex_num 4 vertexes 0 1 2 3 portals 1 -1 -1 -1 type 0 -1 -1 -1
+
+sector number 1 h_floor 0 h_ceil 20 gravity 10 friction 50 vertex_num 5 vertexes 0 4 5 6 1 portals -1 -1 -1 -1 0 type -1 -1 -1 -1 0
+
+

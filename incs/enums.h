@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 17:59:50 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/10 13:01:49 by lojesu           ###   ########.fr       */
+/*   Updated: 2020/02/10 15:35:14 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,6 @@ typedef enum	e_assets
 	ED_ENEMY_2,
 	ED_ENEMY_3,
 	ED_ENEMY_4,
-	ED_PORTAL_DOOR,
-	ED_PORTAL_WALL,
 	NB_ASSETS
 }				t_assets;
 
@@ -92,18 +90,17 @@ typedef enum		e_settings
 typedef enum		e_presets
 {
 	NONE,
+	SECTOR_MOVE,
 	SECTOR_FLOOR,
 	SECTOR_CEIL,
 	SECTOR_TEXT,
-	SECTOR_MOVE,
+	SECTOR_TYPE,
 	SECTOR_GRAV,
 	SECTOR_FRICTION,
 	ENTITY_TYPE,
 	ENTITY_MOVE,
 	ENTITY_ROTATE,
-	PLAYER_ROTATE,
-	PORTAL_MOVE,
-	PORTAL_TYPE
+	PLAYER_ROTATE
 }					t_presets;
 
 #endif

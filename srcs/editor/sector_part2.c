@@ -1,23 +1,25 @@
 #include "editor.h"
 
-void			move_in_sector(t_ed_sector **sector, bool way)
+void		move_in_sector(t_editor *edit, int x, int y)
 {
-	t_ed_sector *tmp;
+	int			which_sector;
+	t_ed_sector	*sect;
 
-	if (!*sector)
+	which_sector = is_in_sector(edit, init_vertex(x, y));
+	if (which_sector < 0)
 		return ;
-	tmp = *sector;
-	if (way == true)
+	sect = edit->sector;
+	while (sect->prev)
+		sect = sect->prev;
+	while (sect)
 	{
-		if (tmp->next->next)
-			tmp = tmp->next;
+		if (sect->sector_number == which_sector)
+		{
+			edit->sector = sect;
+			return ;
+		}
+		sect = sect->next;
 	}
-	else
-	{
-		if (tmp->prev)
-			tmp = tmp->prev;
-	}
-	*sector = tmp;
 }
 
 static void		prev_display_sector(t_sdl *sdl, t_ed_sector *sectors)

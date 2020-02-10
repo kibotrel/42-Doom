@@ -10,7 +10,7 @@ t_vertex		init_vertex(int x, int y)
 	return (ret);
 }
 
-t_vertex		*create_vertex(t_vertex v, t_editor *edit, t_env *env)
+t_vertex		*create_vertex(t_vertex v, t_editor *edit, t_env *env, int num)
 {
 	t_vertex	*new;
 
@@ -18,44 +18,49 @@ t_vertex		*create_vertex(t_vertex v, t_editor *edit, t_env *env)
 		clean_editor(edit, env);
 	new->x = v.x;
 	new->y = v.y;
+	if (num >= 0)
+		new->vertex_number = num;
 	new->prev = NULL;
 	new->next = NULL;
 	return (new);
 }
 
-void			add_vertex(t_vertex **vertex, t_vertex v,
-	bool flag, t_env *env)
+void			add_vertex(t_vertex **vertex, t_vertex *v)
 {
 	t_vertex	*prev_vertex;
-	t_vertex	*new;
 
-	new = create_vertex(v, &env->editor, env);
-	if (flag)
-		new->vertex_number = env->editor.count.vertex++;
 	if (!*vertex)
-		*vertex = new;
+		*vertex = v;
 	else
 	{
 		prev_vertex = *vertex;
 		while (prev_vertex->next)
 			prev_vertex = prev_vertex->next;
-		new->prev = prev_vertex;
-		prev_vertex->next = new;
+		v->prev = prev_vertex;
+		prev_vertex->next = v;
 	}
 }
 
-static t_vertex	*is_vertex_double(t_vertex *vertex, int x, int y)
+static t_vertex	*is_vertex_double(t_ed_sector *sector, int x, int y)
 {
+	t_ed_sector	*sect;
 	t_vertex	*vert;
 
-	if (!vertex)
+	if (!sector)
 		return (NULL);
-	vert = vertex;
-	while (vert)
+	sect = sector;
+	while (sector->prev)
+		sector = sector->prev;
+	while (sector)
 	{
-		if (vert->x == x && vert->y == y)
-			return (vert);
-		vert = vert->next;
+		vert = sector->vertex;
+		while (vert)
+		{
+			if (vert->x == x && vert->y == y)
+				return (vert);
+			vert = vert->next;
+		}
+		sector = sector->next;
 	}
 	return (NULL);
 }
@@ -64,14 +69,15 @@ t_vertex		*get_vertex(t_editor *editor, int x, int y, t_env *env)
 {
 	t_vertex	*new_vertex;
 
-	new_vertex = is_vertex_double(editor->vertex, x, y);
+	new_vertex = is_vertex_double(editor->sector, x, y);
 	if (!new_vertex)
 	{
-		new_vertex = create_vertex(init_vertex(x, y), editor, env);
-		add_vertex(&editor->vertex, init_vertex(x, y), true, env);
-		free(new_vertex);
+		new_vertex = create_vertex(init_vertex(x, y), editor, env, editor->count.vertex++);
+		editor->last_vertex.x = new_vertex->x;
+		editor->last_vertex.y = new_vertex->y;
+		return (new_vertex);
 	}
 	editor->last_vertex.x = new_vertex->x;
 	editor->last_vertex.y = new_vertex->y;
-	return (new_vertex);
+	return (create_vertex(init_vertex(x, y), editor, env, new_vertex->vertex_number));
 }

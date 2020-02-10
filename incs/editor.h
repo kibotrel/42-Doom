@@ -20,6 +20,7 @@ void				init_count(t_count *count);
 **	clean/delete.c
 */
 void				delete_vertex(t_vertex **vertex);
+void				delete_vertex_sector(t_ed_sector **vertex);
 void				delete_sector(t_ed_sector **sectors);
 void				clear_editor(t_editor *editor, t_env *env);
 
@@ -34,8 +35,6 @@ void				editor_click(t_editor *editor, SDL_Event event, t_env *env);
 /*
 **	core/events_tools.c
 */
-void				next_keydown(SDL_Event event, SDL_Surface *s,
-	t_editor *editor);
 void				change_value(t_editor *editor, t_presets presets, bool fl);
 
 /*
@@ -46,15 +45,14 @@ void				display_line(t_editor *editor, int x, int y, t_env *env);
 void				display_sector(t_sdl *sdl, t_ed_sector *sectors, bool fl);
 void				draw_walls(t_sdl *sdl, t_ed_sector *sect, t_vertex *vertex,
 	int color);
-void				display_portals(t_portal *portal, t_sdl *sdl, int color,
-	bool fl);
+void				display_portals(t_portal *portal, t_sdl *sdl, int color);
 
 /*
 **	display/display_part2.c
 */
 void				which_entity_to_display(t_editor *edit, t_env *env);
 void				display_mouse(t_sdl *sdl, t_vertex mouse, int color);
-void				display_vertex(t_sdl *sdl, t_vertex *vertex, int color);
+void				display_vertex(t_sdl *sdl, t_ed_sector *sector, int color);
 
 /*
 **	display/display_utils.c
@@ -86,13 +84,11 @@ void				print_params_image(t_editor *edit, t_presets presets,
 /*
 **	menu/text.c
 */
-void				print_param_in_param(t_editor *edit, t_sdl *sdl,
-	t_settings sett, t_env *env);
+void				print_param_in_param(t_settings sett, t_env *env);
 void				print_param_to_screen(t_env *env, t_settings sett,
 	t_editor *editor);
 void				print_more_minus(t_sdl *sdl);
-void	display_text(t_editor *edit, t_sdl *sdl, t_vertex pos,
-	const char *text, t_env *env);
+void	display_text(int color, t_vertex pos, const char *text, t_env *env);
 
 /*
 **	menu/edit_menu.c
@@ -137,13 +133,11 @@ void				place_portal(t_editor *editor, int x, int y, t_env *env);
 /*
 **	portal/portal_utils.c
 */
-void				move_in_portals(t_portal **portal, bool way);
-void				change_portal_type(t_ed_sector *all, t_portal *portal,
-	bool way);
 void				add_portal(t_portal **portal, t_vertex v1, t_vertex v2,
 	t_env *env);
 int					compare_coordinates(t_vertex *point, t_vertex *a,
 	t_vertex *b);
+void			delete_portal(t_portal **portal, t_vertex v1, t_vertex v2);
 
 /*
 **	save/map_creation.c
@@ -154,8 +148,8 @@ void				write_portals(t_ed_sector *sect, int fd);
 /*
 **	save/map_creation_part2.c
 */
-void				write_vertex_sector(t_ed_sector *sect, t_vertex *all, int fd);
-void				write_vertexes(t_vertex *vertexes, int fd);
+void				write_vertex_sector(t_ed_sector *sect, int fd);
+void				write_vertexes(t_ed_sector *vertexes, int fd);
 void				write_entities(t_ed_entity *entities, int fd, bool type);
 void				write_player(t_ed_player player, t_vertex if_no_player,
 	int fd);
@@ -171,26 +165,28 @@ int					count_sector(t_ed_sector *all_sector);
 **	sector/vertex.c
 */
 t_vertex			*get_vertex(t_editor *editor, int x, int y, t_env *env);
-void				add_vertex(t_vertex **vertex, t_vertex v,
-	bool flag, t_env *env);
-t_vertex			*create_vertex(t_vertex v, t_editor *edit, t_env *env);
+void				add_vertex(t_vertex **vertex, t_vertex *new);
+t_vertex			*create_vertex(t_vertex v, t_editor *edit, t_env *env, int num);
 t_vertex			init_vertex(int x, int y);
 
 /*
 **	sector/sector.c
 */
 void				place_sector(t_editor *editor, int x, int y, t_env *env);
+int					count_vertex_in_sector(t_vertex *vertex);
+
 
 /*
 **	sector/sector_part2.c
 */
 void				next_display_sector(t_sdl *sdl, t_ed_sector *sectors);
-void				move_in_sector(t_ed_sector **sector, bool way);
+void				move_in_sector(t_editor *edit, int x, int y);
 
 /*
 **	sector/sector_utils.c
 */
 t_ed_sector			*create_sector(t_editor *edit, t_env *env);
+void				delete_sector_in_progress(t_ed_sector **sector, t_editor *edit);
 
 /*
 **	sector/sector_check.c

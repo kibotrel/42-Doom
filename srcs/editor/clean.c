@@ -7,6 +7,8 @@ void			init_count(t_count *count)
 	count->enemy = 0;
 	count->portal = 0;
 	count->object = 0;
+	count->button.new = 0;
+	count->button.old = 0;
 }
 
 void			clean_editor(t_editor *editor, t_env *env)
@@ -19,8 +21,6 @@ void			clean_editor(t_editor *editor, t_env *env)
 	}
 	if (editor->sector)
 		free(editor->sector);
-	if (editor->vertex)
-		free(editor->vertex);
 	if (editor->object)
 		free(editor->object);
 	if (editor->enemy)

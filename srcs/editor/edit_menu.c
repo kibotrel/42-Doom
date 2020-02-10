@@ -1,4 +1,5 @@
 #include "editor.h"
+#include "env.h"
 
 static void		fst_clic_editor_menu(int y, t_editor *editor)
 {
@@ -23,9 +24,9 @@ static void		fst_clic_editor_menu(int y, t_editor *editor)
 
 void			clic_editor_menu(int x, int y, t_editor *editor, t_env *env)
 {
-	if (x >= 1300 && x <= 1410 && y >= 660 && y <= 710)
+	if (x >= 1300 && x <= 1410 && y >= 760 && y <= 810)
 		clear_editor(editor, env);
-	else if (x >= 1420 && x <= 1530 && y >= 660 && y <= 710)
+	else if (x >= 1420 && x <= 1530 && y >= 760 && y <= 810)
 	{
 		create_map(editor);
 		editor->map_save = true;
@@ -41,7 +42,8 @@ void			clic_editor_menu(int x, int y, t_editor *editor, t_env *env)
 		else if (x >= 1600 && x <= 1650)
 			change_value(editor, editor->presets, true);
 	}
-	blank_menu(env->sdl.screen, editor->sett, editor, editor->presets, env);
+	else
+		blank_menu(env->sdl.screen, editor->sett, editor, editor->presets, env);
 }
 
 static void		next_motion(t_sdl s, int set, int preset, t_editor *edit, t_env *env)
@@ -49,9 +51,9 @@ static void		next_motion(t_sdl s, int set, int preset, t_editor *edit, t_env *en
 	int		y;
 
 	y = s.event.motion.y;
-	if (y >= 140 && y <= 210)
+	if (y >= 140 && y <= 210 && set != PORTAL)
 		rectangle(init_vertex(1540, 140), init_vertex(1710, 210), PRPL, s.screen);
-	else if (y >= 240 && y <= 310)
+	else if (y >= 240 && y <= 310 && set != PORTAL)
 		rectangle(init_vertex(1540, 240), init_vertex(1710, 310), PRPL, s.screen);
 	else if ((set != PORTAL && set != PLAYER) && y >= 340 && y <= 410)
 		rectangle(init_vertex(1540, 340), init_vertex(1710, 410), PRPL, s.screen);
@@ -61,6 +63,8 @@ static void		next_motion(t_sdl s, int set, int preset, t_editor *edit, t_env *en
 		rectangle(init_vertex(1540, 540), init_vertex(1710, 610), PRPL, s.screen);
 	else if (set == SECTOR && y >= 640 && y <= 710)
 		rectangle(init_vertex(1540, 640), init_vertex(1710, 710), PRPL, s.screen);
+	else if (set == SECTOR && y >= 740 && y <= 810)
+		rectangle(init_vertex(1540, 740), init_vertex(1710, 810), PRPL, s.screen);
 	else
 		blank_menu(s.screen, set, edit, preset, env);
 }
@@ -72,17 +76,17 @@ static void		option_motion(t_sdl s, int set, int preset, t_editor *edit, t_env *
 
 	x = s.event.motion.x;
 	y = s.event.motion.y;
-	if (x >= 1300 && x <= 1410 && y >= 660 && y <= 710)
-		rectangle(init_vertex(1300, 660), init_vertex(1410, 710), PRPL, s.screen);
-	else if (x > 1420 && x <= 1530 && y >= 660 && y <= 710)
-		rectangle(init_vertex(1420, 660), init_vertex(1530, 710), PRPL, s.screen);
+	if (x >= 1300 && x <= 1410 && y >= 760 && y <= 810)
+		rectangle(init_vertex(1300, 760), init_vertex(1410, 810), PRPL, s.screen);
+	else if (x > 1420 && x <= 1530 && y >= 760 && y <= 810)
+		rectangle(init_vertex(1420, 760), init_vertex(1530, 810), PRPL, s.screen);
 	else
 		blank_menu(s.screen, set, edit, preset, env);
 }
 
 void			editor_motion(t_sdl s, int set, int preset, t_editor *edit, t_env *env)
 {
-	if (s.event.motion.y >= 660 && s.event.motion.y <= 710 &&
+	if (s.event.motion.y >= 760 && s.event.motion.y <= 810 &&
 		((s.event.motion.x >= 1300 && s.event.motion.x <= 1410) ||
 			(s.event.motion.x >= 1420 && s.event.motion.x <= 1530)))
 		option_motion(s, set, preset, edit, env);

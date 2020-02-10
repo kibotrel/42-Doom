@@ -21,6 +21,33 @@ void				delete_vertex(t_vertex **vertex)
 	*vertex = NULL;
 }
 
+void				delete_vertex_sector(t_ed_sector **vertex)
+{
+	t_ed_sector	*sect;
+	t_vertex	*tmp;
+	t_vertex	*to_del;
+
+	if (*vertex == NULL)
+		return ;
+	sect = *vertex;
+	while (sect->prev)
+		sect = sect->prev;
+	while (sect)
+	{
+		to_del = NULL;
+		tmp = NULL;
+		to_del = sect->vertex;
+		tmp = to_del;
+		while (tmp)
+		{
+			tmp = to_del->next;
+			free(to_del);
+			to_del = tmp;
+		}
+		sect->vertex = NULL;
+	}
+}
+
 static void			delete_portals(t_portal **portal)
 {
 	t_portal	*tmp;
@@ -60,9 +87,7 @@ void				delete_sector(t_ed_sector **sectors)
 	{
 		tmp = to_del->next;
 		free(to_del->is_portal);
-		free(to_del->portal_type);
 		delete_vertex(&to_del->vertex);
-		delete_portals(&to_del->portal);
 		free(to_del);
 		to_del = tmp;
 	}
@@ -96,8 +121,8 @@ void				clear_editor(t_editor *editor, t_env *env)
 	delete_player(&editor->player);
 	if (editor->sector)
 		delete_sector(&editor->sector);
-	if (editor->vertex)
-		delete_vertex(&editor->vertex);
+	if (editor->sector->vertex)
+		delete_vertex_sector(&editor->sector);
 	if (editor->enemy)
 		delete_entity(&editor->enemy);
 	if (editor->object)

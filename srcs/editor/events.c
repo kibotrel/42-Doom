@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 13:09:05 by nde-jesu          #+#    #+#             */
-/*   Updated: 2020/01/29 11:27:25 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/02/07 14:32:22 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,16 +41,17 @@ static void		display_editor(t_editor *edit, t_env *env)
 	which_entity_to_display(edit, env);
 	edit->sett == SECTOR ? display_sector(&env->sdl, edit->sector, true)
 		: display_sector(&env->sdl, edit->sector, false);
-	display_vertex(&env->sdl, edit->vertex, 0xffff00);
-	if (edit->sett == PORTAL)
-		display_portals(edit->portals, &env->sdl, 0x00ff00, edit->sett == PORTAL);
-	if (edit->sett == SECTOR && env->sdl.event.motion.x <= EDIT_W)
+	display_vertex(&env->sdl, edit->sector, 0xffff00);
+	if (edit->sett == PORTAL || edit->display_portal == 1)
+		display_portals(edit->portals, &env->sdl, 0x00ff00);
+	if (edit->sett == SECTOR && env->sdl.event.motion.x <= EDIT_W && edit->presets == NONE)
 	{
 		mse.x = (env->sdl.event.motion.x / edit->true_grid) * edit->true_grid;
 		mse.y = (env->sdl.event.motion.y / edit->true_grid) * edit->true_grid;
 		display_mouse(&env->sdl, mse, 0x0ff0f0);
 	}
-	display_line(edit, env->sdl.event.motion.x, env->sdl.event.motion.y, env);
+	if (!edit->sect_is_closed)
+		display_line(edit, env->sdl.event.motion.x, env->sdl.event.motion.y, env);
 	print_param_to_screen(env, edit->sett, edit);
 }
 
@@ -58,10 +59,11 @@ void		editor_click(t_editor *editor, SDL_Event event, t_env *env)
 {
 	if (event.motion.x <= EDIT_W && event.button.button == SDL_BUTTON_LEFT)
 	{
-		editor->presets = NONE;
 		blank_menu(env->sdl.screen, editor->sett, editor, editor->presets, env);
-		if (editor->sett == SECTOR)
+		if (editor->sett == SECTOR && editor->presets == NONE)
 			place_sector(editor, event.motion.x, event.motion.y, env);
+		else if (editor->sett == SECTOR && editor->presets == SECTOR_MOVE)
+			move_in_sector(editor, event.motion.x, event.motion.y);
 		else if (editor->sett == PLAYER)
 			place_player(editor, event.motion.x, event.motion.y);
 		else if (editor->sett == ENEMY)
@@ -91,6 +93,6 @@ void			editor_mousewheel(t_editor *editor, SDL_Event event)
 
 void			events(t_editor *editor, t_env *env)
 {
-		blank_menu(env->sdl.screen, editor->sett, editor, editor->presets, env);
 		display_editor(editor, env);
+		blank_menu(env->sdl.screen, editor->sett, editor, editor->presets, env);
 }

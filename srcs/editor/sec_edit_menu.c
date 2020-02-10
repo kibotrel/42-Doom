@@ -14,10 +14,12 @@ static void		blank_sect(int set, int preset, SDL_Surface *s)
 		rectangle(init_vertex(1540, 340), init_vertex(1710, 410), clr, s);
 		clr = ((preset != SECTOR_TEXT) ? 0xffffff : 0x177013);
 		rectangle(init_vertex(1540, 440), init_vertex(1710, 510), clr, s);
-		clr = ((preset != SECTOR_GRAV) ? 0xffffff : 0x177013);
+		clr = ((preset != SECTOR_TYPE) ? 0xffffff : 0x177013);
 		rectangle(init_vertex(1540, 540), init_vertex(1710, 610), clr, s);
-		clr = ((preset != SECTOR_FRICTION) ? 0xffffff : 0x177013);
+		clr = ((preset != SECTOR_GRAV) ? 0xffffff : 0x177013);
 		rectangle(init_vertex(1540, 640), init_vertex(1710, 710), clr, s);
+		clr = ((preset != SECTOR_FRICTION) ? 0xffffff : 0x177013);
+		rectangle(init_vertex(1540, 740), init_vertex(1710, 810), clr, s);
 	}
 }
 
@@ -39,14 +41,7 @@ void			sec_blank_menu(SDL_Surface *s, int set, int preset)
 		clr = ((preset != PLAYER_ROTATE) ? 0xffffff : 0x177013);
 	if (set == PLAYER)
 		rectangle(init_vertex(1540, 140), init_vertex(1710, 210), clr, s);
-	if (set == PORTAL)
-	{
-		clr = ((preset != PORTAL_MOVE) ? 0xffffff : 0x177013);
-		rectangle(init_vertex(1540, 140), init_vertex(1710, 210), clr, s);
-		clr = ((preset != PORTAL_TYPE) ? 0xffffff : 0x177013);
-		rectangle(init_vertex(1540, 240), init_vertex(1710, 310), clr, s);
-	}
-	if (preset != NONE)
+	if (preset != NONE && preset != SECTOR_MOVE)
 	{
 		rectangle(init_vertex(1399, 49), init_vertex(1450, 100), 0xffa500, s);
 		rectangle(init_vertex(1599, 49), init_vertex(1650, 100), 0xffa500, s);
@@ -60,11 +55,18 @@ static void		part_5_sec_clic_menu_editor(int y, t_editor *editor)
 	if (y >= 540 && y <= 610)
 	{
 		if (editor->sett == SECTOR)
-			editor->presets = SECTOR_GRAV;
+			editor->presets = SECTOR_TYPE;
 		else
 			editor->presets = NONE;
 	}
 	if (y >= 640 && y <= 710)
+	{
+		if (editor->sett == SECTOR)
+			editor->presets = SECTOR_GRAV;
+		else
+			editor->presets = NONE;
+	}
+	if (y >= 740 && y <= 810)
 	{
 		if (editor->sett == SECTOR)
 			editor->presets = SECTOR_FRICTION;
@@ -104,8 +106,6 @@ void			sec_clic_menu_editor(int y, t_editor *editor)
 			editor->presets = ENTITY_MOVE;
 		if (editor->sett == SECTOR)
 			editor->presets = SECTOR_MOVE;
-		if (editor->sett == PORTAL)
-			editor->presets = PORTAL_MOVE;
 	}
 	sec_clic_menu_editor_tool(y, editor);
 	next_sec_clic_menu_editor(y, editor);

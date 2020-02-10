@@ -39,32 +39,41 @@ int				count_sector(t_ed_sector *all_sector)
 	return (sector->sector_number);
 }
 
-static int		count_vertex(t_vertex *all_vertex)
+static int		count_vertex(t_ed_sector *all_vertex)
 {
+	t_ed_sector	*sect;
 	t_vertex	*vertex;
 	int			i;
 
 	if (!all_vertex)
 		return (0);
-	vertex = all_vertex;
+	sect = all_vertex;
+	while (sect->prev)
+		sect = sect->prev;
 	i = 0;
-	while (vertex)
+	while (sect)
 	{
-		vertex = vertex->next;
-		++i;
+		vertex = sect->vertex;
+		while (vertex)
+		{
+			if (i <= vertex->vertex_number)
+				++i;
+			vertex = vertex->next;
+		}
+		sect = sect->next;
 	}
 	return (i);
 }
 
 void			get_elements_number(t_editor *editor, int fd)
 {
-	ft_putstr_fd("total vertexes ", fd);
-	ft_putnbr_fd(count_vertex(editor->vertex), fd);
-	ft_putstr_fd(" sectors ", fd);
-	ft_putnbr_fd(count_sector(editor->sector), fd);
-	ft_putstr_fd(" enemies ", fd);
-	ft_putnbr_fd(count_entity(editor->enemy), fd);
-	ft_putstr_fd(" objects ", fd);
-	ft_putnbr_fd(count_entity(editor->object), fd);
-	ft_putstr_fd("\n\n", fd);
+		ft_putstr_fd("total vertexes ", fd);
+		ft_putnbr_fd(count_vertex(editor->sector), fd);
+		ft_putstr_fd(" sectors ", fd);
+		ft_putnbr_fd(count_sector(editor->sector), fd); 
+		ft_putstr_fd(" enemies ", fd);
+		ft_putnbr_fd(count_entity(editor->enemy), fd);
+		ft_putstr_fd(" objects ", fd);
+		ft_putnbr_fd(count_entity(editor->object), fd);
+		ft_putstr_fd("\n\n", fd);
 }

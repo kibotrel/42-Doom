@@ -22,22 +22,32 @@ static void	display_entities(t_sdl *sdl, t_ed_entity *entity, int clr, bool fl)
 				entity->angle, 0xffff00);
 }
 
-void		display_vertex(t_sdl *sdl, t_vertex *vertex, int color)
+void		display_vertex(t_sdl *sdl, t_ed_sector *sector, int color)
 {
-	t_vertex	*print;
+	t_ed_sector	*print;
+	t_vertex	*vertex;
 
-	print = vertex;
+	print = sector;
+	if (!sector)
+		return ;
+	while (print->prev)
+		print = print->prev;
 	while (print)
 	{
-		put_pixel(sdl->screen, print->x, print->y, color);
-		put_pixel(sdl->screen, print->x + 1, print->y, color);
-		put_pixel(sdl->screen, print->x, print->y + 1, color);
-		put_pixel(sdl->screen, print->x + 1, print->y + 1, color);
-		put_pixel(sdl->screen, print->x - 1, print->y, color);
-		put_pixel(sdl->screen, print->x + 1, print->y - 1, color);
-		put_pixel(sdl->screen, print->x - 1, print->y + 1, color);
-		put_pixel(sdl->screen, print->x, print->y - 1, color);
-		put_pixel(sdl->screen, print->x - 1, print->y - 1, color);
+		vertex = print->vertex;
+		while (vertex)
+		{
+			put_pixel(sdl->screen, vertex->x, vertex->y, color);
+			put_pixel(sdl->screen, vertex->x + 1, vertex->y, color);
+			put_pixel(sdl->screen, vertex->x, vertex->y + 1, color);
+			put_pixel(sdl->screen, vertex->x + 1, vertex->y + 1, color);
+			put_pixel(sdl->screen, vertex->x - 1, vertex->y, color);
+			put_pixel(sdl->screen, vertex->x + 1, vertex->y - 1, color);
+			put_pixel(sdl->screen, vertex->x - 1, vertex->y + 1, color);
+			put_pixel(sdl->screen, vertex->x, vertex->y - 1, color);
+			put_pixel(sdl->screen, vertex->x - 1, vertex->y - 1, color);
+			vertex = vertex->next;
+		}
 		print = print->next;
 	}
 }
