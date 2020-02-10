@@ -30,10 +30,7 @@ static t_ed_sector	*get_last_sector(t_editor *editor, t_env *env)
 	t_ed_sector	*sect;
 
 	if (!(editor->sector))
-	{
 		editor->sector = create_sector(editor, env);
-		return (editor->sector);
-	}
 	sect = editor->sector;
 	while (sect->next)
 		sect = sect->next;

@@ -71,7 +71,12 @@ t_vertex		*get_vertex(t_editor *editor, int x, int y, t_env *env)
 
 	new_vertex = is_vertex_double(editor->sector, x, y);
 	if (!new_vertex)
+	{
 		new_vertex = create_vertex(init_vertex(x, y), editor, env, editor->count.vertex++);
+		editor->last_vertex.x = new_vertex->x;
+		editor->last_vertex.y = new_vertex->y;
+		return (new_vertex);
+	}
 	editor->last_vertex.x = new_vertex->x;
 	editor->last_vertex.y = new_vertex->y;
 	return (create_vertex(init_vertex(x, y), editor, env, new_vertex->vertex_number));

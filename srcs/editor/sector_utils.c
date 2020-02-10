@@ -20,7 +20,7 @@ t_ed_sector	*create_sector(t_editor *edit, t_env *env)
 	return (sect);
 }
 
-static int		oui(t_vertex *vertex, t_ed_sector *sector)
+static int		reset_count(t_vertex *vertex, t_ed_sector *sector)
 {
 	t_ed_sector	*sect;
 	t_vertex	*vert_1;
@@ -62,7 +62,7 @@ void	delete_sector_in_progress(t_ed_sector **sector,t_editor *edit)
 	sect = *sector;
 	while (sect->next)
 		sect = sect->next;
-	edit->count.vertex -= oui(sect->vertex, sect);
+	edit->count.vertex -= reset_count(sect->vertex, sect);
 	delete_vertex(&sect->vertex);
 	edit->sect_is_closed = true;
 }
