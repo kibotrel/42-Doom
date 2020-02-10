@@ -6,7 +6,7 @@
 #    By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/10 16:16:29 by kibotrel          #+#    #+#              #
-#    Updated: 2020/01/29 13:10:24 by nde-jesu         ###   ########.fr        #
+#    Updated: 2020/02/10 12:52:34 by lojesu           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -175,6 +175,7 @@ SRCS			+= editor/sector.c
 SRCS			+= editor/sector_part2.c
 SRCS			+= editor/sector_check.c
 SRCS			+= editor/sector_utils.c
+SRCS			+= texture/texture.c
 
 #------------------------------ OPERATING SYSTEM ------------------------------#
 

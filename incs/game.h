@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 21:22:14 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/01/24 11:41:07 by kibotrel         ###   ########.fr       */
+/*   Updated: 2020/02/10 12:53:53 by lojesu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ typedef struct	s_game
 	int			next[4];
 	int			side[2];
 	int			unbound[2];
+	double		text_height;
 	double		farz;
 	double		nearz;
 	double		farside;
@@ -50,6 +51,7 @@ typedef struct	s_game
 	t_vec2d		t[2];
 	t_vec2d		v[2];
 	t_vec2d		size[2];
+	t_vec2d		org[2];
 	t_sector	*s;
 }				t_game;
 /*

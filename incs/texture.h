@@ -6,28 +6,43 @@
 /*   By: lojesu <lojesu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/16 15:44:25 by lojesu            #+#    #+#             */
-/*   Updated: 2020/01/14 13:25:28 by kibotrel         ###   ########.fr       */
+/*   Updated: 2020/02/07 16:05:21 by lojesu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef TEXTURE_H
 # define TEXTURE_H
 
-# include "structs.h"
-# define FOG -z / 2
+# define W_UNIT 4096
+# define W_SIZE 64
+
+typedef struct	s_scaler
+{
+	int		result;
+	int		bop;
+	int		fd;
+	int		ca;
+	int		cache;
+}				t_scaler;
 
 /*
 ** texture/texture_tools, fonction who serves to change an hexadecimal color
 */
-
 uint32_t	color_mul(uint32_t color, double mul);
 uint32_t	color_add(uint32_t color, double add);
 
 /*
-** texture/texture_tools, function for draw texture's slice'
+** texture/texture_tools, functions for initialize my variable and protect from
+** division by 0
 */
+void		init_and_protect_variable_1(t_game *var, float w_size, float *u0, float *u1);
+void		init_and_protect_variable_2(t_game *var, float w_size, float *u0, float *u1);
 
-void		draw_texture(t_env *env, int x, int y1, int y2, int z,
-							uint32_t *middle);
+/*
+** texture/texture, function for draw texture's slice'
+*/
+void		draw_texture_slice(t_env *env, int x, t_height h, t_game *var, uint32_t *wall);
+
+void		draw_floor_slice(t_env *env, int x, t_height h, uint32_t color);
 
 #endif

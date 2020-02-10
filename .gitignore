@@ -5,6 +5,7 @@ SDL2*
 *.o
 *.txt
 TODO*
+*.data
 
 # Static libraries - Headers
 *.a
