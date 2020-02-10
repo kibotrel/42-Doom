@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 13:32:37 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/01/14 13:33:35 by kibotrel         ###   ########.fr       */
+/*   Updated: 2020/01/24 17:14:13 by lojesu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,10 @@ uint8_t	bound_view(t_game *var)
 	tmp[3] = v2d(var->farside, var->farz);
 	if (var->t[0].y <= 0 && var->t[1].y <= 0)
 		return (0);
+	var->org[0].x = var->t[0].x;
+	var->org[1].x = var->t[1].x;
+	var->org[0].y = var->t[0].y;
+	var->org[1].y = var->t[1].y;
 	if (var->t[0].y <= 0 || var->t[1].y <= 0)
 	{
 		i[0] = intersect(var->t[0], var->t[1], tmp[0], tmp[1]);

@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 13:40:06 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/01/14 15:07:48 by kibotrel         ###   ########.fr       */
+/*   Updated: 2020/02/07 14:59:41 by lojesu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,20 +59,22 @@ uint32_t	color_add(uint32_t color, double add)
 	return ((r << 16) | (g << 8) | b);
 }
 
-void		draw_texture(t_env *env, int x, int y1, int y2, int z, uint32_t *middle)
+void		init_and_protect_variable_1(t_game *var, float w_size, float *u0, float *u1)
 {
-	t_pos	p;
+	double	protect;
 
-	y1 = bound(y1, 0, env->h - 1);
-	y2 = bound(y2, 0, env->h - 1);
-	p.x = x;
-	p.y = y1;
-	if (y2 > y1)
-	{
-		draw_pixel(env, env->sdl.screen, p, 0);
-		while (++p.y < y2)
-			draw_pixel(env, env->sdl.screen, p,
-						color_add(middle[(p.y % 64) * 64 + x % 64], FOG));
-		draw_pixel(env, env->sdl.screen, p, 0);
-	}
+	protect = (var->org[1].x - var->org[0].x) != 0 ?
+		(var->org[1].x - var->org[0].x) : 1.0;
+	*u0 = (var->t[0].x - var->org[0].x) * (W_UNIT * w_size / W_SIZE) / protect;
+	*u1 = (var->t[1].x - var->org[0].x) * (W_UNIT * w_size / W_SIZE) / protect;
+}
+
+void		init_and_protect_variable_2(t_game *var, float w_size, float *u0, float *u1)
+{
+	double	protect;
+
+	protect = (var->org[1].y - var->org[0].y) != 0 ?
+		(var->org[1].y - var->org[0].y) : 1.0;
+	*u0 = (var->t[0].y - var->org[0].y) * (W_UNIT * w_size / W_SIZE) / protect;
+	*u1 = (var->t[1].y - var->org[0].y) * (W_UNIT * w_size / W_SIZE) / protect;
 }
