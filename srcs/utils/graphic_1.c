@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 13:21:31 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/07 14:33:22 by lojesu           ###   ########.fr       */
+/*   Updated: 2020/02/10 12:31:11 by lojesu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,8 @@ static void	draw_ceil_and_floor(t_env *env, t_game *var, int32_t x)
 	var->y[1] = bound(var->unbound[1], var->top[x], var->bottom[x]);
 	draw_slice(env, x, lim(var->top[x], var->y[0] - 1), flat(0, 0x222222, 0));
 	draw_slice(env, x, lim(var->y[1] + 1, var->bottom[x]),
-				flat(0, 0x0000AA, 0));
+			flat(0, 0x0000AA, 0));
+	//draw_floor_slice(env, x, lim(var->y[1] + 1, var->bottom[x]), 0x0000AA);
 }
 
 static void	draw_transitions(t_env *env, t_game *var, int32_t x, uint32_t *wall)
