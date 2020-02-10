@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 15:18:26 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/01/22 15:19:53 by kibotrel         ###   ########.fr       */
+/*   Updated: 2020/01/29 12:01:44 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void		vertical_movement(t_env *env, t_sector sector, double cam_height)
 	double	newz;
 
 	if (env->cam.fly < 0)
-		env->cam.v.z -= 0.05;
+		env->cam.v.z -= env->sector[env->cam.sector].gravity;
 	newz = env->cam.pos.z + env->cam.v.z;
 	if (env->cam.v.z < 0 && newz < sector.floor + cam_height)
 	{
@@ -76,9 +76,9 @@ void		vertical_movement(t_env *env, t_sector sector, double cam_height)
 	}
 }
 
-/*
-**	Need to replace vel = 0 by sliding algorithm
-*/
+//
+//	Need to replace vel = 0 by sliding algorithm
+//
 
 void		horizontal_movement(t_env *env, t_vec2d p, t_vec2d vel, double view)
 {

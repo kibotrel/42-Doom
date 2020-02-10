@@ -3,17 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   editor.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/18 14:36:07 by kibotrel          #+#    #+#             */
-/*   Updated: 2019/10/15 19:27:50 by kibotrel         ###   ########.fr       */
+/*   Updated: 2020/01/29 11:54:25 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "env.h"
 #include "core.h"
+#include "editor.h"
 
 void	editor(t_env *env)
 {
-	SDL_SetWindowTitle(env->sdl.win, TITLE_EDITOR);
+	if (!env->setup)
+	{
+		SDL_SetWindowTitle(env->sdl.win, TITLE_EDITOR);
+		SDL_SetWindowSize(env->sdl.win, 1780, 720);
+		env->sdl.screen = SDL_GetWindowSurface(env->sdl.win);
+		env->setup = 1;
+	}
+
+	events(&env->editor, env);
 }

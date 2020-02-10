@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/19 18:18:26 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/01/14 13:34:56 by kibotrel         ###   ########.fr       */
+/*   Updated: 2020/01/23 21:03:43 by demonwaves       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	scale_text(t_env *env, SDL_Rect *where, char *text, uint8_t pos)
 	t_pos	start;
 	t_pos	scale;
 
-	TTF_SizeText(env->sdl.font, text, &p.x, &p.y);
+	TTF_SizeText(env->sdl.font[0], text, &p.x, &p.y);
 	start.x = env->data.ui.min.x;
 	start.y = env->data.ui.min.y * pos;
 	end.x = env->data.ui.max.x;

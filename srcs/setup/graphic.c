@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   graphic.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/16 11:54:18 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/01/22 15:30:00 by kibotrel         ###   ########.fr       */
+/*   Updated: 2020/01/29 13:06:21 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,12 @@ static void	ttf_setup(t_env *env, t_sdl *sdl)
 {
 	if (TTF_Init())
 		clean(env, E_TTF_INIT);
-	if (!(sdl->font = TTF_OpenFont("assets/atlas.ttf", env->data.f_size)))
+	if (!(sdl->font[0] = TTF_OpenFont("assets/atlas.ttf", env->data.f_size)))
+		clean(env, E_TTF_FONT);
+	if (!(sdl->font[1] = TTF_OpenFont("assets/KeepCalm-Medium.ttf",
+										env->data.g_size)))
+		clean(env, E_TTF_FONT);
+	if (!(sdl->font[2] = TTF_OpenFont("assets/font.ttf", 30)))
 		clean(env, E_TTF_FONT);
 	police_color(&sdl->color, 0xFF, 0xFF, 0xFF);
 }

@@ -6,7 +6,7 @@
 /*   By: reda-con <reda-con@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/17 16:35:58 by reda-con          #+#    #+#             */
-/*   Updated: 2020/01/22 16:11:54 by kibotrel         ###   ########.fr       */
+/*   Updated: 2020/01/28 14:44:35 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,105 +14,71 @@
 #include "libft.h"
 #include <stdlib.h>
 
-t_sector	*sec_new(int n, t_height h, t_ver_port v_p)
+int			third_check(t_sector *s, char **t, t_vec2d *ver, int i)
 {
-	t_sector	*new;
+	int j;
 
-	if (!(new = (t_sector*)malloc(sizeof(t_sector))))
-		return (NULL);
-	new->n = n;
-	new->h = h;
-	new->v_p = v_p;
-	new->next = NULL;
-	return (new);
-}
-
-void		free_sec(t_sector **s)
-{
-	t_sector	*tmp;
-	t_sector	*to_free;
-
-	if (*s == NULL)
-		return ;
-	to_free = *s;
-	tmp = *s;
-	while (tmp)
+	j = 0;
+	while (j < i)
 	{
-		tmp = to_free->next;
-		free(to_free->v_p.vertex);
-		free(to_free->v_p.portal);
-		free(to_free);
-		to_free = tmp;
-	}
-	free(s);
-}
-
-void		sec_add_back(t_sector **s, int n, t_height h, t_ver_port v_p)
-{
-	t_sector	*tmp;
-
-	if (*s == NULL)
-	{
-		if (!(*s = sec_new(n, h, v_p)))
-			exit(1);
-	}
-	else
-	{
-		tmp = *s;
-		while (tmp->next != NULL)
-			tmp = tmp->next;
-		if (!(tmp->next = sec_new(n, h, v_p)))
-		{
-			free_sec(s);
-			exit(1);
-		}
-	}
-}
-
-int			verif_vp(char **tab, t_ver_port *v_p, int j)
-{
-	int		i;
-
-	i = -1;
-	v_p->size = j;
-	while (++i < j)
-		if (!ft_isnum(tab[10 + i]) || !ft_isnum(tab[11 + j + i]))
+		if (t[14 + j] && ft_isnum(t[14 + j]))
+			s[ft_atoi(t[2])].vertex[j] = ver[ft_atoi(t[14 + j])];
+		else
 			return (1);
-	if (!(v_p->vertex = (int*)malloc(sizeof(int) * j)))
-		return (1);
-	if (!(v_p->portal = (int*)malloc(sizeof(int) * j)))
-	{
-		free(v_p->vertex);
-		return (1);
-	}
-	i = -1;
-	while (++i < j)
-	{
-		v_p->vertex[i] = ft_atoi(tab[10 + i]);
-		v_p->portal[i] = ft_atoi(tab[11 + j + i]);
+		if (t[15 + i + j] && ft_isnum(t[15 + i + j]))
+			s[ft_atoi(t[2])].neighbor[j] = ft_atoi(t[15 + i + j]);
+		else
+			return (1);
+		if (t[16 + 2 * i + j] && ft_isnum(t[16 + 2 * i]))
+			s[ft_atoi(t[2])].portal_type[j] = ft_atoi(t[16 + 2 * i + j]);
+		else
+			return (1);
+		++j;
 	}
 	return (0);
 }
 
-int			verif_sec(t_sector **s, char **t)
+int			second_check(t_sector *s, char **t, t_vec2d *ver, t_parse *p)
 {
-	t_ver_port	v_p;
+	int		i;
 
-	if (t[8] && ft_isnum(t[8]) && t[7] && !ft_strcmp("vertex_num", t[7]))
+	i = ft_atoi(t[12]);
+	s[ft_atoi(t[2])].floor = ft_atoi(t[4]);
+	s[ft_atoi(t[2])].ceil = ft_atoi(t[6]);
+	s[ft_atoi(t[2])].gravity = (double)ft_atoi(t[8]) / 100;
+	s[ft_atoi(t[2])].friction = (double)ft_atoi(t[10]) / 100;
+	s[ft_atoi(t[2])].points = i;
+	if (!(s[ft_atoi(t[2])].vertex = (t_vec2d*)malloc(sizeof(t_vec2d) * i)))
+		parse_err(t, p);
+	if (!(s[ft_atoi(t[2])].neighbor = (int*)malloc(sizeof(int) * i)))
+		parse_err(t, p);
+	if (!(s[ft_atoi(t[2])].portal_type = (int*)malloc(sizeof(int) * i)))
+		parse_err(t, p);
+	if (t[14 + i] && t[15 + 2 * i] && !ft_strcmp(t[14 + i], "portals")
+			&& !ft_strcmp(t[15 + 2 * i], "type"))
 	{
-		if (t[1] && t[3] && t[5] && t[9] && t[10 + ft_atoi(t[8])]\
-			&& !ft_strcmp("number", t[1])\
-			&& !ft_strcmp("h_floor", t[3]) && !ft_strcmp("h_ceil", t[5])\
-			&& !ft_strcmp("vertexes", t[9])\
-			&& !ft_strcmp("portals", t[10 + ft_atoi(t[8])]))
+		if (third_check(s, t, ver, i))
+			return (1);
+	}
+	else
+		return (1);
+	return (0);
+}
+
+int			verif_sector(t_sector *s, char **t, t_vec2d *ver, t_parse *p)
+{
+	if (t[1] && t[3] && t[5] && t[7] && t[9] && t[11] && t[13]
+			&& !ft_strcmp(t[1], "number") && !ft_strcmp(t[3], "h_floor")
+			&& !ft_strcmp(t[5], "h_ceil") && !ft_strcmp(t[7], "gravity")
+			&& !ft_strcmp(t[9], "friction")
+			&& !ft_strcmp(t[11], "vertex_num")
+			&& !ft_strcmp(t[13], "vertexes"))
+	{
+		if (t[2] && t[4] && t[6] && t[8] && t[10] && t[12]
+				&& ft_isnum(t[2]) && ft_isnum(t[4]) && ft_isnum(t[6])
+				&& ft_isnum(t[8]) && ft_isnum(t[10]) && ft_isnum(t[12]))
 		{
-			if (verif_vp(t, &v_p, ft_atoi(t[8])))
-				exit(1);
-			if (t[2] && t[4] && t[6] && ft_isnum(t[2])\
-					&& ft_isnum(t[4]) && ft_isnum(t[6]))
-				sec_add_back(s, ft_atoi(t[2]),
-					init_height(ft_atoi(t[4]), ft_atoi(t[6])), v_p);
-			else
+			if (second_check(s, t, ver, p))
 				return (1);
 		}
 		else

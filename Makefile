@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+         #
+#    By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/10 16:16:29 by kibotrel          #+#    #+#              #
-#    Updated: 2020/01/22 16:09:45 by kibotrel         ###   ########.fr        #
+#    Updated: 2020/01/29 13:10:24 by nde-jesu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,7 +50,8 @@ INCS_DIR		+= libbmp/incs
 # All the subdirectories used in the project
 # to organise source files (Can be changed).
 
-OBJS_SUBDIRS	:= core
+OBJS_SUBDIRS	:= hud
+OBJS_SUBDIRS	+= core
 OBJS_SUBDIRS	+= game
 OBJS_SUBDIRS	+= menu
 OBJS_SUBDIRS	+= setup
@@ -60,8 +61,6 @@ OBJS_SUBDIRS	+= utils
 OBJS_SUBDIRS	+= editor
 OBJS_SUBDIRS	+= events
 OBJS_SUBDIRS	+= texture
-
-
 
 #------------------------------------ FILES -----------------------------------#
 
@@ -75,6 +74,7 @@ LTTF			= $(LTTF_DIR)/$(TTF)
 # Used header at each compilation to check file integrity (Can be changed).
 
 INCS			:= incs/env.h
+INCS			+= incs/hud.h
 INCS			+= incs/core.h
 INCS			+= incs/game.h
 INCS			+= incs/menu.h
@@ -86,19 +86,22 @@ INCS			+= incs/utils.h
 INCS			+= incs/editor.h
 INCS			+= incs/events.h
 INCS			+= incs/structs.h
+INCS			+= incs/editor.h
 
 # Source files (Can be changed)
 
-SRCS			:= core/main.c
+SRCS			:= hud/debug.c
+SRCS			+= core/main.c
 SRCS			+= core/game.c
 SRCS			+= core/menu.c
 SRCS			+= core/hooks.c
 SRCS			+= core/editor.c
 SRCS			+= core/selector.c
 SRCS			+= core/settings.c
+SRCS			+= game/hud.c
+SRCS			+= game/camera.c
 SRCS			+= game/engine.c
 SRCS			+= game/physics.c
-SRCS			+= game/camera.c
 SRCS			+= game/movement.c
 SRCS			+= game/keyboard.c
 SRCS			+= menu/click.c
@@ -107,31 +110,71 @@ SRCS			+= clean/env.c
 SRCS			+= clean/sdl.c
 SRCS			+= clean/ttf.c
 SRCS			+= clean/engine.c
-SRCS			+= parse/ennemy.c
-SRCS			+= parse/main.c
-SRCS			+= parse/object.c
 SRCS			+= parse/sector.c
+SRCS			+= parse/main.c
 SRCS			+= parse/tools.c
 SRCS			+= parse/vertex.c
 SRCS			+= parse/debug.c
+SRCS			+= parse/entity.c
+SRCS			+= parse/total.c
+SRCS			+= parse/player_blank.c
 SRCS			+= setup/game.c
 SRCS			+= setup/setup.c
 SRCS			+= setup/graphic.c
+SRCS			+= utils/usage.c
 SRCS			+= utils/data_0.c
 SRCS			+= utils/data_1.c
+SRCS			+= utils/data_2.c
+SRCS			+= utils/engine.c
+SRCS			+= utils/floats.c
 SRCS			+= utils/maths_0.c
 SRCS			+= utils/maths_1.c
-SRCS			+= utils/usage.c
+SRCS			+= utils/ft_power.c
 SRCS			+= utils/checks_00.c
 SRCS			+= utils/checks_01.c
-SRCS			+= utils/engine.c
 SRCS			+= utils/graphic_0.c
 SRCS			+= utils/graphic_1.c
+SRCS			+= utils/graphic_2.c
+SRCS			+= utils/ft_strdel.c
+SRCS			+= utils/ft_add_str.c
+SRCS			+= utils/ft_mul_str.c
+SRCS			+= utils/ft_realloc.c
+SRCS			+= utils/ft_power_str.c
+SRCS			+= utils/ft_strjoin_free.c
+SRCS			+= utils/ft_str_binary_to_nb.c
+SRCS			+= utils/ft_str_mantisse_to_nb.c
 SRCS			+= editor/keyboard.c
 SRCS			+= events/mouse.c
 SRCS			+= events/motion.c
 SRCS			+= events/keyboard.c
 SRCS			+= texture/texture_tools.c
+SRCS			+= editor/events.c
+SRCS			+= editor/events_tools.c
+SRCS			+= editor/setup.c
+SRCS			+= editor/clean.c
+SRCS			+= editor/delete.c
+SRCS			+= editor/display.c
+SRCS			+= editor/display_part2.c
+SRCS			+= editor/display_utils.c
+SRCS			+= editor/entity.c
+SRCS			+= editor/entity_part2.c
+SRCS			+= editor/edit_menu.c
+SRCS			+= editor/edit_menu_utils.c
+SRCS			+= editor/sec_edit_menu.c
+SRCS			+= editor/sec_edit_menu_utils.c
+SRCS			+= editor/picture.c
+SRCS			+= editor/text.c
+SRCS			+= editor/player.c
+SRCS			+= editor/portal.c
+SRCS			+= editor/portal_utils.c
+SRCS			+= editor/map_creation.c
+SRCS			+= editor/map_creation_part2.c
+SRCS			+= editor/map_creation_utils.c
+SRCS			+= editor/vertex.c
+SRCS			+= editor/sector.c
+SRCS			+= editor/sector_part2.c
+SRCS			+= editor/sector_check.c
+SRCS			+= editor/sector_utils.c
 
 #------------------------------ OPERATING SYSTEM ------------------------------#
 
@@ -253,7 +296,6 @@ $(LFT):
 
 $(LBMP):
 	@make -sC $(LBMP_DIR) -j
-
 
 # Rules used to create folders if they aren't already existing (Can be changed).
 

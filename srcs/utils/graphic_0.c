@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/17 11:08:34 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/01/14 14:05:03 by kibotrel         ###   ########.fr       */
+/*   Updated: 2020/01/23 21:27:42 by demonwaves       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	text_to_screen(t_env *env, t_sdl *sdl, char *text, uint8_t pos)
 	SDL_Surface	*tmp;
 
 	scale_text(env, &where, text, pos);
-	if (!(tmp = TTF_RenderText_Solid(sdl->font, text, sdl->color)))
+	if (!(tmp = TTF_RenderText_Blended(sdl->font[0], text, sdl->color)))
 		clean(env, E_TTF_RENDER);
 	if (SDL_BlitSurface(tmp, 0, sdl->screen, &where))
 		clean(env, E_SDL_BLIT);
