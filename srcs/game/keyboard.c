@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/10 15:11:44 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/01/31 23:00:17 by demonwaves       ###   ########.fr       */
+/*   Updated: 2020/02/10 01:37:22 by vivi             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,16 @@ void	game_keyboard(t_env *env)
 	{
 		env->win = MENU;
 		SDL_ShowCursor(SDL_ENABLE);
+		return ;
 	}
 	fov_update(env);
-	if (env->win == GAME && env->input[SDL_SCANCODE_SPACE])
+	if (env->input[SDL_SCANCODE_SPACE])
 		jump(env, &env->cam);
 	cam_height(env, env->input[SDL_SCANCODE_LSHIFT]);
-	if (env->win == GAME && env->input[SDL_SCANCODE_GRAVE])
+	if (env->input[SDL_SCANCODE_GRAVE])
 		check_tick(&env->tick.debug, &env->data.hud.debug, 160);
-	if (env->win == GAME && env->input[SDL_SCANCODE_F])
+	if (env->input[SDL_SCANCODE_F])
 		fly(env);
+	if (env->input[SDL_SCANCODE_R])
+		reload(env);
 }

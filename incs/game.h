@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 21:22:14 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/06 21:31:16 by demonwaves       ###   ########.fr       */
+/*   Updated: 2020/02/10 01:43:16 by vivi             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,5 +101,11 @@ void			hud(t_env *env);
 */
 
 void			game_click(t_env *env, int x, int y);
+
+/*
+**	reload.c
+*/
+
+void			reload(t_env *env);
 
 #endif

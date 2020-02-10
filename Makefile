@@ -6,7 +6,7 @@
 #    By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/10 16:16:29 by kibotrel          #+#    #+#              #
-#    Updated: 2020/02/08 16:04:46 by vivi             ###   ########.fr        #
+#    Updated: 2020/02/10 01:42:04 by vivi             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -91,6 +91,7 @@ INCS			+= incs/editor.h
 # Source files (Can be changed)
 
 SRCS			:= hud/debug.c
+SRCS			+= hud/weapon.c
 SRCS			+= hud/lifebar.c
 SRCS			+= hud/crosshair.c
 SRCS			+= core/main.c
@@ -104,6 +105,7 @@ SRCS			+= game/hud.c
 SRCS			+= game/click.c
 SRCS			+= game/camera.c
 SRCS			+= game/engine.c
+SRCS			+= game/reload.c
 SRCS			+= game/physics.c
 SRCS			+= game/movement.c
 SRCS			+= game/keyboard.c

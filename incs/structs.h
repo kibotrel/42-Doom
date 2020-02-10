@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 18:48:17 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/06 20:39:23 by demonwaves       ###   ########.fr       */
+/*   Updated: 2020/02/10 01:35:54 by vivi             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -171,6 +171,8 @@ typedef struct	s_data
 	uint8_t		shot;
 	uint8_t		f_size;
 	uint8_t		g_size;
+	int32_t		ammos;
+	int32_t		magazines;
 	uint32_t	fps;
 	uint32_t	w_size;
 }				t_data;
@@ -204,6 +206,7 @@ typedef struct	s_time
 	t_tick		shot;
 	t_tick		debug;
 	t_tick		frame;
+	t_tick		reload;
 }				t_time;
 
 /*

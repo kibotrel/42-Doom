@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/27 15:26:11 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/04 04:51:08 by demonwaves       ###   ########.fr       */
+/*   Updated: 2020/02/10 01:08:17 by vivi             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,5 +42,11 @@ void			negative(SDL_Surface *win, t_pos p);
 */
 
 void			lifebar(t_env *env);
+
+/*
+**	weapon.c
+*/
+
+void			weapon(t_env *env);
 
 #endif
