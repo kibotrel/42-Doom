@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/16 11:58:26 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/10 01:36:20 by vivi             ###   ########.fr       */
+/*   Updated: 2020/02/10 03:13:33 by vivi             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,8 @@ static void	assets_paths(t_env *env)
 	env->asset[SHOT_4] = asset_frame(env->w, env->h, 4);
 	env->asset[SHOT_5] = asset_frame(env->w, env->h, 5);
 	env->asset[SHOT_6] = asset_frame(env->w, env->h, 6);
+	env->asset[MAGAZINE] = "./assets/magazine.bmp";
+	env->asset[SHELL] = "./assets/shell.bmp";
 }
 
 static void	infos_setup(t_env *env)

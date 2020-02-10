@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 17:59:50 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/06 22:03:10 by demonwaves       ###   ########.fr       */
+/*   Updated: 2020/02/10 03:11:57 by vivi             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,8 @@ typedef enum	e_assets
 	SHOT_4,
 	SHOT_5,
 	SHOT_6,
+	MAGAZINE,
+	SHELL,
 	NB_ASSETS
 }				t_assets;
 
