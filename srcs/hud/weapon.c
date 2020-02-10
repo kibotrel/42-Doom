@@ -1,3 +1,4 @@
+#include "libft.h"
 #include "utils.h"
 
 static uint32_t	weapon_frame(uint32_t frame)
@@ -47,4 +48,6 @@ void			weapon(t_env *env)
 	draw_asset(env, env->sdl.bmp[MAGAZINE], shift);
 	shift = (t_pos){shift.x * 12, shift.y};
 	draw_asset(env, env->sdl.bmp[SHELL], shift);
+	info(env, ft_itoa(env->data.magazines), v2d(9, 25.5), 1);
+	info(env, txt(ft_itoa(env->data.ammos), " / 5", 0), v2d(18, 25.5), 1);
 }
