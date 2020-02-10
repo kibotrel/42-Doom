@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 17:59:50 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/10 12:53:06 by lojesu           ###   ########.fr       */
+/*   Updated: 2020/02/10 13:01:49 by lojesu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,6 @@ typedef enum	e_assets
 	ED_ENEMY_4,
 	ED_PORTAL_DOOR,
 	ED_PORTAL_WALL,
-	WALL,
 	NB_ASSETS
 }				t_assets;
 

@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/16 11:58:26 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/10 12:54:31 by lojesu           ###   ########.fr       */
+/*   Updated: 2020/02/10 13:03:07 by lojesu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ void		env_setup(t_env *env)
 	ft_bzero(env, sizeof(t_env));
 	env->w = WIN_W;
 	env->h = WIN_H;
-	env->win = GAME;
+	env->win = MENU;
 	assets_paths(env);
 	error_messages(env);
 	infos_setup(env);
