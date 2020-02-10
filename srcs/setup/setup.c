@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/16 11:58:26 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/10 03:13:33 by vivi             ###   ########.fr       */
+/*   Updated: 2020/02/10 04:31:28 by vivi             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ static void	time_track(t_env *env)
 	ft_bzero(&env->tick, sizeof(t_time));
 	ft_bzero(&env->tick.fly, sizeof(t_tick));
 	ft_bzero(&env->tick.fps, sizeof(t_tick));
+	ft_bzero(&env->tick.hud, sizeof(t_tick));
 	ft_bzero(&env->tick.frame, sizeof(t_tick));
 	ft_bzero(&env->tick.debug, sizeof(t_tick));
 	ft_bzero(&env->tick.reload, sizeof(t_tick));
@@ -97,7 +98,6 @@ static void	infos_setup(t_env *env)
 		clean(env, E_BKGD);
 	env->data.f_size = floor(env->w * MAX_FONT_SIZE / MAX_WIDTH);
 	env->data.g_size = env->data.f_size / 3;
-	env->data.hud.debug = -1;
 	env->cam.fly = -1;
 	env->cam.fall = 1;
 	env->cam.speed = 1;

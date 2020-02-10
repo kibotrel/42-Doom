@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 17:59:50 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/10 03:11:57 by vivi             ###   ########.fr       */
+/*   Updated: 2020/02/10 04:26:40 by vivi             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,6 +119,7 @@ typedef enum		e_presets
 typedef enum		e_state
 {
 	PLAY,
+	DEBUG,
 	INVENTORY,
 	SCREENSHOT
 }					t_state;
