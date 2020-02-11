@@ -6,7 +6,7 @@
 /*   By: reda-con <reda-con@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/17 16:35:58 by reda-con          #+#    #+#             */
-/*   Updated: 2020/02/05 09:15:27 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/02/07 09:28:56 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,14 @@ int			third_check(t_sector *s, char **t, t_vec2d *ver, int i)
 			s[ft_atoi(t[2])].neighbor[j] = ft_atoi(t[19 + i + j]);
 		else
 			return (1);
-		if (t[20 + 2 * i + j] && ft_isnum(t[20 + 2 * i]))
+		if (t[20 + 2 * i + j] && ft_isnum(t[20 + 2 * i + j]))
 			s[ft_atoi(t[2])].portal_type[j] = ft_atoi(t[20 + 2 * i + j]);
 		else
 			return (1);
 		++j;
 	}
+	if (t[20 + 2 * i + j])
+		return (1);
 	return (0);
 }
 
@@ -43,8 +45,8 @@ int			second_check(t_sector *s, char **t, t_vec2d *ver, t_parse *p)
 	int		i;
 
 	i = ft_atoi(t[16]);
-	s[ft_atoi(t[2])].type = ft_atoi(t[4]);
-	s[ft_atoi(t[2])].texture = ft_atoi(t[6]);
+	s[ft_atoi(t[2])].texture = ft_atoi(t[4]);
+	s[ft_atoi(t[2])].type = ft_atoi(t[6]);
 	s[ft_atoi(t[2])].floor = ft_atoi(t[8]);
 	s[ft_atoi(t[2])].ceil = ft_atoi(t[10]);
 	s[ft_atoi(t[2])].gravity = (double)ft_atoi(t[12]) / 100;

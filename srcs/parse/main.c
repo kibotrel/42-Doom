@@ -6,7 +6,7 @@
 /*   By: reda-con <reda-con@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 14:00:52 by reda-con          #+#    #+#             */
-/*   Updated: 2020/02/05 09:19:33 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/02/07 13:50:54 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,17 +49,17 @@ void		parse(char *l, t_parse *par)
 
 	i = 0;
 	tab = ft_strsplit(l, ' ');
-	if (tab[0] && !ft_strcmp("total", tab[0])){ft_putendl("oui");
+	if (tab[0] && !ft_strcmp("total", tab[0])){//ft_putendl("oui");
 		i += verif_total(&par->total, tab, par);}
-	else if (tab[0] && !ft_strcmp("vertex", tab[0])){ft_putendl("non");
+	else if (tab[0] && !ft_strcmp("vertex", tab[0])){//ft_putendl("non");
 		i += verif_vertex(par->ver, tab);}
-	else if (tab[0] && !ft_strcmp("enemy", tab[0])){ft_putendl("peut");
+	else if (tab[0] && !ft_strcmp("enemy", tab[0])){//ft_putendl("peut");
 		i += verif_entity(par->emy, tab);}
-	else if (tab[0] && !ft_strcmp("object", tab[0])){ft_putendl("etre");
+	else if (tab[0] && !ft_strcmp("object", tab[0])){//ft_putendl("etre");
 		i += verif_entity(par->obj, tab);}
-	else if (tab[0] && !ft_strcmp("player", tab[0])){ft_putendl("je");
+	else if (tab[0] && !ft_strcmp("player", tab[0])){//ft_putendl("je");
 		i += verif_player(&par->plr, tab);}
-	else if (tab[0] && !ft_strcmp("sector", tab[0])){ft_putendl("ne");
+	else if (tab[0] && !ft_strcmp("sector", tab[0])){//ft_putendl("ne");
 		i += verif_sector(par->sec, tab, par->ver, par);}
 	else if (verif_blank(tab) && tab[0][0] != '#')
 		parse_err(tab, par);
@@ -83,6 +83,18 @@ int			main_parse(char *file, t_env *env)
 	}
 	if (gnl == -1 || close(fd) || par.plr.pos.x <= -1 || par.plr.pos.y <= -1)
 		exit(1);
+	par.sec[0].num_link = 1;
+	par.sec[0].link = malloc(sizeof(int) * par.sec[0].num_link);
+	par.sec[0].link[0] = 1;
+	par.sec[1].num_link = 1;
+	par.sec[1].link = malloc(sizeof(int) * par.sec[1].num_link);
+	par.sec[1].link[0] = 0;
+	par.sec[2].num_link = 1;
+	par.sec[2].link = malloc(sizeof(int) * par.sec[2].num_link);
+	par.sec[2].link[0] = 3;
+	par.sec[3].num_link = 1;
+	par.sec[3].link = malloc(sizeof(int) * par.sec[3].num_link);
+	par.sec[3].link[0] = 2;
 	env->zones = par.total.sect;
 	env->sector = par.sec;
 	env->cam.angle = par.plr.angle;

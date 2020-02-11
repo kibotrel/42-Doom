@@ -6,12 +6,13 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/10 16:47:31 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/03 13:20:50 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/02/11 09:23:44 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "utils.h"
 #include "env.h"
+#include "libft.h"
 
 void	jump(t_env *env, t_cam *cam)
 {
@@ -31,29 +32,23 @@ void	sector_triger(t_env *env)
 
 	if (env->old_st_fl != env->st_fl)
 	{
-		if (env->sector[env->cam.sector].type == 0)
+		if (env->sector[env->cam.sector].type == 1)
 		{
-			i = env->sector[env->cam.sector].floor + 10;;
-			while (env->sector[env->cam.sector].floor < i)
-			{
-				++env->sector[env->cam.sector].floor;
-				physics(env);
-				SDL_Delay(10);
-			}
+			env->cam.pos.z += 10;
+			env->sector[env->cam.sector].floor += 10;
+			env->sector[env->cam.sector].type = 2;
+		}
+		else if (env->sector[env->cam.sector].type == 2)
+		{
+			env->cam.pos.z -= 10;
+			env->sector[env->cam.sector].floor -= 10;
 			env->sector[env->cam.sector].type = 1;
 		}
-		else if (env->sector[env->cam.sector].type == 1)
+		else if (env->sector[env->cam.sector].type == 3)
 		{
-			i = env->sector[env->cam.sector].floor - 10;;
-			while (env->sector[env->cam.sector].floor > i)
-			{
-				printf("oui\n");
-				--env->sector[env->cam.sector].floor;
-				physics(env);
-				graphics(env);
-				SDL_Delay(100);
-			}
-			env->sector[env->cam.sector].type = 0;
+			i = -1;
+			while (++i < env->sector[env->cam.sector].num_link)
+				env->sector[env->sector[env->cam.sector].link[i]].floor = env->sector[env->cam.sector].floor;
 		}
 	}
 }
