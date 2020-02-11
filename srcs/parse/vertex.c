@@ -6,7 +6,7 @@
 /*   By: reda-con <reda-con@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 16:20:55 by reda-con          #+#    #+#             */
-/*   Updated: 2020/02/11 10:03:49 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/02/11 10:41:12 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ int			verif_vertex(t_vec2d *vec, char **tab)
 		else
 			return (1);
 	}
+	else if (tab[7])
+		return (1);
 	else
 		return (1);
 	return (0);

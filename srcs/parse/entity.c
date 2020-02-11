@@ -6,7 +6,7 @@
 /*   By: reda-con <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/15 11:06:28 by reda-con          #+#    #+#             */
-/*   Updated: 2020/02/11 10:01:11 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/02/11 10:41:36 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ int			verif_entity(t_entity *ent, char **tab)
 		else
 			return (1);
 	}
+	else if (tab[13])
+		return (1);
 	else
 		return (1);
 	return (0);

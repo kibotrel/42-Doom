@@ -6,7 +6,7 @@
 /*   By: reda-con <reda-con@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/17 16:35:58 by reda-con          #+#    #+#             */
-/*   Updated: 2020/02/11 10:38:05 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/02/11 10:40:48 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int			third_check(t_sector *s, char **t, t_vec2d *ver, int i)
 			s[ft_atoi(t[2])].neighbor[j] = ft_atoi(t[19 + i + j]);
 		else
 			return (1);
-		if (t[20 + 2 * i + j] && ft_isnum(t[20 + 2 * i]))
+		if (t[20 + 2 * i + j] && ft_isnum(t[20 + 2 * i + j]))
 			s[ft_atoi(t[2])].portal_type[j] = ft_atoi(t[20 + 2 * i + j]);
 		else
 			return (1);

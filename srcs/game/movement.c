@@ -1,5 +1,6 @@
 #include "utils.h"
 #include "env.h"
+#include "libft.h"
 
 void	jump(t_env *env, t_cam *cam)
 {
@@ -19,6 +20,7 @@ void	sector_triger(t_env *env)
 
 	if (env->old_st_fl != env->st_fl)
 	{
+<<<<<<< HEAD
 			printf("%d\n", env->sector[env->cam.sector].type);
 		if (env->sector[env->cam.sector].type == 1)
 		{
