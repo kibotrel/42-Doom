@@ -6,7 +6,7 @@
 #    By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/10 16:16:29 by kibotrel          #+#    #+#              #
-#    Updated: 2020/02/10 01:42:04 by vivi             ###   ########.fr        #
+#    Updated: 2020/02/11 20:00:06 by vivi             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -354,6 +354,16 @@ fclean: clean
 			sudo $(RM) $(LTTF);													\
 		fi;																		\
 	fi
+
+# Re-build libs (Can't be changed).
+
+re-libs:
+	@make -sC $(LFT_DIR) re
+	@make -sC $(LBMP_DIR) re
+	@echo "$(YELLOW)      - Building $(RESET)$(NAME) $(YELLOW)...\n$(RESET)"
+	@$(CC) $(CFLAGS) -o $(NAME) $(C_OBJS) $(LIBS)
+	@echo "$(GREEN)***   Project $(NAME) successfully compiled   ***\n$(RESET)"
+
 # Re-compile everything (Can't be changed).
 
 re: fclean all
