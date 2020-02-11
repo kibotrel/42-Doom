@@ -6,7 +6,7 @@
 /*   By: reda-con <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/23 16:36:21 by reda-con          #+#    #+#             */
-/*   Updated: 2020/01/27 10:19:09 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/02/11 10:01:40 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ int		verif_player(t_player *pl, char **tab)
 		if (tab[2] && tab[4] && tab[6] && tab[8] && ft_isnum(tab[2])
 				&& ft_isnum(tab[4]) && ft_isnum(tab[6]) && ft_isnum(tab[8]))
 		{
+			if (tab[9])
+				return (1);
 			pl->pos = init_vec2d(floor(ft_atoi(tab[2]) / 10), floor(ft_atoi(tab[4]) / 10));
 			pl->sect = ft_atoi(tab[6]);
 			pl->angle = ft_atoi(tab[8]);

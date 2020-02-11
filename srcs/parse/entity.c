@@ -6,7 +6,7 @@
 /*   By: reda-con <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/15 11:06:28 by reda-con          #+#    #+#             */
-/*   Updated: 2020/01/27 09:25:50 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/02/11 10:01:11 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ int			verif_entity(t_entity *ent, char **tab)
 			&& ft_isnum(tab[2]) && ft_isnum(tab[4]) && ft_isnum(tab[6])
 			&& ft_isnum(tab[8]) && ft_isnum(tab[10]) && ft_isnum(tab[12]))
 		{
+			if (tab[13])
+				return (1);
 			ent[ft_atoi(tab[2])].pos = init_vec2d(ft_atoi(tab[4]),
 					ft_atoi(tab[6]));
 			ent[ft_atoi(tab[2])].sect = ft_atoi(tab[8]);

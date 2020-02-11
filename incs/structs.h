@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 18:48:17 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/11 09:39:47 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/02/11 09:54:14 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,28 +74,6 @@ typedef struct	s_data
 	uint32_t	w_size;
 }				t_data;
 
-/*
-typedef struct	s_sector
-{
-	int			*neighbor;
-	double		ceil;
-	double		floor;
-	t_vec2d		*vertex;
-	uint32_t	points;
-}				t_sector;
-*/
-
-typedef struct	s_sector
-{
-	uint32_t	points;
-	double		ceil;
-	double		floor;
-	double		gravity;
-	double		friction;
-	int			*neighbor;
-	int			*portal_type;
-	t_vec2d		*vertex;
-}				t_sector;
 
 /*
  ** Time tracking
@@ -114,6 +92,7 @@ typedef struct	s_time
 	t_tick		fps;
 	t_tick		frame;
 	t_tick		editor;
+	t_tick		sector_triger;
 }				t_time;
 
 /*
@@ -217,74 +196,11 @@ typedef struct		s_editor
 	bool			finish;
 }					t_editor;
 
-/*
-**	Position structs
-*/
-
-
-typedef struct	s_pos
-{
-	int32_t		x;
-	int32_t		y;
-}				t_pos;
-
-typedef struct	s_vec2d
-{
-	double		x;
-	double		y;
-}				t_vec2d;
-
-typedef struct	s_vec3d
-{
-	double		x;
-	double		y;
-	double		z;
-}				t_vec3d;
-
-typedef struct	s_ui
-{
-	t_pos		min;
-	t_pos		max;
-	int8_t		background;
-	uint8_t		button;
-}				t_ui;
-
-typedef struct	s_grid
-{
-	t_pos		min;
-	t_pos		max;
-}				t_grid;
-
-typedef struct	s_hud
-{
-	int8_t		debug;
-}				t_hud;
-
-typedef struct	s_data
-{
-	t_ui		ui;
-	t_grid		grid;
-	t_hud		hud;
-	uint8_t		f_size;
-	uint8_t		g_size;
-	uint32_t	fps;
-	uint32_t	w_size;
-}				t_data;
-
-/*
-typedef struct	s_sector
-{
-	int			*neighbor;
-	double		ceil;
-	double		floor;
-	t_vec2d		*vertex;
-	uint32_t	points;
-}				t_sector;
-*/
-
 typedef struct	s_sector
 {
 	int			type;
+	int			*link;
+	int			num_link;
 	int			texture;
 	uint32_t	points;
 	double		ceil;
@@ -295,25 +211,6 @@ typedef struct	s_sector
 	int			*portal_type;
 	t_vec2d		*vertex;
 }				t_sector;
-
-/*
- ** Time tracking
- */
-
-typedef struct	s_tick
-{
-	uint32_t	new;
-	uint32_t	old;
-}				t_tick;
-
-typedef struct	s_time
-{
-	t_tick		fly;
-	t_tick		debug;
-	t_tick		fps;
-	t_tick		frame;
-	t_tick		test;
-}				t_time;
 
 /*
 **	Main structures.

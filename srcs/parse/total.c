@@ -6,7 +6,7 @@
 /*   By: reda-con <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/23 16:34:34 by reda-con          #+#    #+#             */
-/*   Updated: 2020/01/27 09:25:38 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/02/11 10:03:08 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,11 @@ int		verif_total(t_total *total, char **tab, t_parse *par)
 	{
 		if (tab[2] && tab[4] && tab[6] && tab[8] && ft_isnum(tab[2])
 				&& ft_isnum(tab[4]) && ft_isnum(tab[6]) && ft_isnum(tab[8]))
+		{
+			if (tab[9])
+				return (1);
 			init_total(total, tab, par);
+		}
 		else
 			return (1);
 	}

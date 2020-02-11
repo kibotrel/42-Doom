@@ -6,7 +6,7 @@
 /*   By: reda-con <reda-con@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 16:20:55 by reda-con          #+#    #+#             */
-/*   Updated: 2020/01/27 10:18:44 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/02/11 10:03:49 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,11 @@ int			verif_vertex(t_vec2d *vec, char **tab)
 	{
 		if (tab[2] && tab[4] && tab[6] && ft_isnum(tab[2]) && ft_isnum(tab[4])
 				&& ft_isnum(tab[6]))
+		{
+			if (tab[7])
+				return (1);
 			vec[ft_atoi(tab[2])] = init_vec2d(floor(ft_atoi(tab[4]) / 10), floor(ft_atoi(tab[6]) / 10));
+		}
 		else
 			return (1);
 	}
