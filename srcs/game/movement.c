@@ -5,7 +5,7 @@
 void	jump(t_env *env, t_cam *cam)
 {
 	if (cam->fly > 0
-		&& env->sector[cam->sector].ceil - cam->pos.z > MARGIN_HEAD)
+			&& env->sector[cam->sector].ceil - cam->pos.z > MARGIN_HEAD)
 		cam->pos.z += 0.25;
 	else if (cam->ground)
 	{
@@ -17,29 +17,36 @@ void	jump(t_env *env, t_cam *cam)
 void	sector_triger(t_env *env)
 {
 	int		i;
+	int		s;
 
+	s = env->cam.sector;
+	if (env->sector[s].type == 1)
+	{
+		if (env->input[SDL_SCANCODE_E])
+		{
+			++env->cam.pos.z;
+			++env->sector[s].floor;
+		}
+		if (env->input[SDL_SCANCODE_Q])
+		{
+			--env->cam.pos.z;
+			--env->sector[s].floor;
+		}
+		if (env->sector[s].floor >= env->sector[s].ceil - 5)
+		{
+			--env->cam.pos.z;
+			env->sector[s].floor = env->sector[s].ceil - 6;
+		}
+	}
 	if (env->old_st_fl != env->st_fl)
 	{
-			printf("%d\n", env->sector[env->cam.sector].type);
-		if (env->sector[env->cam.sector].type == 1)
-		{
-			env->cam.pos.z += 10;
-			env->sector[env->cam.sector].floor += 10;;
-			env->sector[env->cam.sector].type = 2;
-		}
-		else if (env->sector[env->cam.sector].type == 2)
-		{
-			env->cam.pos.z -= 10;
-			env->sector[env->cam.sector].floor -= 10;;
-			env->sector[env->cam.sector].type = 1;
-		}
-		else if (env->sector[env->cam.sector].type == 3)
+		if (env->sector[s].type == 3)
 		{
 			i = -1;
-			while (++i < env->sector[env->cam.sector].num_link)
+			while (++i < env->sector[s].num_link)
 			{
-				env->sector[env->sector[env->cam.sector].link[i]].floor =
-					env->sector[env->cam.sector].floor;
+				env->sector[env->sector[s].link[i]].floor =
+					env->sector[s].floor;
 			}
 		}
 	}
