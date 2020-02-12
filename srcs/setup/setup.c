@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/16 11:58:26 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/11 10:40:20 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/02/11 10:47:47 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static void	time_track(t_env *env)
 	ft_bzero(&env->tick.frame, sizeof(t_tick));
 	ft_bzero(&env->tick.debug, sizeof(t_tick));
 	ft_bzero(&env->tick.editor, sizeof(t_tick));
-	ft_bzero(&env->tick.test, sizeof(t_tick));
+	ft_bzero(&env->tick.sector_triger, sizeof(t_tick));
 }
 
 static void	error_messages(t_env *env)

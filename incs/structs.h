@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 18:48:17 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/11 10:44:26 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/02/12 10:58:39 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,22 +148,18 @@ typedef struct		s_portal
 
 typedef struct		s_ed_sector
 {
-	t_vertex		*vertex;
-	int				vertex_count;
-	int				sector_number;
-	int				texture;
-	int				type;
-	int				gravity;
-	int				friction;
-
-	int				h_ceil;
-	int				h_floor;
-
-	int				*is_portal;
-
-	struct s_ed_sector *prev;
+	t_vertex			*vertex;
+	int					vertex_count;
+	int					sector_number;
+	int					texture;
+	int					type;
+	int					gravity;
+	int					friction;
+	int					h_ceil;
+	int					h_floor;
+	int					*is_portal;
+	struct s_ed_sector	*prev;
 	struct s_ed_sector	*next;
-
 }					t_ed_sector;
 
 typedef struct		s_editor
