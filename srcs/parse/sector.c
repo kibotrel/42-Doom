@@ -6,7 +6,7 @@
 /*   By: reda-con <reda-con@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/17 16:35:58 by reda-con          #+#    #+#             */
-/*   Updated: 2020/02/11 10:40:48 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/02/13 14:38:55 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,8 @@ int			second_check(t_sector *s, char **t, t_vec2d *ver, t_parse *p)
 	s[ft_atoi(t[2])].type = ft_atoi(t[6]);
 	s[ft_atoi(t[2])].floor = ft_atoi(t[8]);
 	s[ft_atoi(t[2])].ceil = ft_atoi(t[10]);
+	if (s[ft_atoi(t[2])].floor == s[ft_atoi(t[2])].ceil)
+		s[ft_atoi(t[2])].floor -= 0.1;
 	s[ft_atoi(t[2])].gravity = (double)ft_atoi(t[12]) / 100;
 	s[ft_atoi(t[2])].friction = (double)ft_atoi(t[14]) / 100;
 	s[ft_atoi(t[2])].points = i;
