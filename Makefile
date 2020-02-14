@@ -6,7 +6,7 @@
 #    By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/10 16:16:29 by kibotrel          #+#    #+#              #
-#    Updated: 2020/02/14 07:57:03 by kibotrel         ###   ########.fr        #
+#    Updated: 2020/02/14 09:04:45 by kibotrel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -91,6 +91,7 @@ INCS			+= incs/editor.h
 # Source files (Can be changed)
 
 SRCS			:= hud/debug.c
+SRCS			+= hud/purse.c
 SRCS			+= hud/weapon.c
 SRCS			+= hud/lifebar.c
 SRCS			+= hud/crosshair.c

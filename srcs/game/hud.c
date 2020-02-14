@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/24 11:32:06 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/14 08:00:16 by kibotrel         ###   ########.fr       */
+/*   Updated: 2020/02/14 09:01:20 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,5 +51,6 @@ void	hud(t_env *env)
 		crosshair(env);
 		lifebar(env);
 		weapon(env);
+		purse(env);
 	}
 }

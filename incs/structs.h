@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 18:48:17 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/14 07:59:08 by kibotrel         ###   ########.fr       */
+/*   Updated: 2020/02/14 10:27:09 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -159,8 +159,8 @@ typedef struct	s_grid
 
 typedef struct	s_hud
 {
-	int8_t		coin_shift;
 	int8_t		last_display;
+	int32_t		coin_shift;
 }				t_hud;
 
 typedef struct	s_data
@@ -209,6 +209,7 @@ typedef struct	s_time
 	t_tick		shot;
 	t_tick		debug;
 	t_tick		frame;
+	t_tick		purse;
 	t_tick		reload;
 }				t_time;
 

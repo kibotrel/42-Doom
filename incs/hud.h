@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/27 15:26:11 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/14 07:59:03 by kibotrel         ###   ########.fr       */
+/*   Updated: 2020/02/14 09:16:59 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,5 +48,11 @@ void			lifebar(t_env *env);
 */
 
 void			weapon(t_env *env);
+
+/*
+**	purse.c
+*/
+
+void			purse(t_env *env);
 
 #endif
