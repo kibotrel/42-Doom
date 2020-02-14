@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/14 08:00:56 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/14 08:00:56 by kibotrel         ###   ########.fr       */
+/*   Updated: 2020/02/14 15:41:51 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	negative(SDL_Surface *win, t_pos p)
 {
 	int		*pixel;
 
-	pixel =  win->pixels + p.y * win->pitch + p.x * win->format->BytesPerPixel;
+	pixel = win->pixels + p.y * win->pitch + p.x * win->format->BytesPerPixel;
 	*pixel = ~*pixel;
 }
 
