@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 13:21:31 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/10 12:55:32 by lojesu           ###   ########.fr       */
+/*   Updated: 2020/02/14 15:29:52 by lojesu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,4 +92,5 @@ void		draw_screen(t_env *env, t_game *var)
 			draw_wall(env, var, var->y, x, wall.pixels);
 		x++;
 	}
+	free(wall.pixels);
 }
