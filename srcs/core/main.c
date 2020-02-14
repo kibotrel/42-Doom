@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/16 11:53:54 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/01/29 12:00:00 by kibotrel         ###   ########.fr       */
+/*   Updated: 2020/02/14 15:37:51 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,11 +45,11 @@ int			main(int ac, char **av)
 	{
 		env_setup(&env);
 		if (prechecks(ac, av))
-		 {
+		{
 			if (ac == 2)
-		 		main_parse(av[1], &env);
+				main_parse(av[1], &env);
 			graphic_setup(&env, &env.sdl);
-		 }
+		}
 		else
 			clean(&env, E_FILENAME);
 		while (1)
