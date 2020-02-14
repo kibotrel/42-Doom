@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 18:48:17 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/07 14:27:42 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/02/14 14:24:13 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -167,15 +167,26 @@ typedef struct		s_portal
 	struct s_portal	*next;
 }					t_portal;
 
+typedef struct		s_effector
+{
+	t_effects		effects;
+	int				money_sec;
+	int				cost;
+	int				*doors;
+}					t_effector;
+
 typedef struct		s_ed_sector
 {
 	t_vertex		*vertex;
 	int				vertex_count;
 	int				sector_number;
 	int				texture;
+	t_effector		effect;
 	int				type;
 	int				gravity;
 	int				friction;
+	int				light;
+	int				light_value;
 
 	int				h_ceil;
 	int				h_floor;

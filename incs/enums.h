@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 17:59:50 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/10 15:35:14 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/02/14 12:35:51 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,18 @@ typedef enum		e_settings
 	PLAYER,
 	ENEMY,
 	OBJECT,
+	EFFECTOR
 }					t_settings;
+
+typedef enum		e_effects
+{
+	EFF_NONE,
+	JETPACK,
+	MONEY,
+	ELEVATOR,
+	GENERATOR,
+	END
+}					t_effects;
 
 typedef enum		e_presets
 {
@@ -97,10 +108,14 @@ typedef enum		e_presets
 	SECTOR_TYPE,
 	SECTOR_GRAV,
 	SECTOR_FRICTION,
+	SECTOR_LIGHT,
 	ENTITY_TYPE,
 	ENTITY_MOVE,
 	ENTITY_ROTATE,
-	PLAYER_ROTATE
+	PLAYER_ROTATE,
+	EFF_EFFECT,
+	EFF_MOVE,
+	EFF_COST
 }					t_presets;
 
 #endif

@@ -15,9 +15,41 @@ t_ed_sector	*create_sector(t_editor *edit, t_env *env)
 	sect->type = 0;
 	sect->gravity = 10;
 	sect->friction = 50;
+	sect->light = -1;
+	sect->light_value = -1;
 	sect->next = NULL;
 	sect->prev = NULL;
 	return (sect);
+}
+
+void			print_sector_light(t_env *env, int light, t_ed_sector *sect)
+{
+	int		color;
+
+	rectangle(init_vertex(1499, 49), init_vertex(1550, 100), 0xffffff, env->sdl.screen);
+	if (light == -1)
+	{
+		sect->light_value = -1;
+		return ;
+	}
+	else if (light == 0)
+		color = 0xff0000;
+	else if (light == 1)
+		color = 0x00ff00;
+	else if (light == 2)
+		color = 0x0000ff;
+	else if (light == 3)
+		color = 0xcc6075;
+	else if (light == 4)
+		color = 0xe69a01;
+	else if (light == 5)
+		color = 0x999999;
+	else if (light == 6)
+		color = 0x04c39a;
+	else
+		return ;
+	sect->light_value = color;
+	square(1550, 100, color, env->sdl.screen);
 }
 
 static int		reset_count(t_vertex *vertex, t_ed_sector *sector)
