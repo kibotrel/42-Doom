@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 19:01:59 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/14 15:46:03 by kibotrel         ###   ########.fr       */
+/*   Updated: 2020/02/14 17:16:09 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,6 +115,8 @@ uint32_t			life_state(double life);
 */
 
 char				*magazine_asset(int w, int h);
+int32_t				coin_shift(int w, int h);
+int32_t				shotgun_shift(int w, int h);
 
 /*
 **	maths_0.c

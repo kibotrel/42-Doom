@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/16 11:58:26 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/14 16:50:08 by kibotrel         ###   ########.fr       */
+/*   Updated: 2020/02/14 17:01:26 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,8 +102,8 @@ static void	infos_setup(t_env *env)
 		clean(env, E_BKGD);
 	env->data.f_size = floor(env->w * MAX_FONT_SIZE / MAX_WIDTH);
 	env->data.g_size = env->data.f_size / 3;
-	env->data.hud.coin.shift = 48;
-	env->data.hud.shotgun.shift = 480;
+	env->data.hud.coin.shift = coin_shift(env->w, env->h);
+	env->data.hud.shotgun.shift = shotgun_shift(env->w, env->h);
 }
 
 void		env_setup(t_env *env)
