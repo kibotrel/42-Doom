@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 13:21:31 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/14 15:29:52 by lojesu           ###   ########.fr       */
+/*   Updated: 2020/02/14 17:30:04 by lojesu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,9 @@ static void	draw_wall(t_env *env, t_game *var, int32_t *y, int32_t x, uint32_t *
 {
 	var->text_height = fabs(var->ceil[0] - var->floor[0]);
 	draw_texture_slice(env, x, lim(y[0], y[1]), var, wall);
+	/*(void)var;  //wesh killian tu commente les deux ligne du haut et tu decommente ces 3 lignes
+	(void)wall;
+	draw_slice(env, x, lim(y[0], y[1]), flat(0, 0x654321, 0));*/
 }
 
 void		draw_screen(t_env *env, t_game *var)
