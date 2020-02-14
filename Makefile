@@ -6,7 +6,7 @@
 #    By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/10 16:16:29 by kibotrel          #+#    #+#              #
-#    Updated: 2020/02/11 20:00:06 by vivi             ###   ########.fr        #
+#    Updated: 2020/02/14 07:57:03 by kibotrel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -357,7 +357,7 @@ fclean: clean
 
 # Re-build libs (Can't be changed).
 
-re-libs:
+re-libs: $(OBJS_DIR) $(C_SUBDIRS) $(C_OBJS)
 	@make -sC $(LFT_DIR) re
 	@make -sC $(LBMP_DIR) re
 	@echo "$(YELLOW)      - Building $(RESET)$(NAME) $(YELLOW)...\n$(RESET)"
