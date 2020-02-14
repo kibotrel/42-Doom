@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 18:48:17 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/10 04:29:34 by vivi             ###   ########.fr       */
+/*   Updated: 2020/02/14 05:21:31 by demonwaves       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -159,6 +159,7 @@ typedef struct	s_grid
 
 typedef struct	s_hud
 {
+	int8_t		coin_shift;
 	int8_t		last_display;
 }				t_hud;
 
@@ -174,6 +175,7 @@ typedef struct	s_data
 	int32_t		ammos;
 	int32_t		magazines;
 	uint32_t	fps;
+	uint32_t	money;
 	uint32_t	w_size;
 }				t_data;
 
