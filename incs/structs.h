@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 18:48:17 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/14 14:21:35 by kibotrel         ###   ########.fr       */
+/*   Updated: 2020/02/14 15:36:05 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -199,8 +199,8 @@ typedef struct	s_sector
 }				t_sector;
 
 /*
- ** Time tracking
- */
+** Time tracking
+*/
 
 typedef struct	s_tick
 {

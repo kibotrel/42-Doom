@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 19:01:59 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/14 15:21:33 by kibotrel         ###   ########.fr       */
+/*   Updated: 2020/02/14 15:35:39 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,8 +65,9 @@ void				blur(t_env *env, SDL_Surface *win, t_pos p);
 */
 
 void				blur_area(t_env *env, t_pos min, t_pos max);
-void	draw_asset(t_env *env, t_bmp asset, t_pos shift, t_anime *anime);
 void				info(t_env *env, char *str, t_vec2d pos, uint32_t mode);
+void				draw_asset(t_env *env, t_bmp asset, t_pos shift,
+								t_anime *anime);
 
 /*
 **	data_0.c
@@ -151,7 +152,7 @@ int8_t				cycle_check(t_env *env, t_game *var, t_item *now);
 
 char				*background_path(int w, int h);
 void				speed_check(t_env *env);
-void				check_tick(t_tick *tick, int8_t *flag, uint32_t  offset);
+void				check_tick(t_tick *tick, int8_t *flag, uint32_t offset);
 /*
 **	engine.c
 */
