@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/16 11:58:26 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/11 10:47:47 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/02/14 13:33:44 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ static void	error_messages(t_env *env)
 	env->error[E_BMP_PARSE] = M_BMP_PARSE;
 	env->error[E_MALLOC] = M_MALLOC;
 	env->error[E_BKGD] = M_BKGD;
+	env->error[E_PARSE] = M_PARSE;
 }
 
 static void	assets_paths(t_env *env)

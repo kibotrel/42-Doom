@@ -6,13 +6,14 @@
 /*   By: reda-con <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/15 11:06:28 by reda-con          #+#    #+#             */
-/*   Updated: 2020/02/11 10:41:36 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/02/14 11:29:23 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parse.h"
 #include <stdlib.h>
-#include "../../libft/incs/libft.h"
+#include "libft.h"
+#include "utils.h"
 
 int			verif_entity(t_entity *ent, char **tab)
 {
@@ -27,7 +28,7 @@ int			verif_entity(t_entity *ent, char **tab)
 		{
 			if (tab[13])
 				return (1);
-			ent[ft_atoi(tab[2])].pos = init_vec2d(ft_atoi(tab[4]),
+			ent[ft_atoi(tab[2])].pos = v2d(ft_atoi(tab[4]),
 					ft_atoi(tab[6]));
 			ent[ft_atoi(tab[2])].sect = ft_atoi(tab[8]);
 			ent[ft_atoi(tab[2])].angle = ft_atoi(tab[10]);

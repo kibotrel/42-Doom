@@ -16,8 +16,10 @@ void	jump(t_env *env, t_cam *cam)
 
 void	sector_triger(t_env *env)
 {
-	int		i;
-	int		s;
+	int			i;
+	int			s;
+	uint32_t	j;
+	uint32_t	k;
 
 	s = env->cam.sector;
 	if (env->sector[s].type == 1)
@@ -45,8 +47,19 @@ void	sector_triger(t_env *env)
 			i = -1;
 			while (++i < env->sector[s].num_link)
 			{
-				env->sector[env->sector[s].link[i]].floor =
-					env->sector[s].floor;
+				j = 0;
+				while (j < env->sector[env->sector[s].link[i]].points)
+				{
+					env->sector[env->sector[s].link[i]].neighbor[j] = env->sector[env->sector[s].link[i]].doors_neighbor[j];
+					k = 0;
+					while (k < env->sector[env->sector[env->sector[s].link[i]].neighbor[j]].points)
+					{
+						if (env->sector[env->sector[env->sector[s].link[i]].neighbor[j]].doors_neighbor[k] == env->sector[s].link[i])
+							env->sector[env->sector[env->sector[s].link[i]].neighbor[j]].neighbor[k] = env->sector[s].link[i];
+						++k;
+					}
+					++j;
+				}
 			}
 		}
 	}

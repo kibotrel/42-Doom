@@ -6,16 +6,17 @@
 /*   By: reda-con <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/23 16:36:21 by reda-con          #+#    #+#             */
-/*   Updated: 2020/02/11 10:01:40 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/02/14 12:43:10 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parse.h"
 #include "libft.h"
+#include "utils.h"
 
-int		verif_player(t_player *pl, char **tab)
+int		verif_player(t_cam *cam, char **tab)
 {
-	if (pl->pos.x != -1 && pl->pos.y != -1)
+	if (cam->pos.x != -1 && cam->pos.y != -1)
 		return (1);
 	if (tab[1] && tab[3] && tab[5] && tab[7] && !ft_strcmp(tab[1], "x")
 			&& !ft_strcmp(tab[3], "y") && !ft_strcmp(tab[5], "sector")
@@ -26,9 +27,9 @@ int		verif_player(t_player *pl, char **tab)
 		{
 			if (tab[9])
 				return (1);
-			pl->pos = init_vec2d(floor(ft_atoi(tab[2]) / 10), floor(ft_atoi(tab[4]) / 10));
-			pl->sect = ft_atoi(tab[6]);
-			pl->angle = ft_atoi(tab[8]);
+			cam->pos = v3d(floor(ft_atoi(tab[2]) / 10), floor(ft_atoi(tab[4]) / 10), 0);
+			cam->sector = ft_atoi(tab[6]);
+			cam->angle = ft_atoi(tab[8]);
 		}
 		else
 			return (1);

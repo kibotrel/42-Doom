@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 18:48:17 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/12 10:58:39 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/02/14 13:23:14 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -204,7 +204,7 @@ typedef struct	s_sector
 	double		gravity;
 	double		friction;
 	int			*neighbor;
-	int			*portal_type;
+	int			*doors_neighbor;
 	t_vec2d		*vertex;
 }				t_sector;
 

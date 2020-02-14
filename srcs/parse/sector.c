@@ -6,12 +6,13 @@
 /*   By: reda-con <reda-con@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/17 16:35:58 by reda-con          #+#    #+#             */
-/*   Updated: 2020/02/14 09:44:41 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/02/14 13:35:06 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parse.h"
 #include "libft.h"
+#include "clean.h"
 #include <stdlib.h>
 
 int			third_check(t_sector *s, char **t, t_vec2d *ver, int i)
@@ -36,7 +37,7 @@ int			third_check(t_sector *s, char **t, t_vec2d *ver, int i)
 	return (0);
 }
 
-int			second_check(t_sector *s, char **t, t_vec2d *ver, t_parse *p)
+int			second_check(t_sector *s, char **t, t_vec2d *ver, t_env *e)
 {
 	int		i;
 
@@ -45,28 +46,26 @@ int			second_check(t_sector *s, char **t, t_vec2d *ver, t_parse *p)
 	s[ft_atoi(t[2])].type = ft_atoi(t[6]);
 	s[ft_atoi(t[2])].floor = ft_atoi(t[8]);
 	s[ft_atoi(t[2])].ceil = ft_atoi(t[10]);
-	if (s[ft_atoi(t[2])].floor == s[ft_atoi(t[2])].ceil)
-		s[ft_atoi(t[2])].floor -= 0.1;
+	if (s[ft_atoi(t[2])].floor >= s[ft_atoi(t[2])].ceil)
+		clean(e, E_PARSE);
 	s[ft_atoi(t[2])].gravity = (double)ft_atoi(t[12]) / 100;
 	s[ft_atoi(t[2])].friction = (double)ft_atoi(t[14]) / 100;
 	s[ft_atoi(t[2])].points = i;
 	if (!(s[ft_atoi(t[2])].vertex = (t_vec2d*)malloc(sizeof(t_vec2d) * i)))
-		parse_err(t, p);
+		clean(e, E_PARSE);
 	if (!(s[ft_atoi(t[2])].neighbor = (int*)malloc(sizeof(int) * i)))
-		parse_err(t, p);
-	if (!(s[ft_atoi(t[2])].portal_type = (int*)malloc(sizeof(int) * i)))
-		parse_err(t, p);
+		clean(e, E_PARSE);
 	if (t[18 + i] && !ft_strcmp(t[18 + i], "portals"))
 	{
-		if (third_check(s, t, ver, i)){ft_putendl("non");
-			return (1);}
+		if (third_check(s, t, ver, i))
+			return (1);
 	}
 	else
-		return (1);{ft_putendl("peut");
-	return (0);}
+		return (1);
+	return (0);
 }
 
-int			verif_sector(t_sector *s, char **t, t_vec2d *ver, t_parse *p)
+int			verif_sector(t_sector *s, char **t, t_vec2d *ver, t_env *e)
 {
 	if (t[1] && t[3] && t[5] && t[7] && t[9] && t[11] && t[13] && t[15] && t[17]
 			&& !ft_strcmp(t[1], "number") && !ft_strcmp(t[3], "texture")
@@ -80,8 +79,8 @@ int			verif_sector(t_sector *s, char **t, t_vec2d *ver, t_parse *p)
 				&& ft_isnum(t[8]) && ft_isnum(t[10]) && ft_isnum(t[12])
 				&& ft_isnum(t[14]) && ft_isnum(t[16]))
 		{
-			if (second_check(s, t, ver, p)){ft_putendl("oui");
-				return (1);}
+			if (second_check(s, t, ver, e))
+				return (1);
 		}
 		else
 			return (1);

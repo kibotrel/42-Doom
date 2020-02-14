@@ -6,22 +6,13 @@
 /*   By: reda-con <reda-con@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 16:50:27 by reda-con          #+#    #+#             */
-/*   Updated: 2020/01/29 11:46:16 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/02/14 12:01:45 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parse.h"
 #include "libft.h"
 #include <stdlib.h>
-
-t_vec2d		init_vec2d(int x, int y)
-{
-	t_vec2d	ret;
-
-	ret.x = x;
-	ret.y = y;
-	return (ret);
-}
 
 int			ft_isnum(char *num)
 {
