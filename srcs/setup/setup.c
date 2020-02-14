@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/16 11:58:26 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/10 04:31:28 by vivi             ###   ########.fr       */
+/*   Updated: 2020/02/14 05:02:24 by demonwaves       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,15 @@
 #include "utils.h"
 #include "editor.h"
 
-static void	time_track(t_env *env)
+static void	bzero_params(t_env *env)
 {
+	ft_bzero(env, sizeof(t_env));
+	ft_bzero(env->asset, sizeof(char*));
+	ft_bzero(env->error, sizeof(char*));
+	ft_bzero(&env->cam, sizeof(t_cam));
+	ft_bzero(&env->data, sizeof(t_data));
+	ft_bzero(&env->data.ui, sizeof(t_ui));
+	ft_bzero(&env->data.hud, sizeof(t_hud));
 	ft_bzero(&env->tick, sizeof(t_time));
 	ft_bzero(&env->tick.fly, sizeof(t_tick));
 	ft_bzero(&env->tick.fps, sizeof(t_tick));
@@ -27,11 +34,11 @@ static void	time_track(t_env *env)
 	ft_bzero(&env->tick.frame, sizeof(t_tick));
 	ft_bzero(&env->tick.debug, sizeof(t_tick));
 	ft_bzero(&env->tick.reload, sizeof(t_tick));
+	ft_bzero(env->input, sizeof(int) * SDL_NUM_SCANCODES);
 }
 
 static void	error_messages(t_env *env)
 {
-	ft_bzero(env->error, sizeof(char*));
 	env->error[NOTHING] = "";
 	env->error[E_FILENAME] = M_FILENAME;
 	env->error[E_SDL_INIT] = M_SDL_INIT;
@@ -49,7 +56,6 @@ static void	error_messages(t_env *env)
 
 static void	assets_paths(t_env *env)
 {
-	ft_bzero(env->asset, sizeof(char*));
 	env->asset[BG_MENU] = background_path(env->w, env->h);
 	env->asset[ED_TEXT_1] = "./assets/texture_1.bmp";
 	env->asset[ED_TEXT_2] = "./assets/texture_2.bmp";
@@ -74,15 +80,18 @@ static void	assets_paths(t_env *env)
 	env->asset[SHOT_6] = asset_frame(env->w, env->h, 6);
 	env->asset[MAGAZINE] = "./assets/magazine.bmp";
 	env->asset[SHELL] = "./assets/shell.bmp";
+	env->asset[COIN] = "./assets/coins.bmp";
 }
 
 static void	infos_setup(t_env *env)
 {
-	ft_bzero(env->input, sizeof(int) * SDL_NUM_SCANCODES);
-	ft_bzero(&env->data, sizeof(t_data));
-	ft_bzero(&env->data.hud, sizeof(t_hud));
-	ft_bzero(&env->data.ui, sizeof(t_ui));
-	ft_bzero(&env->cam, sizeof(t_cam));
+	env->w = WIN_W;
+	env->h = WIN_H;
+	env->win = GAME;
+	env->cam.fly = -1;
+	env->cam.fall = 1;
+	env->cam.speed = 1;
+	env->cam.fov = v2d(0.75 * env->h, 0.2 * env->h);
 	env->data.life = 100;
 	env->data.ammos = 5;
 	env->data.magazines = 20;
@@ -98,21 +107,13 @@ static void	infos_setup(t_env *env)
 		clean(env, E_BKGD);
 	env->data.f_size = floor(env->w * MAX_FONT_SIZE / MAX_WIDTH);
 	env->data.g_size = env->data.f_size / 3;
-	env->cam.fly = -1;
-	env->cam.fall = 1;
-	env->cam.speed = 1;
-	env->cam.fov = v2d(0.75 * env->h, 0.2 * env->h);
 }
 
 void		env_setup(t_env *env)
 {
-	ft_bzero(env, sizeof(t_env));
-	env->w = WIN_W;
-	env->h = WIN_H;
-	env->win = GAME;
+	bzero_params(env);
+	infos_setup(env);
 	assets_paths(env);
 	error_messages(env);
-	infos_setup(env);
-	time_track(env);
 	editor_setup(&env->editor);
 }
