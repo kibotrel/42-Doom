@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 19:01:59 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/14 07:59:15 by kibotrel         ###   ########.fr       */
+/*   Updated: 2020/02/14 15:21:33 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ void				blur(t_env *env, SDL_Surface *win, t_pos p);
 */
 
 void				blur_area(t_env *env, t_pos min, t_pos max);
-void				draw_asset(t_env *env, t_bmp asset, t_pos shift);
+void	draw_asset(t_env *env, t_bmp asset, t_pos shift, t_anime *anime);
 void				info(t_env *env, char *str, t_vec2d pos, uint32_t mode);
 
 /*
@@ -103,9 +103,8 @@ double				inter(double value, double min, double max);
 **	data_3.c
 */
 
-char				*frame_720(int frame);
-char				*frame_768(int frame);
-char				*frame_900(int frame);
+char				*coins_asset(int w, int h);
+char				*shotgun_asset(int w, int h);
 t_pos				p2d(int32_t x, int32_t y, int32_t base_x, int32_t base_y);
 uint32_t			life_state(double life);
 
@@ -151,7 +150,6 @@ int8_t				cycle_check(t_env *env, t_game *var, t_item *now);
 */
 
 char				*background_path(int w, int h);
-char				*asset_frame(int w, int h, int frame);
 void				speed_check(t_env *env);
 void				check_tick(t_tick *tick, int8_t *flag, uint32_t  offset);
 /*

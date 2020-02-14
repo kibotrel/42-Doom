@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/14 08:01:38 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/14 08:01:39 by kibotrel         ###   ########.fr       */
+/*   Updated: 2020/02/14 15:21:44 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,62 +14,30 @@
 #include "env.h"
 #include "structs.h"
 
-char		*frame_720(int frame)
+char		*coins_asset(int w, int h)
 {
-	if (!frame)
-		return ("./assets/shot0_720.bmp");
-	else if (frame == 1)
-		return ("./assets/shot1_720.bmp");
-	else if (frame == 2)
-		return ("./assets/shot2_720.bmp");
-	else if (frame == 3)
-		return ("./assets/shot3_720.bmp");
-	else if (frame == 4)
-		return ("./assets/shot4_720.bmp");
-	else if (frame == 5)
-		return ("./assets/shot5_720.bmp");
-	else if (frame == 6)
-		return ("./assets/shot6_720.bmp");
+	if (w == 1280 && h == 720)
+		return ("./assets/coins_720.bmp");
+	else if (w == 1366 && h == 768)
+		return ("./assets/coins_768.bmp");
+	else if (w == 1440 && h == 900)
+		return ("./assets/coins_900.bmp");
+	else if (w == 1920 && h == 1080)
+		return ("./assets/coins_1080.bmp");
 	else
 		return (NULL);
 }
 
-char		*frame_768(int frame)
+char		*shotgun_asset(int w, int h)
 {
-	if (!frame)
-		return ("./assets/shot0_768.bmp");
-	else if (frame == 1)
-		return ("./assets/shot1_768.bmp");
-	else if (frame == 2)
-		return ("./assets/shot2_768.bmp");
-	else if (frame == 3)
-		return ("./assets/shot3_768.bmp");
-	else if (frame == 4)
-		return ("./assets/shot4_768.bmp");
-	else if (frame == 5)
-		return ("./assets/shot5_768.bmp");
-	else if (frame == 6)
-		return ("./assets/shot6_768.bmp");
-	else
-		return (NULL);
-}
-
-char		*frame_900(int frame)
-{
-	if (!frame)
-		return ("./assets/shot0_900.bmp");
-	else if (frame == 1)
-		return ("./assets/shot1_900.bmp");
-	else if (frame == 2)
-		return ("./assets/shot2_900.bmp");
-	else if (frame == 3)
-		return ("./assets/shot3_900.bmp");
-	else if (frame == 4)
-		return ("./assets/shot4_900.bmp");
-	else if (frame == 5)
-		return ("./assets/shot5_900.bmp");
-	else if (frame == 6)
-		return ("./assets/shot6_900.bmp");
+	if (w == 1280 && h == 720)
+		return ("./assets/shotgun_720.bmp");
+	else if (w == 1366 && h == 768)
+		return ("./assets/shotgun_768.bmp");
+	else if (w == 1440 && h == 900)
+		return ("./assets/shotgun_900.bmp");
+	else if (w == 1920 && h == 1080)
+		return ("./assets/shotgun_1080.bmp");
 	else
 		return (NULL);
 }

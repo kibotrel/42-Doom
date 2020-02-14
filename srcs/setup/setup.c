@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/16 11:58:26 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/14 11:17:07 by kibotrel         ###   ########.fr       */
+/*   Updated: 2020/02/14 15:20:35 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,16 +72,10 @@ static void	assets_paths(t_env *env)
 	env->asset[ED_ENEMY_4] = "./assets/enemy_4.bmp";
 	env->asset[ED_PORTAL_DOOR] = "./assets/portal_wall.bmp";
 	env->asset[ED_PORTAL_WALL] = "./assets/portal_door.bmp";
-	env->asset[SHOT_0] = asset_frame(env->w, env->h, 0);
-	env->asset[SHOT_1] = asset_frame(env->w, env->h, 1);
-	env->asset[SHOT_2] = asset_frame(env->w, env->h, 2);
-	env->asset[SHOT_3] = asset_frame(env->w, env->h, 3);
-	env->asset[SHOT_4] = asset_frame(env->w, env->h, 4);
-	env->asset[SHOT_5] = asset_frame(env->w, env->h, 5);
-	env->asset[SHOT_6] = asset_frame(env->w, env->h, 6);
+	env->asset[SHOTGUN] = shotgun_asset(env->w, env->h);
 	env->asset[MAGAZINE] = "./assets/magazine.bmp";
 	env->asset[SHELL] = "./assets/shell.bmp";
-	env->asset[COIN] = "./assets/coins.bmp";
+	env->asset[COIN] = coins_asset(env->w, env->h);
 }
 
 static void	infos_setup(t_env *env)
@@ -108,6 +102,8 @@ static void	infos_setup(t_env *env)
 		clean(env, E_BKGD);
 	env->data.f_size = floor(env->w * MAX_FONT_SIZE / MAX_WIDTH);
 	env->data.g_size = env->data.f_size / 3;
+	env->data.hud.coin.shift = 48;
+	env->data.hud.shotgun.shift = 480;
 }
 
 void		env_setup(t_env *env)

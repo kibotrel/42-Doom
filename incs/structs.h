@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 18:48:17 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/14 10:27:09 by kibotrel         ###   ########.fr       */
+/*   Updated: 2020/02/14 14:21:35 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -157,10 +157,17 @@ typedef struct	s_grid
 	t_pos		max;
 }				t_grid;
 
+typedef struct	s_anime
+{
+	int32_t		frame;
+	int32_t		shift;
+}				t_anime;
+
 typedef struct	s_hud
 {
 	int8_t		last_display;
-	int32_t		coin_shift;
+	t_anime		coin;
+	t_anime		shotgun;
 }				t_hud;
 
 typedef struct	s_data

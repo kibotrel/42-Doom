@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/27 15:35:56 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/14 08:03:04 by kibotrel         ###   ########.fr       */
+/*   Updated: 2020/02/14 14:53:48 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,21 +40,25 @@ void	info(t_env *env, char *str, t_vec2d pos, uint32_t mode)
 	free(str);
 }
 
-void	draw_asset(t_env *env, t_bmp asset, t_pos shift)
+void	draw_asset(t_env *env, t_bmp asset, t_pos shift, t_anime *anime)
 {
 	t_pos		p;
 	t_pos		px;
+	t_pos		min;
 	uint32_t	pos;
 
+
 	p.y = -1;
+	min.x = (!anime->shift ? asset.width : anime->shift);
+	min.y = shift.y - asset.height;
 	while (++p.y < asset.height)
 	{
 		p.x = -1;
-		px.y = shift.y - asset.height + p.y;
-		while (++p.x < asset.width)
+		px.y = min.y + p.y;
+		while (++p.x < min.x)
 		{
 			px.x = shift.x + p.x;
-			pos = p.x + p.y * asset.width;
+			pos = p.x + (anime->frame * anime->shift) + p.y * asset.width;
 			if (asset.pixels[pos] != 41704)
 				draw_pixel(env, env->sdl.screen, px, asset.pixels[pos]);
 		}

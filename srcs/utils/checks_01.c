@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 13:34:39 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/14 08:01:34 by kibotrel         ###   ########.fr       */
+/*   Updated: 2020/02/14 15:21:10 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,18 +38,4 @@ char	*background_path(int w, int h)
 		return ("assets/menu_1080.bmp");
 	else
 		return ("");
-}
-
-char	*asset_frame(int w, int h, int frame)
-{
-	if (w == 1280 && h == 720)
-		return (frame_720(frame));
-	else if (w == 1366 && h == 768)
-		return (frame_768(frame));
-	else if (w == 1440 && h == 900)
-		return (frame_900(frame));
-	else if (w == 1920 && h == 1080)
-		return (frame_1080(frame));
-	else
-		return (NULL);
 }
