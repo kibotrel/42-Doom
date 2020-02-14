@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/14 08:01:38 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/14 15:21:44 by kibotrel         ###   ########.fr       */
+/*   Updated: 2020/02/14 16:43:00 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,20 @@ char		*shotgun_asset(int w, int h)
 		return ("./assets/shotgun_900.bmp");
 	else if (w == 1920 && h == 1080)
 		return ("./assets/shotgun_1080.bmp");
+	else
+		return (NULL);
+}
+
+char		*shell_asset(int w, int h)
+{
+	if (w == 1280 && h == 720)
+		return ("./assets/shells_720.bmp");
+	else if (w == 1366 && h == 768)
+		return ("./assets/shells_768.bmp");
+	else if (w == 1440 && h == 900)
+		return ("./assets/shells_900.bmp");
+	else if (w == 1920 && h == 1080)
+		return ("./assets/shells_1080.bmp");
 	else
 		return (NULL);
 }

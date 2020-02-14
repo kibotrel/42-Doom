@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 19:01:59 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/14 15:35:39 by kibotrel         ###   ########.fr       */
+/*   Updated: 2020/02/14 15:46:03 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,6 +105,7 @@ double				inter(double value, double min, double max);
 */
 
 char				*coins_asset(int w, int h);
+char				*shell_asset(int w, int h);
 char				*shotgun_asset(int w, int h);
 t_pos				p2d(int32_t x, int32_t y, int32_t base_x, int32_t base_y);
 uint32_t			life_state(double life);
@@ -113,7 +114,7 @@ uint32_t			life_state(double life);
 **	data_4.c
 */
 
-char				*frame_1080(int frame);
+char				*magazine_asset(int w, int h);
 
 /*
 **	maths_0.c
