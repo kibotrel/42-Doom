@@ -52,6 +52,7 @@ void			draw_texture_slice
 	t_scaler	scaler;
 	int			scale_x;
 	t_pos		p;
+	uint32_t	color;
 
 	h.top = bound(h.top, 0, env->h - 1);
 	h.bottom = bound(h.bottom, 0, env->h - 1);
@@ -65,30 +66,13 @@ void			draw_texture_slice
 		draw_pixel(env, env->sdl.screen, p, 0);
 		while (++p.y < h.bottom)
 		{
-			draw_pixel(env, env->sdl.screen, p, color_add(
-						wall[abs((scaler_next(&scaler) % W_SIZE * W_SIZE)
-							+ (scale_x % W_SIZE))], -var->depth));
+			color = color_add(
+				wall[abs((scaler_next(&scaler) % W_SIZE * W_SIZE)
+					+ (scale_x % W_SIZE))], -var->depth);
+			if (env->sector[env->cam.sector].light != -1)
+				color = color_light(color, env->sector[env->cam.sector].light);
+			draw_pixel(env, env->sdl.screen, p, color);
 		}
 		draw_pixel(env, env->sdl.screen, p, 0);
 	}
 }
-/*
-void    draw_floor_slice(t_env *env, int x, t_height h, uint32_t color)
-{
-    t_pos       p;
-
-    h.top = bound(h.top, 0, env->h - 1);
-    h.bottom = bound(h.bottom, 0, env->h - 1);
-    p.x = x;
-    p.y = h.top;
-    if (h.bottom == h.top)
-        draw_pixel(env, env->sdl.screen, p,  color_add(color, p.y));
-    else if (h.bottom > h.top)
-    {
-        draw_pixel(env, env->sdl.screen, p, 0);
-        while (++p.y < h.bottom)
-            draw_pixel(env, env->sdl.screen, p, color_add(color, -(h.bottom - p.y) / 2));
-        draw_pixel(env, env->sdl.screen, p, 0);
-    }
-}
-*/

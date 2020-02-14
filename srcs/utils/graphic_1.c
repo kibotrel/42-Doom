@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 13:21:31 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/10 12:55:32 by lojesu           ###   ########.fr       */
+/*   Updated: 2020/02/14 14:37:45 by lojesu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,10 +42,10 @@ static void	draw_ceil_and_floor(t_env *env, t_game *var, int32_t x)
 	var->depth = W_UNIT / r_size_wall;
 	var->y[0] = bound(var->unbound[0], var->top[x], var->bottom[x]);
 	var->y[1] = bound(var->unbound[1], var->top[x], var->bottom[x]);
-	draw_slice(env, x, lim(var->top[x], var->y[0] - 1), flat(0, 0x222222, 0));
+	draw_slice(env, x, lim(var->top[x], var->y[0] - 1),
+			flat(0, color_light(0x222222, env->sector[env->cam.sector].light), 0));
 	draw_slice(env, x, lim(var->y[1] + 1, var->bottom[x]),
-			flat(0, 0x0000AA, 0));
-	//draw_floor_slice(env, x, lim(var->y[1] + 1, var->bottom[x]), 0x0000AA);
+			flat(0, color_light(0x424242, env->sector[env->cam.sector].light), 0));
 }
 
 static void	draw_transitions(t_env *env, t_game *var, int32_t x, uint32_t *wall)

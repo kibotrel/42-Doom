@@ -6,7 +6,7 @@
 /*   By: lojesu <lojesu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/16 15:44:25 by lojesu            #+#    #+#             */
-/*   Updated: 2020/02/07 16:05:21 by lojesu           ###   ########.fr       */
+/*   Updated: 2020/02/14 13:48:13 by lojesu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # define W_UNIT 4096
 # define W_SIZE 64
+# define LIGHT 25
 
 typedef struct	s_scaler
 {
@@ -43,6 +44,6 @@ void		init_and_protect_variable_2(t_game *var, float w_size, float *u0, float *u
 */
 void		draw_texture_slice(t_env *env, int x, t_height h, t_game *var, uint32_t *wall);
 
-void		draw_floor_slice(t_env *env, int x, t_height h, uint32_t color);
+uint32_t	color_light(uint32_t color, int light);
 
 #endif

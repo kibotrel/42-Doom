@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/16 11:53:54 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/10 15:41:16 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/02/14 14:37:38 by lojesu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,8 @@ int			main(int ac, char **av)
 		 }
 		else
 			clean(&env, E_FILENAME);
+		env.sector[0].light = 0x0000ff;
+		env.sector[1].light = 0xff0000;
 		while (1)
 		{
 			selector(&env);

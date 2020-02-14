@@ -6,7 +6,7 @@
 #    By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/10 16:16:29 by kibotrel          #+#    #+#              #
-#    Updated: 2020/02/10 12:52:34 by lojesu           ###   ########.fr        #
+#    Updated: 2020/02/14 13:37:31 by lojesu           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -87,6 +87,7 @@ INCS			+= incs/editor.h
 INCS			+= incs/events.h
 INCS			+= incs/structs.h
 INCS			+= incs/editor.h
+INCS			+= incs/texture.h
 
 # Source files (Can be changed)
 
