@@ -6,7 +6,7 @@
 /*   By: reda-con <reda-con@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 14:00:52 by reda-con          #+#    #+#             */
-/*   Updated: 2020/02/13 12:00:26 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/02/14 09:37:49 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ void		parse_err(char **tab, t_parse *p)
 		free(p->sec);
 	}
 	free_tab(tab);
+	ft_putendl("parse error");
 	exit(1);
 }
 
@@ -66,13 +67,18 @@ void		parse(char *l, t_parse *par)
 	(i != 0) ? parse_err(tab, par) : free_tab(tab);
 }
 
-int			main_parse(char *file, t_env *env)
+int			main_parse(char **av, t_env *env, int ac)
 {
 	int		fd;
 	int		gnl;
 	char	*line;
 	t_parse	par;
+	char	*file;
 
+	gnl = ft_isvalidname(av[1], ".data");
+	if (gnl == 0)
+		exit(1);
+	file = (ac == 2) ? av[1] : "hard_map.data";
 	par.plr.pos = init_vec2d(-1, -1);
 	if ((fd = open(file, O_RDONLY)) == -1)
 		exit(1);

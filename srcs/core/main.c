@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/16 11:53:54 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/13 11:59:53 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/02/14 09:33:24 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,12 @@
 //  __attribute__((destructor)) void no_end(void);
 //  void no_end(){while(1);}
 
+/*
 static int	prechecks(int ac, char **av)
 {
 	return ((ac == 2 ? ft_isvalidname(av[1], ".data") : 1));
 }
+*/
 
 static void	update_screen(t_env *env)
 {
@@ -44,17 +46,10 @@ int			main(int ac, char **av)
 	if (ac <= 2)
 	{
 		env_setup(&env);
-		if (prechecks(ac, av))
-		 {
-			if (ac == 2)
-		 		main_parse(av[1], &env);
-			graphic_setup(&env, &env.sdl);
-		 }
-		else
-			clean(&env, E_FILENAME);
+	graphic_setup(&env, &env.sdl);
 		while (1)
 		{
-			selector(&env);
+			selector(&env, ac, av);
 			if (env.win == GAME)
 				physics(&env);
 			global_hooks(&env, &env.sdl);

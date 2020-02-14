@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 18:02:10 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/13 12:00:31 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/02/14 09:32:33 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 **	game.c
 */
 
-void	game(t_env *env);
+void	game(t_env *env, int ac, char **av);
 
 /*
 **	hooks.c
@@ -45,7 +45,7 @@ void	editor(t_env *env);
 **	selector.c
 */
 
-void	selector(t_env *env);
+void	selector(t_env *env, int ac, char **av);
 
 /*
 **	settings.c

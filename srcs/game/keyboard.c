@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/10 15:11:44 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/11 10:42:45 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/02/14 09:33:10 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ void	game_keyboard(t_env *env)
 {
 	if (env->input[SDL_SCANCODE_BACKSPACE])
 	{
+		env->setup = 0;
 		env->win = MENU;
 		SDL_ShowCursor(SDL_ENABLE);
 	}
