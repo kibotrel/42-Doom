@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/27 15:35:56 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/14 14:53:48 by kibotrel         ###   ########.fr       */
+/*   Updated: 2020/02/14 15:44:13 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ void	draw_asset(t_env *env, t_bmp asset, t_pos shift, t_anime *anime)
 	t_pos		px;
 	t_pos		min;
 	uint32_t	pos;
-
 
 	p.y = -1;
 	min.x = (!anime->shift ? asset.width : anime->shift);

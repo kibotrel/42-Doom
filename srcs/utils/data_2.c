@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/24 12:03:37 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/14 08:01:37 by kibotrel         ###   ########.fr       */
+/*   Updated: 2020/02/14 15:44:00 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ void	update_velocity(t_vec3d *v, t_vec2d *vel)
 	}
 }
 
-void 	dimensions(char **str, double x, double y, double z)
+void	dimensions(char **str, double x, double y, double z)
 {
 	*str = txt(precision(x, 2), " / ", 0);
 	*str = txt(*str, precision(y, 2), 2);
