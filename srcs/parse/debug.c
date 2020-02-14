@@ -6,7 +6,7 @@
 /*   By: reda-con <reda-con@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 15:13:52 by reda-con          #+#    #+#             */
-/*   Updated: 2020/01/27 09:25:53 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/02/14 10:33:57 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,13 +107,6 @@ void		print_sec(t_sector *s, int max)
 		while (++j < (int)s[i].points)
 		{
 			ft_putnbr(s[i].neighbor[j]);
-			ft_putchar(' ');
-		}
-		j = -1;
-		ft_putstr(" portals type=");
-		while (++j < (int)s[i].points)
-		{
-			ft_putnbr(s[i].portal_type[j]);
 			ft_putchar(' ');
 		}
 		ft_putchar('\n');

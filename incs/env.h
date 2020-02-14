@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/16 11:54:25 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/10 15:35:25 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/02/14 13:34:33 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@
 */
 
 # define M_BKGD			"\033[31;1mError:\033[0m Menu background not available"
+# define M_PARSE		"\033[31;1mError:\033[0m Parse error"
 # define M_MALLOC		"\033[31;1mError:\033[0m Can't allocate memory."
 # define M_SDL_WIN		"\033[31;1mError:\033[0m Can't create SDL window."
 # define M_FILENAME		"\033[31;1mError:\033[0m Incorrect filename (*.data)."

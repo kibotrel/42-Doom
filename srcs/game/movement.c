@@ -1,27 +1,67 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   movement.c                                         :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/10 16:47:31 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/01/29 10:56:44 by reda-con         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "utils.h"
 #include "env.h"
+#include "libft.h"
 
 void	jump(t_env *env, t_cam *cam)
 {
 	if (cam->fly > 0
-		&& env->sector[cam->sector].ceil - cam->pos.z > MARGIN_HEAD)
+			&& env->sector[cam->sector].ceil - cam->pos.z > MARGIN_HEAD)
 		cam->pos.z += 0.25;
 	else if (cam->ground)
 	{
 		cam->v.z += 0.75;
 		cam->fall = 1;
+	}
+}
+
+void	sector_triger(t_env *env)
+{
+	int			i;
+	int			s;
+	uint32_t	j;
+	uint32_t	k;
+
+	s = env->cam.sector;
+	if (env->sector[s].type == 1)
+	{
+		if (env->input[SDL_SCANCODE_E])
+		{
+			++env->cam.pos.z;
+			++env->sector[s].floor;
+		}
+		if (env->input[SDL_SCANCODE_Q])
+		{
+			--env->cam.pos.z;
+			--env->sector[s].floor;
+		}
+		if (env->sector[s].floor >= env->sector[s].ceil - 5)
+		{
+			--env->cam.pos.z;
+			env->sector[s].floor = env->sector[s].ceil - 6;
+		}
+	}
+	if (env->old_st_fl != env->st_fl)
+	{
+		if (env->sector[s].type == 3)
+		{
+			i = -1;
+			while (++i < env->sector[s].num_link)
+			{
+				j = 0;
+				while (j < env->sector[env->sector[s].link[i]].points)
+				{
+					env->sector[env->sector[s].link[i]].neighbor[j] = env->sector[env->sector[s].link[i]].doors_neighbor[j];
+					k = 0;
+					while (k < env->sector[env->sector[env->sector[s].link[i]].neighbor[j]].points)
+					{
+						if (env->sector[env->sector[env->sector[s].link[i]].neighbor[j]].doors_neighbor[k] == env->sector[s].link[i])
+							env->sector[env->sector[env->sector[s].link[i]].neighbor[j]].neighbor[k] = env->sector[s].link[i];
+						++k;
+					}
+					++j;
+				}
+			}
+		}
 	}
 }
 

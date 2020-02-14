@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 17:59:50 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/10 15:35:14 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/02/14 13:32:46 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ typedef enum	e_status
 	E_BMP_PARSE,
 	E_BKGD,
 	E_MALLOC,
+	E_PARSE,
 	NB_ERRORS
 }				t_status;
 

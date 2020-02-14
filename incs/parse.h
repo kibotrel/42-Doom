@@ -6,7 +6,7 @@
 /*   By: reda-con <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 14:27:11 by reda-con          #+#    #+#             */
-/*   Updated: 2020/01/23 16:57:09 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/02/14 12:04:01 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,20 +30,6 @@ typedef struct	s_player
 	int			sect;
 	int			angle;
 }				t_player;
-
-/*
-typedef struct	s_sector
-{
-	uint32_t		pts;
-	int				ceil;
-	int				floor;
-	double			gravity;
-	double			viscosity;
-	int				*portal;
-	int				*portal_type;
-	t_vec2d			*vert;
-}				t_sector;
-*/
 
 typedef struct	s_total
 {
@@ -76,18 +62,23 @@ void			print_plr(t_player p);
 /*
 **tools.c
 */
-t_vec2d			init_vec2d(int x, int y);
 void			free_tab(char **tab);
 int				ft_isnum(char *num);
 void			init_parse(t_parse *p);
 
 int				verif_vertex(t_vec2d *vertex, char **tab);
 int				verif_entity(t_entity *ent, char **tab);
-int				verif_sector(t_sector *s, char **tab, t_vec2d *v, t_parse *p);
+int				verif_sector(t_sector *s, char **tab, t_vec2d *v, t_env *env);
 void			parse_err(char **t, t_parse *p);
-int				main_parse(char *file, t_env *env);
-int				verif_total(t_total *t, char **tab, t_parse *p);
-int				verif_player(t_player *p, char **tab);
+int				main_parse(char **av, t_env *env, int ac);
+int				verif_total(t_total *t, char **tab, t_parse *p, t_env *env);
+int				verif_player(t_cam *cam, char **tab);
 int				verif_blank(char **tab);
+
+
+
+
+//
+void			sector_triger(t_env *env);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 18:48:17 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/07 14:27:42 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/02/14 13:23:14 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,28 +74,6 @@ typedef struct	s_data
 	uint32_t	w_size;
 }				t_data;
 
-/*
-typedef struct	s_sector
-{
-	int			*neighbor;
-	double		ceil;
-	double		floor;
-	t_vec2d		*vertex;
-	uint32_t	points;
-}				t_sector;
-*/
-
-typedef struct	s_sector
-{
-	uint32_t	points;
-	double		ceil;
-	double		floor;
-	double		gravity;
-	double		friction;
-	int			*neighbor;
-	int			*portal_type;
-	t_vec2d		*vertex;
-}				t_sector;
 
 /*
  ** Time tracking
@@ -114,6 +92,7 @@ typedef struct	s_time
 	t_tick		fps;
 	t_tick		frame;
 	t_tick		editor;
+	t_tick		sector_triger;
 }				t_time;
 
 /*
@@ -169,22 +148,18 @@ typedef struct		s_portal
 
 typedef struct		s_ed_sector
 {
-	t_vertex		*vertex;
-	int				vertex_count;
-	int				sector_number;
-	int				texture;
-	int				type;
-	int				gravity;
-	int				friction;
-
-	int				h_ceil;
-	int				h_floor;
-
-	int				*is_portal;
-
-	struct s_ed_sector *prev;
+	t_vertex			*vertex;
+	int					vertex_count;
+	int					sector_number;
+	int					texture;
+	int					type;
+	int					gravity;
+	int					friction;
+	int					h_ceil;
+	int					h_floor;
+	int					*is_portal;
+	struct s_ed_sector	*prev;
 	struct s_ed_sector	*next;
-
 }					t_ed_sector;
 
 typedef struct		s_editor
@@ -216,6 +191,22 @@ typedef struct		s_editor
 	bool			sect_is_closed;
 	bool			finish;
 }					t_editor;
+
+typedef struct	s_sector
+{
+	int			type;
+	int			*link;
+	int			num_link;
+	int			texture;
+	uint32_t	points;
+	double		ceil;
+	double		floor;
+	double		gravity;
+	double		friction;
+	int			*neighbor;
+	int			*doors_neighbor;
+	t_vec2d		*vertex;
+}				t_sector;
 
 /*
 **	Main structures.
@@ -265,6 +256,8 @@ typedef struct	s_env
 	t_sector	*sector;
 	uint32_t	setup;
 	uint32_t	zones;
+	int8_t		st_fl;
+	int8_t		old_st_fl;
 }				t_env;
 
 #endif
