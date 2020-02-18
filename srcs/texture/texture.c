@@ -31,19 +31,18 @@ static int		x_scale(t_game *var, int x)
 {
 	float	u0;
 	float	u1;
-	float	tz1;
-	float	tz2;
 	float	w_size;
+	float	div;
 
-	tz1 = var->t[0].y;
-	tz2 = var->t[1].y;
 	w_size = hypot(var->v[0].x - var->v[1].x, var->v[0].y - var->v[1].y);
-	if (fabs(var->t[1].x - var->t[0].x) > fabs(tz2 - tz1))
+	if (fabs(var->t[1].x - var->t[0].x) > fabs(var->t[1].y - var->t[0].y))
 		init_and_protect_variable_1(var, w_size, &u0, &u1);
 	else
 		init_and_protect_variable_2(var, w_size, &u0, &u1);
-	return ((u0 * ((var->side[1] - x) * tz2) + u1 * ((x - var->side[0]) * tz1))
-			/ ((var->side[1] - x) * tz2 + (x - var->side[0]) * tz1));
+	div = ((var->side[1] - x) * var->t[1].y + (x - var->side[0]) * var->t[0].y) != 0 ?
+		((var->side[1] - x) * var->t[1].y + (x - var->side[0]) * var->t[0].y) : 1;
+	return ((u0 * ((var->side[1] - x) * var->t[1].y) + u1 * ((x - var->side[0]) * var->t[0].y))
+			/ div);
 }
 
 void			draw_texture_slice
