@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 15:29:00 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/01/23 20:23:46 by demonwaves       ###   ########.fr       */
+/*   Updated: 2020/02/18 16:31:47 by lojesu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,7 @@ void			draw_setup(t_env *env, t_game *var, t_item *now, uint32_t i)
 	var->floor[0] = var->s->floor - env->cam.pos.z;
 	var->floor[1] = 0;
 	var->n = var->s->neighbor[i];
+	var->sector = now->sector;
 	if (var->n >= 0)
 	{
 		var->ceil[1] = env->sector[var->n].ceil - env->cam.pos.z;

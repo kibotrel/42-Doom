@@ -69,8 +69,8 @@ void			draw_texture_slice
 			color = color_add(
 				wall[abs((scaler_next(&scaler) % W_SIZE * W_SIZE)
 					+ (scale_x % W_SIZE))], -var->depth);
-			if (env->sector[env->cam.sector].light != -1)
-				color = color_light(color, env->sector[env->cam.sector].light);
+			if (env->sector[var->sector].light != -1)
+				color = color_light(color, env->sector[var->sector].light);
 			draw_pixel(env, env->sdl.screen, p, color);
 		}
 		draw_pixel(env, env->sdl.screen, p, 0);
