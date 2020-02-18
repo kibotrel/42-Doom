@@ -6,7 +6,7 @@
 /*   By: reda-con <reda-con@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 14:00:52 by reda-con          #+#    #+#             */
-/*   Updated: 2020/02/18 08:20:49 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/02/18 10:27:15 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,20 +23,20 @@
 
 void		main_err(t_parse *p)
 {
-	if (p->ver)
+	if (p->total.vert > 0)
 		free(p->ver);
-	if (p->emy)
+	if (p->total.emy > 0)
 		free(p->emy);
-	if (p->obj)
+	if (p->total.obj)
 		free(p->obj);
+	ft_putendl("parse error");
+	exit(1);
 }
 
 void		parse_err(char **tab, t_parse *p)
 {
-	main_err(p);
 	free_tab(tab);
-	ft_putendl("parse error");
-	exit(1);
+	main_err(p);
 }
 
 void		parse(char *l, t_parse *par, t_env *env)
@@ -106,12 +106,16 @@ int			main_parse(char **av, t_env *env, int ac)
 	env->cam.pos = v3d(-1, -1, 0);
 	if ((fd = open(file, O_RDONLY)) == -1)
 		exit(1);
+	par.total.vert = 0;
+	par.total.sect = 0;
+	par.total.obj = 0;
+	par.total.emy = 0;
 	while ((gnl = ft_get_next_line(fd, &line)) == 1)
 	{
 		parse(line, &par, env);
 		free(line);
 	}
-	if (gnl == -1 || close(fd) || par.plr.pos.x <= -1 || par.plr.pos.y <= -1)
+	if (gnl == -1 || close(fd) || env->cam.pos.x <= -1 || env->cam.pos.y <= -1)
 		main_err(&par);
 	env->sector[0].num_link = 1;
 	env->sector[0].link = malloc(sizeof(int) * env->sector[0].num_link);
