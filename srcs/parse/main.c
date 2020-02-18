@@ -6,7 +6,7 @@
 /*   By: reda-con <reda-con@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 14:00:52 by reda-con          #+#    #+#             */
-/*   Updated: 2020/02/18 14:25:32 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/02/18 15:05:47 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 #include <unistd.h>
 #include "clean.h"
 
-void		main_err(t_parse *p, int fl)
+void		main_err(t_parse *p, t_env *env, int fl)
 {
 	if (p->total.vert > 0)
 		free(p->ver);
@@ -30,14 +30,13 @@ void		main_err(t_parse *p, int fl)
 	if (p->total.obj > 0)
 		free(p->obj);
 	if (fl == 1)
-		ft_putendl("parse error");
+		clean(env, E_PARSE);
 }
 
-void		parse_err(char **tab, t_parse *p)
+void		parse_err(char **tab, t_parse *p, t_env *env)
 {
-	main_err(p, 1);
 	free_tab(tab);
-	exit(1);
+	main_err(p, env, 1);
 }
 
 void		parse(char *l, t_parse *par, t_env *env)
@@ -60,8 +59,8 @@ void		parse(char *l, t_parse *par, t_env *env)
 	else if (tab[0] && !ft_strcmp("sector", tab[0])){//ft_putendl("ne");
 		i += verif_sector(env->sector, tab, par->ver, env);}
 	else if (verif_blank(tab) && tab[0][0] != '#')
-		parse_err(tab, par);
-	(i != 0) ? parse_err(tab, par) : free_tab(tab);
+		parse_err(tab, par, env);
+	(i != 0) ? parse_err(tab, par, env) : free_tab(tab);
 }
 
 void		tmp(t_sector *s, int nb)
@@ -109,8 +108,8 @@ int			main_parse(char **av, t_env *env, int ac)
 		parse(line, &par, env);
 		free(line);
 	}
-	if (gnl == -1 || close(fd) || env->cam.pos.x <= -1 || env->cam.pos.y <= -1 || env->zones == 0 || par.total.vert == 0){printf("%f, %d\n", env->cam.pos.x, par.total.vert);
-		main_err(&par, 1);}
+	if (gnl == -1 || close(fd) || env->cam.pos.x <= -1 || env->cam.pos.y <= -1 || env->zones == 0 || par.total.vert == 0)
+		main_err(&par, env, 1);
 	env->sector[0].num_link = 1;
 	env->sector[0].link = malloc(sizeof(int) * env->sector[0].num_link);
 	env->sector[0].link[0] = 1;
@@ -124,6 +123,6 @@ int			main_parse(char **av, t_env *env, int ac)
 	env->sector[3].link = malloc(sizeof(int) * env->sector[3].num_link);
 	env->sector[3].link[0] = 2;
 	tmp(env->sector, env->zones);
-	main_err(&par, 0);
+	main_err(&par, env, 0);
 	return (0);
 }
