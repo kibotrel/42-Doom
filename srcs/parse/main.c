@@ -6,7 +6,7 @@
 /*   By: reda-con <reda-con@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 14:00:52 by reda-con          #+#    #+#             */
-/*   Updated: 2020/02/18 13:53:45 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/02/18 14:25:32 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ void		parse_err(char **tab, t_parse *p)
 {
 	main_err(p, 1);
 	free_tab(tab);
-	ft_putendl("parse error");
 	exit(1);
 }
 
@@ -102,7 +101,7 @@ int			main_parse(char **av, t_env *env, int ac)
 	if ((fd = open(file, O_RDONLY)) == -1)
 		exit(1);
 	par.total.vert = 0;
-	par.total.sect = 0;
+	env->zones = 0;
 	par.total.emy = 0;
 	par.total.obj = 0;
 	while ((gnl = ft_get_next_line(fd, &line)) == 1)
@@ -110,9 +109,9 @@ int			main_parse(char **av, t_env *env, int ac)
 		parse(line, &par, env);
 		free(line);
 	}
-	if (gnl == -1 || close(fd) || env->cam.pos.x <= -1 || env->cam.pos.y <= -1 || par.total.sect == 0 || par.total.vert == 0)
-		main_err(&par, 1);
-/*	env->sector[0].num_link = 1;
+	if (gnl == -1 || close(fd) || env->cam.pos.x <= -1 || env->cam.pos.y <= -1 || env->zones == 0 || par.total.vert == 0){printf("%f, %d\n", env->cam.pos.x, par.total.vert);
+		main_err(&par, 1);}
+	env->sector[0].num_link = 1;
 	env->sector[0].link = malloc(sizeof(int) * env->sector[0].num_link);
 	env->sector[0].link[0] = 1;
 	env->sector[1].num_link = 1;
@@ -123,7 +122,7 @@ int			main_parse(char **av, t_env *env, int ac)
 	env->sector[2].link[0] = 3;
 	env->sector[3].num_link = 1;
 	env->sector[3].link = malloc(sizeof(int) * env->sector[3].num_link);
-	env->sector[3].link[0] = 2;*/
+	env->sector[3].link[0] = 2;
 	tmp(env->sector, env->zones);
 	main_err(&par, 0);
 	return (0);

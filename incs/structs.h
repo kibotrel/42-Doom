@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 18:48:17 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/18 11:02:32 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/02/18 14:10:51 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -190,6 +190,7 @@ typedef struct			s_sector
 	int					*neighbor;
 	int					num_link;
 	int					*doors_neighbor;
+	int					light;
 	double				ceil;
 	double				floor;
 	double				gravity;
