@@ -6,7 +6,7 @@
 /*   By: reda-con <reda-con@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/17 16:35:58 by reda-con          #+#    #+#             */
-/*   Updated: 2020/02/14 13:35:06 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/02/14 15:21:14 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,15 +46,15 @@ int			second_check(t_sector *s, char **t, t_vec2d *ver, t_env *e)
 	s[ft_atoi(t[2])].type = ft_atoi(t[6]);
 	s[ft_atoi(t[2])].floor = ft_atoi(t[8]);
 	s[ft_atoi(t[2])].ceil = ft_atoi(t[10]);
-	if (s[ft_atoi(t[2])].floor >= s[ft_atoi(t[2])].ceil)
-		clean(e, E_PARSE);
+	if (s[ft_atoi(t[2])].floor >= s[ft_atoi(t[2])].ceil){printf("oui\n");
+		clean(e, E_PARSE);}
 	s[ft_atoi(t[2])].gravity = (double)ft_atoi(t[12]) / 100;
 	s[ft_atoi(t[2])].friction = (double)ft_atoi(t[14]) / 100;
 	s[ft_atoi(t[2])].points = i;
-	if (!(s[ft_atoi(t[2])].vertex = (t_vec2d*)malloc(sizeof(t_vec2d) * i)))
-		clean(e, E_PARSE);
-	if (!(s[ft_atoi(t[2])].neighbor = (int*)malloc(sizeof(int) * i)))
-		clean(e, E_PARSE);
+	if (!(s[ft_atoi(t[2])].vertex = (t_vec2d*)malloc(sizeof(t_vec2d) * i))){printf("non\n");
+		clean(e, E_PARSE);}
+	if (!(s[ft_atoi(t[2])].neighbor = (int*)malloc(sizeof(int) * i))){printf("peut\n");
+		clean(e, E_PARSE);}
 	if (t[18 + i] && !ft_strcmp(t[18 + i], "portals"))
 	{
 		if (third_check(s, t, ver, i))

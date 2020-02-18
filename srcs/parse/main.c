@@ -6,21 +6,22 @@
 /*   By: reda-con <reda-con@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 14:00:52 by reda-con          #+#    #+#             */
-/*   Updated: 2020/02/14 13:57:22 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/02/18 08:20:49 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parse.h"
 #include "core.h"
 #include "utils.h"
-#include "../../libft/incs/libft.h"
+#include "libft.h"
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <fcntl.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include "clean.h"
 
-void		parse_err(char **tab, t_parse *p)
+void		main_err(t_parse *p)
 {
 	if (p->ver)
 		free(p->ver);
@@ -28,14 +29,11 @@ void		parse_err(char **tab, t_parse *p)
 		free(p->emy);
 	if (p->obj)
 		free(p->obj);
-	if (p->sec)
-	{
-		if (p->sec->neighbor)
-			free(p->sec->neighbor);
-		if (p->sec->vertex)
-			free(p->sec->vertex);
-		free(p->sec);
-	}
+}
+
+void		parse_err(char **tab, t_parse *p)
+{
+	main_err(p);
 	free_tab(tab);
 	ft_putendl("parse error");
 	exit(1);
@@ -114,7 +112,7 @@ int			main_parse(char **av, t_env *env, int ac)
 		free(line);
 	}
 	if (gnl == -1 || close(fd) || par.plr.pos.x <= -1 || par.plr.pos.y <= -1)
-		exit(1);
+		main_err(&par);
 	env->sector[0].num_link = 1;
 	env->sector[0].link = malloc(sizeof(int) * env->sector[0].num_link);
 	env->sector[0].link[0] = 1;

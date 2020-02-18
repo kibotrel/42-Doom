@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/08 19:29:45 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/01/27 11:52:22 by kibotrel         ###   ########.fr       */
+/*   Updated: 2020/02/14 15:28:57 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,10 @@ static void	env_clean(t_env *env)
 				free(env->sector[i].vertex);
 			if (env->sector[i].neighbor)
 				free(env->sector[i].neighbor);
+			if (env->sector[i].link)
+				free(env->sector[i].link);
+			if (env->sector[i].doors_neighbor)
+				free(env->sector[i].doors_neighbor);
 			i++;
 		}
 		free(env->sector);
