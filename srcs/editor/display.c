@@ -66,7 +66,7 @@ void	display_line(t_editor *editor, int x, int y, t_env *env)
 {
 	t_vertex	act_pos;
 
-	if (x < 0 || y < 0 || x > EDIT_W || y > WIN_H)
+	if (x < 0 || y < 0 || x > EDIT_W || y > EDIT_H)
 		return ;
 	act_pos.x = (x / editor->true_grid) * editor->true_grid;
 	act_pos.y = (y / editor->true_grid) * editor->true_grid;
@@ -80,7 +80,7 @@ void	display_grid(t_editor *editor, t_env *env)
 	int		y;
 
 	y = 0;
-	while (y < WIN_H)
+	while (y < EDIT_H)
 	{
 		x = 0;
 		while (x < EDIT_W)

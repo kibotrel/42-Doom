@@ -35,7 +35,7 @@ void			put_pixel(SDL_Surface *surf, int x, int y, int color)
 {
 	int		*pix;
 
-	if ((x >= 0 && x <= EDIT_W + MENU_W) && (y >= 0 && y <= WIN_H))
+	if ((x >= 0 && x <= EDIT_W + MENU_W) && (y >= 0 && y <= EDIT_H))
 	{
 		pix = surf->pixels + y * surf->pitch + x * surf->format->BytesPerPixel;
 		*pix = color;

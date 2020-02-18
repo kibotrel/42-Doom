@@ -81,7 +81,7 @@ void			create_map(t_editor *editor)
 {
 	int		fd;
 
-	if (editor->sect_is_closed)
+	if (editor->sect_is_closed && editor->sector)
 	{
 		fd = open(MAP_PATH, O_WRONLY | O_CREAT | O_TRUNC, S_IRWXU);
 		if (editor->sector)

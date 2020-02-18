@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/16 11:54:25 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/10 15:35:25 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/02/18 09:49:37 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@
 */
 
 # define CAM_H			6
-# define WIN_H			1080
-# define WIN_W			1920
+# define WIN_H			720
+# define WIN_W			1280
 # define SNEAK_H		2.5
 # define QUEUE_MAX		32
 # define MAX_WIDTH		1920

@@ -35,7 +35,7 @@ void			draw_ed_background(SDL_Surface *s)
 	while (x < MENU_W + EDIT_W)
 	{
 		y = 0;
-		while (y < WIN_H)
+		while (y < EDIT_H)
 		{
 			put_pixel(s, x, y, 0x1e1e1e);
 			++y;
