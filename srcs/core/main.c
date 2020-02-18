@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/16 11:53:54 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/18 08:21:07 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/02/18 09:39:36 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int			main(int ac, char **av)
 	if (ac <= 2)
 	{
 		env_setup(&env);
-	graphic_setup(&env, &env.sdl);
+		graphic_setup(&env, &env.sdl);
 		while (1)
 		{
 			selector(&env, ac, av);
