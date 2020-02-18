@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 13:18:32 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/01/29 11:36:49 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/02/14 08:03:07 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void	velocity(t_env *env, t_cam *cam, t_vec2d v)
 		move = 1;
 	else
 		move = 0;
-	speed = (move ? 0.4 : 0.2) * env->sector[cam->sector].friction;
+	speed = (move ? 0.4 : env->sector[cam->sector].friction);
 	cam->v.x = cam->v.x * (1 - speed) + v.x * speed;
 	cam->v.y = cam->v.y * (1 - speed) + v.y * speed;
 	if (move)

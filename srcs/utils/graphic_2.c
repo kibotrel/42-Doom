@@ -6,14 +6,14 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/27 15:35:56 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/01/27 15:37:29 by kibotrel         ###   ########.fr       */
+/*   Updated: 2020/02/14 15:44:13 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include "structs.h"
+#include "utils.h"
 
-void	display_info(t_env *env, char *str, t_vec2d pos, uint32_t mode)
+void	info(t_env *env, char *str, t_vec2d pos, uint32_t mode)
 {
 	t_vec		p;
 	SDL_Rect	where;
@@ -38,4 +38,41 @@ void	display_info(t_env *env, char *str, t_vec2d pos, uint32_t mode)
 	if (tmp)
 		SDL_FreeSurface(tmp);
 	free(str);
+}
+
+void	draw_asset(t_env *env, t_bmp asset, t_pos shift, t_anime *anime)
+{
+	t_pos		p;
+	t_pos		px;
+	t_pos		min;
+	uint32_t	pos;
+
+	p.y = -1;
+	min.x = (!anime->shift ? asset.width : anime->shift);
+	min.y = shift.y - asset.height;
+	while (++p.y < asset.height)
+	{
+		p.x = -1;
+		px.y = min.y + p.y;
+		while (++p.x < min.x)
+		{
+			px.x = shift.x + p.x;
+			pos = p.x + (anime->frame * anime->shift) + p.y * asset.width;
+			if (asset.pixels[pos] != 41704)
+				draw_pixel(env, env->sdl.screen, px, asset.pixels[pos]);
+		}
+	}
+}
+
+void	blur_area(t_env *env, t_pos min, t_pos max)
+{
+	t_pos		p;
+
+	p.y = min.y - 1;
+	while (++p.y < max.y)
+	{
+		p.x = min.x - 1;
+		while (++p.x < max.x)
+			blur(env, env->sdl.screen, p);
+	}
 }

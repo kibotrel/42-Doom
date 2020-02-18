@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 21:22:14 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/13 12:00:38 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/02/18 09:14:16 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ void			game_keyboard(t_env *env);
 **	movement.c
 */
 
+void			fly(t_env *env);
 void			move(t_env *env);
 void			jump(t_env *env, t_cam *cam);
 
@@ -71,10 +72,10 @@ void			jump(t_env *env, t_cam *cam);
 **	camera.c
 */
 
+void			fov_update(t_env *env);
 void			update_cam(t_env *env, t_vec2d vel);
 void			cam_height(t_env *env, int32_t crouch);
 void			cam_motion(t_env *env, t_cam *cam, int x, int y);
-
 /*
 **	engine.c
 */
@@ -96,5 +97,19 @@ int32_t			check_collisions(t_vec2d p, t_vec2d v, t_vec2d w1, t_vec2d w2);
 */
 
 void			hud(t_env *env);
+void			toggle_hud(t_env *env);
+void			toggle_infos(t_env *env);
+
+/*
+**	click.c
+*/
+
+void			game_click(t_env *env, int x, int y);
+
+/*
+**	reload.c
+*/
+
+void			reload(t_env *env);
 
 #endif

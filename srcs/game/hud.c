@@ -6,23 +6,51 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/24 11:32:06 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/01/27 15:31:01 by kibotrel         ###   ########.fr       */
+/*   Updated: 2020/02/14 09:01:20 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "hud.h"
-#include "game.h"
-#include "clean.h"
-#include "libft.h"
-#include "setup.h"
 #include "utils.h"
 
-//Position
-//Gravity
-//Viscosity
+void	toggle_hud(t_env *env)
+{
+	env->tick.hud.new = SDL_GetTicks();
+	if (env->tick.hud.new > env->tick.hud.old + 160)
+	{
+		if (env->state != SCREENSHOT)
+		{
+			env->data.hud.last_display = env->state;
+			env->state = SCREENSHOT;
+		}
+		else
+			env->state = env->data.hud.last_display;
+	}
+	env->tick.hud.old = env->tick.hud.new;
+}
+
+void	toggle_infos(t_env *env)
+{
+	env->tick.debug.new = SDL_GetTicks();
+	if (env->tick.debug.new > env->tick.debug.old + 160)
+	{
+		if (env->state == DEBUG)
+			env->state = PLAY;
+		else if (env->state == PLAY)
+			env->state = DEBUG;
+	}
+	env->tick.debug.old = env->tick.debug.new;
+}
 
 void	hud(t_env *env)
 {
-	if (env->data.hud.debug > 0)
-		debug_hud(env);
+	if (env->state <= DEBUG)
+	{
+		if (env->state == DEBUG)
+			debug_hud(env);
+		crosshair(env);
+		lifebar(env);
+		weapon(env);
+		purse(env);
+	}
 }
