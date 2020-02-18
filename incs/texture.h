@@ -6,7 +6,7 @@
 /*   By: lojesu <lojesu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/16 15:44:25 by lojesu            #+#    #+#             */
-/*   Updated: 2020/02/18 14:36:51 by lojesu           ###   ########.fr       */
+/*   Updated: 2020/02/18 15:43:46 by lojesu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # define W_UNIT 4096
 # define W_SIZE 64
+# define NB_TEXT 10
 
 typedef struct	s_scaler
 {
