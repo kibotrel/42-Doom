@@ -6,7 +6,7 @@
 /*   By: reda-con <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/23 16:34:34 by reda-con          #+#    #+#             */
-/*   Updated: 2020/02/14 12:41:03 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/02/18 14:55:58 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,13 @@ void	init_total(t_total *total, char **tab, t_parse *par, t_env *env)
 	total->emy = ft_atoi(tab[6]);
 	total->obj = ft_atoi(tab[8]);
 	if (!(par->ver = (t_vec2d*)malloc(sizeof(t_vec2d) * total->vert)))
-		parse_err(tab, par);
+		parse_err(tab, par, env);
 	if (!(env->sector = (t_sector*)malloc(sizeof(t_sector) * total->sect)))
-		parse_err(tab, par);
+		parse_err(tab, par, env);
 	if (!(par->emy = (t_entity*)malloc(sizeof(t_entity) * total->emy)))
-		parse_err(tab, par);
+		parse_err(tab, par, env);
 	if (!(par->obj = (t_entity*)malloc(sizeof(t_entity) * total->obj)))
-		parse_err(tab, par);
+		parse_err(tab, par, env);
 }
 
 int		verif_total(t_total *total, char **tab, t_parse *par, t_env *env)
