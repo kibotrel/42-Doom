@@ -6,78 +6,79 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/27 15:15:36 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/01/29 08:53:07 by kibotrel         ###   ########.fr       */
+/*   Updated: 2020/02/14 15:42:08 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <math.h>
 #include "libft.h"
+#include "setup.h"
 #include "utils.h"
 
 static void	background(t_env *env)
 {
-	t_pos	p;
+	t_pos			min;
+	t_pos			vertex[2];
 
-	p.y = -1;
-	while (++p.y < env->data.grid.min.y * 7)
-	{
-		p.x = -1;
-		while (++p.x < env->data.grid.min.x * 11)
-			blur(env, env->sdl.screen, p);
-	}
+	min = env->data.grid.min;
+	vertex[0] = p2d(0, 0, min.x, min.y);
+	vertex[1] = p2d(21, 12, min.x, min.y);
+	blur_area(env, vertex[0], vertex[1]);
+	draw_line(env, p2d(4, 1, min.x, min.y), p2d(10, 1, min.x, min.y), WHITE);
+	draw_line(env, p2d(4, 2, min.x, min.y), p2d(10, 2, min.x, min.y), WHITE);
+	draw_line(env, p2d(4, 1, min.x, min.y), p2d(4, 2, min.x, min.y), WHITE);
+	draw_line(env, p2d(10, 1, min.x, min.y), p2d(10, 2, min.x, min.y), WHITE);
+	draw_line(env, p2d(7, 3, min.x, min.y), p2d(7, 8, min.x, min.y), WHITE);
+	draw_line(env, p2d(14, 3, min.x, min.y), p2d(14, 11, min.x, min.y), WHITE);
+	draw_line(env, p2d(15, 1, min.x, min.y), p2d(20, 1, min.x, min.y), WHITE);
+	draw_line(env, p2d(15, 2, min.x, min.y), p2d(20, 2, min.x, min.y), WHITE);
+	draw_line(env, p2d(15, 1, min.x, min.y), p2d(15, 2, min.x, min.y), WHITE);
+	draw_line(env, p2d(20, 1, min.x, min.y), p2d(20, 2, min.x, min.y), WHITE);
 }
 
-static char	*precision(double value, int precision)
+static void	cam_infos(t_env *env, t_cam *cam)
 {
-	char	*str;
-	char	*tmp;
-	unsigned int	i;
-	unsigned int	max;
-	unsigned int	int_part;
+	char			**str;
 
-	if (value == floor(value))
-		return (ft_itoa((int)value));
-	tmp = ft_dtoa(value);
-	int_part = ft_numlen((floor(value)), 10);
-	if (!(str = malloc(sizeof(char) * int_part + precision + 2)))
-		return (NULL);
-	i = 0;
-	max = int_part + precision + 1;
-	while (i < max)
-	{
-		str[i] = tmp[i];
-		i++;
-	}
-	str[i] = '\0';
-	free(tmp);
-	return (str);
-
-
+	if (!(str = (char**)malloc(sizeof(char*) * 12)))
+		return ;
+	setup_debug_cam(env, cam, str);
+	info(env, ft_strdup("  Camera infos  "), v2d(6.5, 1), 1);
+	info(env, txt("Fall : ", str[0], 1), v2d(1, 3), 0);
+	info(env, txt("Ground : ", str[2], 1), v2d(8, 3), 0);
+	info(env, txt("Sneak : ", str[3], 1), v2d(1, 4), 0);
+	info(env, txt("Move : ", str[4], 1), v2d(8, 4), 0);
+	info(env, txt("Fly : ", str[1], 1), v2d(1, 5), 0);
+	info(env, txt("Sprint : ", str[11], 1), v2d(8, 5), 0);
+	info(env, txt("FOV : ", str[5], 1), v2d(1, 6), 0);
+	info(env, txt("Angle : ", str[6], 1), v2d(8, 6), 0);
+	info(env, txt("Sector : ", str[10], 1), v2d(1, 7), 0);
+	info(env, txt("FPS : ", str[9], 1), v2d(8, 7), 0);
+	info(env, txt("Position (XYZ) : ", str[7], 1), v2d(6.5, 9), 1);
+	info(env, txt("Velocity (XYZ) : ", str[8], 1), v2d(6.5, 10), 1);
+	free(str);
 }
 
-static void	informations(t_env *env)
+static void	sector_infos(t_env *env, t_sector *sector)
 {
-	char	*fly;
-	char	*pos;
-	char	*angle;
+	char			**str;
 
-	fly = (env->cam.fly > 0 ? ft_strdup("ON") : ft_strdup("OFF"));
-	angle = ft_itoa((int)fabs(ft_degrees(env->cam.angle)) % 360);
-	pos = load_text(precision(env->cam.pos.x, 2), " / ", 0);
-	pos = load_text(pos, precision(env->cam.pos.z, 2), 2);
-	pos = load_text(pos, " / ", 0);
-	pos = load_text(pos, precision(env->cam.pos.y, 2), 2);
-	display_info(env, ft_strdup("- Debug Mode -"), v2d(4.5, 1), 1);
-	display_info(env, load_text("FPS: ", ft_itoa(env->data.fps), 1), v2d(1, 3), 0);
-	display_info(env, load_text("Sector: ", ft_itoa(env->cam.sector), 1),
-					v2d(6, 3), 0);
-	display_info(env, load_text("Fly: ", fly, 1), v2d(1, 4), 0);
-	display_info(env, load_text("Angle: ", angle, 1), v2d(6, 4), 0);
-	display_info(env, load_text("X / Y / Z : ", pos, 1), v2d(4.5, 5), 1);
+	if (!(str = (char**)malloc(sizeof(char*) * 5)))
+		return ;
+	setup_debug_sector(sector, str);
+	info(env, ft_strdup("  Sector infos  "), v2d(17, 1), 1);
+	info(env, txt("Walls : ", str[0], 1), v2d(15, 3), 0);
+	info(env, txt("Ceil : ", str[1], 1), v2d(15, 5), 0);
+	info(env, txt("Floor : ", str[2], 1), v2d(15, 6), 0);
+	info(env, txt("Gravity : ", str[3], 1), v2d(15, 7), 0);
+	info(env, txt("Friction : ", str[4], 1), v2d(15, 8), 0);
+	info(env, ft_strdup("Effector : WIP"), v2d(15, 10), 0);
+	free(str);
 }
 
 void		debug_hud(t_env *env)
 {
 	background(env);
-	informations(env);
+	cam_infos(env, &env->cam);
+	sector_infos(env, &env->sector[env->cam.sector]);
 }

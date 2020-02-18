@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   floats.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: roster <roster@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lojesu <lojesu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/28 14:33:33 by roster            #+#    #+#             */
-/*   Updated: 2020/01/29 06:50:45 by kibotrel         ###   ########.fr       */
+/*   Created: 2019/02/28 14:33:33 by lojesu            #+#    #+#             */
+/*   Updated: 2020/02/14 08:01:53 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,7 @@ char		*ft_dtoa(double d)
 	char				*str_res;
 
 	m = ft_strnew(64);
-	uli = *((unsigned long int*)(&d));
+	ft_memcpy(&uli, &d, sizeof(double));
 	i = 63;
 	while (uli)
 	{

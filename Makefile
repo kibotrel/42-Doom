@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+         #
+#    By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/10 16:16:29 by kibotrel          #+#    #+#              #
-#    Updated: 2020/02/10 12:52:34 by lojesu           ###   ########.fr        #
+#    Updated: 2020/02/18 09:13:33 by kibotrel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -91,6 +91,10 @@ INCS			+= incs/editor.h
 # Source files (Can be changed)
 
 SRCS			:= hud/debug.c
+SRCS			+= hud/purse.c
+SRCS			+= hud/weapon.c
+SRCS			+= hud/lifebar.c
+SRCS			+= hud/crosshair.c
 SRCS			+= core/main.c
 SRCS			+= core/game.c
 SRCS			+= core/menu.c
@@ -99,8 +103,10 @@ SRCS			+= core/editor.c
 SRCS			+= core/selector.c
 SRCS			+= core/settings.c
 SRCS			+= game/hud.c
+SRCS			+= game/click.c
 SRCS			+= game/camera.c
 SRCS			+= game/engine.c
+SRCS			+= game/reload.c
 SRCS			+= game/physics.c
 SRCS			+= game/movement.c
 SRCS			+= game/keyboard.c
@@ -118,6 +124,7 @@ SRCS			+= parse/debug.c
 SRCS			+= parse/entity.c
 SRCS			+= parse/total.c
 SRCS			+= parse/player_blank.c
+SRCS			+= setup/hud.c
 SRCS			+= setup/game.c
 SRCS			+= setup/setup.c
 SRCS			+= setup/graphic.c
@@ -125,6 +132,8 @@ SRCS			+= utils/usage.c
 SRCS			+= utils/data_0.c
 SRCS			+= utils/data_1.c
 SRCS			+= utils/data_2.c
+SRCS			+= utils/data_3.c
+SRCS			+= utils/data_4.c
 SRCS			+= utils/engine.c
 SRCS			+= utils/floats.c
 SRCS			+= utils/maths_0.c
@@ -347,6 +356,16 @@ fclean: clean
 			sudo $(RM) $(LTTF);													\
 		fi;																		\
 	fi
+
+# Re-build libs (Can't be changed).
+
+re-libs: $(OBJS_DIR) $(C_SUBDIRS) $(C_OBJS)
+	@make -sC $(LFT_DIR) re
+	@make -sC $(LBMP_DIR) re
+	@echo "$(YELLOW)      - Building $(RESET)$(NAME) $(YELLOW)...\n$(RESET)"
+	@$(CC) $(CFLAGS) -o $(NAME) $(C_OBJS) $(LIBS)
+	@echo "$(GREEN)***   Project $(NAME) successfully compiled   ***\n$(RESET)"
+
 # Re-compile everything (Can't be changed).
 
 re: fclean all

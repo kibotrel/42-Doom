@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/18 14:38:11 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/14 11:46:40 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/02/18 09:36:44 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ void		game(t_env *env, int ac, char **av)
 		env->setup = 1;
 		SDL_ShowCursor(SDL_DISABLE);
 		SDL_SetWindowTitle(env->sdl.win, TITLE_GAME);
-		env->cam.fov = v2d(0.75 * env->h, 0.2 * env->h);
 		env->cam.cos = cos(env->cam.angle);
 		env->cam.sin = sin(env->cam.angle);
 		env->cam.pos.z = env->sector[env->cam.sector].floor + CAM_H;

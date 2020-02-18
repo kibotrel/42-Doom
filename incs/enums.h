@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   enums.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 17:59:50 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/14 13:32:46 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/02/18 09:14:02 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,7 @@ typedef enum	e_win
 
 typedef enum	e_assets
 {
-	MENU_1080P,
-	MENU_900P,
-	MENU_768P,
-	MENU_720P,
+	BG_MENU,
 	ED_TEXT_1,
 	ED_TEXT_2,
 	ED_TEXT_3,
@@ -48,6 +45,12 @@ typedef enum	e_assets
 	ED_ENEMY_2,
 	ED_ENEMY_3,
 	ED_ENEMY_4,
+	ED_PORTAL_DOOR,
+	ED_PORTAL_WALL,
+	SHOTGUN,
+	MAGAZINE,
+	SHELL,
+	COIN,
 	NB_ASSETS
 }				t_assets;
 
@@ -103,5 +106,17 @@ typedef enum		e_presets
 	ENTITY_ROTATE,
 	PLAYER_ROTATE
 }					t_presets;
+
+/*
+**	Enum for game state
+*/
+
+typedef enum		e_state
+{
+	PLAY,
+	DEBUG,
+	INVENTORY,
+	SCREENSHOT
+}					t_state;
 
 #endif
