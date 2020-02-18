@@ -47,12 +47,14 @@ static int		x_scale(t_game *var, int x)
 }
 
 void			draw_texture_slice
-				(t_env *env, int x, t_height h, t_game *var, uint32_t *wall)
+				(t_env *env, int x, t_height h, t_game *var)
 {
 	t_scaler	scaler;
 	int			scale_x;
 	t_pos		p;
-
+	uint32_t	*wall;
+	
+	wall = env->sdl.bmp[env->sector[var->sector].texture + 1].pixels;
 	h.top = bound(h.top, 0, env->h - 1);
 	h.bottom = bound(h.bottom, 0, env->h - 1);
 	p.x = x;
@@ -72,23 +74,3 @@ void			draw_texture_slice
 		draw_pixel(env, env->sdl.screen, p, 0);
 	}
 }
-/*
-void    draw_floor_slice(t_env *env, int x, t_height h, uint32_t color)
-{
-    t_pos       p;
-
-    h.top = bound(h.top, 0, env->h - 1);
-    h.bottom = bound(h.bottom, 0, env->h - 1);
-    p.x = x;
-    p.y = h.top;
-    if (h.bottom == h.top)
-        draw_pixel(env, env->sdl.screen, p,  color_add(color, p.y));
-    else if (h.bottom > h.top)
-    {
-        draw_pixel(env, env->sdl.screen, p, 0);
-        while (++p.y < h.bottom)
-            draw_pixel(env, env->sdl.screen, p, color_add(color, -(h.bottom - p.y) / 2));
-        draw_pixel(env, env->sdl.screen, p, 0);
-    }
-}
-*/

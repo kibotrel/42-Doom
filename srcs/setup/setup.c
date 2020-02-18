@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/16 11:58:26 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/18 11:12:23 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/02/18 15:47:55 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,12 @@ static void	assets_paths(t_env *env)
 	env->asset[ED_TEXT_2] = "./assets/texture_2.bmp";
 	env->asset[ED_TEXT_3] = "./assets/texture_3.bmp";
 	env->asset[ED_TEXT_4] = "./assets/texture_4.bmp";
+	env->asset[ED_TEXT_5] = "./assets/texture_5.bmp";
+	env->asset[ED_TEXT_6] = "./assets/texture_6.bmp";
+	env->asset[ED_TEXT_7] = "./assets/texture_7.bmp";
+	env->asset[ED_TEXT_8] = "./assets/texture_8.bmp";
+	env->asset[ED_TEXT_9] = "./assets/texture_9.bmp";
+	env->asset[ED_TEXT_10] = "./assets/texture_10.bmp";
 	env->asset[ED_OBJ_1] = "./assets/object_1.bmp";
 	env->asset[ED_OBJ_2] = "./assets/object_2.bmp";
 	env->asset[ED_OBJ_3] = "./assets/object_3.bmp";

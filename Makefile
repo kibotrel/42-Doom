@@ -6,7 +6,7 @@
 #    By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/10 16:16:29 by kibotrel          #+#    #+#              #
-#    Updated: 2020/02/18 09:13:33 by kibotrel         ###   ########.fr        #
+#    Updated: 2020/02/18 15:44:24 by lojesu           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -87,6 +87,7 @@ INCS			+= incs/editor.h
 INCS			+= incs/events.h
 INCS			+= incs/structs.h
 INCS			+= incs/editor.h
+INCS			+= incs/texture.h
 
 # Source files (Can be changed)
 

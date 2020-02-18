@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 13:21:31 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/14 17:30:04 by lojesu           ###   ########.fr       */
+/*   Updated: 2020/02/18 14:37:47 by lojesu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ static void	draw_ceil_and_floor(t_env *env, t_game *var, int32_t x)
 	//draw_floor_slice(env, x, lim(var->y[1] + 1, var->bottom[x]), 0x0000AA);
 }
 
-static void	draw_transitions(t_env *env, t_game *var, int32_t x, uint32_t *wall)
+static void	draw_transitions(t_env *env, t_game *var, int32_t x)
 {
 	int32_t		*p;
 	int32_t		max;
@@ -65,15 +65,15 @@ static void	draw_transitions(t_env *env, t_game *var, int32_t x, uint32_t *wall)
 	var->bottom[x] = bound(fmin(var->y[1], var->ny[1]), 0, var->bottom[x]);
 	var->text_height = fabs(var->ceil[1] - var->floor[1]);
 	draw_texture_slice(env, x, lim(var->y[0], var->ny[0]),
-				var, wall);
+				var);
 	draw_texture_slice(env, x, lim(var->ny[1] + 1, var->y[1]),
-				var, wall);
+				var);
 }
 
-static void	draw_wall(t_env *env, t_game *var, int32_t *y, int32_t x, uint32_t *wall)
+static void	draw_wall(t_env *env, t_game *var, int32_t x)
 {
 	var->text_height = fabs(var->ceil[0] - var->floor[0]);
-	draw_texture_slice(env, x, lim(y[0], y[1]), var, wall);
+	draw_texture_slice(env, x, lim(var->y[0], var->y[1]), var);
 	/*(void)var;  //wesh killian tu commente les deux ligne du haut et tu decommente ces 3 lignes
 	(void)wall;
 	draw_slice(env, x, lim(y[0], y[1]), flat(0, 0x654321, 0));*/
@@ -82,18 +82,15 @@ static void	draw_wall(t_env *env, t_game *var, int32_t *y, int32_t x, uint32_t *
 void		draw_screen(t_env *env, t_game *var)
 {
 	int32_t		x;
-	t_bmp		wall;
 
-	bmp_to_array("assets/wall.bmp", &wall);
 	x = var->start;
 	while (x <= var->end)
 	{
 		draw_ceil_and_floor(env, var, x);
 		if (var->n >= 0)
-			draw_transitions(env, var, x, wall.pixels);
+			draw_transitions(env, var, x);
 		else
-			draw_wall(env, var, var->y, x, wall.pixels);
+			draw_wall(env, var, x);
 		x++;
 	}
-	free(wall.pixels);
 }
