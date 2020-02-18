@@ -71,7 +71,11 @@ void	sector_triger(t_env *env)
 				j = 0;
 				while (j < env->sector[env->sector[s].link[i]].points)
 				{
-					env->sector[env->sector[s].link[i]].neighbor[j] = env->sector[env->sector[s].link[i]].doors_neighbor[j];
+					if (env->sector[env->sector[env->sector[s].link[i]].doors_neighbor[j]].type != 4)
+					{
+						env->sector[env->sector[s].link[i]].neighbor[j] = env->sector[env->sector[s].link[i]].doors_neighbor[j];
+						env->sector[env->sector[s].link[i]].type = -4;
+					}
 					k = 0;
 					while (k < env->sector[env->sector[env->sector[s].link[i]].neighbor[j]].points)
 					{
