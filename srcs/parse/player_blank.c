@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player_blank.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: reda-con <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/23 16:36:21 by reda-con          #+#    #+#             */
-/*   Updated: 2020/02/14 12:43:10 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/02/18 16:55:54 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int		verif_player(t_cam *cam, char **tab)
 				return (1);
 			cam->pos = v3d(floor(ft_atoi(tab[2]) / 10), floor(ft_atoi(tab[4]) / 10), 0);
 			cam->sector = ft_atoi(tab[6]);
-			cam->angle = ft_atoi(tab[8]);
+			cam->angle = ft_radians(ft_atoi(tab[8]));
 		}
 		else
 			return (1);
