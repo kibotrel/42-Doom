@@ -3,6 +3,7 @@ objs
 build
 SDL2*
 *.o
+*.swo
 *.txt
 TODO*
 *.data
