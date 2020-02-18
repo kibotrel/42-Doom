@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/16 11:58:26 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/18 11:02:48 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/02/18 11:12:23 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ static void	infos_setup(t_env *env)
 {
 	env->w = WIN_W;
 	env->h = WIN_H;
-	env->win = GAME;
+//	env->win = GAME;
 	env->cam.fly = -1;
 	env->cam.fall = 1;
 	env->cam.speed = 1;
