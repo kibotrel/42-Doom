@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 17:59:50 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/18 10:59:17 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/02/18 15:20:53 by lojesu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,12 @@ typedef enum	e_assets
 	ED_TEXT_2,
 	ED_TEXT_3,
 	ED_TEXT_4,
+	ED_TEXT_5,
+	ED_TEXT_6,
+	ED_TEXT_7,
+	ED_TEXT_8,
+	ED_TEXT_9,
+	ED_TEXT_10,
 	ED_OBJ_1,
 	ED_OBJ_2,
 	ED_OBJ_3,
