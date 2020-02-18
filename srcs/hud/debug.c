@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/27 15:15:36 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/14 15:42:08 by kibotrel         ###   ########.fr       */
+/*   Updated: 2020/02/18 10:56:29 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,32 @@ static void	sector_infos(t_env *env, t_sector *sector)
 
 void		debug_hud(t_env *env)
 {
+	// t_pos	n;
+	// t_pos	end;
+	// t_pos	start;
+	//
+	// n.y = 0;
+	// while (++n.y <= RATIO_GRID_Y)
+	// {
+	// 	n.x = 0;
+	// 	while (++n.x <= RATIO_GRID_X + 1)
+	// 	{
+	// 		start.x = n.x * env->data.grid.min.x;
+	// 		start.y = n.y * env->data.grid.min.y;
+	// 		if (n.y == RATIO_GRID_Y)
+	// 			end.y = start.y;
+	// 		else
+	// 			end.y = (n.y + 1) * env->data.grid.min.y;
+	// 		end.x = start.x;
+	// 		draw_line(env, start, end, WHITE);
+	// 		if (n.x == RATIO_GRID_X + 1)
+	// 			end.x = start.x;
+	// 		else
+	// 			end.x = (n.x + 1) * env->data.grid.min.x;
+	// 		end.y = start.y;
+	// 		draw_line(env, start, end, WHITE);
+	// 	}
+	// }
 	background(env);
 	cam_infos(env, &env->cam);
 	sector_infos(env, &env->sector[env->cam.sector]);
