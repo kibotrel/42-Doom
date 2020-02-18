@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 13:40:06 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/07 14:59:41 by lojesu           ###   ########.fr       */
+/*   Updated: 2020/02/14 14:30:09 by lojesu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,8 @@ uint32_t	color_add(uint32_t color, double add)
 	return ((r << 16) | (g << 8) | b);
 }
 
-void		init_and_protect_variable_1(t_game *var, float w_size, float *u0, float *u1)
+void		init_and_protect_variable_1
+			(t_game *var, float w_size, float *u0, float *u1)
 {
 	double	protect;
 
@@ -69,7 +70,8 @@ void		init_and_protect_variable_1(t_game *var, float w_size, float *u0, float *u
 	*u1 = (var->t[1].x - var->org[0].x) * (W_UNIT * w_size / W_SIZE) / protect;
 }
 
-void		init_and_protect_variable_2(t_game *var, float w_size, float *u0, float *u1)
+void		init_and_protect_variable_2
+			(t_game *var, float w_size, float *u0, float *u1)
 {
 	double	protect;
 
@@ -77,4 +79,20 @@ void		init_and_protect_variable_2(t_game *var, float w_size, float *u0, float *u
 		(var->org[1].y - var->org[0].y) : 1.0;
 	*u0 = (var->t[0].y - var->org[0].y) * (W_UNIT * w_size / W_SIZE) / protect;
 	*u1 = (var->t[1].y - var->org[0].y) * (W_UNIT * w_size / W_SIZE) / protect;
+}
+
+uint32_t	color_light(uint32_t color, int light)
+{
+	int     r;
+    int     g;
+    int     b;
+	int		diff;
+
+	diff = (light >> 16 & 0xFF) - (color >> 16 & 0xFF);
+	r = (color >> 16 & 0xFF) + (int)(diff * (double)LIGHT / 100);
+	diff =  (light >> 8 & 0xFF) - (color >> 8 & 0xFF);
+	g = (color >> 8 & 0xFF) + (int)(diff * (double)LIGHT / 100);
+	diff = (light & 0xFF) - (color & 0xFF);
+	b = (color & 0xFF) + (int)(diff * (double)LIGHT / 100);
+	return ((r << 16) | (g << 8) | b);
 }

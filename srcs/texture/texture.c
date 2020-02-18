@@ -53,6 +53,7 @@ void			draw_texture_slice
 	int			scale_x;
 	t_pos		p;
 	uint32_t	*wall;
+	uint32_t	color;
 	
 	wall = env->sdl.bmp[env->sector[var->sector].texture + 1].pixels;
 	h.top = bound(h.top, 0, env->h - 1);
@@ -67,9 +68,12 @@ void			draw_texture_slice
 		draw_pixel(env, env->sdl.screen, p, 0);
 		while (++p.y < h.bottom)
 		{
-			draw_pixel(env, env->sdl.screen, p, color_add(
-						wall[abs((scaler_next(&scaler) % W_SIZE * W_SIZE)
-							+ (scale_x % W_SIZE))], -var->depth));
+			color = color_add(
+				wall[abs((scaler_next(&scaler) % W_SIZE * W_SIZE)
+					+ (scale_x % W_SIZE))], -var->depth);
+			if (env->sector[var->sector].light != -1)
+				color = color_light(color, env->sector[var->sector].light);
+			draw_pixel(env, env->sdl.screen, p, color);
 		}
 		draw_pixel(env, env->sdl.screen, p, 0);
 	}
