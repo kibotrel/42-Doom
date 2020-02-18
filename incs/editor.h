@@ -187,6 +187,7 @@ void				move_in_sector(t_editor *edit, int x, int y);
 */
 t_ed_sector			*create_sector(t_editor *edit, t_env *env);
 void				delete_sector_in_progress(t_ed_sector **sector, t_editor *edit);
+void				print_sector_light(t_env *env, int light, t_ed_sector *sect);
 
 /*
 **	sector/sector_check.c

@@ -61,7 +61,10 @@ void			place_sector(t_editor *editor, int x, int y, t_env *env)
 	new = get_vertex(editor, x, y, env);
 	sect = get_last_sector(editor, env);
 	if (is_sector_complete(sect->vertex, new) == true)
+	{
 		next_place_sector(editor, sect, env);
+		free(new);
+	}
 	else
 	{
 		add_vertex(&sect->vertex, new);

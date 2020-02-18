@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 18:48:17 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/18 09:36:09 by kibotrel         ###   ########.fr       */
+/*   Updated: 2020/02/18 11:02:32 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -156,18 +156,28 @@ typedef struct			s_portal
 	struct s_portal		*prev;
 }						t_portal;
 
+typedef struct		s_effector
+{
+	t_effects		effects;
+	int				money_sec;
+	int				cost;
+	int				*doors;
+}					t_effector;
 typedef struct			s_ed_sector
 {
 	int					type;
+	int					light;
 	int					h_ceil;
 	int					h_floor;
 	int					gravity;
 	int					texture;
 	int					friction;
 	int					*is_portal;
+	int					light_value;
 	int					vertex_count;
 	int					sector_number;
 	t_vertex			*vertex;
+	t_effector			effect;
 	struct s_ed_sector	*next;
 	struct s_ed_sector	*prev;
 }						t_ed_sector;

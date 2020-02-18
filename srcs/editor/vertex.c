@@ -49,18 +49,18 @@ static t_vertex	*is_vertex_double(t_ed_sector *sector, int x, int y)
 	if (!sector)
 		return (NULL);
 	sect = sector;
-	while (sector->prev)
-		sector = sector->prev;
-	while (sector)
+	while (sect->prev)
+		sect = sect->prev;
+	while (sect)
 	{
-		vert = sector->vertex;
+		vert = sect->vertex;
 		while (vert)
 		{
 			if (vert->x == x && vert->y == y)
 				return (vert);
 			vert = vert->next;
 		}
-		sector = sector->next;
+		sect = sect->next;
 	}
 	return (NULL);
 }

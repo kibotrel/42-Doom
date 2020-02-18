@@ -35,7 +35,7 @@ void			draw_ed_background(SDL_Surface *s)
 	while (x < MENU_W + EDIT_W)
 	{
 		y = 0;
-		while (y < WIN_H)
+		while (y < EDIT_H)
 		{
 			put_pixel(s, x, y, 0x1e1e1e);
 			++y;
@@ -86,13 +86,16 @@ void			blank_menu(SDL_Surface *s, int set, t_editor *edit, int preset, t_env *en
 	rectangle(init_vertex(1340, 440), init_vertex(1510, 510), clr, s);
 	clr = ((set != PORTAL) ? 0xffffff : 0x177013);
 	rectangle(init_vertex(1340, 540), init_vertex(1510, 610), clr, s);
+	clr = ((set != EFFECTOR) ? 0xffffff : 0x177013);
+	rectangle(init_vertex(1340, 640), init_vertex(1510, 710), clr, s);
 	next_blank_menu(set, s);
 	sec_blank_menu(s, set, preset);
-	rectangle(init_vertex(1350, 250), init_vertex(1400, 300), 0xffa500, s);
 	rectangle(init_vertex(1350, 150), init_vertex(1400, 200), 0xffa500, s);
-	rectangle(init_vertex(1350, 450), init_vertex(1400, 500), 0xffa500, s);
+	rectangle(init_vertex(1350, 250), init_vertex(1400, 300), 0xffa500, s);
 	rectangle(init_vertex(1350, 350), init_vertex(1400, 400), 0xffa500, s);
+	rectangle(init_vertex(1350, 450), init_vertex(1400, 500), 0xffa500, s);
 	rectangle(init_vertex(1350, 550), init_vertex(1400, 600), 0xffa500, s);
+	rectangle(init_vertex(1350, 650), init_vertex(1400, 700), 0xffa500, s);
 	rectangle(init_vertex(1300, 760), init_vertex(1410, 810), 0xffffff, s);
 	rectangle(init_vertex(1420, 760), init_vertex(1530, 810), 0xffffff, s);
 	print_param_to_screen(env, edit->sett, edit);

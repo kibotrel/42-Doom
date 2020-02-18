@@ -34,6 +34,8 @@ static void		write_sectors(t_ed_sector *sector, int fd)
 			ft_putnbr_fd(sect->texture, fd);
 			ft_putstr_fd(" type ", fd);
 			ft_putnbr_fd(sect->type, fd);
+			ft_putstr_fd(" light ", fd);
+			ft_putnbr_fd(sect->light_value, fd);
 			ft_putstr_fd(" h_floor ", fd);
 			ft_putnbr_fd(sect->h_floor, fd);
 			ft_putstr_fd(" h_ceil ", fd);
@@ -79,7 +81,7 @@ void			create_map(t_editor *editor)
 {
 	int		fd;
 
-	if (editor->sect_is_closed)
+	if (editor->sect_is_closed && editor->sector)
 	{
 		fd = open(MAP_PATH, O_WRONLY | O_CREAT | O_TRUNC, S_IRWXU);
 		if (editor->sector)

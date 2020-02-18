@@ -12,7 +12,7 @@ static void	print_picture(t_sdl *sdl, int x, int y, t_bmp img)
 		xa = 0;
 		while (++xa < img.width)
 		{
-			if (xa + x < EDIT_W + MENU_W && ya + y < WIN_H)
+			if (xa + x < EDIT_W + MENU_W && ya + y < EDIT_H)
 				put_pixel(sdl->screen, xa + x, ya + y,
 					img.pixels[xa + ya * img.width]);
 		}
