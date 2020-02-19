@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   graphic_1.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 13:21:31 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/18 17:50:37 by lojesu           ###   ########.fr       */
+/*   Updated: 2020/02/19 16:57:44 by demonwaves       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,15 +30,13 @@ static void	draw_ceil_and_floor(t_env *env, t_game *var, int32_t x)
 	int32_t		max;
 	int32_t		min;
 	int32_t		r_size_wall;
-	t_vec2d		*t;
 
 	max = var->side[1];
 	p = var->now;
-	t = var->t;
 	min = var->side[0];
 	var->unbound[0] = (x - min) * (p[2] - p[0]) / (max - min) + p[0];
 	var->unbound[1] = (x - min) * (p[3] - p[1]) / (max - min) + p[1];
-	r_size_wall = 7/*can be a variable*/ * (var->unbound[1] - var->unbound[0]) / (var->ceil[0] - var->floor[0]);
+	r_size_wall = 7 * (var->unbound[1] - var->unbound[0]) / (var->ceil[0] - var->floor[0]); /*can be a variable*/
 	var->depth = W_UNIT / (r_size_wall != 0 ? r_size_wall : 1);
 	var->y[0] = bound(var->unbound[0], var->top[x], var->bottom[x]);
 	var->y[1] = bound(var->unbound[1], var->top[x], var->bottom[x]);
