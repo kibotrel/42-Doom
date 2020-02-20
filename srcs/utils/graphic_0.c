@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/17 11:08:34 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/18 09:43:25 by kibotrel         ###   ########.fr       */
+/*   Updated: 2020/02/20 14:47:26 by demonwaves       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,5 +94,23 @@ void	draw_slice(t_env *env, int x, t_height h, t_palette c)
 		while (++p.y < h.bottom)
 			draw_pixel(env, env->sdl.screen, p, c.middle);
 		draw_pixel(env, env->sdl.screen, p, c.bottom);
+	}
+}
+
+void	draw_skybox(t_env *env, t_height h, t_game *var, int x)
+{
+	t_pos		p;
+	t_pos		pos;
+
+	(void)x;
+	h.top = bound(h.top, 0, env->h - 1);
+	h.bottom = bound(h.bottom, 0, env->h - 1);
+	p.x = x;
+	pos.x = (var->shift.x + x) % env->w;
+	pos.y = env->sdl.bmp[SKYBOX].height - h.top;
+	p.y = h.top;
+	while (++p.y <= h.bottom)
+	{
+		draw_pixel(env, env->sdl.screen, p, env->sdl.bmp[SKYBOX].pixels[pos.x + p.y * env->w]);
 	}
 }

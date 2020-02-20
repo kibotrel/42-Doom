@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 13:21:31 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/19 16:57:44 by demonwaves       ###   ########.fr       */
+/*   Updated: 2020/02/20 14:31:42 by demonwaves       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,10 @@ static void	draw_ceil_and_floor(t_env *env, t_game *var, int32_t x)
 	var->depth = W_UNIT / (r_size_wall != 0 ? r_size_wall : 1);
 	var->y[0] = bound(var->unbound[0], var->top[x], var->bottom[x]);
 	var->y[1] = bound(var->unbound[1], var->top[x], var->bottom[x]);
-	draw_slice(env, x, lim(var->top[x], var->y[0] - 1),
-			flat(0, color_light(0x222222, env->sector[var->sector].light), 0));
+	if (var->sector == 0)
+		draw_skybox(env, lim(var->top[x], var->y[0] - 1), var, x);
+	else
+		draw_slice(env, x, lim(var->top[x], var->y[0] - 1), flat(0, color_light(0x222222, env->sector[var->sector].light), 0));
 	draw_slice(env, x, lim(var->y[1] + 1, var->bottom[x]),
 			flat(0, color_light(0x424242, env->sector[var->sector].light), 0));
 }
