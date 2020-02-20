@@ -6,7 +6,7 @@
 #    By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/10 16:16:29 by kibotrel          #+#    #+#              #
-#    Updated: 2020/02/18 09:13:33 by kibotrel         ###   ########.fr        #
+#    Updated: 2020/02/20 12:16:23 by reda-con         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -106,6 +106,7 @@ SRCS			+= game/hud.c
 SRCS			+= game/click.c
 SRCS			+= game/camera.c
 SRCS			+= game/engine.c
+SRCS			+= game/effector.c
 SRCS			+= game/reload.c
 SRCS			+= game/physics.c
 SRCS			+= game/movement.c
@@ -120,7 +121,6 @@ SRCS			+= parse/sector.c
 SRCS			+= parse/main.c
 SRCS			+= parse/tools.c
 SRCS			+= parse/vertex.c
-SRCS			+= parse/debug.c
 SRCS			+= parse/entity.c
 SRCS			+= parse/total.c
 SRCS			+= parse/player_blank.c
@@ -239,7 +239,7 @@ LIBS			+= -lm
 
 # Compilation flags (Can be changed).
 
-CFLAGS			= $(C_INCS) -Wall -Wextra -Werror -O3
+CFLAGS			= $(C_INCS) -Wall -Wextra -Werror -O3 #-g -fsanitize=address
 
 #------------------------------------ RULES -----------------------------------#
 

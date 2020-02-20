@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/16 11:53:54 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/18 15:11:47 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/02/20 12:15:48 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,8 @@
 //	replace ft_isvalidname by a parser call + check the name inside
 //	function prototype should be modified to get env in this scope
 
-/*
  __attribute__((destructor)) void no_end(void);
   void no_end(){while(1);}
-  */
 
 /*
 static int	prechecks(int ac, char **av)

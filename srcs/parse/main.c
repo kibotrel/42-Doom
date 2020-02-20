@@ -6,7 +6,7 @@
 /*   By: reda-con <reda-con@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 14:00:52 by reda-con          #+#    #+#             */
-/*   Updated: 2020/02/18 15:05:47 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/02/20 12:18:13 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ void		tmp(t_sector *s, int nb)
 {
 	int			i;
 	uint32_t	j;
+	int			k;
 
 	i = 0;
 	while (i < nb)
@@ -75,8 +76,9 @@ void		tmp(t_sector *s, int nb)
 		j = 0;
 		while (j < s[i].points)
 		{
+			k = s[i].neighbor[j];
 			s[i].doors_neighbor[j] = s[i].neighbor[j];
-			if (s[i].type == 4 || s[s[i].neighbor[j]].type == 4)
+			if (s[i].type == 4 || (k > 0 && s[k].type == 4))
 				s[i].neighbor[j] = -2;
 			++j;
 		}
@@ -122,6 +124,8 @@ int			main_parse(char **av, t_env *env, int ac)
 	env->sector[3].num_link = 1;
 	env->sector[3].link = malloc(sizeof(int) * env->sector[3].num_link);
 	env->sector[3].link[0] = 2;
+	for (uint32_t i = 4; i < env->zones; ++i)
+		env->sector[i].num_link = 0;
 	tmp(env->sector, env->zones);
 	main_err(&par, env, 0);
 	return (0);
