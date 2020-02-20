@@ -39,41 +39,50 @@ static int		x_scale(t_game *var, int x)
 		init_and_protect_variable_1(var, w_size, &u0, &u1);
 	else
 		init_and_protect_variable_2(var, w_size, &u0, &u1);
-	div = ((var->side[1] - x) * var->t[1].y + (x - var->side[0]) * var->t[0].y) != 0 ?
-		((var->side[1] - x) * var->t[1].y + (x - var->side[0]) * var->t[0].y) : 1;
-	return ((u0 * ((var->side[1] - x) * var->t[1].y) + u1 * ((x - var->side[0]) * var->t[0].y))
-			/ div);
+	div = ((var->side[1] - x) * var->t[1].y + (x - var->side[0]) *
+			var->t[0].y) != 0 ? ((var->side[1] - x) * var->t[1].y +
+				(x - var->side[0]) * var->t[0].y) : 1;
+	return ((u0 * ((var->side[1] - x) * var->t[1].y) + u1 *
+				((x - var->side[0]) * var->t[0].y)) / div);
 }
 
-void			draw_texture_slice
-				(t_env *env, int x, t_height h, t_game *var)
+static void		draw_slice_texture(t_env *env, int x, t_height h, t_game *var)
 {
-	t_scaler	scaler;
-	int			scale_x;
 	t_pos		p;
+	t_scaler	scaler;
 	uint32_t	*wall;
 	uint32_t	color;
-	
-	wall = env->sdl.bmp[env->sector[var->sector].texture + 1].pixels;
-	h.top = bound(h.top, 0, env->h - 1);
-	h.bottom = bound(h.bottom, 0, env->h - 1);
+	int			scale_x;
+
 	p.x = x;
 	p.y = h.top;
 	scaler = scaler_init(var->unbound[0], h.top,
 			var->unbound[1], WALL_RATIO * var->text_height);
 	scale_x = x_scale(var, x);
+	wall = env->sdl.bmp[env->sector[var->sector].texture + 1].pixels;
+	while (++p.y < h.bottom)
+	{
+		color = color_add(
+				wall[abs((scaler_next(&scaler) % W_SIZE * W_SIZE)
+					+ (scale_x % W_SIZE))], -var->depth);
+		if (env->sector[var->sector].light != -1)
+			color = color_light(color, env->sector[var->sector].light);
+		draw_pixel(env, env->sdl.screen, p, color);
+	}
+}
+
+void			draw_texture_slice(t_env *env, int x, t_height h, t_game *var)
+{
+	t_pos		p;
+
+	h.top = bound(h.top, 0, env->h - 1);
+	h.bottom = bound(h.bottom, 0, env->h - 1);
+	p.x = x;
+	p.y = h.top;
 	if (h.bottom > h.top)
 	{
 		draw_pixel(env, env->sdl.screen, p, 0);
-		while (++p.y < h.bottom)
-		{
-			color = color_add(
-				wall[abs((scaler_next(&scaler) % W_SIZE * W_SIZE)
-					+ (scale_x % W_SIZE))], -var->depth);
-			if (env->sector[var->sector].light != -1)
-				color = color_light(color, env->sector[var->sector].light);
-			draw_pixel(env, env->sdl.screen, p, color);
-		}
+		draw_slice_texture(env, x, h, var);
 		draw_pixel(env, env->sdl.screen, p, 0);
 	}
 }

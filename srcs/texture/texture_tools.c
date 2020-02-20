@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 13:40:06 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/14 14:30:09 by lojesu           ###   ########.fr       */
+/*   Updated: 2020/02/20 13:46:19 by lojesu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ uint32_t	color_add(uint32_t color, double add)
 }
 
 void		init_and_protect_variable_1
-			(t_game *var, float w_size, float *u0, float *u1)
+	(t_game *var, float w_size, float *u0, float *u1)
 {
 	double	protect;
 
@@ -71,7 +71,7 @@ void		init_and_protect_variable_1
 }
 
 void		init_and_protect_variable_2
-			(t_game *var, float w_size, float *u0, float *u1)
+	(t_game *var, float w_size, float *u0, float *u1)
 {
 	double	protect;
 
@@ -83,14 +83,14 @@ void		init_and_protect_variable_2
 
 uint32_t	color_light(uint32_t color, int light)
 {
-	int     r;
-    int     g;
-    int     b;
+	int		r;
+	int		g;
+	int		b;
 	int		diff;
 
 	diff = (light >> 16 & 0xFF) - (color >> 16 & 0xFF);
 	r = (color >> 16 & 0xFF) + (int)(diff * (double)LIGHT / 100);
-	diff =  (light >> 8 & 0xFF) - (color >> 8 & 0xFF);
+	diff = (light >> 8 & 0xFF) - (color >> 8 & 0xFF);
 	g = (color >> 8 & 0xFF) + (int)(diff * (double)LIGHT / 100);
 	diff = (light & 0xFF) - (color & 0xFF);
 	b = (color & 0xFF) + (int)(diff * (double)LIGHT / 100);
