@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/18 14:38:11 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/18 10:47:15 by kibotrel         ###   ########.fr       */
+/*   Updated: 2020/02/20 17:23:56 by demonwaves       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,7 @@ void		game(t_env *env, int ac, char **av)
 	}
 	sector_triger(env);
 	graphics(env);
+	if (env->data.sky)
+		draw_skybox(env);
 	hud(env);
 }

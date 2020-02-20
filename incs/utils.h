@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 19:01:59 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/20 17:41:19 by demonwaves       ###   ########.fr       */
+/*   Updated: 2020/02/20 18:03:40 by demonwaves       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ void				blur(t_env *env, SDL_Surface *win, t_pos p);
 **	graphic_2.c
 */
 
+void				draw_skybox(t_env *env);
 void				blur_area(t_env *env, t_pos min, t_pos max);
 void				setup_sky(t_env *env, t_height h, t_game *var, int x);
 void				info(t_env *env, char *str, t_vec2d pos, uint32_t mode);

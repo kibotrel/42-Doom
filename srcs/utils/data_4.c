@@ -6,11 +6,13 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/14 08:01:41 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/20 17:41:43 by demonwaves       ###   ########.fr       */
+/*   Updated: 2020/02/20 18:02:54 by demonwaves       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdint.h>
 #include <stdlib.h>
+#include "env.h"
 
 char		*magazine_asset(int w, int h)
 {

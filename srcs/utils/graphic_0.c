@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/17 11:08:34 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/20 16:58:44 by demonwaves       ###   ########.fr       */
+/*   Updated: 2020/02/20 17:21:13 by demonwaves       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,20 +88,4 @@ void	draw_slice(t_env *env, int x, t_height h, t_palette c)
 	p.y = h.top;
 	while (++p.y <= h.bottom + 1)
 		draw_pixel(env, env->sdl.screen, p, c.middle);
-}
-
-void	setup_sky(t_env *env, t_height h, t_game *var, int x)
-{
-	t_pos		p;
-
-	h.top = bound(h.top, 0, env->h - 1);
-	h.bottom = bound(h.bottom, 0, env->h - 1);
-	p.x = x;
-	p.y = h.top;
-	while (++p.y <= h.bottom + 1)
-	{
-		draw_pixel(env, env->sdl.screen, p, 1);
-		if (p.y > 1 && p.y > var->sky)
-			var->sky = p.y;
-	}
 }

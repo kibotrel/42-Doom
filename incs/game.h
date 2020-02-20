@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 21:22:14 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/20 17:08:18 by demonwaves       ###   ########.fr       */
+/*   Updated: 2020/02/20 20:47:46 by demonwaves       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,14 @@ typedef struct	s_game
 	t_sector	*s;
 	uint32_t	j;
 }				t_game;
+
+typedef struct	s_skybox
+{
+	t_pos		shift;
+	uint32_t	draw;
+	uint32_t	*image;
+}				t_skybox;
+
 /*
 **	keyboard.c
 */

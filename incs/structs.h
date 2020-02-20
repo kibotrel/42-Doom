@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 18:48:17 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/18 16:39:15 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/02/20 17:16:45 by demonwaves       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,7 @@ typedef struct			s_data
 	uint8_t				shot;
 	uint8_t				f_size;
 	uint8_t				g_size;
+	int32_t				sky;
 	int32_t				ammos;
 	int32_t				magazines;
 	uint32_t			fps;

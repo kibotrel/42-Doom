@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 15:22:56 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/20 17:11:34 by demonwaves       ###   ########.fr       */
+/*   Updated: 2020/02/20 17:17:34 by demonwaves       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,5 +69,6 @@ void	graphics(t_env *env)
 			check_depth(&var, var.start, var.end);
 		}
 	}
+	env->data.sky = var.sky;
 	engine_clean(&var);
 }
