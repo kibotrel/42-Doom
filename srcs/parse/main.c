@@ -6,7 +6,7 @@
 /*   By: reda-con <reda-con@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 14:00:52 by reda-con          #+#    #+#             */
-/*   Updated: 2020/02/20 14:31:43 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/02/20 15:33:11 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,12 +72,12 @@ void		tmp(t_sector *s, int nb)
 	i = 0;
 	while (i < nb)
 	{
-		s[i].doors_neighbor = (int*)malloc(sizeof(int) * s[i].points);
+		s[i].door_neighbor = (int*)malloc(sizeof(int) * s[i].points);
 		j = 0;
 		while (j < s[i].points)
 		{
 			k = s[i].neighbor[j];
-			s[i].doors_neighbor[j] = k;
+			s[i].door_neighbor[j] = k;
 			if (s[i].type < 0 || (k > 0 && s[k].type < 0))
 				s[i].neighbor[j] = -2;
 			++j;

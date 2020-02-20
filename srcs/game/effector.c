@@ -2,36 +2,32 @@
 #include <stdint.h>
 #include "utils.h"
 
-void	doors(t_env *env, int type)
+void	doors(t_env *env, int t)
 {
 	uint32_t	i;
 	uint32_t	j;
 	uint32_t	k;
+	int			l;
 
-	i = 0;
-	while (i < env->zones)
+	i = -1;
+	while (++i < env->zones)
 	{
-		if (env->sector[i].type == type)
-			env->sector[i].type = EFF_NONE;
-		if (env->sector[i].type == -type)
+		if (env->sector[i].type == -t)
 		{
-			j = 0;
-			while (j < env->sector[i].points)
+			j = -1;
+			while (++j < env->sector[i].points)
 			{
-				if (env->sector[i].doors_neighbor[j] > -1 && env->sector[env->sector[i].doors_neighbor[j]].type != -type)
-					env->sector[i].neighbor[j] = env->sector[i].doors_neighbor[j];
-				k = 0;
-				while (env->sector[i].neighbor[j] > -1 && k < env->sector[env->sector[i].neighbor[j]].points)
-				{
-					if (env->sector[env->sector[env->sector[i].neighbor[j]].doors_neighbor[k]].type == -type)
-						env->sector[env->sector[i].neighbor[j]].neighbor[k] = env->sector[env->sector[i].neighbor[j]].doors_neighbor[k];
-					++k;
-				}
-				++j;
+				l = env->sector[i].door_neighbor[j];
+				if (l > -1 && env->sector[l].type != -t)
+					env->sector[i].neighbor[j] = l;
+				k = -1;
+				l = env->sector[i].neighbor[j];
+				while (l > -1 && ++k < env->sector[l].points)
+					if (env->sector[env->sector[l].door_neighbor[k]].type == -t)
+						env->sector[l].neighbor[k]
+							= env->sector[l].door_neighbor[k];
 			}
-			env->sector[i].type = EFF_NONE;
 		}
-		++i;
 	}
 }
 
