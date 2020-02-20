@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/10 16:47:31 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/20 10:57:01 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/02/20 15:34:28 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	jump(t_env *env, t_cam *cam)
 	if (cam->fly > 0
 			&& env->sector[cam->sector].ceil - cam->pos.z > MARGIN_HEAD)
 		cam->pos.z += 0.25;
-	else if (env->sector[cam->sector].type == 6) //6 has to change into JETPACK
+	else if (env->sector[cam->sector].type == JETPACK)
 		update_fall(cam, 0.25, 1);
 	else if (cam->ground)
 		update_fall(cam, 0.75, 1);
