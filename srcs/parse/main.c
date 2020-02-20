@@ -6,7 +6,7 @@
 /*   By: reda-con <reda-con@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 14:00:52 by reda-con          #+#    #+#             */
-/*   Updated: 2020/02/20 12:18:13 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/02/20 13:08:32 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,11 @@
 
 void		main_err(t_parse *p, t_env *env, int fl)
 {
-	if (p->total.vert > 0)
+	if (p->total.vert >= 0)
 		free(p->ver);
-	if (p->total.emy > 0)
+	if (p->total.emy >= 0)
 		free(p->emy);
-	if (p->total.obj > 0)
+	if (p->total.obj >= 0)
 		free(p->obj);
 	if (fl == 1)
 		clean(env, E_PARSE);
@@ -101,10 +101,10 @@ int			main_parse(char **av, t_env *env, int ac)
 	env->cam.pos = v3d(-1, -1, 0);
 	if ((fd = open(file, O_RDONLY)) == -1)
 		exit(1);
-	par.total.vert = 0;
+	par.total.vert = -1;
 	env->zones = 0;
-	par.total.emy = 0;
-	par.total.obj = 0;
+	par.total.emy = -1;
+	par.total.obj = -1;
 	while ((gnl = ft_get_next_line(fd, &line)) == 1)
 	{
 		parse(line, &par, env);
