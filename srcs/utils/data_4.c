@@ -6,13 +6,13 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/14 08:01:41 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/14 17:05:29 by kibotrel         ###   ########.fr       */
+/*   Updated: 2020/02/20 17:41:43 by demonwaves       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 
-char	*magazine_asset(int w, int h)
+char		*magazine_asset(int w, int h)
 {
 	if (w == 1280 && h == 720)
 		return ("./assets/magazine_720.bmp");
@@ -26,7 +26,7 @@ char	*magazine_asset(int w, int h)
 		return (NULL);
 }
 
-int32_t	coin_shift(int w, int h)
+int32_t		coin_shift(int w, int h)
 {
 	if (w == 1280 && h == 720)
 		return (48);
@@ -40,7 +40,7 @@ int32_t	coin_shift(int w, int h)
 		return (0);
 }
 
-int32_t	shotgun_shift(int w, int h)
+int32_t		shotgun_shift(int w, int h)
 {
 	if (w == 1280 && h == 720)
 		return (480);
@@ -52,4 +52,16 @@ int32_t	shotgun_shift(int w, int h)
 		return (720);
 	else
 		return (0);
+}
+
+uint32_t	life_state(double life)
+{
+	if (life >= 75)
+		return (GREEN);
+	else if (life >= 50)
+		return (YELLOW);
+	else if (life >= 25)
+		return (ORANGE);
+	else
+		return (RED);
 }
