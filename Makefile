@@ -6,7 +6,7 @@
 #    By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/10 16:16:29 by kibotrel          #+#    #+#              #
-#    Updated: 2020/02/20 12:16:23 by reda-con         ###   ########.fr        #
+#    Updated: 2020/02/20 13:18:48 by reda-con         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -239,7 +239,7 @@ LIBS			+= -lm
 
 # Compilation flags (Can be changed).
 
-CFLAGS			= $(C_INCS) -Wall -Wextra -Werror -O3 #-g -fsanitize=address
+CFLAGS			= $(C_INCS) -Wall -Wextra -Werror -O3
 
 #------------------------------------ RULES -----------------------------------#
 
