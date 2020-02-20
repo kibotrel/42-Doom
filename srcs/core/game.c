@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/18 14:38:11 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/20 12:31:52 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/02/20 13:19:27 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ void		game(t_env *env, int ac, char **av)
 	if (!env->setup)
 	{
 		main_parse(av, env, ac);
-		exit(1);
 		env->setup = 1;
 		SDL_ShowCursor(SDL_DISABLE);
 		SDL_SetWindowTitle(env->sdl.win, TITLE_GAME);

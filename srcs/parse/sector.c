@@ -6,7 +6,7 @@
 /*   By: reda-con <reda-con@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/17 16:35:58 by reda-con          #+#    #+#             */
-/*   Updated: 2020/02/20 11:49:49 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/02/20 13:41:19 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,12 @@ int			third_check(t_sector *s, char **t, t_vec2d *ver, int i)
 	{
 		if (t[20 + j] && ft_isnum(t[20 + j]))
 			s[ft_atoi(t[2])].vertex[j] = ver[ft_atoi(t[20 + j])];
-		else{ft_putendl("oui");
-			return (1);}
+		else
+			return (1);
 		if (t[21 + i + j] && ft_isnum(t[21 + i + j]))
 			s[ft_atoi(t[2])].neighbor[j] = ft_atoi(t[21 + i + j]);
-		else{ft_putendl("non");
-			return (1);}
+		else
+			return (1);
 		++j;
 	}
 	if (t[21 + i + j])
