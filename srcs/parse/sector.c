@@ -6,7 +6,7 @@
 /*   By: reda-con <reda-con@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/17 16:35:58 by reda-con          #+#    #+#             */
-/*   Updated: 2020/02/18 14:21:17 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/02/20 11:49:49 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,17 +52,17 @@ int			second_check(t_sector *s, char **t, t_vec2d *ver, t_env *e)
 	s[ft_atoi(t[2])].gravity = (double)ft_atoi(t[14]) / 100;
 	s[ft_atoi(t[2])].friction = (double)ft_atoi(t[16]) / 100;
 	s[ft_atoi(t[2])].points = i;
-	if (!(s[ft_atoi(t[2])].vertex = (t_vec2d*)malloc(sizeof(t_vec2d) * i))){printf("non\n");
-		clean(e, E_PARSE);}
-	if (!(s[ft_atoi(t[2])].neighbor = (int*)malloc(sizeof(int) * i))){printf("peut\n");
-		clean(e, E_PARSE);}
+	if (!(s[ft_atoi(t[2])].vertex = (t_vec2d*)malloc(sizeof(t_vec2d) * i)))
+		clean(e, E_PARSE);
+	if (!(s[ft_atoi(t[2])].neighbor = (int*)malloc(sizeof(int) * i)))
+		clean(e, E_PARSE);
 	if (t[20 + i] && !ft_strcmp(t[20 + i], "portals"))
 	{
-		if (third_check(s, t, ver, i)){ft_putendl("peut");
-			return (1);}
+		if (third_check(s, t, ver, i))
+			return (1);
 	}
-	else{ft_putendl("je");
-		return (1);}
+	else
+		return (1);
 	return (0);
 }
 
@@ -81,13 +81,13 @@ int			verif_sector(t_sector *s, char **t, t_vec2d *ver, t_env *e)
 				&& ft_isnum(t[8]) && ft_isnum(t[10]) && ft_isnum(t[12])
 				&& ft_isnum(t[14]) && ft_isnum(t[16]) && ft_isnum(t[18]))
 		{
-			if (second_check(s, t, ver, e)){ft_putendl("etre");
-				return (1);}
+			if (second_check(s, t, ver, e))
+				return (1);
 		}
-		else{ft_putendl("ne");
-			return (1);}
+		else
+			return (1);
 	}
-	else{ft_putendl("sais");
-		return (1);}
+	else
+		return (1);
 	return (0);
 }

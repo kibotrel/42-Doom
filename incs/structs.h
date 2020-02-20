@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 18:48:17 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/18 16:39:15 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/02/20 15:40:46 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -273,8 +273,8 @@ typedef struct			s_env
 	t_sector			*sector;
 	uint32_t			setup;
 	uint32_t			zones;
-	int8_t				st_fl;
-	int8_t				old_st_fl;
+	uint32_t				st_fl;
+	uint32_t				old_st_fl;
 }						t_env;
 
 #endif

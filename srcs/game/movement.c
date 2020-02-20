@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/10 16:47:31 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/18 09:43:07 by kibotrel         ###   ########.fr       */
+/*   Updated: 2020/02/20 10:57:01 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,10 @@ void	jump(t_env *env, t_cam *cam)
 	if (cam->fly > 0
 			&& env->sector[cam->sector].ceil - cam->pos.z > MARGIN_HEAD)
 		cam->pos.z += 0.25;
+	else if (env->sector[cam->sector].type == 6) //6 has to change into JETPACK
+		update_fall(cam, 0.25, 1);
 	else if (cam->ground)
-	{
-		cam->v.z += 0.75;
-		cam->fall = 1;
-	}
+		update_fall(cam, 0.75, 1);
 }
 
 void	fly(t_env *env)
@@ -32,61 +31,6 @@ void	fly(t_env *env)
 	{
 		env->cam.fall = (env->cam.fly > 0 ? 0 : 1);
 		env->cam.v.z = 0;
-	}
-}
-
-void	sector_triger(t_env *env)
-{
-	int			i;
-	int			s;
-	uint32_t	j;
-	uint32_t	k;
-
-	s = env->cam.sector;
-	if (env->sector[s].type == 1)
-	{
-		if (env->input[SDL_SCANCODE_E])
-		{
-			++env->cam.pos.z;
-			++env->sector[s].floor;
-		}
-		if (env->input[SDL_SCANCODE_Q])
-		{
-			--env->cam.pos.z;
-			--env->sector[s].floor;
-		}
-		if (env->sector[s].floor >= env->sector[s].ceil - 5)
-		{
-			--env->cam.pos.z;
-			env->sector[s].floor = env->sector[s].ceil - 6;
-		}
-	}
-	if (env->old_st_fl != env->st_fl)
-	{
-		if (env->sector[s].type == 3)
-		{
-			i = -1;
-			while (++i < env->sector[s].num_link)
-			{
-				j = 0;
-				while (j < env->sector[env->sector[s].link[i]].points)
-				{
-					if (env->sector[env->sector[env->sector[s].link[i]].doors_neighbor[j]].type != 4)
-					{
-						env->sector[env->sector[s].link[i]].neighbor[j] = env->sector[env->sector[s].link[i]].doors_neighbor[j];
-						env->sector[env->sector[s].link[i]].type = -4;
-					}
-					k = 0;
-					while (k < env->sector[env->sector[env->sector[s].link[i]].neighbor[j]].points)
-					{
-						if (env->sector[env->sector[env->sector[s].link[i]].neighbor[j]].doors_neighbor[k] == env->sector[s].link[i])
-							env->sector[env->sector[env->sector[s].link[i]].neighbor[j]].neighbor[k] = env->sector[s].link[i];
-						++k;
-					}
-					++j;
-				}
-			}
-		}
 	}
 }
 

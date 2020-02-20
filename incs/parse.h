@@ -6,7 +6,7 @@
 /*   By: reda-con <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 14:27:11 by reda-con          #+#    #+#             */
-/*   Updated: 2020/02/18 14:55:12 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/02/20 11:52:00 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,17 +24,9 @@ typedef struct	s_entity
 	int			type;
 }				t_entity;
 
-typedef struct	s_player
-{
-	t_vec2d		pos;
-	int			sect;
-	int			angle;
-}				t_player;
-
 typedef struct	s_total
 {
 	int			vert;
-	int			sect;
 	int			emy;
 	int			obj;
 }				t_total;
@@ -44,20 +36,9 @@ typedef struct	s_parse
 	t_vec2d		*ver;
 	t_entity	*emy;
 	t_entity	*obj;
-	t_sector	*sec;
-	t_player	plr;
 	t_total		total;
 }				t_parse;
 
-/*
-**debug.c
-*/
-void			print_vert(t_vec2d *v, int max);
-void			print_en(t_entity *e, int max);
-void			print_obj(t_entity *o, int max);
-void			print_pt(t_vec2d p);
-void			print_sec(t_sector *s, int max);
-void			print_plr(t_player p);
 
 /*
 **tools.c

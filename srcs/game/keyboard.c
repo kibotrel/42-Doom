@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/10 15:11:44 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/18 09:54:52 by kibotrel         ###   ########.fr       */
+/*   Updated: 2020/02/20 09:58:14 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,6 @@ void	game_keyboard(t_env *env)
 	if (env->input[SDL_SCANCODE_SPACE])
 		jump(env, &env->cam);
 	env->setup ? cam_height(env, env->input[SDL_SCANCODE_LSHIFT]) : 0;
-	env->old_st_fl = env->st_fl;
-	if (env->input[SDL_SCANCODE_E])
-		check_tick(&env->tick.sector_triger, &env->st_fl, 160);
 	if (env->input[SDL_SCANCODE_GRAVE])
 		toggle_infos(env);
 	if (env->input[SDL_SCANCODE_F])
