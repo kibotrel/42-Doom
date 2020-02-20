@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 15:22:56 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/10 12:54:08 by lojesu           ###   ########.fr       */
+/*   Updated: 2020/02/20 17:11:34 by demonwaves       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,26 +50,21 @@ void	physics(t_env *env)
 
 void	graphics(t_env *env)
 {
-	uint32_t	i[2];
 	t_game		var;
 	t_item		now;
 
-	i[0] = 0;
 	game_setup(env, &var);
-	while (i[0]++ == 0 || var.head != var.tail)
+	while (var.i++ == 0 || var.head != var.tail)
 	{
-		i[1] = 0;
+		var.j = 0;
 		if (cycle_check(env, &var, &now))
 			continue;
-		while (i[1] < var.s->points)
+		while (var.j < var.s->points)
 		{
-			transform(&env->cam, &var, i[1]);
-			if (!bound_view(&var) || !scale(env, &var, &now))
-			{
-				i[1]++;
+			transform(&env->cam, &var, var.j);
+			if ((!bound_view(&var) || !scale(env, &var, &now)) && ++var.j)
 				continue;
-			}
-			draw_setup(env, &var, &now, i[1]++);
+			draw_setup(env, &var, &now, var.j++);
 			draw_screen(env, &var);
 			check_depth(&var, var.start, var.end);
 		}

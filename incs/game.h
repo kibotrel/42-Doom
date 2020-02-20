@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 21:22:14 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/20 14:18:32 by demonwaves       ###   ########.fr       */
+/*   Updated: 2020/02/20 17:08:18 by demonwaves       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,16 @@
 
 typedef struct	s_item
 {
-	int sector;
-	int min;
-	int max;
+	int			min;
+	int			max;
+	int			sector;
 }				t_item;
 
 typedef struct	s_game
 {
+	int			i;
 	int			n;
+	int			sky;
 	int			end;
 	int			*top;
 	int			y[2];
@@ -39,7 +41,6 @@ typedef struct	s_game
 	int			next[4];
 	int			side[2];
 	int			unbound[2];
-	t_pos		shift;
 	double		text_height;
 	double		farz;
 	double		nearz;
@@ -55,6 +56,7 @@ typedef struct	s_game
 	t_vec2d		size[2];
 	t_vec2d		org[2];
 	t_sector	*s;
+	uint32_t	j;
 }				t_game;
 /*
 **	keyboard.c

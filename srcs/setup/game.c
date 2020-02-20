@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 15:29:00 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/20 15:02:12 by demonwaves       ###   ########.fr       */
+/*   Updated: 2020/02/20 16:26:43 by demonwaves       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,5 +93,4 @@ void			draw_setup(t_env *env, t_game *var, t_item *now, uint32_t i)
 	}
 	var->start = fmax(var->side[0], now->min);
 	var->end = fmin(var->side[1], now->max);
-	var->shift.x = ft_degrees(env->cam.angle) * (env->w / 2) / 180;
 }
