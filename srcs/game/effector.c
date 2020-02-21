@@ -23,7 +23,7 @@ void	doors(t_env *env, int t)
 				k = -1;
 				l = env->sector[i].neighbor[j];
 				while (l > -1 && ++k < env->sector[l].points)
-					if (env->sector[env->sector[l].door_neighbor[k]].type == -t)
+					if (env->sector[l].door_neighbor[k] > -1 && env->sector[env->sector[l].door_neighbor[k]].type == -t)
 						env->sector[l].neighbor[k]
 							= env->sector[l].door_neighbor[k];
 			}
