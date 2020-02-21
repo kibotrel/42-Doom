@@ -6,7 +6,7 @@
 /*   By: reda-con <reda-con@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 14:00:52 by reda-con          #+#    #+#             */
-/*   Updated: 2020/02/21 10:19:43 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/02/21 11:41:11 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,7 @@ int			main_parse(char **av, t_env *env, int ac)
 		parse(line, &par, env);
 		free(line);
 	}
-	if (gnl == -1 || close(fd) || env->cam.pos.x <= -1 || env->cam.pos.y <= -1 || env->zones == 0 || par.total.vert == 0)
+	if (gnl == -1 || close(fd) || env->cam.pos.x <= -1 || env->cam.pos.y <= -1 || env->zones == 0 || par.total.vert == -1)
 		main_err(&par, env, 1);
 	tmp(env->sector, env->zones);
 	main_err(&par, env, 0);

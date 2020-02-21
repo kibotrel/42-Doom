@@ -6,7 +6,7 @@
 #    By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/10 16:16:29 by kibotrel          #+#    #+#              #
-#    Updated: 2020/02/20 15:45:40 by reda-con         ###   ########.fr        #
+#    Updated: 2020/02/21 11:44:25 by reda-con         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -76,7 +76,7 @@ LTTF			= $(LTTF_DIR)/$(TTF)
 INCS			:= incs/env.h
 INCS			+= incs/hud.h
 INCS			+= incs/core.h
-IVVVVVVNCS			+= incs/game.h
+INCS			+= incs/game.h
 INCS			+= incs/menu.h
 INCS			+= incs/clean.h
 INCS			+= incs/parse.h
@@ -244,7 +244,7 @@ CFLAGS			= $(C_INCS) -Wall -Wextra -Werror -O3
 
 #------------------------------------ RULES -----------------------------------#
 
-# Redefinition of the implicit UUUUUUUUUUUcompilation rule
+# Redefinition of the implicit compilation rule
 # to prompt some informations (Can't be changed).
 
 $(D_OBJS)%.o: $(D_SRCS)%.c $(INCS)
@@ -268,10 +268,10 @@ $(LSDL):
 	@if [ $(UNAME) = Darwin ]; then												\
 		echo "$(GREEN)***   Installing library $(SDL)   ...  ***\n$(RESET)";	\
 		brew install sdl2 > /dev/null 2>&1;										\
-	elif [ ! -d "$(SRCS_SDL)" ]; then											\UUUUUU
+	elif [ ! -d "$(SRCS_SDL)" ]; then											\
 		echo "$(GREEN)***   Installing library $(SDL)   ...  ***\n$(RESET)";	\
 		sudo apt-get install curl -y > /dev/null 2>&1;							\
-		echo "$(GREEN)***   Curl sources   ...   ***\n$(RESET)";				\UUUUUU
+		echo "$(GREEN)***   Curl sources   ...   ***\n$(RESET)";				\
 		$(CURL) $(URL_SDL) > /dev/null 2>&1;									\
 		echo "$(GREEN)***   Unpacking sources   ...   ***\n$(RESET)";			\
 		$(TAR) archive.tar;	$(RM) archive.tar;									\
@@ -292,13 +292,13 @@ $(LTTF):
 		$(CURL) $(URL_TTF) > /dev/null 2>&1;									\
 		echo "$(GREEN)***   Unpacking sources   ...   ***\n$(RESET)";			\
 		$(TAR) archive.tar; $(RM) archive.tar;									\
-		sudo apt-get install libfreetype6-dev -y > /dev/null 2>&1;				\UUUUUU
+		sudo apt-get install libfreetype6-dev -y > /dev/null 2>&1;				\
 		echo "$(GREEN)***   Configure library   ...   ***\n$(RESET)";			\
 		cd $(SRCS_TTF);	./configure > /dev/null 2>&1;							\
-		echo "$(GREEN)***   Compile library   ...   ***\n$(RESET)";				\UUUUUU
+		echo "$(GREEN)***   Compile library   ...   ***\n$(RESET)";				\
 		sudo make install -j > /dev/null 2>&1;									\
 		echo "$(GREEN)***   $(TTF) successfully compiled   ***\n$(RESET)";		\
-	fiU
+	fi
 
 # Libraries installion using their own Makefile (Can be changed).
 
