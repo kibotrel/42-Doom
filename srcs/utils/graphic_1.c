@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 13:21:31 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/20 13:41:06 by lojesu           ###   ########.fr       */
+/*   Updated: 2020/02/21 16:42:58 by demonwaves       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,13 @@ static void	draw_ceil_and_floor(t_env *env, t_game *var, int32_t x)
 	var->depth = W_UNIT / (r_size_wall != 0 ? r_size_wall : 1);
 	var->y[0] = bound(var->unbound[0], var->top[x], var->bottom[x]);
 	var->y[1] = bound(var->unbound[1], var->top[x], var->bottom[x]);
+	// if (var->sector == skybox)
+	// 	setup_sky(env, lim(var->top[x], var->y[0] - 1), var, x);
+	// else
 	draw_slice(env, x, lim(var->top[x], var->y[0] - 1),
-			flat(0, color_light(0x222222, env->sector[var->sector].light), 0));
+				flat(0, color_light(0x222222, env->sector[var->sector].light), 0));
 	draw_slice(env, x, lim(var->y[1] + 1, var->bottom[x]),
-			flat(0, color_light(0x424242, env->sector[var->sector].light), 0));
+				flat(0, color_light(0x424242, env->sector[var->sector].light), 0));
 }
 
 static void	draw_transitions(t_env *env, t_game *var, int32_t x)
@@ -72,9 +75,6 @@ static void	draw_wall(t_env *env, t_game *var, int32_t x)
 {
 	var->text_height = fabs(var->ceil[0] - var->floor[0]);
 	draw_texture_slice(env, x, lim(var->y[0], var->y[1]), var);
-	/*(void)var;  //wesh killian tu commente les deux ligne du haut et tu decommente ces 3 lignes
-	(void)wall;
-	draw_slice(env, x, lim(y[0], y[1]), flat(0, 0x654321, 0));*/
 }
 
 void		draw_screen(t_env *env, t_game *var)

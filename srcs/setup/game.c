@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 15:29:00 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/18 16:40:30 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/02/20 20:47:30 by demonwaves       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,4 +93,13 @@ void			draw_setup(t_env *env, t_game *var, t_item *now, uint32_t i)
 	}
 	var->start = fmax(var->side[0], now->min);
 	var->end = fmin(var->side[1], now->max);
+}
+
+void	skybox_setup(t_env *env, t_skybox *skybox)
+{
+	ft_bzero(skybox, sizeof(t_skybox));
+	skybox->draw = env->sdl.bmp[SKYBOX].width;
+	skybox->shift.x = ft_degrees(env->cam.angle) * (env->w) / 360;
+	skybox->shift.y = env->sdl.bmp[SKYBOX].height - env->data.sky;
+	skybox->image = env->sdl.bmp[SKYBOX].pixels;
 }

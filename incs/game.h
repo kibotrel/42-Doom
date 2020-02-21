@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 21:22:14 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/18 16:38:48 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/02/20 20:47:46 by demonwaves       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,16 @@
 
 typedef struct	s_item
 {
-	int sector;
-	int min;
-	int max;
+	int			min;
+	int			max;
+	int			sector;
 }				t_item;
 
 typedef struct	s_game
 {
+	int			i;
 	int			n;
+	int			sky;
 	int			end;
 	int			*top;
 	int			y[2];
@@ -54,7 +56,16 @@ typedef struct	s_game
 	t_vec2d		size[2];
 	t_vec2d		org[2];
 	t_sector	*s;
+	uint32_t	j;
 }				t_game;
+
+typedef struct	s_skybox
+{
+	t_pos		shift;
+	uint32_t	draw;
+	uint32_t	*image;
+}				t_skybox;
+
 /*
 **	keyboard.c
 */

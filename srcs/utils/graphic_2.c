@@ -6,11 +6,14 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/27 15:35:56 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/14 15:44:13 by kibotrel         ###   ########.fr       */
+/*   Updated: 2020/02/20 20:48:09 by demonwaves       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
+#include "game.h"
+#include "libft.h"
+#include "setup.h"
 #include "utils.h"
 
 void	info(t_env *env, char *str, t_vec2d pos, uint32_t mode)
@@ -74,5 +77,45 @@ void	blur_area(t_env *env, t_pos min, t_pos max)
 		p.x = min.x - 1;
 		while (++p.x < max.x)
 			blur(env, env->sdl.screen, p);
+	}
+}
+
+void	setup_sky(t_env *env, t_height h, t_game *var, int x)
+{
+	t_pos		p;
+
+	h.top = bound(h.top, 0, env->h - 1);
+	h.bottom = bound(h.bottom, 0, env->h - 1);
+	p.x = x;
+	p.y = h.top;
+	while (++p.y <= h.bottom + 1)
+	{
+		draw_pixel(env, env->sdl.screen, p, 1);
+		if (p.y > 1 && p.y > var->sky)
+			var->sky = p.y;
+	}
+}
+
+void	draw_skybox(t_env *env)
+{
+	t_pos		p;
+	t_skybox	sky;
+	uint32_t	index;
+	uint32_t	*screen;
+
+	p.y = -1;
+	screen = env->sdl.screen->pixels;
+	skybox_setup(env, &sky);
+	while (++p.y <= env->data.sky)
+	{
+		p.x = -1;
+		while (++p.x < env->w)
+		{
+			if (screen[p.x + p.y * env->w] == 1)
+			{
+				index = sky.shift.x + p.x + (sky.shift.y + p.y) * sky.draw;
+				draw_pixel(env, env->sdl.screen, p, sky.image[index]);
+			}
+		}
 	}
 }

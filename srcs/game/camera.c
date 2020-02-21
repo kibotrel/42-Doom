@@ -6,10 +6,11 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/11 14:21:04 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/14 11:20:27 by kibotrel         ###   ########.fr       */
+/*   Updated: 2020/02/20 15:00:16 by demonwaves       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <math.h>
 #include "env.h"
 #include "game.h"
 #include "utils.h"
@@ -24,6 +25,10 @@ void	cam_motion(t_env *env, t_cam *cam, int x, int y)
 		p.x -= (env->w / 2 - x) / 8;
 		p.y += (env->h / 2 - y) / 8;
 		cam->angle += p.x * 0.03;
+		if (cam->angle > 2 * M_PI)
+				cam->angle -= 2 * M_PI;
+		if (cam->angle < 0)
+			cam->angle += 2 * M_PI;
 		cam->gap = bound(cam->gap - p.y * 0.05, -10, 10) - cam->v.z * 0.5;
 		update_cam(env, v2d(0, 0));
 	}
