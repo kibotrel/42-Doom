@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 18:48:17 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/20 15:46:50 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/02/21 10:58:36 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ typedef struct			s_data
 	int32_t				ammos;
 	int32_t				magazines;
 	uint32_t			fps;
-	uint32_t			money;
+	double				money;
 	uint32_t			w_size;
 }						t_data;
 
@@ -189,6 +189,7 @@ typedef struct			s_sector
 	int					*neighbor;
 	int					*door_neighbor;
 	int					light;
+	int					data;
 	double				ceil;
 	double				floor;
 	double				gravity;

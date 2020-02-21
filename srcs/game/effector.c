@@ -56,16 +56,20 @@ void	sector_triger(t_env *env)
 	}
 	if (env->input[SDL_SCANCODE_E])
 	{
-		if (env->sector[s].type > END)
+		if (env->sector[s].type > END && env->data.money >= (uint32_t)env->sector[s].data)
+		{
+			env->data.money -= env->sector[s].data;
+			env->sector[s].data = 0;
 			doors(env, env->sector[s].type);
+		}
 	}
 	env->st_fl = SDL_GetTicks();
 	if (env->st_fl > env->old_st_fl + 200)
 	{
 		if (env->sector[s].type == GENERATOR)
-			env->data.life -= 1;
+			env->data.life -= env->sector[s].data / 5;
 		if (env->sector[s].type == MONEY)
-			++env->data.money;
+			env->data.money += (double)env->sector[s].data / 5;
 		env->old_st_fl = env->st_fl;
 	}
 }
