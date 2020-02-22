@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/18 14:38:31 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/20 14:56:15 by lojesu           ###   ########.fr       */
+/*   Updated: 2020/02/22 15:33:06 by lojesu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 #include "utils.h"
 #include "editor.h"
 #include "texture.h"
+#include "settings.h"
+#include "libft.h"
 
 static void    my_draw_background(t_env *e, t_sdl *s, t_bmp img)
 {
@@ -31,15 +33,25 @@ static void    my_draw_background(t_env *e, t_sdl *s, t_bmp img)
 	}
 }
 
-void	settings(t_env *env)
+void		settings_click(t_env *env, SDL_Event event)
+{
+	if (event.motion.x <= env->w - 650 && event.motion.x >= env->w - 800 &&
+			event.motion.y >= 200 && event.motion.y <= 280)
+		printf("CONARD\n");
+}
+
+void		settings(t_env *env)
 {
 	if (!env->setup)
 	{
 		SDL_SetWindowTitle(env->sdl.win, TITLE_SETTINGS);
 		my_draw_background(env, &env->sdl, env->sdl.bmp[BG_MENU]);
-		rectangle(init_vertex(env->w - 500, 400), init_vertex(env->w - 150, 480), 0x0000ff, env->sdl.screen);
-		rectangle(init_vertex(env->w - 500, 500), init_vertex(env->w - 150, 580), 0x0000ff, env->sdl.screen);
-		rectangle(init_vertex(env->w - 500, 600), init_vertex(env->w - 150, 680), 0x0000ff, env->sdl.screen);
+		info(env, ft_strdup("Fog of War\t\t\t\ton\toff"), v2d(35, 5), 0);
+		info(env, ft_strdup("sector borders\t\t\ton\toff"), v2d(35, 7), 0);
+		info(env, ft_strdup("mode :\t\tnormal\t\thard"), v2d(35, 9), 0);
+		info(env, ft_strdup(" <\tresolution\t>"), v2d(36, 11), 0);
+		info(env, ft_strdup("<\tFOV\t>"), v2d(37, 13), 0);
+		info(env, ft_strdup("<\tFPS \t>"), v2d(37, 15), 0);
 		env->setup = 1;
 	}
 }
