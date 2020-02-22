@@ -6,7 +6,7 @@
 #    By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/10 16:16:29 by kibotrel          #+#    #+#              #
-#    Updated: 2020/02/21 15:32:46 by lojesu           ###   ########.fr        #
+#    Updated: 2020/02/22 18:33:16 by lojesu           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -61,6 +61,7 @@ OBJS_SUBDIRS	+= utils
 OBJS_SUBDIRS	+= editor
 OBJS_SUBDIRS	+= events
 OBJS_SUBDIRS	+= texture
+OBJS_SUBDIRS	+= settings
 
 #------------------------------------ FILES -----------------------------------#
 
@@ -158,7 +159,6 @@ SRCS			+= editor/keyboard.c
 SRCS			+= events/mouse.c
 SRCS			+= events/motion.c
 SRCS			+= events/keyboard.c
-SRCS			+= texture/texture_tools.c
 SRCS			+= editor/events.c
 SRCS			+= editor/events_tools.c
 SRCS			+= editor/setup.c
@@ -187,6 +187,10 @@ SRCS			+= editor/sector_part2.c
 SRCS			+= editor/sector_check.c
 SRCS			+= editor/sector_utils.c
 SRCS			+= texture/texture.c
+SRCS			+= texture/texture_tools.c
+SRCS			+= settings/settings_click.c
+SRCS			+= settings/settings_tools.c
+SRCS			+= settings/settings_keyboard.c
 
 #------------------------------ OPERATING SYSTEM ------------------------------#
 

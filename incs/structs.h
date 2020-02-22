@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 18:48:17 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/18 16:39:15 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/02/22 18:19:28 by lojesu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -199,6 +199,13 @@ typedef struct			s_sector
 	uint32_t			points;
 }						t_sector;
 
+typedef struct			s_setting
+{
+	bool				true_false;
+	bool				fog_on_off;
+	bool				border_on_off;
+}						t_setting;
+
 /*
 **	Main structures.
 */
@@ -275,6 +282,7 @@ typedef struct			s_env
 	uint32_t			zones;
 	int8_t				st_fl;
 	int8_t				old_st_fl;
+	t_setting			setting;
 }						t_env;
 
 #endif
