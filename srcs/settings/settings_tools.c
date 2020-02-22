@@ -6,13 +6,14 @@
 /*   By: lojesu <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/22 17:06:01 by lojesu            #+#    #+#             */
-/*   Updated: 2020/02/22 18:48:51 by lojesu           ###   ########.fr       */
+/*   Updated: 2020/02/22 18:54:51 by lojesu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "env.h"
 #include "utils.h"
 #include "texture.h"
+#include "settings.h"
 #include "libft.h"
 
 void	my_draw_background(t_env *e, t_sdl *s, t_bmp img)
