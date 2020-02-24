@@ -66,7 +66,7 @@ void	sector_triger(t_env *env)
 	env->st_fl = SDL_GetTicks();
 	if (env->st_fl > env->old_st_fl + 200)
 	{
-		if (env->sector[s].type == GENERATOR)
+		if (env->sector[s].type == GENERATOR && env->cam.ground == 1)
 			env->data.life -= (double)env->sector[s].data / 5;
 		if (env->sector[s].type == MONEY)
 			env->data.money += (double)env->sector[s].data / 5;
