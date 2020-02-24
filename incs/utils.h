@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 19:01:59 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/21 16:38:26 by demonwaves       ###   ########.fr       */
+/*   Updated: 2020/02/24 02:31:38 by demonwaves       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,6 +120,12 @@ void				update_fall(t_cam *cam, double velocity, int fall);
 int32_t				coin_shift(int w, int h);
 int32_t				shotgun_shift(int w, int h);
 uint32_t			life_state(double life);
+
+/*
+**	data_5.c
+*/
+
+int32_t				get_thread(t_env *env);
 
 /*
 **	maths_0.c

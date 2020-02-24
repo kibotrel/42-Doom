@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/16 11:54:25 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/19 17:02:18 by demonwaves       ###   ########.fr       */
+/*   Updated: 2020/02/24 04:41:32 by demonwaves       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,14 +51,15 @@
 # define M_SDL_BLIT		"\033[31;1mError:\033[0m Can't blit text on the screen."
 # define M_SDL_INIT		"\033[31;1mError:\033[0m Can't init SDL connexion."
 # define M_BMP_PARSE	"\033[31;1mError:\033[0m Can't load the given BMP file."
+# define M_SDL_THREAD	"\033[31;1mError:\033[0m Can't create SDL Thread."
 # define M_SDL_UPDATE	"\033[31;1mError:\033[0m Can't update the given frame."
 # define M_TTF_RENDER	"\033[31;1mError:\033[0m Can't write text on surface."
 # define M_SDL_WINSURF	"\033[31;1mError:\033[0m Can't retrieve window surface."
 
-# define TITLE_MENU		"Doom-Nukem v0.5.9 - Menu"
-# define TITLE_GAME		"Doom-Nukem v0.5.9 - Game"
-# define TITLE_EDITOR	"Doom-Nukem v0.5.9 - Editor"
-# define TITLE_SETTINGS	"Doom-Nukem v0.5.9 - Settings"
+# define TITLE_MENU		"Doom-Nukem v0.8.2 - Menu"
+# define TITLE_GAME		"Doom-Nukem v0.8.2 - Game"
+# define TITLE_EDITOR	"Doom-Nukem v0.8.2 - Editor"
+# define TITLE_SETTINGS	"Doom-Nukem v0.8.2 - Settings"
 
 # define MAP_PATH 		"./editor_map.data"
 

@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 18:48:17 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/21 16:37:48 by demonwaves       ###   ########.fr       */
+/*   Updated: 2020/02/24 03:45:13 by demonwaves       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define STRUCTS_H
 
 # include <stdint.h>
+# include <pthread.h>
 # include <stdbool.h>
 # include "SDL.h"
 # include "SDL_ttf.h"
@@ -71,6 +72,7 @@ typedef struct			s_hud
 
 typedef struct			s_data
 {
+	int					thread;
 	t_ui				ui;
 	t_hud				hud;
 	t_grid				grid;
@@ -250,6 +252,7 @@ typedef struct			s_sdl
 {
 	t_bmp				bmp[NB_ASSETS];
 	TTF_Font			*font[3];
+	pthread_t			thread[NB_THREADS];
 	SDL_Event			event;
 	SDL_Color			color;
 	SDL_Window			*win;
@@ -273,8 +276,8 @@ typedef struct			s_env
 	t_sector			*sector;
 	uint32_t			setup;
 	uint32_t			zones;
-	uint32_t				st_fl;
-	uint32_t				old_st_fl;
+	uint32_t			st_fl;
+	uint32_t			old_st_fl;
 }						t_env;
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 15:29:00 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/20 20:47:30 by demonwaves       ###   ########.fr       */
+/*   Updated: 2020/02/24 04:44:49 by demonwaves       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ void			game_setup(t_env *env, t_game *var)
 
 	i = 0;
 	ft_bzero(var, sizeof(t_game));
+	var->thread = get_thread(env);
 	var->head = var->queue;
 	var->tail = var->head;
 	if (!area_setup(env, var))
@@ -48,7 +49,8 @@ void			game_setup(t_env *env, t_game *var)
 		var->top[i] = 0;
 		var->bottom[i++] = env->h - 1;
 	}
-	*var->head = item(env->cam.sector, 0, env->w - 1);
+	*var->head = item(env->cam.sector, var->thread * env->data.thread,
+						(var->thread + 1) * (env->data.thread) - 1);
 	if (++var->head == var->queue + 32)
 		var->head = var->queue;
 }

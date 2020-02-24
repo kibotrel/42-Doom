@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 15:22:56 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/20 17:17:34 by demonwaves       ###   ########.fr       */
+/*   Updated: 2020/02/24 04:44:09 by demonwaves       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	physics(t_env *env)
 //	changer le prototype mais tout y est !
 //
 
-void	graphics(t_env *env)
+void 	graphics(t_env *env)
 {
 	t_game		var;
 	t_item		now;
@@ -69,6 +69,8 @@ void	graphics(t_env *env)
 			check_depth(&var, var.start, var.end);
 		}
 	}
-	env->data.sky = var.sky;
+	if (var.sky > env->data.sky)
+	 	env->data.sky = var.sky;
 	engine_clean(&var);
+	pthread_exit(NULL);
 }

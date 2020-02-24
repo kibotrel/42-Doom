@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/16 11:58:26 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/21 16:39:06 by demonwaves       ###   ########.fr       */
+/*   Updated: 2020/02/24 03:36:52 by demonwaves       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ static void	error_messages(t_env *env)
 	env->error[E_MALLOC] = M_MALLOC;
 	env->error[E_BKGD] = M_BKGD;
 	env->error[E_PARSE] = M_PARSE;
+	env->error[E_SDL_THREAD] = M_SDL_THREAD;
 }
 
 static void	assets_paths(t_env *env)
@@ -100,6 +101,7 @@ static void	infos_setup(t_env *env)
 	env->data.life = 100;
 	env->data.ammos = 5;
 	env->data.magazines = 20;
+	env->data.thread = env->w / NB_THREADS;
 	env->data.ui.min.y = floor(env->h / RATIO_UI_Y);
 	env->data.ui.min.x = floor(env->w / RATIO_UI_X) * 5;
 	env->data.ui.max.y = env->h;

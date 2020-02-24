@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 21:22:14 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/20 20:47:46 by demonwaves       ###   ########.fr       */
+/*   Updated: 2020/02/24 04:42:25 by demonwaves       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ typedef struct	s_game
 	int			start;
 	int			now[4];
 	int			sector;
+	int			thread;
 	int			*bottom;
 	int			*render;
 	int			next[4];

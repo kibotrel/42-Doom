@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+         #
+#    By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/10 16:16:29 by kibotrel          #+#    #+#              #
-#    Updated: 2020/02/21 11:44:25 by reda-con         ###   ########.fr        #
+#    Updated: 2020/02/24 02:32:03 by demonwaves       ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -135,6 +135,7 @@ SRCS			+= utils/data_1.c
 SRCS			+= utils/data_2.c
 SRCS			+= utils/data_3.c
 SRCS			+= utils/data_4.c
+SRCS			+= utils/data_5.c
 SRCS			+= utils/engine.c
 SRCS			+= utils/floats.c
 SRCS			+= utils/maths_0.c
@@ -237,6 +238,7 @@ LIBS			+= -L$(LTTF_DIR) -lSDL2_ttf
 LIBS			+= -L$(LBMP_DIR) -lbmp
 LIBS			+= -L$(LFT_DIR) -lft
 LIBS			+= -lm
+LIBS			+= -lpthread
 
 # Compilation flags (Can be changed).
 

@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/18 14:38:11 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/21 16:38:55 by demonwaves       ###   ########.fr       */
+/*   Updated: 2020/02/24 04:38:53 by demonwaves       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,22 @@
 #include "setup.h"
 #include "utils.h"
 #include "parse.h"
+
+static void	multithreaded_engine(t_env *env)
+{
+	int	i;
+
+	i = -1;
+	env->data.sky = 0;
+	while (++i < NB_THREADS)
+		if (pthread_create(&env->sdl.thread[i], NULL, (void*)graphics, env))
+			clean(env, E_SDL_THREAD);
+	i = -1;
+	while (++i < NB_THREADS)
+		pthread_join(env->sdl.thread[i], NULL);
+	if (env->data.sky)
+		draw_skybox(env);
+}
 
 void		game(t_env *env, int ac, char **av)
 {
@@ -33,8 +49,6 @@ void		game(t_env *env, int ac, char **av)
 		env->cam.pos.z = env->sector[env->cam.sector].floor + CAM_H;
 	}
 	sector_triger(env);
-	graphics(env);
-	if (env->data.sky)
-		draw_skybox(env);
+	multithreaded_engine(env);
 	hud(env);
 }
