@@ -6,7 +6,7 @@
 /*   By: reda-con <reda-con@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 14:00:52 by reda-con          #+#    #+#             */
-/*   Updated: 2020/02/24 17:29:15 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/02/24 17:51:54 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -287,11 +287,11 @@ void		oui(t_env *env)
 	env->sector[3].door_neighbor[1] = 1;
 	env->sector[3].door_neighbor[2] = -1;
 	env->sector[3].door_neighbor[3] = 2;
-	if (!(env->sector[4].neighbor = (int*)malloc(sizeof(int) * 7)))
+	if (!(env->sector[4].neighbor = (int*)malloc(sizeof(int) * 8)))
 		clean(env, E_PARSE);
-	if (!(env->sector[4].door_neighbor = (int*)malloc(sizeof(int) * 7)))
+	if (!(env->sector[4].door_neighbor = (int*)malloc(sizeof(int) * 8)))
 		clean(env, E_PARSE);
-	if (!(env->sector[4].vertex = (t_vec2d*)malloc(sizeof(t_vec2d) * 7)))
+	if (!(env->sector[4].vertex = (t_vec2d*)malloc(sizeof(t_vec2d) * 8)))
 		clean(env, E_PARSE);
 	env->sector[4].texture = 4;
 	env->sector[4].type = 1;
@@ -414,6 +414,8 @@ void		oui(t_env *env)
 	env->sector[7].door_neighbor[4] = -1;
 	env->sector[7].door_neighbor[5] = 6;
 	env->cam.pos = v3d(33.9, 36.1, 0);
+	env->cam.angle = ft_radians(222);
+	env->cam.sector = 0;
 }
 
 int			main_parse(char **av, t_env *env, int ac)
