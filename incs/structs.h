@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 18:48:17 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/24 03:45:13 by demonwaves       ###   ########.fr       */
+/*   Updated: 2020/02/24 05:07:32 by demonwaves       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -276,6 +276,7 @@ typedef struct			s_env
 	t_sector			*sector;
 	uint32_t			setup;
 	uint32_t			zones;
+	uint32_t			frame[NB_FRAMES];
 	uint32_t			st_fl;
 	uint32_t			old_st_fl;
 }						t_env;

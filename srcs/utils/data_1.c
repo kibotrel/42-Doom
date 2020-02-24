@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 13:34:24 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/14 08:01:36 by kibotrel         ###   ########.fr       */
+/*   Updated: 2020/02/24 05:52:39 by demonwaves       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,23 @@
 
 void		fps_counter(t_env *env)
 {
+	int32_t			index;
+	uint32_t		ticks;
+	static uint32_t	i = 0;
+
 	env->tick.frame.new = SDL_GetTicks();
+	env->frame[i] = env->tick.frame.new - env->tick.frame.old;
+	i = (i + 1) % NB_FRAMES;
+	index = -1;
+	ticks = 0;
+	env->tick.frame.old = env->tick.frame.new;
 	env->tick.fps.new = env->tick.frame.new;
-	if (env->tick.fps.new > env->tick.fps.old + 250)
+	if (env->tick.fps.new > env->tick.fps.old + 160)
 	{
-		env->data.fps = 1000 / (env->tick.frame.new - env->tick.frame.old);
+		while (++index < NB_FRAMES)
+			if (env->frame[index])
+				ticks += env->frame[index];
+		env->data.fps = 1000 / (ticks / NB_FRAMES);
 		env->tick.fps.old = env->tick.fps.new;
 	}
 }
@@ -34,7 +46,7 @@ void		side_infos(t_game *var)
 
 t_item		item(uint32_t sector, uint32_t min, uint32_t max)
 {
-	t_item		item;
+	t_item			item;
 
 	item.sector = sector;
 	item.min = min;
@@ -44,7 +56,7 @@ t_item		item(uint32_t sector, uint32_t min, uint32_t max)
 
 t_height	lim(int y1, int y2)
 {
-	t_height	h;
+	t_height		h;
 
 	h.top = y1;
 	h.bottom = y2;
@@ -53,7 +65,7 @@ t_height	lim(int y1, int y2)
 
 t_palette	flat(int top, int middle, int bottom)
 {
-	t_palette	c;
+	t_palette		c;
 
 	c.top = top;
 	c.middle = middle;

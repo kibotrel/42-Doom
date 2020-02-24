@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/16 11:54:25 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/24 04:41:32 by demonwaves       ###   ########.fr       */
+/*   Updated: 2020/02/24 05:53:04 by demonwaves       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,10 +56,10 @@
 # define M_TTF_RENDER	"\033[31;1mError:\033[0m Can't write text on surface."
 # define M_SDL_WINSURF	"\033[31;1mError:\033[0m Can't retrieve window surface."
 
-# define TITLE_MENU		"Doom-Nukem v0.8.2 - Menu"
-# define TITLE_GAME		"Doom-Nukem v0.8.2 - Game"
-# define TITLE_EDITOR	"Doom-Nukem v0.8.2 - Editor"
-# define TITLE_SETTINGS	"Doom-Nukem v0.8.2 - Settings"
+# define TITLE_MENU		"Doom-Nukem v0.8.5 - Menu"
+# define TITLE_GAME		"Doom-Nukem v0.8.5 - Game"
+# define TITLE_EDITOR	"Doom-Nukem v0.8.5 - Editor"
+# define TITLE_SETTINGS	"Doom-Nukem v0.8.5 - Settings"
 
 # define MAP_PATH 		"./editor_map.data"
 

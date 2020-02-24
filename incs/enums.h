@@ -6,14 +6,16 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 17:59:50 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/24 04:41:08 by demonwaves       ###   ########.fr       */
+/*   Updated: 2020/02/24 05:35:22 by demonwaves       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ENUMS_H
 # define ENUMS_H
 
-# define NB_THREADS 8
+# define NB_FRAMES	64
+# define NB_THREADS	4
+
 /*
 **	To switch between menus.
 */
