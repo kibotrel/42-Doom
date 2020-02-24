@@ -67,7 +67,7 @@ void	sector_triger(t_env *env)
 	if (env->st_fl > env->old_st_fl + 200)
 	{
 		if (env->sector[s].type == GENERATOR)
-			env->data.life -= env->sector[s].data / 5;
+			env->data.life -= (double)env->sector[s].data / 5;
 		if (env->sector[s].type == MONEY)
 			env->data.money += (double)env->sector[s].data / 5;
 		env->old_st_fl = env->st_fl;
