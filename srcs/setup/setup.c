@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/16 11:58:26 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/24 03:36:52 by demonwaves       ###   ########.fr       */
+/*   Updated: 2020/02/24 04:54:10 by demonwaves       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ static void	assets_paths(t_env *env)
 	env->asset[MAGAZINE] = magazine_asset(env->w, env->h);
 	env->asset[SHELL] = shell_asset(env->w, env->h);
 	env->asset[COIN] = coins_asset(env->w, env->h);
-	env->asset[SKYBOX] = "./assets/skybox.bmp";
+	env->asset[SKYBOX] = skybox_asset(env->w, env->h);
 }
 
 static void	infos_setup(t_env *env)

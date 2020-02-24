@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 19:01:59 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/24 02:31:38 by demonwaves       ###   ########.fr       */
+/*   Updated: 2020/02/24 04:53:50 by demonwaves       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,6 +125,7 @@ uint32_t			life_state(double life);
 **	data_5.c
 */
 
+char				*skybox_asset(int w, int h);
 int32_t				get_thread(t_env *env);
 
 /*
