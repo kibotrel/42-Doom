@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/16 11:53:54 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/18 16:40:20 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/02/24 18:31:59 by lojesu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@
 //	replace ft_isvalidname by a parser call + check the name inside
 //	function prototype should be modified to get env in this scope
 
-/*
- __attribute__((destructor)) void no_end(void);
+
+/* __attribute__((destructor)) void no_end(void);
   void no_end(){while(1);}
   */
 
@@ -47,7 +47,7 @@ int			main(int ac, char **av)
 
 	if (ac <= 2)
 	{
-		env_setup(&env);
+		env_setup(&env, WIN_W, WIN_H);
 		graphic_setup(&env, &env.sdl);
 		while (1)
 		{

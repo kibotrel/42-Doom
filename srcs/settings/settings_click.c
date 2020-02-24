@@ -6,7 +6,7 @@
 /*   By: lojesu <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/22 17:03:15 by lojesu            #+#    #+#             */
-/*   Updated: 2020/02/22 18:48:49 by lojesu           ###   ########.fr       */
+/*   Updated: 2020/02/24 18:32:05 by lojesu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,33 +14,55 @@
 #include "utils.h"
 #include "settings.h"
 #include "libft.h"
+#include "setup.h"
+#include "clean.h"
 
-static void click_on_off(t_env *env, SDL_Event event, t_vec2d start, int size)
+#define NB_FORMAT 4
+
+static bool	check_great_click(t_env *env, t_vec2d start, int size)
 {
-    if (event.motion.x <= (start.x + size) * env->data.grid.min.x +
-			env->data.grid.min.x && event.motion.x >= (start.x + size) *
-			env->data.grid.min.x && event.motion.y >= start.y *
-			env->data.grid.min.y && event.motion.y <= start.y *
-			env->data.grid.min.y + env->data.grid.min.y)
-    {
-		draw_on_off(env, v2d(start.x + size, start.y), RESET, HIDE);
-		env->setting.true_false = true;
-    }
-	else if (event.motion.x <= (start.x + size + 2) * env->data.grid.min.x +
-			env->data.grid.min.x && event.motion.x >= (start.x + size + 2) *
-			env->data.grid.min.x && event.motion.y >= start.y *
-			env->data.grid.min.y && event.motion.y <= start.y *
-			env->data.grid.min.y + env->data.grid.min.y)
-    {
-		draw_on_off(env, v2d(start.x + size, start.y), HIDE, RESET);
-		env->setting.true_false = false;
-    }
+	return (env->sdl.event.motion.x <= (start.x + size) * env->data.grid.min.x +
+			env->data.grid.min.x && env->sdl.event.motion.x >= (start.x + size)
+			* env->data.grid.min.x && env->sdl.event.motion.y >= start.y *
+			env->data.grid.min.y && env->sdl.event.motion.y <= start.y *
+			env->data.grid.min.y + env->data.grid.min.y);
 }
 
-void        settings_click(t_env *env, SDL_Event event)
+static void click_on_off(t_env *env, t_vec2d start, int size, bool *on_off)
 {
-    click_on_off(env, event, v2d(FOG_START_X, FOG_START_Y), FOG_SIZE);
-	env->setting.fog_on_off = env->setting.true_false;
-    click_on_off(env, event, v2d(BORDER_START_X, BORDER_START_Y), BORDER_SIZE);
-	env->setting.border_on_off = env->setting.true_false;
+	if (check_great_click(env, start, size))
+		*on_off = true;
+	else if (check_great_click(env, start, size + 2))
+		*on_off = false;
+}
+
+static void	click_arrow(t_env *env, t_vec2d start, int size)
+{
+	if (check_great_click(env, start, 0))
+	{
+		--env->setting.index_format;
+		if (env->setting.index_format < 0)
+			env->setting.index_format = NB_FORMAT - 1;
+	}
+	if (check_great_click(env, start, size + 1))
+	{
+		++env->setting.index_format;
+		if (env->setting.index_format >= NB_FORMAT)
+			env->setting.index_format = 0;
+	}
+}
+
+void        settings_click(t_env *env)
+{
+	click_on_off(env, v2d(FOG_START_X, FOG_START_Y), FOG_SIZE, &env->setting.fog_on_off);
+	click_on_off(env, v2d(BORDER_START_X, BORDER_START_Y), BORDER_SIZE, &env->setting.border_on_off);
+	click_arrow(env, v2d(RES_START_X, RES_START_Y), RES_SIZE);
+	if (env->sdl.event.motion.x <= 10 && env->sdl.event.motion.y <= 10)
+	{
+		env->w = 1440;
+		env->h = 900;
+		sdl_clean(&env->sdl);
+		env_setup(env, env->w, env->h);
+		graphic_setup(env, &env->sdl);
+	}
 }

@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/16 11:58:26 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/22 18:39:47 by lojesu           ###   ########.fr       */
+/*   Updated: 2020/02/24 18:30:14 by lojesu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,10 +88,10 @@ static void	assets_paths(t_env *env)
 	env->asset[COIN] = coins_asset(env->w, env->h);
 }
 
-static void	infos_setup(t_env *env)
+static void	infos_setup(t_env *env, int w, int h)
 {
-	env->w = WIN_W;
-	env->h = WIN_H;
+	env->w = w;
+	env->h = h;
 //	env->win = GAME;
 	env->cam.fly = -1;
 	env->cam.fall = 1;
@@ -116,10 +116,10 @@ static void	infos_setup(t_env *env)
 	env->data.hud.shotgun.shift = shotgun_shift(env->w, env->h);
 }
 
-void		env_setup(t_env *env)
+void		env_setup(t_env *env, int w, int h)
 {
 	bzero_params(env);
-	infos_setup(env);
+	infos_setup(env, w, h);
 	assets_paths(env);
 	error_messages(env);
 	editor_setup(&env->editor);
@@ -127,4 +127,13 @@ void		env_setup(t_env *env)
 	env->st_fl = 1;
 	env->setting.fog_on_off = true;
 	env->setting.border_on_off = true;
+	if (w == 1280 && h == 720)
+		env->setting.index_format = 0;
+    else if (w == 1366 && h == 768)
+		env->setting.index_format = 1;
+    else if (w == 1440 && h == 900)
+		env->setting.index_format = 2;
+    else
+		env->setting.index_format = 3;
+	env->setting.format = ft_strsplit("1280x720 1366x768 1440x900 1920x1080", ' ');
 }

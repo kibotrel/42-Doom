@@ -6,12 +6,15 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 13:21:31 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/22 18:21:46 by lojesu           ###   ########.fr       */
+/*   Updated: 2020/02/24 14:38:09 by lojesu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "utils.h"
 #include "texture.h"
+
+#define FLOOR 0x424242
+#define CEIL 0x222222
 
 void		blur(t_env *env, SDL_Surface *win, t_pos p)
 {
@@ -30,6 +33,7 @@ static void	draw_ceil_and_floor(t_env *env, t_game *var, int32_t x)
 	int32_t		max;
 	int32_t		min;
 	int32_t		r_size_wall;
+	uint32_t	border;
 
 	max = var->side[1];
 	p = var->now;
@@ -40,10 +44,12 @@ static void	draw_ceil_and_floor(t_env *env, t_game *var, int32_t x)
 	var->depth = W_UNIT / (r_size_wall != 0 ? r_size_wall : 1) * env->setting.fog_on_off;
 	var->y[0] = bound(var->unbound[0], var->top[x], var->bottom[x]);
 	var->y[1] = bound(var->unbound[1], var->top[x], var->bottom[x]);
+	border = color_light(CEIL, env->sector[var->sector].light, 20) * !env->setting.border_on_off;
 	draw_slice(env, x, lim(var->top[x], var->y[0] - 1),
-			flat(0, color_light(0x222222, env->sector[var->sector].light, 20), 0));
+			flat(border, color_light(CEIL, env->sector[var->sector].light, 20), border));
+	border = color_light(FLOOR, env->sector[var->sector].light, 20) * !env->setting.border_on_off;
 	draw_slice(env, x, lim(var->y[1] + 1, var->bottom[x]),
-			flat(0, color_light(0x424242, env->sector[var->sector].light, 20), 0));
+			flat(border, color_light(FLOOR, env->sector[var->sector].light, 20), border));
 }
 
 static void	draw_transitions(t_env *env, t_game *var, int32_t x)

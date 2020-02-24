@@ -6,7 +6,7 @@
 /*   By: lojesu <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/21 15:25:58 by lojesu            #+#    #+#             */
-/*   Updated: 2020/02/22 18:48:52 by lojesu           ###   ########.fr       */
+/*   Updated: 2020/02/24 17:52:04 by lojesu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,9 @@
 # define BORDER_START_Y 7
 # define BORDER_SIZE 7
 
+# define RES_START_X 36
+# define RES_START_Y 11
+# define RES_SIZE 4
 
 /*
 ** settings/settings_keyboard, function which did somethings when you touche a key
@@ -37,10 +40,10 @@ void		settings_keyboard(t_env *env);
 /*
 ** settings/settings_click, function which did somethings when you click somewhere
 */
-void		settings_click(t_env *env, SDL_Event event);
+void		settings_click(t_env *env);
 
 /*
-** settings/setting_utils, draw the background darker
+** settings/setting_tools, draw the background darker
 */
 void		my_draw_background(t_env *e, t_sdl *s, t_bmp img);
 
