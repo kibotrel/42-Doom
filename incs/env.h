@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/16 11:54:25 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/24 05:53:04 by demonwaves       ###   ########.fr       */
+/*   Updated: 2020/02/24 09:52:41 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@
 
 # define SIZE			6
 # define CAM_H			6
-# define WIN_H			720
-# define WIN_W			1280
+# define WIN_H			1080
+# define WIN_W			1920
 # define SNEAK_H		2.5
 # define QUEUE_MAX		32
 # define MAX_WIDTH		1920
