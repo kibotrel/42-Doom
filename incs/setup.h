@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 18:43:02 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/24 15:20:12 by lojesu           ###   ########.fr       */
+/*   Updated: 2020/02/25 15:52:24 by lojesu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 **	setup.c
 */
 
-void	env_setup(t_env *env, int w, int h);
+void	env_setup(t_env *env, int w, int h, bool settings);
 
 /*
 **	graphic.c

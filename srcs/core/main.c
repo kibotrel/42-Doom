@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/16 11:53:54 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/24 18:31:59 by lojesu           ###   ########.fr       */
+/*   Updated: 2020/02/25 15:34:07 by lojesu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@
 
 
 /* __attribute__((destructor)) void no_end(void);
-  void no_end(){while(1);}
-  */
+  void no_end(){while(1);}*/
+  
 
 /*
 static int	prechecks(int ac, char **av)
@@ -47,7 +47,7 @@ int			main(int ac, char **av)
 
 	if (ac <= 2)
 	{
-		env_setup(&env, WIN_W, WIN_H);
+		env_setup(&env, WIN_W, WIN_H, true);
 		graphic_setup(&env, &env.sdl);
 		while (1)
 		{

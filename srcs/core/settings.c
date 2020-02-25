@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/18 14:38:31 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/24 18:32:09 by lojesu           ###   ########.fr       */
+/*   Updated: 2020/02/25 15:52:25 by lojesu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 
 static void		draw_fog_of_war(t_env *env)
 {
-	info(env, ft_strdup("fog_of_war"), v2d(FOG_START_X, FOG_START_Y), 0);
+	info(env, ft_strdup("fog of war"), v2d(FOG_START_X, FOG_START_Y), 0);
 	if (env->setting.fog_on_off == true)
 		draw_on_off(env, v2d(FOG_START_X + FOG_SIZE, FOG_START_Y), RESET, HIDE);
 	else
@@ -30,9 +30,11 @@ static void		draw_sector_borders(t_env *env)
 {
 	info(env, ft_strdup("sector borders"), v2d(BORDER_START_X, BORDER_START_Y), 0);
 	if (env->setting.border_on_off == true)
-		draw_on_off(env, v2d(BORDER_START_X + BORDER_SIZE, BORDER_START_Y), RESET, HIDE);
+		draw_on_off(env, v2d(BORDER_START_X + BORDER_SIZE, BORDER_START_Y),
+				RESET, HIDE);
 	else
-		draw_on_off(env, v2d(BORDER_START_X + BORDER_SIZE, BORDER_START_Y), HIDE, RESET);
+		draw_on_off(env, v2d(BORDER_START_X + BORDER_SIZE, BORDER_START_Y),
+				HIDE, RESET);
 }
 
 static void		draw_resolution(t_env *env)
