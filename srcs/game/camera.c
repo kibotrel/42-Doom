@@ -6,13 +6,14 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/11 14:21:04 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/20 15:00:16 by demonwaves       ###   ########.fr       */
+/*   Updated: 2020/02/25 14:58:34 by demonwaves       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <math.h>
 #include "env.h"
 #include "game.h"
+#include "libft.h"
 #include "utils.h"
 
 void	cam_motion(t_env *env, t_cam *cam, int x, int y)
@@ -24,7 +25,7 @@ void	cam_motion(t_env *env, t_cam *cam, int x, int y)
 		p = v2d(0, 0);
 		p.x -= (env->w / 2 - x) / 8;
 		p.y += (env->h / 2 - y) / 8;
-		cam->angle += p.x * 0.03;
+		cam->angle += p.x * ft_radians(1);
 		if (cam->angle > 2 * M_PI)
 				cam->angle -= 2 * M_PI;
 		if (cam->angle < 0)
