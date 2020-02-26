@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 19:01:59 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/24 04:53:50 by demonwaves       ###   ########.fr       */
+/*   Updated: 2020/02/24 18:13:04 by demonwaves       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,12 @@ void				setup_sky(t_env *env, t_height h, t_game *var, int x);
 void				info(t_env *env, char *str, t_vec2d pos, uint32_t mode);
 void				draw_asset(t_env *env, t_bmp asset, t_pos shift,
 								t_anime *anime);
+
+/*
+**	graphic_3.c
+*/
+
+void				draw_plane(t_env *env, int x, t_height h, t_game *var);
 
 /*
 **	data_0.c

@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 15:22:56 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/24 04:44:09 by demonwaves       ###   ########.fr       */
+/*   Updated: 2020/02/25 00:36:23 by demonwaves       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,9 +64,10 @@ void 	graphics(t_env *env)
 			transform(&env->cam, &var, var.j);
 			if ((!bound_view(&var) || !scale(env, &var, &now)) && ++var.j)
 				continue;
-			draw_setup(env, &var, &now, var.j++);
+			draw_setup(env, &var, &now, var.j);
 			draw_screen(env, &var);
 			check_depth(&var, var.start, var.end);
+			var.j++;
 		}
 	}
 	if (var.sky > env->data.sky)

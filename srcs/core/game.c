@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/18 14:38:11 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/24 04:38:53 by demonwaves       ###   ########.fr       */
+/*   Updated: 2020/02/26 22:57:59 by demonwaves       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ static void	multithreaded_engine(t_env *env)
 		pthread_join(env->sdl.thread[i], NULL);
 	if (env->data.sky)
 		draw_skybox(env);
+	// exit(0);
 }
 
 void		game(t_env *env, int ac, char **av)

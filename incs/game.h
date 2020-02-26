@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 21:22:14 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/24 04:42:25 by demonwaves       ###   ########.fr       */
+/*   Updated: 2020/02/25 18:45:21 by demonwaves       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,22 @@
 
 # include "env.h"
 # include "structs.h"
+
+typedef struct	s_cast
+{
+	double		r;			// Relative distance to the camera where the projected point is
+	double		s;			// Hit coordinate side along camera plane vector
+	double		dot[2];		// Vector product hit - camera-plane
+	double		size;		// Normal camera-plane vector size
+	double		adjacent;
+	double		distance;	// Perpendicular distance from hit point to the camera plane
+	double		opposite;
+	double		hypotenuse;
+	t_vec2d		cam;		// Player position
+	t_vec2d		hit;		// Wall hit coordinate
+	t_vec2d		proj;		// Projected point from Point to line algorithm
+	t_vec2d		normal;		// Normal camera-plane vector
+}				t_cast;
 
 typedef struct	s_item
 {
@@ -49,6 +65,7 @@ typedef struct	s_game
 	double		nearside;
 	double		ceil[2];
 	double		floor[2];
+	t_cast		cast;
 	t_item		*head;
 	t_item		*tail;
 	t_item		queue[32];

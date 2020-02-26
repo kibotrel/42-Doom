@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   game.c                                             :+:      :+:    :+:   */
+/*   game_0.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 15:29:00 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/24 04:44:49 by demonwaves       ###   ########.fr       */
+/*   Updated: 2020/02/25 04:55:01 by demonwaves       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <math.h>
-#include "game.h"
 #include "clean.h"
 #include "libft.h"
+#include "setup.h"
 #include "utils.h"
 
 static uint8_t	area_setup(t_env *env, t_game *var)
@@ -95,6 +95,7 @@ void			draw_setup(t_env *env, t_game *var, t_item *now, uint32_t i)
 	}
 	var->start = fmax(var->side[0], now->min);
 	var->end = fmin(var->side[1], now->max);
+	floor_and_ceil_setup(&env->cam, var);
 }
 
 void	skybox_setup(t_env *env, t_skybox *skybox)

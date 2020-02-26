@@ -6,7 +6,7 @@
 #    By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/10 16:16:29 by kibotrel          #+#    #+#              #
-#    Updated: 2020/02/24 02:32:03 by demonwaves       ###   ########.fr        #
+#    Updated: 2020/02/25 01:04:16 by demonwaves       ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -126,7 +126,8 @@ SRCS			+= parse/entity.c
 SRCS			+= parse/total.c
 SRCS			+= parse/player_blank.c
 SRCS			+= setup/hud.c
-SRCS			+= setup/game.c
+SRCS			+= setup/game_0.c
+SRCS			+= setup/game_1.c
 SRCS			+= setup/setup.c
 SRCS			+= setup/graphic.c
 SRCS			+= utils/usage.c
@@ -146,6 +147,7 @@ SRCS			+= utils/checks_01.c
 SRCS			+= utils/graphic_0.c
 SRCS			+= utils/graphic_1.c
 SRCS			+= utils/graphic_2.c
+SRCS			+= utils/graphic_3.c
 SRCS			+= utils/ft_strdel.c
 SRCS			+= utils/ft_add_str.c
 SRCS			+= utils/ft_mul_str.c
