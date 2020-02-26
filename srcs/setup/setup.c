@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/16 11:58:26 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/25 15:50:53 by lojesu           ###   ########.fr       */
+/*   Updated: 2020/02/26 17:25:11 by lojesu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 #include "utils.h"
 #include "editor.h"
 #include "struct.h"
+#include "settings.h"
 
 static void	bzero_params(t_env *env, bool settings)
 {
@@ -132,6 +133,8 @@ void		env_setup(t_env *env, int w, int h, bool settings)
 		env->setting.fog_on_off = true;
 		env->setting.border_on_off = false;
 		env->setting.format = ft_strsplit("1280x720 1366x768 1440x900 1920x1080", ' ');
+		env->setting.mode = NORMAL;
+		env->setting.fps_max = 60;
 		if (w == 1280 && h == 720)
 			env->setting.index_format = 0;
 		else if (w == 1366 && h == 768)

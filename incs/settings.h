@@ -6,7 +6,7 @@
 /*   By: lojesu <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/21 15:25:58 by lojesu            #+#    #+#             */
-/*   Updated: 2020/02/24 17:52:04 by lojesu           ###   ########.fr       */
+/*   Updated: 2020/02/26 17:23:22 by lojesu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,26 @@
 # define BORDER_START_Y 7
 # define BORDER_SIZE 7
 
+# define MODE_START_X 35
+# define MODE_START_Y 9
+# define MODE_SIZE 4
+
 # define RES_START_X 36
 # define RES_START_Y 11
 # define RES_SIZE 4
+
+# define FOV_START_X 37
+# define FOV_START_Y 13
+# define FOV_SIZE 2
+
+# define FPS_START_X 35
+# define FPS_START_Y 15
+# define FPS_SIZE 2
+
+# define NORMAL 1
+# define HARD 2
+
+# define FPS_UNLIMITED -1
 
 /*
 ** settings/settings_keyboard, function which did somethings when you touche a key
@@ -57,5 +74,10 @@ void		my_police_color(SDL_Color *color, uint32_t color_hex);
 */
 void    draw_on_off
 	(t_env *env, t_vec2d start, uint32_t color_1, uint32_t color_2);
+
+/*
+** settings/settings_tools, pdate fov
+*/
+void	fov_update(t_env *env, int mode);
 
 #endif

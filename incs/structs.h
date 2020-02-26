@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 18:48:17 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/24 17:57:02 by lojesu           ###   ########.fr       */
+/*   Updated: 2020/02/26 17:14:00 by lojesu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -204,6 +204,8 @@ typedef struct			s_setting
 	bool				fog_on_off;
 	bool				border_on_off;
 	int8_t				index_format;
+	int8_t				mode;
+	int8_t				fps_max;
 	char				**format;
 }						t_setting;
 

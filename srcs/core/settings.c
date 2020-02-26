@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/18 14:38:31 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/25 15:52:25 by lojesu           ###   ########.fr       */
+/*   Updated: 2020/02/26 17:27:28 by lojesu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,18 +46,71 @@ static void		draw_resolution(t_env *env)
 			v2d(RES_START_X + RES_SIZE + 3, RES_START_Y), 0);
 }
 
-void		settings(t_env *env)
+static void		draw_mode(t_env *env)
+{
+	info(env, ft_strdup("mode"), v2d(MODE_START_X, MODE_START_Y), 0);
+	if (env->setting.mode == NORMAL)
+	{
+		info(env, ft_strdup("normal"), v2d(MODE_START_X + MODE_SIZE, MODE_START_Y), 0);
+		my_police_color(&env->sdl.color, HIDE);
+		info(env, ft_strdup("hard"), v2d(MODE_START_X + MODE_SIZE + 3, MODE_START_Y), 0);
+		my_police_color(&env->sdl.color, RESET);
+	}
+	else if (env->setting.mode == HARD)
+	{
+		my_police_color(&env->sdl.color, HIDE);
+		info(env, ft_strdup("normal"), v2d(MODE_START_X + MODE_SIZE, MODE_START_Y), 0);
+		my_police_color(&env->sdl.color, RESET);
+		info(env, ft_strdup("hard"), v2d(MODE_START_X + MODE_SIZE + 3, MODE_START_Y), 0);
+	}
+}
+
+static void		draw_fov(t_env *env)
+{
+	info(env, ft_strdup("FOV"), v2d(FOV_START_X + 1, FOV_START_Y), 0);
+	info(env, ft_strdup("<"), v2d(FOV_START_X, FOV_START_Y), 0);
+	info(env, ft_strdup(">"), v2d(FOV_START_X + FOV_SIZE + 1, FOV_START_Y), 0);
+	info(env, ft_strdup(ft_itoa((inter(round((1 / (env->cam.fov.x / env->h)) * 56), 30, 245)))),
+			v2d(FOV_START_X + FOV_SIZE + 3, FOV_START_Y), 0);
+}
+
+static void		draw_fps(t_env *env)
+{
+	info(env, ft_strdup("FPS"), v2d(FPS_START_X, FPS_START_Y), 0);
+	my_police_color(&env->sdl.color, HIDE);
+	info(env, ft_strdup("30"), v2d(FPS_START_X + 4, FPS_START_Y), 0);
+	info(env, ft_strdup("60"), v2d(FPS_START_X + 6, FPS_START_Y), 0);
+	info(env, ft_strdup("unlimited"), v2d(FPS_START_X + 8, FPS_START_Y), 0);
+	if (env->setting.fps_max == 30)
+	{
+		my_police_color(&env->sdl.color, RESET);
+		info(env, ft_strdup("30"), v2d(FPS_START_X + 4, FPS_START_Y), 0);
+	}
+	else if (env->setting.fps_max == 60)
+	{
+		my_police_color(&env->sdl.color, RESET);
+		info(env, ft_strdup("60"), v2d(FPS_START_X + 6, FPS_START_Y), 0);
+	}
+	else if (env->setting.fps_max == -1)
+	{
+		my_police_color(&env->sdl.color, RESET);
+		info(env, ft_strdup("unlimited"), v2d(FPS_START_X + 8, FPS_START_Y), 0);
+	}
+		my_police_color(&env->sdl.color, RESET);
+}
+
+void			settings(t_env *env)
 {
 	if (!env->setup)
 	{
 		SDL_SetWindowTitle(env->sdl.win, TITLE_SETTINGS);
 		env->setup = 1;
 	}
-		my_draw_background(env, &env->sdl, env->sdl.bmp[BG_MENU]);
-		draw_fog_of_war(env);
-		draw_sector_borders(env);
-		draw_resolution(env);
-		info(env, ft_strdup("mode \t\tnormal\t\thard"), v2d(35, 9), 0);
-		info(env, ft_strdup("<\tFOV\t>"), v2d(37, 13), 0);
-		info(env, ft_strdup("<\tFPS \t>"), v2d(37, 15), 0);
+	my_draw_background(env, &env->sdl, env->sdl.bmp[BG_MENU]);
+	draw_fog_of_war(env);
+	draw_sector_borders(env);
+	draw_mode(env);
+	draw_resolution(env);
+	draw_fov(env);
+	draw_fps(env);
 }

@@ -6,7 +6,7 @@
 /*   By: lojesu <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/22 17:06:01 by lojesu            #+#    #+#             */
-/*   Updated: 2020/02/22 18:54:51 by lojesu           ###   ########.fr       */
+/*   Updated: 2020/02/26 16:18:26 by lojesu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,4 +46,24 @@ void	draw_on_off
 	my_police_color(&env->sdl.color, color_2);
 	info(env, ft_strdup("off"), v2d(start.x + 2, start.y), 0);
 	my_police_color(&env->sdl.color, RESET);
+}
+
+void    fov_update(t_env *env, int mode)
+{
+    if (mode == 0)
+    {
+        if (env->cam.fov.x < env->h * 2 && env->cam.fov.y < env->h * 2)
+        {
+            env->cam.fov.x += (0.0375 * env->h);
+            env->cam.fov.y += (0.01 * env->h);
+        }
+    }
+	else if (mode == 1)
+    {
+        if (env->cam.fov.x > env->h / 16 && env->cam.fov.y > env->h / 16)
+        {
+            env->cam.fov.x -= (0.0375 * env->h);
+            env->cam.fov.y -= (0.01 * env->h);
+        }
+    }
 }

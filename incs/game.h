@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 21:22:14 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/18 16:38:48 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/02/26 15:07:01 by lojesu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,6 @@ void			jump(t_env *env, t_cam *cam);
 **	camera.c
 */
 
-void			fov_update(t_env *env);
 void			update_cam(t_env *env, t_vec2d vel);
 void			cam_height(t_env *env, int32_t crouch);
 void			cam_motion(t_env *env, t_cam *cam, int x, int y);

@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/11 14:21:04 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/14 11:20:27 by kibotrel         ###   ########.fr       */
+/*   Updated: 2020/02/26 15:06:41 by lojesu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,25 +73,5 @@ void	cam_height(t_env *env, int32_t crouch)
 			env->cam.pos.z = env->sector[env->cam.sector].floor + CAM_H;
 		env->cam.sneak = 0;
 		env->cam.speed = 1;
-	}
-}
-
-void	fov_update(t_env *env)
-{
-	if (env->input[SDL_SCANCODE_UP])
-	{
-		if (env->cam.fov.x < env->h * 2 && env->cam.fov.y < env->h * 2)
-		{
-			env->cam.fov.x += (0.0375 * env->h);
-			env->cam.fov.y += (0.01 * env->h);
-		}
-	}
-	if (env->input[SDL_SCANCODE_DOWN])
-	{
-		if (env->cam.fov.x > env->h / 16 && env->cam.fov.y > env->h / 16)
-		{
-			env->cam.fov.x -= (0.0375 * env->h);
-			env->cam.fov.y -= (0.01 * env->h);
-		}
 	}
 }
