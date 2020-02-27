@@ -6,7 +6,7 @@
 #    By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/10 16:16:29 by kibotrel          #+#    #+#              #
-#    Updated: 2020/02/24 02:32:03 by demonwaves       ###   ########.fr        #
+#    Updated: 2020/02/27 03:48:19 by demonwaves       ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -69,6 +69,7 @@ OBJS_SUBDIRS	+= texture
 LFT				= $(LFT_DIR)/$(FT)
 LBMP			= $(LBMP_DIR)/$(BMP)
 LSDL			= $(LSDL_DIR)/$(SDL)
+LSND			= $(LSND_DIR)/$(SND)
 LTTF			= $(LTTF_DIR)/$(TTF)
 
 # Used header at each compilation to check file integrity (Can be changed).
@@ -203,15 +204,20 @@ ifeq ($(UNAME), Darwin)
 else
 	TAR			= tar -xf
 	SDL			= libSDL2.a
+	SND			= libsndfile.a
 	TTF			= libSDL2_ttf.a
 	CURL		= curl --output archive.tar
 	URL_SDL		= https://www.libsdl.org/release/SDL2-2.0.10.tar.gz
+	URL_SND		= http://www.mega-nerd.com/libsndfile/files/libsndfile-1.0.28.tar.gz
 	URL_TTF		= https://www.libsdl.org/projects/SDL_ttf/release/SDL2_ttf-2.0.15.tar.gz
 	SRCS_SDL	= SDL2-2.0.10
+	SRCS_SND	= libsndfile-1.0.28
 	SRCS_TTF	= SDL2_ttf-2.0.15
 	LSDL_DIR	= /usr/local/lib
+	LSND_DIR	= /usr/local/lib
 	LTTF_DIR	= /usr/local/lib
 	INCS_DIR	+= /usr/local/include/SDL2
+	INCS_DIR	+= /usr/local/include
 endif
 
 #-------------------------------- MISCELANEOUS --------------------------------#
@@ -237,6 +243,7 @@ LIBS			:= -L$(LSDL_DIR) -lSDL2
 LIBS			+= -L$(LTTF_DIR) -lSDL2_ttf
 LIBS			+= -L$(LBMP_DIR) -lbmp
 LIBS			+= -L$(LFT_DIR) -lft
+LIBS			+= -L$(LSND_DIR) -lsndfile
 LIBS			+= -lm
 LIBS			+= -lpthread
 
@@ -258,20 +265,19 @@ $(D_OBJS)%.o: $(D_SRCS)%.c $(INCS)
 
 all: $(OBJS_DIR) $(C_SUBDIRS) $(NAME)
 
-$(NAME): $(LSDL) $(LTTF) $(LFT) $(LBMP) $(C_OBJS)
+$(NAME): $(LSDL) $(LTTF) $(LFT) $(LBMP) $(LSND) $(C_OBJS)
 	@echo "$(YELLOW)\n      - Building $(RESET)$(NAME) $(YELLOW)...\n$(RESET)"
 	@$(CC) $(CFLAGS) -o $(NAME) $(C_OBJS) $(LIBS)
 	@echo "$(GREEN)***   Project $(NAME) successfully compiled   ***\n$(RESET)"
 
-# Libraries installation using brew without prompting
+# Libraries installation using brew or curl without prompting
 # anything on standard output (Can be changed).
 
 $(LSDL):
+	@echo "$(GREEN)***   Installing library $(SDL)   ...  ***\n$(RESET)"
 	@if [ $(UNAME) = Darwin ]; then												\
-		echo "$(GREEN)***   Installing library $(SDL)   ...  ***\n$(RESET)";	\
 		brew install sdl2 > /dev/null 2>&1;										\
 	elif [ ! -d "$(SRCS_SDL)" ]; then											\
-		echo "$(GREEN)***   Installing library $(SDL)   ...  ***\n$(RESET)";	\
 		sudo apt-get install curl -y > /dev/null 2>&1;							\
 		echo "$(GREEN)***   Curl sources   ...   ***\n$(RESET)";				\
 		$(CURL) $(URL_SDL) > /dev/null 2>&1;									\
@@ -284,17 +290,35 @@ $(LSDL):
 		echo "$(GREEN)***   $(SDL) successfully compiled   ***\n$(RESET)";		\
 	fi
 
-$(LTTF):
+$(LSND):
+	@echo "$(GREEN)***   Installing library $(SND)   ...  ***\n$(RESET)"
 	@if [ $(UNAME) = Darwin ]; then												\
-		echo "$(GREEN)***   Installing library $(TTF)   ...  ***\n$(RESET)";	\
+		brew install autoconf autogen automake flac libogg libtool libvorbis	\
+		libopus pkg-config > /dev/null 2>&1										\
+	elif [ ! -d "$(SRCS_TTF)" ]; then											\
+		sudo apt-get install autoconf autogen automake build-essential			\
+		libasound2-dev libflac-dev libogg-dev libtool libvorbis-dev libopus-dev	\
+		pkg-config python -y > /dev/null 2>&1;									\
+		echo "$(GREEN)***   Curl sources   ...   ***\n$(RESET)";				\
+		$(CURL) $(URL_SND) > /dev/null 2>&1;									\
+		echo "$(GREEN)***   Unpacking sources   ...   ***\n$(RESET)";			\
+		$(TAR) archive.tar; $(RM) archive.tar;									\
+		cd $(SRCS_SND);	./configure > /dev/null 2>&1;							\
+		echo "$(GREEN)***   Compile library   ...   ***\n$(RESET)";				\
+		sudo make install -j > /dev/null 2>&1;									\
+		echo "$(GREEN)***   $(SND) successfully compiled   ***\n$(RESET)";		\
+	fi
+
+$(LTTF):
+	@echo "$(GREEN)***   Installing library $(TTF)   ...  ***\n$(RESET)"
+	@if [ $(UNAME) = Darwin ]; then												\
 		brew install sdl2_ttf > /dev/null 2>&1;									\
 	elif [ ! -d "$(SRCS_TTF)" ]; then											\
-		echo "$(GREEN)***   Installing library $(TTF)   ...  ***\n$(RESET)";	\
+		sudo apt-get install libfreetype6-dev -y > /dev/null 2>&1;				\
 		echo "$(GREEN)***   Curl sources   ...   ***\n$(RESET)";				\
 		$(CURL) $(URL_TTF) > /dev/null 2>&1;									\
 		echo "$(GREEN)***   Unpacking sources   ...   ***\n$(RESET)";			\
 		$(TAR) archive.tar; $(RM) archive.tar;									\
-		sudo apt-get install libfreetype6-dev -y > /dev/null 2>&1;				\
 		echo "$(GREEN)***   Configure library   ...   ***\n$(RESET)";			\
 		cd $(SRCS_TTF);	./configure > /dev/null 2>&1;							\
 		echo "$(GREEN)***   Compile library   ...   ***\n$(RESET)";				\
@@ -335,27 +359,37 @@ fclean: clean
 	@echo "$(GREEN)***   Deleting executable file from $(NAME)   ...   ***\n$(RESET)"
 	@$(RM) $(NAME)
 	@if [ -f "$(LSDL)" ]; then													\
+		echo "$(GREEN)***   Deleting library $(SDL)   ...  ***\n$(RESET)";		\
 		if [ $(UNAME) = Darwin ]; then											\
 			brew uninstall --ignore-dependencies sdl2 > /dev/null 2>&1;			\
-		else																	\
-			echo "$(GREEN)***   Deleting library $(SDL)   ...  ***\n$(RESET)";	\
 		fi;																		\
 	fi
+	@if [ -f "$(LSND)" ]; then													\
+		echo "$(GREEN)***   Deleting library $(SND)   ...  ***\n$(RESET)";		\
+	fi																			\
 	@if [ -f "$(LTTF)" ]; then													\
+		echo "$(GREEN)***   Deleting library $(TTF)   ...  ***\n$(RESET)";		\
 		if [ $(UNAME) = Darwin ]; then											\
 			brew uninstall sdl2_ttf > /dev/null 2>&1;							\
-		else																	\
-			echo "$(GREEN)***   Deleting library $(TTF)   ...  ***\n$(RESET)";	\
 		fi;																		\
-	fi
+	fi																			\
 	@if [ $(UNAME) = Linux ]; then												\
 		if [ -d $(SRCS_SDL) ]; then												\
 			sudo rm -rf $(SRCS_SDL);											\
-		elif [ -d $(SRCS_TTF) ]; then											\
+		fi;																		\
+		if [ -d $(SRCS_SND) ]; then												\
+			sudo rm -rf $(SRCS_SND);											\
+		fi;																		\
+		if [ -d $(SRCS_TTF) ]; then												\
 			sudo rm -rf $(SRCS_TTF);											\
-		elif [ -f $(LSDL) ]; then												\
+		fi;																		\
+		if [ -f $(LSDL) ]; then													\
 			sudo $(RM) $(LSDL);													\
-		elif [ -f $(LTTF) ]; then												\
+		fi;																		\
+		if [ -f $(LSND) ]; then													\
+			sudo $(RM) $(LSND);													\
+		fi;																		\
+		if [ -f $(LTTF) ]; then													\
 			sudo $(RM) $(LTTF);													\
 		fi;																		\
 	fi
