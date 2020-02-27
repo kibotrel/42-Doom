@@ -6,13 +6,13 @@
 #    By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/10 16:16:29 by kibotrel          #+#    #+#              #
-#    Updated: 2020/02/27 04:06:21 by demonwaves       ###   ########.fr        #
+#    Updated: 2020/02/27 19:17:18 by demonwaves       ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 #---------------------------------- VARIABLES ---------------------------------#
 
-# Environment
+# Environment.
 
 UNAME			= $(shell uname -s)
 
@@ -64,6 +64,7 @@ OBJS_SUBDIRS	+= texture
 
 # Every libraries needed to compile the project.
 
+LAO				= $(LAO_DIR)/$(AO)
 LFT				= $(LFT_DIR)/$(FT)
 LBMP			= $(LBMP_DIR)/$(BMP)
 LSDL			= $(LSDL_DIR)/$(SDL)
@@ -193,32 +194,43 @@ SRCS			+= texture/texture.c
 # dealing with. Darwin is for macOS else would include at least Linux.
 
 ifeq ($(UNAME), Darwin)
+	AO			=
 	SDL			= libsdl2.a
 	SND			=
 	TTF			= libsdl2_ttf.a
+	LAO_DIR		=
 	LSDL_DIR	= $(HOME)/.brew/Cellar/sdl2/2.0.10/lib
 	LSND_DIR	=
 	LTTF_DIR	= $(HOME)/.brew/Cellar/sdl2_ttf/2.0.15/lib
-	INCS_DIR	+= $(HOME)/.brew/Cellar/sdl2/2.0.10/include/SDL2
-	INCS_DIR	+= $(HOME)/.brew/Cellar/sdl2_ttf/2.0.15/include/SDL2
 	INCS_DIR	+=
+	INCS_DIR	+= $(HOME)/.brew/Cellar/sdl2/2.0.10/include/SDL2
+	INCS_DIR	+=
+	INCS_DIR	+= $(HOME)/.brew/Cellar/sdl2_ttf/2.0.15/include/SDL2
 else
 	TAR			= tar -xf
-	SDL			= libSDL2.a
-	SND			= libsndfile.a
-	TTF			= libSDL2_ttf.a
-	CURL		= curl --output archive.tar
+	CURL		= curl -L --output archive.tar
+	L_LIBS		= /usr/local/lib
+	L_INCS		= /usr/local/include
+	URL_AO		= http://downloads.xiph.org/releases/ao/libao-1.2.0.tar.gz
 	URL_SDL		= https://www.libsdl.org/release/SDL2-2.0.10.tar.gz
 	URL_SND		= http://www.mega-nerd.com/libsndfile/files/libsndfile-1.0.28.tar.gz
 	URL_TTF		= https://www.libsdl.org/projects/SDL_ttf/release/SDL2_ttf-2.0.15.tar.gz
+	AO			= libao.so
+	SDL			= libSDL2.a
+	SND			= libsndfile.a
+	TTF			= libSDL2_ttf.a
+	SRCS_AO		= libao-1.2.0
 	SRCS_SDL	= SDL2-2.0.10
 	SRCS_SND	= libsndfile-1.0.28
 	SRCS_TTF	= SDL2_ttf-2.0.15
-	LSDL_DIR	= /usr/local/lib
-	LSND_DIR	= /usr/local/lib
-	LTTF_DIR	= /usr/local/lib
-	INCS_DIR	+= /usr/local/include/SDL2
-	INCS_DIR	+= /usr/local/include
+	LAO_DIR		= $(L_LIBS)
+	LSDL_DIR	= $(L_LIBS)
+	LSND_DIR	= $(L_LIBS)
+	LTTF_DIR	= $(L_LIBS)
+	INCS_DIR	+= $(L_INCS)
+	INCS_DIR	+= $(L_INCS)/ao
+	INCS_DIR	+= $(L_INCS)/SDL2
+
 endif
 
 #-------------------------------- MISCELANEOUS --------------------------------#
@@ -245,6 +257,7 @@ LIBS			+= -L$(LTTF_DIR) -lSDL2_ttf
 LIBS			+= -L$(LBMP_DIR) -lbmp
 LIBS			+= -L$(LFT_DIR) -lft
 LIBS			+= -L$(LSND_DIR) -lsndfile
+LIBS			+= -L$(LAO_DIR) -lao
 LIBS			+= -lm
 LIBS			+= -lpthread
 
@@ -264,13 +277,29 @@ $(D_OBJS)%.o: $(D_SRCS)%.c $(INCS)
 
 all: $(OBJS_DIR) $(C_SUBDIRS) $(NAME)
 
-$(NAME): $(LSDL) $(LTTF) $(LFT) $(LBMP) $(LSND) $(C_OBJS)
+$(NAME): $(LSDL) $(LTTF) $(LSND) $(LAO) $(LFT) $(LBMP) $(C_OBJS)
 	@echo "$(YELLOW)\n      - Building $(RESET)$(NAME) $(YELLOW)...\n$(RESET)"
 	@$(CC) $(CFLAGS) -o $(NAME) $(C_OBJS) $(LIBS)
 	@echo "$(GREEN)***   Project $(NAME) successfully compiled   ***\n$(RESET)"
 
 # Libraries installation using brew or curl without prompting anything
 # on standard output.
+
+$(LAO):
+	@echo "$(GREEN)***   Installing library $(AO)   ...  ***\n$(RESET)"
+	@if [ $(UNAME) = Darwin ]; then												\
+		echo "Libao OSX Here";																\
+	elif [ ! -d "$(SRCS_AO)" ]; then											\
+		echo "$(GREEN)***   Curl sources   ...   ***\n$(RESET)";				\
+		$(CURL) $(URL_AO) > /dev/null 2>&1;										\
+		echo "$(GREEN)***   Unpacking sources   ...   ***\n$(RESET)";			\
+		$(TAR) archive.tar;	$(RM) archive.tar;									\
+		echo "$(GREEN)***   Configure library   ...   ***\n$(RESET)";			\
+		cd $(SRCS_AO);	./configure > /dev/null 2>&1;							\
+		echo "$(GREEN)***   Compile library   ...   ***\n$(RESET)";				\
+		sudo make install -j > /dev/null 2>&1;									\
+		echo "$(GREEN)***   $(AO) successfully compiled   ***\n$(RESET)";		\
+	fi
 
 $(LSDL):
 	@echo "$(GREEN)***   Installing library $(SDL)   ...  ***\n$(RESET)"
@@ -294,8 +323,8 @@ $(LSND):
 	@if [ $(UNAME) = Darwin ]; then												\
 		brew install autoconf autogen automake flac libogg libtool libvorbis	\
 		libopus pkg-config > /dev/null 2>&1										\
-		# COMPILE SNDFILE LIB OS X HERE
-	elif [ ! -d "$(SRCS_TTF)" ]; then											\
+		echo "Libsndfile OSX Here";												\
+	elif [ ! -d "$(SRCS_SND)" ]; then											\
 		sudo apt-get install autoconf autogen automake build-essential			\
 		libasound2-dev libflac-dev libogg-dev libtool libvorbis-dev libopus-dev	\
 		pkg-config python -y > /dev/null 2>&1;									\
@@ -353,27 +382,35 @@ clean:
 # Deleting all executables and libraries after cleaning up all .o files.
 
 fclean: clean
+	echo $(RM)
 	@make -sC $(LFT_DIR) fclean
 	@make -sC $(LBMP_DIR) fclean
 	@echo "$(GREEN)***   Deleting executable file from $(NAME)   ...   ***\n$(RESET)"
 	@$(RM) $(NAME)
+# UNINSTALL AO LIB OSX HERE
+	@if [ -f "$(LAO)" ]; then													\
+		echo "$(GREEN)***   Deleting library $(AO)   ...  ***\n$(RESET)";		\
+	fi
+# UNINSTALL SNDFILE LIB OSX HERE
+	@if [ -f "$(LSND)" ]; then													\
+		echo "$(GREEN)***   Deleting library $(SND)   ...  ***\n$(RESET)";		\
+	fi
+	@if [ -f "$(LTTF)" ]; then													\
+		echo "$(GREEN)***   Deleting library $(TTF)   ...  ***\n$(RESET)";		\
+		if [ $(UNAME) = Darwin ]; then											\
+			brew uninstall sdl2_ttf > /dev/null 2>&1;							\
+		fi;																		\
+	fi
 	@if [ -f "$(LSDL)" ]; then													\
 		echo "$(GREEN)***   Deleting library $(SDL)   ...  ***\n$(RESET)";		\
 		if [ $(UNAME) = Darwin ]; then											\
 			brew uninstall --ignore-dependencies sdl2 > /dev/null 2>&1;			\
 		fi;																		\
 	fi
-	@if [ -f "$(LSND)" ]; then													\
-		# UNINSTALL SNDFILE LIB OSX HERE
-		echo "$(GREEN)***   Deleting library $(SND)   ...  ***\n$(RESET)";		\
-	fi																			\
-	@if [ -f "$(LTTF)" ]; then													\
-		echo "$(GREEN)***   Deleting library $(TTF)   ...  ***\n$(RESET)";		\
-		if [ $(UNAME) = Darwin ]; then											\
-			brew uninstall sdl2_ttf > /dev/null 2>&1;							\
-		fi;																		\
-	fi																			\
 	@if [ $(UNAME) = Linux ]; then												\
+		if [ -d $(SRCS_AO) ]; then												\
+			sudo rm -rf $(SRCS_AO);												\
+		fi;																		\
 		if [ -d $(SRCS_SDL) ]; then												\
 			sudo rm -rf $(SRCS_SDL);											\
 		fi;																		\
@@ -383,14 +420,20 @@ fclean: clean
 		if [ -d $(SRCS_TTF) ]; then												\
 			sudo rm -rf $(SRCS_TTF);											\
 		fi;																		\
+		if [ -f $(LAO) ]; then													\
+			sudo $(RM) $(L_LIBS)/libao*;										\
+			sudo rm -rf $(L_LIBS)/ao $(L_LIBS)/ckport $(L_INCS)/ao;				\
+		fi;																		\
 		if [ -f $(LSDL) ]; then													\
-			sudo $(RM) $(LSDL);													\
+			sudo $(RM) $(L_LIBS)/libSDL2*;										\
+			sudo rm -rf $(L_INCS)/SDL2;											\
 		fi;																		\
 		if [ -f $(LSND) ]; then													\
-			sudo $(RM) $(LSND);													\
+			sudo $(RM) $(L_LIBS)/libsndfile* $(L_INCS)/sndfile*;				\
 		fi;																		\
 		if [ -f $(LTTF) ]; then													\
-			sudo $(RM) $(LTTF);													\
+			sudo $(RM) $(L_LIBS)/libSDL2*;										\
+			sudo rm -rf $(L_INCS)/SDL2;											\
 		fi;																		\
 	fi
 
