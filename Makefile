@@ -6,7 +6,7 @@
 #    By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/10 16:16:29 by kibotrel          #+#    #+#              #
-#    Updated: 2020/02/27 03:48:19 by demonwaves       ###   ########.fr        #
+#    Updated: 2020/02/27 04:06:21 by demonwaves       ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,13 +16,13 @@
 
 UNAME			= $(shell uname -s)
 
-# Executable / Library (Can be changed).
+# Executable / Libraries.
 
 FT				= libft.a
 BMP				= libbmp.a
 NAME			= doom-nukem
 
-# Color codes (Can be changed).
+# Color codes.
 
 RESET			= \033[0m
 GREEN			= \033[32m
@@ -30,25 +30,23 @@ YELLOW			= \033[33m
 
 #--------------------------------- DIRECTORIES  -------------------------------#
 
-# Libraries (Can be changed).
+# Libraries.
 
 LFT_DIR			= libft
 LBMP_DIR		= libbmp
 
-# Project (Can be changed).
+# I/O Compilation.
 
 SRCS_DIR		= srcs
 OBJS_DIR		= objs
 
-# Location of all header files used in the project to avoid
-# writing the full path upon include (Can be changed).
+# Location of all header files used in the project.
 
 INCS_DIR		:= incs
 INCS_DIR		+= libft/incs
 INCS_DIR		+= libbmp/incs
 
-# All the subdirectories used in the project
-# to organise source files (Can be changed).
+# All the subdirectories used in the project.
 
 OBJS_SUBDIRS	:= hud
 OBJS_SUBDIRS	+= core
@@ -64,7 +62,7 @@ OBJS_SUBDIRS	+= texture
 
 #------------------------------------ FILES -----------------------------------#
 
-# Every libraries needed to compile the project (Can be changed).
+# Every libraries needed to compile the project.
 
 LFT				= $(LFT_DIR)/$(FT)
 LBMP			= $(LBMP_DIR)/$(BMP)
@@ -72,7 +70,7 @@ LSDL			= $(LSDL_DIR)/$(SDL)
 LSND			= $(LSND_DIR)/$(SND)
 LTTF			= $(LTTF_DIR)/$(TTF)
 
-# Used header at each compilation to check file integrity (Can be changed).
+# Used header at each compilation to check file integrity.
 
 INCS			:= incs/env.h
 INCS			+= incs/hud.h
@@ -90,7 +88,7 @@ INCS			+= incs/structs.h
 INCS			+= incs/editor.h
 INCS			+= incs/texture.h
 
-# Source files (Can be changed)
+# Source files.
 
 SRCS			:= hud/debug.c
 SRCS			+= hud/purse.c
@@ -196,11 +194,14 @@ SRCS			+= texture/texture.c
 
 ifeq ($(UNAME), Darwin)
 	SDL			= libsdl2.a
+	SND			=
 	TTF			= libsdl2_ttf.a
 	LSDL_DIR	= $(HOME)/.brew/Cellar/sdl2/2.0.10/lib
+	LSND_DIR	=
 	LTTF_DIR	= $(HOME)/.brew/Cellar/sdl2_ttf/2.0.15/lib
 	INCS_DIR	+= $(HOME)/.brew/Cellar/sdl2/2.0.10/include/SDL2
 	INCS_DIR	+= $(HOME)/.brew/Cellar/sdl2_ttf/2.0.15/include/SDL2
+	INCS_DIR	+=
 else
 	TAR			= tar -xf
 	SDL			= libSDL2.a
@@ -222,7 +223,7 @@ endif
 
 #-------------------------------- MISCELANEOUS --------------------------------#
 
-# Some tricks in order to get the makefile doing his job (Can't be changed).
+# Some tricks in order to get the makefile doing his job.
 
 D_SRCS			= $(addsuffix /, $(SRCS_DIR))
 D_OBJS			= $(addsuffix /, $(OBJS_DIR))
@@ -232,12 +233,12 @@ C_SUBDIRS		= $(foreach dir, $(OBJS_SUBDIRS), $(D_OBJS)$(dir))
 
 #--------------------------------- COMPILATION --------------------------------#
 
-# How files should be compiled (Can't be changed).
+# How files should be compiled.
 
 CC				= gcc
 OBJS			= $(SRCS:.c=.o)
 
-# Linked libraries at compile time (Can be changed).
+# Linked libraries at compile time.
 
 LIBS			:= -L$(LSDL_DIR) -lSDL2
 LIBS			+= -L$(LTTF_DIR) -lSDL2_ttf
@@ -247,21 +248,19 @@ LIBS			+= -L$(LSND_DIR) -lsndfile
 LIBS			+= -lm
 LIBS			+= -lpthread
 
-# Compilation flags (Can be changed).
+# Compilation flags.
 
 CFLAGS			= $(C_INCS) -Wall -Wextra -Werror -O3
 
 #------------------------------------ RULES -----------------------------------#
 
-# Redefinition of the implicit compilation rule
-# to prompt some informations (Can't be changed).
+# Redefinition of the implicit compilation rule to prompt some informations.
 
 $(D_OBJS)%.o: $(D_SRCS)%.c $(INCS)
 	@echo "$(YELLOW)      - Compiling :$(RESET)" $<
 	@$(CC) $(CFLAGS) -c $< -o $@
 
-# Implicit make rule simply using dependancies
-# to compile our project (Can't be canged).
+# Implicit make rule simply using dependancies to compile our project.
 
 all: $(OBJS_DIR) $(C_SUBDIRS) $(NAME)
 
@@ -270,8 +269,8 @@ $(NAME): $(LSDL) $(LTTF) $(LFT) $(LBMP) $(LSND) $(C_OBJS)
 	@$(CC) $(CFLAGS) -o $(NAME) $(C_OBJS) $(LIBS)
 	@echo "$(GREEN)***   Project $(NAME) successfully compiled   ***\n$(RESET)"
 
-# Libraries installation using brew or curl without prompting
-# anything on standard output (Can be changed).
+# Libraries installation using brew or curl without prompting anything
+# on standard output.
 
 $(LSDL):
 	@echo "$(GREEN)***   Installing library $(SDL)   ...  ***\n$(RESET)"
@@ -295,6 +294,7 @@ $(LSND):
 	@if [ $(UNAME) = Darwin ]; then												\
 		brew install autoconf autogen automake flac libogg libtool libvorbis	\
 		libopus pkg-config > /dev/null 2>&1										\
+		# COMPILE SNDFILE LIB OS X HERE
 	elif [ ! -d "$(SRCS_TTF)" ]; then											\
 		sudo apt-get install autoconf autogen automake build-essential			\
 		libasound2-dev libflac-dev libogg-dev libtool libvorbis-dev libopus-dev	\
@@ -326,7 +326,7 @@ $(LTTF):
 		echo "$(GREEN)***   $(TTF) successfully compiled   ***\n$(RESET)";		\
 	fi
 
-# Libraries installion using their own Makefile (Can be changed).
+# Libraries installion using their own Makefile.
 
 $(LFT):
 	@make -sC $(LFT_DIR) -j
@@ -334,7 +334,7 @@ $(LFT):
 $(LBMP):
 	@make -sC $(LBMP_DIR) -j
 
-# Rules used to create folders if they aren't already existing (Can be changed).
+# Rules used to create folders if they aren't already existing.
 
 $(OBJS_DIR):
 	@mkdir -p $(OBJS_DIR)
@@ -342,7 +342,7 @@ $(OBJS_DIR):
 $(C_SUBDIRS):
 	@mkdir -p $(C_SUBDIRS)
 
-# Deleting all .o files. (Can't be changed).
+# Deleting all .o files.
 
 clean:
 	@make -sC $(LFT_DIR) clean
@@ -350,8 +350,7 @@ clean:
 	@echo "$(GREEN)***   Deleting all object from $(NAME)   ...   ***\n$(RESET)"
 	@$(RM) $(C_OBJS)
 
-# Deleting all executables and libraries after cleaning up
-# all .o files (Can't be changed).
+# Deleting all executables and libraries after cleaning up all .o files.
 
 fclean: clean
 	@make -sC $(LFT_DIR) fclean
@@ -365,6 +364,7 @@ fclean: clean
 		fi;																		\
 	fi
 	@if [ -f "$(LSND)" ]; then													\
+		# UNINSTALL SNDFILE LIB OSX HERE
 		echo "$(GREEN)***   Deleting library $(SND)   ...  ***\n$(RESET)";		\
 	fi																			\
 	@if [ -f "$(LTTF)" ]; then													\
@@ -394,7 +394,7 @@ fclean: clean
 		fi;																		\
 	fi
 
-# Re-build libs (Can't be changed).
+# Re-build libs.
 
 re-libs: $(OBJS_DIR) $(C_SUBDIRS) $(C_OBJS)
 	@make -sC $(LFT_DIR) re
@@ -403,11 +403,11 @@ re-libs: $(OBJS_DIR) $(C_SUBDIRS) $(C_OBJS)
 	@$(CC) $(CFLAGS) -o $(NAME) $(C_OBJS) $(LIBS)
 	@echo "$(GREEN)***   Project $(NAME) successfully compiled   ***\n$(RESET)"
 
-# Re-compile everything (Can't be changed).
+# Re-compile everything.
 
 re: fclean all
 
-# Avoid unexpected behaviour when regular files
-# get the same name as the following variables (Can be changed).
+# Avoid unexpected behaviour when regular files get the same name
+# as the following variables.
 
 .PHONY: all clean fclean re
