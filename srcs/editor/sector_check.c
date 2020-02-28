@@ -75,6 +75,8 @@ int			is_in_sector(t_editor *edit, t_vertex point)
 	t_vertex	*vertex;
 	t_vertex	extreme;
 
+	if (!edit->sector)
+		return (-1);
 	sect = edit->sector;
 	while (sect)
 	{

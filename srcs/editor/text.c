@@ -82,7 +82,7 @@ void		print_param_to_screen(t_env *env, t_settings sett, t_editor *editor)
 	}
 	display_text(WHITE, init_vertex(1315, 765), g_first_params[6], env);
 	display_text(WHITE, init_vertex(1445, 765), g_first_params[7], env);
-	if (editor->presets > SECTOR_MOVE && editor->sector)
+	if (editor->presets > SECTOR_MOVE && editor->sector && editor->sett != EFFECTOR)
 		print_sector_values(editor->sector, editor->presets, env);
 	if ((editor->presets == ENTITY_TYPE && ((sett == ENEMY && editor->enemy) ||
 		(sett == OBJECT && editor->object))) ||
@@ -90,6 +90,8 @@ void		print_param_to_screen(t_env *env, t_settings sett, t_editor *editor)
 		print_params_image(editor, editor->presets, editor->sett, env);
 	if (editor->presets == SECTOR_LIGHT && editor->sector)
 		print_sector_light(env, editor->sector->light, editor->sector);
+	if (sett == EFFECTOR)
+		effector_text(env, editor->presets, editor->effects);
 	if (editor->sect_is_closed == false)
 		display_text(WHITE, init_vertex(1380, 50), g_first_params[8], env);
 }

@@ -66,4 +66,6 @@ void			change_value(t_editor *editor, t_presets presets, bool fl)
 		rotate_entity(editor->object, fl);
 	else if (presets == PLAYER_ROTATE)
 		rotate_player(&editor->player, fl);
+	else if (presets == EFF_EFFECT && editor->sett == EFFECTOR)
+		change_effect(&editor->effects, fl);
 }

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+         #
+#    By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/10 16:16:29 by kibotrel          #+#    #+#              #
-#    Updated: 2020/02/24 02:32:03 by demonwaves       ###   ########.fr        #
+#    Updated: 2020/02/28 20:36:08 by nde-jesu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -186,6 +186,7 @@ SRCS			+= editor/sector.c
 SRCS			+= editor/sector_part2.c
 SRCS			+= editor/sector_check.c
 SRCS			+= editor/sector_utils.c
+SRCS			+= editor/effector.c
 SRCS			+= texture/texture.c
 
 #------------------------------ OPERATING SYSTEM ------------------------------#

@@ -201,4 +201,11 @@ int					intersects_count(t_vertex v1, t_vertex v2, t_vertex p1,
 */
 void				editor_keyboard(t_env *env, t_editor *edit);
 
+/*
+**	effector.c
+*/
+void		effector_text(t_env *env, t_presets preset, t_effects effect);
+void		change_effect(t_effects *effect, bool fl);
+void		apply_effect_in_sector(t_editor *edit, int x, int y);
+
 #endif

@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 13:09:05 by nde-jesu          #+#    #+#             */
-/*   Updated: 2020/02/07 14:32:22 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/02/28 21:05:55 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,8 @@ void		editor_click(t_editor *editor, SDL_Event event, t_env *env)
 			place_entity(env, event.motion.x, event.motion.y, 1);
 		else if (editor->sett == PORTAL)
 			place_portal(editor, event.motion.x, event.motion.y, env);
+		else if (editor->sett == EFFECTOR && editor->presets == EFF_MOVE)
+			apply_effect_in_sector(editor, event.motion.x, event.motion.y);
 		editor->map_save = false;
 	}
 	else if (editor->sect_is_closed == true && event.motion.x > EDIT_W)

@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 17:59:50 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/28 17:09:25 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/02/28 20:43:37 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,7 +113,8 @@ typedef enum		e_effects
 	EFF_MONEY,
 	EFF_SPIKE,
 	EFF_GEN,
-	EFF_END
+	EFF_END,
+	ALL_EFFECTS
 }					t_effects;
 
 typedef enum		e_presets

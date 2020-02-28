@@ -33,7 +33,7 @@ static void		write_sectors(t_ed_sector *sector, int fd)
 			ft_putstr_fd(" texture ", fd);
 			ft_putnbr_fd(sect->texture, fd);
 			ft_putstr_fd(" type ", fd);
-			ft_putnbr_fd(sect->type, fd);
+			ft_putnbr_fd(sect->effect.effects, fd);
 			ft_putstr_fd(" light ", fd);
 			ft_putnbr_fd(sect->light_value, fd);
 			ft_putstr_fd(" h_floor ", fd);
