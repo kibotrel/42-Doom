@@ -6,7 +6,7 @@
 #    By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/10 16:16:29 by kibotrel          #+#    #+#              #
-#    Updated: 2020/03/05 09:01:42 by nde-jesu         ###   ########.fr        #
+#    Updated: 2020/03/05 10:02:29 by reda-con         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -115,6 +115,7 @@ SRCS			+= core/hooks.c
 SRCS			+= core/editor.c
 SRCS			+= core/selector.c
 SRCS			+= core/settings.c
+SRCS			+= core/tuto.c
 SRCS			+= game/hud.c
 SRCS			+= game/click.c
 SRCS			+= game/camera.c
@@ -124,6 +125,7 @@ SRCS			+= game/reload.c
 SRCS			+= game/physics.c
 SRCS			+= game/movement.c
 SRCS			+= game/keyboard.c
+SRCS			+= game/message.c
 SRCS			+= menu/click.c
 SRCS			+= menu/motion.c
 SRCS			+= clean/env.c
@@ -138,6 +140,9 @@ SRCS			+= parse/vertex.c
 SRCS			+= parse/entity.c
 SRCS			+= parse/total.c
 SRCS			+= parse/player_blank.c
+SRCS			+= parse/hard_map.c
+SRCS			+= parse/hard_map2.c
+SRCS			+= parse/hard_map3.c
 SRCS			+= setup/hud.c
 SRCS			+= setup/game.c
 SRCS			+= setup/audio.c

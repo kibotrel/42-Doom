@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 21:22:14 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/03/04 19:08:39 by kibotrel         ###   ########.fr       */
+/*   Updated: 2020/03/05 10:02:47 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,5 +124,11 @@ void			game_click(t_env *env, int x, int y);
 */
 
 void			reload(t_env *env);
+
+/*
+**	message.c
+*/
+
+void			poor(t_env *env);
 
 #endif
