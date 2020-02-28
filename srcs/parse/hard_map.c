@@ -122,7 +122,7 @@ static void		hard_map_five(t_env *env)
 
 void		hard_map_one(t_env *env)
 {
-	env->zones = 8;
+	env->tuto = 1;
 	if (!(env->sector = (t_sector*)malloc(sizeof(t_sector) * 8)))
 		clean(env, E_PARSE);
 	if (!(env->sector[0].neighbor = (int*)malloc(sizeof(int) * 7)))

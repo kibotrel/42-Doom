@@ -11,4 +11,5 @@ void	hard_map_last(t_env *env)
 	env->sector[4].neighbor[4] = -1;
 	env->sector[0].gravity = 0.1;
 	env->sector[4].neighbor[5] = -1;
+	env->zones = 8;
 }
