@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 17:59:50 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/24 05:35:22 by demonwaves       ###   ########.fr       */
+/*   Updated: 2020/02/28 07:33:08 by demonwaves       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 # define ENUMS_H
 
 # define NB_FRAMES	64
+# define NB_SAMPLES	2
 # define NB_THREADS	4
-
 /*
 **	To switch between menus.
 */
@@ -85,6 +85,7 @@ typedef enum	e_status
 	E_MALLOC,
 	E_PARSE,
 	E_SDL_THREAD,
+	E_AUDIO_DRIVER,
 	NB_ERRORS
 }				t_status;
 

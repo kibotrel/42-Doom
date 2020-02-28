@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 18:43:02 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/20 17:36:30 by demonwaves       ###   ########.fr       */
+/*   Updated: 2020/02/28 07:16:24 by demonwaves       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,5 +41,11 @@ void	draw_setup(t_env *env, t_game *var, t_item *now, uint32_t i);
 
 void	setup_debug_sector(t_sector *sector, char **str);
 void	setup_debug_cam(t_env *env, t_cam *cam, char **str);
+
+/*
+**	audio.c
+*/
+
+void	audio_setup(t_env *env, t_audio *audio);
 
 #endif

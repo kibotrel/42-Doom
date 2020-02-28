@@ -6,15 +6,17 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 18:48:17 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/24 05:07:32 by demonwaves       ###   ########.fr       */
+/*   Updated: 2020/02/28 08:31:00 by demonwaves       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRUCTS_H
 # define STRUCTS_H
 
+# include <ao.h>
 # include <stdint.h>
 # include <pthread.h>
+# include <sndfile.h>
 # include <stdbool.h>
 # include "SDL.h"
 # include "SDL_ttf.h"
@@ -259,6 +261,18 @@ typedef struct			s_sdl
 	SDL_Surface			*screen;
 }						t_sdl;
 
+typedef struct			s_audio
+{
+	char				*path[NB_SAMPLES];
+	short				*buffer[NB_SAMPLES];
+	int32_t				driver;
+	int32_t				buffsize[NB_SAMPLES];
+	SF_INFO				info[NB_SAMPLES];
+	SNDFILE				*stream[NB_SAMPLES];
+	ao_device			*device;
+	ao_sample_format	format[NB_SAMPLES];
+}						t_audio;
+
 typedef struct			s_env
 {
 	char				*asset[NB_ASSETS];
@@ -272,6 +286,7 @@ typedef struct			s_env
 	int32_t				w;
 	int32_t				h;
 	int32_t				input[SDL_NUM_SCANCODES];
+	t_audio				audio;
 	t_editor			editor;
 	t_sector			*sector;
 	uint32_t			setup;

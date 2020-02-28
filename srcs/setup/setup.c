@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/16 11:58:26 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/24 05:47:49 by demonwaves       ###   ########.fr       */
+/*   Updated: 2020/02/28 07:33:34 by demonwaves       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ static void	error_messages(t_env *env)
 	env->error[E_BKGD] = M_BKGD;
 	env->error[E_PARSE] = M_PARSE;
 	env->error[E_SDL_THREAD] = M_SDL_THREAD;
+	env->error[E_AUDIO_DRIVER] = M_AUDIO_DRIVER;
 }
 
 static void	assets_paths(t_env *env)
@@ -126,6 +127,7 @@ void		env_setup(t_env *env)
 	assets_paths(env);
 	error_messages(env);
 	editor_setup(&env->editor);
+	audio_setup(env, &env->audio);
 	env->old_st_fl = 0;
 	env->st_fl = 0;
 }
