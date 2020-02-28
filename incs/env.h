@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/16 11:54:25 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/24 09:52:41 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/02/28 11:50:31 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,15 @@
 # define TITLE_SETTINGS	"Doom-Nukem v0.8.5 - Settings"
 
 # define MAP_PATH 		"./editor_map.data"
+
+# define TUTO_DMG		"You are taking dommage, sprint with [CONTROL]"
+# define TUTO_ELTR		"Now go to the elevator and use [Q] or [E] to move down or up"
+# define TUTO_MONEY		"Go to the dark brown room to earn money"
+# define TUTO_JETPACK		"Then use Jetpack with [SPACE]"
+# define TUTO_CROUCH		"To continue, use [SHIFT] to crouch"
+# define TUTO_JUMP		"To go to the next room, you have to jump with [SPACE]"
+# define TUTO_DOOR		"Go to the green room and press [E] to open the door"
+# define TUTO_MOVE		"Use [W], [Q], [S], [D] to move"
 
 /*
 **	Color codes

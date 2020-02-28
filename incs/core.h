@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 18:02:10 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/14 09:32:33 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/02/28 11:39:44 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,5 +52,11 @@ void	selector(t_env *env, int ac, char **av);
 */
 
 void	settings(t_env *env);
+
+/*
+**	tuto.c
+*/
+
+void	tuto(t_env *env);
 
 #endif

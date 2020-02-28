@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/18 14:38:11 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/28 11:10:03 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/02/28 11:39:12 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,52 +35,6 @@ static void	multithreaded_engine(t_env *env)
 		pthread_join(env->sdl.thread[i], NULL);
 	if (env->data.sky)
 		draw_skybox(env);
-}
-
-void		tuto(t_env *env)
-{
-	int		check[5];
-	int		i;
-
-	i = -1;
-	while (++i < 5)
-		check[i] = 0;
-	if (env->test.all_move || (env->test.move[0] && env->test.move[1] && env->test.move[2] && env->test.move[3]))
-	{
-		env->test.all_move = 1;
-		if (env->test.door)
-		{
-			if (env->test.jump)
-			{
-				if (env->test.crouch)
-				{
-					if (env->cam.sector == 3)
-						display_text(WHITE, init_vertex(env->w / 2 - 400, env->h / 2 - 50), "You are taking dommage, sprint with [CONTROL]", env);
-					else if (env->test.jetpack)
-					{
-						if (!env->test.elevator)
-							display_text(WHITE, init_vertex(env->w / 2 - 400, env->h / 2 - 50), "Now go to elevator and use [Q] or [E] to go down or up", env);
-						if (env->sector[env->cam.sector].type == 5)
-							env->test.elevator = 1;
-					}
-					else if (env->sector[env->cam.sector].type == 1)
-					{
-						display_text(WHITE, init_vertex(env->w / 2 - 400, env->h / 2 - 50), "You will need money to activate the Jetpack", env);
-						display_text(WHITE, init_vertex(env->w / 2 - 400, env->h / 2 - 100), "Go to the hard brown room to earn money", env);
-						display_text(WHITE, init_vertex(env->w / 2 - 400, env->h / 2), "Then use it with [SPACE]", env);
-					}
-				}
-				else
-					display_text(WHITE, init_vertex(env->w / 2 - 400, env->h / 2 - 50), "To continue, use [SHIFT] to crouch", env);
-			}
-			else
-			display_text(WHITE, init_vertex(env->w / 2 - 400, env->h / 2 - 50), "To go to the next room you have to jump with [SPACE]", env);
-		}
-		else
-			display_text(WHITE, init_vertex(env->w / 2 - 400, env->h / 2 - 50), "Go to the green room and press [E] to open the door", env);
-	}
-	else
-		display_text(WHITE, init_vertex(env->w / 2 - 200, env->h / 2 - 50), "Use [W] [Q] [S] [D] to move", env);
 }
 
 void		game(t_env *env, int ac, char **av)
