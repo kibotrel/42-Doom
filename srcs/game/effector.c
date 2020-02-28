@@ -2,14 +2,27 @@
 #include <stdint.h>
 #include "utils.h"
 #include "editor.h"
-#include "libft.h"
+
+void	doors2(t_env *env, int t, uint32_t i, uint32_t j)
+{
+	uint32_t	k;
+	int			l;
+
+	l = env->sector[i].door_neighbor[j];
+	if (l > -1 && env->sector[l].type != -t)
+		env->sector[i].neighbor[j] = l;
+	k = -1;
+	l = env->sector[i].neighbor[j];
+	while (l > -1 && ++k < env->sector[l].points)
+		if (env->sector[l].door_neighbor[k] > -1
+				&& env->sector[env->sector[l].door_neighbor[k]].type == -t)
+			env->sector[l].neighbor[k] = env->sector[l].door_neighbor[k];
+}
 
 void	doors(t_env *env, int t)
 {
 	uint32_t	i;
 	uint32_t	j;
-	uint32_t	k;
-	int			l;
 
 	i = -1;
 	if (!env->tuto || env->test.all_move)
@@ -23,26 +36,47 @@ void	doors(t_env *env, int t)
 				j = -1;
 				while (++j < env->sector[i].points)
 				{
-					l = env->sector[i].door_neighbor[j];
-					if (l > -1 && env->sector[l].type != -t)
-						env->sector[i].neighbor[j] = l;
-					k = -1;
-					l = env->sector[i].neighbor[j];
-					while (l > -1 && ++k < env->sector[l].points)
-						if (env->sector[l].door_neighbor[k] > -1 && env->sector[env->sector[l].door_neighbor[k]].type == -t)
-							env->sector[l].neighbor[k]
-								= env->sector[l].door_neighbor[k];
+					doors2(env, t, i, j);
 				}
 			}
 		}
 	}
 }
 
-void	poor(t_env *env)
+void	pre_door(t_env *env, int s)
 {
-	display_text(WHITE, init_vertex(env->w / 2 - 100, env->h / 2 - 300), "Not enough money", env);
-	display_text(WHITE, init_vertex(env->w / 2 - 100, env->h / 2 - 250), "You need ", env);
-	display_text(WHITE, init_vertex(env->w / 2 + 50, env->h / 2 - 250), ft_itoa(env->sector[env->cam.sector].data), env);
+	if (env->input[SDL_SCANCODE_E])
+	{
+		if (env->sector[s].type > END
+				&& env->data.money >= (uint32_t)env->sector[s].data)
+		{
+			env->data.money -= env->sector[s].data;
+			env->sector[s].data = 0;
+			doors(env, env->sector[s].type);
+		}
+		else if (env->data.money < (uint32_t)env->sector[s].data
+				&& env->sector[s].type > END)
+			poor(env);
+	}
+}
+
+void	effector(t_env *env, int s)
+{
+	if (env->sector[s].type == GENERATOR)
+		display_text(RED, init_vertex(env->w / 2 - 100, env->h / 2 - 500),
+				"Warning", env);
+	if (env->sector[s].type == MONEY)
+		display_text(YELLOW, init_vertex(env->w / 2 - 100, env->h / 2 - 500),
+				"Earning money", env);
+	env->st_fl = SDL_GetTicks();
+	if (env->st_fl > env->old_st_fl + 200)
+	{
+		if (env->sector[s].type == GENERATOR && env->cam.ground == 1)
+			env->data.life -= (double)env->sector[s].data / 5;
+		if (env->sector[s].type == MONEY)
+			env->data.money += (double)env->sector[s].data / 5;
+		env->old_st_fl = env->st_fl;
+	}
 }
 
 void	sector_triger(t_env *env)
@@ -68,28 +102,6 @@ void	sector_triger(t_env *env)
 			env->sector[s].floor = env->sector[s].ceil - 6;
 		}
 	}
-	if (env->input[SDL_SCANCODE_E])
-	{
-		if (env->sector[s].type > END && env->data.money >= (uint32_t)env->sector[s].data)
-		{
-			env->data.money -= env->sector[s].data;
-			env->sector[s].data = 0;
-			doors(env, env->sector[s].type);
-		}
-		else if (env->data.money < (uint32_t)env->sector[s].data && env->sector[s].type > END)
-			poor(env);
-	}
-	if (env->sector[s].type == GENERATOR)
-		display_text(RED, init_vertex(env->w / 2 - 100, env->h / 2 - 500), "Warning", env);
-	if (env->sector[s].type == MONEY)
-		display_text(YELLOW, init_vertex(env->w / 2 - 100, env->h / 2 - 500), "Earning money", env);
-	env->st_fl = SDL_GetTicks();
-	if (env->st_fl > env->old_st_fl + 200)
-	{
-		if (env->sector[s].type == GENERATOR && env->cam.ground == 1)
-			env->data.life -= (double)env->sector[s].data / 5;
-		if (env->sector[s].type == MONEY)
-			env->data.money += (double)env->sector[s].data / 5;
-		env->old_st_fl = env->st_fl;
-	}
+	effector(env, s);
+	pre_door(env, s);
 }

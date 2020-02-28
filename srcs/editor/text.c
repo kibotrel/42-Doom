@@ -36,6 +36,7 @@ void		display_text(int color, t_vertex pos, const char *text, t_env *env)
 		SDL_FreeSurface(tmp);
 	if (error)
 		clean_editor(&env->editor, env);
+	police_color(&env->sdl.color, 0xff, 0xff, 0xff);
 }
 
 static void	print_sector_values(t_ed_sector *sector, t_presets presets, t_env *env)
