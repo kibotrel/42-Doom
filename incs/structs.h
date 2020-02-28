@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 18:48:17 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/24 05:07:32 by demonwaves       ###   ########.fr       */
+/*   Updated: 2020/02/28 10:54:46 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -259,6 +259,17 @@ typedef struct			s_sdl
 	SDL_Surface			*screen;
 }						t_sdl;
 
+typedef struct			s_tuto
+{
+	int					move[4];
+	int					all_move;
+	int					door;
+	int					jump;
+	int					crouch;
+	int					jetpack;
+	int					elevator;
+}						t_tuto;
+
 typedef struct			s_env
 {
 	char				*asset[NB_ASSETS];
@@ -279,6 +290,8 @@ typedef struct			s_env
 	uint32_t			frame[NB_FRAMES];
 	uint32_t			st_fl;
 	uint32_t			old_st_fl;
+	int					tuto;
+	t_tuto				test;
 }						t_env;
 
 #endif

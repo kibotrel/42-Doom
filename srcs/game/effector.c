@@ -1,6 +1,8 @@
 #include "structs.h"
 #include <stdint.h>
 #include "utils.h"
+#include "editor.h"
+#include "libft.h"
 
 void	doors(t_env *env, int t)
 {
@@ -10,25 +12,37 @@ void	doors(t_env *env, int t)
 	int			l;
 
 	i = -1;
-	while (++i < env->zones)
+	if (!env->tuto || env->test.all_move)
 	{
-		if (env->sector[i].type == -t)
+		if (t == 6 && env->tuto)
+			env->test.door = 1;
+		while (++i < env->zones)
 		{
-			j = -1;
-			while (++j < env->sector[i].points)
+			if (env->sector[i].type == -t)
 			{
-				l = env->sector[i].door_neighbor[j];
-				if (l > -1 && env->sector[l].type != -t)
-					env->sector[i].neighbor[j] = l;
-				k = -1;
-				l = env->sector[i].neighbor[j];
-				while (l > -1 && ++k < env->sector[l].points)
-					if (env->sector[l].door_neighbor[k] > -1 && env->sector[env->sector[l].door_neighbor[k]].type == -t)
-						env->sector[l].neighbor[k]
-							= env->sector[l].door_neighbor[k];
+				j = -1;
+				while (++j < env->sector[i].points)
+				{
+					l = env->sector[i].door_neighbor[j];
+					if (l > -1 && env->sector[l].type != -t)
+						env->sector[i].neighbor[j] = l;
+					k = -1;
+					l = env->sector[i].neighbor[j];
+					while (l > -1 && ++k < env->sector[l].points)
+						if (env->sector[l].door_neighbor[k] > -1 && env->sector[env->sector[l].door_neighbor[k]].type == -t)
+							env->sector[l].neighbor[k]
+								= env->sector[l].door_neighbor[k];
+				}
 			}
 		}
 	}
+}
+
+void	poor(t_env *env)
+{
+	display_text(WHITE, init_vertex(env->w / 2 - 100, env->h / 2 - 300), "Not enough money", env);
+	display_text(WHITE, init_vertex(env->w / 2 - 100, env->h / 2 - 250), "You need ", env);
+	display_text(WHITE, init_vertex(env->w / 2 + 50, env->h / 2 - 250), ft_itoa(env->sector[env->cam.sector].data), env);
 }
 
 void	sector_triger(t_env *env)
@@ -62,7 +76,13 @@ void	sector_triger(t_env *env)
 			env->sector[s].data = 0;
 			doors(env, env->sector[s].type);
 		}
+		else if (env->data.money < (uint32_t)env->sector[s].data && env->sector[s].type > END)
+			poor(env);
 	}
+	if (env->sector[s].type == GENERATOR)
+		display_text(RED, init_vertex(env->w / 2 - 100, env->h / 2 - 500), "Warning", env);
+	if (env->sector[s].type == MONEY)
+		display_text(YELLOW, init_vertex(env->w / 2 - 100, env->h / 2 - 500), "Earning money", env);
 	env->st_fl = SDL_GetTicks();
 	if (env->st_fl > env->old_st_fl + 200)
 	{
