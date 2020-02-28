@@ -6,7 +6,7 @@
 /*   By: reda-con <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 14:27:11 by reda-con          #+#    #+#             */
-/*   Updated: 2020/02/28 10:44:03 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/02/28 15:28:56 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ void			hard_map_one(t_env *env);
 void			hard_map_six(t_env *env);
 void			hard_map_last(t_env *env);
 
+void			main_err(t_parse *p, t_env *env, int i);
 
 
 //
