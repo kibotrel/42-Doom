@@ -6,7 +6,7 @@
 #    By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/10 16:16:29 by kibotrel          #+#    #+#              #
-#    Updated: 2020/02/27 19:17:18 by demonwaves       ###   ########.fr        #
+#    Updated: 2020/02/27 19:21:48 by demonwaves       ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,6 +14,7 @@
 
 # Environment.
 
+RM				= rm -rf
 UNAME			= $(shell uname -s)
 
 # Executable / Libraries.
@@ -382,7 +383,6 @@ clean:
 # Deleting all executables and libraries after cleaning up all .o files.
 
 fclean: clean
-	echo $(RM)
 	@make -sC $(LFT_DIR) fclean
 	@make -sC $(LBMP_DIR) fclean
 	@echo "$(GREEN)***   Deleting executable file from $(NAME)   ...   ***\n$(RESET)"
@@ -409,31 +409,29 @@ fclean: clean
 	fi
 	@if [ $(UNAME) = Linux ]; then												\
 		if [ -d $(SRCS_AO) ]; then												\
-			sudo rm -rf $(SRCS_AO);												\
+			sudo $(RM) $(SRCS_AO);												\
 		fi;																		\
 		if [ -d $(SRCS_SDL) ]; then												\
-			sudo rm -rf $(SRCS_SDL);											\
+			sudo $(RM) $(SRCS_SDL);												\
 		fi;																		\
 		if [ -d $(SRCS_SND) ]; then												\
-			sudo rm -rf $(SRCS_SND);											\
+			sudo $(RM) $(SRCS_SND);												\
 		fi;																		\
 		if [ -d $(SRCS_TTF) ]; then												\
-			sudo rm -rf $(SRCS_TTF);											\
+			sudo $(RM) $(SRCS_TTF);												\
 		fi;																		\
 		if [ -f $(LAO) ]; then													\
-			sudo $(RM) $(L_LIBS)/libao*;										\
-			sudo rm -rf $(L_LIBS)/ao $(L_LIBS)/ckport $(L_INCS)/ao;				\
+			sudo $(RM) $(L_LIBS)/libao* $(L_LIBS)/ao $(L_LIBS)/ckport			\
+			$(L_INCS)/ao;														\
 		fi;																		\
 		if [ -f $(LSDL) ]; then													\
-			sudo $(RM) $(L_LIBS)/libSDL2*;										\
-			sudo rm -rf $(L_INCS)/SDL2;											\
+			sudo $(RM) $(L_LIBS)/libSDL2* $(L_INCS)/SDL2;						\
 		fi;																		\
 		if [ -f $(LSND) ]; then													\
 			sudo $(RM) $(L_LIBS)/libsndfile* $(L_INCS)/sndfile*;				\
 		fi;																		\
 		if [ -f $(LTTF) ]; then													\
-			sudo $(RM) $(L_LIBS)/libSDL2*;										\
-			sudo rm -rf $(L_INCS)/SDL2;											\
+			sudo $(RM) $(L_LIBS)/libSDL2* $(L_INCS)/SDL2;						\
 		fi;																		\
 	fi
 
