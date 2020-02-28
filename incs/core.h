@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 18:02:10 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/03/03 15:15:52 by kibotrel         ###   ########.fr       */
+/*   Updated: 2020/03/05 10:00:43 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,5 +58,11 @@ void	settings(t_env *env);
 */
 
 void	audio(t_env *env);
+
+/*
+**	tuto.c
+*/
+
+void	tuto(t_env *env);
 
 #endif
