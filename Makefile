@@ -6,7 +6,7 @@
 #    By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/10 16:16:29 by kibotrel          #+#    #+#              #
-#    Updated: 2020/03/05 10:02:29 by reda-con         ###   ########.fr        #
+#    Updated: 2020/03/05 10:07:26 by reda-con         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -133,6 +133,7 @@ SRCS			+= clean/sdl.c
 SRCS			+= clean/ttf.c
 SRCS			+= clean/audio.c
 SRCS			+= clean/engine.c
+SRCS			+= parse/error.c
 SRCS			+= parse/sector.c
 SRCS			+= parse/main.c
 SRCS			+= parse/tools.c
