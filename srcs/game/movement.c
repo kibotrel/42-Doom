@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   movement.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/10 16:47:31 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/21 10:51:11 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/02/28 17:10:43 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	jump(t_env *env, t_cam *cam)
 	if (cam->fly > 0
 			&& env->sector[cam->sector].ceil - cam->pos.z > MARGIN_HEAD)
 		cam->pos.z += 0.25;
-	else if (env->sector[cam->sector].type == JETPACK
+	else if (env->sector[cam->sector].type == EFF_JET
 			&& env->data.money >= (uint32_t)env->sector[cam->sector].data)
 	{
 		update_fall(cam, 0.25, 1);

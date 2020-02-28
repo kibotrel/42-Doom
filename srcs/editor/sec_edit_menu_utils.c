@@ -13,8 +13,11 @@ void	sec_clic_menu_editor_tool(int y, t_editor *editor)
 			editor->presets = ENTITY_ROTATE;
 		else if (editor->sett == SECTOR)
 			editor->presets = SECTOR_FLOOR;
+		else if (editor->sett == EFFECTOR)
+			editor->presets = EFF_MOVE;
 		if (editor->sett == PLAYER)
 			editor->presets = NONE;
+		
 	}
 }
 

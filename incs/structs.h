@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 18:48:17 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/24 05:07:32 by demonwaves       ###   ########.fr       */
+/*   Updated: 2020/02/28 17:02:34 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -222,6 +222,7 @@ typedef struct			s_editor
 	t_vertex			last_vertex;
 	t_vertex			portal_points[2];
 	t_presets			presets;
+	t_effects			effects;
 	t_settings			sett;
 	t_ed_entity			*object;
 	t_ed_entity			*enemy;

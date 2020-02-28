@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   enums.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 17:59:50 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/24 05:35:22 by demonwaves       ###   ########.fr       */
+/*   Updated: 2020/02/28 17:09:25 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,11 +106,14 @@ typedef enum		e_settings
 typedef enum		e_effects
 {
 	EFF_NONE,
-	JETPACK,
-	MONEY,
-	ELEVATOR,
-	GENERATOR,
-	END
+	EFF_JET,
+	EFF_ELEV,
+	EFF_SKY,
+	EFF_FLY,
+	EFF_MONEY,
+	EFF_SPIKE,
+	EFF_GEN,
+	EFF_END
 }					t_effects;
 
 typedef enum		e_presets

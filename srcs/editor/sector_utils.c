@@ -1,6 +1,13 @@
 #include "libft.h"
 #include "editor.h"
 
+static void		init_effector(t_effector *effect)
+{
+	effect->effects = NONE;
+	effect->money_sec = 0;
+	effect->cost = 0;
+}
+
 t_ed_sector	*create_sector(t_editor *edit, t_env *env)
 {
 	t_ed_sector	*sect;
@@ -19,6 +26,7 @@ t_ed_sector	*create_sector(t_editor *edit, t_env *env)
 	sect->light_value = -1;
 	sect->next = NULL;
 	sect->prev = NULL;
+	init_effector(&sect->effect);
 	return (sect);
 }
 

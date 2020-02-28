@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   setup.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/16 11:58:26 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/24 05:47:49 by demonwaves       ###   ########.fr       */
+/*   Updated: 2020/02/28 16:55:36 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ static void	infos_setup(t_env *env)
 {
 	env->w = WIN_W;
 	env->h = WIN_H;
-	env->win = GAME;
+	env->win = MENU;
 	env->cam.fly = -1;
 	env->cam.fall = 1;
 	env->cam.speed = 1;
