@@ -6,7 +6,7 @@
 /*   By: reda-con <reda-con@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 14:00:52 by reda-con          #+#    #+#             */
-/*   Updated: 2020/02/28 08:28:18 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/02/28 15:31:47 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,24 +20,6 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include "clean.h"
-
-void		main_err(t_parse *p, t_env *env, int fl)
-{
-	if (p->total.vert >= 0)
-		free(p->ver);
-	if (p->total.emy >= 0)
-		free(p->emy);
-	if (p->total.obj >= 0)
-		free(p->obj);
-	if (fl == 1)
-		clean(env, E_PARSE);
-}
-
-void		parse_err(char **tab, t_parse *p, t_env *env)
-{
-	free_tab(tab);
-	main_err(p, env, 1);
-}
 
 void		parse(char *l, t_parse *par, t_env *env)
 {
@@ -63,7 +45,7 @@ void		parse(char *l, t_parse *par, t_env *env)
 	(i != 0) ? parse_err(tab, par, env) : free_tab(tab);
 }
 
-void		tmp(t_sector *s, int nb)
+void		set_doors(t_sector *s, int nb)
 {
 	int			i;
 	uint32_t	j;
@@ -86,19 +68,13 @@ void		tmp(t_sector *s, int nb)
 	}
 }
 
-int			main_parse(char **av, t_env *env, int ac)
+void		read_file(char *file, char **av, t_env *env)
 {
 	int		fd;
 	int		gnl;
 	char	*line;
-	t_parse	par;
-	char	*file;
 
-	file = (ac == 2) ? av[1] : "hard_map";
-	if (!ft_strcmp(file, "hard_map") && ac == 1)
-		hard_map_one(env);
-	else
-	{
+	t_parse	par;
 		gnl = ft_isvalidname(av[1], ".data");
 		if (gnl == 0)
 			exit(1);
@@ -114,10 +90,21 @@ int			main_parse(char **av, t_env *env, int ac)
 			parse(line, &par, env);
 			free(line);
 		}
-		if (gnl == -1 || close(fd) || env->cam.pos.x <= -1 || env->cam.pos.y <= -1 || env->zones == 0 || par.total.vert == -1)
+		if (gnl == -1 || close(fd) || env->cam.pos.x <= -1
+				|| env->cam.pos.y <= -1 || env->zones == 0 || par.total.vert == -1)
 			main_err(&par, env, 1);
-		tmp(env->sector, env->zones);
+		set_doors(env->sector, env->zones);
 		main_err(&par, env, 0);
-	}
+}
+
+int			main_parse(char **av, t_env *env, int ac)
+{
+	char	*file;
+
+	file = (ac == 2) ? av[1] : "hard_map";
+	if (!ft_strcmp(file, "hard_map") && ac == 1)
+		hard_map_one(env);
+	else
+		read_file(file, av, env);
 	return (0);
 }
