@@ -42,7 +42,7 @@ void				change_value(t_editor *editor, t_presets presets, bool fl);
 */
 void				display_grid(t_editor *editor, t_env *env);
 void				display_line(t_editor *editor, int x, int y, t_env *env);
-void				display_sector(t_sdl *sdl, t_ed_sector *sectors, bool fl);
+void				display_sector(t_sdl *sdl, t_ed_sector *sectors, bool fl, t_editor *edit);
 void				draw_walls(t_sdl *sdl, t_ed_sector *sect, t_vertex *vertex,
 	int color);
 void				display_portals(t_portal *portal, t_sdl *sdl, int color);
@@ -179,7 +179,7 @@ int					count_vertex_in_sector(t_vertex *vertex);
 /*
 **	sector/sector_part2.c
 */
-void				next_display_sector(t_sdl *sdl, t_ed_sector *sectors);
+void				next_display_sector(t_sdl *sdl, t_ed_sector *sectors, t_editor *edit);
 void				move_in_sector(t_editor *edit, int x, int y);
 
 /*

@@ -42,13 +42,13 @@ void	draw_walls(t_sdl *sdl, t_ed_sector *sect, t_vertex *vertex, int color)
 		put_pixel(sdl->screen, vertex->x, vertex->y, color);
 }
 
-void	display_sector(t_sdl *sdl, t_ed_sector *sectors, bool fl)
+void	display_sector(t_sdl *sdl, t_ed_sector *sectors, bool fl, t_editor *edit)
 {
 	int			i;
 	t_ed_sector	*sect;
 	t_vertex	*vertex;
 
-	next_display_sector(sdl, sectors);
+	next_display_sector(sdl, sectors, edit);
 	if (sectors && fl == true)
 	{
 		i = 0;

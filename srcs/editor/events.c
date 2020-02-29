@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 13:09:05 by nde-jesu          #+#    #+#             */
-/*   Updated: 2020/02/28 21:05:55 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/02/29 22:29:36 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,8 @@ static void		display_editor(t_editor *edit, t_env *env)
 	put_fov(env->sdl.screen, init_vertex(edit->player.x, edit->player.y),
 			edit->player.angle, clr);
 	which_entity_to_display(edit, env);
-	edit->sett == SECTOR ? display_sector(&env->sdl, edit->sector, true)
-		: display_sector(&env->sdl, edit->sector, false);
+	edit->sett == SECTOR ? display_sector(&env->sdl, edit->sector, true, edit)
+		: display_sector(&env->sdl, edit->sector, false, edit);
 	display_vertex(&env->sdl, edit->sector, 0xffff00);
 	if (edit->sett == PORTAL || edit->display_portal == 1)
 		display_portals(edit->portals, &env->sdl, 0x00ff00);
