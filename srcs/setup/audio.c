@@ -34,9 +34,7 @@ void			audio_setup(t_env *env, t_audio *audio)
 		audio->format[i].rate = audio->info[i].samplerate;
 		audio->format[i].byte_format = AO_FMT_NATIVE;
 		audio->format[i].matrix = 0;
-		audio->buffsize[i] = audio->format[i].channels * audio->info[i].frames;
-		audio->buffer[i] = (short*)malloc(sizeof(short) * audio->buffsize[i]);
-		ft_bzero(audio->buffer[i], sizeof(short) * audio->buffsize[i]);
+		ft_bzero(audio->buffer[i], sizeof(short) * STREAM_SIZE);
 	}
 	audio->device = ao_open_live(audio->driver, &audio->format[0], NULL);
 }

@@ -6,17 +6,18 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/08 19:29:45 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/03/02 02:06:21 by demonwaves       ###   ########.fr       */
+/*   Updated: 2020/03/02 23:14:39 by demonwaves       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <time.h>
 #include <stdlib.h>
 #include "libft.h"
 #include "clean.h"
 
 static void	env_clean(t_env *env)
 {
-	uint32_t	i;
+	uint32_t		i;
 
 	i = 0;
 	while (i < NB_ASSETS)
@@ -41,6 +42,11 @@ static void	env_clean(t_env *env)
 
 void		clean(t_env *env, uint8_t error)
 {
+	struct timespec	time;
+
+	time = (struct timespec){0, 250000000};
+	env->data.closed = 1;
+	nanosleep(&time, 0);
 	ttf_clean(&env->sdl);
 	sdl_clean(&env->sdl);
 	audio_clean(&env->audio);

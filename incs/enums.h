@@ -6,16 +6,17 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 17:59:50 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/03/02 02:17:32 by demonwaves       ###   ########.fr       */
+/*   Updated: 2020/03/02 23:12:32 by demonwaves       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ENUMS_H
 # define ENUMS_H
 
-# define NB_FRAMES	64
-# define NB_SAMPLES	1
-# define NB_THREADS	4
+# define NB_FRAMES		64
+# define NB_SAMPLES		2
+# define NB_THREADS		4
+# define STREAM_SIZE	8192
 /*
 **	To switch between menus.
 */
