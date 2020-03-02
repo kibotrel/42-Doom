@@ -67,5 +67,13 @@ void			change_value(t_editor *editor, t_presets presets, bool fl)
 	else if (presets == PLAYER_ROTATE)
 		rotate_player(&editor->player, fl);
 	else if (presets == EFF_EFFECT && editor->sett == EFFECTOR)
-		change_effect(&editor->effects, fl);
+		change_effect(&editor->effects.effects, fl);
+	else if (presets == EFF_DATA && editor->sett == EFFECTOR)
+	{
+		if (editor->effects.effects != EFF_NONE && editor->effects.effects != EFF_SKY)
+		{
+			if (editor->effects.effects != EFF_ELEV)
+				change_type(&editor->count.eff_data[editor->effects.effects], fl, 0, 1000);
+		}
+	}
 }

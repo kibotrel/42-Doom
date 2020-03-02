@@ -27,7 +27,8 @@ void			editor_setup(t_editor *editor)
 	editor->grid = 1;
 	editor->sett = SECTOR;
 	editor->presets = NONE;
-	editor->effects = NONE;
+	editor->effects.effects = EFF_NONE;
+	editor->effects.data = 0;
 	editor->finish = false;
 	editor->display_portal = -1;
 	editor->delete = -1;

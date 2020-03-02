@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 17:59:50 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/28 20:43:37 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/03/02 13:19:57 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,13 +107,12 @@ typedef enum		e_effects
 {
 	EFF_NONE,
 	EFF_JET,
-	EFF_ELEV,
-	EFF_SKY,
-	EFF_FLY,
 	EFF_MONEY,
-	EFF_SPIKE,
-	EFF_GEN,
+	EFF_ELEV,
+	EFF_LAVA,
+	EFF_HEAL,
 	EFF_END,
+	EFF_SKY,
 	ALL_EFFECTS
 }					t_effects;
 
@@ -134,7 +133,7 @@ typedef enum		e_presets
 	PLAYER_ROTATE,
 	EFF_EFFECT,
 	EFF_MOVE,
-	EFF_COST
+	EFF_DATA
 }					t_presets;
 
 /*

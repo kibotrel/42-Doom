@@ -1,8 +1,8 @@
 #include "editor.h"
+#include "libft.h"
 
-static char const	*g_effector[9] = {
-	"None", "Jetpack", "Elevator", "Skybox", "Fly", "Money", "Spike",
-		"Generator", "End"
+static char const	*g_effector[ALL_EFFECTS] = {
+	"None", "Jetpack", "Money", "Elevator", "Lava", "Heal", "End", "Skybox"
 };
 
 void	effector_text(t_env *env, t_presets preset, t_effects effect)
@@ -14,7 +14,13 @@ void	effector_text(t_env *env, t_presets preset, t_effects effect)
 			display_text(WHITE, init_vertex(1420, 50), "-", env);
 			display_text(WHITE, init_vertex(1615, 55), "+", env);
 		}
-		display_text(WHITE, init_vertex(1455, 50), g_effector[effect], env);
+		display_text(WHITE, init_vertex(1460, 50), g_effector[effect], env);
+	}
+	else if (preset == EFF_DATA && effect != NONE)
+	{
+		display_text(WHITE, init_vertex(1420, 50), "-", env);
+		display_text(WHITE, init_vertex(1615, 55), "+", env);
+		display_text(WHITE, init_vertex(1460, 50), ft_itoa(env->editor.count.eff_data[effect]), env);
 	}
 }
 
@@ -41,7 +47,8 @@ void	apply_effect_in_sector(t_editor *edit, int x, int y)
 	{
 		if (sect->sector_number == which_sector)
 		{
-			sect->effect.effects = edit->effects;
+			sect->effect.effects = edit->effects.effects;
+			sect->effect.data = edit->count.eff_data[edit->effects.effects];
 			return ;
 		}
 		sect = sect->next;

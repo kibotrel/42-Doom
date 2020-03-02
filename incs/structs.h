@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 18:48:17 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/28 17:02:34 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/03/02 13:31:00 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,6 +120,7 @@ typedef struct			s_count
 	int					sector;
 	int					vertex;
 	t_tick				button;
+	int					eff_data[ALL_EFFECTS];
 }						t_count;
 
 typedef struct			s_ed_player
@@ -162,9 +163,8 @@ typedef struct			s_portal
 typedef struct		s_effector
 {
 	t_effects		effects;
-	int				money_sec;
-	int				cost;
-	int				*doors;
+	int				data;
+	int				co;
 }					t_effector;
 typedef struct			s_ed_sector
 {
@@ -222,7 +222,7 @@ typedef struct			s_editor
 	t_vertex			last_vertex;
 	t_vertex			portal_points[2];
 	t_presets			presets;
-	t_effects			effects;
+	t_effector			effects;
 	t_settings			sett;
 	t_ed_entity			*object;
 	t_ed_entity			*enemy;

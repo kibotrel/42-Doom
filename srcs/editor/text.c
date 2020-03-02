@@ -15,7 +15,7 @@ static char const	*g_tab[4][7] = {
 	{"Select.", "Floor", "Roof", "Text", "Grav", "Frict", "Light"},
 	{"Rotate", "Del"},
 	{"Select.", "Rotate", "Del", "Type"},
-	{"Effect", "Select.", "Cost",}
+	{"Effect", "Select.", "Data", "Cost", " / sec"}
 };
 
 void		display_text(int color, t_vertex pos, const char *text, t_env *env)
@@ -91,7 +91,7 @@ void		print_param_to_screen(t_env *env, t_settings sett, t_editor *editor)
 	if (editor->presets == SECTOR_LIGHT && editor->sector)
 		print_sector_light(env, editor->sector->light, editor->sector);
 	if (sett == EFFECTOR)
-		effector_text(env, editor->presets, editor->effects);
+		effector_text(env, editor->presets, editor->effects.effects);
 	if (editor->sect_is_closed == false)
 		display_text(WHITE, init_vertex(1380, 50), g_first_params[8], env);
 }
@@ -115,6 +115,18 @@ void		print_param_in_param(t_settings sett, t_env *env)
 	where.y = 155;
 	while (++i < 7 && g_tab[j][i])
 	{
+		if (sett == EFFECTOR && i == 2)
+		{
+			if (env->editor.effects.effects == EFF_JET
+				|| env->editor.effects.effects == EFF_END)
+				i = 3;
+			else if (env->editor.effects.effects == EFF_MONEY
+				|| env->editor.effects.effects == EFF_LAVA
+					|| env->editor.effects.effects == EFF_HEAL)
+				i = 4;
+			display_text(WHITE, where, g_tab[j][i], env);
+			return ;
+		}
 		display_text(WHITE, where, g_tab[j][i], env);
 		where.y = where.y + 100;
 	}

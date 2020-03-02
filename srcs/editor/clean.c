@@ -1,3 +1,4 @@
+#include "libft.h"
 #include "editor.h"
 
 void			init_count(t_count *count)
@@ -9,6 +10,7 @@ void			init_count(t_count *count)
 	count->object = 0;
 	count->button.new = 0;
 	count->button.old = 0;
+	ft_bzero(count->eff_data, sizeof(int) * ALL_EFFECTS);
 }
 
 void			clean_editor(t_editor *editor, t_env *env)

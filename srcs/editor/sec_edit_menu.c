@@ -47,7 +47,7 @@ void			sec_blank_menu(SDL_Surface *s, int set, int preset)
 		rectangle(init_vertex(1540, 140), init_vertex(1710, 210), clr, s);
 		clr = ((preset != EFF_MOVE) ? 0xffffff : 0x177013);
 		rectangle(init_vertex(1540, 240), init_vertex(1710, 310), clr, s);
-		clr = ((preset != EFF_COST) ? 0xffffff : 0x177013);
+		clr = ((preset != EFF_DATA) ? 0xffffff : 0x177013);
 		rectangle(init_vertex(1540, 340), init_vertex(1710, 410), clr, s);
 	}
 	if (preset != NONE && preset != SECTOR_MOVE && preset != EFF_MOVE)
@@ -90,14 +90,16 @@ static void		next_sec_clic_menu_editor(int y, t_editor *editor)
 	{
 		if (editor->sett == ENEMY)
 			del_entity(&editor->enemy);
-		if (editor->sett == ENEMY)
+		else if (editor->sett == ENEMY)
 			editor->map_save = false;
-		if (editor->sett == OBJECT)
+		else if (editor->sett == OBJECT)
 			del_entity(&editor->object);
-		if (editor->sett == OBJECT)
+		else if (editor->sett == OBJECT)
 			editor->map_save = false;
-		if (editor->sett == SECTOR)
+		else if (editor->sett == SECTOR)
 			editor->presets = SECTOR_CEIL;
+		else if (editor->sett == EFFECTOR)
+			editor->presets = EFF_DATA;
 		else
 			editor->presets = NONE;
 	}

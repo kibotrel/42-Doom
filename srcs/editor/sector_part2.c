@@ -33,7 +33,7 @@ static void		draw_sector_effects(t_sdl *sdl, t_ed_sector *sectors, t_editor *edi
 		sect = sect->prev;
 	while (sect)
 	{
-		if (sect->effect.effects == edit->effects)
+		if (sect->effect.effects == edit->effects.effects)
 		{
 			i = 0;
 			vertex = sect->vertex;
@@ -76,7 +76,7 @@ void			next_display_sector(t_sdl *sdl, t_ed_sector *sectors, t_editor *edit)
 	sect = sectors;
 	while (sect)
 	{
-		if (sect->effect.effects == edit->effects && edit->sett == EFFECTOR)
+		if (sect->effect.effects == edit->effects.effects && edit->sett == EFFECTOR)
 		i = 0;
 		vertex = sect->vertex;
 		while (vertex && ++i)
@@ -87,6 +87,6 @@ void			next_display_sector(t_sdl *sdl, t_ed_sector *sectors, t_editor *edit)
 		sect = sect->next;
 	}
 	prev_display_sector(sdl, sectors);
-	if (edit->sett == EFFECTOR)
+	if (edit->sett == EFFECTOR && sectors)
 		draw_sector_effects(sdl, sectors, edit);
 }
