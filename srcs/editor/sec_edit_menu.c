@@ -90,12 +90,8 @@ static void		next_sec_clic_menu_editor(int y, t_editor *editor)
 	{
 		if (editor->sett == ENEMY)
 			del_entity(&editor->enemy);
-		else if (editor->sett == ENEMY)
-			editor->map_save = false;
 		else if (editor->sett == OBJECT)
 			del_entity(&editor->object);
-		else if (editor->sett == OBJECT)
-			editor->map_save = false;
 		else if (editor->sett == SECTOR)
 			editor->presets = SECTOR_CEIL;
 		else if (editor->sett == EFFECTOR)

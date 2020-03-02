@@ -6,28 +6,13 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 13:09:05 by nde-jesu          #+#    #+#             */
-/*   Updated: 2020/02/29 22:29:36 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/03/02 13:49:13 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "SDL.h"
 #include "libft.h"
 #include "editor.h"
-
-bool		is_saved(t_editor *editor)
-{
-	if (editor->map_save == false)
-	{
-		ft_putendl("You didn't save, press Esc to quit");
-		editor->map_save = true;
-		return (false);
-	}
-	else
-	{
-		ft_putendl("Exiting...");
-		return (true);
-	}
-}
 
 static void		display_editor(t_editor *edit, t_env *env)
 {
@@ -74,7 +59,6 @@ void		editor_click(t_editor *editor, SDL_Event event, t_env *env)
 			place_portal(editor, event.motion.x, event.motion.y, env);
 		else if (editor->sett == EFFECTOR && editor->presets == EFF_MOVE)
 			apply_effect_in_sector(editor, event.motion.x, event.motion.y);
-		editor->map_save = false;
 	}
 	else if (editor->sect_is_closed == true && event.motion.x > EDIT_W)
 		clic_editor_menu(event.motion.x, event.motion.y, editor, env);

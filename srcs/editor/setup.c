@@ -35,7 +35,6 @@ void			editor_setup(t_editor *editor)
 	editor->sect_is_closed = true;
 	editor->last_vertex.x = -1;
 	editor->last_vertex.y = -1;
-	editor->map_save = true;
 	editor->player.x = -5;
 	editor->player.y = -5;
 	editor->player.angle = 90;

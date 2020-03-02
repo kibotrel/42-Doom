@@ -90,7 +90,6 @@ void			create_map(t_editor *editor)
 			write_file(editor, fd);
 		if (close(fd) == -1)
 			exit(1);
-		editor->map_save = true;
 		ft_putendl("Map saved");
 	}
 }

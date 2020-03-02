@@ -5,10 +5,7 @@ void	sec_clic_menu_editor_tool(int y, t_editor *editor)
 	if (y >= 240 && y <= 310)
 	{
 		if (editor->sett == PLAYER)
-		{
 			delete_player(&editor->player);
-			editor->map_save = false;
-		}
 		else if (editor->sett == ENEMY || editor->sett == OBJECT)
 			editor->presets = ENTITY_ROTATE;
 		else if (editor->sett == SECTOR)

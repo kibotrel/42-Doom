@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 18:48:17 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/03/02 13:31:00 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/03/02 13:47:51 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -210,7 +210,6 @@ typedef struct			s_editor
 	int					true_grid;
 	int					dist_grid;
 	bool				finish;
-	bool				map_save;
 	bool				sect_is_closed;
 	int8_t				grid;
 	int8_t				delete;

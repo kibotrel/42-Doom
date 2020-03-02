@@ -28,7 +28,6 @@ void				clear_editor(t_editor *editor, t_env *env);
 **	core/events.c
 */
 void				events(t_editor *editor, t_env *env);
-bool				is_saved(t_editor *editor);
 void				editor_mousewheel(t_editor *editor, SDL_Event event);
 void				editor_click(t_editor *editor, SDL_Event event, t_env *env);
 

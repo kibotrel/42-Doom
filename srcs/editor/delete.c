@@ -130,10 +130,11 @@ void				clear_editor(t_editor *editor, t_env *env)
 	if (editor->portals)
 		delete_portals(&editor->portals);
 	editor->sett = SECTOR;
+	editor->presets = NONE;
+	editor->effects.effects = EFF_NONE;
 	editor->last_vertex.x = -1;
 	editor->last_vertex.y = -1;
 	init_portals(editor);
 	init_count(&editor->count);
 	blank_menu(env->sdl.screen, editor->sett, editor, editor->presets, env);
-	editor->map_save = true;
 }
