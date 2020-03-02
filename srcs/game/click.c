@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/14 07:59:57 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/03/01 21:17:11 by demonwaves       ###   ########.fr       */
+/*   Updated: 2020/03/02 02:55:51 by demonwaves       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	game_click(t_env *env, int x, int y)
 	{
 		env->tick.shot.old = SDL_GetTicks();
 		env->data.shot = 1;
-		env->data.fire = 1;
+		env->audio.fire = 1;
 		env->data.ammos--;
 	}
 }

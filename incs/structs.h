@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 18:48:17 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/03/02 01:57:53 by demonwaves       ###   ########.fr       */
+/*   Updated: 2020/03/02 02:55:34 by demonwaves       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,6 @@ typedef struct			s_data
 	t_hud				hud;
 	t_grid				grid;
 	double				life;
-	uint8_t				fire;
 	uint8_t				shot;
 	uint8_t				f_size;
 	uint8_t				g_size;
@@ -266,6 +265,7 @@ typedef struct			s_audio
 {
 	char				*path[NB_SAMPLES];
 	short				*buffer[NB_SAMPLES];
+	int8_t				fire;
 	int32_t				driver;
 	int32_t				buffsize[NB_SAMPLES];
 	SF_INFO				info[NB_SAMPLES];

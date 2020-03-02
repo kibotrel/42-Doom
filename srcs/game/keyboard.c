@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/10 15:11:44 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/20 12:31:03 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/03/02 03:03:39 by demonwaves       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 
 void	game_keyboard(t_env *env)
 {
-	if (env->input[SDL_SCANCODE_BACKSPACE])
+	if (env->input[SDL_SCANCODE_BACKSPACE] && !env->data.shot)
 	{
 		env->setup = 0;
 		env->win = MENU;

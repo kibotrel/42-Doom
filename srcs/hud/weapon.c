@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/14 08:01:04 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/03/02 02:16:34 by demonwaves       ###   ########.fr       */
+/*   Updated: 2020/03/02 02:57:25 by demonwaves       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,10 +55,10 @@ static uint32_t	weapon_state(t_env *env)
 	pos = weapon_frame(env->tick.shot.new - env->tick.shot.old);
 	if (!pos)
 		env->data.shot = 0;
-	else if (pos == 1 && env->data.fire)
+	else if (pos == 1 && env->audio.fire)
 	{
 		pthread_create(&env->sound, NULL, (void*)shot, &env->audio);
-		env->data.fire = 0;
+		env->audio.fire = 0;
 	}
 	return (pos);
 }

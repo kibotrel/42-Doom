@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/16 12:45:38 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/18 09:38:48 by kibotrel         ###   ########.fr       */
+/*   Updated: 2020/03/02 03:04:15 by demonwaves       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	global_hooks(t_env *env, t_sdl *sdl)
 {
 	while (SDL_PollEvent(&sdl->event))
 	{
-		if (sdl->event.type == SDL_QUIT)
+		if (sdl->event.type == SDL_QUIT && !env->data.shot)
 			clean(env, NOTHING);
 		if (env->sdl.event.type == SDL_KEYDOWN)
 			env->input[sdl->event.key.keysym.scancode] = 1;
