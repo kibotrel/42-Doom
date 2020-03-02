@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/08 19:29:45 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/21 16:38:41 by demonwaves       ###   ########.fr       */
+/*   Updated: 2020/03/02 02:06:21 by demonwaves       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ void		clean(t_env *env, uint8_t error)
 {
 	ttf_clean(&env->sdl);
 	sdl_clean(&env->sdl);
+	audio_clean(&env->audio);
 	env_clean(env);
 	error ? ft_print_error(env->error[error], error) : exit(0);
 }

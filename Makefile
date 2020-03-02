@@ -6,7 +6,7 @@
 #    By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/10 16:16:29 by kibotrel          #+#    #+#              #
-#    Updated: 2020/02/28 06:25:24 by demonwaves       ###   ########.fr        #
+#    Updated: 2020/03/02 02:19:28 by demonwaves       ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -118,6 +118,7 @@ SRCS			+= menu/motion.c
 SRCS			+= clean/env.c
 SRCS			+= clean/sdl.c
 SRCS			+= clean/ttf.c
+SRCS			+= clean/audio.c
 SRCS			+= clean/engine.c
 SRCS			+= parse/sector.c
 SRCS			+= parse/main.c

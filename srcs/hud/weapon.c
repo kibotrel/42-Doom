@@ -6,12 +6,13 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/14 08:01:04 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/14 14:48:50 by kibotrel         ###   ########.fr       */
+/*   Updated: 2020/03/02 02:16:34 by demonwaves       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "utils.h"
+#include "clean.h"
 
 static uint32_t	weapon_frame(uint32_t frame)
 {
@@ -33,6 +34,19 @@ static uint32_t	weapon_frame(uint32_t frame)
 		return (0);
 }
 
+static void		shot(t_audio *audio)
+{
+	int			read;
+	SNDFILE		*stream;
+	ao_device	*device;
+
+	device = audio->device;
+	stream = audio->stream[0];
+	read = sf_read_short(stream, audio->buffer[0], audio->buffsize[0]);
+	ao_play(device, (char *)audio->buffer[0], (uint_32) (read * sizeof(short)));
+	sf_seek(stream, -audio->info[0].frames, SEEK_END);
+	pthread_exit(NULL);
+}
 static uint32_t	weapon_state(t_env *env)
 {
 	uint32_t	pos;
@@ -41,6 +55,11 @@ static uint32_t	weapon_state(t_env *env)
 	pos = weapon_frame(env->tick.shot.new - env->tick.shot.old);
 	if (!pos)
 		env->data.shot = 0;
+	else if (pos == 1 && env->data.fire)
+	{
+		pthread_create(&env->sound, NULL, (void*)shot, &env->audio);
+		env->data.fire = 0;
+	}
 	return (pos);
 }
 

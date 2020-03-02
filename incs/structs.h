@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 18:48:17 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/28 08:31:00 by demonwaves       ###   ########.fr       */
+/*   Updated: 2020/03/02 01:57:53 by demonwaves       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,7 @@ typedef struct			s_data
 	t_hud				hud;
 	t_grid				grid;
 	double				life;
+	uint8_t				fire;
 	uint8_t				shot;
 	uint8_t				f_size;
 	uint8_t				g_size;
@@ -283,6 +284,7 @@ typedef struct			s_env
 	t_data				data;
 	t_time				tick;
 	t_state				state;
+	pthread_t			sound;
 	int32_t				w;
 	int32_t				h;
 	int32_t				input[SDL_NUM_SCANCODES];
