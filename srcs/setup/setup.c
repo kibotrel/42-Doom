@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/16 11:58:26 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/28 10:59:31 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/03/03 09:19:59 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,20 @@ static void	error_messages(t_env *env)
 	env->error[E_MALLOC] = M_MALLOC;
 	env->error[E_BKGD] = M_BKGD;
 	env->error[E_PARSE] = M_PARSE;
+	env->error[E_PARSE_FS_LINE] = M_PARSE_FS_LINE;
+	env->error[E_PARSE_VERTEX] = M_PARSE_VERTEX;
+	env->error[E_PARSE_PLAYER] = M_PARSE_PLAYER;
+	env->error[E_PARSE_SECTOR] = M_PARSE_SECTOR;
+	env->error[E_PARSE_BLANK] = M_PARSE_BLANK;
+	env->error[E_PARSE_NAME] = M_PARSE_NAME;
+	env->error[E_PARSE_OPEN] = M_PARSE_OPEN;
+	env->error[E_PARSE_GNL] = M_PARSE_GNL;
+	env->error[E_PARSE_CLOSE] = M_PARSE_CLOSE;
+	env->error[E_PARSE_NO_PLAYER] = M_PARSE_NO_PLAYER;
+	env->error[E_PARSE_TOTAL] = M_PARSE_TOTAL;
+	env->error[E_PARSE_NB_VERTEX] = M_PARSE_NB_VERTEX;
+	env->error[E_PARSE_NB_SECTOR] = M_PARSE_NB_SECTOR;
+	env->error[E_PARSE_CEIL_FLOOR] = M_PARSE_CEIL_FLOOR;
 	env->error[E_SDL_THREAD] = M_SDL_THREAD;
 }
 

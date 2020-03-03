@@ -15,11 +15,11 @@ static void		hard_map_seven(t_env *env)
 	env->sector[4].door_neighbor[6] = -1;
 	env->sector[4].door_neighbor[7] = 3;
 	if (!(env->sector[5].neighbor = (int*)malloc(sizeof(int) * 4)))
-		clean(env, E_PARSE);
+		clean(env, E_MALLOC);
 	if (!(env->sector[5].door_neighbor = (int*)malloc(sizeof(int) * 4)))
-		clean(env, E_PARSE);
+		clean(env, E_MALLOC);
 	if (!(env->sector[5].vertex = (t_vec2d*)malloc(sizeof(t_vec2d) * 4)))
-		clean(env, E_PARSE);
+		clean(env, E_MALLOC);
 	env->sector[5].texture = 5;
 	env->sector[5].type = 2;
 	env->sector[5].data = 10;
@@ -46,11 +46,11 @@ static void		hard_map_eight(t_env *env)
 	env->sector[5].door_neighbor[2] = -1;
 	env->sector[5].door_neighbor[3] = 4;
 	if (!(env->sector[6].neighbor = (int*)malloc(sizeof(int) * 4)))
-		clean(env, E_PARSE);
+		clean(env, E_MALLOC);
 	if (!(env->sector[6].door_neighbor = (int*)malloc(sizeof(int) * 4)))
-		clean(env, E_PARSE);
+		clean(env, E_MALLOC);
 	if (!(env->sector[6].vertex = (t_vec2d*)malloc(sizeof(t_vec2d) * 4)))
-		clean(env, E_PARSE);
+		clean(env, E_MALLOC);
 	env->sector[6].texture = 6;
 	env->sector[6].type = 3;
 	env->sector[6].data = 0;
@@ -77,14 +77,14 @@ static void		hard_map_nine(t_env *env)
 	env->sector[6].door_neighbor[2] = -1;
 	env->sector[6].door_neighbor[3] = 4;
 	if (!(env->sector[7].neighbor = (int*)malloc(sizeof(int) * 6)))
-		clean(env, E_PARSE);
+		clean(env, E_MALLOC);
 	if (!(env->sector[7].door_neighbor = (int*)malloc(sizeof(int) * 6)))
-		clean(env, E_PARSE);
+		clean(env, E_MALLOC);
 	if (!(env->sector[7].vertex = (t_vec2d*)malloc(sizeof(t_vec2d) * 6)))
-		clean(env, E_PARSE);
+		clean(env, E_MALLOC);
 	env->sector[7].texture = 7;
 	env->sector[7].type = 5;
-	env->sector[7].data = 0;
+	env->sector[7].data = 2;
 	env->sector[7].light = -1;
 	env->sector[7].floor = 25;
 	env->sector[7].ceil = 40;

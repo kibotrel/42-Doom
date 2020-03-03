@@ -21,13 +21,13 @@ static void		hard_map_two(t_env *env)
 	env->sector[0].door_neighbor[5] = -1;
 	env->sector[0].door_neighbor[6] = -1;
 	if (!(env->sector[1].neighbor = (int*)malloc(sizeof(int) * 4)))
-		clean(env, E_PARSE);
+		clean(env, E_MALLOC);
 	if (!(env->sector[1].door_neighbor = (int*)malloc(sizeof(int) * 4)))
-		clean(env, E_PARSE);
+		clean(env, E_MALLOC);
 	if (!(env->sector[1].vertex = (t_vec2d*)malloc(sizeof(t_vec2d) * 4)))
-		clean(env, E_PARSE);
+		clean(env, E_MALLOC);
 	env->sector[1].texture = 1;
-	env->sector[1].type = 6;
+	env->sector[1].type = 7;
 	env->sector[1].data = 0;
 	env->sector[1].light = -1;
 	env->sector[1].floor = -1;
@@ -52,13 +52,13 @@ static void		hard_map_three(t_env *env)
 	env->sector[1].door_neighbor[2] = -1;
 	env->sector[1].door_neighbor[3] = 0;
 	if (!(env->sector[2].neighbor = (int*)malloc(sizeof(int) * 4)))
-		clean(env, E_PARSE);
+		clean(env, E_MALLOC);
 	if (!(env->sector[2].door_neighbor = (int*)malloc(sizeof(int) * 4)))
-		clean(env, E_PARSE);
+		clean(env, E_MALLOC);
 	if (!(env->sector[2].vertex = (t_vec2d*)malloc(sizeof(t_vec2d) * 4)))
-		clean(env, E_PARSE);
+		clean(env, E_MALLOC);
 	env->sector[2].texture = 2;
-	env->sector[2].type = -6;
+	env->sector[2].type = -7;
 	env->sector[2].data = 0;
 }
 
@@ -83,11 +83,11 @@ static void		hard_map_four(t_env *env)
 	env->sector[2].door_neighbor[2] = -1;
 	env->sector[2].door_neighbor[3] = 0;
 	if (!(env->sector[3].neighbor = (int*)malloc(sizeof(int) * 4)))
-		clean(env, E_PARSE);
+		clean(env, E_MALLOC);
 	if (!(env->sector[3].door_neighbor = (int*)malloc(sizeof(int) * 4)))
-		clean(env, E_PARSE);
+		clean(env, E_MALLOC);
 	if (!(env->sector[3].vertex = (t_vec2d*)malloc(sizeof(t_vec2d) * 4)))
-		clean(env, E_PARSE);
+		clean(env, E_MALLOC);
 	env->sector[3].texture = 3;
 }
 
@@ -113,24 +113,24 @@ static void		hard_map_five(t_env *env)
 	env->sector[3].door_neighbor[2] = -1;
 	env->sector[3].door_neighbor[3] = 2;
 	if (!(env->sector[4].neighbor = (int*)malloc(sizeof(int) * 8)))
-		clean(env, E_PARSE);
+		clean(env, E_MALLOC);
 	if (!(env->sector[4].door_neighbor = (int*)malloc(sizeof(int) * 8)))
-		clean(env, E_PARSE);
+		clean(env, E_MALLOC);
 	if (!(env->sector[4].vertex = (t_vec2d*)malloc(sizeof(t_vec2d) * 8)))
-		clean(env, E_PARSE);
+		clean(env, E_MALLOC);
 }
 
 void		hard_map_one(t_env *env)
 {
 	env->tuto = 1;
 	if (!(env->sector = (t_sector*)malloc(sizeof(t_sector) * 8)))
-		clean(env, E_PARSE);
+		clean(env, E_MALLOC);
 	if (!(env->sector[0].neighbor = (int*)malloc(sizeof(int) * 7)))
-		clean(env, E_PARSE);
+		clean(env, E_MALLOC);
 	if (!(env->sector[0].door_neighbor = (int*)malloc(sizeof(int) * 7)))
-		clean(env, E_PARSE);
+		clean(env, E_MALLOC);
 	if (!(env->sector[0].vertex = (t_vec2d*)malloc(sizeof(t_vec2d) * 7)))
-		clean(env, E_PARSE);
+		clean(env, E_MALLOC);
 	env->sector[0].ceil = 14;
 	env->sector[0].friction = 0.5;
 	env->sector[0].points = 7;

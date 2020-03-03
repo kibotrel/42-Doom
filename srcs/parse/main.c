@@ -6,7 +6,7 @@
 /*   By: reda-con <reda-con@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 14:00:52 by reda-con          #+#    #+#             */
-/*   Updated: 2020/02/28 15:31:47 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/03/03 09:41:49 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,21 +28,17 @@ void		parse(char *l, t_parse *par, t_env *env)
 
 	i = 0;
 	tab = ft_strsplit(l, ' ');
-	if (tab[0] && !ft_strcmp("total", tab[0])){//ft_putendl("oui");
-		i += verif_total(&par->total, tab, par, env);}
-	else if (tab[0] && !ft_strcmp("vertex", tab[0])){//ft_putendl("non");
-		i += verif_vertex(par->ver, tab);}
-	else if (tab[0] && !ft_strcmp("enemy", tab[0])){//ft_putendl("peut");
-		i += verif_entity(par->emy, tab);}
-	else if (tab[0] && !ft_strcmp("object", tab[0])){//ft_putendl("etre");
-		i += verif_entity(par->obj, tab);}
-	else if (tab[0] && !ft_strcmp("player", tab[0])){//ft_putendl("je");
-		i += verif_player(&env->cam, tab);}
-	else if (tab[0] && !ft_strcmp("sector", tab[0])){//ft_putendl("ne");
-		i += verif_sector(env->sector, tab, par->ver, env);}
+	if (tab[0] && !ft_strcmp("total", tab[0]))
+		i += verif_total(tab, par, env);
+	else if (tab[0] && !ft_strcmp("vertex", tab[0]))
+		i += verif_vertex(par->ver, tab, &par->nb);
+	else if (tab[0] && !ft_strcmp("player", tab[0]))
+		i += verif_player(&env->cam, tab);
+	else if (tab[0] && !ft_strcmp("sector", tab[0]))
+		i += verif_sector(env->sector, tab, par->ver, env);
 	else if (verif_blank(tab) && tab[0][0] != '#')
-		parse_err(tab, par, env);
-	(i != 0) ? parse_err(tab, par, env) : free_tab(tab);
+		parse_err(tab, par, env, E_PARSE_BLANK);
+	(i != 0) ? parse_err(tab, par, env, E_PARSE + i) : free_tab(tab);
 }
 
 void		set_doors(t_sector *s, int nb)
@@ -68,6 +64,20 @@ void		set_doors(t_sector *s, int nb)
 	}
 }
 
+void		verif_end(int gnl, int fd, t_env *env, t_parse par)
+{
+	if (gnl == -1)
+		main_err(&par, env, 1, E_PARSE_GNL);
+	if (close(fd))
+		main_err(&par, env, 1, E_PARSE_CLOSE);
+	if (env->cam.pos.x <= -1 || env->cam.pos.y <= -1)
+		main_err(&par, env, 1, E_PARSE_NO_PLAYER);
+	if (par.total == -1)
+		main_err(&par, env, 1, E_PARSE_TOTAL);
+	if (par.nb != par.total)
+		main_err(&par, env, 1, E_PARSE_NB_VERTEX);
+}
+
 void		read_file(char *file, char **av, t_env *env)
 {
 	int		fd;
@@ -75,26 +85,23 @@ void		read_file(char *file, char **av, t_env *env)
 	char	*line;
 
 	t_parse	par;
-		gnl = ft_isvalidname(av[1], ".data");
-		if (gnl == 0)
-			exit(1);
-		env->cam.pos = v3d(-1, -1, 0);
-		if ((fd = open(file, O_RDONLY)) == -1)
-			exit(1);
-		par.total.vert = -1;
-		env->zones = 0;
-		par.total.emy = -1;
-		par.total.obj = -1;
-		while ((gnl = ft_get_next_line(fd, &line)) == 1)
-		{
-			parse(line, &par, env);
-			free(line);
-		}
-		if (gnl == -1 || close(fd) || env->cam.pos.x <= -1
-				|| env->cam.pos.y <= -1 || env->zones == 0 || par.total.vert == -1)
-			main_err(&par, env, 1);
-		set_doors(env->sector, env->zones);
-		main_err(&par, env, 0);
+	gnl = ft_isvalidname(av[1], ".data");
+	if (gnl == 0)
+		clean(env, E_PARSE_NAME);
+	env->cam.pos = v3d(-1, -1, 0);
+	if ((fd = open(file, O_RDONLY)) == -1)
+		clean(env, E_PARSE_OPEN);
+	par.total = -1;
+	par.nb = 0;
+	env->zones = 0;
+	while ((gnl = ft_get_next_line(fd, &line)) == 1)
+	{
+		parse(line, &par, env);
+		free(line);
+	}
+	verif_end(gnl, fd, env, par);
+	set_doors(env->sector, env->zones);
+	main_err(&par, env, 0, NOTHING);
 }
 
 int			main_parse(char **av, t_env *env, int ac)

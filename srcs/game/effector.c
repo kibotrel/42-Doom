@@ -27,7 +27,7 @@ void	doors(t_env *env, int t)
 	i = -1;
 	if (!env->tuto || env->test.all_move)
 	{
-		if (t == 6 && env->tuto)
+		if (t == 7 && env->tuto)
 			env->test.door = 1;
 		while (++i < env->zones)
 		{
@@ -62,19 +62,24 @@ void	pre_door(t_env *env, int s)
 
 void	effector(t_env *env, int s)
 {
-	if (env->sector[s].type == GENERATOR)
+	if (env->sector[s].type == LAVA)
 		display_text(RED, init_vertex(env->w / 2 - 100, env->h / 2 - 500),
 				"Warning", env);
 	if (env->sector[s].type == MONEY)
 		display_text(YELLOW, init_vertex(env->w / 2 - 100, env->h / 2 - 500),
 				"Earning money", env);
+	if (env->sector[s].type == HEAL)
+		display_text(PINK, init_vertex(env->w / 2 - 100, env->h / 2 -500),
+				"Healing", env);
 	env->st_fl = SDL_GetTicks();
 	if (env->st_fl > env->old_st_fl + 200)
 	{
-		if (env->sector[s].type == GENERATOR && env->cam.ground == 1)
+		if (env->sector[s].type == LAVA && env->cam.ground == 1)
 			env->data.life -= (double)env->sector[s].data / 5;
 		if (env->sector[s].type == MONEY)
 			env->data.money += (double)env->sector[s].data / 5;
+		if (env->sector[s].type == HEAL && env->data.life < 100)
+			env->data.life += (double)env->sector[s].data / 5;
 		env->old_st_fl = env->st_fl;
 	}
 }

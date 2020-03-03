@@ -2,20 +2,16 @@
 #include "parse.h"
 #include "clean.h"
 
-void		main_err(t_parse *p, t_env *env, int fl)
+void		main_err(t_parse *p, t_env *env, int fl, uint8_t tag)
 {
-	if (p->total.vert >= 0)
+	if (p->total >= 0)
 		free(p->ver);
-	if (p->total.emy >= 0)
-		free(p->emy);
-	if (p->total.obj >= 0)
-		free(p->obj);
 	if (fl == 1)
-		clean(env, E_PARSE);
+		clean(env, tag);
 }
 
-void		parse_err(char **tab, t_parse *p, t_env *env)
+void		parse_err(char **tab, t_parse *p, t_env *env, uint8_t tag)
 {
 	free_tab(tab);
-	main_err(p, env, 1);
+	main_err(p, env, 1, tag);
 }
