@@ -6,7 +6,7 @@
 #    By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/10 16:16:29 by kibotrel          #+#    #+#              #
-#    Updated: 2020/03/02 02:19:28 by demonwaves       ###   ########.fr        #
+#    Updated: 2020/03/03 16:06:56 by kibotrel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,12 +15,20 @@
 # Environment.
 
 RM				= rm -rf
+TAR				= tar -xf
+CURL			= curl -L --output archive.tar
 UNAME			= $(shell uname -s)
+ABSDIR			= $(shell pwd)
+URL_AO			= http://downloads.xiph.org/releases/ao/libao-1.2.0.tar.gz
+URL_SND			= http://www.mega-nerd.com/libsndfile/files/libsndfile-1.0.28.tar.gz
+SRCS_AO			= libao-1.2.0
+SRCS_SND		= libsndfile-1.0.28
 
 # Executable / Libraries.
 
 FT				= libft.a
 BMP				= libbmp.a
+SND				= libsndfile.a
 NAME			= doom-nukem
 
 # Color codes.
@@ -100,6 +108,7 @@ SRCS			+= hud/crosshair.c
 SRCS			+= core/main.c
 SRCS			+= core/game.c
 SRCS			+= core/menu.c
+SRCS			+= core/audio.c
 SRCS			+= core/hooks.c
 SRCS			+= core/editor.c
 SRCS			+= core/selector.c
@@ -197,34 +206,27 @@ SRCS			+= texture/texture.c
 # dealing with. Darwin is for macOS else would include at least Linux.
 
 ifeq ($(UNAME), Darwin)
-	AO			=
+	AO			= libao.dylib
 	SDL			= libsdl2.a
-	SND			=
 	TTF			= libsdl2_ttf.a
-	LAO_DIR		=
+	CONFIG		= ./configure --prefix
+	LAO_DIR		= $(SRCS_AO)/OSX_lib/lib/
 	LSDL_DIR	= $(HOME)/.brew/Cellar/sdl2/2.0.10/lib
-	LSND_DIR	=
+	LSND_DIR	= $(SRCS_SND)/OSX_lib/lib/
 	LTTF_DIR	= $(HOME)/.brew/Cellar/sdl2_ttf/2.0.15/lib
-	INCS_DIR	+=
+	INCS_DIR	+= $(SRCS_AO)/include/ao
 	INCS_DIR	+= $(HOME)/.brew/Cellar/sdl2/2.0.10/include/SDL2
-	INCS_DIR	+=
+	INCS_DIR	+= $(SRCS_SND)/OSX_lib/include
 	INCS_DIR	+= $(HOME)/.brew/Cellar/sdl2_ttf/2.0.15/include/SDL2
 else
-	TAR			= tar -xf
-	CURL		= curl -L --output archive.tar
-	L_LIBS		= /usr/local/lib
-	L_INCS		= /usr/local/include
-	URL_AO		= http://downloads.xiph.org/releases/ao/libao-1.2.0.tar.gz
-	URL_SDL		= https://www.libsdl.org/release/SDL2-2.0.10.tar.gz
-	URL_SND		= http://www.mega-nerd.com/libsndfile/files/libsndfile-1.0.28.tar.gz
-	URL_TTF		= https://www.libsdl.org/projects/SDL_ttf/release/SDL2_ttf-2.0.15.tar.gz
 	AO			= libao.so
 	SDL			= libSDL2.a
-	SND			= libsndfile.a
 	TTF			= libSDL2_ttf.a
-	SRCS_AO		= libao-1.2.0
+	L_LIBS		= /usr/local/lib
+	L_INCS		= /usr/local/include
+	URL_SDL		= https://www.libsdl.org/release/SDL2-2.0.10.tar.gz
+	URL_TTF		= https://www.libsdl.org/projects/SDL_ttf/release/SDL2_ttf-2.0.15.tar.gz
 	SRCS_SDL	= SDL2-2.0.10
-	SRCS_SND	= libsndfile-1.0.28
 	SRCS_TTF	= SDL2_ttf-2.0.15
 	LAO_DIR		= $(L_LIBS)
 	LSDL_DIR	= $(L_LIBS)
@@ -291,7 +293,16 @@ $(NAME): $(LSDL) $(LTTF) $(LSND) $(LAO) $(LFT) $(LBMP) $(C_OBJS)
 $(LAO):
 	@echo "$(GREEN)***   Installing library $(AO)   ...  ***\n$(RESET)"
 	@if [ $(UNAME) = Darwin ]; then												\
-		echo "Libao OSX Here";																\
+		echo "$(GREEN)***   Curl sources   ...   ***\n$(RESET)";				\
+		$(CURL) $(URL_AO) > /dev/null 2>&1;										\
+		echo "$(GREEN)***   Unpacking sources   ...   ***\n$(RESET)";			\
+		$(TAR) archive.tar; $(RM) archive.tar;									\
+		echo "$(GREEN)***   Configure library   ...   ***\n$(RESET)";			\
+		cd $(SRCS_AO);	mkdir -p  OSX_lib;										\
+		$(CONFIG) $(ABSDIR)/$(SRCS_AO)/OSX_lib > /dev/null 2>&1;				\
+		echo "$(GREEN)***   Compile library   ...   ***\n$(RESET)";				\
+		make  -j > /dev/null 2>&1 && make install -j > /dev/null 2>&1;			\
+		echo "$(GREEN)***   $(AO) successfully compiled   ***\n$(RESET)";		\
 	elif [ ! -d "$(SRCS_AO)" ]; then											\
 		echo "$(GREEN)***   Curl sources   ...   ***\n$(RESET)";				\
 		$(CURL) $(URL_AO) > /dev/null 2>&1;										\
@@ -324,9 +335,18 @@ $(LSDL):
 $(LSND):
 	@echo "$(GREEN)***   Installing library $(SND)   ...  ***\n$(RESET)"
 	@if [ $(UNAME) = Darwin ]; then												\
-		brew install autoconf autogen automake flac libogg libtool libvorbis	\
-		libopus pkg-config > /dev/null 2>&1										\
-		echo "Libsndfile OSX Here";												\
+		brew install curl autoconf autogen automake flac libogg libtool			\
+		libvorbis libopus pkg-config > /dev/null 2>&1;							\
+		echo "$(GREEN)***   Curl sources   ...   ***\n$(RESET)";				\
+		$(CURL) $(URL_SND) > /dev/null 2>&1;									\
+		echo "$(GREEN)***   Unpacking sources   ...   ***\n$(RESET)";			\
+		$(TAR) archive.tar; $(RM) archive.tar;									\
+		echo "$(GREEN)***   Configure library   ...   ***\n$(RESET)";			\
+		cd $(SRCS_SND);	mkdir -p  OSX_lib;										\
+		$(CONFIG) $(ABSDIR)/$(SRCS_SND)/OSX_lib > /dev/null 2>&1;				\
+		echo "$(GREEN)***   Compile library   ...   ***\n$(RESET)";				\
+		make  -j > /dev/null 2>&1 && make install -j > /dev/null 2>&1;			\
+		echo "$(GREEN)***   $(SND) successfully compiled   ***\n$(RESET)";		\
 	elif [ ! -d "$(SRCS_SND)" ]; then											\
 		sudo apt-get install autoconf autogen automake build-essential			\
 		libasound2-dev libflac-dev libogg-dev libtool libvorbis-dev libopus-dev	\
@@ -389,13 +409,17 @@ fclean: clean
 	@make -sC $(LBMP_DIR) fclean
 	@echo "$(GREEN)***   Deleting executable file from $(NAME)   ...   ***\n$(RESET)"
 	@$(RM) $(NAME)
-# UNINSTALL AO LIB OSX HERE
 	@if [ -f "$(LAO)" ]; then													\
 		echo "$(GREEN)***   Deleting library $(AO)   ...  ***\n$(RESET)";		\
+		if [ $(UNAME) = Darwin ]; then											\
+			$(RM) $(SRCS_AO);													\
+		fi;																		\
 	fi
-# UNINSTALL SNDFILE LIB OSX HERE
 	@if [ -f "$(LSND)" ]; then													\
 		echo "$(GREEN)***   Deleting library $(SND)   ...  ***\n$(RESET)";		\
+		if [ $(UNAME) = Darwin ]; then											\
+			$(RM) $(SRCS_SND);													\
+		fi;																		\
 	fi
 	@if [ -f "$(LTTF)" ]; then													\
 		echo "$(GREEN)***   Deleting library $(TTF)   ...  ***\n$(RESET)";		\
