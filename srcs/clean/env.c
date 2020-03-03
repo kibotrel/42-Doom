@@ -6,23 +6,18 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/08 19:29:45 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/03/02 23:14:39 by demonwaves       ###   ########.fr       */
+/*   Updated: 2020/03/03 13:37:25 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <time.h>
 #include <stdlib.h>
 #include "libft.h"
 #include "clean.h"
 
-static void	env_clean(t_env *env)
+void		free_map(t_env *env)
 {
-	uint32_t		i;
+	uint32_t	i;
 
-	i = 0;
-	while (i < NB_ASSETS)
-		if (env->sdl.bmp[i++].pixels)
-			free(env->sdl.bmp[i - 1].pixels);
 	i = 0;
 	if (env->sector)
 	{
@@ -40,16 +35,25 @@ static void	env_clean(t_env *env)
 	}
 }
 
+static void	env_clean(t_env *env)
+{
+	uint32_t		i;
+
+	i = 0;
+	while (i < NB_ASSETS)
+		if (env->sdl.bmp[i++].pixels)
+			free(env->sdl.bmp[i - 1].pixels);
+	if (env->win == GAME)
+		free_map(env);
+}
+
 void		clean(t_env *env, uint8_t error)
 {
-	struct timespec	time;
-
-	time = (struct timespec){0, 250000000};
 	env->data.closed = 1;
-	nanosleep(&time, 0);
+	// pthread_join(env->sound, NULL);
 	ttf_clean(&env->sdl);
 	sdl_clean(&env->sdl);
-	audio_clean(&env->audio);
+	// audio_clean(&env->audio);
 	env_clean(env);
 	error ? ft_print_error(env->error[error], error) : exit(0);
 }

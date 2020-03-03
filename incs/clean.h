@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 19:08:43 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/03/01 20:27:40 by demonwaves       ###   ########.fr       */
+/*   Updated: 2020/03/03 13:32:05 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 **	env.c
 */
 
+void	free_map(t_env *env);
 void	clean(t_env *env, uint8_t error);
 
 /*
