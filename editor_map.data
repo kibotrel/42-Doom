@@ -1,4 +1,4 @@
-total vertexes 48 sectors 23 enemies 0 objects 0
+total vertexes 48 sectors 23
 
 player x 265 y 530 sector 0 angle 270
 
@@ -17,8 +17,8 @@ vertex number 11 x 175 y 400
 vertex number 12 x 100 y 425
 vertex number 13 x 75 y 425
 vertex number 14 x 75 y 400
+vertex number 15 x 75 y 400
 vertex number 16 x 175 y 475
-vertex number 17 x 100 y 475
 vertex number 17 x 100 y 475
 vertex number 18 x 75 y 475
 vertex number 19 x 100 y 500
@@ -51,7 +51,7 @@ vertex number 45 x 225 y 200
 vertex number 46 x 25 y 400
 vertex number 47 x 25 y 425
 
-sector number 0 texture 8 type 0 data 0 light -1 h_floor -4 h_ceil 16 gravity 10 friction 50 vertex_num 6 vertexes 0 1 2 3 4 5 portals -1 1 -1 -1 -1 -1
+sector number 0 texture 8 type 3 data 5 light -1 h_floor -4 h_ceil 16 gravity 10 friction 50 vertex_num 6 vertexes 0 1 2 3 4 5 portals -1 1 -1 -1 -1 -1
 
 sector number 1 texture 7 type 0 data 0 light -1 h_floor -2 h_ceil 18 gravity 10 friction 50 vertex_num 4 vertexes 1 6 7 2 portals -1 2 -1 0
 
