@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/10 15:11:44 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/03/03 13:40:53 by kibotrel         ###   ########.fr       */
+/*   Updated: 2020/03/03 14:11:04 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ void	game_keyboard(t_env *env)
 		env->setup = 0;
 		env->win = MENU;
 		free_map(env);
+		pthread_join(env->sound, NULL);
 		SDL_ShowCursor(SDL_ENABLE);
 		return ;
 	}

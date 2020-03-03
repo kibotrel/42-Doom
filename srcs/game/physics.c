@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 15:18:26 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/14 08:00:47 by kibotrel         ###   ########.fr       */
+/*   Updated: 2020/03/03 15:01:29 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,10 +73,6 @@ void		vertical_movement(t_env *env, t_sector sector, double cam_height)
 		env->cam.pos.z += env->cam.v.z;
 }
 
-//
-//	Need to replace vel = 0 by sliding algorithm
-//
-
 void		horizontal_movement(t_env *env, t_vec2d p, t_vec2d vel, double view)
 {
 	uint32_t	i;
@@ -96,7 +92,7 @@ void		horizontal_movement(t_env *env, t_vec2d p, t_vec2d vel, double view)
 			if (hole[0] > env->cam.pos.z - view + MARGIN_KNEE
 				|| hole[1] < env->cam.pos.z + MARGIN_HEAD)
 			{
-				vel.x = 0; vel.y = 0;
+				vel = (t_vec2d){0, 0};
 				env->cam.move = 0;
 			}
 		}
