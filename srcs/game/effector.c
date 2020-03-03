@@ -43,23 +43,6 @@ void	doors(t_env *env, int t)
 	}
 }
 
-void	pre_door(t_env *env, int s)
-{
-	if (env->input[SDL_SCANCODE_E])
-	{
-		if (env->sector[s].type > END
-				&& env->data.money >= (uint32_t)env->sector[s].data)
-		{
-			env->data.money -= env->sector[s].data;
-			env->sector[s].data = 0;
-			doors(env, env->sector[s].type);
-		}
-		else if (env->data.money < (uint32_t)env->sector[s].data
-				&& env->sector[s].type > END)
-			poor(env);
-	}
-}
-
 void	effector(t_env *env, int s)
 {
 	if (env->sector[s].type == LAVA)
@@ -69,7 +52,7 @@ void	effector(t_env *env, int s)
 		display_text(YELLOW, init_vertex(env->w / 2 - 100, env->h / 2 - 500),
 				"Earning money", env);
 	if (env->sector[s].type == HEAL)
-		display_text(PINK, init_vertex(env->w / 2 - 100, env->h / 2 -500),
+		display_text(PINK, init_vertex(env->w / 2 - 100, env->h / 2 - 500),
 				"Healing", env);
 	env->st_fl = SDL_GetTicks();
 	if (env->st_fl > env->old_st_fl + 200)
@@ -84,29 +67,42 @@ void	effector(t_env *env, int s)
 	}
 }
 
+void	elevator(t_sector *sector, int s, t_cam *cam,
+		int input[SDL_NUM_SCANCODES])
+{
+	if (sector[s].type == ELEVATOR || sector[s].type == -ELEVATOR)
+	{
+		if (input[SDL_SCANCODE_E] && ((sector[s].floor < sector[s].data
+			+ sector[s].door_neighbor[0] && sector[s].type == ELEVATOR)
+			|| (sector[s].floor < sector[s].door_neighbor[0]
+			&& sector[s].type == -ELEVATOR)))
+		{
+			++cam->pos.z;
+			++sector[s].floor;
+		}
+		if (input[SDL_SCANCODE_Q] && ((sector[s].floor
+			> sector[s].door_neighbor[0] && sector[s].type == ELEVATOR)
+			|| (sector[s].floor > sector[s].door_neighbor[0]
+			- sector[s].data && sector[s].type == -ELEVATOR)))
+		{
+			--cam->pos.z;
+			--sector[s].floor;
+		}
+		if (sector[s].floor >= sector[s].ceil - 5)
+		{
+			--cam->pos.z;
+			sector[s].floor = sector[s].ceil - 6;
+		}
+	}
+}
+
 void	sector_triger(t_env *env)
 {
 	int			s;
 
 	s = env->cam.sector;
-	if (env->sector[s].type == ELEVATOR)
-	{
-		if (env->input[SDL_SCANCODE_E])
-		{
-			++env->cam.pos.z;
-			++env->sector[s].floor;
-		}
-		if (env->input[SDL_SCANCODE_Q])
-		{
-			--env->cam.pos.z;
-			--env->sector[s].floor;
-		}
-		if (env->sector[s].floor >= env->sector[s].ceil - 5)
-		{
-			--env->cam.pos.z;
-			env->sector[s].floor = env->sector[s].ceil - 6;
-		}
-	}
+	elevator(env->sector, s, &env->cam, env->input);
 	effector(env, s);
-	pre_door(env, s);
+	if (env->input[SDL_SCANCODE_E])
+		doors(env, env->sector[s].type);
 }

@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 17:59:50 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/03/03 09:19:08 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/03/03 11:59:15 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ typedef enum	e_status
 	E_PARSE_TOTAL,
 	E_PARSE_NB_VERTEX,
 	E_PARSE_NB_SECTOR,
-	E_PARSE_CEIL_FLOOR,
+	E_PARSE_NO_TOTAL,
 	E_SDL_THREAD,
 	NB_ERRORS
 }				t_status;
@@ -125,6 +125,7 @@ typedef enum		e_effects
 	ELEVATOR,
 	LAVA,
 	HEAL,
+	SKY,
 	END
 }					t_effects;
 

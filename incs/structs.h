@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 18:48:17 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/28 10:54:46 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/03/03 10:21:31 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -292,6 +292,8 @@ typedef struct			s_env
 	uint32_t			old_st_fl;
 	int					tuto;
 	t_tuto				test;
+	uint32_t			sect_ct;
+	uint32_t			vert_ct;
 }						t_env;
 
 #endif

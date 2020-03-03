@@ -6,7 +6,7 @@
 /*   By: reda-con <reda-con@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 14:00:52 by reda-con          #+#    #+#             */
-/*   Updated: 2020/03/03 09:41:49 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/03/03 12:49:53 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,27 +21,31 @@
 #include <unistd.h>
 #include "clean.h"
 
-void		parse(char *l, t_parse *par, t_env *env)
+static void		parse(char *l, t_parse *par, t_env *env)
 {
 	char		**tab;
 	int			i;
 
 	i = 0;
 	tab = ft_strsplit(l, ' ');
-	if (tab[0] && !ft_strcmp("total", tab[0]))
+	if (tab[0] && !ft_strcmp("total", tab[0]) && par->fsl == 0)
+	{
+		++par->fsl;
 		i += verif_total(tab, par, env);
-	else if (tab[0] && !ft_strcmp("vertex", tab[0]))
-		i += verif_vertex(par->ver, tab, &par->nb);
-	else if (tab[0] && !ft_strcmp("player", tab[0]))
+		env->vert_ct = par->total;
+	}
+	else if (tab[0] && !ft_strcmp("vertex", tab[0]) && par->fsl != 0)
+		i += verif_vertex(par->ver, tab, &par->nb, par);
+	else if (tab[0] && !ft_strcmp("player", tab[0]) && par->fsl != 0)
 		i += verif_player(&env->cam, tab);
-	else if (tab[0] && !ft_strcmp("sector", tab[0]))
+	else if (tab[0] && !ft_strcmp("sector", tab[0]) && par->fsl != 0)
 		i += verif_sector(env->sector, tab, par->ver, env);
-	else if (verif_blank(tab) && tab[0][0] != '#')
+	else if (verif_blank(tab) && tab[0][0] != '#' && par->fsl != 0)
 		parse_err(tab, par, env, E_PARSE_BLANK);
 	(i != 0) ? parse_err(tab, par, env, E_PARSE + i) : free_tab(tab);
 }
 
-void		set_doors(t_sector *s, int nb)
+static void		set_doors(t_sector *s, int nb)
 {
 	int			i;
 	uint32_t	j;
@@ -56,16 +60,20 @@ void		set_doors(t_sector *s, int nb)
 		{
 			k = s[i].neighbor[j];
 			s[i].door_neighbor[j] = k;
-			if (s[i].type < 0 || (k > 0 && s[k].type < 0))
+			if (s[i].type < -END || (k > 0 && s[k].type < -END))
 				s[i].neighbor[j] = -2;
 			++j;
 		}
+		if (s[i].type == ELEVATOR || s[i].type == -ELEVATOR)
+			s[i].door_neighbor[0] = s[i].floor;
 		++i;
 	}
 }
 
-void		verif_end(int gnl, int fd, t_env *env, t_parse par)
+static void		verif_end(int gnl, int fd, t_env *env, t_parse par)
 {
+	if (par.fsl == 0)
+		main_err(&par, env, 1, E_PARSE_NO_TOTAL);
 	if (gnl == -1)
 		main_err(&par, env, 1, E_PARSE_GNL);
 	if (close(fd))
@@ -76,9 +84,11 @@ void		verif_end(int gnl, int fd, t_env *env, t_parse par)
 		main_err(&par, env, 1, E_PARSE_TOTAL);
 	if (par.nb != par.total)
 		main_err(&par, env, 1, E_PARSE_NB_VERTEX);
+	if (env->sect_ct != env->zones)
+		main_err(&par, env, 1, E_PARSE_NB_SECTOR);
 }
 
-void		read_file(char *file, char **av, t_env *env)
+static void		read_file(char *file, char **av, t_env *env)
 {
 	int		fd;
 	int		gnl;
@@ -93,7 +103,7 @@ void		read_file(char *file, char **av, t_env *env)
 		clean(env, E_PARSE_OPEN);
 	par.total = -1;
 	par.nb = 0;
-	env->zones = 0;
+	par.fsl = 0;
 	while ((gnl = ft_get_next_line(fd, &line)) == 1)
 	{
 		parse(line, &par, env);
@@ -104,7 +114,7 @@ void		read_file(char *file, char **av, t_env *env)
 	main_err(&par, env, 0, NOTHING);
 }
 
-int			main_parse(char **av, t_env *env, int ac)
+int				main_parse(char **av, t_env *env, int ac)
 {
 	char	*file;
 
