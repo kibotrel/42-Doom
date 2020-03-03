@@ -6,7 +6,7 @@
 /*   By: reda-con <reda-con@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 14:00:52 by reda-con          #+#    #+#             */
-/*   Updated: 2020/03/03 13:43:48 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/03/03 13:59:41 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,8 +93,8 @@ static void		read_file(char *file, char **av, t_env *env)
 	int		fd;
 	int		gnl;
 	char	*line;
-
 	t_parse	par;
+
 	gnl = ft_isvalidname(av[1], ".data");
 	if (gnl == 0)
 		clean(env, E_PARSE_NAME);
