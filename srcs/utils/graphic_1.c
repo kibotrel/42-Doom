@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 13:21:31 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/24 14:38:09 by lojesu           ###   ########.fr       */
+/*   Updated: 2020/03/03 17:46:12 by lojesu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,16 +40,16 @@ static void	draw_ceil_and_floor(t_env *env, t_game *var, int32_t x)
 	min = var->side[0];
 	var->unbound[0] = (x - min) * (p[2] - p[0]) / (max - min) + p[0];
 	var->unbound[1] = (x - min) * (p[3] - p[1]) / (max - min) + p[1];
-	r_size_wall = 7 * (var->unbound[1] - var->unbound[0]) / (var->ceil[0] - var->floor[0]); /*can be a variable*/
+	r_size_wall = env->setting.fog_intensity * (var->unbound[1] - var->unbound[0]) / (var->ceil[0] - var->floor[0]);
 	var->depth = W_UNIT / (r_size_wall != 0 ? r_size_wall : 1) * env->setting.fog_on_off;
 	var->y[0] = bound(var->unbound[0], var->top[x], var->bottom[x]);
 	var->y[1] = bound(var->unbound[1], var->top[x], var->bottom[x]);
-	border = color_light(CEIL, env->sector[var->sector].light, 20) * !env->setting.border_on_off;
+	border = color_light(CEIL, env->sector[var->sector].light, env->setting.light_intensity) * !env->setting.border_on_off;
 	draw_slice(env, x, lim(var->top[x], var->y[0] - 1),
-			flat(border, color_light(CEIL, env->sector[var->sector].light, 20), border));
-	border = color_light(FLOOR, env->sector[var->sector].light, 20) * !env->setting.border_on_off;
+			flat(border, color_light(CEIL, env->sector[var->sector].light, env->setting.light_intensity), border));
+	border = color_light(FLOOR, env->sector[var->sector].light, env->setting.light_intensity) * !env->setting.border_on_off;
 	draw_slice(env, x, lim(var->y[1] + 1, var->bottom[x]),
-			flat(border, color_light(FLOOR, env->sector[var->sector].light, 20), border));
+			flat(border, color_light(FLOOR, env->sector[var->sector].light, env->setting.light_intensity), border));
 }
 
 static void	draw_transitions(t_env *env, t_game *var, int32_t x)

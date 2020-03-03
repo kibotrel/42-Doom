@@ -6,7 +6,7 @@
 /*   By: lojesu <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/22 17:06:01 by lojesu            #+#    #+#             */
-/*   Updated: 2020/02/26 16:18:26 by lojesu           ###   ########.fr       */
+/*   Updated: 2020/03/03 17:40:42 by lojesu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 
 void	my_draw_background(t_env *e, t_sdl *s, t_bmp img)
 {
-	t_pos       p;
+	t_pos	p;
 
 	p.y = -1;
 	while (++p.y < img.height)
@@ -48,22 +48,22 @@ void	draw_on_off
 	my_police_color(&env->sdl.color, RESET);
 }
 
-void    fov_update(t_env *env, int mode)
+void	fov_update(t_env *env, int mode)
 {
-    if (mode == 0)
-    {
-        if (env->cam.fov.x < env->h * 2 && env->cam.fov.y < env->h * 2)
-        {
-            env->cam.fov.x += (0.0375 * env->h);
-            env->cam.fov.y += (0.01 * env->h);
-        }
-    }
+	if (mode == 0)
+	{
+		if (env->cam.fov.x < env->h * 2 && env->cam.fov.y < env->h * 2)
+		{
+			env->cam.fov.x += (0.0375 * env->h);
+			env->cam.fov.y += (0.01 * env->h);
+		}
+	}
 	else if (mode == 1)
-    {
-        if (env->cam.fov.x > env->h / 16 && env->cam.fov.y > env->h / 16)
-        {
-            env->cam.fov.x -= (0.0375 * env->h);
-            env->cam.fov.y -= (0.01 * env->h);
-        }
-    }
+	{
+		if (env->cam.fov.x > env->h / 16 && env->cam.fov.y > env->h / 16)
+		{
+			env->cam.fov.x -= (0.0375 * env->h);
+			env->cam.fov.y -= (0.01 * env->h);
+		}
+	}
 }

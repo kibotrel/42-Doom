@@ -6,7 +6,7 @@
 #    By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/10 16:16:29 by kibotrel          #+#    #+#              #
-#    Updated: 2020/02/22 18:33:16 by lojesu           ###   ########.fr        #
+#    Updated: 2020/03/03 17:35:41 by lojesu           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -189,8 +189,13 @@ SRCS			+= editor/sector_utils.c
 SRCS			+= texture/texture.c
 SRCS			+= texture/texture_tools.c
 SRCS			+= settings/settings_click.c
+SRCS			+= settings/settings_click_tools.c
+SRCS			+= settings/resize_window.c
 SRCS			+= settings/settings_tools.c
 SRCS			+= settings/settings_keyboard.c
+SRCS			+= settings/draw_arrow_setting.c
+SRCS			+= settings/draw_on_off_setting.c
+SRCS			+= settings/draw_selector_setting.c
 
 #------------------------------ OPERATING SYSTEM ------------------------------#
 
