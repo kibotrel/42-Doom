@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 13:21:31 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/24 04:40:02 by demonwaves       ###   ########.fr       */
+/*   Updated: 2020/03/03 02:43:26 by demonwaves       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,9 @@ static void	draw_ceil_and_floor(t_env *env, t_game *var, int32_t x)
 	// // if (var->sector == 0)
 	// 	setup_sky(env, lim(var->top[x], var->y[0] - 1), var, x);
 	// else
-	draw_slice(env, x, lim(var->top[x], var->y[0] - 1),
+	draw_slice(env, x, lim(var->top[x], var->y[0]),
 				flat(0, color_light(0x222222, env->sector[var->sector].light), 0));
-	draw_slice(env, x, lim(var->y[1] + 1, var->bottom[x]),
+	draw_slice(env, x, lim(var->y[1], var->bottom[x]),
 				flat(0, color_light(0x424242, env->sector[var->sector].light), 0));
 }
 
@@ -67,14 +67,14 @@ static void	draw_transitions(t_env *env, t_game *var, int32_t x)
 	var->text_height = fabs(var->ceil[1] - var->floor[1]);
 	draw_texture_slice(env, x, lim(var->y[0], var->ny[0]),
 				var);
-	draw_texture_slice(env, x, lim(var->ny[1] + 1, var->y[1]),
+	draw_texture_slice(env, x, lim(var->ny[1], var->y[1] + 1),
 				var);
 }
 
 static void	draw_wall(t_env *env, t_game *var, int32_t x)
 {
 	var->text_height = fabs(var->ceil[0] - var->floor[0]);
-	draw_texture_slice(env, x, lim(var->y[0], var->y[1]), var);
+	draw_texture_slice(env, x, lim(var->y[0], var->y[1] + 1), var);
 }
 
 void		draw_screen(t_env *env, t_game *var)
