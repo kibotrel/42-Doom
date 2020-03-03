@@ -6,11 +6,12 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/10 15:11:44 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/03/02 23:20:23 by demonwaves       ###   ########.fr       */
+/*   Updated: 2020/03/03 13:40:53 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "game.h"
+#include "clean.h"
 #include "utils.h"
 
 void	game_keyboard(t_env *env)
@@ -19,6 +20,7 @@ void	game_keyboard(t_env *env)
 	{
 		env->setup = 0;
 		env->win = MENU;
+		free_map(env);
 		SDL_ShowCursor(SDL_ENABLE);
 		return ;
 	}
