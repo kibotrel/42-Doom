@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   selector.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/18 14:21:13 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/14 09:22:30 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/03/03 14:53:04 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "core.h"
 #include "clean.h"
 
-void	selector(t_env *env, int ac , char **av)
+void	selector(t_env *env, int ac, char **av)
 {
 	env->tick.frame.old = env->tick.frame.new;
 	if (env->win == MENU)

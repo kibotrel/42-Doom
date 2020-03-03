@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/16 11:53:54 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/28 07:37:13 by demonwaves       ###   ########.fr       */
+/*   Updated: 2020/03/03 14:52:44 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@
 
 // __attribute__((destructor)) void no_end(void);
 // void no_end(){while(1);}
-
 
 static void	update_screen(t_env *env)
 {
