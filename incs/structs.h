@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 18:48:17 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/03/02 23:13:12 by demonwaves       ###   ########.fr       */
+/*   Updated: 2020/03/03 15:21:16 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -162,13 +162,14 @@ typedef struct			s_portal
 	struct s_portal		*prev;
 }						t_portal;
 
-typedef struct		s_effector
+typedef struct			s_effector
 {
-	t_effects		effects;
-	int				money_sec;
-	int				cost;
-	int				*doors;
-}					t_effector;
+	t_effects			effects;
+	int					money_sec;
+	int					cost;
+	int					*doors;
+}						t_effector;
+
 typedef struct			s_ed_sector
 {
 	int					type;
