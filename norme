@@ -1,8 +1,4 @@
 
-Norme: ./srcs/editor/display_utils.c
-Error: 42 header not at top of the file
-Error (line 5): multiple empty lines
-Error (line 6): bad spacing before draw_ed_line
 Norme: ./srcs/editor/display_part2.c
 Error: 42 header not at top of the file
 Error (line 11): line has 82 characters
