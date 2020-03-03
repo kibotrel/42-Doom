@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 15:29:00 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/24 04:44:49 by demonwaves       ###   ########.fr       */
+/*   Updated: 2020/03/03 15:09:45 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ void			draw_setup(t_env *env, t_game *var, t_item *now, uint32_t i)
 	var->end = fmin(var->side[1], now->max);
 }
 
-void	skybox_setup(t_env *env, t_skybox *skybox)
+void			skybox_setup(t_env *env, t_skybox *skybox)
 {
 	ft_bzero(skybox, sizeof(t_skybox));
 	skybox->draw = env->sdl.bmp[SKYBOX].width;

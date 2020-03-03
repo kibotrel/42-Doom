@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/16 11:58:26 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/28 07:33:34 by demonwaves       ###   ########.fr       */
+/*   Updated: 2020/03/03 15:18:51 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,11 +84,7 @@ static void	assets_paths(t_env *env)
 	env->asset[ED_ENEMY_4] = "./assets/enemy_4.bmp";
 	env->asset[ED_PORTAL_DOOR] = "./assets/portal_wall.bmp";
 	env->asset[ED_PORTAL_WALL] = "./assets/portal_door.bmp";
-	env->asset[SHOTGUN] = shotgun_asset(env->w, env->h);
-	env->asset[MAGAZINE] = magazine_asset(env->w, env->h);
-	env->asset[SHELL] = shell_asset(env->w, env->h);
-	env->asset[COIN] = coins_asset(env->w, env->h);
-	env->asset[SKYBOX] = skybox_asset(env->w, env->h);
+	scaled_assets(env);
 }
 
 static void	infos_setup(t_env *env)

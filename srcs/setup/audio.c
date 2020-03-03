@@ -1,9 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   audio.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/03/03 15:04:05 by kibotrel          #+#    #+#             */
+/*   Updated: 2020/03/03 15:09:10 by kibotrel         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "clean.h"
 #include "libft.h"
 
 static int32_t	bits_per_sample(int32_t format)
 {
-	int32_t		mask;
+	int32_t			mask;
 
 	mask = format & SF_FORMAT_SUBMASK;
 	if (mask == SF_FORMAT_PCM_24)
@@ -18,8 +30,8 @@ static int32_t	bits_per_sample(int32_t format)
 
 void			audio_setup(t_env *env, t_audio *audio)
 {
-	static char	*path[2] = {"./assets/shotgun.wav", "./assets/ost1.wav"};
-	int			i;
+	int				i;
+	static char		*path[2] = {"./assets/shotgun.wav", "./assets/ost1.wav"};
 
 	i = -1;
 	ao_initialize();
