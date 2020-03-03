@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/14 08:01:04 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/03/02 23:13:01 by demonwaves       ###   ########.fr       */
+/*   Updated: 2020/03/02 23:29:03 by demonwaves       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,24 +34,6 @@ static uint32_t	weapon_frame(uint32_t frame)
 		return (0);
 }
 
-static void		shot(t_env *env)
-{
-	int			read;
-
-	while (1)
-	{
-		read = sf_read_short(env->audio.stream[0], env->audio.buffer[0], STREAM_SIZE);
-		if (read && !env->data.closed && env->win == GAME)
-			ao_play(env->audio.device, (char *)env->audio.buffer[0], (uint_32) (read * sizeof(short)));
-		else
-		{
-			sf_seek(env->audio.stream[0], 0, SEEK_SET);
-			break;
-		}
-	}
-	pthread_exit(NULL);
-}
-
 static uint32_t	weapon_state(t_env *env)
 {
 	uint32_t	pos;
@@ -60,11 +42,6 @@ static uint32_t	weapon_state(t_env *env)
 	pos = weapon_frame(env->tick.shot.new - env->tick.shot.old);
 	if (!pos)
 		env->data.shot = 0;
-	else if (pos == 1 && env->audio.fire)
-	{
-		pthread_create(&env->sound, NULL, (void*)shot, env);
-		env->audio.fire = 0;
-	}
 	return (pos);
 }
 

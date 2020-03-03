@@ -18,7 +18,7 @@ static int32_t	bits_per_sample(int32_t format)
 
 void			audio_setup(t_env *env, t_audio *audio)
 {
-	static char	*path[2] = {"./assets/shotgun.wav", "./assets/test.wav"};
+	static char	*path[2] = {"./assets/shotgun.wav", "./assets/ost1.wav"};
 	int			i;
 
 	i = -1;
