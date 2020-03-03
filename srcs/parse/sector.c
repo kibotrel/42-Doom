@@ -6,7 +6,7 @@
 /*   By: reda-con <reda-con@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/17 16:35:58 by reda-con          #+#    #+#             */
-/*   Updated: 2020/03/03 09:16:18 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/03/03 11:44:31 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,19 +15,22 @@
 #include "clean.h"
 #include <stdlib.h>
 
-int			third_check(t_sector *s, char **t, t_vec2d *ver, int i)
+int			third_check(t_env *e, char **t, t_vec2d *ver, int i)
 {
 	int j;
 
 	j = 0;
 	while (j < i)
 	{
-		if (t[22 + j] && ft_isnum(t[22 + j]))
-			s[ft_atoi(t[2])].vertex[j] = ver[ft_atoi(t[22 + j])];
+		if (t[22 + j] && ft_isnum(t[22 + j]) && t[22 + j]
+				&& ft_atoi(t[22 + j]) < (int)e->vert_ct
+				&& ft_atoi(t[22 + j]) >= 0)
+			e->sector[ft_atoi(t[2])].vertex[j] = ver[ft_atoi(t[22 + j])];
 		else
 			return (4);
-		if (t[23 + i + j] && ft_isnum(t[23 + i + j]))
-			s[ft_atoi(t[2])].neighbor[j] = ft_atoi(t[23 + i + j]);
+		if (t[23 + i + j] && ft_isnum(t[23 + i + j])
+				&& ft_atoi(t[23 + i + j]) < (int)e->zones)
+			e->sector[ft_atoi(t[2])].neighbor[j] = ft_atoi(t[23 + i + j]);
 		else
 			return (4);
 		++j;
@@ -42,14 +45,15 @@ int			second_check(t_sector *s, char **t, t_vec2d *ver, t_env *e)
 	int		i;
 
 	i = ft_atoi(t[20]);
-	s[ft_atoi(t[2])].texture = ft_atoi(t[4]);
-	s[ft_atoi(t[2])].type = ft_atoi(t[6]);
-	s[ft_atoi(t[2])].data = ft_atoi(t[8]);
-	s[ft_atoi(t[2])].light = ft_atoi(t[10]);
 	s[ft_atoi(t[2])].floor = ft_atoi(t[12]);
 	s[ft_atoi(t[2])].ceil = ft_atoi(t[14]);
-	if (s[ft_atoi(t[2])].floor >= s[ft_atoi(t[2])].ceil)
-		clean(e, E_PARSE_CEIL_FLOOR);
+	if ((s[ft_atoi(t[2])].texture = ft_atoi(t[4])) < 0
+			|| (s[ft_atoi(t[2])].data = ft_atoi(t[8])) < 0
+			|| s[ft_atoi(t[2])].floor >= s[ft_atoi(t[2])].ceil
+			|| ft_atoi(t[16]) < 0 || ft_atoi(t[18]) < 0)
+		return (4);
+	s[ft_atoi(t[2])].type = ft_atoi(t[6]);
+	s[ft_atoi(t[2])].light = ft_atoi(t[10]);
 	s[ft_atoi(t[2])].gravity = (double)ft_atoi(t[16]) / 100;
 	s[ft_atoi(t[2])].friction = (double)ft_atoi(t[18]) / 100;
 	s[ft_atoi(t[2])].points = i;
@@ -59,7 +63,7 @@ int			second_check(t_sector *s, char **t, t_vec2d *ver, t_env *e)
 		clean(e, E_MALLOC);
 	if (t[22 + i] && !ft_strcmp(t[22 + i], "portals"))
 	{
-		if (third_check(s, t, ver, i))
+		if (third_check(e, t, ver, i))
 			return (4);
 	}
 	else
@@ -84,7 +88,8 @@ int			verif_sector(t_sector *s, char **t, t_vec2d *ver, t_env *e)
 				&& ft_isnum(t[12]) && ft_isnum(t[14]) && ft_isnum(t[16])
 				&& ft_isnum(t[18]) && ft_isnum(t[20]))
 		{
-			if (second_check(s, t, ver, e))
+			if (second_check(s, t, ver, e) || ft_atoi(t[2]) != (int)e->sect_ct
+					|| ft_atoi(t[2]) >= (int)e->zones)
 				return (4);
 		}
 		else
@@ -92,5 +97,6 @@ int			verif_sector(t_sector *s, char **t, t_vec2d *ver, t_env *e)
 	}
 	else
 		return (4);
+	++e->sect_ct;
 	return (0);
 }

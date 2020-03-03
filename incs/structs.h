@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 18:48:17 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/03/05 09:57:38 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/03/05 10:11:10 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -327,6 +327,8 @@ typedef struct			s_env
 	t_setting			setting;
 	int					tuto;
 	t_tuto				test;
+	uint32_t			sect_ct;
+	uint32_t			vert_ct;
 }						t_env;
 
 #endif

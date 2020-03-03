@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 17:59:50 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/03/05 10:09:30 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/03/05 10:10:53 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ typedef enum	e_status
 	E_PARSE_TOTAL,
 	E_PARSE_NB_VERTEX,
 	E_PARSE_NB_SECTOR,
-	E_PARSE_CEIL_FLOOR,
+	E_PARSE_NO_TOTAL,
 	E_SDL_THREAD,
 	E_AUDIO_DRIVER,
 	E_FLOAT,
@@ -128,6 +128,7 @@ typedef enum		e_effects
 	ELEVATOR,
 	LAVA,
 	HEAL,
+	SKY,
 	END
 }					t_effects;
 

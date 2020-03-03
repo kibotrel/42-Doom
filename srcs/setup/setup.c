@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/16 11:58:26 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/03/05 10:10:28 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/03/05 10:12:16 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@
 static void	bzero_params(t_env *env)
 {
 	ft_bzero(env, sizeof(t_env));
+	ft_bzero(&env->test, sizeof(t_tuto));
 	ft_bzero(env->asset, sizeof(char*));
 	ft_bzero(env->error, sizeof(char*));
 	ft_bzero(&env->cam, sizeof(t_cam));
@@ -73,7 +74,7 @@ static void	error_messages(t_env *env)
 	env->error[E_PARSE_TOTAL] = M_PARSE_TOTAL;
 	env->error[E_PARSE_NB_VERTEX] = M_PARSE_NB_VERTEX;
 	env->error[E_PARSE_NB_SECTOR] = M_PARSE_NB_SECTOR;
-	env->error[E_PARSE_CEIL_FLOOR] = M_PARSE_CEIL_FLOOR;
+	env->error[E_PARSE_NO_TOTAL] = M_PARSE_NO_TOTAL;
 	env->error[E_SDL_THREAD] = M_SDL_THREAD;
 	env->error[E_AUDIO_DRIVER] = M_AUDIO_DRIVER;
 	env->error[E_FLOAT] = M_FLOAT;
@@ -107,7 +108,7 @@ void	infos_setup(t_env *env)
 {
 	env->w = WIN_W;
 	env->h = WIN_H;
-	env->win = MENU;
+	env->win = GAME;
 	env->cam.fly = -1;
 	env->cam.fall = 1;
 	env->cam.speed = 1;

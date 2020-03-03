@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/23 16:36:21 by reda-con          #+#    #+#             */
-/*   Updated: 2020/03/03 09:15:56 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/03/03 11:39:02 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,10 @@ int		verif_player(t_cam *cam, char **tab)
 			if (tab[9])
 				return (3);
 			cam->pos = v3d(floor(ft_atoi(tab[2]) / 10), floor(ft_atoi(tab[4]) / 10), 0);
+			if (ft_atoi(tab[6]) < 0)
+				return (3);
 			cam->sector = ft_atoi(tab[6]);
-			cam->angle = ft_radians(ft_atoi(tab[8]));
+			cam->angle = fabs(ft_radians(ft_atoi(tab[8])));
 		}
 		else
 			return (3);
