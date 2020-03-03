@@ -20,35 +20,6 @@ void	write_player(t_ed_player player, t_vertex if_no_player, int fd)
 	ft_putstr_fd("\n\n", fd);
 }
 
-void	write_entities(t_ed_entity *entities, int fd, bool type)
-{
-	t_ed_entity	*entity;
-
-	entity = entities;
-	while (entity->prev)
-		entity = entity->prev;
-	while (entity)
-	{
-		type == true ? ft_putstr_fd("enemy number ", fd) :
-			ft_putstr_fd("object number ", fd);
-		ft_putnbr_fd(entity->number, fd);
-		ft_putstr_fd(" x ", fd);
-		ft_putnbr_fd(entity->x, fd);
-		ft_putstr_fd(" y ", fd);
-		ft_putnbr_fd(entity->y, fd);
-		ft_putstr_fd(" sector ", fd);
-		ft_putnbr_fd(entity->sector, fd);
-		ft_putstr_fd(" angle ", fd);
-		ft_putnbr_fd(entity->angle, fd);
-		ft_putstr_fd(" type ", fd);
-		ft_putnbr_fd(entity->type, fd);
-		ft_putchar_fd('\n', fd);
-		entity = entity->next;
-	}
-	if (entities)
-		ft_putchar_fd('\n', fd);
-}
-
 void	write_vertexes(t_ed_sector *vertexes, int fd)
 {
 	t_ed_sector	*sect;

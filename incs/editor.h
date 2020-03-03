@@ -13,7 +13,7 @@ void				init_portals(t_editor *editor);
 /*
 **	clean/clean.c
 */
-void				clean_editor(t_editor *editor, t_env *env);
+void				clean_editor(t_editor *editor);
 void				init_count(t_count *count);
 
 /*
@@ -22,7 +22,7 @@ void				init_count(t_count *count);
 void				delete_vertex(t_vertex **vertex);
 void				delete_vertex_sector(t_ed_sector **vertex);
 void				delete_sector(t_ed_sector **sectors);
-void				clear_editor(t_editor *editor, t_env *env);
+void				clear_editor(t_editor *editor);
 
 /*
 **	core/events.c
@@ -165,7 +165,7 @@ int					count_sector(t_ed_sector *all_sector);
 */
 t_vertex			*get_vertex(t_editor *editor, int x, int y, t_env *env);
 void				add_vertex(t_vertex **vertex, t_vertex *new);
-t_vertex			*create_vertex(t_vertex v, t_editor *edit, t_env *env, int num);
+t_vertex			*create_vertex(t_vertex v, t_env *env, int num);
 t_vertex			init_vertex(int x, int y);
 
 /*
@@ -184,7 +184,7 @@ void				move_in_sector(t_editor *edit, int x, int y);
 /*
 **	sector/sector_utils.c
 */
-t_ed_sector			*create_sector(t_editor *edit, t_env *env);
+t_ed_sector			*create_sector(t_env *env, t_editor *edit);
 void				delete_sector_in_progress(t_ed_sector **sector, t_editor *edit);
 void				print_sector_light(t_env *env, int light, t_ed_sector *sect);
 

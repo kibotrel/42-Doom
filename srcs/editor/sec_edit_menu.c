@@ -94,7 +94,7 @@ static void		next_sec_clic_menu_editor(int y, t_editor *editor)
 			del_entity(&editor->object);
 		else if (editor->sett == SECTOR)
 			editor->presets = SECTOR_CEIL;
-		else if (editor->sett == EFFECTOR)
+		else if (editor->sett == EFFECTOR && editor->effects.effects != EFF_SKY)
 			editor->presets = EFF_DATA;
 		else
 			editor->presets = NONE;

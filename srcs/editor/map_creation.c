@@ -70,10 +70,6 @@ static void		write_file(t_editor *editor, int fd)
 	{
 		get_elements_number(editor, fd);
 		write_player(editor->player, *(sector->vertex), fd);
-		if (editor->enemy)
-			write_entities(editor->enemy, fd, true);
-		if (editor->object)
-			write_entities(editor->object, fd, false);
 		write_vertexes(sector, fd);
 		write_sectors(sector, fd);
 	}

@@ -3,16 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   env.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/08 19:29:45 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/21 16:38:41 by demonwaves       ###   ########.fr       */
+/*   Updated: 2020/03/03 08:30:55 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "libft.h"
 #include "clean.h"
+#include "editor.h"
 
 static void	env_clean(t_env *env)
 {
@@ -41,6 +42,7 @@ static void	env_clean(t_env *env)
 
 void		clean(t_env *env, uint8_t error)
 {
+	clean_editor(&env->editor);
 	ttf_clean(&env->sdl);
 	sdl_clean(&env->sdl);
 	env_clean(env);

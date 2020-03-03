@@ -1,12 +1,13 @@
+#include "clean.h"
 #include "libft.h"
 #include "editor.h"
 
-t_ed_sector	*create_sector(t_editor *edit, t_env *env)
+t_ed_sector	*create_sector(t_env *env, t_editor *edit)
 {
 	t_ed_sector	*sect;
 
 	if (!(sect = (t_ed_sector*)ft_memalloc(sizeof(t_ed_sector))))
-		clean_editor(edit, env);
+		clean(env, E_EDIT_SECTOR);
 	sect->sector_number = edit->count.sector++;
 	sect->h_ceil = 20;
 	sect->h_floor = 0;

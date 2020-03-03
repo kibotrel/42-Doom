@@ -13,9 +13,9 @@ void			init_count(t_count *count)
 	ft_bzero(count->eff_data, sizeof(int) * ALL_EFFECTS);
 }
 
-void			clean_editor(t_editor *editor, t_env *env)
+void			clean_editor(t_editor *editor)
 {
-	clear_editor(editor, env);
+	clear_editor(editor);
 	if (editor->which_sector)
 	{
 		delete_sector(&editor->which_sector);
@@ -39,11 +39,4 @@ void			clean_editor(t_editor *editor, t_env *env)
 		delete_vertex(&editor->cd);
 		free(editor->ab);
 	}
-	if (env->sdl.screen)
-		SDL_FreeSurface(env->sdl.screen);
-	if (env->sdl.win)
-		SDL_DestroyWindow(env->sdl.win);
-	TTF_Quit();
-	SDL_Quit();
-	exit(1);
 }

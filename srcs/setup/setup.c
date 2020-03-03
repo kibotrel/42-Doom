@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/16 11:58:26 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/28 16:55:36 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/03/03 08:46:59 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,12 @@ static void	error_messages(t_env *env)
 	env->error[E_BKGD] = M_BKGD;
 	env->error[E_PARSE] = M_PARSE;
 	env->error[E_SDL_THREAD] = M_SDL_THREAD;
+	env->error[E_EDIT_ENTITY] = M_EDIT_ENTITY;
+	env->error[E_EDIT_PORTAL] = M_EDIT_PORTAL;
+	env->error[E_EDIT_SECT_PORTAL] = M_E_SECT_PORT;
+	env->error[E_EDIT_SECTOR] = M_EDIT_SECTOR;
+	env->error[E_EDIT_TEXT] = M_EDIT_TEXT;
+	env->error[E_EDIT_VERTEX] = M_EDIT_VERTEX;
 }
 
 static void	assets_paths(t_env *env)

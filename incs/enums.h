@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 17:59:50 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/03/02 13:19:57 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/03/03 08:39:25 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,12 @@ typedef enum	e_status
 	E_MALLOC,
 	E_PARSE,
 	E_SDL_THREAD,
+	E_EDIT_ENTITY,
+	E_EDIT_PORTAL,
+	E_EDIT_SECTOR,
+	E_EDIT_SECT_PORTAL,
+	E_EDIT_TEXT,
+	E_EDIT_VERTEX,
 	NB_ERRORS
 }				t_status;
 

@@ -1,3 +1,4 @@
+#include "clean.h"
 #include "libft.h"
 #include "editor.h"
 
@@ -10,12 +11,12 @@ int				compare_coordinates(t_vertex *point, t_vertex *a, t_vertex *b)
 	return (0);
 }
 
-static t_portal	*create_portal(t_vertex v1, t_vertex v2, t_editor *edit, t_env *env)
+static t_portal	*create_portal(t_vertex v1, t_vertex v2, t_env *env)
 {
 	t_portal	*new;
 
 	if (!(new = (t_portal*)ft_memalloc(sizeof(t_portal))))
-		clean_editor(edit, env);
+		clean(env, E_EDIT_PORTAL);
 	new->extrems[0] = v1;
 	new->extrems[1] = v2;
 	new->type = 0;
@@ -66,7 +67,7 @@ void			add_portal(t_portal **portal, t_vertex v1, t_vertex v2,
 	t_portal	*new;
 	t_portal	*prev_portal;
 
-	new = create_portal(v1, v2, &env->editor, env);
+	new = create_portal(v1, v2, env);
 	if (!*portal)
 		*portal = new;
 	else

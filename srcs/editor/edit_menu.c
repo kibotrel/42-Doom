@@ -22,7 +22,7 @@ static void		fst_clic_editor_menu(int y, t_editor *editor)
 void			clic_editor_menu(int x, int y, t_editor *editor, t_env *env)
 {
 	if (x >= 1300 && x <= 1410 && y >= 760 && y <= 810)
-		clear_editor(editor, env);
+		clear_editor(editor);
 	else if (x >= 1420 && x <= 1530 && y >= 760 && y <= 810)
 		create_map(editor);
 	else if (x >= 1340 && x <= 1510)
