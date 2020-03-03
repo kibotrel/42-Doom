@@ -38,31 +38,31 @@ static void		change_percentage(int *to_change, bool fl)
 
 void			change_value(t_editor *editor, t_presets presets, bool fl)
 {
-	if (presets == SECTOR_FLOOR)
+	if (presets == SECTOR_FLOOR && editor->sector)
 		change_height(&editor->sector->h_floor, fl);
-	else if (presets == SECTOR_CEIL)
+	else if (presets == SECTOR_CEIL && editor->sector)
 		change_height(&editor->sector->h_ceil, fl);
-	else if (presets == SECTOR_TEXT)
+	else if (presets == SECTOR_TEXT && editor->sector)
 		change_type(&editor->sector->texture, fl, 0, 9);
-	else if (presets == SECTOR_TYPE)
+	else if (presets == SECTOR_TYPE && editor->sector)
 		change_type(&editor->sector->type, fl, 0, 3);
-	else if (presets == SECTOR_GRAV)
+	else if (presets == SECTOR_GRAV && editor->sector)
 		change_percentage(&editor->sector->gravity, fl);
-	else if (presets == SECTOR_FRICTION)
+	else if (presets == SECTOR_FRICTION && editor->sector)
 		change_percentage(&editor->sector->friction, fl);
-	else if (presets == SECTOR_LIGHT)
+	else if (presets == SECTOR_LIGHT && editor->sector)
 		change_type(&editor->sector->light, fl, -1, 6);
 	else if (presets == ENTITY_TYPE && editor->sett == ENEMY && editor->enemy)
 		change_type(&editor->enemy->type, fl, 0, 3);
 	else if (presets == ENTITY_TYPE && editor->sett == OBJECT && editor->object)
 		change_type(&editor->object->type, fl, 0 , 3);
-	else if (presets == ENTITY_MOVE && editor->sett == ENEMY)
+	else if (presets == ENTITY_MOVE && editor->sett == ENEMY && editor->enemy)
 		move_in_entities(&editor->enemy, fl);
-	else if (presets == ENTITY_MOVE && editor->sett == OBJECT)
+	else if (presets == ENTITY_MOVE && editor->sett == OBJECT && editor->object)
 		move_in_entities(&editor->object, fl);
-	else if (presets == ENTITY_ROTATE && editor->sett == ENEMY)
+	else if (presets == ENTITY_ROTATE && editor->sett == ENEMY && editor->object)
 		rotate_entity(editor->enemy, fl);
-	else if (presets == ENTITY_ROTATE && editor->sett == OBJECT)
+	else if (presets == ENTITY_ROTATE && editor->sett == OBJECT && editor->object)
 		rotate_entity(editor->object, fl);
 	else if (presets == PLAYER_ROTATE)
 		rotate_player(&editor->player, fl);
@@ -72,7 +72,9 @@ void			change_value(t_editor *editor, t_presets presets, bool fl)
 	{
 		if (editor->effects.effects != EFF_NONE && editor->effects.effects != EFF_SKY)
 		{
-			if (editor->effects.effects != EFF_ELEV)
+			if (editor->effects.effects == EFF_ELEV)
+				change_type(&editor->count.eff_data[editor->effects.effects], fl, -1000, 1000);
+			else
 				change_type(&editor->count.eff_data[editor->effects.effects], fl, 0, 1000);
 		}
 	}

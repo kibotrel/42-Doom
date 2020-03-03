@@ -15,11 +15,11 @@ void				init_portals(t_editor *editor);
 */
 void				clean_editor(t_editor *editor);
 void				init_count(t_count *count);
+void				delete_vertex(t_vertex **vertex);
 
 /*
 **	clean/delete.c
 */
-void				delete_vertex(t_vertex **vertex);
 void				delete_vertex_sector(t_ed_sector **vertex);
 void				delete_sector(t_ed_sector **sectors);
 void				clear_editor(t_editor *editor);
@@ -110,7 +110,7 @@ void				blank_menu(SDL_Surface *s, int set, t_editor *edit,
 **	menu/sec_edit_menu.c
 */
 void				sec_clic_menu_editor(int y, t_editor *editor);
-void				sec_blank_menu(SDL_Surface *s, int set, int preset);
+void				sec_blank_menu(SDL_Surface *s, int set, int effect, int preset);
 
 /*
 **	menu/sec_edit_menu_utils.c
@@ -206,5 +206,6 @@ void				editor_keyboard(t_env *env, t_editor *edit);
 void		effector_text(t_env *env, t_presets preset, t_effects effect);
 void		change_effect(t_effects *effect, bool fl);
 void		apply_effect_in_sector(t_editor *edit, int x, int y);
+void		apply_plate(t_editor *edit, int x, int y, bool fl);
 
 #endif

@@ -10,7 +10,7 @@ void	sec_clic_menu_editor_tool(int y, t_editor *editor)
 			editor->presets = ENTITY_ROTATE;
 		else if (editor->sett == SECTOR)
 			editor->presets = SECTOR_FLOOR;
-		else if (editor->sett == EFFECTOR)
+		else if (editor->sett == EFFECTOR && editor->effects.effects != EFF_PLATE)
 			editor->presets = EFF_MOVE;
 		if (editor->sett == PLAYER)
 			editor->presets = NONE;
@@ -28,6 +28,8 @@ void	next_sec_clic_menu_editor_tool(int y, t_editor *editor)
 			editor->presets = ENTITY_TYPE;
 		else if (editor->sett == SECTOR)
 			editor->presets = SECTOR_TEXT;
+		else if (editor->sett == EFFECTOR)
+			editor->presets = EFF_S_PLATE;
 		else
 			editor->presets = NONE;
 	}

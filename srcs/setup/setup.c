@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/16 11:58:26 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/03/03 08:46:59 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/03/03 13:11:52 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,14 +79,6 @@ static void	assets_paths(t_env *env)
 	env->asset[ED_TEXT_8] = "./assets/texture_8.bmp";
 	env->asset[ED_TEXT_9] = "./assets/texture_9.bmp";
 	env->asset[ED_TEXT_10] = "./assets/texture_10.bmp";
-	env->asset[ED_OBJ_1] = "./assets/object_1.bmp";
-	env->asset[ED_OBJ_2] = "./assets/object_2.bmp";
-	env->asset[ED_OBJ_3] = "./assets/object_3.bmp";
-	env->asset[ED_OBJ_4] = "./assets/object_4.bmp";
-	env->asset[ED_ENEMY_1] = "./assets/enemy_1.bmp";
-	env->asset[ED_ENEMY_2] = "./assets/enemy_2.bmp";
-	env->asset[ED_ENEMY_3] = "./assets/enemy_3.bmp";
-	env->asset[ED_ENEMY_4] = "./assets/enemy_4.bmp";
 	env->asset[ED_PORTAL_DOOR] = "./assets/portal_wall.bmp";
 	env->asset[ED_PORTAL_WALL] = "./assets/portal_door.bmp";
 	env->asset[SHOTGUN] = shotgun_asset(env->w, env->h);

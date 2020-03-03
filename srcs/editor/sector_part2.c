@@ -47,6 +47,37 @@ static void		draw_sector_effects(t_sdl *sdl, t_ed_sector *sectors, t_editor *edi
 	}
 }
 
+static void		draw_sector_plate_door(t_sdl *sdl, t_ed_sector *sectors, t_editor *edit)
+{
+	t_ed_sector *sect;
+	t_vertex	*vertex;
+	int			i;
+	int			color;
+	int			number;
+
+	sect = sectors;
+	while (sect->prev)
+		sect = sect->prev;
+	number = EFF_PLATE + edit->count.eff_data[EFF_PLATE];
+	while (sect)
+	{
+		if (sect->effect.effects == number || sect->effect.effects == -number)
+		{
+			color = 0xff00ff;
+			if (sect->effect.effects == number)
+				color = 0xffff00;
+			i = 0;
+			vertex = sect->vertex;
+			while (vertex && ++i)
+			{
+				draw_walls(sdl, sect, vertex, color);
+				vertex = vertex->next;
+			}
+		}
+		sect = sect->next;
+	}
+}
+
 static void		prev_display_sector(t_sdl *sdl, t_ed_sector *sectors)
 {
 	t_ed_sector	*sect;
@@ -87,6 +118,8 @@ void			next_display_sector(t_sdl *sdl, t_ed_sector *sectors, t_editor *edit)
 		sect = sect->next;
 	}
 	prev_display_sector(sdl, sectors);
-	if (edit->sett == EFFECTOR && sectors)
+	if (edit->sett == EFFECTOR && sectors && edit->effects.effects != EFF_PLATE)
 		draw_sector_effects(sdl, sectors, edit);
+	if (edit->sett == EFFECTOR && edit->effects.effects == EFF_PLATE && sectors)
+		draw_sector_plate_door(sdl, sectors, edit);
 }

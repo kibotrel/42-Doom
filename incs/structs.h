@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 18:48:17 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/03/02 13:47:51 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/03/03 14:44:16 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -164,7 +164,6 @@ typedef struct		s_effector
 {
 	t_effects		effects;
 	int				data;
-	int				co;
 }					t_effector;
 typedef struct			s_ed_sector
 {
@@ -209,6 +208,10 @@ typedef struct			s_editor
 {
 	int					true_grid;
 	int					dist_grid;
+	char				*tab[4][7];
+	char				*numbers[6];
+	char				*first_params[9];
+	char				*effector[ALL_EFFECTS];
 	bool				finish;
 	bool				sect_is_closed;
 	int8_t				grid;

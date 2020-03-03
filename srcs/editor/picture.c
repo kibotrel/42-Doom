@@ -32,16 +32,6 @@ void		print_params_image(t_editor *edit, t_presets presets,
 		i = ED_TEXT_1;
 		j = edit->sector->texture;
 	}
-	else if (sett == OBJECT && presets == ENTITY_TYPE)
-	{
-		i = ED_OBJ_1;
-		j = edit->object->type;
-	}
-	else if (sett == ENEMY && presets == ENTITY_TYPE)
-	{
-		i = ED_ENEMY_1;
-		j = edit->enemy->type;
-	}
 	else
 		return ;
 	rectangle(init_vertex(1491, 41), init_vertex(1557, 106), 0xffffff, 

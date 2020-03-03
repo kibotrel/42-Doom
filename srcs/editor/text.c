@@ -3,22 +3,6 @@
 #include "editor.h"
 #include "utils.h"
 
-static char const	*g_first_params[9] = {
-	"Sector", "Player", "Enemy", "Object", "Portal","Effect", "Clear", "Save",
-	"Draw Sector Clockwise"
-};
-
-static char const	*g_number[6] = {
-	"1", "2", "3", "4", "5", "6"
-};
-
-static char const	*g_tab[4][7] = {
-	{"Select.", "Floor", "Roof", "Text", "Grav", "Frict", "Light"},
-	{"Rotate", "Del"},
-	{"Select.", "Rotate", "Del", "Type"},
-	{"Effect", "Select.", "Data", "Cost", " / sec"}
-};
-
 void		display_text(int color, t_vertex pos, const char *text, t_env *env)
 {
 	SDL_Rect	where;
@@ -71,30 +55,33 @@ void		print_param_to_screen(t_env *env, t_settings sett, t_editor *editor)
 {
 	t_vertex	pos;
 	int			i;
+	
 
 	i = -1;
 	pos.x = 1410;
 	pos.y = 155;
 	while (++i < 6)
 	{
-		display_text(WHITE, pos, g_first_params[i], env);
-		display_text(WHITE, init_vertex(pos.x - 45, pos.y), g_number[i], env);
+		display_text(WHITE, pos, editor->first_params[i], env);
+		display_text(WHITE, init_vertex(pos.x - 45, pos.y), editor->numbers[i], env);
 		pos.y = pos.y + 100;
 	}
-	display_text(WHITE, init_vertex(1315, 765), g_first_params[6], env);
-	display_text(WHITE, init_vertex(1445, 765), g_first_params[7], env);
+	display_text(WHITE, init_vertex(1315, 765), editor->first_params[6], env);
+	display_text(WHITE, init_vertex(1445, 765), editor->first_params[7], env);
 	if (editor->presets > SECTOR_MOVE && editor->sector && editor->sett != EFFECTOR)
 		print_sector_values(editor->sector, editor->presets, env);
-	if ((editor->presets == ENTITY_TYPE && ((sett == ENEMY && editor->enemy) ||
-		(sett == OBJECT && editor->object))) ||
-			editor->presets == SECTOR_TEXT)
+	if (editor->presets == SECTOR_TEXT)
 		print_params_image(editor, editor->presets, editor->sett, env);
 	if (editor->presets == SECTOR_LIGHT && editor->sector)
 		print_sector_light(env, editor->sector->light, editor->sector);
+	if (editor->presets == ENTITY_TYPE && sett == ENEMY && editor->enemy)
+		print_sector_light(env, editor->enemy->type, editor->sector);
+	if (editor->presets == ENTITY_TYPE && sett == OBJECT && editor->object)
+		print_sector_light(env, editor->object->type, editor->sector);
 	if (sett == EFFECTOR)
 		effector_text(env, editor->presets, editor->effects.effects);
 	if (editor->sect_is_closed == false)
-		display_text(WHITE, init_vertex(1380, 50), g_first_params[8], env);
+		display_text(WHITE, init_vertex(1380, 50), editor->first_params[8], env);
 }
 
 void		print_param_in_param(t_settings sett, t_env *env)
@@ -114,7 +101,7 @@ void		print_param_in_param(t_settings sett, t_env *env)
 	i = -1;
 	where.x = 1610;
 	where.y = 155;
-	while (++i < 7 && g_tab[j][i])
+	while (++i < 7 && env->editor.tab[j][i])
 	{
 		if (sett == EFFECTOR && i == 2)
 		{
@@ -125,10 +112,10 @@ void		print_param_in_param(t_settings sett, t_env *env)
 				|| env->editor.effects.effects == EFF_LAVA
 					|| env->editor.effects.effects == EFF_HEAL)
 				i = 4;
-			display_text(WHITE, where, g_tab[j][i], env);
+			display_text(WHITE, where, env->editor.tab[j][i], env);
 			return ;
 		}
-		display_text(WHITE, where, g_tab[j][i], env);
+		display_text(WHITE, where, env->editor.tab[j][i], env);
 		where.y = where.y + 100;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 17:59:50 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/03/03 08:39:25 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/03/03 13:10:21 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,14 +46,6 @@ typedef enum	e_assets
 	ED_TEXT_8,
 	ED_TEXT_9,
 	ED_TEXT_10,
-	ED_OBJ_1,
-	ED_OBJ_2,
-	ED_OBJ_3,
-	ED_OBJ_4,
-	ED_ENEMY_1,
-	ED_ENEMY_2,
-	ED_ENEMY_3,
-	ED_ENEMY_4,
 	ED_PORTAL_DOOR,
 	ED_PORTAL_WALL,
 	SHOTGUN,
@@ -117,8 +109,9 @@ typedef enum		e_effects
 	EFF_ELEV,
 	EFF_LAVA,
 	EFF_HEAL,
-	EFF_END,
 	EFF_SKY,
+	EFF_END,
+	EFF_PLATE,
 	ALL_EFFECTS
 }					t_effects;
 
@@ -139,7 +132,9 @@ typedef enum		e_presets
 	PLAYER_ROTATE,
 	EFF_EFFECT,
 	EFF_MOVE,
-	EFF_DATA
+	EFF_DATA,
+	EFF_S_PLATE,
+	EFF_S_DOOR
 }					t_presets;
 
 /*

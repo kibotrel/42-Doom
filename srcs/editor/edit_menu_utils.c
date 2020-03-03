@@ -49,9 +49,12 @@ void			next_blank_menu(int set, SDL_Surface *s)
 	if (set != PORTAL && set != PLAYER)
 	{
 		square(1600, 400, 0xff00ff, s);
-		square(1600, 500, 0x00ffff, s);
 		rectangle(init_vertex(1540, 340), init_vertex(1710, 410), WHITE, s);
-		rectangle(init_vertex(1540, 440), init_vertex(1710, 510), WHITE, s);
+		if (set != EFFECTOR)
+		{
+			square(1600, 500, 0x00ffff, s);
+			rectangle(init_vertex(1540, 440), init_vertex(1710, 510), WHITE, s);
+		}
 		if (set == SECTOR)
 		{
 			square(1600, 600, 0x124079, s);
@@ -89,7 +92,7 @@ void			blank_menu(SDL_Surface *s, int set, t_editor *edit, int preset, t_env *en
 	clr = ((set != EFFECTOR) ? 0xffffff : 0x177013);
 	rectangle(init_vertex(1340, 640), init_vertex(1510, 710), clr, s);
 	next_blank_menu(set, s);
-	sec_blank_menu(s, set, preset);
+	sec_blank_menu(s, set, edit->effects.effects, preset);
 	rectangle(init_vertex(1350, 150), init_vertex(1400, 200), 0xffa500, s);
 	rectangle(init_vertex(1350, 250), init_vertex(1400, 300), 0xffa500, s);
 	rectangle(init_vertex(1350, 350), init_vertex(1400, 400), 0xffa500, s);

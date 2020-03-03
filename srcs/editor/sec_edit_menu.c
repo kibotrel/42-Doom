@@ -1,6 +1,6 @@
 #include "editor.h"
 
-static void		blank_sect(int set, int preset, SDL_Surface *s)
+static void		blank_sect(int set, int preset, int effect, SDL_Surface *s)
 {
 	int		clr;
 
@@ -21,13 +21,22 @@ static void		blank_sect(int set, int preset, SDL_Surface *s)
 		clr = ((preset != SECTOR_LIGHT) ? 0xffffff : 0x177013);
 		rectangle(init_vertex(1540, 740), init_vertex(1710, 810), clr, s);
 	}
+	if (set == EFFECTOR && effect == EFF_PLATE)
+	{
+		square(1600, 500, 0x00ffff, s);
+		clr = ((preset != EFF_S_PLATE) ? 0xffffff : 0x177013);
+		rectangle(init_vertex(1540, 440), init_vertex(1710, 510), clr, s);
+		square(1600, 600, 0x124079, s);
+		clr = ((preset != EFF_S_DOOR) ? 0xffffff : 0x177013);
+		rectangle(init_vertex(1540, 540), init_vertex(1710, 610), clr, s);
+	}
 }
 
-void			sec_blank_menu(SDL_Surface *s, int set, int preset)
+void			sec_blank_menu(SDL_Surface *s, int set, int effect, int preset)
 {
 	int		clr;
 
-	blank_sect(set, preset, s);
+	blank_sect(set, preset, effect, s);
 	if (set == OBJECT || set == ENEMY)
 	{
 		clr = ((preset != ENTITY_TYPE) ? 0xffffff : 0x177013);
@@ -50,7 +59,8 @@ void			sec_blank_menu(SDL_Surface *s, int set, int preset)
 		clr = ((preset != EFF_DATA) ? 0xffffff : 0x177013);
 		rectangle(init_vertex(1540, 340), init_vertex(1710, 410), clr, s);
 	}
-	if (preset != NONE && preset != SECTOR_MOVE && preset != EFF_MOVE)
+	if (preset != NONE && preset != SECTOR_MOVE && preset != EFF_MOVE 
+		&& preset != EFF_S_DOOR && preset != EFF_S_PLATE)
 	{
 		rectangle(init_vertex(1399, 49), init_vertex(1450, 100), 0xffa500, s);
 		rectangle(init_vertex(1599, 49), init_vertex(1650, 100), 0xffa500, s);
@@ -65,6 +75,8 @@ static void		part_5_sec_clic_menu_editor(int y, t_editor *editor)
 	{
 		if (editor->sett == SECTOR)
 			editor->presets = SECTOR_GRAV;
+		else if (editor->sett == EFFECTOR)
+			editor->presets = EFF_S_DOOR;
 		else
 			editor->presets = NONE;
 	}

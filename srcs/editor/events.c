@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 13:09:05 by nde-jesu          #+#    #+#             */
-/*   Updated: 2020/03/02 13:49:13 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/03/03 11:10:55 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,10 @@ void		editor_click(t_editor *editor, SDL_Event event, t_env *env)
 			place_portal(editor, event.motion.x, event.motion.y, env);
 		else if (editor->sett == EFFECTOR && editor->presets == EFF_MOVE)
 			apply_effect_in_sector(editor, event.motion.x, event.motion.y);
+		else if (editor->sett == EFFECTOR && editor->presets == EFF_S_DOOR)
+			apply_plate(editor, event.motion.x, event.motion.y, true);
+		else if (editor->sett == EFFECTOR && editor->presets == EFF_S_PLATE)
+			apply_plate(editor, event.motion.x, event.motion.y, false);
 	}
 	else if (editor->sect_is_closed == true && event.motion.x > EDIT_W)
 		clic_editor_menu(event.motion.x, event.motion.y, editor, env);

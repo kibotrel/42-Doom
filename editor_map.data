@@ -1,12 +1,12 @@
 total vertexes 4 sectors 1 enemies 0 objects 0
 
-player x 550 y 300 sector 0 angle 90
+player x 275 y 375 sector 0 angle 90
 
-vertex number 0 x 550 y 300
-vertex number 1 x 775 y 350
-vertex number 2 x 650 y 550
-vertex number 3 x 450 y 500
+vertex number 0 x 275 y 375
+vertex number 1 x 475 y 375
+vertex number 2 x 500 y 500
+vertex number 3 x 350 y 525
 
-sector number 0 texture 0 type 4 light -1 h_floor 0 h_ceil 20 gravity 10 friction 50 vertex_num 4 vertexes 0 1 2 3 portals -1 -1 -1 -1
+sector number 0 texture 0 type -3 data 4 light -1 h_floor 0 h_ceil 20 gravity 10 friction 50 vertex_num 4 vertexes 0 1 2 3 portals -1 -1 -1 -1
 
 
