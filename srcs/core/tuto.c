@@ -42,10 +42,6 @@ static void		sec_step(t_env *env)
 
 void			tuto(t_env *env)
 {
-	int		i;
-
-	i = -1;
-	while (++i < 5)
 	if (env->test.all_move || (env->test.move[0] && env->test.move[1]
 				&& env->test.move[2] && env->test.move[3]))
 	{

@@ -6,7 +6,7 @@
 /*   By: reda-con <reda-con@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/17 16:35:58 by reda-con          #+#    #+#             */
-/*   Updated: 2020/02/21 10:20:14 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/03/03 09:16:18 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,15 +25,15 @@ int			third_check(t_sector *s, char **t, t_vec2d *ver, int i)
 		if (t[22 + j] && ft_isnum(t[22 + j]))
 			s[ft_atoi(t[2])].vertex[j] = ver[ft_atoi(t[22 + j])];
 		else
-			return (1);
+			return (4);
 		if (t[23 + i + j] && ft_isnum(t[23 + i + j]))
 			s[ft_atoi(t[2])].neighbor[j] = ft_atoi(t[23 + i + j]);
 		else
-			return (1);
+			return (4);
 		++j;
 	}
 	if (t[23 + i + j])
-		return (1);
+		return (4);
 	return (0);
 }
 
@@ -49,21 +49,21 @@ int			second_check(t_sector *s, char **t, t_vec2d *ver, t_env *e)
 	s[ft_atoi(t[2])].floor = ft_atoi(t[12]);
 	s[ft_atoi(t[2])].ceil = ft_atoi(t[14]);
 	if (s[ft_atoi(t[2])].floor >= s[ft_atoi(t[2])].ceil)
-		clean(e, E_PARSE);
+		clean(e, E_PARSE_CEIL_FLOOR);
 	s[ft_atoi(t[2])].gravity = (double)ft_atoi(t[16]) / 100;
 	s[ft_atoi(t[2])].friction = (double)ft_atoi(t[18]) / 100;
 	s[ft_atoi(t[2])].points = i;
 	if (!(s[ft_atoi(t[2])].vertex = (t_vec2d*)malloc(sizeof(t_vec2d) * i)))
-		clean(e, E_PARSE);
+		clean(e, E_MALLOC);
 	if (!(s[ft_atoi(t[2])].neighbor = (int*)malloc(sizeof(int) * i)))
-		clean(e, E_PARSE);
+		clean(e, E_MALLOC);
 	if (t[22 + i] && !ft_strcmp(t[22 + i], "portals"))
 	{
 		if (third_check(s, t, ver, i))
-			return (1);
+			return (4);
 	}
 	else
-		return (1);
+		return (4);
 	return (0);
 }
 
@@ -85,12 +85,12 @@ int			verif_sector(t_sector *s, char **t, t_vec2d *ver, t_env *e)
 				&& ft_isnum(t[18]) && ft_isnum(t[20]))
 		{
 			if (second_check(s, t, ver, e))
-				return (1);
+				return (4);
 		}
 		else
-			return (1);
+			return (4);
 	}
 	else
-		return (1);
+		return (4);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 17:59:50 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/03/05 08:42:43 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/03/05 10:09:30 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,20 @@ typedef enum	e_status
 	E_BKGD,
 	E_MALLOC,
 	E_PARSE,
+	E_PARSE_FS_LINE,
+	E_PARSE_VERTEX,
+	E_PARSE_PLAYER,
+	E_PARSE_SECTOR,
+	E_PARSE_BLANK,
+	E_PARSE_NAME,
+	E_PARSE_OPEN,
+	E_PARSE_GNL,
+	E_PARSE_CLOSE,
+	E_PARSE_NO_PLAYER,
+	E_PARSE_TOTAL,
+	E_PARSE_NB_VERTEX,
+	E_PARSE_NB_SECTOR,
+	E_PARSE_CEIL_FLOOR,
 	E_SDL_THREAD,
 	E_AUDIO_DRIVER,
 	E_FLOAT,
@@ -109,15 +123,12 @@ typedef enum		e_settings
 typedef enum		e_effects
 {
 	EFF_NONE,
-	EFF_JET,
-	EFF_MONEY,
-	EFF_ELEV,
-	EFF_LAVA,
-	EFF_HEAL,
-	EFF_SKY,
-	EFF_END,
-	EFF_PLATE,
-	ALL_EFFECTS
+	JETPACK,
+	MONEY,
+	ELEVATOR,
+	LAVA,
+	HEAL,
+	END
 }					t_effects;
 
 typedef enum		e_presets

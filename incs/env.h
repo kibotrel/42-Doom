@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/16 11:54:25 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/03/05 10:01:01 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/03/05 10:09:40 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,20 @@
 
 # define M_BKGD			"\033[31;1mError:\033[0m Menu background not available"
 # define M_PARSE		"\033[31;1mError:\033[0m Parse error"
+# define M_PARSE_FS_LINE		"\033[31;1mError:\033[0m Wrong total line"
+# define M_PARSE_VERTEX		"\033[31;1mError:\033[0m Wrong vertex(s) line(s)"
+# define M_PARSE_PLAYER		"\033[31;1mError:\033[0m Wrong player line"
+# define M_PARSE_SECTOR		"\033[31;1mError:\033[0m Wrong sector(s) line(s)"
+# define M_PARSE_BLANK		"\033[31;1mError:\033[0m Wrong blank in map"
+# define M_PARSE_NAME		"\033[31;1mError:\033[0m Wrong file name"
+# define M_PARSE_OPEN		"\033[31;1mError:\033[0m Can't open map"
+# define M_PARSE_GNL		"\033[31;1mError:\033[0m Error in reading map"
+# define M_PARSE_CLOSE		"\033[31;1mError:\033[0m Can't close map"
+# define M_PARSE_NO_PLAYER		"\033[31;1mError:\033[0m Miss player in map"
+# define M_PARSE_TOTAL		"\033[31;1mError:\033[0m No vertex in map"
+# define M_PARSE_NB_VERTEX		"\033[31;1mError:\033[0m Not enough vertex in map"
+# define M_PARSE_NB_SECTOR		"\033[31;1mError:\033[0m Not enough sector in map"
+# define M_PARSE_CEIL_FLOOR		"\033[31;1mError:\033[0m A ceil is under a floor"
 # define M_MALLOC		"\033[31;1mError:\033[0m Can't allocate memory."
 # define M_SDL_WIN		"\033[31;1mError:\033[0m Can't create SDL window."
 # define M_FILENAME		"\033[31;1mError:\033[0m Incorrect filename (*.data)."
@@ -90,5 +104,6 @@
 # define ORANGE			0xFFA500
 # define WHITE			0xFFFFFF
 # define PRPL 			0x5f287e
+# define PINK			0xFF69B4
 
 #endif
