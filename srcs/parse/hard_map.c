@@ -3,6 +3,7 @@
 #include "utils.h"
 #include "clean.h"
 #include "parse.h"
+#include "libft.h"
 
 static void		hard_map_two(t_env *env)
 {
@@ -27,7 +28,7 @@ static void		hard_map_two(t_env *env)
 	if (!(env->sector[1].vertex = (t_vec2d*)malloc(sizeof(t_vec2d) * 4)))
 		clean(env, E_MALLOC);
 	env->sector[1].texture = 1;
-	env->sector[1].type = 7;
+	env->sector[1].type = END + 1;
 	env->sector[1].data = 0;
 	env->sector[1].light = -1;
 	env->sector[1].floor = -1;
@@ -58,7 +59,7 @@ static void		hard_map_three(t_env *env)
 	if (!(env->sector[2].vertex = (t_vec2d*)malloc(sizeof(t_vec2d) * 4)))
 		clean(env, E_MALLOC);
 	env->sector[2].texture = 2;
-	env->sector[2].type = -7;
+	env->sector[2].type = -(END + 1);
 	env->sector[2].data = 0;
 }
 
@@ -120,11 +121,12 @@ static void		hard_map_five(t_env *env)
 		clean(env, E_MALLOC);
 }
 
-void		hard_map_one(t_env *env)
+void			hard_map_one(t_env *env)
 {
-	env->tuto = 1;
+	env->zones = 8;
 	if (!(env->sector = (t_sector*)malloc(sizeof(t_sector) * 8)))
 		clean(env, E_MALLOC);
+	ft_bzero(env->sector, sizeof(t_sector) * 8);
 	if (!(env->sector[0].neighbor = (int*)malloc(sizeof(int) * 7)))
 		clean(env, E_MALLOC);
 	if (!(env->sector[0].door_neighbor = (int*)malloc(sizeof(int) * 7)))

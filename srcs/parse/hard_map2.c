@@ -21,7 +21,7 @@ static void		hard_map_seven(t_env *env)
 	if (!(env->sector[5].vertex = (t_vec2d*)malloc(sizeof(t_vec2d) * 4)))
 		clean(env, E_MALLOC);
 	env->sector[5].texture = 5;
-	env->sector[5].type = 2;
+	env->sector[5].type = MONEY;
 	env->sector[5].data = 10;
 	env->sector[5].light = -1;
 	env->sector[5].floor = 4;
@@ -38,7 +38,6 @@ static void		hard_map_eight(t_env *env)
 	env->sector[5].vertex[2] = v2d(52.5, 27.5);
 	env->sector[5].vertex[3] = v2d(52.5, 30);
 	env->sector[5].neighbor[0] = -1;
-	env->sector[5].neighbor[1] = -1;
 	env->sector[5].neighbor[2] = -1;
 	env->sector[5].neighbor[3] = 4;
 	env->sector[5].door_neighbor[0] = -1;
@@ -52,14 +51,15 @@ static void		hard_map_eight(t_env *env)
 	if (!(env->sector[6].vertex = (t_vec2d*)malloc(sizeof(t_vec2d) * 4)))
 		clean(env, E_MALLOC);
 	env->sector[6].texture = 6;
-	env->sector[6].type = 3;
-	env->sector[6].data = 0;
+	env->sector[6].type = ELEVATOR;
+	env->sector[6].data = 13;
 	env->sector[6].light = -1;
-	env->sector[6].floor = 10;
+	env->sector[6].floor = 12;
 	env->sector[6].ceil = 35;
 	env->sector[6].gravity = 0.1;
 	env->sector[6].friction = 0.5;
 	env->sector[6].points = 4;
+	env->sector[6].elvt = 12;
 }
 
 static void		hard_map_nine(t_env *env)
@@ -83,7 +83,7 @@ static void		hard_map_nine(t_env *env)
 	if (!(env->sector[7].vertex = (t_vec2d*)malloc(sizeof(t_vec2d) * 6)))
 		clean(env, E_MALLOC);
 	env->sector[7].texture = 7;
-	env->sector[7].type = 5;
+	env->sector[7].type = HEAL;
 	env->sector[7].data = 2;
 	env->sector[7].light = -1;
 	env->sector[7].floor = 25;
@@ -120,10 +120,10 @@ static void		hard_map_ten(t_env *env)
 	env->sector[4].neighbor[7] = 3;
 }
 
-void	hard_map_six(t_env *env)
+void			hard_map_six(t_env *env)
 {
 	env->sector[4].texture = 4;
-	env->sector[4].type = 1;
+	env->sector[4].type = JETPACK;
 	env->sector[4].data = 50;
 	env->sector[4].light = -1;
 	env->sector[4].floor = 2;

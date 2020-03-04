@@ -4,7 +4,7 @@
 
 void		main_err(t_parse *p, t_env *env, int fl, uint8_t tag)
 {
-	if (p->total >= 0)
+	if (p->ver)
 		free(p->ver);
 	if (fl == 1)
 		clean(env, tag);

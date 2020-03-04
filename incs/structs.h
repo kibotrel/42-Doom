@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 18:48:17 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/03/03 10:21:31 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/03/04 13:37:00 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -199,6 +199,7 @@ typedef struct			s_sector
 	double				friction;
 	t_vec2d				*vertex;
 	uint32_t			points;
+	double				elvt;
 }						t_sector;
 
 /*
