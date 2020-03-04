@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 18:48:17 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/03/05 10:11:10 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/03/05 10:15:36 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -201,6 +201,7 @@ typedef struct			s_sector
 	double				friction;
 	t_vec2d				*vertex;
 	uint32_t			points;
+	double				elvt;
 }						t_sector;
 
 typedef struct			s_setting

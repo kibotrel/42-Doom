@@ -6,7 +6,7 @@
 /*   By: reda-con <reda-con@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 14:00:52 by reda-con          #+#    #+#             */
-/*   Updated: 2020/03/03 13:59:41 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/03/04 15:08:12 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,8 +64,6 @@ static void		set_doors(t_sector *s, int nb)
 				s[i].neighbor[j] = -2;
 			++j;
 		}
-		if (s[i].type == ELEVATOR || s[i].type == -ELEVATOR)
-			s[i].door_neighbor[0] = s[i].floor;
 		++i;
 	}
 }
@@ -101,10 +99,8 @@ static void		read_file(char *file, char **av, t_env *env)
 	env->cam.pos = v3d(-1, -1, 0);
 	if ((fd = open(file, O_RDONLY)) == -1)
 		clean(env, E_PARSE_OPEN);
-	par.total = -1;
-	par.nb = 0;
-	par.fsl = 0;
 	env->sect_ct = 0;
+	ft_bzero(&par, sizeof(t_parse));
 	while ((gnl = ft_get_next_line(fd, &line)) == 1)
 	{
 		parse(line, &par, env);
