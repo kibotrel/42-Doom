@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/16 11:54:25 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/28 07:34:52 by demonwaves       ###   ########.fr       */
+/*   Updated: 2020/03/04 18:26:37 by lojesu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@
 # define M_TTF_RENDER	"\033[31;1mError:\033[0m Can't write text on surface."
 # define M_SDL_WINSURF	"\033[31;1mError:\033[0m Can't retrieve window surface."
 # define M_AUDIO_DRIVER	"\033[31;1mError:\033[0m No audio driver available."
+# define M_FLOAT		"\033[31;1mError:\033[0m Division by zero"
 
 # define TITLE_MENU		"Doom-Nukem v0.8.5 - Menu"
 # define TITLE_GAME		"Doom-Nukem v0.8.5 - Game"

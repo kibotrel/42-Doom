@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 17:59:50 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/03/04 11:08:48 by kibotrel         ###   ########.fr       */
+/*   Updated: 2020/03/04 18:26:03 by lojesu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,7 @@ typedef enum	e_status
 	E_PARSE,
 	E_SDL_THREAD,
 	E_AUDIO_DRIVER,
+	E_FLOAT,
 	NB_ERRORS
 }				t_status;
 

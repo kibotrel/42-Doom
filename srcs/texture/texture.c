@@ -1,6 +1,7 @@
 #include "utils.h"
 #include "texture.h"
 #include "libft.h"
+#include "clean.h"
 
 #define WALL_RATIO 20
 
@@ -56,6 +57,10 @@ static void		draw_slice_texture(t_env *env, int x, t_height h, t_game *var)
 
 	p.x = x;
 	p.y = h.top;
+	if (var->unbound[0] == var->unbound[1])
+	{
+		clean(env, E_FLOAT);
+	}
 	scaler = scaler_init(var->unbound[0], h.top,
 			var->unbound[1], WALL_RATIO * var->text_height);
 	scale_x = x_scale(var, x);

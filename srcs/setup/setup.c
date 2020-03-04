@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/16 11:58:26 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/03/04 17:39:34 by kibotrel         ###   ########.fr       */
+/*   Updated: 2020/03/04 18:25:31 by lojesu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ static void	error_messages(t_env *env)
 	env->error[E_PARSE] = M_PARSE;
 	env->error[E_SDL_THREAD] = M_SDL_THREAD;
 	env->error[E_AUDIO_DRIVER] = M_AUDIO_DRIVER;
+	env->error[E_FLOAT] = M_FLOAT;
 }
 
 static void	assets_paths(t_env *env)
