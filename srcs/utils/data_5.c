@@ -25,3 +25,29 @@ char	*skybox_asset(int w, int h)
 	else
 		return (NULL);
 }
+
+char	*effector_string(t_env *env)
+{
+	if (env->sector[env->cam.sector].type < -END)
+		return ("Door");
+	else if (env->sector[env->cam.sector].type == EFF_NONE)
+		return ("None");
+	else if (env->sector[env->cam.sector].type == JETPACK)
+		return ("Jetpack Zone");
+	else if (env->sector[env->cam.sector].type == MONEY)
+		return ("Money Generator");
+	else if (env->sector[env->cam.sector].type == ELEVATOR
+		|| env->sector[env->cam.sector].type == -ELEVATOR)
+		return ("Elevator");
+	else if (env->sector[env->cam.sector].type == LAVA)
+		return ("Lava Zone");
+	else if (env->sector[env->cam.sector].type == HEAL)
+		return ("Heal Zone");
+	else if (env->sector[env->cam.sector].type == SKY)
+		return ("Skybox");
+	else if (env->sector[env->cam.sector].type == END)
+		return ("Finish Zone");
+	else if (env->sector[env->cam.sector].type > END)
+		return ("Plate Activator");
+	return ("Undefined");
+}

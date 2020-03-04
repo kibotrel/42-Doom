@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/24 12:03:37 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/14 15:44:00 by kibotrel         ###   ########.fr       */
+/*   Updated: 2020/03/04 11:26:10 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ char	*txt(char *prefix, char *info, int mode)
 		free(prefix);
 	else if (mode == 1)
 		free(info);
-	else
+	else if (mode > 1)
 	{
 		free(prefix);
 		free(info);
