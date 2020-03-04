@@ -6,7 +6,11 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/27 15:15:36 by kibotrel          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2020/03/03 15:02:14 by kibotrel         ###   ########.fr       */
+=======
+/*   Updated: 2020/03/04 11:33:28 by kibotrel         ###   ########.fr       */
+>>>>>>> Displayed Effector on info menu
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +76,7 @@ static void	sector_infos(t_env *env, t_sector *sector)
 	info(env, txt("Floor : ", str[2], 1), v2d(15, 6), 0);
 	info(env, txt("Gravity : ", str[3], 1), v2d(15, 7), 0);
 	info(env, txt("Friction : ", str[4], 1), v2d(15, 8), 0);
-	info(env, ft_strdup("Effector : WIP"), v2d(15, 10), 0);
+	info(env, txt("Effector : ", effector_string(env), -1), v2d(15, 10), 0);
 	free(str);
 }
 

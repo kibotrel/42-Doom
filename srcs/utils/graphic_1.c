@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 13:21:31 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/03/04 19:21:54 by kibotrel         ###   ########.fr       */
+/*   Updated: 2020/03/05 10:15:13 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ static void	draw_ceil_and_floor(t_env *env, t_game *var, int32_t x)
 	var->depth = W_UNIT / (r_size_wall != 0 ? r_size_wall : 1) * env->setting.fog_on_off;
 	var->y[0] = bound(var->unbound[0], var->top[x], var->bottom[x]);
 	var->y[1] = bound(var->unbound[1], var->top[x], var->bottom[x]);
+/*<<<<<<< HEAD
 	if (env->sector[var->sector].type == TMP_SKY)
 		setup_sky(env, lim(var->top[x], var->y[0] - 1), var, x);
 	else
@@ -53,6 +54,15 @@ static void	draw_ceil_and_floor(t_env *env, t_game *var, int32_t x)
 	}
 	border = color_light(FLOOR, env->sector[var->sector].light, env->setting.light_intensity) * !env->setting.border_on_off;
 	draw_slice(env, x, lim(var->y[1] + 1, var->bottom[x]), flat(border, color_light(FLOOR, env->sector[var->sector].light, env->setting.light_intensity), border));
+=======*/
+	if (env->sector[var->sector].type == SKY)
+		setup_sky(env, lim(var->top[x], var->y[0] - 1), var, x);
+	else
+		draw_slice(env, x, lim(var->top[x], var->y[0] - 1),
+				flat(0, color_light(0x222222, env->sector[var->sector].light), 0));
+	draw_slice(env, x, lim(var->y[1] + 1, var->bottom[x]),
+				flat(0, color_light(0x424242, env->sector[var->sector].light), 0));
+//>>>>>>> Displayed Effector on info menu
 }
 
 static void	draw_transitions(t_env *env, t_game *var, int32_t x)

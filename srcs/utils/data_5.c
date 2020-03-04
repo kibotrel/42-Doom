@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/03 15:13:40 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/03/03 15:18:46 by kibotrel         ###   ########.fr       */
+/*   Updated: 2020/03/05 10:14:30 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,4 +45,30 @@ void	scaled_assets(t_env *env)
 	env->asset[SHELL] = shell_asset(env->w, env->h);
 	env->asset[COIN] = coins_asset(env->w, env->h);
 	env->asset[SKYBOX] = skybox_asset(env->w, env->h);
+}
+
+char	*effector_string(t_env *env)
+{
+	if (env->sector[env->cam.sector].type < -END)
+		return ("Door");
+	else if (env->sector[env->cam.sector].type == EFF_NONE)
+		return ("None");
+	else if (env->sector[env->cam.sector].type == JETPACK)
+		return ("Jetpack Zone");
+	else if (env->sector[env->cam.sector].type == MONEY)
+		return ("Money Generator");
+	else if (env->sector[env->cam.sector].type == ELEVATOR
+		|| env->sector[env->cam.sector].type == -ELEVATOR)
+		return ("Elevator");
+	else if (env->sector[env->cam.sector].type == LAVA)
+		return ("Lava Zone");
+	else if (env->sector[env->cam.sector].type == HEAL)
+		return ("Heal Zone");
+	else if (env->sector[env->cam.sector].type == SKY)
+		return ("Skybox");
+	else if (env->sector[env->cam.sector].type == END)
+		return ("Finish Zone");
+	else if (env->sector[env->cam.sector].type > END)
+		return ("Plate Activator");
+	return ("Undefined");
 }

@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 19:01:59 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/03/04 19:21:10 by kibotrel         ###   ########.fr       */
+/*   Updated: 2020/03/05 10:13:28 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,6 +127,7 @@ uint32_t			life_state(double life);
 
 char				*skybox_asset(int w, int h);
 void				scaled_assets(t_env *env);
+char				*effector_string(t_env *env);
 int32_t				get_thread(t_env *env);
 
 /*
