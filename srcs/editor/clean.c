@@ -6,14 +6,14 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/03 14:51:32 by nde-jesu          #+#    #+#             */
-/*   Updated: 2020/03/03 14:52:27 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/03/04 11:52:24 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "editor.h"
 
-void				delete_vertex(t_vertex **vertex)
+void			delete_vertex(t_vertex **vertex)
 {
 	t_vertex	*tmp;
 	t_vertex	*to_del;

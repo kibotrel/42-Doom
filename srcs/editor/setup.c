@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   setup.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/03/04 11:36:42 by nde-jesu          #+#    #+#             */
+/*   Updated: 2020/03/04 11:37:11 by nde-jesu         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "env.h"
 #include "editor.h"
@@ -14,7 +25,7 @@ void			init_portals(t_editor *editor)
 	editor->cd = NULL;
 }
 
-static void	init_tab_num(char *tab[6], char *tab_2[9])
+static void		init_tab_num(char *tab[6], char *tab_2[9])
 {
 	tab[0] = "0";
 	tab[1] = "1";
@@ -33,7 +44,7 @@ static void	init_tab_num(char *tab[6], char *tab_2[9])
 	tab_2[8] = "Draw Sector Clockwise";
 }
 
-static void	init_tab_effectors(char *tab[ALL_EFFECTS])
+static void		init_tab_effectors(char *tab[ALL_EFFECTS])
 {
 	tab[NONE] = "None";
 	tab[EFF_JET] = "Jetpack";
@@ -46,7 +57,7 @@ static void	init_tab_effectors(char *tab[ALL_EFFECTS])
 	tab[EFF_PLATE] = "Plate";
 }
 
-static void	init_tab(char *tab[4][7])
+static void		init_tab(char *tab[4][7])
 {
 	tab[0][0] = "Select.";
 	tab[0][1] = "Floor";

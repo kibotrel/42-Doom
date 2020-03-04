@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   entity.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/03/04 09:08:44 by nde-jesu          #+#    #+#             */
+/*   Updated: 2020/03/04 09:09:18 by nde-jesu         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "clean.h"
 #include "libft.h"
 #include "editor.h"
 
-static t_ed_entity		*create_entity(int x, int y, int type, t_env *env)
+static t_ed_entity	*create_entity(int x, int y, int type, t_env *env)
 {
 	t_ed_entity	*entity;
 
@@ -17,7 +29,8 @@ static t_ed_entity		*create_entity(int x, int y, int type, t_env *env)
 	return (entity);
 }
 
-static void			add_enemy(t_ed_entity **enemy, t_ed_entity *new, t_count *count)
+static void			add_enemy(t_ed_entity **enemy, t_ed_entity *new,
+	t_count *count)
 {
 	t_ed_entity		*prev_enemy;
 
@@ -34,7 +47,8 @@ static void			add_enemy(t_ed_entity **enemy, t_ed_entity *new, t_count *count)
 	}
 }
 
-static void			add_object(t_ed_entity **object, t_ed_entity *new, t_count *count)
+static void			add_object(t_ed_entity **object, t_ed_entity *new,
+	t_count *count)
 {
 	t_ed_entity		*prev_object;
 

@@ -1,5 +1,35 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   edit_menu.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/03/04 08:55:00 by nde-jesu          #+#    #+#             */
+/*   Updated: 2020/03/04 09:06:33 by nde-jesu         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "editor.h"
 #include "env.h"
+
+void			draw_blank_preset(SDL_Surface *s, int set)
+{
+	int		clr;
+
+	clr = ((set != SECTOR) ? 0xffffff : 0x289655);
+	rectangle(init_vertex(1340, 140), init_vertex(1510, 210), clr, s);
+	clr = ((set != PLAYER) ? 0xffffff : 0x177489);
+	rectangle(init_vertex(1340, 240), init_vertex(1510, 310), clr, s);
+	clr = ((set != ENEMY) ? 0xffffff : 0x090875);
+	rectangle(init_vertex(1340, 340), init_vertex(1510, 410), clr, s);
+	clr = ((set != OBJECT) ? 0xffffff : 0x146595);
+	rectangle(init_vertex(1340, 440), init_vertex(1510, 510), clr, s);
+	clr = ((set != PORTAL) ? 0xffffff : 0x177013);
+	rectangle(init_vertex(1340, 540), init_vertex(1510, 610), clr, s);
+	clr = ((set != EFFECTOR) ? 0xffffff : 0x177013);
+	rectangle(init_vertex(1340, 640), init_vertex(1510, 710), clr, s);
+}
 
 static void		fst_clic_editor_menu(int y, t_editor *editor)
 {
@@ -37,5 +67,5 @@ void			clic_editor_menu(int x, int y, t_editor *editor, t_env *env)
 			change_value(editor, editor->presets, true);
 	}
 	else
-		blank_menu(env->sdl.screen, editor->sett, editor, editor->presets, env);
+		blank_menu(env->sdl.screen, editor->sett, editor->presets, env);
 }

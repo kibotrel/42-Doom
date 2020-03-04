@@ -1,7 +1,19 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   map_creation_part2.c                               :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/03/04 09:24:15 by nde-jesu          #+#    #+#             */
+/*   Updated: 2020/03/04 09:26:13 by nde-jesu         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "editor.h"
 #include "libft.h"
 
-void	write_player(t_ed_player player, t_vertex if_no_player, int fd)
+void		write_player(t_ed_player player, t_vertex if_no_player, int fd)
 {
 	if (player.x < 0 && player.y < 0)
 	{
@@ -20,7 +32,19 @@ void	write_player(t_ed_player player, t_vertex if_no_player, int fd)
 	ft_putstr_fd("\n\n", fd);
 }
 
-void	write_vertexes(t_ed_sector *vertexes, int fd)
+static void	write_vertex(t_vertex *vertex, int fd)
+{
+	ft_putstr_fd("vertex number ", fd);
+	ft_putnbr_fd(vertex->vertex_number, fd);
+	ft_putstr_fd(" x ", fd);
+	ft_putnbr_fd(vertex->x, fd);
+	ft_putchar_fd(' ', fd);
+	ft_putstr_fd("y ", fd);
+	ft_putnbr_fd(vertex->y, fd);
+	ft_putchar_fd('\n', fd);
+}
+
+void		write_vertexes(t_ed_sector *vertexes, int fd)
 {
 	t_ed_sector	*sect;
 	t_vertex	*vertex;
@@ -35,14 +59,7 @@ void	write_vertexes(t_ed_sector *vertexes, int fd)
 		{
 			if (count <= vertex->vertex_number)
 			{
-				ft_putstr_fd("vertex number ", fd);
-				ft_putnbr_fd(vertex->vertex_number, fd);
-				ft_putstr_fd(" x ", fd);
-				ft_putnbr_fd(vertex->x, fd);
-				ft_putchar_fd(' ', fd);
-				ft_putstr_fd("y ", fd);
-				ft_putnbr_fd(vertex->y, fd);
-				ft_putchar_fd('\n', fd);
+				write_vertex(vertex, fd);
 				++count;
 			}
 			vertex = vertex->next;
@@ -53,7 +70,7 @@ void	write_vertexes(t_ed_sector *vertexes, int fd)
 		ft_putchar_fd('\n', fd);
 }
 
-void	write_vertex_sector(t_ed_sector *sect, int fd)
+void		write_vertex_sector(t_ed_sector *sect, int fd)
 {
 	t_vertex	*vertex;
 

@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   sector_part2.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/03/04 10:43:57 by nde-jesu          #+#    #+#             */
+/*   Updated: 2020/03/04 10:43:57 by nde-jesu         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "editor.h"
 
-void		move_in_sector(t_editor *edit, int x, int y)
+void			move_in_sector(t_editor *edit, int x, int y)
 {
 	int			which_sector;
 	t_ed_sector	*sect;
@@ -22,7 +34,8 @@ void		move_in_sector(t_editor *edit, int x, int y)
 	}
 }
 
-static void		draw_sector_effects(t_sdl *sdl, t_ed_sector *sectors, t_editor *edit)
+static void		draw_sector_effects(t_sdl *sdl, t_ed_sector *sectors,
+	t_editor *edit)
 {
 	t_ed_sector *sect;
 	t_vertex	*vertex;
@@ -47,11 +60,11 @@ static void		draw_sector_effects(t_sdl *sdl, t_ed_sector *sectors, t_editor *edi
 	}
 }
 
-static void		draw_sector_plate_door(t_sdl *sdl, t_ed_sector *sectors, t_editor *edit)
+static void		draw_sector_plate_door(t_sdl *sdl, t_ed_sector *sectors,
+	t_editor *edit)
 {
 	t_ed_sector *sect;
 	t_vertex	*vertex;
-	int			i;
 	int			color;
 	int			number;
 
@@ -66,9 +79,8 @@ static void		draw_sector_plate_door(t_sdl *sdl, t_ed_sector *sectors, t_editor *
 			color = 0xff00ff;
 			if (sect->effect.effects == number)
 				color = 0xffff00;
-			i = 0;
 			vertex = sect->vertex;
-			while (vertex && ++i)
+			while (vertex)
 			{
 				draw_walls(sdl, sect, vertex, color);
 				vertex = vertex->next;
@@ -98,19 +110,17 @@ static void		prev_display_sector(t_sdl *sdl, t_ed_sector *sectors)
 	}
 }
 
-void			next_display_sector(t_sdl *sdl, t_ed_sector *sectors, t_editor *edit)
+void			next_display_sector(t_sdl *sdl, t_ed_sector *sectors,
+	t_editor *edit)
 {
 	t_ed_sector	*sect;
-	int			i;
 	t_vertex	*vertex;
 
 	sect = sectors;
 	while (sect)
 	{
-		if (sect->effect.effects == edit->effects.effects && edit->sett == EFFECTOR)
-		i = 0;
 		vertex = sect->vertex;
-		while (vertex && ++i)
+		while (vertex)
 		{
 			draw_walls(sdl, sect, vertex, 0x0000ff);
 			vertex = vertex->next;

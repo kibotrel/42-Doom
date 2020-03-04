@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   events_tools.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/03/04 09:17:05 by nde-jesu          #+#    #+#             */
+/*   Updated: 2020/03/04 09:23:58 by nde-jesu         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "editor.h"
 
 static void		change_height(int *to_change, bool fl)
@@ -36,6 +48,35 @@ static void		change_percentage(int *to_change, bool fl)
 		--*to_change;
 }
 
+static void		change_value_part2(t_editor *edit, t_presets preset, bool fl)
+{
+	if (preset == ENTITY_MOVE && edit->sett == ENEMY && edit->enemy)
+		move_in_entities(&edit->enemy, fl);
+	else if (preset == ENTITY_MOVE && edit->sett == OBJECT && edit->object)
+		move_in_entities(&edit->object, fl);
+	else if (preset == ENTITY_ROTATE && edit->sett == ENEMY && edit->enemy)
+		rotate_entity(edit->enemy, fl);
+	else if (preset == ENTITY_ROTATE && edit->sett == OBJECT && edit->object)
+		rotate_entity(edit->object, fl);
+	else if (preset == PLAYER_ROTATE)
+		rotate_player(&edit->player, fl);
+	else if (preset == EFF_EFFECT && edit->sett == EFFECTOR)
+		change_effect(&edit->effects.effects, fl);
+	else if (preset == EFF_DATA && edit->sett == EFFECTOR)
+	{
+		if (edit->effects.effects != EFF_NONE &&
+			edit->effects.effects != EFF_SKY)
+		{
+			if (edit->effects.effects == EFF_ELEV)
+				change_type(&edit->count.eff_data[edit->effects.effects],
+					fl, -1000, 1000);
+			else
+				change_type(&edit->count.eff_data[edit->effects.effects],
+					fl, 0, 1000);
+		}
+	}
+}
+
 void			change_value(t_editor *editor, t_presets presets, bool fl)
 {
 	if (presets == SECTOR_FLOOR && editor->sector)
@@ -55,27 +96,6 @@ void			change_value(t_editor *editor, t_presets presets, bool fl)
 	else if (presets == ENTITY_TYPE && editor->sett == ENEMY && editor->enemy)
 		change_type(&editor->enemy->type, fl, 0, 3);
 	else if (presets == ENTITY_TYPE && editor->sett == OBJECT && editor->object)
-		change_type(&editor->object->type, fl, 0 , 3);
-	else if (presets == ENTITY_MOVE && editor->sett == ENEMY && editor->enemy)
-		move_in_entities(&editor->enemy, fl);
-	else if (presets == ENTITY_MOVE && editor->sett == OBJECT && editor->object)
-		move_in_entities(&editor->object, fl);
-	else if (presets == ENTITY_ROTATE && editor->sett == ENEMY && editor->object)
-		rotate_entity(editor->enemy, fl);
-	else if (presets == ENTITY_ROTATE && editor->sett == OBJECT && editor->object)
-		rotate_entity(editor->object, fl);
-	else if (presets == PLAYER_ROTATE)
-		rotate_player(&editor->player, fl);
-	else if (presets == EFF_EFFECT && editor->sett == EFFECTOR)
-		change_effect(&editor->effects.effects, fl);
-	else if (presets == EFF_DATA && editor->sett == EFFECTOR)
-	{
-		if (editor->effects.effects != EFF_NONE && editor->effects.effects != EFF_SKY)
-		{
-			if (editor->effects.effects == EFF_ELEV)
-				change_type(&editor->count.eff_data[editor->effects.effects], fl, -1000, 1000);
-			else
-				change_type(&editor->count.eff_data[editor->effects.effects], fl, 0, 1000);
-		}
-	}
+		change_type(&editor->object->type, fl, 0, 3);
+	change_value_part2(editor, presets, fl);
 }

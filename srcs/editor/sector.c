@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   sector.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/03/04 10:06:05 by nde-jesu          #+#    #+#             */
+/*   Updated: 2020/03/04 10:06:45 by nde-jesu         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "clean.h"
 #include "libft.h"
 #include "editor.h"
 
-int		count_vertex_in_sector(t_vertex *vertex)
+int					count_vertex_in_sector(t_vertex *vertex)
 {
 	int			count;
 	t_vertex	*vert;
@@ -17,7 +29,7 @@ int		count_vertex_in_sector(t_vertex *vertex)
 	return (count);
 }
 
-static bool		is_sector_complete(t_vertex *first, t_vertex *last)
+static bool			is_sector_complete(t_vertex *first, t_vertex *last)
 {
 	if (!first || !last)
 		return (false);
@@ -38,7 +50,8 @@ static t_ed_sector	*get_last_sector(t_editor *editor, t_env *env)
 	return (sect);
 }
 
-static void		next_place_sector(t_ed_sector *sect, t_env *env, t_editor *edit)
+static void			next_place_sector(t_ed_sector *sect, t_env *env,
+	t_editor *edit)
 {
 	sect->vertex_count = count_vertex_in_sector(sect->vertex);
 	if (!(sect->is_portal = (int*)ft_memalloc(sizeof(int)
@@ -52,7 +65,7 @@ static void		next_place_sector(t_ed_sector *sect, t_env *env, t_editor *edit)
 	edit->last_vertex = init_vertex(-1, -1);
 }
 
-void			place_sector(t_editor *editor, int x, int y, t_env *env)
+void				place_sector(t_editor *editor, int x, int y, t_env *env)
 {
 	t_vertex	*new;
 	t_ed_sector	*sect;

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   sec_edit_menu.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/03/04 09:55:36 by nde-jesu          #+#    #+#             */
+/*   Updated: 2020/03/04 10:05:00 by nde-jesu         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "editor.h"
 
 static void		blank_sect(int set, int preset, int effect, SDL_Surface *s)
@@ -21,15 +33,7 @@ static void		blank_sect(int set, int preset, int effect, SDL_Surface *s)
 		clr = ((preset != SECTOR_LIGHT) ? 0xffffff : 0x177013);
 		rectangle(init_vertex(1540, 740), init_vertex(1710, 810), clr, s);
 	}
-	if (set == EFFECTOR && effect == EFF_PLATE)
-	{
-		square(1600, 500, 0x00ffff, s);
-		clr = ((preset != EFF_S_PLATE) ? 0xffffff : 0x177013);
-		rectangle(init_vertex(1540, 440), init_vertex(1710, 510), clr, s);
-		square(1600, 600, 0x124079, s);
-		clr = ((preset != EFF_S_DOOR) ? 0xffffff : 0x177013);
-		rectangle(init_vertex(1540, 540), init_vertex(1710, 610), clr, s);
-	}
+	blank_sect_part2(set, effect, preset, s);
 }
 
 void			sec_blank_menu(SDL_Surface *s, int set, int effect, int preset)
@@ -50,23 +54,7 @@ void			sec_blank_menu(SDL_Surface *s, int set, int effect, int preset)
 		clr = ((preset != PLAYER_ROTATE) ? 0xffffff : 0x177013);
 	if (set == PLAYER)
 		rectangle(init_vertex(1540, 140), init_vertex(1710, 210), clr, s);
-	if (set == EFFECTOR)
-	{
-		clr = ((preset != EFF_EFFECT) ? 0xffffff : 0x177013);
-		rectangle(init_vertex(1540, 140), init_vertex(1710, 210), clr, s);
-		clr = ((preset != EFF_MOVE) ? 0xffffff : 0x177013);
-		rectangle(init_vertex(1540, 240), init_vertex(1710, 310), clr, s);
-		clr = ((preset != EFF_DATA) ? 0xffffff : 0x177013);
-		rectangle(init_vertex(1540, 340), init_vertex(1710, 410), clr, s);
-	}
-	if (preset != NONE && preset != SECTOR_MOVE && preset != EFF_MOVE 
-		&& preset != EFF_S_DOOR && preset != EFF_S_PLATE)
-	{
-		rectangle(init_vertex(1399, 49), init_vertex(1450, 100), 0xffa500, s);
-		rectangle(init_vertex(1599, 49), init_vertex(1650, 100), 0xffa500, s);
-		square(1450, 100, 0x8d33ff, s);
-		square(1650, 100, 0x8d33ff, s);
-	}
+	sec_blank_menu_part2(preset, set, s);
 }
 
 static void		part_5_sec_clic_menu_editor(int y, t_editor *editor)

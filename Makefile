@@ -6,7 +6,7 @@
 #    By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/10 16:16:29 by kibotrel          #+#    #+#              #
-#    Updated: 2020/02/28 20:36:08 by nde-jesu         ###   ########.fr        #
+#    Updated: 2020/03/04 11:10:33 by nde-jesu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -154,11 +154,11 @@ SRCS			+= utils/ft_power_str.c
 SRCS			+= utils/ft_strjoin_free.c
 SRCS			+= utils/ft_str_binary_to_nb.c
 SRCS			+= utils/ft_str_mantisse_to_nb.c
-SRCS			+= editor/keyboard.c
 SRCS			+= events/mouse.c
 SRCS			+= events/motion.c
 SRCS			+= events/keyboard.c
 SRCS			+= texture/texture_tools.c
+SRCS			+= editor/keyboard.c
 SRCS			+= editor/events.c
 SRCS			+= editor/events_tools.c
 SRCS			+= editor/setup.c
@@ -175,8 +175,10 @@ SRCS			+= editor/sec_edit_menu.c
 SRCS			+= editor/sec_edit_menu_utils.c
 SRCS			+= editor/picture.c
 SRCS			+= editor/text.c
+SRCS			+= editor/text_part2.c
 SRCS			+= editor/player.c
 SRCS			+= editor/portal.c
+SRCS			+= editor/portal_part2.c
 SRCS			+= editor/portal_utils.c
 SRCS			+= editor/map_creation.c
 SRCS			+= editor/map_creation_part2.c

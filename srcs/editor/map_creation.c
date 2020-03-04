@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   map_creation.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/03/04 09:26:41 by nde-jesu          #+#    #+#             */
+/*   Updated: 2020/03/04 09:29:34 by nde-jesu         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <fcntl.h>
@@ -19,6 +31,34 @@ void			write_portals(t_ed_sector *sect, int fd)
 	}
 }
 
+static void		write_sectors_infos(t_ed_sector *sect, int fd)
+{
+	if (sect->effect.effects == EFF_ELEV && sect->effect.data < 0)
+	{
+		ft_putnbr_fd(sect->effect.effects * -1, fd);
+		ft_putstr_fd(" data ", fd);
+		ft_putnbr_fd(sect->effect.data * -1, fd);
+	}
+	else
+	{
+		ft_putnbr_fd(sect->effect.effects, fd);
+		ft_putstr_fd(" data ", fd);
+		ft_putnbr_fd(sect->effect.data, fd);
+	}
+	ft_putstr_fd(" light ", fd);
+	ft_putnbr_fd(sect->light_value, fd);
+	ft_putstr_fd(" h_floor ", fd);
+	ft_putnbr_fd(sect->h_floor, fd);
+	ft_putstr_fd(" h_ceil ", fd);
+	ft_putnbr_fd(sect->h_ceil, fd);
+	ft_putstr_fd(" gravity ", fd);
+	ft_putnbr_fd(sect->gravity, fd);
+	ft_putstr_fd(" friction ", fd);
+	ft_putnbr_fd(sect->friction, fd);
+	ft_putstr_fd(" vertex_num ", fd);
+	ft_putnbr_fd(sect->vertex_count, fd);
+}
+
 static void		write_sectors(t_ed_sector *sector, int fd)
 {
 	t_ed_sector	*sect;
@@ -33,30 +73,7 @@ static void		write_sectors(t_ed_sector *sector, int fd)
 			ft_putstr_fd(" texture ", fd);
 			ft_putnbr_fd(sect->texture, fd);
 			ft_putstr_fd(" type ", fd);
-			if (sect->effect.effects == EFF_ELEV && sect->effect.data < 0)
-			{
-				ft_putnbr_fd(sect->effect.effects * -1, fd);
-				ft_putstr_fd(" data ", fd);
-				ft_putnbr_fd(sect->effect.data * -1, fd);
-			}
-			else
-			{
-				ft_putnbr_fd(sect->effect.effects, fd);
-				ft_putstr_fd(" data ", fd);
-				ft_putnbr_fd(sect->effect.data, fd);
-			}
-			ft_putstr_fd(" light ", fd);
-			ft_putnbr_fd(sect->light_value, fd);
-			ft_putstr_fd(" h_floor ", fd);
-			ft_putnbr_fd(sect->h_floor, fd);
-			ft_putstr_fd(" h_ceil ", fd);
-			ft_putnbr_fd(sect->h_ceil, fd);
-			ft_putstr_fd(" gravity ", fd);
-			ft_putnbr_fd(sect->gravity, fd);
-			ft_putstr_fd(" friction ", fd);
-			ft_putnbr_fd(sect->friction, fd);
-			ft_putstr_fd(" vertex_num ", fd);
-			ft_putnbr_fd(sect->vertex_count, fd);
+			write_sectors_infos(sect, fd);
 			ft_putstr_fd(" vertexes ", fd);
 			write_vertex_sector(sect, fd);
 			if (sect->next)

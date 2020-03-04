@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   picture.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/03/04 09:32:34 by nde-jesu          #+#    #+#             */
+/*   Updated: 2020/03/04 09:33:00 by nde-jesu         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 #include "editor.h"
 
@@ -34,7 +46,7 @@ void		print_params_image(t_editor *edit, t_presets presets,
 	}
 	else
 		return ;
-	rectangle(init_vertex(1491, 41), init_vertex(1557, 106), 0xffffff, 
+	rectangle(init_vertex(1491, 41), init_vertex(1557, 106), 0xffffff,
 			env->sdl.screen);
 	print_picture(&env->sdl, 1492, 42, env->sdl.bmp[i + j]);
 	display_text(WHITE, init_vertex(1420, 50), "-", env);
