@@ -66,7 +66,7 @@ static void		draw_slice_texture(t_env *env, int x, t_height h, t_game *var)
 				wall[abs((scaler_next(&scaler) % W_SIZE * W_SIZE)
 					+ (scale_x % W_SIZE))], -var->depth);
 		if (env->sector[var->sector].light != -1)
-			color = color_light(color, env->sector[var->sector].light);
+			color = color_light(color, env->sector[var->sector].light, env->setting.light_intensity);
 		draw_pixel(env, env->sdl.screen, p, color);
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 13:40:06 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/20 13:46:19 by lojesu           ###   ########.fr       */
+/*   Updated: 2020/02/20 14:48:40 by lojesu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ void		init_and_protect_variable_2
 	*u1 = (var->t[1].y - var->org[0].y) * (W_UNIT * w_size / W_SIZE) / protect;
 }
 
-uint32_t	color_light(uint32_t color, int light)
+uint32_t	color_light(uint32_t color, int light, double pourcent)
 {
 	int		r;
 	int		g;
@@ -89,10 +89,10 @@ uint32_t	color_light(uint32_t color, int light)
 	int		diff;
 
 	diff = (light >> 16 & 0xFF) - (color >> 16 & 0xFF);
-	r = (color >> 16 & 0xFF) + (int)(diff * (double)LIGHT / 100);
+	r = (color >> 16 & 0xFF) + (int)(diff * pourcent / 100);
 	diff = (light >> 8 & 0xFF) - (color >> 8 & 0xFF);
-	g = (color >> 8 & 0xFF) + (int)(diff * (double)LIGHT / 100);
+	g = (color >> 8 & 0xFF) + (int)(diff * pourcent / 100);
 	diff = (light & 0xFF) - (color & 0xFF);
-	b = (color & 0xFF) + (int)(diff * (double)LIGHT / 100);
+	b = (color & 0xFF) + (int)(diff * pourcent / 100);
 	return ((r << 16) | (g << 8) | b);
 }

@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 18:48:17 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/03/03 15:21:16 by kibotrel         ###   ########.fr       */
+/*   Updated: 2020/03/04 17:31:32 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -205,6 +205,19 @@ typedef struct			s_sector
 	uint32_t			points;
 }						t_sector;
 
+typedef struct			s_setting
+{
+	bool				fog_on_off;
+	bool				border_on_off;
+	bool				fly_mode;
+	int8_t				index_format;
+	int8_t				mode;
+	int8_t				fps_max;
+	int8_t				fog_intensity;
+	int8_t				light_intensity;
+	char				**format;
+}						t_setting;
+
 /*
 **	Main structures.
 */
@@ -297,6 +310,7 @@ typedef struct			s_env
 	uint32_t			frame[NB_FRAMES];
 	uint32_t			st_fl;
 	uint32_t			old_st_fl;
+	t_setting			setting;
 }						t_env;
 
 #endif

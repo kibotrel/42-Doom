@@ -6,7 +6,7 @@
 #    By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/10 16:16:29 by kibotrel          #+#    #+#              #
-#    Updated: 2020/03/03 16:06:56 by kibotrel         ###   ########.fr        #
+#    Updated: 2020/03/04 17:30:12 by kibotrel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -68,6 +68,7 @@ OBJS_SUBDIRS	+= utils
 OBJS_SUBDIRS	+= editor
 OBJS_SUBDIRS	+= events
 OBJS_SUBDIRS	+= texture
+OBJS_SUBDIRS	+= settings
 
 #------------------------------------ FILES -----------------------------------#
 
@@ -97,6 +98,7 @@ INCS			+= incs/events.h
 INCS			+= incs/structs.h
 INCS			+= incs/editor.h
 INCS			+= incs/texture.h
+INCS			+= incs/settings.h
 
 # Source files.
 
@@ -170,7 +172,6 @@ SRCS			+= editor/keyboard.c
 SRCS			+= events/mouse.c
 SRCS			+= events/motion.c
 SRCS			+= events/keyboard.c
-SRCS			+= texture/texture_tools.c
 SRCS			+= editor/events.c
 SRCS			+= editor/events_tools.c
 SRCS			+= editor/setup.c
@@ -199,6 +200,15 @@ SRCS			+= editor/sector_part2.c
 SRCS			+= editor/sector_check.c
 SRCS			+= editor/sector_utils.c
 SRCS			+= texture/texture.c
+SRCS			+= texture/texture_tools.c
+SRCS			+= settings/settings_click.c
+SRCS			+= settings/settings_click_tools.c
+SRCS			+= settings/resize_window.c
+SRCS			+= settings/settings_tools.c
+SRCS			+= settings/settings_keyboard.c
+SRCS			+= settings/draw_arrow_setting.c
+SRCS			+= settings/draw_on_off_setting.c
+SRCS			+= settings/draw_selector_setting.c
 
 #------------------------------ OPERATING SYSTEM ------------------------------#
 

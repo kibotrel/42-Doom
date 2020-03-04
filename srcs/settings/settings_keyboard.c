@@ -3,27 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   keyboard.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lojesu <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/16 15:23:52 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/03/04 17:31:45 by kibotrel         ###   ########.fr       */
+/*   Created: 2020/02/22 18:27:12 by lojesu            #+#    #+#             */
+/*   Updated: 2020/02/22 18:30:44 by lojesu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "game.h"
-#include "clean.h"
+#include "env.h"
 #include "utils.h"
-#include "editor.h"
-#include "settings.h"
 
-void	handle_keyboard(t_env *env)
+void	settings_keyboard(t_env *env)
 {
-	if (env->input[SDL_SCANCODE_ESCAPE])
-		clean(env, NOTHING);
-	if (env->win == GAME)
-		game_keyboard(env);
-	else if (env->win == EDITOR)
-		editor_keyboard(env, &env->editor);
-	else if (env->win == SETTINGS)
-		settings_keyboard(env);
+	if (env->input[SDL_SCANCODE_BACKSPACE])
+	{
+		env->setup = 0;
+		env->win = MENU;
+		SDL_ShowCursor(SDL_ENABLE);
+		return ;
+	}
 }
