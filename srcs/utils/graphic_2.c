@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/27 15:35:56 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/20 20:48:09 by demonwaves       ###   ########.fr       */
+/*   Updated: 2020/03/04 10:54:46 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,7 @@ void	draw_skybox(t_env *env)
 	p.y = -1;
 	screen = env->sdl.screen->pixels;
 	skybox_setup(env, &sky);
-	while (++p.y <= env->data.sky)
+	while (++p.y < env->data.sky - 1)
 	{
 		p.x = -1;
 		while (++p.x < env->w)

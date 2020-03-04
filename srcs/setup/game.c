@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 15:29:00 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/03/03 15:09:45 by kibotrel         ###   ########.fr       */
+/*   Updated: 2020/03/04 10:59:26 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,7 @@ void			skybox_setup(t_env *env, t_skybox *skybox)
 {
 	ft_bzero(skybox, sizeof(t_skybox));
 	skybox->draw = env->sdl.bmp[SKYBOX].width;
-	skybox->shift.x = ft_degrees(env->cam.angle) * (env->w) / 360;
+	skybox->shift.x = ft_degrees(env->cam.angle) * (env->w) / 90;
 	skybox->shift.y = env->sdl.bmp[SKYBOX].height - env->data.sky;
 	skybox->image = env->sdl.bmp[SKYBOX].pixels;
 }
