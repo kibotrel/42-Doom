@@ -67,8 +67,7 @@ void	effector(t_env *env, int s)
 	}
 }
 
-void	elevator(t_sector *sector, int s, t_cam *cam,
-		int input[SDL_NUM_SCANCODES])
+void	elevator(t_sector *sector, int s, t_cam *cam, int *input)
 {
 	if (sector[s].type == ELEVATOR || sector[s].type == -ELEVATOR)
 	{
@@ -77,7 +76,8 @@ void	elevator(t_sector *sector, int s, t_cam *cam,
 			|| (sector[s].floor < sector[s].door_neighbor[0]
 			&& sector[s].type == -ELEVATOR)))
 		{
-			++cam->pos.z;
+			if (cam->fly != 1 || cam->pos.z <= sector[s].floor + 1)
+				++cam->pos.z;
 			++sector[s].floor;
 		}
 		if (input[SDL_SCANCODE_Q] && ((sector[s].floor
@@ -85,14 +85,12 @@ void	elevator(t_sector *sector, int s, t_cam *cam,
 			|| (sector[s].floor > sector[s].door_neighbor[0]
 			- sector[s].data && sector[s].type == -ELEVATOR)))
 		{
-			--cam->pos.z;
+			if  (cam->fly != 1)
+				--cam->pos.z;
 			--sector[s].floor;
 		}
-		if (sector[s].floor >= sector[s].ceil - 5)
-		{
-			--cam->pos.z;
+		if (sector[s].floor >= sector[s].ceil - 5 && --cam->pos.z)
 			sector[s].floor = sector[s].ceil - 6;
-		}
 	}
 }
 

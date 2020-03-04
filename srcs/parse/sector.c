@@ -6,7 +6,7 @@
 /*   By: reda-con <reda-con@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/17 16:35:58 by reda-con          #+#    #+#             */
-/*   Updated: 2020/03/03 14:05:23 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/03/04 11:19:04 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ int			third_check(t_env *e, char **t, t_vec2d *ver, int i)
 {
 	int j;
 
-	s[ft_atoi(t[2])].type = ft_atoi(t[6]);
-	s[ft_atoi(t[2])].light = ft_atoi(t[10]);
+	e->sector[ft_atoi(t[2])].type = ft_atoi(t[6]);
+	e->sector[ft_atoi(t[2])].light = ft_atoi(t[10]);
 	j = 0;
 	while (j < i)
 	{

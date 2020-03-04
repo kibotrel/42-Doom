@@ -33,21 +33,21 @@ char	*effector_string(t_env *env)
 	else if (env->sector[env->cam.sector].type == EFF_NONE)
 		return ("None");
 	else if (env->sector[env->cam.sector].type == JETPACK)
-		return ("Jetpack Zone");
+		return ("Jetpack");
 	else if (env->sector[env->cam.sector].type == MONEY)
-		return ("Money Generator");
+		return ("Money");
 	else if (env->sector[env->cam.sector].type == ELEVATOR
 		|| env->sector[env->cam.sector].type == -ELEVATOR)
 		return ("Elevator");
 	else if (env->sector[env->cam.sector].type == LAVA)
-		return ("Lava Zone");
+		return ("Spikes");
 	else if (env->sector[env->cam.sector].type == HEAL)
-		return ("Heal Zone");
+		return ("Healpad");
 	else if (env->sector[env->cam.sector].type == SKY)
 		return ("Skybox");
 	else if (env->sector[env->cam.sector].type == END)
-		return ("Finish Zone");
+		return ("Finish");
 	else if (env->sector[env->cam.sector].type > END)
-		return ("Plate Activator");
-	return ("Undefined");
+		return ("Plate");
+	return (NULL);
 }
