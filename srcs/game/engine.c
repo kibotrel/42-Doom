@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 15:22:56 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/03/03 14:59:47 by kibotrel         ###   ########.fr       */
+/*   Updated: 2020/03/04 19:35:49 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	graphics(t_env *env)
 	t_item		now;
 
 	game_setup(env, &var);
-	while (var.i++ == 0 || var.head != var.tail)
+	while ((var.i++ == 0 || var.head != var.tail) && !var.error && !env->crash)
 	{
 		var.j = 0;
 		if (cycle_check(env, &var, &now))
@@ -54,10 +54,12 @@ void	graphics(t_env *env)
 			if ((!bound_view(&var) || !scale(env, &var, &now)) && ++var.j)
 				continue;
 			draw_setup(env, &var, &now, var.j++);
-			draw_screen(env, &var);
+			if (!draw_screen(env, &var))
+				break;
 			check_depth(&var, var.start, var.end);
 		}
 	}
+	env->crash = (env->crash || var.error ? 1 : 0);
 	if (var.sky > env->data.sky)
 		env->data.sky = var.sky;
 	engine_clean(&var);

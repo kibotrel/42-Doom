@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 19:01:59 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/03/03 15:14:59 by kibotrel         ###   ########.fr       */
+/*   Updated: 2020/03/04 19:21:10 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void				text_to_screen(t_env *env, t_sdl *sdl, char *txt,
 **	graphic_1.c
 */
 
-void				draw_screen(t_env *env, t_game *var);
+int					draw_screen(t_env *env, t_game *var);
 void				blur(t_env *env, SDL_Surface *win, t_pos p);
 
 /*

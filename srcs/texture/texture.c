@@ -47,7 +47,7 @@ static int		x_scale(t_game *var, int x)
 				((x - var->side[0]) * var->t[0].y)) / div);
 }
 
-static void		draw_slice_texture(t_env *env, int x, t_height h, t_game *var)
+static int		draw_slice_texture(t_env *env, int x, t_height h, t_game *var)
 {
 	t_pos		p;
 	t_scaler	scaler;
@@ -58,9 +58,7 @@ static void		draw_slice_texture(t_env *env, int x, t_height h, t_game *var)
 	p.x = x;
 	p.y = h.top;
 	if (var->unbound[0] == var->unbound[1])
-	{
-		clean(env, E_FLOAT);
-	}
+		return (0);
 	scaler = scaler_init(var->unbound[0], h.top,
 			var->unbound[1], WALL_RATIO * var->text_height);
 	scale_x = x_scale(var, x);
@@ -74,9 +72,10 @@ static void		draw_slice_texture(t_env *env, int x, t_height h, t_game *var)
 			color = color_light(color, env->sector[var->sector].light, env->setting.light_intensity);
 		draw_pixel(env, env->sdl.screen, p, color);
 	}
+	return (1);
 }
 
-void			draw_texture_slice(t_env *env, int x, t_height h, t_game *var)
+int			draw_texture_slice(t_env *env, int x, t_height h, t_game *var)
 {
 	t_pos		p;
 
@@ -87,7 +86,12 @@ void			draw_texture_slice(t_env *env, int x, t_height h, t_game *var)
 	if (h.bottom > h.top)
 	{
 		draw_pixel(env, env->sdl.screen, p, 0);
-		draw_slice_texture(env, x, h, var);
+		if (!draw_slice_texture(env, x, h, var))
+		{
+			var->error = 1;
+			return (0);
+		}
 		draw_pixel(env, env->sdl.screen, p, 0);
 	}
+	return (1);
 }

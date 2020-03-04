@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 18:48:17 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/03/04 17:31:32 by kibotrel         ###   ########.fr       */
+/*   Updated: 2020/03/04 19:17:12 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -301,6 +301,7 @@ typedef struct			s_env
 	pthread_t			sound;
 	int32_t				w;
 	int32_t				h;
+	int32_t				crash;
 	int32_t				input[SDL_NUM_SCANCODES];
 	t_audio				audio;
 	t_editor			editor;

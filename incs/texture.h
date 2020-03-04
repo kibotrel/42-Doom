@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   texture.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lojesu <lojesu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/16 15:44:25 by lojesu            #+#    #+#             */
-/*   Updated: 2020/02/20 14:42:58 by lojesu           ###   ########.fr       */
+/*   Updated: 2020/03/04 19:19:59 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void		init_and_protect_variable_2(t_game *var, float w_size, float *u0, float *u
 /*
 ** texture/texture, function for draw texture's slice'
 */
-void		draw_texture_slice(t_env *env, int x, t_height h, t_game *var);
+int			draw_texture_slice(t_env *env, int x, t_height h, t_game *var);
 
 /*
 ** texture/texture_tools, function for differ a color to an other color
