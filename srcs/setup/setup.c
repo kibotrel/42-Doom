@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/16 11:58:26 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/03/03 16:08:23 by lojesu           ###   ########.fr       */
+/*   Updated: 2020/03/04 16:51:17 by lojesu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,9 @@
 #include "settings.h"
 #include "texture.h"
 
-static void	bzero_params(t_env *env, bool settings)
+static void	bzero_params(t_env *env)
 {
-	if (settings)
-		ft_bzero(env, sizeof(t_env));
+	ft_bzero(env, sizeof(t_env));
 	ft_bzero(env->asset, sizeof(char*));
 	ft_bzero(env->error, sizeof(char*));
 	ft_bzero(&env->cam, sizeof(t_cam));
@@ -91,11 +90,11 @@ static void	assets_paths(t_env *env)
 	env->asset[COIN] = coins_asset(env->w, env->h);
 }
 
-static void	infos_setup(t_env *env, int w, int h)
+void	infos_setup(t_env *env, int w, int h)
 {
 	env->w = w;
 	env->h = h;
-	//	env->win = GAME;
+	env->win = SETTINGS;
 	env->cam.fly = -1;
 	env->cam.fall = 1;
 	env->cam.speed = 1;
@@ -119,22 +118,13 @@ static void	infos_setup(t_env *env, int w, int h)
 	env->data.hud.shotgun.shift = shotgun_shift(env->w, env->h);
 }
 
-void		env_setup(t_env *env, int w, int h, bool settings)
+void	setting_setup(t_env *env, int w, int h)
 {
-	bzero_params(env, settings);
-	infos_setup(env, w, h);
-	assets_paths(env);
-	error_messages(env);
-	editor_setup(&env->editor);
-	env->old_st_fl = 0;
-	env->st_fl = 1;
-	//setting_setup
-	if (settings == true)
-	{
 		env->setting.fog_on_off = true;
 		env->setting.border_on_off = false;
 		env->setting.fly_mode = false;
-		env->setting.format = ft_strsplit("1280x720 1366x768 1440x900 1920x1080", ' ');
+		env->setting.format = ft_strsplit(
+				"1280x720 1366x768 1440x900 1920x1080", ' ');
 		env->setting.mode = NORMAL;
 		env->setting.fps_max = 60;
 		env->setting.fog_intensity = 7;
@@ -147,5 +137,17 @@ void		env_setup(t_env *env, int w, int h, bool settings)
 			env->setting.index_format = 2;
 		else
 			env->setting.index_format = 3;
-	}
+}
+
+void		env_setup(t_env *env, int w, int h, bool settings)
+{
+	bzero_params(env);
+	infos_setup(env, w, h);
+	assets_paths(env);
+	error_messages(env);
+	editor_setup(&env->editor);
+	env->old_st_fl = 0;
+	env->st_fl = 1;
+	if (settings == true)
+		setting_setup(env, w, h);
 }
