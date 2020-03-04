@@ -6,10 +6,11 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/18 14:36:07 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/18 09:09:26 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/03/04 14:21:18 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "clean.h"
 #include "env.h"
 #include "core.h"
 #include "editor.h"
@@ -23,7 +24,8 @@ void	editor(t_env *env)
 		win_pos = SDL_WINDOWPOS_CENTERED;
 		SDL_SetWindowTitle(env->sdl.win, TITLE_EDITOR);
 		SDL_SetWindowSize(env->sdl.win, EDIT_W + MENU_W, EDIT_H);
-		env->sdl.screen = SDL_GetWindowSurface(env->sdl.win);
+		if (!(env->sdl.screen = SDL_GetWindowSurface(env->sdl.win)))
+			clean(env, E_SDL_WINSURF);
 		SDL_SetWindowPosition(env->sdl.win, win_pos, win_pos);
 		env->setup = 1;
 	}

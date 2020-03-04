@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/04 09:26:41 by nde-jesu          #+#    #+#             */
-/*   Updated: 2020/03/04 09:29:34 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/03/04 14:59:26 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ static void		write_file(t_editor *editor, int fd)
 	{
 		get_elements_number(editor, fd);
 		write_player(editor->player, *(sector->vertex), fd);
-		write_vertexes(sector, fd);
+		write_vertexes(sector, fd, editor);
 		write_sectors(sector, fd);
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/04 11:49:06 by nde-jesu          #+#    #+#             */
-/*   Updated: 2020/03/04 11:51:53 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/03/04 15:00:35 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ void				clear_editor(t_editor *editor);
 **	core/events.c
 */
 void				events(t_editor *editor, t_env *env);
-void				editor_mousewheel(t_editor *editor, SDL_Event event);
 void				editor_click(t_editor *editor, SDL_Event event, t_env *env);
 
 /*
@@ -175,7 +174,8 @@ void				write_portals(t_ed_sector *sect, int fd);
 **	save/map_creation_part2.c
 */
 void				write_vertex_sector(t_ed_sector *sect, int fd);
-void				write_vertexes(t_ed_sector *vertexes, int fd);
+void				write_vertexes(t_ed_sector *vertexes, int fd,
+	t_editor *edit);
 void				write_entities(t_ed_entity *entities, int fd, bool type);
 void				write_player(t_ed_player player, t_vertex if_no_player,
 	int fd);

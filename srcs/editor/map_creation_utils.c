@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/04 09:31:16 by nde-jesu          #+#    #+#             */
-/*   Updated: 2020/03/04 09:32:03 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/03/04 14:50:52 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,18 +25,6 @@ int				search_vertex_num(t_vertex *all, t_vertex *to_find)
 		vertex = vertex->next;
 	}
 	return (-1);
-}
-
-static int		count_entity(t_ed_entity *all_entity)
-{
-	t_ed_entity *entity;
-
-	if (!all_entity)
-		return (0);
-	entity = all_entity;
-	while (entity->next)
-		entity = entity->next;
-	return (entity->number + 1);
 }
 
 int				count_sector(t_ed_sector *all_sector)
@@ -83,9 +71,5 @@ void			get_elements_number(t_editor *editor, int fd)
 	ft_putnbr_fd(count_vertex(editor->sector), fd);
 	ft_putstr_fd(" sectors ", fd);
 	ft_putnbr_fd(count_sector(editor->sector), fd);
-	ft_putstr_fd(" enemies ", fd);
-	ft_putnbr_fd(count_entity(editor->enemy), fd);
-	ft_putstr_fd(" objects ", fd);
-	ft_putnbr_fd(count_entity(editor->object), fd);
 	ft_putstr_fd("\n\n", fd);
 }

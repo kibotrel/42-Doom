@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/03 14:51:32 by nde-jesu          #+#    #+#             */
-/*   Updated: 2020/03/04 11:52:24 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/03/04 13:22:55 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void			init_count(t_count *count)
 	count->object = 0;
 	count->button.new = 0;
 	count->button.old = 0;
-	ft_bzero(count->eff_data, sizeof(int) * ALL_EFFECTS);
+	ft_bzero(&count->eff_data, sizeof(int) * ALL_EFFECTS);
 }
 
 void			clean_editor(t_editor *editor)

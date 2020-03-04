@@ -6,7 +6,7 @@
 #    By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/10 16:16:29 by kibotrel          #+#    #+#              #
-#    Updated: 2020/03/04 11:10:33 by nde-jesu         ###   ########.fr        #
+#    Updated: 2020/03/04 14:49:20 by nde-jesu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -184,6 +184,7 @@ SRCS			+= editor/map_creation.c
 SRCS			+= editor/map_creation_part2.c
 SRCS			+= editor/map_creation_utils.c
 SRCS			+= editor/vertex.c
+SRCS			+= editor/vertex_part2.c
 SRCS			+= editor/sector.c
 SRCS			+= editor/sector_part2.c
 SRCS			+= editor/sector_check.c

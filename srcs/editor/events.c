@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 13:09:05 by nde-jesu          #+#    #+#             */
-/*   Updated: 2020/03/04 09:12:26 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/03/04 14:53:33 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,19 +66,6 @@ void			editor_click(t_editor *editor, SDL_Event event, t_env *env)
 	}
 	else if (editor->sect_is_closed == true && event.motion.x > EDIT_W)
 		clic_editor_menu(event.motion.x, event.motion.y, editor, env);
-}
-
-void			editor_mousewheel(t_editor *editor, SDL_Event event)
-{
-	if (event.wheel.y > 0)
-		editor->dist_grid *= 2;
-	else if (event.wheel.y < 0)
-		editor->dist_grid /= 2;
-	if (editor->dist_grid < 25)
-		editor->dist_grid = 25;
-	if (editor->dist_grid > 100)
-		editor->dist_grid = 100;
-	editor->true_grid = EDIT_W / editor->dist_grid;
 }
 
 void			events(t_editor *editor, t_env *env)

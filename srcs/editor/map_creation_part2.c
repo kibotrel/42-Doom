@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/04 09:24:15 by nde-jesu          #+#    #+#             */
-/*   Updated: 2020/03/04 09:26:13 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/03/04 15:01:09 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,19 +32,44 @@ void		write_player(t_ed_player player, t_vertex if_no_player, int fd)
 	ft_putstr_fd("\n\n", fd);
 }
 
-static void	write_vertex(t_vertex *vertex, int fd)
+static void	write_true_vertex(int x, int y, int fd, t_editor *edit)
+{
+	int		xa;
+	int		ya;
+	int		true_x;
+	int		true_y;
+
+	ya = 0;
+	true_y = 0;
+	while (ya < EDIT_H)
+	{
+		true_x = 0;
+		xa = 0;
+		while (xa < EDIT_W)
+		{
+			if (xa % edit->true_grid == 0 && xa < x)
+				++true_x;
+			++xa;
+		}
+		if (ya % edit->true_grid == 0 && ya < y)
+			++true_y;
+		++ya;
+	}
+	ft_putnbr_fd(true_x, fd);
+	ft_putstr_fd(" y ", fd);
+	ft_putnbr_fd(true_y, fd);
+}
+
+static void	write_vertex(t_vertex *vertex, int fd, t_editor *edit)
 {
 	ft_putstr_fd("vertex number ", fd);
 	ft_putnbr_fd(vertex->vertex_number, fd);
 	ft_putstr_fd(" x ", fd);
-	ft_putnbr_fd(vertex->x, fd);
-	ft_putchar_fd(' ', fd);
-	ft_putstr_fd("y ", fd);
-	ft_putnbr_fd(vertex->y, fd);
+	write_true_vertex(vertex->x, vertex->y, fd, edit);
 	ft_putchar_fd('\n', fd);
 }
 
-void		write_vertexes(t_ed_sector *vertexes, int fd)
+void		write_vertexes(t_ed_sector *vertexes, int fd, t_editor *edit)
 {
 	t_ed_sector	*sect;
 	t_vertex	*vertex;
@@ -59,7 +84,7 @@ void		write_vertexes(t_ed_sector *vertexes, int fd)
 		{
 			if (count <= vertex->vertex_number)
 			{
-				write_vertex(vertex, fd);
+				write_vertex(vertex, fd, edit);
 				++count;
 			}
 			vertex = vertex->next;
