@@ -6,11 +6,12 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/03 15:13:40 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/03/05 10:19:20 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/03/05 13:29:34 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "utils.h"
+#include "settings.h"
 
 int32_t	get_thread(t_env *env)
 {
@@ -71,4 +72,22 @@ char	*effector_string(t_env *env)
 	else if (env->sector[env->cam.sector].type > END)
 		return ("Plate");
 	return (NULL);
+}
+
+void	update_life(t_env *env, double value, int action)
+{
+	if (action == 0)
+	{
+		value *= (env->setting.mode == EASY ? 2 : 1);
+		value /= (env->setting.mode == HARD ? 2 : 1);
+		env->data.life += value;
+		if (env->data.life > 100)
+			env->data.life = 100;
+	}
+	else if (action == 1)
+	{
+		value /= (env->setting.mode == EASY ? 2 : 1);
+		value *= (env->setting.mode == HARD ? 2 : 1);
+		env->data.life -= value;
+	}
 }

@@ -1,8 +1,7 @@
-#include "structs.h"
-#include <stdint.h>
 #include "utils.h"
 #include "editor.h"
 #include "clean.h"
+#include "core.h"
 
 void	doors2(t_env *env, int t, uint32_t i, uint32_t j)
 {
@@ -60,15 +59,15 @@ void	effector(t_env *env, int s)
 	if (env->st_fl > env->old_st_fl + 200)
 	{
 		if (env->sector[s].type == LAVA && env->cam.ground == 1)
-			env->data.life -= (double)env->sector[s].data / 5;
+			update_life(env, (double)env->sector[s].data / 5, 1);
 		if (env->sector[s].type == MONEY)
 			env->data.money += (double)env->sector[s].data / 5;
-		if (env->sector[s].type == HEAL && env->data.life < 100)
-			env->data.life += (double)env->sector[s].data / 5;
+		if (env->sector[s].type == HEAL)
+			update_life(env, (double)env->sector[s].data / 5, 0);
 		env->old_st_fl = env->st_fl;
 	}
-	if (env->data.life == 0 || env->sector[s].type == END)
-		env->data.life == 0 ? clean(env, DEATH) : clean(env, WIN);
+	if (env->data.life <= 0 || env->sector[s].type == END)
+		env->data.life <= 0 ? clean(env, DEATH) : clean(env, WIN);
 }
 
 void	elevator(t_sector *sector, int s, t_cam *cam, int *input)
