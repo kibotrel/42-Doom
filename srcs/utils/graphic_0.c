@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   graphic_0.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/17 11:08:34 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/03/05 13:06:07 by lojesu           ###   ########.fr       */
+/*   Updated: 2020/03/05 20:11:51 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "clean.h"
 #include "utils.h"
+#include "texture.h"
 
 void	draw_pixel(t_env *env, SDL_Surface *win, t_pos p, uint32_t color)
 {
@@ -81,7 +82,7 @@ void	draw_line(t_env *env, t_pos start, t_pos end, uint32_t color)
 void	draw_slice(t_env *env, int x, t_height h, t_palette c)
 {
 	t_pos		p;
-
+	
 	h.top = bound(h.top, 0, env->h - 1);
 	h.bottom = bound(h.bottom, 0, env->h - 1);
 	p.x = x;

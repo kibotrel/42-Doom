@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/05 13:12:00 by lojesu            #+#    #+#             */
-/*   Updated: 2020/03/05 16:35:48 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/03/05 19:58:26 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ static int		draw_slice_texture(t_env *env, int x, t_height h, t_game *var)
 	return (1);
 }
 
-int				draw_texture_slice(t_env *env, int x, t_height h, t_game *var)
+void			draw_texture_slice(t_env *env, int x, t_height h, t_game *var)
 {
 	t_pos		p;
 
@@ -100,11 +100,7 @@ int				draw_texture_slice(t_env *env, int x, t_height h, t_game *var)
 	{
 		draw_pixel(env, env->sdl.screen, p, 0);
 		if (!draw_slice_texture(env, x, h, var))
-		{
-			var->error = 1;
-			return (0);
-		}
+			return ;
 		draw_pixel(env, env->sdl.screen, p, 0);
 	}
-	return (1);
 }

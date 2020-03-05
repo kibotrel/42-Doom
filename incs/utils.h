@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 19:01:59 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/03/05 10:22:15 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/03/05 19:57:06 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void				text_to_screen(t_env *env, t_sdl *sdl, char *txt,
 **	graphic_1.c
 */
 
-int					draw_screen(t_env *env, t_game *var);
+void				draw_screen(t_env *env, t_game *var);
 void				blur(t_env *env, SDL_Surface *win, t_pos p);
 
 /*

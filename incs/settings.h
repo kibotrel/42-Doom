@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   settings.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lojesu <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/21 15:25:58 by lojesu            #+#    #+#             */
-/*   Updated: 2020/03/03 17:41:18 by lojesu           ###   ########.fr       */
+/*   Updated: 2020/03/05 19:15:59 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,36 +19,36 @@
 # define RESET 0xFFFFFF
 # define HIDE 0x969696
 
-# define FOG_START_X 35
+# define FOG_START_X 40
 # define FOG_START_Y 5
 # define FOG_SIZE 7
 # define FOG_INTENSITY_SIZE 3
 
-# define BORDER_START_X 35
+# define BORDER_START_X 40
 # define BORDER_START_Y 9
 # define BORDER_SIZE 7
 
-# define FLY_START_X 35
+# define FLY_START_X 40
 # define FLY_START_Y 11
 # define FLY_SIZE 7
 
-# define MODE_START_X 35
+# define MODE_START_X 40
 # define MODE_START_Y 13
 # define MODE_SIZE 4
 
-# define RES_START_X 36
+# define RES_START_X 40
 # define RES_START_Y 15
 # define RES_SIZE 4
 
-# define FOV_START_X 37
+# define FOV_START_X 40
 # define FOV_START_Y 17
 # define FOV_SIZE 2
 
-# define FPS_START_X 35
+# define FPS_START_X 40
 # define FPS_START_Y 19
 # define FPS_SIZE 2
 
-# define LIGHT_START_X 36
+# define LIGHT_START_X 40
 # define LIGHT_START_Y 21
 # define LIGHT_SIZE 5
 

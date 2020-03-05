@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   engine.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 15:22:56 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/03/05 13:25:30 by lojesu           ###   ########.fr       */
+/*   Updated: 2020/03/05 20:03:44 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	graphics(t_env *env)
 	t_item		now;
 
 	game_setup(env, &var);
-	while ((var.i++ == 0 || var.head != var.tail) && !var.error && !env->crash)
+	while ((var.i++ == 0 || var.head != var.tail) && !var.error)
 	{
 		var.j = 0;
 		if (cycle_check(env, &var, &now))
@@ -54,12 +54,10 @@ void	graphics(t_env *env)
 			if ((!bound_view(&var) || !scale(env, &var, &now)) && ++var.j)
 				continue;
 			draw_setup(env, &var, &now, var.j++);
-			if (!draw_screen(env, &var))
-				break ;
+			draw_screen(env, &var);
 			check_depth(&var, var.start, var.end);
 		}
 	}
-	env->crash = (env->crash || var.error ? 1 : 0);
 	if (var.sky > env->data.sky)
 		env->data.sky = var.sky;
 	engine_clean(&var);
