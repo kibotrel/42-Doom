@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/08 19:29:45 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/03/05 14:11:03 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/03/05 14:17:56 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 #include "clean.h"
 #include "editor.h"
 
-#include <stdio.h>
 void		free_map(t_env *env)
 {
 	uint32_t	i;
