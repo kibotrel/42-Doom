@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/17 16:35:58 by reda-con          #+#    #+#             */
-/*   Updated: 2020/03/05 17:42:51 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/03/05 17:51:26 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ int			second_check(t_sector *s, char **t, t_vec2d *ver, t_env *e)
 		clean(e, E_MALLOC);
 	if (!(s[ft_atoi(t[2])].neighbor = (int*)malloc(sizeof(int) * i)))
 		clean(e, E_MALLOC);
-	if (23 + 2 * i < j && t[22 + i] && !ft_strcmp(t[22 + i], "portals"))
+	if (23 + 2 * i == j && t[22 + i] && !ft_strcmp(t[22 + i], "portals"))
 	{
 		if (third_check(e, t, ver, i))
 			return (4);

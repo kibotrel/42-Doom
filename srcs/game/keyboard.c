@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   keyboard.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/10 15:11:44 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/03/05 15:23:40 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/03/05 18:08:12 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,6 @@ void	game_keyboard(t_env *env)
 		free_map(env);
 		pthread_join(env->sound, NULL);
 		SDL_ShowCursor(SDL_ENABLE);
-		if (env->tuto)
-			ft_bzero(&env->test, sizeof(t_tuto));
 		return ;
 	}
 	if (env->input[SDL_SCANCODE_SPACE])

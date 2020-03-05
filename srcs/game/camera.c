@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   camera.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/11 14:21:04 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/03/05 10:20:45 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/03/05 18:15:11 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,16 +46,21 @@ void	update_cam(t_env *env, t_vec2d vel)
 	s = &env->sector[env->cam.sector];
 	v = s->vertex;
 	p = v2d(env->cam.pos.x, env->cam.pos.y);
+	ft_putendl("oui");
 	while (i < s->points)
 	{
+		ft_putendl("etre");
 		if (s->neighbor[i] >= 0
 			&& check_collisions(p, vel, v[i], v[(i + 1) % s->points]))
 		{
+			ft_putendl("non");
 			env->cam.sector = s->neighbor[i];
+			ft_putendl("peut");
 			break ;
 		}
 		i++;
 	}
+	ft_putendl("je");
 	env->cam.pos.x += vel.x;
 	env->cam.pos.y += vel.y;
 	env->cam.sin = sin(env->cam.angle);

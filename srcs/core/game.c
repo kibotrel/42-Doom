@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/18 14:38:11 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/03/05 10:21:34 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/03/05 18:12:08 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,11 @@ void		game(t_env *env, int ac, char **av)
 {
 	if (!env->setup)
 	{
+		if (env->tuto) 
+		{
+			ft_bzero(&env->test.move, sizeof(int) * 4);
+			ft_bzero(&env->test, sizeof(t_tuto));
+		}
 		main_parse(av, env, ac);
 		env->setup = 1;
 		SDL_ShowCursor(SDL_DISABLE);
