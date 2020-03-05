@@ -6,7 +6,7 @@
 /*   By: reda-con <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/23 16:34:34 by reda-con          #+#    #+#             */
-/*   Updated: 2020/03/04 15:10:28 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/03/05 14:25:49 by lojesu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@
 static void	init_total(t_parse *par, char **tab, t_env *env)
 {
 	if ((par->total = ft_atoi(tab[2])) < 3)
-		clean(env, E_PARSE_NB_VERTEX);
+		clean(env, E_P_NB_VERTEX);
 	if ((env->zones = ft_atoi(tab[4])) < 1)
-		clean(env, E_PARSE_NB_SECTOR);
+		clean(env, E_P_NB_SECTOR);
 	if (!(par->ver = (t_vec2d*)malloc(sizeof(t_vec2d) * par->total)))
 		parse_err(tab, par, env, E_MALLOC);
 	if (!(env->sector = (t_sector*)malloc(sizeof(t_sector) * env->zones)))

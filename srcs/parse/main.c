@@ -6,7 +6,7 @@
 /*   By: reda-con <reda-con@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 14:00:52 by reda-con          #+#    #+#             */
-/*   Updated: 2020/03/05 14:07:55 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/03/05 14:25:15 by lojesu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,8 @@ static void		parse(char *l, t_parse *par, t_env *env)
 	else if (tab[0] && !ft_strcmp("sector", tab[0]) && par->fsl != 0)
 		i += verif_sector(env->sector, tab, par->ver, env);
 	else if (verif_blank(tab) && tab[0][0] != '#' && par->fsl != 0)
-		parse_err(tab, par, env, E_PARSE_BLANK);
-	(i != 0) ? parse_err(tab, par, env, E_PARSE + i) : free_tab(tab);
+		parse_err(tab, par, env, E_P_BLANK);
+	(i != 0) ? parse_err(tab, par, env, E_P + i) : free_tab(tab);
 }
 
 static void		set_doors(t_sector *s, int nb)
@@ -71,19 +71,19 @@ static void		set_doors(t_sector *s, int nb)
 static void		verif_end(int gnl, int fd, t_env *env, t_parse par)
 {
 	if (par.fsl == 0)
-		main_err(&par, env, 1, E_PARSE_NO_TOTAL);
+		main_err(&par, env, 1, E_P_NO_TOTAL);
 	if (gnl == -1)
-		main_err(&par, env, 1, E_PARSE_GNL);
+		main_err(&par, env, 1, E_P_GNL);
 	if (close(fd))
-		main_err(&par, env, 1, E_PARSE_CLOSE);
+		main_err(&par, env, 1, E_P_CLOSE);
 	if (env->cam.pos.x <= -1 || env->cam.pos.y <= -1)
-		main_err(&par, env, 1, E_PARSE_NO_PLAYER);
+		main_err(&par, env, 1, E_P_NO_PLAYER);
 	if (par.total == -1)
-		main_err(&par, env, 1, E_PARSE_TOTAL);
+		main_err(&par, env, 1, E_P_TOTAL);
 	if (par.nb != par.total)
-		main_err(&par, env, 1, E_PARSE_NB_VERTEX);
+		main_err(&par, env, 1, E_P_NB_VERTEX);
 	if (env->sect_ct != env->zones)
-		main_err(&par, env, 1, E_PARSE_NB_SECTOR);
+		main_err(&par, env, 1, E_P_NB_SECTOR);
 }
 
 static void		read_file(char *file, char **av, t_env *env)
@@ -99,9 +99,9 @@ static void		read_file(char *file, char **av, t_env *env)
 	env->zones = 0;
 	gnl = ft_isvalidname(av[1], ".data");
 	if (gnl == 0)
-		clean(env, E_PARSE_NAME);
+		clean(env, E_P_NAME);
 	if ((fd = open(file, O_RDONLY)) == -1)
-		clean(env, E_PARSE_OPEN);//ici
+		clean(env, E_P_OPEN);//ici
 	while ((gnl = ft_get_next_line(fd, &line)) == 1)
 	{
 		parse(line, &par, env);

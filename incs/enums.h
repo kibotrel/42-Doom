@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 17:59:50 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/03/05 11:52:16 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/03/05 14:23:23 by lojesu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,21 +78,21 @@ typedef enum	e_status
 	E_BMP_PARSE,
 	E_BKGD,
 	E_MALLOC,
-	E_PARSE,
-	E_PARSE_FS_LINE,
-	E_PARSE_VERTEX,
-	E_PARSE_PLAYER,
-	E_PARSE_SECTOR,
-	E_PARSE_BLANK,
-	E_PARSE_NAME,
-	E_PARSE_OPEN,
-	E_PARSE_GNL,
-	E_PARSE_CLOSE,
-	E_PARSE_NO_PLAYER,
-	E_PARSE_TOTAL,
-	E_PARSE_NB_VERTEX,
-	E_PARSE_NB_SECTOR,
-	E_PARSE_NO_TOTAL,
+	E_P,
+	E_P_FS_LINE,
+	E_P_VERTEX,
+	E_P_PLAYER,
+	E_P_SECTOR,
+	E_P_BLANK,
+	E_P_NAME,
+	E_P_OPEN,
+	E_P_GNL,
+	E_P_CLOSE,
+	E_P_NO_PLAYER,
+	E_P_TOTAL,
+	E_P_NB_VERTEX,
+	E_P_NB_SECTOR,
+	E_P_NO_TOTAL,
 	E_SDL_THREAD,
 	E_AUDIO_DRIVER,
 	E_FLOAT,

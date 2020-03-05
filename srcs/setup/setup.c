@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/16 11:58:26 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/03/05 11:53:01 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/03/05 12:20:30 by lojesu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,49 +45,6 @@ static void	bzero_params(t_env *env)
 	ft_bzero(env->frame, sizeof(uint32_t) * NB_FRAMES);
 }
 
-static void	error_messages(t_env *env)
-{
-	env->error[NOTHING] = "";
-	env->error[E_FILENAME] = M_FILENAME;
-	env->error[E_SDL_INIT] = M_SDL_INIT;
-	env->error[E_SDL_WIN] = M_SDL_WIN;
-	env->error[E_SDL_WINSURF] = M_SDL_WINSURF;
-	env->error[E_SDL_UPDATE] = M_SDL_UPDATE;
-	env->error[E_TTF_INIT] = M_TTF_INIT;
-	env->error[E_TTF_FONT] = M_TTF_FONT;
-	env->error[E_TTF_RENDER] = M_TTF_RENDER;
-	env->error[E_SDL_BLIT] = M_SDL_BLIT;
-	env->error[E_BMP_PARSE] = M_BMP_PARSE;
-	env->error[E_MALLOC] = M_MALLOC;
-	env->error[E_BKGD] = M_BKGD;
-	env->error[E_PARSE] = M_PARSE;
-	env->error[E_PARSE_FS_LINE] = M_PARSE_FS_LINE;
-	env->error[E_PARSE_VERTEX] = M_PARSE_VERTEX;
-	env->error[E_PARSE_PLAYER] = M_PARSE_PLAYER;
-	env->error[E_PARSE_SECTOR] = M_PARSE_SECTOR;
-	env->error[E_PARSE_BLANK] = M_PARSE_BLANK;
-	env->error[E_PARSE_NAME] = M_PARSE_NAME;
-	env->error[E_PARSE_OPEN] = M_PARSE_OPEN;
-	env->error[E_PARSE_GNL] = M_PARSE_GNL;
-	env->error[E_PARSE_CLOSE] = M_PARSE_CLOSE;
-	env->error[E_PARSE_NO_PLAYER] = M_PARSE_NO_PLAYER;
-	env->error[E_PARSE_TOTAL] = M_PARSE_TOTAL;
-	env->error[E_PARSE_NB_VERTEX] = M_PARSE_NB_VERTEX;
-	env->error[E_PARSE_NB_SECTOR] = M_PARSE_NB_SECTOR;
-	env->error[E_PARSE_NO_TOTAL] = M_PARSE_NO_TOTAL;
-	env->error[E_SDL_THREAD] = M_SDL_THREAD;
-	env->error[E_AUDIO_DRIVER] = M_AUDIO_DRIVER;
-	env->error[E_FLOAT] = M_FLOAT;
-	env->error[E_EDIT_ENTITY] = M_EDIT_ENTITY;
-	env->error[E_EDIT_PORTAL] = M_EDIT_PORTAL;
-	env->error[E_EDIT_SECT_PORTAL] = M_E_SECT_PORT;
-	env->error[E_EDIT_SECTOR] = M_EDIT_SECTOR;
-	env->error[E_EDIT_TEXT] = M_EDIT_TEXT;
-	env->error[E_EDIT_VERTEX] = M_EDIT_VERTEX;
-	env->error[DEATH] = M_DEATH;
-	env->error[WIN] = M_WIN;
-}
-
 static void	assets_paths(t_env *env)
 {
 	env->asset[BG_MENU] = background_path(env->w, env->h);
@@ -106,11 +63,10 @@ static void	assets_paths(t_env *env)
 	scaled_assets(env);
 }
 
-void	infos_setup(t_env *env)
+static void	infos_setup(t_env *env)
 {
 	env->w = WIN_W;
 	env->h = WIN_H;
-//	env->win = GAME;
 	env->cam.fly = -1;
 	env->cam.fall = 1;
 	env->cam.speed = 1;
@@ -133,27 +89,6 @@ void	infos_setup(t_env *env)
 	env->data.g_size = env->data.f_size / 3;
 	env->data.hud.coin.shift = coin_shift(env->w, env->h);
 	env->data.hud.shotgun.shift = shotgun_shift(env->w, env->h);
-}
-
-void	setting_setup(t_env *env)
-{
-		env->setting.fog_on_off = true;
-		env->setting.border_on_off = false;
-		env->setting.fly_mode = false;
-		env->setting.format = ft_strsplit(
-				"1280x720 1366x768 1440x900 1920x1080", ' ');
-		env->setting.mode = NORMAL;
-		env->setting.fps_max = 60;
-		env->setting.fog_intensity = 7;
-		env->setting.light_intensity = LIGHT;
-		if (env->w == 1280 && env->h == 720)
-			env->setting.index_format = 0;
-		else if (env->w == 1366 && env->h == 768)
-			env->setting.index_format = 1;
-		else if (env->w == 1440 && env->h == 900)
-			env->setting.index_format = 2;
-		else
-			env->setting.index_format = 3;
 }
 
 void		env_setup(t_env *env)

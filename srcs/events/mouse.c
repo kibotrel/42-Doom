@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/17 13:51:13 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/03/05 08:57:08 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/03/05 13:23:20 by lojesu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void	handle_mouse(t_env *env, t_sdl *sdl)
 		editor_click(&env->editor, sdl->event, env);
 	else if (sdl->event.button.button == SDL_BUTTON_LEFT && env->win == GAME)
 		game_click(env, sdl->event.button.x, sdl->event.button.y);
-	else if (sdl->event.button.button == SDL_BUTTON_LEFT && env->win == SETTINGS)
+	else if (sdl->event.button.button == SDL_BUTTON_LEFT
+			&& env->win == SETTINGS)
 		settings_click(env);
 }

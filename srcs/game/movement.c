@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/10 16:47:31 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/03/05 10:20:28 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/03/05 13:30:41 by lojesu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "utils.h"
 #include "parse.h"
 
-void	jump(t_env *env, t_cam *cam)
+void		jump(t_env *env, t_cam *cam)
 {
 	if (cam->fly > 0
 			&& env->sector[cam->sector].ceil - cam->pos.z > MARGIN_HEAD)
@@ -41,7 +41,7 @@ void	jump(t_env *env, t_cam *cam)
 	}
 }
 
-void	fly(t_env *env)
+void		fly(t_env *env)
 {
 	check_tick(&env->tick.fly, &env->cam.fly, 160);
 	if (env->tick.fly.old == env->tick.fly.new)
@@ -51,7 +51,23 @@ void	fly(t_env *env)
 	}
 }
 
-void	move(t_env *env)
+static void	move_part2(t_env *env, t_vec2d *v)
+{
+	if (env->input[SDL_SCANCODE_A])
+	{
+		v->x += env->cam.sin * (env->cam.speed * 0.15);
+		v->y -= env->cam.cos * (env->cam.speed * 0.15);
+		env->test.move[1] = 1;
+	}
+	if (env->input[SDL_SCANCODE_D])
+	{
+		v->x -= env->cam.sin * (env->cam.speed * 0.15);
+		v->y += env->cam.cos * (env->cam.speed * 0.15);
+		env->test.move[3] = 1;
+	}
+}
+
+void		move(t_env *env)
 {
 	t_vec2d		v;
 
@@ -69,17 +85,6 @@ void	move(t_env *env)
 		v.y -= env->cam.sin * (env->cam.speed * 0.1);
 		env->test.move[2] = 1;
 	}
-	if (env->input[SDL_SCANCODE_A])
-	{
-		v.x += env->cam.sin * (env->cam.speed * 0.15);
-		v.y -= env->cam.cos * (env->cam.speed * 0.15);
-		env->test.move[1] = 1;
-	}
-	if (env->input[SDL_SCANCODE_D])
-	{
-		v.x -= env->cam.sin * (env->cam.speed * 0.15);
-		v.y += env->cam.cos * (env->cam.speed * 0.15);
-		env->test.move[3] = 1;
-	}
+	move_part2(env, &v);
 	velocity(env, &env->cam, v);
 }

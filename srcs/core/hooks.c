@@ -6,17 +6,13 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/16 12:45:38 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/03/05 08:43:45 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/03/05 13:19:18 by lojesu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "game.h"
 #include "clean.h"
 #include "events.h"
-
-//
-// printf("%d\n", sdl->event.key.keysym.scancode);
-//
 
 void	global_hooks(t_env *env, t_sdl *sdl)
 {

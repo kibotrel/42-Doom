@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 18:48:17 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/03/05 13:27:08 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/03/05 14:17:45 by lojesu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -167,7 +167,7 @@ typedef struct			s_effector
 {
 	t_ed_effects	effects;
 	int				data;
-}					t_effector;
+}						t_effector;
 
 typedef struct			s_ed_sector
 {
