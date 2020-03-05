@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/17 11:08:34 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/03/05 20:11:51 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/03/05 22:31:57 by lojesu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,8 +81,8 @@ void	draw_line(t_env *env, t_pos start, t_pos end, uint32_t color)
 
 void	draw_slice(t_env *env, int x, t_height h, t_palette c)
 {
-	t_pos		p;
-	
+	t_pos	p;
+
 	h.top = bound(h.top, 0, env->h - 1);
 	h.bottom = bound(h.bottom, 0, env->h - 1);
 	p.x = x;

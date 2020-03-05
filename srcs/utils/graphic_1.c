@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 13:21:31 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/03/05 22:10:26 by lojesu           ###   ########.fr       */
+/*   Updated: 2020/03/05 22:29:31 by lojesu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static uint32_t	select_floor_color(t_env *env, t_game *var)
 	return (FLOOR);
 }
 
-static void	draw_ceil_and_floor_part2(t_env *env, t_game *var, int32_t x)
+static void		draw_ceil_and_floor_part2(t_env *env, t_game *var, int32_t x)
 {
 	uint32_t	border;
 
@@ -41,14 +41,16 @@ static void	draw_ceil_and_floor_part2(t_env *env, t_game *var, int32_t x)
 					border, color_light(CEIL, env->sector[var->sector].light,
 						env->setting.light_intensity), border));
 	}
-	border = color_light(select_floor_color(env, var), env->sector[var->sector].light,
-			env->setting.light_intensity) * !env->setting.border_on_off;
+	border = color_light(select_floor_color(env, var),
+			env->sector[var->sector].light, env->setting.light_intensity) *
+		!env->setting.border_on_off;
 	draw_slice(env, x, lim(var->y[1] + 1, var->bottom[x]), flat(
-				border, color_light(select_floor_color(env, var), env->sector[var->sector].light,
+				border, color_light(select_floor_color(env, var),
+					env->sector[var->sector].light,
 					env->setting.light_intensity), border));
 }
 
-static void	draw_ceil_and_floor(t_env *env, t_game *var, int32_t x)
+static void		draw_ceil_and_floor(t_env *env, t_game *var, int32_t x)
 {
 	int32_t		*p;
 	int32_t		max;
@@ -69,7 +71,7 @@ static void	draw_ceil_and_floor(t_env *env, t_game *var, int32_t x)
 	draw_ceil_and_floor_part2(env, var, x);
 }
 
-static void	draw_transitions(t_env *env, t_game *var, int32_t x)
+static void		draw_transitions(t_env *env, t_game *var, int32_t x)
 {
 	int32_t		*p;
 	int32_t		max;
@@ -91,7 +93,7 @@ static void	draw_transitions(t_env *env, t_game *var, int32_t x)
 			var);
 }
 
-void		draw_screen(t_env *env, t_game *var)
+void			draw_screen(t_env *env, t_game *var)
 {
 	int32_t		x;
 

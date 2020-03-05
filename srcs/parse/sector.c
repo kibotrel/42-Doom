@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/17 16:35:58 by reda-con          #+#    #+#             */
-/*   Updated: 2020/03/05 17:51:26 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/03/05 22:47:17 by lojesu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,19 @@ int			third_check(t_env *e, char **t, t_vec2d *ver, int i)
 	return (0);
 }
 
+static int	second_check_part2(t_sector *s, char **t)
+{
+	int		i;
+
+	i = ft_atoi(t[20]);
+	s[ft_atoi(t[2])].floor = ft_atoi(t[12]);
+	s[ft_atoi(t[2])].ceil = ft_atoi(t[14]);
+	s[ft_atoi(t[2])].gravity = (double)ft_atoi(t[16]) / 100;
+	s[ft_atoi(t[2])].friction = (double)ft_atoi(t[18]) / 100;
+	s[ft_atoi(t[2])].points = i;
+	return (i);
+}
+
 int			second_check(t_sector *s, char **t, t_vec2d *ver, t_env *e)
 {
 	int		i;
@@ -51,17 +64,12 @@ int			second_check(t_sector *s, char **t, t_vec2d *ver, t_env *e)
 	j = 0;
 	while (t[j])
 		++j;
-	i = ft_atoi(t[20]);
-	s[ft_atoi(t[2])].floor = ft_atoi(t[12]);
-	s[ft_atoi(t[2])].ceil = ft_atoi(t[14]);
+	i = second_check_part2(s, t);
 	if ((s[ft_atoi(t[2])].texture = ft_atoi(t[4])) < 0
 	|| ft_atoi(t[4]) > 9 || (s[ft_atoi(t[2])].data = ft_atoi(t[8])) < 0
 	|| s[ft_atoi(t[2])].floor >= s[ft_atoi(t[2])].ceil
 	|| ft_atoi(t[16]) <= 0 || ft_atoi(t[18]) < 0 || (uint32_t)i > e->vert_ct)
 		return (4);
-	s[ft_atoi(t[2])].gravity = (double)ft_atoi(t[16]) / 100;
-	s[ft_atoi(t[2])].friction = (double)ft_atoi(t[18]) / 100;
-	s[ft_atoi(t[2])].points = i;
 	if (!(s[ft_atoi(t[2])].vertex = (t_vec2d*)malloc(sizeof(t_vec2d) * i)))
 		clean(e, E_MALLOC);
 	if (!(s[ft_atoi(t[2])].neighbor = (int*)malloc(sizeof(int) * i)))
