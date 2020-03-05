@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/04 09:55:20 by nde-jesu          #+#    #+#             */
-/*   Updated: 2020/03/04 09:55:20 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/03/05 10:29:10 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ static	int	prev_is_in_sector(t_editor *edit, t_vertex point)
 	sect = edit->sector;
 	while (sect)
 	{
-		extreme.x = EDIT_W;
+		extreme.x = 1280;
 		extreme.y = point.y;
 		vertex = sect->vertex;
 		intersects = inters(vertex, point, extreme);
@@ -92,7 +92,7 @@ int			is_in_sector(t_editor *edit, t_vertex point)
 	sect = edit->sector;
 	while (sect)
 	{
-		extreme.x = EDIT_W;
+		extreme.x = 1280;
 		extreme.y = point.y;
 		vertex = sect->vertex;
 		intersects = inters(vertex, point, extreme);

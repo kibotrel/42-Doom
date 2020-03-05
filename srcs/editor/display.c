@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/03 14:53:31 by nde-jesu          #+#    #+#             */
-/*   Updated: 2020/03/03 14:54:34 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/03/05 10:27:37 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ void	display_line(t_editor *editor, int x, int y, t_env *env)
 {
 	t_vertex	act_pos;
 
-	if (x < 0 || y < 0 || x > EDIT_W || y > EDIT_H)
+	if (x < 0 || y < 0 || x > 1280 || y > 820)
 		return ;
 	act_pos.x = (x / editor->true_grid) * editor->true_grid;
 	act_pos.y = (y / editor->true_grid) * editor->true_grid;
@@ -92,10 +92,10 @@ void	display_grid(t_editor *editor, t_env *env)
 	int		y;
 
 	y = 0;
-	while (y < EDIT_H)
+	while (y < 820)
 	{
 		x = 0;
-		while (x < EDIT_W)
+		while (x < 1280)
 		{
 			if (x % editor->true_grid == 0 && y % editor->true_grid == 0 &&
 				editor->grid != -1)

@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/04 09:32:34 by nde-jesu          #+#    #+#             */
-/*   Updated: 2020/03/04 09:33:00 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/03/05 10:28:33 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static void	print_picture(t_sdl *sdl, int x, int y, t_bmp img)
 		xa = 0;
 		while (++xa < img.width)
 		{
-			if (xa + x < EDIT_W + MENU_W && ya + y < EDIT_H)
+			if (xa + x < 1780 && ya + y < 820)
 				put_pixel(sdl->screen, xa + x, ya + y,
 					img.pixels[xa + ya * img.width]);
 		}

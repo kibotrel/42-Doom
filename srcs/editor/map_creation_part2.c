@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/04 09:24:15 by nde-jesu          #+#    #+#             */
-/*   Updated: 2020/03/04 15:01:09 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/03/05 10:28:51 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,11 +41,11 @@ static void	write_true_vertex(int x, int y, int fd, t_editor *edit)
 
 	ya = 0;
 	true_y = 0;
-	while (ya < EDIT_H)
+	while (ya < 820)
 	{
 		true_x = 0;
 		xa = 0;
-		while (xa < EDIT_W)
+		while (xa < 1280)
 		{
 			if (xa % edit->true_grid == 0 && xa < x)
 				++true_x;

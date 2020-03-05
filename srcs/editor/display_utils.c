@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/03 14:56:38 by nde-jesu          #+#    #+#             */
-/*   Updated: 2020/03/03 14:56:51 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/03/05 10:27:54 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void			put_pixel(SDL_Surface *surf, int x, int y, int color)
 {
 	int		*pix;
 
-	if ((x >= 0 && x <= EDIT_W + MENU_W) && (y >= 0 && y <= EDIT_H))
+	if ((x >= 0 && x <= 1780) && (y >= 0 && y <= 820))
 	{
 		pix = surf->pixels + y * surf->pitch + x * surf->format->BytesPerPixel;
 		*pix = color;

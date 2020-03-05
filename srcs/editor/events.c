@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 13:09:05 by nde-jesu          #+#    #+#             */
-/*   Updated: 2020/03/04 14:53:33 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/03/05 10:26:50 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static void		display_editor(t_editor *edit, t_env *env, int x, int y)
 	display_vertex(&env->sdl, edit->sector, 0xffff00);
 	if (edit->sett == PORTAL || edit->display_portal == 1)
 		display_portals(edit->portals, &env->sdl, 0x00ff00);
-	if (edit->sett == SECTOR && x <= EDIT_W && edit->presets == NONE)
+	if (edit->sett == SECTOR && x <= 1280 && edit->presets == NONE)
 	{
 		mse.x = (x / edit->true_grid) * edit->true_grid;
 		mse.y = (y / edit->true_grid) * edit->true_grid;
@@ -42,7 +42,7 @@ static void		display_editor(t_editor *edit, t_env *env, int x, int y)
 
 void			editor_click(t_editor *editor, SDL_Event event, t_env *env)
 {
-	if (event.motion.x <= EDIT_W && event.button.button == SDL_BUTTON_LEFT)
+	if (event.motion.x <= 1280 && event.button.button == SDL_BUTTON_LEFT)
 	{
 		blank_menu(env->sdl.screen, editor->sett, editor->presets, env);
 		if (editor->sett == SECTOR && editor->presets == NONE)
@@ -64,7 +64,7 @@ void			editor_click(t_editor *editor, SDL_Event event, t_env *env)
 		else if (editor->sett == EFFECTOR && editor->presets == EFF_S_PLATE)
 			apply_plate(editor, event.motion.x, event.motion.y, false);
 	}
-	else if (editor->sect_is_closed == true && event.motion.x > EDIT_W)
+	else if (editor->sect_is_closed == true && event.motion.x > 1280)
 		clic_editor_menu(event.motion.x, event.motion.y, editor, env);
 }
 

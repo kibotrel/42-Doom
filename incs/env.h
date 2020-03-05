@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/16 11:54:25 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/03/05 08:42:57 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/03/05 10:30:46 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,6 @@
 # define RATIO_GRID_X	56
 # define RATIO_GRID_Y	32
 # define MAX_FONT_SIZE	64
-# define MENU_W 		500
-# define EDIT_W 		1280
-# define EDIT_H			820
 # define ANGLE 			80
 # define SIZE 			6
 

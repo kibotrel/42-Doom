@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/04 08:57:49 by nde-jesu          #+#    #+#             */
-/*   Updated: 2020/03/04 09:07:41 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/03/05 10:28:18 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,11 +43,11 @@ void			draw_ed_background(SDL_Surface *s)
 	int		x;
 	int		y;
 
-	x = EDIT_W;
-	while (x < MENU_W + EDIT_W)
+	x = 1280;
+	while (x < 1780)
 	{
 		y = 0;
-		while (y < EDIT_H)
+		while (y < 820)
 		{
 			put_pixel(s, x, y, 0x1e1e1e);
 			++y;
