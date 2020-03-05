@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/16 11:53:54 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/03/05 13:29:01 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/03/05 14:31:40 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,10 @@
 #include "utils.h"
 #include "parse.h"
 
-// __attribute__((destructor)) void no_end(void);
-// void no_end(){while(1);}
+/*
+ __attribute__((destructor)) void no_end(void);
+ void no_end(){while(1);}
+ */
 
 static void	update_screen(t_env *env)
 {
