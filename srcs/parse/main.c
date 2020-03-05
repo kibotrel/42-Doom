@@ -6,7 +6,7 @@
 /*   By: reda-con <reda-con@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 14:00:52 by reda-con          #+#    #+#             */
-/*   Updated: 2020/03/04 15:08:12 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/03/05 14:07:55 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,14 +93,15 @@ static void		read_file(char *file, char **av, t_env *env)
 	char	*line;
 	t_parse	par;
 
+	env->sect_ct = 0;
+	ft_bzero(&par, sizeof(t_parse));
+	env->cam.pos = v3d(-1, -1, 0);
+	env->zones = 0;
 	gnl = ft_isvalidname(av[1], ".data");
 	if (gnl == 0)
 		clean(env, E_PARSE_NAME);
-	env->cam.pos = v3d(-1, -1, 0);
 	if ((fd = open(file, O_RDONLY)) == -1)
-		clean(env, E_PARSE_OPEN);
-	env->sect_ct = 0;
-	ft_bzero(&par, sizeof(t_parse));
+		clean(env, E_PARSE_OPEN);//ici
 	while ((gnl = ft_get_next_line(fd, &line)) == 1)
 	{
 		parse(line, &par, env);
