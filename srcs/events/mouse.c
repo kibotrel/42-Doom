@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/17 13:51:13 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/03/05 08:44:46 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/03/05 08:57:08 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "game.h"
 #include "menu.h"
 #include "editor.h"
+#include "settings.h"
 
 void	handle_mouse(t_env *env, t_sdl *sdl)
 {
