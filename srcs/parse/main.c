@@ -6,7 +6,7 @@
 /*   By: reda-con <reda-con@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 14:00:52 by reda-con          #+#    #+#             */
-/*   Updated: 2020/03/05 14:25:15 by lojesu           ###   ########.fr       */
+/*   Updated: 2020/03/05 15:14:05 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,7 @@ static void		read_file(char *file, char **av, t_env *env)
 	if (gnl == 0)
 		clean(env, E_P_NAME);
 	if ((fd = open(file, O_RDONLY)) == -1)
-		clean(env, E_P_OPEN);//ici
+		clean(env, E_P_OPEN);
 	while ((gnl = ft_get_next_line(fd, &line)) == 1)
 	{
 		parse(line, &par, env);

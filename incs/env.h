@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/16 11:54:25 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/03/05 14:19:44 by lojesu           ###   ########.fr       */
+/*   Updated: 2020/03/05 15:13:44 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,6 @@
 # define TITLE_GAME		"Doom-Nukem v0.8.5 - Game"
 # define TITLE_EDITOR	"Doom-Nukem v0.8.5 - Editor"
 # define TITLE_SETTINGS	"Doom-Nukem v0.8.5 - Settings"
-
 
 # define TUTO_DMG		"You are taking dommage, sprint with [CONTROL]"
 # define TUTO_ELTR		"Now go to the elevator and use [Q]/[E] to move down/up"
