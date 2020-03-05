@@ -6,12 +6,11 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/04 08:55:00 by nde-jesu          #+#    #+#             */
-/*   Updated: 2020/03/05 13:49:12 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/03/05 14:42:44 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "editor.h"
-#include "env.h"
 
 void			draw_blank_preset(SDL_Surface *s, int set)
 {

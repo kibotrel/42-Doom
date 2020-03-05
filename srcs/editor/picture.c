@@ -6,11 +6,10 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/04 09:32:34 by nde-jesu          #+#    #+#             */
-/*   Updated: 2020/03/05 10:28:33 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/03/05 14:44:57 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
 #include "editor.h"
 
 static void	print_picture(t_sdl *sdl, int x, int y, t_bmp img)

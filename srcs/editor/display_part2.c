@@ -6,11 +6,10 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/03 14:57:12 by nde-jesu          #+#    #+#             */
-/*   Updated: 2020/03/04 08:54:32 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/03/05 14:41:44 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "env.h"
 #include "editor.h"
 
 static void	display_entities(t_sdl *sdl, t_ed_entity *entity, int cl, bool fl)

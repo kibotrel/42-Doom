@@ -6,11 +6,10 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/03 14:56:38 by nde-jesu          #+#    #+#             */
-/*   Updated: 2020/03/05 10:27:54 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/03/05 14:42:06 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "env.h"
 #include "utils.h"
 #include "editor.h"
 

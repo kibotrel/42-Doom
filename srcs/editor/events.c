@@ -6,12 +6,10 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 13:09:05 by nde-jesu          #+#    #+#             */
-/*   Updated: 2020/03/05 13:35:41 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/03/05 14:43:43 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "SDL.h"
-#include "libft.h"
 #include "editor.h"
 
 static void		display_editor(t_editor *edit, t_env *env, int x, int y)

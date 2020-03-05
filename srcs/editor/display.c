@@ -6,12 +6,11 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/03 14:53:31 by nde-jesu          #+#    #+#             */
-/*   Updated: 2020/03/05 10:27:37 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/03/05 14:42:18 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "editor.h"
-#include "libft.h"
 
 void	display_portals(t_portal *portal, t_sdl *sdl, int color)
 {
