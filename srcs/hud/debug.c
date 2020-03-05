@@ -6,11 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/27 15:15:36 by kibotrel          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2020/03/03 15:02:14 by kibotrel         ###   ########.fr       */
-=======
-/*   Updated: 2020/03/04 11:33:28 by kibotrel         ###   ########.fr       */
->>>>>>> Displayed Effector on info menu
+/*   Updated: 2020/03/05 10:20:14 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
