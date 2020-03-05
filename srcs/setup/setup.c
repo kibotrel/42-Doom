@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/16 11:58:26 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/03/05 13:55:05 by kibotrel         ###   ########.fr       */
+/*   Updated: 2020/03/05 14:35:25 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -163,6 +163,5 @@ void		env_setup(t_env *env)
 	assets_paths(env);
 	error_messages(env);
 	editor_setup(&env->editor);
-	audio_setup(env, &env->audio);
 	setting_setup(env);
 }

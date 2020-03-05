@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   graphic.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/16 11:54:18 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/05 11:53:46 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/03/05 14:35:33 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,4 +56,5 @@ void		graphic_setup(t_env *env, t_sdl *sdl)
 	ft_bzero(sdl, sizeof(t_sdl));
 	sdl_setup(env, sdl);
 	ttf_setup(env, sdl);
+	audio_setup(env, &env->audio);
 }
