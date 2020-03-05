@@ -6,7 +6,7 @@
 /*   By: reda-con <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 14:27:11 by reda-con          #+#    #+#             */
-/*   Updated: 2020/03/05 09:44:16 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/03/05 11:12:14 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,10 @@ typedef struct	s_parse
 	int			fsl;
 }				t_parse;
 
-
 /*
 **tools.c
 */
+
 void			free_tab(char **tab);
 int				ft_isnum(char *num);
 void			init_parse(t_parse *p);

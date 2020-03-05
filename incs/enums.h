@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 17:59:50 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/03/05 10:54:42 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/03/05 11:52:16 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,8 @@ typedef enum	e_status
 	E_EDIT_SECT_PORTAL,
 	E_EDIT_TEXT,
 	E_EDIT_VERTEX,
+	DEATH,
+	WIN,
 	NB_ERRORS
 }				t_status;
 

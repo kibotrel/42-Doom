@@ -2,6 +2,7 @@
 #include <stdint.h>
 #include "utils.h"
 #include "editor.h"
+#include "clean.h"
 
 void	doors2(t_env *env, int t, uint32_t i, uint32_t j)
 {
@@ -66,6 +67,8 @@ void	effector(t_env *env, int s)
 			env->data.life += (double)env->sector[s].data / 5;
 		env->old_st_fl = env->st_fl;
 	}
+	if (env->data.life == 0 || env->sector[s].type == END)
+		env->data.life == 0 ? clean(env, DEATH) : clean(env, WIN);
 }
 
 void	elevator(t_sector *sector, int s, t_cam *cam, int *input)
@@ -95,11 +98,8 @@ void	elevator(t_sector *sector, int s, t_cam *cam, int *input)
 
 void	sector_triger(t_env *env)
 {
-	int			s;
-
-	s = env->cam.sector;
-	elevator(env->sector, s, &env->cam, env->input);
-	effector(env, s);
+	elevator(env->sector, env->cam.sector, &env->cam, env->input);
+	effector(env, env->cam.sector);
 	if (env->poor)
 	{
 		env->jp = SDL_GetTicks();
@@ -108,8 +108,8 @@ void	sector_triger(t_env *env)
 		else
 			env->poor = 0;
 	}
-	if (env->input[SDL_SCANCODE_E] && env->sector[s].type > END)
-		doors(env, env->sector[s].type);
+	if (env->input[SDL_SCANCODE_E] && env->sector[env->cam.sector].type > END)
+		doors(env, env->sector[env->cam.sector].type);
 	if (env->open == 1)
 	{
 		env->door = SDL_GetTicks();

@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/16 11:54:25 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/03/05 10:23:14 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/03/05 11:55:47 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,8 @@
 # define M_E_SECT_PORT	"\033[31;1mError:\033[0m Can't create portals for sect."
 # define M_EDIT_TEXT	"\033[31;1mError:\033[0m Can't display text."
 # define M_EDIT_VERTEX	"\033[31;1mError:\033[0m Can't create vertex."
+# define M_DEATH		"\033[31;1m You died"
+# define M_WIN			"\033[32;1m You win"
 
 # define TITLE_MENU		"Doom-Nukem v0.8.5 - Menu"
 # define TITLE_GAME		"Doom-Nukem v0.8.5 - Game"

@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/16 11:58:26 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/03/05 10:49:47 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/03/05 11:53:01 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,8 @@ static void	error_messages(t_env *env)
 	env->error[E_EDIT_SECTOR] = M_EDIT_SECTOR;
 	env->error[E_EDIT_TEXT] = M_EDIT_TEXT;
 	env->error[E_EDIT_VERTEX] = M_EDIT_VERTEX;
+	env->error[DEATH] = M_DEATH;
+	env->error[WIN] = M_WIN;
 }
 
 static void	assets_paths(t_env *env)
@@ -108,7 +110,7 @@ void	infos_setup(t_env *env)
 {
 	env->w = WIN_W;
 	env->h = WIN_H;
-	env->win = GAME;
+//	env->win = GAME;
 	env->cam.fly = -1;
 	env->cam.fall = 1;
 	env->cam.speed = 1;
