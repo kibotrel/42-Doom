@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_add_str.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lojesu <lojesu@student.42.fr>              +#+  +:+       +#+        */
+/*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/06 17:41:32 by lojesu            #+#    #+#             */
-/*   Updated: 2020/01/29 07:08:37 by kibotrel         ###   ########.fr       */
+/*   Updated: 2020/03/05 14:39:30 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ static void	ft_deal_ret(char **tmp, int i, int ret)
 	if (ret == 1 && i == -1)
 	{
 		if (!(*tmp = ft_realloc(*tmp, 1, 1)))
-			exit(1);
+			return ;
 		(*tmp)[0] = '1';
 	}
 }
