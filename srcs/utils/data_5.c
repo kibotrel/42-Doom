@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/03 15:13:40 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/03/05 13:29:34 by kibotrel         ###   ########.fr       */
+/*   Updated: 2020/03/05 17:23:45 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int32_t	get_thread(t_env *env)
 
 	i = 0;
 	s = pthread_self();
-	while (s != env->sdl.thread[i])
+	while (s != env->sdl.thread[i] && i < NB_THREADS)
 		i++;
 	return (i);
 }
