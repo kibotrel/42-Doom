@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/08 19:29:45 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/03/05 15:38:18 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/03/05 22:26:12 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ static void	env_clean(t_env *env)
 	{
 		while (i < NB_ASSETS)
 			if (env->sdl.bmp[i++].pixels)
-				free(env->sdl.bmp[i - 1].pixels); 
+				free(env->sdl.bmp[i - 1].pixels);
 	}
 	if (env->win == GAME)
 		free_map(env);

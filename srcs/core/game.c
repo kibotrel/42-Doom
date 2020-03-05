@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/18 14:38:11 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/03/05 22:15:51 by kibotrel         ###   ########.fr       */
+/*   Updated: 2020/03/05 22:26:54 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ static void	params_reset(t_env *env)
 	env->cam.sin = sin(env->cam.angle);
 	env->cam.pos.z = env->sector[env->cam.sector].floor + CAM_H;
 }
+
 void		game(t_env *env, int ac, char **av)
 {
 	if (!env->setup)
