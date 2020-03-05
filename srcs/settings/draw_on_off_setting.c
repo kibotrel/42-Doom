@@ -6,7 +6,7 @@
 /*   By: lojesu <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/28 18:26:49 by lojesu            #+#    #+#             */
-/*   Updated: 2020/03/05 14:42:12 by lojesu           ###   ########.fr       */
+/*   Updated: 2020/03/05 14:45:02 by lojesu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	draw_fog_of_war(t_env *env)
 {
 	info(env, ft_strdup("Fog of war"), v2d(FOG_START_X, FOG_START_Y), 0);
 	info(env, ft_strdup("<"), v2d(FOG_START_X, FOG_START_Y + 2), 0);
-	info(env, ft_strdup(" >"),
+	info(env, ft_strdup("  >"),
 			v2d(FOG_START_X + FOG_INTENSITY_SIZE + 1, FOG_START_Y + 2), 0);
 	info(env, ft_strdup("Distance"), v2d(FOG_START_X + 1, FOG_START_Y + 2), 0);
 	info(env, ft_itoa(env->setting.fog_intensity),
