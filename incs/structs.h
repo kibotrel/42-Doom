@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 18:48:17 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/03/05 14:15:24 by kibotrel         ###   ########.fr       */
+/*   Updated: 2020/03/05 16:28:05 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,9 @@ typedef struct			s_data
 	t_grid				grid;
 	double				life;
 	double				money;
+	double				fall_height;
+	double				height_start;
+	double				height_end;
 	uint8_t				shot;
 	uint8_t				closed;
 	uint8_t				f_size;
@@ -337,6 +340,7 @@ typedef struct			s_env
 	uint32_t			poor;
 	uint32_t			door;
 	uint32_t			old_door;
+	uint8_t				track_fall;
 	uint8_t				open;
 	uint8_t				plate;
 }						t_env;

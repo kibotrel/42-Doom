@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 19:01:59 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/03/05 13:19:29 by kibotrel         ###   ########.fr       */
+/*   Updated: 2020/03/05 22:08:36 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,6 +130,13 @@ char				*effector_string(t_env *env);
 void				scaled_assets(t_env *env);
 void				update_life(t_env *env, double value, int action);
 int32_t				get_thread(t_env *env);
+
+/*
+**	data_6.c
+*/
+
+void				peak_point(t_env *env, int floor, double height);
+double				difficulty_scale(t_env *env, double damage);
 
 /*
 **	maths_0.c

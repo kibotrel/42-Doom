@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+         #
+#    By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/10 16:16:29 by kibotrel          #+#    #+#              #
-#    Updated: 2020/03/05 10:48:47 by reda-con         ###   ########.fr        #
+#    Updated: 2020/03/05 22:07:21 by kibotrel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -155,6 +155,7 @@ SRCS			+= utils/data_2.c
 SRCS			+= utils/data_3.c
 SRCS			+= utils/data_4.c
 SRCS			+= utils/data_5.c
+SRCS			+= utils/data_6.c
 SRCS			+= utils/engine.c
 SRCS			+= utils/floats.c
 SRCS			+= utils/maths_0.c
