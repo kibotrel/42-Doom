@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/16 11:54:25 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/03/05 12:01:29 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/03/05 13:41:48 by lojesu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,21 +39,21 @@
 */
 
 # define M_BKGD			"\033[31;1mError:\033[0m Menu background not available"
-# define M_PARSE		"\033[31;1mError:\033[0m Parse error"
-# define M_PARSE_FS_LINE		"\033[31;1mError:\033[0m Wrong total line"
-# define M_PARSE_VERTEX		"\033[31;1mError:\033[0m Wrong vertex line"
-# define M_PARSE_PLAYER		"\033[31;1mError:\033[0m Wrong player line"
-# define M_PARSE_SECTOR		"\033[31;1mError:\033[0m Wrong sector line"
-# define M_PARSE_BLANK		"\033[31;1mError:\033[0m Wrong blank in map"
-# define M_PARSE_NAME		"\033[31;1mError:\033[0m Wrong file name"
-# define M_PARSE_OPEN		"\033[31;1mError:\033[0m Can't open map"
-# define M_PARSE_GNL		"\033[31;1mError:\033[0m Error in reading map"
-# define M_PARSE_CLOSE		"\033[31;1mError:\033[0m Can't close map"
-# define M_PARSE_NO_PLAYER		"\033[31;1mError:\033[0m Problem with player in map"
-# define M_PARSE_TOTAL		"\033[31;1mError:\033[0m No vertex in map"
-# define M_PARSE_NB_VERTEX		"\033[31;1mError:\033[0m Not enough vertex in map"
-# define M_PARSE_NB_SECTOR		"\033[31;1mError:\033[0m Not enough sector in map"
-# define M_PARSE_NO_TOTAL		"\033[31;1mError:\033[0m Total line must be the first line"
+# define M_P			"\033[31;1mError:\033[0m Parse error"
+# define M_P_FS_LINE	"\033[31;1mError:\033[0m Wrong total line"
+# define M_P_VERTEX		"\033[31;1mError:\033[0m Wrong vertex line"
+# define M_P_PLAYER		"\033[31;1mError:\033[0m Wrong player line"
+# define M_P_SECTOR		"\033[31;1mError:\033[0m Wrong sector line"
+# define M_P_BLANK		"\033[31;1mError:\033[0m Wrong blank in map"
+# define M_P_NAME		"\033[31;1mError:\033[0m Wrong file name"
+# define M_P_OPEN		"\033[31;1mError:\033[0m Can't open map"
+# define M_P_GNL		"\033[31;1mError:\033[0m Error in reading map"
+# define M_P_CLOSE		"\033[31;1mError:\033[0m Can't close map"
+# define M_P_NO_PLAYER	"\033[31;1mError:\033[0m Problem with player in map"
+# define M_P_TOTAL		"\033[31;1mError:\033[0m No vertex in map"
+# define M_P_NB_VERTEX	"\033[31;1mError:\033[0m Not enough vertex in map"
+# define M_P_NB_SECTOR	"\033[31;1mError:\033[0m Not enough sector in map"
+# define M_P_NO_TOTAL	"\033[31;1mError:\033[0m Total line must be on the top"
 # define M_MALLOC		"\033[31;1mError:\033[0m Can't allocate memory."
 # define M_SDL_WIN		"\033[31;1mError:\033[0m Can't create SDL window."
 # define M_FILENAME		"\033[31;1mError:\033[0m Incorrect filename (*.data)."
@@ -61,7 +61,7 @@
 # define M_TTF_INIT		"\033[31;1mError:\033[0m Can't init TTF connexion."
 # define M_SDL_BLIT		"\033[31;1mError:\033[0m Can't blit text on the screen."
 # define M_SDL_INIT		"\033[31;1mError:\033[0m Can't init SDL connexion."
-# define M_BMP_PARSE	"\033[31;1mError:\033[0m Can't load the given BMP file."
+# define M_BMP_P		"\033[31;1mError:\033[0m Can't load the given BMP file."
 # define M_SDL_THREAD	"\033[31;1mError:\033[0m Can't create SDL Thread."
 # define M_SDL_UPDATE	"\033[31;1mError:\033[0m Can't update the given frame."
 # define M_TTF_RENDER	"\033[31;1mError:\033[0m Can't write text on surface."
@@ -85,10 +85,10 @@
 # define MAP_PATH 		"./editor_map.data"
 
 # define TUTO_DMG		"You are taking dommage, sprint with [CONTROL]"
-# define TUTO_ELTR		"Now go to the elevator and use [Q] or [E] to move down or up"
+# define TUTO_ELTR		"Now go to the elevator and use [Q]/[E] to move down/up"
 # define TUTO_MONEY		"Go to the dark brown room to earn money"
-# define TUTO_JETPACK		"Then use Jetpack with [SPACE]"
-# define TUTO_CROUCH		"To continue, use [SHIFT] to crouch"
+# define TUTO_JETPACK	"Then use Jetpack with [SPACE]"
+# define TUTO_CROUCH	"To continue, use [SHIFT] to crouch"
 # define TUTO_JUMP		"To go to the next room, you have to jump with [SPACE]"
 # define TUTO_DOOR		"Go to the green room and press [E] to open the door"
 # define TUTO_MOVE		"Use [W], [Q], [S], [D] to move"

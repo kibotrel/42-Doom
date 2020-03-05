@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 15:22:56 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/03/04 19:35:49 by kibotrel         ###   ########.fr       */
+/*   Updated: 2020/03/05 13:25:30 by lojesu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void	graphics(t_env *env)
 				continue;
 			draw_setup(env, &var, &now, var.j++);
 			if (!draw_screen(env, &var))
-				break;
+				break ;
 			check_depth(&var, var.start, var.end);
 		}
 	}

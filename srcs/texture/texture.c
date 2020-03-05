@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   texture.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lojesu <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/03/05 13:12:00 by lojesu            #+#    #+#             */
+/*   Updated: 2020/03/05 13:13:08 by lojesu           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "utils.h"
 #include "texture.h"
 #include "libft.h"
@@ -69,13 +81,14 @@ static int		draw_slice_texture(t_env *env, int x, t_height h, t_game *var)
 				wall[abs((scaler_next(&scaler) % W_SIZE * W_SIZE)
 					+ (scale_x % W_SIZE))], -var->depth);
 		if (env->sector[var->sector].light != -1)
-			color = color_light(color, env->sector[var->sector].light, env->setting.light_intensity);
+			color = color_light(color, env->sector[var->sector].light,
+					env->setting.light_intensity);
 		draw_pixel(env, env->sdl.screen, p, color);
 	}
 	return (1);
 }
 
-int			draw_texture_slice(t_env *env, int x, t_height h, t_game *var)
+int				draw_texture_slice(t_env *env, int x, t_height h, t_game *var)
 {
 	t_pos		p;
 

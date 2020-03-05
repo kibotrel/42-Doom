@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/14 08:01:41 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/21 16:39:56 by demonwaves       ###   ########.fr       */
+/*   Updated: 2020/03/05 12:27:20 by lojesu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ uint32_t	life_state(double life)
 		return (RED);
 }
 
-void	update_fall(t_cam *cam, double velocity, int fall)
+void		update_fall(t_cam *cam, double velocity, int fall)
 {
 	cam->v.z += velocity;
 	cam->fall = fall;

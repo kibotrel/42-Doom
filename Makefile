@@ -6,7 +6,7 @@
 #    By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/10 16:16:29 by kibotrel          #+#    #+#              #
-#    Updated: 2020/03/05 10:48:47 by reda-con         ###   ########.fr        #
+#    Updated: 2020/03/05 12:44:48 by lojesu           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -148,6 +148,8 @@ SRCS			+= setup/game.c
 SRCS			+= setup/audio.c
 SRCS			+= setup/setup.c
 SRCS			+= setup/graphic.c
+SRCS			+= setup/settings.c
+SRCS			+= setup/error_message.c
 SRCS			+= utils/usage.c
 SRCS			+= utils/data_0.c
 SRCS			+= utils/data_1.c
@@ -165,6 +167,7 @@ SRCS			+= utils/checks_01.c
 SRCS			+= utils/graphic_0.c
 SRCS			+= utils/graphic_1.c
 SRCS			+= utils/graphic_2.c
+SRCS			+= utils/graphic_3.c
 SRCS			+= utils/ft_strdel.c
 SRCS			+= utils/ft_add_str.c
 SRCS			+= utils/ft_mul_str.c
