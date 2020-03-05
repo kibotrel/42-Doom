@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/18 14:38:11 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/03/04 19:27:48 by kibotrel         ###   ########.fr       */
+/*   Updated: 2020/03/05 10:21:34 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 #include "setup.h"
 #include "utils.h"
 #include "parse.h"
+#include "editor.h"
 
 static void	multithreaded_engine(t_env *env)
 {
@@ -51,7 +52,9 @@ void		game(t_env *env, int ac, char **av)
 		env->cam.pos.z = env->sector[env->cam.sector].floor + CAM_H;
 		pthread_create(&env->sound, NULL, (void*)audio, env);
 	}
-	sector_triger(env);
 	multithreaded_engine(env);
 	hud(env);
+	sector_triger(env);
+	if (env->tuto == 1)
+		tuto(env);
 }

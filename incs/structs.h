@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 18:48:17 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/03/05 08:43:17 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/03/05 10:55:06 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -165,9 +165,10 @@ typedef struct			s_portal
 
 typedef struct			s_effector
 {
-	t_effects		effects;
+	t_ed_effects	effects;
 	int				data;
 }					t_effector;
+
 typedef struct			s_ed_sector
 {
 	int					type;
@@ -201,6 +202,7 @@ typedef struct			s_sector
 	double				friction;
 	t_vec2d				*vertex;
 	uint32_t			points;
+	double				elvt;
 }						t_sector;
 
 typedef struct			s_setting
@@ -290,6 +292,17 @@ typedef struct			s_audio
 	ao_sample_format	format[NB_SAMPLES];
 }						t_audio;
 
+typedef struct			s_tuto
+{
+	int					move[4];
+	int					all_move;
+	int					door;
+	int					jump;
+	int					crouch;
+	int					jetpack;
+	int					elevator;
+}						t_tuto;
+
 typedef struct			s_env
 {
 	char				*asset[NB_ASSETS];
@@ -314,6 +327,17 @@ typedef struct			s_env
 	uint32_t			st_fl;
 	uint32_t			old_st_fl;
 	t_setting			setting;
+	int					tuto;
+	t_tuto				test;
+	uint32_t			sect_ct;
+	uint32_t			vert_ct;
+	uint32_t			jp;
+	uint32_t			old_jp;
+	uint32_t			poor;
+	uint32_t			door;
+	uint32_t			old_door;
+	uint8_t				open;
+	uint8_t				plate;
 }						t_env;
 
 #endif

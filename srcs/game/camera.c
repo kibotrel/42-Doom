@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/11 14:21:04 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/03/04 17:31:50 by kibotrel         ###   ########.fr       */
+/*   Updated: 2020/03/05 10:20:45 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,8 +67,9 @@ void	cam_height(t_env *env, int32_t crouch)
 	if (env->cam.fly > 0 && crouch
 		&& env->cam.pos.z > env->sector[env->cam.sector].floor + MARGIN_KNEE)
 		env->cam.pos.z -= 0.25;
-	else if (crouch)
+	else if (crouch && (!env->tuto || env->test.jump))
 	{
+		env->test.crouch = 1;
 		env->cam.fall = 1;
 		env->cam.sneak = 1;
 		env->cam.speed = 0.5;

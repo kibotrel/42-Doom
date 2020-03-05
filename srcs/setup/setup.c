@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/16 11:58:26 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/03/05 08:45:00 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/03/05 11:53:01 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@
 static void	bzero_params(t_env *env)
 {
 	ft_bzero(env, sizeof(t_env));
+	ft_bzero(&env->test, sizeof(t_tuto));
 	ft_bzero(env->asset, sizeof(char*));
 	ft_bzero(env->error, sizeof(char*));
 	ft_bzero(&env->cam, sizeof(t_cam));
@@ -60,6 +61,20 @@ static void	error_messages(t_env *env)
 	env->error[E_MALLOC] = M_MALLOC;
 	env->error[E_BKGD] = M_BKGD;
 	env->error[E_PARSE] = M_PARSE;
+	env->error[E_PARSE_FS_LINE] = M_PARSE_FS_LINE;
+	env->error[E_PARSE_VERTEX] = M_PARSE_VERTEX;
+	env->error[E_PARSE_PLAYER] = M_PARSE_PLAYER;
+	env->error[E_PARSE_SECTOR] = M_PARSE_SECTOR;
+	env->error[E_PARSE_BLANK] = M_PARSE_BLANK;
+	env->error[E_PARSE_NAME] = M_PARSE_NAME;
+	env->error[E_PARSE_OPEN] = M_PARSE_OPEN;
+	env->error[E_PARSE_GNL] = M_PARSE_GNL;
+	env->error[E_PARSE_CLOSE] = M_PARSE_CLOSE;
+	env->error[E_PARSE_NO_PLAYER] = M_PARSE_NO_PLAYER;
+	env->error[E_PARSE_TOTAL] = M_PARSE_TOTAL;
+	env->error[E_PARSE_NB_VERTEX] = M_PARSE_NB_VERTEX;
+	env->error[E_PARSE_NB_SECTOR] = M_PARSE_NB_SECTOR;
+	env->error[E_PARSE_NO_TOTAL] = M_PARSE_NO_TOTAL;
 	env->error[E_SDL_THREAD] = M_SDL_THREAD;
 	env->error[E_AUDIO_DRIVER] = M_AUDIO_DRIVER;
 	env->error[E_FLOAT] = M_FLOAT;
@@ -69,6 +84,8 @@ static void	error_messages(t_env *env)
 	env->error[E_EDIT_SECTOR] = M_EDIT_SECTOR;
 	env->error[E_EDIT_TEXT] = M_EDIT_TEXT;
 	env->error[E_EDIT_VERTEX] = M_EDIT_VERTEX;
+	env->error[DEATH] = M_DEATH;
+	env->error[WIN] = M_WIN;
 }
 
 static void	assets_paths(t_env *env)
@@ -93,7 +110,7 @@ void	infos_setup(t_env *env)
 {
 	env->w = WIN_W;
 	env->h = WIN_H;
-	env->win = MENU;
+//	env->win = GAME;
 	env->cam.fly = -1;
 	env->cam.fall = 1;
 	env->cam.speed = 1;
@@ -147,7 +164,5 @@ void		env_setup(t_env *env)
 	error_messages(env);
 	editor_setup(&env->editor);
 	audio_setup(env, &env->audio);
-	env->old_st_fl = 0;
-	env->st_fl = 0;
 	setting_setup(env);
 }

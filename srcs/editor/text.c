@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/04 11:12:38 by nde-jesu          #+#    #+#             */
-/*   Updated: 2020/03/04 13:30:50 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/03/05 11:00:15 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ void			display_text(int color, t_vertex pos, const char *text,
 		SDL_FreeSurface(tmp);
 	if (error)
 		clean(env, E_EDIT_TEXT);
+	police_color(&env->sdl.color, 0xff, 0xff, 0xff);
 }
 
 static void		print_text_param(t_env *env, t_settings sett, int j)

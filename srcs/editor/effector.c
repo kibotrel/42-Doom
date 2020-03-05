@@ -6,14 +6,14 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/04 08:55:48 by nde-jesu          #+#    #+#             */
-/*   Updated: 2020/03/04 12:43:14 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/03/05 10:57:48 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "editor.h"
 #include "libft.h"
 
-void	effector_text(t_env *env, t_presets preset, t_effects effect)
+void	effector_text(t_env *env, t_presets preset, t_ed_effects effect)
 {
 	char	*print;
 
@@ -40,7 +40,7 @@ void	effector_text(t_env *env, t_presets preset, t_effects effect)
 	}
 }
 
-void	change_effect(t_effects *effect, bool fl)
+void	change_effect(t_ed_effects *effect, bool fl)
 {
 	if (fl == false && *effect > 0)
 		--*effect;
