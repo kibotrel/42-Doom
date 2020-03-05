@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/04 08:55:00 by nde-jesu          #+#    #+#             */
-/*   Updated: 2020/03/04 09:06:33 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/03/05 13:49:12 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void			clic_editor_menu(int x, int y, t_editor *editor, t_env *env)
 	if (x >= 1300 && x <= 1410 && y >= 760 && y <= 810)
 		clear_editor(editor);
 	else if (x >= 1420 && x <= 1530 && y >= 760 && y <= 810)
-		create_map(editor);
+		create_map(editor, env);
 	else if (x >= 1340 && x <= 1510)
 		fst_clic_editor_menu(y, editor);
 	else if (x >= 1540 && x <= 1710)

@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 18:48:17 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/03/05 12:56:04 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/03/05 13:27:08 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -229,6 +229,7 @@ typedef struct			s_editor
 	char				*numbers[6];
 	char				*first_params[9];
 	char				*effector[ALL_EFFECTS];
+	char				*map_path;
 	bool				finish;
 	bool				sect_is_closed;
 	int8_t				grid;

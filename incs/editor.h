@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/04 11:49:06 by nde-jesu          #+#    #+#             */
-/*   Updated: 2020/03/05 13:03:23 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/03/05 13:49:28 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -167,7 +167,7 @@ void				delete_portal(t_portal **portal, t_vertex v1, t_vertex v2);
 /*
 **	save/map_creation.c
 */
-void				create_map(t_editor *editor);
+void				create_map(t_editor *editor, t_env *env);
 void				write_portals(t_ed_sector *sect, int fd);
 
 /*

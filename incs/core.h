@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   core.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 18:02:10 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/03/05 10:23:45 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/03/05 13:30:51 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	draw_button(t_env *env, t_ui ui, uint32_t color, uint8_t n);
 **	editor.c
 */
 
-void	editor(t_env *env);
+void	editor(t_env *env, int ac, char **av);
 
 /*
 **	selector.c

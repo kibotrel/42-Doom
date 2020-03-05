@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   selector.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/18 14:21:13 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/03/03 14:53:04 by kibotrel         ###   ########.fr       */
+/*   Updated: 2020/03/05 13:26:18 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	selector(t_env *env, int ac, char **av)
 		game(env, ac, av);
 	}
 	else if (env->win == EDITOR)
-		editor(env);
+		editor(env, ac, av);
 	else if (env->win == SETTINGS)
 		settings(env);
 	else if (env->win == QUIT)
