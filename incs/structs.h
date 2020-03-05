@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 18:48:17 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/03/05 10:55:06 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/03/05 12:56:04 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -225,7 +225,6 @@ typedef struct			s_setting
 typedef struct			s_editor
 {
 	int					true_grid;
-	int					dist_grid;
 	char				*tab[4][7];
 	char				*numbers[6];
 	char				*first_params[9];

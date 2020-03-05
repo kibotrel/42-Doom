@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/04 09:08:44 by nde-jesu          #+#    #+#             */
-/*   Updated: 2020/03/04 13:28:19 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/03/05 13:10:08 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,8 @@ void				place_entity(t_env *env, int x, int y, int type)
 	check_sector.x = x;
 	check_sector.y = y;
 	new_entity->sector = is_in_sector(&env->editor, check_sector);
+	new_entity->x = (x / env->editor.true_grid) * env->editor.true_grid;
+	new_entity->y = (y / env->editor.true_grid) * env->editor.true_grid;
 	if (new_entity->sector != -1)
 	{
 		if (type == 0)
@@ -88,8 +90,8 @@ void				place_player(t_editor *editor, int x, int y)
 	t_ed_player	player;
 	t_vertex	check_sector;
 
-	player.x = x;
-	player.y = y;
+	player.x = (x / editor->true_grid) * editor->true_grid;
+	player.y = (y / editor->true_grid) * editor->true_grid;
 	check_sector.x = x;
 	check_sector.y = y;
 	player.sector = is_in_sector(editor, check_sector);

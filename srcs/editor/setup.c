@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/04 11:36:42 by nde-jesu          #+#    #+#             */
-/*   Updated: 2020/03/05 10:27:01 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/03/05 12:58:11 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,8 +82,7 @@ static void		init_tab(char *tab[4][7])
 void			editor_setup(t_editor *editor)
 {
 	ft_bzero(editor, sizeof(t_editor));
-	editor->dist_grid = 50;
-	editor->true_grid = 1280 / editor->dist_grid;
+	editor->true_grid = 1280 / 100;
 	editor->grid = 1;
 	editor->finish = false;
 	editor->display_portal = -1;

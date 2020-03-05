@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/04 11:49:06 by nde-jesu          #+#    #+#             */
-/*   Updated: 2020/03/05 10:57:40 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/03/05 13:03:23 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -178,7 +178,7 @@ void				write_vertexes(t_ed_sector *vertexes, int fd,
 	t_editor *edit);
 void				write_entities(t_ed_entity *entities, int fd, bool type);
 void				write_player(t_ed_player player, t_vertex if_no_player,
-	int fd);
+	int fd, t_editor *edit);
 int					search_vertex_num(t_vertex *all, t_vertex *to_find);
 
 /*
