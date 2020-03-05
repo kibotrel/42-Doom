@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 13:21:31 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/03/05 22:06:48 by lojesu           ###   ########.fr       */
+/*   Updated: 2020/03/05 22:10:26 by lojesu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,12 +91,6 @@ static void	draw_transitions(t_env *env, t_game *var, int32_t x)
 			var);
 }
 
-static void	draw_wall(t_env *env, t_game *var, int32_t x)
-{
-	var->text_height = fabs(var->ceil[0] - var->floor[0]);
-	draw_texture_slice(env, x, lim(var->y[0], var->y[1] + 1), var);
-}
-
 void		draw_screen(t_env *env, t_game *var)
 {
 	int32_t		x;
@@ -108,7 +102,10 @@ void		draw_screen(t_env *env, t_game *var)
 		if (var->n >= 0)
 			draw_transitions(env, var, x);
 		else
-			draw_wall(env, var, x);
+		{
+			var->text_height = fabs(var->ceil[0] - var->floor[0]);
+			draw_texture_slice(env, x, lim(var->y[0], var->y[1] + 1), var);
+		}
 		x++;
 	}
 }
