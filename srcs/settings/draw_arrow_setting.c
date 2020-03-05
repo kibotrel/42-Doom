@@ -6,7 +6,7 @@
 /*   By: lojesu <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/28 18:27:23 by lojesu            #+#    #+#             */
-/*   Updated: 2020/03/04 12:29:17 by lojesu           ###   ########.fr       */
+/*   Updated: 2020/03/05 14:42:33 by lojesu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 void	draw_resolution(t_env *env)
 {
 	info(env, ft_strdup("<"), v2d(RES_START_X, RES_START_Y), 0);
-	info(env, ft_strdup(" resolution"), v2d(RES_START_X + 1, RES_START_Y), 0);
+	info(env, ft_strdup(" Resolution"), v2d(RES_START_X + 1, RES_START_Y), 0);
 	info(env, ft_strdup(" >"), v2d(RES_START_X + RES_SIZE + 1, RES_START_Y), 0);
 	info(env, ft_strdup(env->setting.format[env->setting.index_format]),
 			v2d(RES_START_X + RES_SIZE + 3, RES_START_Y), 0);
@@ -38,7 +38,7 @@ void	draw_fov(t_env *env)
 
 void	draw_light_intensity(t_env *env)
 {
-	info(env, ft_strdup("light intensity"),
+	info(env, ft_strdup("Light intensity"),
 			v2d(LIGHT_START_X + 1, LIGHT_START_Y), 0);
 	info(env, ft_strdup("<"), v2d(LIGHT_START_X, LIGHT_START_Y), 0);
 	info(env, ft_strdup(">"),
