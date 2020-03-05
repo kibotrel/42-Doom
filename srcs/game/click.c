@@ -6,11 +6,11 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/14 07:59:57 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/03/03 14:58:49 by kibotrel         ###   ########.fr       */
+/*   Updated: 2020/03/05 12:29:51 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "structs.h"
+#include "settings.h"
 
 void	game_click(t_env *env, int x, int y)
 {
@@ -21,6 +21,7 @@ void	game_click(t_env *env, int x, int y)
 		env->tick.shot.old = SDL_GetTicks();
 		env->data.shot = 1;
 		env->audio.fire = 1;
-		env->data.ammos--;
+		if (env->setting.mode != EASY)
+			env->data.ammos--;
 	}
 }
