@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/10 15:11:44 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/03/05 18:08:12 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/03/05 22:40:48 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	game_keyboard(t_env *env)
 	env->setup ? cam_height(env, env->input[SDL_SCANCODE_LSHIFT]) : 0;
 	if (env->input[SDL_SCANCODE_GRAVE])
 		toggle_infos(env);
-	if (env->input[SDL_SCANCODE_F] && !env->tuto)
+	if (env->input[SDL_SCANCODE_F] && !env->tuto && env->setting.fly_mode)
 		fly(env);
 	if (env->input[SDL_SCANCODE_R])
 		reload(env);
