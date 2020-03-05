@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 18:48:17 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/03/05 20:02:31 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/03/05 22:15:36 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,10 @@ typedef struct			s_data
 	t_hud				hud;
 	t_grid				grid;
 	double				life;
+	double				money;
+	double				fall_height;
+	double				height_start;
+	double				height_end;
 	uint8_t				shot;
 	uint8_t				closed;
 	uint8_t				f_size;
@@ -87,7 +91,6 @@ typedef struct			s_data
 	int32_t				ammos;
 	int32_t				magazines;
 	uint32_t			fps;
-	double				money;
 	uint32_t			w_size;
 }						t_data;
 
@@ -102,6 +105,7 @@ typedef struct			s_time
 	t_tick				fly;
 	t_tick				fps;
 	t_tick				hud;
+	t_tick				lock;
 	t_tick				shot;
 	t_tick				debug;
 	t_tick				frame;
@@ -336,6 +340,7 @@ typedef struct			s_env
 	uint32_t			poor;
 	uint32_t			door;
 	uint32_t			old_door;
+	uint8_t				track_fall;
 	uint8_t				open;
 	uint8_t				plate;
 }						t_env;

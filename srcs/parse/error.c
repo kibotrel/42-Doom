@@ -3,14 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: reda-con <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: reda-con <reda-con@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/05 12:33:55 by reda-con          #+#    #+#             */
-/*   Updated: 2020/03/05 12:34:00 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/03/05 22:16:24 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include "parse.h"
 #include "clean.h"
 

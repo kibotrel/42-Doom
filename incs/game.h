@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 21:22:14 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/03/05 10:23:03 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/03/05 15:57:31 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,7 @@ void			graphics(t_env *env);
 **	physics.c
 */
 
+void			fall_damage(t_env *env);
 void			vertical_movement(t_env *env, t_sector sector, double height);
 void			horizontal_movement(t_env *env, t_vec2d p, t_vec2d vel,
 									double view);

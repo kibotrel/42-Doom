@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 19:01:59 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/03/05 19:57:06 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/03/05 22:15:42 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,9 +126,17 @@ uint32_t			life_state(double life);
 */
 
 char				*skybox_asset(int w, int h);
-void				scaled_assets(t_env *env);
 char				*effector_string(t_env *env);
+void				scaled_assets(t_env *env);
+void				update_life(t_env *env, double value, int action);
 int32_t				get_thread(t_env *env);
+
+/*
+**	data_6.c
+*/
+
+void				peak_point(t_env *env, int floor, double height);
+double				difficulty_scale(t_env *env, double damage);
 
 /*
 **	maths_0.c

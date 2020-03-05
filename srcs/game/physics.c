@@ -6,14 +6,43 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 15:18:26 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/03/03 15:01:29 by kibotrel         ###   ########.fr       */
+/*   Updated: 2020/03/05 22:12:55 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <limits.h>
+#include <math.h>
 #include "env.h"
 #include "game.h"
 #include "utils.h"
+#include "clean.h"
+#include "settings.h"
+
+void		fall_damage(t_env *env)
+{
+	double		damage;
+	double		height;
+
+	damage = 0;
+	height = (!env->cam.sneak ? CAM_H : SNEAK_H);
+	env->track_fall = (!env->cam.ground ? 1 : 0);
+	if (env->track_fall && env->cam.fly < 0)
+		peak_point(env, env->sector[env->cam.sector].floor, height);
+	else if (env->data.fall_height > INT_MIN && env->cam.fly < 0)
+	{
+		env->data.height_end = env->sector[env->cam.sector].floor;
+		if (env->data.fall_height - 5 > 0)
+			damage = (env->data.fall_height - 15)
+					* (env->sector[env->cam.sector].gravity * 10);
+		damage = difficulty_scale(env, damage);
+		env->data.life -= damage;
+		if (env->data.life <= 0)
+			clean(env, DEATH);
+		env->data.fall_height = INT_MIN;
+	}
+	else if (!env->cam.v.x && !env->cam.v.y)
+		env->data.height_start = env->sector[env->cam.sector].floor;
+}
 
 int32_t		check_collisions(t_vec2d old, t_vec2d v, t_vec2d w1, t_vec2d w2)
 {

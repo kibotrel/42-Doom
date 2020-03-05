@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   setup.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/16 11:58:26 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/03/05 15:30:41 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/03/05 22:16:33 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 #include "setup.h"
 #include "utils.h"
 #include "editor.h"
-#include "struct.h"
 #include "settings.h"
 #include "texture.h"
 
@@ -35,6 +34,7 @@ static void	bzero_params(t_env *env)
 	ft_bzero(&env->tick.fly, sizeof(t_tick));
 	ft_bzero(&env->tick.fps, sizeof(t_tick));
 	ft_bzero(&env->tick.hud, sizeof(t_tick));
+	ft_bzero(&env->tick.lock, sizeof(t_tick));
 	ft_bzero(&env->tick.frame, sizeof(t_tick));
 	ft_bzero(&env->tick.debug, sizeof(t_tick));
 	ft_bzero(&env->tick.purse, sizeof(t_tick));
@@ -97,6 +97,5 @@ void		env_setup(t_env *env)
 	assets_paths(env);
 	error_messages(env);
 	editor_setup(&env->editor);
-	audio_setup(env, &env->audio);
 	setting_setup(env);
 }
