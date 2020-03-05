@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 13:40:06 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/03/05 14:48:23 by lojesu           ###   ########.fr       */
+/*   Updated: 2020/03/05 21:57:22 by lojesu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,8 @@ uint32_t	color_light(uint32_t color, int light, double pourcent)
 	int		b;
 	int		diff;
 
+	if (light < 0)
+		return (color);
 	diff = (light >> 16 & 0xFF) - (color >> 16 & 0xFF);
 	r = (color >> 16 & 0xFF) + (int)(diff * pourcent / 100);
 	diff = (light >> 8 & 0xFF) - (color >> 8 & 0xFF);

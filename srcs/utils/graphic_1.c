@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 13:21:31 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/03/05 20:12:42 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/03/05 22:06:48 by lojesu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,18 @@
 #include "texture.h"
 
 #define FLOOR 0x424242
-#define CEIL 0x000001
+#define CEIL 0x222222
+#define LAVA_FLOOR 0x330000
+#define HEAL_FLOOR 0x29a329
+
+static uint32_t	select_floor_color(t_env *env, t_game *var)
+{
+	if (env->sector[var->sector].type == LAVA)
+		return (LAVA_FLOOR);
+	else if (env->sector[var->sector].type == HEAL)
+		return (HEAL_FLOOR);
+	return (FLOOR);
+}
 
 static void	draw_ceil_and_floor_part2(t_env *env, t_game *var, int32_t x)
 {
@@ -30,10 +41,10 @@ static void	draw_ceil_and_floor_part2(t_env *env, t_game *var, int32_t x)
 					border, color_light(CEIL, env->sector[var->sector].light,
 						env->setting.light_intensity), border));
 	}
-	border = color_light(FLOOR, env->sector[var->sector].light,
+	border = color_light(select_floor_color(env, var), env->sector[var->sector].light,
 			env->setting.light_intensity) * !env->setting.border_on_off;
 	draw_slice(env, x, lim(var->y[1] + 1, var->bottom[x]), flat(
-				border, color_light(FLOOR, env->sector[var->sector].light,
+				border, color_light(select_floor_color(env, var), env->sector[var->sector].light,
 					env->setting.light_intensity), border));
 }
 
