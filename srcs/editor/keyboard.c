@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/05 09:18:19 by nde-jesu          #+#    #+#             */
-/*   Updated: 2020/03/04 09:16:38 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/03/05 11:33:52 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,6 @@ void			editor_keyboard(t_env *env, t_editor *edit, t_tick *button)
 		env->win = MENU;
 		env->setup = 0;
 	}
-	else if (env->input[SDL_SCANCODE_DELETE] && check_button(button, 160))
-		clear_editor(edit);
-	else if (env->input[SDL_SCANCODE_RETURN] && check_button(button, 160))
-		create_map(edit);
 	else if (env->input[SDL_SCANCODE_END])
 		check_tick(&env->tick.editor, &edit->grid, 160);
 	else if (env->input[SDL_SCANCODE_P])
