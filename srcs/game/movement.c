@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/10 16:47:31 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/28 10:59:08 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/03/05 09:32:46 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,10 @@ void	jump(t_env *env, t_cam *cam)
 	}
 	if (env->sector[cam->sector].type == JETPACK
 			&& env->data.money < (uint32_t)env->sector[cam->sector].data)
-		poor(env);
+	{
+		env->old_jp = env->jp;
+		env->poor = env->sector[cam->sector].data;
+	}
 }
 
 void	fly(t_env *env)

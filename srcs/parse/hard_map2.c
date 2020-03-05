@@ -83,7 +83,7 @@ static void		hard_map_nine(t_env *env)
 	if (!(env->sector[7].vertex = (t_vec2d*)malloc(sizeof(t_vec2d) * 6)))
 		clean(env, E_MALLOC);
 	env->sector[7].texture = 7;
-	env->sector[7].type = HEAL;
+	env->sector[7].type = END;
 	env->sector[7].data = 2;
 	env->sector[7].light = -1;
 	env->sector[7].floor = 25;

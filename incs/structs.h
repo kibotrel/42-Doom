@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 18:48:17 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/03/04 13:37:00 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/03/05 09:29:23 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -295,6 +295,13 @@ typedef struct			s_env
 	t_tuto				test;
 	uint32_t			sect_ct;
 	uint32_t			vert_ct;
+	uint32_t			jp;
+	uint32_t			old_jp;
+	uint32_t			poor;
+	uint32_t			door;
+	uint32_t			old_door;
+	uint8_t				open;
+	uint8_t				plate;
 }						t_env;
 
 #endif

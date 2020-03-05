@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 21:22:14 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/28 14:18:55 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/03/05 09:31:43 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,6 +129,12 @@ void			reload(t_env *env);
 **	message.c
 */
 
-void			poor(t_env *env);
+void			poor(t_env *env, uint32_t data);
+
+/*
+**	effector.c
+*/
+
+void			sector_triger(t_env *env);
 
 #endif

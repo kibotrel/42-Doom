@@ -6,7 +6,7 @@
 /*   By: reda-con <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 14:27:11 by reda-con          #+#    #+#             */
-/*   Updated: 2020/03/03 11:23:41 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/03/05 09:44:16 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,10 +45,5 @@ void			hard_map_six(t_env *env);
 void			hard_map_last(t_env *env);
 
 void			main_err(t_parse *p, t_env *env, int fl, uint8_t tag);
-
-
-//
-void			sector_triger(t_env *env);
-void			poor(t_env *env);
 
 #endif
