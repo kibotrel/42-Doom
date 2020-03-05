@@ -27,19 +27,18 @@ void	doors(t_env *env, int t)
 	i = -1;
 	if (!env->tuto || env->test.all_move)
 	{
+		env->plate = env->cam.sector;
 		if (t == 8 && env->tuto)
 			env->test.door = 1;
 		while (++i < env->zones)
 		{
 			if (env->sector[i].type == -t)
 			{
-				display_text(WHITE, init_vertex(env->w / 2, env->h / 2),
-						"A door as been open", env);
 				j = -1;
+				env->open = 1;
+				env->old_door = SDL_GetTicks();
 				while (++j < env->sector[i].points)
-				{
 					doors2(env, t, i, j);
-				}
 			}
 		}
 	}
@@ -75,16 +74,16 @@ void	elevator(t_sector *sector, int s, t_cam *cam, int *input)
 			&& cam->fly == -1)
 	{
 		if (input[SDL_SCANCODE_E] && ((sector[s].floor < sector[s].data
-		+ sector[s].elvt && sector[s].type == ELEVATOR)
+			+ sector[s].elvt && sector[s].type == ELEVATOR)
 		|| (sector[s].floor < sector[s].elvt && sector[s].type == -ELEVATOR)))
 		{
 			++cam->pos.z;
 			++sector[s].floor;
 		}
 		if (input[SDL_SCANCODE_Q] && ((sector[s].floor
-			> sector[s].elvt && sector[s].type == ELEVATOR)
-			|| (sector[s].floor > sector[s].elvt
-			- sector[s].data && sector[s].type == -ELEVATOR)))
+						> sector[s].elvt && sector[s].type == ELEVATOR)
+					|| (sector[s].floor > sector[s].elvt
+						- sector[s].data && sector[s].type == -ELEVATOR)))
 		{
 			--cam->pos.z;
 			--sector[s].floor;
@@ -101,6 +100,26 @@ void	sector_triger(t_env *env)
 	s = env->cam.sector;
 	elevator(env->sector, s, &env->cam, env->input);
 	effector(env, s);
+	if (env->poor)
+	{
+		env->jp = SDL_GetTicks();
+		if (env->jp < env->old_jp + 1000)
+			poor(env, env->poor);
+		else
+			env->poor = 0;
+	}
 	if (env->input[SDL_SCANCODE_E] && env->sector[s].type > END)
 		doors(env, env->sector[s].type);
+	if (env->open == 1)
+	{
+		env->door = SDL_GetTicks();
+		if (env->door < env->old_door + 1000)
+			display_text(WHITE, init_vertex(env->w / 2 - 100, env->h / 2 - 300),
+					"A door has been opened", env);
+		else
+		{
+			env->sector[env->plate].type = 0;
+			env->open = 0;
+		}
+	}
 }
