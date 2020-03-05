@@ -1,4 +1,5 @@
 #include "structs.h"
+#include "utils.h"
 
 void	hard_map_last(t_env *env)
 {
@@ -13,4 +14,5 @@ void	hard_map_last(t_env *env)
 	env->sector[4].neighbor[5] = -1;
 	env->sector[5].neighbor[1] = -1;
 	env->tuto = 1;
+	env->sector[0].vertex[6] = v2d(32.5, 37.5);
 }

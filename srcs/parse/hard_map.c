@@ -142,7 +142,6 @@ void			hard_map_one(t_env *env)
 	env->sector[0].vertex[3] = v2d(40.0, 32.5);
 	env->sector[0].vertex[4] = v2d(40.0, 35.0);
 	env->sector[0].vertex[5] = v2d(40.0, 37.5);
-	env->sector[0].vertex[6] = v2d(32.5, 37.5);
 	hard_map_two(env);
 	hard_map_three(env);
 	hard_map_four(env);
