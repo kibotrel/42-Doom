@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 17:59:50 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/03/05 10:23:25 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/03/05 10:54:42 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,9 +120,23 @@ typedef enum		e_settings
 	EFFECTOR
 }					t_settings;
 
-typedef enum		e_effects
+typedef enum		e_ed_effects
 {
 	EFF_NONE,
+	EFF_JET,
+	EFF_MONEY,
+	EFF_ELEV,
+	EFF_LAVA,
+	EFF_HEAL,
+	EFF_SKY,
+	EFF_END,
+	EFF_PLATE,
+	ALL_EFFECTS
+}					t_ed_effects;
+
+typedef enum		e_effects
+{
+	NONE_EFF,
 	JETPACK,
 	MONEY,
 	ELEVATOR,

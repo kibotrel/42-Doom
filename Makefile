@@ -6,7 +6,7 @@
 #    By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/10 16:16:29 by kibotrel          #+#    #+#              #
-#    Updated: 2020/03/05 10:24:51 by reda-con         ###   ########.fr        #
+#    Updated: 2020/03/05 10:48:47 by reda-con         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -138,7 +138,6 @@ SRCS			+= parse/sector.c
 SRCS			+= parse/main.c
 SRCS			+= parse/tools.c
 SRCS			+= parse/vertex.c
-SRCS			+= parse/entity.c
 SRCS			+= parse/total.c
 SRCS			+= parse/player_blank.c
 SRCS			+= parse/hard_map.c

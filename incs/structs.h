@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 18:48:17 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/03/05 10:22:48 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/03/05 10:55:06 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -165,9 +165,10 @@ typedef struct			s_portal
 
 typedef struct			s_effector
 {
-	t_effects		effects;
+	t_ed_effects	effects;
 	int				data;
 }					t_effector;
+
 typedef struct			s_ed_sector
 {
 	int					type;

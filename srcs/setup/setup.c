@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/16 11:58:26 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/03/05 10:19:41 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/03/05 10:49:47 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -156,15 +156,11 @@ void	setting_setup(t_env *env)
 
 void		env_setup(t_env *env)
 {
-	int		i;
-
 	bzero_params(env);
 	infos_setup(env);
 	assets_paths(env);
 	error_messages(env);
 	editor_setup(&env->editor);
 	audio_setup(env, &env->audio);
-	env->old_st_fl = 0;
-	env->st_fl = 0;
 	setting_setup(env);
 }

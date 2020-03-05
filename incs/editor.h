@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/04 11:49:06 by nde-jesu          #+#    #+#             */
-/*   Updated: 2020/03/04 15:00:35 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/03/05 10:57:40 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -233,8 +233,8 @@ void				editor_keyboard(t_env *env, t_editor *edit, t_tick *button);
 **	effector.c
 */
 void				effector_text(t_env *env, t_presets preset,
-	t_effects effect);
-void				change_effect(t_effects *effect, bool fl);
+	t_ed_effects effect);
+void				change_effect(t_ed_effects *effect, bool fl);
 void				apply_effect_in_sector(t_editor *edit, int x, int y);
 void				apply_plate(t_editor *edit, int x, int y, bool fl);
 
