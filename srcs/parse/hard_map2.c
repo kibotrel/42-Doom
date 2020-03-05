@@ -113,8 +113,8 @@ static void		hard_map_ten(t_env *env)
 	env->sector[7].door_neighbor[3] = -1;
 	env->sector[7].door_neighbor[4] = -1;
 	env->sector[7].door_neighbor[5] = 6;
-	env->cam.pos = v3d(34, 36, 0);
-	env->cam.angle = ft_radians(222);
+	env->cam.pos = v3d(35, 35, 0);
+	env->cam.angle = 0;
 	env->cam.sector = 0;
 	env->sector[4].neighbor[6] = -1;
 	env->sector[4].neighbor[7] = 3;

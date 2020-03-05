@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   settings.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lojesu <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: lojesu <lojesu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/21 15:25:58 by lojesu            #+#    #+#             */
-/*   Updated: 2020/03/03 17:41:18 by lojesu           ###   ########.fr       */
+/*   Updated: 2020/03/05 12:30:28 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SETTINGS_H
 # define SETTINGS_H
 
-# include "struct.h"
+# include "structs.h"
 # include "env.h"
 
 # define RESET 0xFFFFFF
