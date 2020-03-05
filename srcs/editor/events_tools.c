@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/04 09:17:05 by nde-jesu          #+#    #+#             */
-/*   Updated: 2020/03/04 09:23:58 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/03/05 14:17:53 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,18 +33,6 @@ static void		change_type(int *to_change, bool fl, int min, int max)
 	if (*to_change < min)
 		++*to_change;
 	else if (*to_change > max)
-		--*to_change;
-}
-
-static void		change_percentage(int *to_change, bool fl)
-{
-	if (fl == false)
-		--*to_change;
-	else
-		++*to_change;
-	if (*to_change < 0)
-		++*to_change;
-	else if (*to_change > 100)
 		--*to_change;
 }
 
@@ -88,9 +76,9 @@ void			change_value(t_editor *editor, t_presets presets, bool fl)
 	else if (presets == SECTOR_TYPE && editor->sector)
 		change_type(&editor->sector->type, fl, 0, 3);
 	else if (presets == SECTOR_GRAV && editor->sector)
-		change_percentage(&editor->sector->gravity, fl);
+		change_type(&editor->sector->gravity, fl, 0, 100);
 	else if (presets == SECTOR_FRICTION && editor->sector)
-		change_percentage(&editor->sector->friction, fl);
+		change_type(&editor->sector->friction, fl, 0, 100);
 	else if (presets == SECTOR_LIGHT && editor->sector)
 		change_type(&editor->sector->light, fl, -1, 6);
 	else if (presets == ENTITY_TYPE && editor->sett == ENEMY && editor->enemy)

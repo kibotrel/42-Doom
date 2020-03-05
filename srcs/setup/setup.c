@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/16 11:58:26 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/03/05 12:20:30 by lojesu           ###   ########.fr       */
+/*   Updated: 2020/03/05 14:30:41 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,6 @@ static void	assets_paths(t_env *env)
 	env->asset[ED_TEXT_8] = "./assets/texture_8.bmp";
 	env->asset[ED_TEXT_9] = "./assets/texture_9.bmp";
 	env->asset[ED_TEXT_10] = "./assets/texture_10.bmp";
-	env->asset[ED_PORTAL_DOOR] = "./assets/portal_wall.bmp";
-	env->asset[ED_PORTAL_WALL] = "./assets/portal_door.bmp";
 	scaled_assets(env);
 }
 

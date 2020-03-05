@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 17:59:50 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/03/05 14:23:23 by lojesu           ###   ########.fr       */
+/*   Updated: 2020/03/05 14:30:17 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,6 @@ typedef enum	e_assets
 	ED_TEXT_8,
 	ED_TEXT_9,
 	ED_TEXT_10,
-	ED_PORTAL_DOOR,
-	ED_PORTAL_WALL,
 	SHOTGUN,
 	MAGAZINE,
 	SHELL,
