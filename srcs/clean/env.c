@@ -3,16 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   env.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/08 19:29:45 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/03/03 14:48:37 by kibotrel         ###   ########.fr       */
+/*   Updated: 2020/03/05 08:43:38 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "libft.h"
 #include "clean.h"
+#include "editor.h"
 
 void		free_map(t_env *env)
 {
@@ -52,6 +53,7 @@ void		clean(t_env *env, uint8_t error)
 	env->data.closed = 1;
 	pthread_join(env->sound, NULL);
 	SDL_Delay(500);
+	clean_editor(&env->editor);
 	ttf_clean(&env->sdl);
 	sdl_clean(&env->sdl);
 	audio_clean(&env->audio);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   enums.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 17:59:50 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/03/04 18:26:03 by lojesu           ###   ########.fr       */
+/*   Updated: 2020/03/05 08:42:43 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,14 +49,6 @@ typedef enum	e_assets
 	ED_TEXT_8,
 	ED_TEXT_9,
 	ED_TEXT_10,
-	ED_OBJ_1,
-	ED_OBJ_2,
-	ED_OBJ_3,
-	ED_OBJ_4,
-	ED_ENEMY_1,
-	ED_ENEMY_2,
-	ED_ENEMY_3,
-	ED_ENEMY_4,
 	ED_PORTAL_DOOR,
 	ED_PORTAL_WALL,
 	SHOTGUN,
@@ -90,6 +82,12 @@ typedef enum	e_status
 	E_SDL_THREAD,
 	E_AUDIO_DRIVER,
 	E_FLOAT,
+	E_EDIT_ENTITY,
+	E_EDIT_PORTAL,
+	E_EDIT_SECTOR,
+	E_EDIT_SECT_PORTAL,
+	E_EDIT_TEXT,
+	E_EDIT_VERTEX,
 	NB_ERRORS
 }				t_status;
 
@@ -111,11 +109,15 @@ typedef enum		e_settings
 typedef enum		e_effects
 {
 	EFF_NONE,
-	JETPACK,
-	MONEY,
-	ELEVATOR,
-	GENERATOR,
-	END
+	EFF_JET,
+	EFF_MONEY,
+	EFF_ELEV,
+	EFF_LAVA,
+	EFF_HEAL,
+	EFF_SKY,
+	EFF_END,
+	EFF_PLATE,
+	ALL_EFFECTS
 }					t_effects;
 
 typedef enum		e_presets
@@ -135,7 +137,9 @@ typedef enum		e_presets
 	PLAYER_ROTATE,
 	EFF_EFFECT,
 	EFF_MOVE,
-	EFF_COST
+	EFF_DATA,
+	EFF_S_PLATE,
+	EFF_S_DOOR
 }					t_presets;
 
 /*

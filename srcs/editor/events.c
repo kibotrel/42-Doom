@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 13:09:05 by nde-jesu          #+#    #+#             */
-/*   Updated: 2020/02/07 14:32:22 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/03/04 14:53:33 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,7 @@
 #include "libft.h"
 #include "editor.h"
 
-bool		is_saved(t_editor *editor)
-{
-	if (editor->map_save == false)
-	{
-		ft_putendl("You didn't save, press Esc to quit");
-		editor->map_save = true;
-		return (false);
-	}
-	else
-	{
-		ft_putendl("Exiting...");
-		return (true);
-	}
-}
-
-static void		display_editor(t_editor *edit, t_env *env)
+static void		display_editor(t_editor *edit, t_env *env, int x, int y)
 {
 	t_vertex	mse;
 	int			clr;
@@ -39,27 +24,27 @@ static void		display_editor(t_editor *edit, t_env *env)
 	put_fov(env->sdl.screen, init_vertex(edit->player.x, edit->player.y),
 			edit->player.angle, clr);
 	which_entity_to_display(edit, env);
-	edit->sett == SECTOR ? display_sector(&env->sdl, edit->sector, true)
-		: display_sector(&env->sdl, edit->sector, false);
+	edit->sett == SECTOR ? display_sector(&env->sdl, edit->sector, true, edit)
+		: display_sector(&env->sdl, edit->sector, false, edit);
 	display_vertex(&env->sdl, edit->sector, 0xffff00);
 	if (edit->sett == PORTAL || edit->display_portal == 1)
 		display_portals(edit->portals, &env->sdl, 0x00ff00);
-	if (edit->sett == SECTOR && env->sdl.event.motion.x <= EDIT_W && edit->presets == NONE)
+	if (edit->sett == SECTOR && x <= EDIT_W && edit->presets == NONE)
 	{
-		mse.x = (env->sdl.event.motion.x / edit->true_grid) * edit->true_grid;
-		mse.y = (env->sdl.event.motion.y / edit->true_grid) * edit->true_grid;
+		mse.x = (x / edit->true_grid) * edit->true_grid;
+		mse.y = (y / edit->true_grid) * edit->true_grid;
 		display_mouse(&env->sdl, mse, 0x0ff0f0);
 	}
 	if (!edit->sect_is_closed)
-		display_line(edit, env->sdl.event.motion.x, env->sdl.event.motion.y, env);
+		display_line(edit, x, y, env);
 	print_param_to_screen(env, edit->sett, edit);
 }
 
-void		editor_click(t_editor *editor, SDL_Event event, t_env *env)
+void			editor_click(t_editor *editor, SDL_Event event, t_env *env)
 {
 	if (event.motion.x <= EDIT_W && event.button.button == SDL_BUTTON_LEFT)
 	{
-		blank_menu(env->sdl.screen, editor->sett, editor, editor->presets, env);
+		blank_menu(env->sdl.screen, editor->sett, editor->presets, env);
 		if (editor->sett == SECTOR && editor->presets == NONE)
 			place_sector(editor, event.motion.x, event.motion.y, env);
 		else if (editor->sett == SECTOR && editor->presets == SECTOR_MOVE)
@@ -72,27 +57,20 @@ void		editor_click(t_editor *editor, SDL_Event event, t_env *env)
 			place_entity(env, event.motion.x, event.motion.y, 1);
 		else if (editor->sett == PORTAL)
 			place_portal(editor, event.motion.x, event.motion.y, env);
-		editor->map_save = false;
+		else if (editor->sett == EFFECTOR && editor->presets == EFF_MOVE)
+			apply_effect_in_sector(editor, event.motion.x, event.motion.y);
+		else if (editor->sett == EFFECTOR && editor->presets == EFF_S_DOOR)
+			apply_plate(editor, event.motion.x, event.motion.y, true);
+		else if (editor->sett == EFFECTOR && editor->presets == EFF_S_PLATE)
+			apply_plate(editor, event.motion.x, event.motion.y, false);
 	}
 	else if (editor->sect_is_closed == true && event.motion.x > EDIT_W)
 		clic_editor_menu(event.motion.x, event.motion.y, editor, env);
 }
 
-void			editor_mousewheel(t_editor *editor, SDL_Event event)
-{
-	if (event.wheel.y > 0)
-		editor->dist_grid *= 2;
-	else if (event.wheel.y < 0)
-		editor->dist_grid /= 2;
-	if (editor->dist_grid < 25)
-		editor->dist_grid = 25;
-	if (editor->dist_grid > 100)
-		editor->dist_grid = 100 ;
-	editor->true_grid = EDIT_W / editor->dist_grid;
-}
-
 void			events(t_editor *editor, t_env *env)
 {
-		display_editor(editor, env);
-		blank_menu(env->sdl.screen, editor->sett, editor, editor->presets, env);
+	display_editor(editor, env, env->sdl.event.motion.x,
+		env->sdl.event.motion.y);
+	blank_menu(env->sdl.screen, editor->sett, editor->presets, env);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/16 11:54:25 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/03/04 18:26:37 by lojesu           ###   ########.fr       */
+/*   Updated: 2020/03/05 08:42:57 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,12 @@
 # define M_SDL_WINSURF	"\033[31;1mError:\033[0m Can't retrieve window surface."
 # define M_AUDIO_DRIVER	"\033[31;1mError:\033[0m No audio driver available."
 # define M_FLOAT		"\033[31;1mError:\033[0m Division by zero"
+# define M_EDIT_ENTITY	"\033[31;1mError:\033[0m Can't create entity."
+# define M_EDIT_PORTAL	"\033[31;1mError:\033[0m Can't create portal."
+# define M_EDIT_SECTOR	"\033[31;1mError:\033[0m Can't create new sector."
+# define M_E_SECT_PORT	"\033[31;1mError:\033[0m Can't create portals for sect."
+# define M_EDIT_TEXT	"\033[31;1mError:\033[0m Can't display text."
+# define M_EDIT_VERTEX	"\033[31;1mError:\033[0m Can't create vertex."
 
 # define TITLE_MENU		"Doom-Nukem v0.8.5 - Menu"
 # define TITLE_GAME		"Doom-Nukem v0.8.5 - Game"

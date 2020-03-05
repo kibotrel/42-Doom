@@ -1,7 +1,19 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   map_creation_part2.c                               :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/03/04 09:24:15 by nde-jesu          #+#    #+#             */
+/*   Updated: 2020/03/04 15:01:09 by nde-jesu         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "editor.h"
 #include "libft.h"
 
-void	write_player(t_ed_player player, t_vertex if_no_player, int fd)
+void		write_player(t_ed_player player, t_vertex if_no_player, int fd)
 {
 	if (player.x < 0 && player.y < 0)
 	{
@@ -20,36 +32,44 @@ void	write_player(t_ed_player player, t_vertex if_no_player, int fd)
 	ft_putstr_fd("\n\n", fd);
 }
 
-void	write_entities(t_ed_entity *entities, int fd, bool type)
+static void	write_true_vertex(int x, int y, int fd, t_editor *edit)
 {
-	t_ed_entity	*entity;
+	int		xa;
+	int		ya;
+	int		true_x;
+	int		true_y;
 
-	entity = entities;
-	while (entity->prev)
-		entity = entity->prev;
-	while (entity)
+	ya = 0;
+	true_y = 0;
+	while (ya < EDIT_H)
 	{
-		type == true ? ft_putstr_fd("enemy number ", fd) :
-			ft_putstr_fd("object number ", fd);
-		ft_putnbr_fd(entity->number, fd);
-		ft_putstr_fd(" x ", fd);
-		ft_putnbr_fd(entity->x, fd);
-		ft_putstr_fd(" y ", fd);
-		ft_putnbr_fd(entity->y, fd);
-		ft_putstr_fd(" sector ", fd);
-		ft_putnbr_fd(entity->sector, fd);
-		ft_putstr_fd(" angle ", fd);
-		ft_putnbr_fd(entity->angle, fd);
-		ft_putstr_fd(" type ", fd);
-		ft_putnbr_fd(entity->type, fd);
-		ft_putchar_fd('\n', fd);
-		entity = entity->next;
+		true_x = 0;
+		xa = 0;
+		while (xa < EDIT_W)
+		{
+			if (xa % edit->true_grid == 0 && xa < x)
+				++true_x;
+			++xa;
+		}
+		if (ya % edit->true_grid == 0 && ya < y)
+			++true_y;
+		++ya;
 	}
-	if (entities)
-		ft_putchar_fd('\n', fd);
+	ft_putnbr_fd(true_x, fd);
+	ft_putstr_fd(" y ", fd);
+	ft_putnbr_fd(true_y, fd);
 }
 
-void	write_vertexes(t_ed_sector *vertexes, int fd)
+static void	write_vertex(t_vertex *vertex, int fd, t_editor *edit)
+{
+	ft_putstr_fd("vertex number ", fd);
+	ft_putnbr_fd(vertex->vertex_number, fd);
+	ft_putstr_fd(" x ", fd);
+	write_true_vertex(vertex->x, vertex->y, fd, edit);
+	ft_putchar_fd('\n', fd);
+}
+
+void		write_vertexes(t_ed_sector *vertexes, int fd, t_editor *edit)
 {
 	t_ed_sector	*sect;
 	t_vertex	*vertex;
@@ -64,14 +84,7 @@ void	write_vertexes(t_ed_sector *vertexes, int fd)
 		{
 			if (count <= vertex->vertex_number)
 			{
-				ft_putstr_fd("vertex number ", fd);
-				ft_putnbr_fd(vertex->vertex_number, fd);
-				ft_putstr_fd(" x ", fd);
-				ft_putnbr_fd(vertex->x, fd);
-				ft_putchar_fd(' ', fd);
-				ft_putstr_fd("y ", fd);
-				ft_putnbr_fd(vertex->y, fd);
-				ft_putchar_fd('\n', fd);
+				write_vertex(vertex, fd, edit);
 				++count;
 			}
 			vertex = vertex->next;
@@ -82,7 +95,7 @@ void	write_vertexes(t_ed_sector *vertexes, int fd)
 		ft_putchar_fd('\n', fd);
 }
 
-void	write_vertex_sector(t_ed_sector *sect, int fd)
+void		write_vertex_sector(t_ed_sector *sect, int fd)
 {
 	t_vertex	*vertex;
 

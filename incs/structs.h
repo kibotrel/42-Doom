@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 18:48:17 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/03/04 19:17:12 by kibotrel         ###   ########.fr       */
+/*   Updated: 2020/03/05 08:43:17 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,6 +123,7 @@ typedef struct			s_count
 	int					sector;
 	int					vertex;
 	t_tick				button;
+	int					eff_data[ALL_EFFECTS];
 }						t_count;
 
 typedef struct			s_ed_player
@@ -164,12 +165,9 @@ typedef struct			s_portal
 
 typedef struct			s_effector
 {
-	t_effects			effects;
-	int					money_sec;
-	int					cost;
-	int					*doors;
-}						t_effector;
-
+	t_effects		effects;
+	int				data;
+}					t_effector;
 typedef struct			s_ed_sector
 {
 	int					type;
@@ -226,8 +224,11 @@ typedef struct			s_editor
 {
 	int					true_grid;
 	int					dist_grid;
+	char				*tab[4][7];
+	char				*numbers[6];
+	char				*first_params[9];
+	char				*effector[ALL_EFFECTS];
 	bool				finish;
-	bool				map_save;
 	bool				sect_is_closed;
 	int8_t				grid;
 	int8_t				delete;
@@ -239,6 +240,7 @@ typedef struct			s_editor
 	t_vertex			last_vertex;
 	t_vertex			portal_points[2];
 	t_presets			presets;
+	t_effector			effects;
 	t_settings			sett;
 	t_ed_entity			*object;
 	t_ed_entity			*enemy;

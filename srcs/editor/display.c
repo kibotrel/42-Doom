@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   display.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/03/03 14:53:31 by nde-jesu          #+#    #+#             */
+/*   Updated: 2020/03/03 14:54:34 by nde-jesu         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "editor.h"
 #include "libft.h"
 
@@ -42,21 +54,21 @@ void	draw_walls(t_sdl *sdl, t_ed_sector *sect, t_vertex *vertex, int color)
 		put_pixel(sdl->screen, vertex->x, vertex->y, color);
 }
 
-void	display_sector(t_sdl *sdl, t_ed_sector *sectors, bool fl)
+void	display_sector(t_sdl *sdl, t_ed_sector *sector, bool fl, t_editor *edit)
 {
 	int			i;
 	t_ed_sector	*sect;
 	t_vertex	*vertex;
 
-	next_display_sector(sdl, sectors);
-	if (sectors && fl == true)
+	next_display_sector(sdl, sector, edit);
+	if (sector && fl == true)
 	{
 		i = 0;
-		sect = sectors;
+		sect = sector;
 		vertex = sect->vertex;
 		while (vertex && ++i)
 		{
-			draw_walls(sdl, sectors, vertex, 0xffff00);
+			draw_walls(sdl, sector, vertex, 0xffff00);
 			vertex = vertex->next;
 		}
 	}

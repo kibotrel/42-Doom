@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   setup.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/16 11:58:26 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/03/04 18:25:31 by lojesu           ###   ########.fr       */
+/*   Updated: 2020/03/05 08:45:00 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,12 @@ static void	error_messages(t_env *env)
 	env->error[E_SDL_THREAD] = M_SDL_THREAD;
 	env->error[E_AUDIO_DRIVER] = M_AUDIO_DRIVER;
 	env->error[E_FLOAT] = M_FLOAT;
+	env->error[E_EDIT_ENTITY] = M_EDIT_ENTITY;
+	env->error[E_EDIT_PORTAL] = M_EDIT_PORTAL;
+	env->error[E_EDIT_SECT_PORTAL] = M_E_SECT_PORT;
+	env->error[E_EDIT_SECTOR] = M_EDIT_SECTOR;
+	env->error[E_EDIT_TEXT] = M_EDIT_TEXT;
+	env->error[E_EDIT_VERTEX] = M_EDIT_VERTEX;
 }
 
 static void	assets_paths(t_env *env)
@@ -78,14 +84,6 @@ static void	assets_paths(t_env *env)
 	env->asset[ED_TEXT_8] = "./assets/texture_8.bmp";
 	env->asset[ED_TEXT_9] = "./assets/texture_9.bmp";
 	env->asset[ED_TEXT_10] = "./assets/texture_10.bmp";
-	env->asset[ED_OBJ_1] = "./assets/object_1.bmp";
-	env->asset[ED_OBJ_2] = "./assets/object_2.bmp";
-	env->asset[ED_OBJ_3] = "./assets/object_3.bmp";
-	env->asset[ED_OBJ_4] = "./assets/object_4.bmp";
-	env->asset[ED_ENEMY_1] = "./assets/enemy_1.bmp";
-	env->asset[ED_ENEMY_2] = "./assets/enemy_2.bmp";
-	env->asset[ED_ENEMY_3] = "./assets/enemy_3.bmp";
-	env->asset[ED_ENEMY_4] = "./assets/enemy_4.bmp";
 	env->asset[ED_PORTAL_DOOR] = "./assets/portal_wall.bmp";
 	env->asset[ED_PORTAL_WALL] = "./assets/portal_door.bmp";
 	scaled_assets(env);
@@ -95,7 +93,7 @@ void	infos_setup(t_env *env)
 {
 	env->w = WIN_W;
 	env->h = WIN_H;
-	env->win = GAME;
+	env->win = MENU;
 	env->cam.fly = -1;
 	env->cam.fall = 1;
 	env->cam.speed = 1;

@@ -1,12 +1,25 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   sector_utils.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/03/04 11:33:36 by nde-jesu          #+#    #+#             */
+/*   Updated: 2020/03/04 13:29:57 by nde-jesu         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "clean.h"
 #include "libft.h"
 #include "editor.h"
 
-t_ed_sector	*create_sector(t_editor *edit, t_env *env)
+t_ed_sector		*create_sector(t_env *env, t_editor *edit)
 {
-	t_ed_sector	*sect;
+	t_ed_sector *sect;
 
-	if (!(sect = (t_ed_sector*)ft_memalloc(sizeof(t_ed_sector))))
-		clean_editor(edit, env);
+	if (!(sect = (t_ed_sector *)ft_memalloc(sizeof(t_ed_sector))))
+		clean(env, E_EDIT_SECTOR);
 	sect->sector_number = edit->count.sector++;
 	sect->h_ceil = 20;
 	sect->h_floor = 0;
@@ -19,37 +32,48 @@ t_ed_sector	*create_sector(t_editor *edit, t_env *env)
 	sect->light_value = -1;
 	sect->next = NULL;
 	sect->prev = NULL;
+	sect->effect.effects = EFF_NONE;
+	sect->effect.data = 0;
 	return (sect);
 }
 
-void			print_sector_light(t_env *env, int light, t_ed_sector *sect)
+void			print_sector_light(t_env *env, int light, t_ed_sector *sect,
+						SDL_Surface *screen)
 {
-	int		color;
-
-	rectangle(init_vertex(1499, 49), init_vertex(1550, 100), 0xffffff, env->sdl.screen);
+	rectangle(init_vertex(1499, 49), init_vertex(1550, 100), 0xffffff, screen);
 	if (light == -1)
 	{
 		sect->light_value = -1;
 		return ;
 	}
 	else if (light == 0)
-		color = 0xff0000;
+		sect->light_value = 0xff0000;
 	else if (light == 1)
-		color = 0x00ff00;
+		sect->light_value = 0x00ff00;
 	else if (light == 2)
-		color = 0x0000ff;
+		sect->light_value = 0x0000ff;
 	else if (light == 3)
-		color = 0xcc6075;
+		sect->light_value = 0xcc6075;
 	else if (light == 4)
-		color = 0xe69a01;
+		sect->light_value = 0xe69a01;
 	else if (light == 5)
-		color = 0x999999;
+		sect->light_value = 0x999999;
 	else if (light == 6)
-		color = 0x04c39a;
+		sect->light_value = 0x04c39a;
 	else
 		return ;
-	sect->light_value = color;
-	square(1550, 100, color, env->sdl.screen);
+	square(1550, 100, sect->light_value, env->sdl.screen);
+}
+
+static int		reset_count_part2(t_vertex *vert_1, t_vertex *vert_2, int minus)
+{
+	while (vert_2)
+	{
+		if (vert_2->x == vert_1->x && vert_2->y == vert_1->y)
+			++minus;
+		vert_2 = vert_2->next;
+	}
+	return (minus);
 }
 
 static int		reset_count(t_vertex *vertex, t_ed_sector *sector)
@@ -71,12 +95,7 @@ static int		reset_count(t_vertex *vertex, t_ed_sector *sector)
 		while (sect && sect->sector_number < sector->sector_number)
 		{
 			vert_2 = sect->vertex;
-			while (vert_2)
-			{
-				if (vert_2->x == vert_1->x && vert_2->y == vert_1->y)
-					++minus;
-				vert_2 = vert_2->next;
-			}
+			minus += reset_count_part2(vert_1, vert_2, minus);
 			sect = sect->next;
 		}
 		++ret;
@@ -85,9 +104,9 @@ static int		reset_count(t_vertex *vertex, t_ed_sector *sector)
 	return (ret - minus);
 }
 
-void	delete_sector_in_progress(t_ed_sector **sector,t_editor *edit)
+void			delete_sector_in_progress(t_ed_sector **sector, t_editor *edit)
 {
-	t_ed_sector	*sect;
+	t_ed_sector *sect;
 
 	if (edit->sect_is_closed)
 		return ;

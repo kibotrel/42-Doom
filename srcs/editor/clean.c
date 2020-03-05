@@ -1,4 +1,37 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   clean.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/03/03 14:51:32 by nde-jesu          #+#    #+#             */
+/*   Updated: 2020/03/04 13:22:55 by nde-jesu         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "libft.h"
 #include "editor.h"
+
+void			delete_vertex(t_vertex **vertex)
+{
+	t_vertex	*tmp;
+	t_vertex	*to_del;
+
+	if (*vertex == NULL)
+		return ;
+	to_del = NULL;
+	tmp = NULL;
+	to_del = *vertex;
+	tmp = to_del;
+	while (tmp)
+	{
+		tmp = to_del->next;
+		free(to_del);
+		to_del = tmp;
+	}
+	*vertex = NULL;
+}
 
 void			init_count(t_count *count)
 {
@@ -9,11 +42,12 @@ void			init_count(t_count *count)
 	count->object = 0;
 	count->button.new = 0;
 	count->button.old = 0;
+	ft_bzero(&count->eff_data, sizeof(int) * ALL_EFFECTS);
 }
 
-void			clean_editor(t_editor *editor, t_env *env)
+void			clean_editor(t_editor *editor)
 {
-	clear_editor(editor, env);
+	clear_editor(editor);
 	if (editor->which_sector)
 	{
 		delete_sector(&editor->which_sector);
@@ -37,11 +71,4 @@ void			clean_editor(t_editor *editor, t_env *env)
 		delete_vertex(&editor->cd);
 		free(editor->ab);
 	}
-	if (env->sdl.screen)
-		SDL_FreeSurface(env->sdl.screen);
-	if (env->sdl.win)
-		SDL_DestroyWindow(env->sdl.win);
-	TTF_Quit();
-	SDL_Quit();
-	exit(1);
 }

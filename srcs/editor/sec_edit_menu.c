@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   sec_edit_menu.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/03/04 09:55:36 by nde-jesu          #+#    #+#             */
+/*   Updated: 2020/03/04 10:05:00 by nde-jesu         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "editor.h"
 
-static void		blank_sect(int set, int preset, SDL_Surface *s)
+static void		blank_sect(int set, int preset, int effect, SDL_Surface *s)
 {
 	int		clr;
 
@@ -21,13 +33,14 @@ static void		blank_sect(int set, int preset, SDL_Surface *s)
 		clr = ((preset != SECTOR_LIGHT) ? 0xffffff : 0x177013);
 		rectangle(init_vertex(1540, 740), init_vertex(1710, 810), clr, s);
 	}
+	blank_sect_part2(set, effect, preset, s);
 }
 
-void			sec_blank_menu(SDL_Surface *s, int set, int preset)
+void			sec_blank_menu(SDL_Surface *s, int set, int effect, int preset)
 {
 	int		clr;
 
-	blank_sect(set, preset, s);
+	blank_sect(set, preset, effect, s);
 	if (set == OBJECT || set == ENEMY)
 	{
 		clr = ((preset != ENTITY_TYPE) ? 0xffffff : 0x177013);
@@ -41,13 +54,7 @@ void			sec_blank_menu(SDL_Surface *s, int set, int preset)
 		clr = ((preset != PLAYER_ROTATE) ? 0xffffff : 0x177013);
 	if (set == PLAYER)
 		rectangle(init_vertex(1540, 140), init_vertex(1710, 210), clr, s);
-	if (preset != NONE && preset != SECTOR_MOVE)
-	{
-		rectangle(init_vertex(1399, 49), init_vertex(1450, 100), 0xffa500, s);
-		rectangle(init_vertex(1599, 49), init_vertex(1650, 100), 0xffa500, s);
-		square(1450, 100, 0x8d33ff, s);
-		square(1650, 100, 0x8d33ff, s);
-	}
+	sec_blank_menu_part2(preset, set, s);
 }
 
 static void		part_5_sec_clic_menu_editor(int y, t_editor *editor)
@@ -56,6 +63,8 @@ static void		part_5_sec_clic_menu_editor(int y, t_editor *editor)
 	{
 		if (editor->sett == SECTOR)
 			editor->presets = SECTOR_GRAV;
+		else if (editor->sett == EFFECTOR)
+			editor->presets = EFF_S_DOOR;
 		else
 			editor->presets = NONE;
 	}
@@ -81,14 +90,12 @@ static void		next_sec_clic_menu_editor(int y, t_editor *editor)
 	{
 		if (editor->sett == ENEMY)
 			del_entity(&editor->enemy);
-		if (editor->sett == ENEMY)
-			editor->map_save = false;
-		if (editor->sett == OBJECT)
+		else if (editor->sett == OBJECT)
 			del_entity(&editor->object);
-		if (editor->sett == OBJECT)
-			editor->map_save = false;
-		if (editor->sett == SECTOR)
+		else if (editor->sett == SECTOR)
 			editor->presets = SECTOR_CEIL;
+		else if (editor->sett == EFFECTOR && editor->effects.effects != EFF_SKY)
+			editor->presets = EFF_DATA;
 		else
 			editor->presets = NONE;
 	}
@@ -106,6 +113,8 @@ void			sec_clic_menu_editor(int y, t_editor *editor)
 			editor->presets = ENTITY_MOVE;
 		if (editor->sett == SECTOR)
 			editor->presets = SECTOR_MOVE;
+		if (editor->sett == EFFECTOR)
+			editor->presets = EFF_EFFECT;
 	}
 	sec_clic_menu_editor_tool(y, editor);
 	next_sec_clic_menu_editor(y, editor);

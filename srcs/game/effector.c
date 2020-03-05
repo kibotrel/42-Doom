@@ -36,7 +36,7 @@ void	sector_triger(t_env *env)
 	int			s;
 
 	s = env->cam.sector;
-	if (env->sector[s].type == ELEVATOR)
+	if (env->sector[s].type == EFF_ELEV)
 	{
 		if (env->input[SDL_SCANCODE_E])
 		{
@@ -56,7 +56,7 @@ void	sector_triger(t_env *env)
 	}
 	if (env->input[SDL_SCANCODE_E])
 	{
-		if (env->sector[s].type > END && env->data.money >= (uint32_t)env->sector[s].data)
+		if (env->sector[s].type > EFF_END && env->data.money >= (uint32_t)env->sector[s].data)
 		{
 			env->data.money -= env->sector[s].data;
 			env->sector[s].data = 0;
@@ -66,9 +66,7 @@ void	sector_triger(t_env *env)
 	env->st_fl = SDL_GetTicks();
 	if (env->st_fl > env->old_st_fl + 200)
 	{
-		if (env->sector[s].type == GENERATOR)
-			env->data.life -= env->sector[s].data / 5;
-		if (env->sector[s].type == MONEY)
+		if (env->sector[s].type == EFF_MONEY)
 			env->data.money += (double)env->sector[s].data / 5;
 		env->old_st_fl = env->st_fl;
 	}

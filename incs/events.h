@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 19:25:01 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/01/30 11:34:52 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/03/04 14:53:55 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ void	handle_keyboard(t_env *env);
 */
 
 void	handle_mouse(t_env *env, t_sdl *sdl);
-void	handle_mousewheel(t_env *env, t_sdl *sdl);
 
 /*
 **	motion.c

@@ -1,7 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   display_utils.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/03/03 14:56:38 by nde-jesu          #+#    #+#             */
+/*   Updated: 2020/03/03 14:56:51 by nde-jesu         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "env.h"
 #include "utils.h"
 #include "editor.h"
-
 
 void			draw_ed_line(SDL_Surface *surf, t_vertex start, t_vertex end,
 	int color)

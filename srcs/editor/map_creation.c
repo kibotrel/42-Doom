@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   map_creation.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/03/04 09:26:41 by nde-jesu          #+#    #+#             */
+/*   Updated: 2020/03/04 14:59:26 by nde-jesu         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <fcntl.h>
@@ -19,6 +31,34 @@ void			write_portals(t_ed_sector *sect, int fd)
 	}
 }
 
+static void		write_sectors_infos(t_ed_sector *sect, int fd)
+{
+	if (sect->effect.effects == EFF_ELEV && sect->effect.data < 0)
+	{
+		ft_putnbr_fd(sect->effect.effects * -1, fd);
+		ft_putstr_fd(" data ", fd);
+		ft_putnbr_fd(sect->effect.data * -1, fd);
+	}
+	else
+	{
+		ft_putnbr_fd(sect->effect.effects, fd);
+		ft_putstr_fd(" data ", fd);
+		ft_putnbr_fd(sect->effect.data, fd);
+	}
+	ft_putstr_fd(" light ", fd);
+	ft_putnbr_fd(sect->light_value, fd);
+	ft_putstr_fd(" h_floor ", fd);
+	ft_putnbr_fd(sect->h_floor, fd);
+	ft_putstr_fd(" h_ceil ", fd);
+	ft_putnbr_fd(sect->h_ceil, fd);
+	ft_putstr_fd(" gravity ", fd);
+	ft_putnbr_fd(sect->gravity, fd);
+	ft_putstr_fd(" friction ", fd);
+	ft_putnbr_fd(sect->friction, fd);
+	ft_putstr_fd(" vertex_num ", fd);
+	ft_putnbr_fd(sect->vertex_count, fd);
+}
+
 static void		write_sectors(t_ed_sector *sector, int fd)
 {
 	t_ed_sector	*sect;
@@ -33,19 +73,7 @@ static void		write_sectors(t_ed_sector *sector, int fd)
 			ft_putstr_fd(" texture ", fd);
 			ft_putnbr_fd(sect->texture, fd);
 			ft_putstr_fd(" type ", fd);
-			ft_putnbr_fd(sect->type, fd);
-			ft_putstr_fd(" light ", fd);
-			ft_putnbr_fd(sect->light_value, fd);
-			ft_putstr_fd(" h_floor ", fd);
-			ft_putnbr_fd(sect->h_floor, fd);
-			ft_putstr_fd(" h_ceil ", fd);
-			ft_putnbr_fd(sect->h_ceil, fd);
-			ft_putstr_fd(" gravity ", fd);
-			ft_putnbr_fd(sect->gravity, fd);
-			ft_putstr_fd(" friction ", fd);
-			ft_putnbr_fd(sect->friction, fd);
-			ft_putstr_fd(" vertex_num ", fd);
-			ft_putnbr_fd(sect->vertex_count, fd);
+			write_sectors_infos(sect, fd);
 			ft_putstr_fd(" vertexes ", fd);
 			write_vertex_sector(sect, fd);
 			if (sect->next)
@@ -68,11 +96,7 @@ static void		write_file(t_editor *editor, int fd)
 	{
 		get_elements_number(editor, fd);
 		write_player(editor->player, *(sector->vertex), fd);
-		if (editor->enemy)
-			write_entities(editor->enemy, fd, true);
-		if (editor->object)
-			write_entities(editor->object, fd, false);
-		write_vertexes(sector, fd);
+		write_vertexes(sector, fd, editor);
 		write_sectors(sector, fd);
 	}
 }
@@ -88,7 +112,6 @@ void			create_map(t_editor *editor)
 			write_file(editor, fd);
 		if (close(fd) == -1)
 			exit(1);
-		editor->map_save = true;
 		ft_putendl("Map saved");
 	}
 }

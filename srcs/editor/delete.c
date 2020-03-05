@@ -1,25 +1,17 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   delete.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/03/03 14:53:03 by nde-jesu          #+#    #+#             */
+/*   Updated: 2020/03/03 14:53:05 by nde-jesu         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 #include "editor.h"
-
-void				delete_vertex(t_vertex **vertex)
-{
-	t_vertex	*tmp;
-	t_vertex	*to_del;
-
-	if (*vertex == NULL)
-		return ;
-	to_del = NULL;
-	tmp = NULL;
-	to_del = *vertex;
-	tmp = to_del;
-	while (tmp)
-	{
-		tmp = to_del->next;
-		free(to_del);
-		to_del = tmp;
-	}
-	*vertex = NULL;
-}
 
 void				delete_vertex_sector(t_ed_sector **vertex)
 {
@@ -116,7 +108,7 @@ static void			delete_entity(t_ed_entity **entity)
 	*entity = NULL;
 }
 
-void				clear_editor(t_editor *editor, t_env *env)
+void				clear_editor(t_editor *editor)
 {
 	delete_player(&editor->player);
 	if (editor->sector)
@@ -130,10 +122,10 @@ void				clear_editor(t_editor *editor, t_env *env)
 	if (editor->portals)
 		delete_portals(&editor->portals);
 	editor->sett = SECTOR;
+	editor->presets = NONE;
+	editor->effects.effects = EFF_NONE;
 	editor->last_vertex.x = -1;
 	editor->last_vertex.y = -1;
 	init_portals(editor);
 	init_count(&editor->count);
-	blank_menu(env->sdl.screen, editor->sett, editor, editor->presets, env);
-	editor->map_save = true;
 }
