@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sector.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: reda-con <reda-con@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/17 16:35:58 by reda-con          #+#    #+#             */
-/*   Updated: 2020/03/04 15:12:16 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/03/05 17:30:26 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,9 +51,9 @@ int			second_check(t_sector *s, char **t, t_vec2d *ver, t_env *e)
 	s[ft_atoi(t[2])].floor = ft_atoi(t[12]);
 	s[ft_atoi(t[2])].ceil = ft_atoi(t[14]);
 	if ((s[ft_atoi(t[2])].texture = ft_atoi(t[4])) < 0
-	|| (s[ft_atoi(t[2])].data = ft_atoi(t[8])) < 0
+	|| ft_atoi(t[4]) > 9 || (s[ft_atoi(t[2])].data = ft_atoi(t[8])) < 0
 	|| s[ft_atoi(t[2])].floor >= s[ft_atoi(t[2])].ceil
-	|| ft_atoi(t[16]) < 0 || ft_atoi(t[18]) < 0)
+	|| ft_atoi(t[16]) <= 0 || ft_atoi(t[18]) < 0 || (uint32_t)i > e->vert_ct)
 		return (4);
 	s[ft_atoi(t[2])].gravity = (double)ft_atoi(t[16]) / 100;
 	s[ft_atoi(t[2])].friction = (double)ft_atoi(t[18]) / 100;
@@ -62,10 +62,11 @@ int			second_check(t_sector *s, char **t, t_vec2d *ver, t_env *e)
 		clean(e, E_MALLOC);
 	if (!(s[ft_atoi(t[2])].neighbor = (int*)malloc(sizeof(int) * i)))
 		clean(e, E_MALLOC);
-	if (t[22 + i] && !ft_strcmp(t[22 + i], "portals"))
+	if (t[22 + i])
 	{
-		if (third_check(e, t, ver, i))
-			return (4);
+		if (!ft_strcmp(t[22 + i], "portals"))
+			if (third_check(e, t, ver, i))
+				return (4);
 	}
 	else
 		return (4);

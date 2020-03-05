@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/04 11:33:36 by nde-jesu          #+#    #+#             */
-/*   Updated: 2020/03/05 14:16:46 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/03/05 15:54:45 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ t_ed_sector		*create_sector(t_env *env, t_editor *edit)
 	sect->vertex_count = 0;
 	sect->texture = 0;
 	sect->type = 0;
-	sect->gravity = 20;
+	sect->gravity = 10;
 	sect->friction = 50;
 	sect->light = -1;
 	sect->light_value = -1;

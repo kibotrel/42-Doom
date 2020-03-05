@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   resize_window.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lojesu <lojesu@student.42.fr>              +#+  +:+       +#+        */
+/*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/03 17:33:07 by lojesu            #+#    #+#             */
-/*   Updated: 2020/03/04 17:44:21 by kibotrel         ###   ########.fr       */
+/*   Updated: 2020/03/05 15:37:03 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,17 @@ static void	clean_and_init_asset(t_env *env)
 	{
 		free(env->sdl.bmp[i].pixels);
 		if (bmp_to_array(env->asset[i], &env->sdl.bmp[i]))
+		{
+			env->bmp_error = i;
 			clean(env, E_BMP_PARSE);
+		}
 	}
 	free(env->sdl.bmp[BG_MENU].pixels);
 	if (bmp_to_array(env->asset[BG_MENU], &env->sdl.bmp[BG_MENU]))
+	{
+		env->bmp_error = 0;
 		clean(env, E_BMP_PARSE);
+	}
 }
 
 static void	update_data(t_env *env)

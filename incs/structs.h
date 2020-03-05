@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 18:48:17 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/03/05 14:17:45 by lojesu           ###   ########.fr       */
+/*   Updated: 2020/03/05 15:33:15 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -307,6 +307,7 @@ typedef struct			s_env
 {
 	char				*asset[NB_ASSETS];
 	char				*error[NB_ERRORS];
+	int					bmp_error;
 	t_cam				cam;
 	t_sdl				sdl;
 	t_win				win;

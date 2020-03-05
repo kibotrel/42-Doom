@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/08 19:29:45 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/03/05 14:17:56 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/03/05 15:38:18 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,18 @@ static void	env_clean(t_env *env)
 	uint32_t		i;
 
 	i = 0;
-	while (i < NB_ASSETS)
-		if (env->sdl.bmp[i++].pixels)
-			free(env->sdl.bmp[i - 1].pixels);
+	if (env->bmp_error >= 0)
+	{
+		while (i < (uint32_t)env->bmp_error)
+			if (env->sdl.bmp[i++].pixels)
+				free(env->sdl.bmp[i - 1].pixels);
+	}
+	else
+	{
+		while (i < NB_ASSETS)
+			if (env->sdl.bmp[i++].pixels)
+				free(env->sdl.bmp[i - 1].pixels); 
+	}
 	if (env->win == GAME)
 		free_map(env);
 }

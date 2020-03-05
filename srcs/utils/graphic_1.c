@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   graphic_1.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 13:21:31 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/03/05 13:11:01 by lojesu           ###   ########.fr       */
+/*   Updated: 2020/03/05 16:34:45 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "texture.h"
 
 #define FLOOR 0x424242
-#define CEIL 0x222222
+#define CEIL 0x000001
 
 static void	draw_ceil_and_floor_part2(t_env *env, t_game *var, int32_t x)
 {

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: reda-con <reda-con@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 14:00:52 by reda-con          #+#    #+#             */
-/*   Updated: 2020/03/05 15:14:05 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/03/05 16:18:23 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,8 @@ static void		verif_end(int gnl, int fd, t_env *env, t_parse par)
 		main_err(&par, env, 1, E_P_NB_VERTEX);
 	if (env->sect_ct != env->zones)
 		main_err(&par, env, 1, E_P_NB_SECTOR);
+	if (env->cam.sector >= (uint32_t)par.total)
+		main_err(&par, env, 1, E_P_PLAYER);
 }
 
 static void		read_file(char *file, char **av, t_env *env)

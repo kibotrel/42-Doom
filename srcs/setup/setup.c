@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/16 11:58:26 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/03/05 14:30:41 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/03/05 15:30:41 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,7 @@ static void	infos_setup(t_env *env)
 void		env_setup(t_env *env)
 {
 	bzero_params(env);
+	env->bmp_error = -1;
 	infos_setup(env);
 	assets_paths(env);
 	error_messages(env);
