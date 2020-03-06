@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   engine.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 15:22:56 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/03/05 20:03:44 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/03/06 10:40:08 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,8 @@ void	graphics(t_env *env)
 	}
 	if (var.sky > env->data.sky)
 		env->data.sky = var.sky;
+	if (var.error)
+		env->crash = 1;
 	engine_clean(&var);
 	pthread_exit(NULL);
 }

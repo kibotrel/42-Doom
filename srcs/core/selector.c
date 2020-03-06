@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   selector.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/18 14:21:13 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/03/05 13:26:18 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/03/06 09:40:42 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	selector(t_env *env, int ac, char **av)
 	else if (env->win == GAME)
 	{
 		SDL_WarpMouseInWindow(env->sdl.win, env->w / 2, env->h / 2);
-		game(env, ac, av);
+		game(env);
 	}
 	else if (env->win == EDITOR)
 		editor(env, ac, av);

@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/16 11:53:54 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/03/06 01:35:18 by kibotrel         ###   ########.fr       */
+/*   Updated: 2020/03/06 10:43:34 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@
 #include "utils.h"
 #include "parse.h"
 
-//
-//__attribute__((destructor)) void no_end(void);
-//void no_end(){while(1);}
+// 
+// __attribute__((destructor)) void no_end(void);
+// void no_end(){while(1);}
 //
 
 static void	update_screen(t_env *env)
@@ -56,6 +56,7 @@ int			main(int ac, char **av)
 	{
 		env_setup(&env);
 		graphic_setup(&env, &env.sdl);
+		main_parse(av, &env, ac);
 		while (1)
 		{
 			if (process_next_frame(&env))
