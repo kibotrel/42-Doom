@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/18 14:38:11 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/03/06 10:37:04 by kibotrel         ###   ########.fr       */
+/*   Updated: 2020/03/06 10:58:39 by lojesu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,11 +70,6 @@ void		game(t_env *env)
 {
 	if (!env->setup)
 	{
-		if (env->tuto)
-		{
-			ft_bzero(&env->test.move, sizeof(int) * 4);
-			ft_bzero(&env->test, sizeof(t_tuto));
-		}
 		SDL_ShowCursor(SDL_DISABLE);
 		SDL_SetWindowTitle(env->sdl.win, TITLE_GAME);
 		params_reset(env);
