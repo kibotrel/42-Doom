@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/11 14:21:04 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/03/05 19:05:25 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/03/06 09:19:40 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	update_cam(t_env *env, t_vec2d vel)
 	s = &env->sector[env->cam.sector];
 	v = s->vertex;
 	p = v2d(env->cam.pos.x, env->cam.pos.y);
-	while (i < s->points)
+	while (i < s->points && s->points <= env->vert_ct)
 	{
 		if (s->neighbor[i] >= 0
 			&& check_collisions(p, vel, v[i], v[(i + 1) % s->points]))
