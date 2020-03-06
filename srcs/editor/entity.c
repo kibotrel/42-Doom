@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/04 09:08:44 by nde-jesu          #+#    #+#             */
-/*   Updated: 2020/03/05 14:43:10 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/03/06 09:07:57 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,8 @@ void				place_player(t_editor *editor, int x, int y)
 	t_ed_player	player;
 	t_vertex	check_sector;
 
+	if (editor->presets != NONE)
+		return ;
 	player.x = (x / editor->true_grid) * editor->true_grid;
 	player.y = (y / editor->true_grid) * editor->true_grid;
 	check_sector.x = x;

@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/03 14:56:38 by nde-jesu          #+#    #+#             */
-/*   Updated: 2020/03/05 14:42:06 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/03/06 09:05:17 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,12 +68,12 @@ void			put_fov(SDL_Surface *surf, t_vertex pt, int agl, int color)
 	while (i < 2)
 	{
 		p0 = init_vertex(cos(deg_to_rad(agl)) * SIZE + pt.x,
-			-sin(deg_to_rad(agl)) * SIZE + pt.y);
+			+sin(deg_to_rad(agl)) * SIZE + pt.y);
 		angle = agl + i * ANGLE - ANGLE / 2;
 		angle = angle > 360 ? angle - 360 : angle;
 		angle = angle < 0 ? angle + 360 : angle;
 		p1 = init_vertex(-cos(deg_to_rad(angle)) * SIZE + pt.x,
-			sin(deg_to_rad(angle)) * SIZE + pt.y);
+			-sin(deg_to_rad(angle)) * SIZE + pt.y);
 		draw_ed_line(surf, p0, p1, color);
 		++i;
 	}

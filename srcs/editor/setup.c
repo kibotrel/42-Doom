@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/04 11:36:42 by nde-jesu          #+#    #+#             */
-/*   Updated: 2020/03/05 23:14:37 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/03/06 08:54:13 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ void			editor_setup(t_editor *editor)
 	editor->last_vertex.y = -1;
 	editor->player.x = -5;
 	editor->player.y = -5;
-	editor->player.angle = 90;
+	editor->player.angle = 0;
 	init_tab_num(editor->numbers, editor->first_params);
 	init_tab_effectors(editor->effector);
 	init_tab(editor->tab);
