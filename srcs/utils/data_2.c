@@ -6,12 +6,11 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/24 12:03:37 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/03/04 11:26:10 by kibotrel         ###   ########.fr       */
+/*   Updated: 2020/03/06 10:47:43 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <math.h>
-#include <stdlib.h>
 #include "libft.h"
 #include "utils.h"
 

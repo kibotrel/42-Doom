@@ -6,11 +6,10 @@
 /*   By: lojesu <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/22 18:27:12 by lojesu            #+#    #+#             */
-/*   Updated: 2020/02/22 18:30:44 by lojesu           ###   ########.fr       */
+/*   Updated: 2020/03/06 10:34:31 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "env.h"
 #include "utils.h"
 
 void	settings_keyboard(t_env *env)

@@ -6,11 +6,10 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/16 12:45:38 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/03/06 00:00:16 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/03/06 10:02:41 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "game.h"
 #include "clean.h"
 #include "events.h"
 

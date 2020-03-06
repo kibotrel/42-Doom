@@ -6,16 +6,12 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/18 14:38:31 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/03/03 17:03:06 by lojesu           ###   ########.fr       */
+/*   Updated: 2020/03/06 10:05:54 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "env.h"
-#include "core.h"
 #include "utils.h"
-#include "texture.h"
 #include "settings.h"
-#include "libft.h"
 
 void			settings(t_env *env)
 {

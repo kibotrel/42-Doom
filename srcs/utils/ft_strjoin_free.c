@@ -6,11 +6,10 @@
 /*   By: lojesu <lojesu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/14 11:00:25 by lojesu            #+#    #+#             */
-/*   Updated: 2020/02/14 08:02:59 by kibotrel         ###   ########.fr       */
+/*   Updated: 2020/03/06 10:51:07 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include "libft.h"
 #include "utils.h"
 

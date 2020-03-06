@@ -6,14 +6,11 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/10 15:11:44 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/03/06 01:44:14 by kibotrel         ###   ########.fr       */
+/*   Updated: 2020/03/06 10:18:11 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "game.h"
 #include "clean.h"
-#include "utils.h"
-#include "libft.h"
 
 /*
 **	pthread_join(env->sound, NULL);

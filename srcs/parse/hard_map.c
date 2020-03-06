@@ -6,12 +6,10 @@
 /*   By: reda-con <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/05 12:34:04 by reda-con          #+#    #+#             */
-/*   Updated: 2020/03/05 12:34:05 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/03/06 10:25:25 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "env.h"
-#include "structs.h"
 #include "utils.h"
 #include "clean.h"
 #include "parse.h"

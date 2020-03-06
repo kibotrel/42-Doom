@@ -6,14 +6,12 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/05 13:12:00 by lojesu            #+#    #+#             */
-/*   Updated: 2020/03/05 19:58:26 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/03/06 10:44:01 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "utils.h"
 #include "texture.h"
-#include "libft.h"
-#include "clean.h"
 
 #define WALL_RATIO 20
 

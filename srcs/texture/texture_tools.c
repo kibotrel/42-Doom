@@ -6,14 +6,10 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 13:40:06 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/03/05 21:57:22 by lojesu           ###   ########.fr       */
+/*   Updated: 2020/03/06 10:44:49 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <fcntl.h>
-#include <stdint.h>
-#include <unistd.h>
-#include "clean.h"
 #include "utils.h"
 #include "texture.h"
 

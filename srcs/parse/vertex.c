@@ -6,12 +6,11 @@
 /*   By: reda-con <reda-con@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 16:20:55 by reda-con          #+#    #+#             */
-/*   Updated: 2020/03/04 15:09:54 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/03/06 10:30:01 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parse.h"
-#include <stdlib.h>
 #include "libft.h"
 #include "utils.h"
 

@@ -6,11 +6,10 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/08 19:56:17 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/03/05 13:21:00 by lojesu           ###   ########.fr       */
+/*   Updated: 2020/03/06 10:04:32 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "env.h"
 #include "utils.h"
 
 void	draw_button(t_env *env, t_ui ui, uint32_t color, uint8_t n)

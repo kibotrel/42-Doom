@@ -6,11 +6,10 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 13:34:24 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/24 05:52:39 by demonwaves       ###   ########.fr       */
+/*   Updated: 2020/03/06 10:46:39 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "game.h"
 #include "utils.h"
 
 void		fps_counter(t_env *env)

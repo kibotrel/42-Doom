@@ -6,19 +6,19 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/19 16:28:40 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/01/14 13:34:45 by kibotrel         ###   ########.fr       */
+/*   Updated: 2020/03/06 10:46:34 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include <math.h>
 #include "utils.h"
 
 void	line_params(t_line *line, t_pos a, t_pos b)
 {
 	line->sign.y = (a.y < b.y ? 1 : -1);
 	line->sign.x = (a.x < b.x ? 1 : -1);
-	line->delta.y = abs(b.y - a.y);
-	line->delta.x = abs(b.x - a.x);
+	line->delta.y = (int)fabs((double)(b.y - a.y));
+	line->delta.x = (int)fabs((double)(b.x - a.x));
 	line->offset = line->delta.x - line->delta.y;
 	line->error = 0;
 }

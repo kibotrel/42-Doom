@@ -6,11 +6,10 @@
 /*   By: lojesu <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/22 17:06:01 by lojesu            #+#    #+#             */
-/*   Updated: 2020/03/03 17:40:42 by lojesu           ###   ########.fr       */
+/*   Updated: 2020/03/06 10:35:08 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "env.h"
 #include "utils.h"
 #include "texture.h"
 #include "settings.h"

@@ -6,13 +6,11 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/11 14:21:04 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/03/06 09:32:42 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/03/06 10:14:28 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <math.h>
-#include "env.h"
-#include "game.h"
 #include "libft.h"
 #include "utils.h"
 

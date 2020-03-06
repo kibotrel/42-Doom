@@ -6,12 +6,10 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/14 08:01:38 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/20 17:41:53 by demonwaves       ###   ########.fr       */
+/*   Updated: 2020/03/06 10:47:57 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include "env.h"
 #include "structs.h"
 
 char	*coins_asset(int w, int h)

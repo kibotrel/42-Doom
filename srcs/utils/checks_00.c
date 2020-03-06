@@ -6,11 +6,10 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 01:42:15 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/14 08:01:32 by kibotrel         ###   ########.fr       */
+/*   Updated: 2020/03/06 10:45:14 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "game.h"
 #include "utils.h"
 
 int8_t	dectect_input(int32_t *input)

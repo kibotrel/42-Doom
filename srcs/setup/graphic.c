@@ -6,13 +6,12 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/16 11:54:18 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/03/06 01:22:40 by kibotrel         ###   ########.fr       */
+/*   Updated: 2020/03/06 10:39:53 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "clean.h"
 #include "libft.h"
-#include "setup.h"
 #include "utils.h"
 
 static void	sdl_setup(t_env *env, t_sdl *sdl)

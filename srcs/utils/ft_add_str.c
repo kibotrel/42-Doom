@@ -6,11 +6,10 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/06 17:41:32 by lojesu            #+#    #+#             */
-/*   Updated: 2020/03/05 14:39:30 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/03/06 10:50:03 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include "libft.h"
 #include "utils.h"
 

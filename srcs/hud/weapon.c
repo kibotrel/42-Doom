@@ -6,13 +6,12 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/14 08:01:04 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/03/03 15:02:27 by kibotrel         ###   ########.fr       */
+/*   Updated: 2020/03/06 10:23:25 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "utils.h"
-#include "clean.h"
 
 static uint32_t	weapon_frame(uint32_t frame)
 {

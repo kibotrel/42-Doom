@@ -6,11 +6,10 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/08 20:34:23 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/01/22 15:28:11 by kibotrel         ###   ########.fr       */
+/*   Updated: 2020/03/06 10:24:17 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "env.h"
 #include "core.h"
 #include "utils.h"
 

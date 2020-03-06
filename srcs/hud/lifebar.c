@@ -6,11 +6,10 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/14 08:01:01 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/02/14 08:01:02 by kibotrel         ###   ########.fr       */
+/*   Updated: 2020/03/06 10:22:51 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <math.h>
 #include "utils.h"
 #include "texture.h"
 

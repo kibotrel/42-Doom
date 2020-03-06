@@ -6,17 +6,14 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 15:18:26 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/03/05 22:47:17 by kibotrel         ###   ########.fr       */
+/*   Updated: 2020/03/06 10:20:14 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <limits.h>
 #include <math.h>
-#include "env.h"
-#include "game.h"
 #include "utils.h"
 #include "clean.h"
-#include "settings.h"
 
 void		fall_damage(t_env *env)
 {

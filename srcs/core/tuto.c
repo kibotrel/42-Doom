@@ -6,14 +6,11 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/05 12:34:41 by reda-con          #+#    #+#             */
-/*   Updated: 2020/03/06 01:08:31 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/03/06 10:06:38 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "env.h"
-#include "structs.h"
 #include "libft.h"
-#include "editor.h"
 #include "utils.h"
 
 static void		third_step(t_env *env)

@@ -6,16 +6,13 @@
 /*   By: lojesu <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/22 17:03:15 by lojesu            #+#    #+#             */
-/*   Updated: 2020/03/03 17:38:55 by lojesu           ###   ########.fr       */
+/*   Updated: 2020/03/06 10:33:43 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "env.h"
 #include "utils.h"
 #include "settings.h"
 #include "libft.h"
-#include "setup.h"
-#include "clean.h"
 
 static void	click_mode(t_env *env, t_vec2d start, int size)
 {

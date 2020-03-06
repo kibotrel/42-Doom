@@ -6,12 +6,10 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/05 15:16:17 by reda-con          #+#    #+#             */
-/*   Updated: 2020/03/06 01:06:07 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/03/06 10:18:36 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "editor.h"
-#include "env.h"
 #include "libft.h"
 #include "utils.h"
 

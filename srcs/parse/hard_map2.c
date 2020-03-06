@@ -6,15 +6,12 @@
 /*   By: reda-con <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/05 12:34:08 by reda-con          #+#    #+#             */
-/*   Updated: 2020/03/05 12:34:08 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/03/06 10:26:01 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "structs.h"
-#include "env.h"
 #include "clean.h"
 #include "utils.h"
-#include "libft.h"
 
 static void		hard_map_seven(t_env *env)
 {

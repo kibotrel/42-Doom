@@ -6,20 +6,11 @@
 /*   By: lojesu <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/05 12:16:41 by lojesu            #+#    #+#             */
-/*   Updated: 2020/03/05 14:20:53 by lojesu           ###   ########.fr       */
+/*   Updated: 2020/03/06 10:37:30 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <math.h>
-#include "env.h"
-#include "clean.h"
-#include "libft.h"
-#include "setup.h"
 #include "utils.h"
-#include "editor.h"
-#include "struct.h"
-#include "settings.h"
-#include "texture.h"
 
 static void	error_messages_part2(t_env *env)
 {

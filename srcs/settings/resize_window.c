@@ -6,17 +6,13 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/03 17:33:07 by lojesu            #+#    #+#             */
-/*   Updated: 2020/03/05 15:37:03 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/03/06 10:32:41 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "env.h"
 #include "utils.h"
-#include "settings.h"
 #include "libft.h"
-#include "setup.h"
 #include "clean.h"
-#include "enums.h"
 #include "core.h"
 
 static void	clean_and_init_asset(t_env *env)

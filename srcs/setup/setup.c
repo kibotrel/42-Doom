@@ -6,19 +6,16 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/16 11:58:26 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/03/05 23:31:20 by kibotrel         ###   ########.fr       */
+/*   Updated: 2020/03/06 10:42:35 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <math.h>
-#include "env.h"
 #include "clean.h"
 #include "libft.h"
 #include "setup.h"
 #include "utils.h"
 #include "editor.h"
-#include "settings.h"
-#include "texture.h"
 
 static void	bzero_params(t_env *env)
 {

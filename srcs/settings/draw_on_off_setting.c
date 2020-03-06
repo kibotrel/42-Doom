@@ -6,14 +6,11 @@
 /*   By: lojesu <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/28 18:26:49 by lojesu            #+#    #+#             */
-/*   Updated: 2020/03/05 14:45:02 by lojesu           ###   ########.fr       */
+/*   Updated: 2020/03/06 10:31:18 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "env.h"
-#include "core.h"
 #include "utils.h"
-#include "texture.h"
 #include "settings.h"
 #include "libft.h"
 

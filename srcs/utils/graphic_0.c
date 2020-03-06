@@ -6,13 +6,12 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/17 11:08:34 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/03/05 22:31:57 by lojesu           ###   ########.fr       */
+/*   Updated: 2020/03/06 10:51:21 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "clean.h"
 #include "utils.h"
-#include "texture.h"
 
 void	draw_pixel(t_env *env, SDL_Surface *win, t_pos p, uint32_t color)
 {

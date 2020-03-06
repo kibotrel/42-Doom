@@ -6,11 +6,10 @@
 /*   By: reda-con <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/05 12:34:11 by reda-con          #+#    #+#             */
-/*   Updated: 2020/03/05 12:34:12 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/03/06 10:26:24 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "structs.h"
 #include "utils.h"
 
 void	hard_map_last(t_env *env)

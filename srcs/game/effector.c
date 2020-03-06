@@ -6,16 +6,12 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/05 12:34:35 by reda-con          #+#    #+#             */
-/*   Updated: 2020/03/06 01:01:38 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/03/06 10:15:50 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "structs.h"
-#include <stdint.h>
 #include "utils.h"
-#include "editor.h"
 #include "clean.h"
-#include "core.h"
 #include "libft.h"
 
 void	doors2(t_env *env, int t, uint32_t i, uint32_t j)

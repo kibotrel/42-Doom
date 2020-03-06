@@ -6,11 +6,10 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 13:32:37 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/01/24 17:14:13 by lojesu           ###   ########.fr       */
+/*   Updated: 2020/03/06 10:49:36 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "game.h"
 #include "utils.h"
 
 void	transform(t_cam *cam, t_game *var, uint32_t i)

@@ -6,13 +6,11 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/10 16:47:31 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/03/05 13:30:41 by lojesu           ###   ########.fr       */
+/*   Updated: 2020/03/06 10:19:00 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "env.h"
 #include "utils.h"
-#include "parse.h"
 
 void		jump(t_env *env, t_cam *cam)
 {

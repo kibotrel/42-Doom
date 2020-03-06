@@ -6,12 +6,10 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/14 08:01:41 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/03/05 12:27:20 by lojesu           ###   ########.fr       */
+/*   Updated: 2020/03/06 10:48:44 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdint.h>
-#include <stdlib.h>
 #include "env.h"
 #include "structs.h"
 

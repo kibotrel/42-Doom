@@ -6,16 +6,11 @@
 /*   By: lojesu <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/03 17:23:09 by lojesu            #+#    #+#             */
-/*   Updated: 2020/03/03 17:40:03 by lojesu           ###   ########.fr       */
+/*   Updated: 2020/03/06 10:34:15 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "env.h"
 #include "utils.h"
-#include "settings.h"
-#include "libft.h"
-#include "setup.h"
-#include "clean.h"
 
 bool	check_great_click
 	(t_env *env, t_vec2d start, int size, int size_click)

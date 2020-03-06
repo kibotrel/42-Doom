@@ -6,22 +6,17 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/18 14:38:11 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/03/06 01:26:49 by kibotrel         ###   ########.fr       */
+/*   Updated: 2020/03/06 10:02:15 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <math.h>
 #include <limits.h>
-#include <stdlib.h>
-#include "env.h"
-#include "game.h"
 #include "clean.h"
 #include "libft.h"
-#include "setup.h"
 #include "utils.h"
 #include "parse.h"
 #include "settings.h"
-#include "editor.h"
 
 static void	multithreaded_engine(t_env *env)
 {

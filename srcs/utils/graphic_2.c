@@ -6,12 +6,10 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/27 15:35:56 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/03/04 10:54:46 by kibotrel         ###   ########.fr       */
+/*   Updated: 2020/03/06 10:52:48 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include "game.h"
 #include "libft.h"
 #include "setup.h"
 #include "utils.h"
