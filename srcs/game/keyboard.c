@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/10 15:11:44 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/03/05 22:40:48 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/03/06 00:05:47 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 void	game_keyboard(t_env *env)
 {
-	if (env->input[SDL_SCANCODE_BACKSPACE])
+	if (env->input[SDL_SCANCODE_BACKSPACE] && env->setup)
 	{
 		env->setup = 0;
 		env->win = MENU;

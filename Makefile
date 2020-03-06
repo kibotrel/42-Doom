@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+         #
+#    By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/10 16:16:29 by kibotrel          #+#    #+#              #
-#    Updated: 2020/03/05 22:15:03 by kibotrel         ###   ########.fr        #
+#    Updated: 2020/03/05 23:51:10 by nde-jesu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -290,7 +290,7 @@ LIBS			+= -lpthread
 
 # Compilation flags.
 
-CFLAGS			= $(C_INCS) -Wall -Wextra -Werror -O3
+CFLAGS			= $(C_INCS) -Wall -Wextra -Werror
 
 #------------------------------------ RULES -----------------------------------#
 

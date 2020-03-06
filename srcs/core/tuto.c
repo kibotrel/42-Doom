@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tuto.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: reda-con <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/05 12:34:41 by reda-con          #+#    #+#             */
-/*   Updated: 2020/03/05 12:34:42 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/03/06 01:08:31 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,26 +14,27 @@
 #include "structs.h"
 #include "libft.h"
 #include "editor.h"
+#include "utils.h"
 
 static void		third_step(t_env *env)
 {
 	if (env->cam.sector == 3)
-		display_text(WHITE, init_vertex(env->w / 2 - 400,
-					env->h / 2 - 50), TUTO_DMG, env);
+		info(env, ft_strdup(TUTO_DMG), v2d(RATIO_GRID_X / 2,
+			RATIO_GRID_Y / 4), 1);
 	else if (env->test.jetpack)
 	{
 		if (!env->test.elevator)
-			display_text(WHITE, init_vertex(env->w / 2 - 400,
-						env->h / 2 - 50), TUTO_ELTR, env);
+			info(env, ft_strdup(TUTO_ELTR), v2d(RATIO_GRID_X / 2,
+				RATIO_GRID_Y / 4), 1);
 		if (env->sector[env->cam.sector].type == 5)
 			env->test.elevator = 1;
 	}
 	else if (env->sector[env->cam.sector].type == 1)
 	{
-		display_text(WHITE, init_vertex(env->w / 2 - 400,
-					env->h / 2 - 50), TUTO_MONEY, env);
-		display_text(WHITE, init_vertex(env->w / 2 - 400,
-					env->h / 2), TUTO_JETPACK, env);
+		info(env, ft_strdup(TUTO_MONEY), v2d(RATIO_GRID_X / 2,
+			RATIO_GRID_Y / 4 - 4), 1);
+		info(env, ft_strdup(TUTO_JETPACK), v2d(RATIO_GRID_X / 2,
+			RATIO_GRID_Y / 4 - 2), 1);
 	}
 }
 
@@ -44,12 +45,12 @@ static void		sec_step(t_env *env)
 		if (env->test.crouch)
 			third_step(env);
 		else
-			display_text(WHITE, init_vertex(env->w / 2 - 400,
-						env->h / 2 - 50), TUTO_CROUCH, env);
+			info(env, ft_strdup(TUTO_CROUCH), v2d(RATIO_GRID_X / 2,
+				RATIO_GRID_Y / 4), 1);
 	}
 	else
-		display_text(WHITE, init_vertex(env->w / 2 - 400, env->h / 2 - 50),
-				TUTO_JUMP, env);
+		info(env, ft_strdup(TUTO_JUMP), v2d(RATIO_GRID_X / 2,
+			RATIO_GRID_Y / 4), 1);
 }
 
 void			tuto(t_env *env)
@@ -61,10 +62,10 @@ void			tuto(t_env *env)
 		if (env->test.door)
 			sec_step(env);
 		else
-			display_text(WHITE, init_vertex(env->w / 2 - 400, env->h / 2 - 50),
-					TUTO_DOOR, env);
+			info(env, ft_strdup(TUTO_DOOR), v2d(RATIO_GRID_X / 2,
+				RATIO_GRID_Y / 4), 1);
 	}
 	else
-		display_text(WHITE, init_vertex(env->w / 2 - 200, env->h / 2 - 50),
-				TUTO_MOVE, env);
+		info(env, ft_strdup(TUTO_MOVE), v2d(RATIO_GRID_X / 2,
+			RATIO_GRID_Y / 4), 1);
 }

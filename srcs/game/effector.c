@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   effector.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: reda-con <reda-con@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/05 12:34:35 by reda-con          #+#    #+#             */
-/*   Updated: 2020/03/05 22:16:15 by kibotrel         ###   ########.fr       */
+/*   Updated: 2020/03/06 01:01:38 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include "editor.h"
 #include "clean.h"
 #include "core.h"
+#include "libft.h"
 
 void	doors2(t_env *env, int t, uint32_t i, uint32_t j)
 {
@@ -60,15 +61,14 @@ void	doors(t_env *env, int t)
 
 void	effector(t_env *env, int s)
 {
+	police_color(&env->sdl.color, 0xff, 0x00, 0x00);
 	if (env->sector[s].type == LAVA)
-		display_text(RED, init_vertex(env->w / 2 - 100, env->h / 2 - 500),
-				"Warning", env);
+		info(env, ft_strdup("Warning"), v2d(RATIO_GRID_X / 2, 1), 1);
+	police_color(&env->sdl.color, 0xff, 0xff, 0xff);
 	if (env->sector[s].type == MONEY)
-		display_text(YELLOW, init_vertex(env->w / 2 - 100, env->h / 2 - 500),
-				"Earning money", env);
+		info(env, ft_strdup("Earning money"), v2d(RATIO_GRID_X / 2, 1), 1);
 	if (env->sector[s].type == HEAL)
-		display_text(PINK, init_vertex(env->w / 2 - 100, env->h / 2 - 500),
-				"Healing", env);
+		info(env, ft_strdup("Healing"), v2d(RATIO_GRID_X / 2, 1), 1);
 	env->st_fl = SDL_GetTicks();
 	if (env->st_fl > env->old_st_fl + 200)
 	{
@@ -127,8 +127,8 @@ void	sector_triger(t_env *env)
 	{
 		env->door = SDL_GetTicks();
 		if (env->door < env->old_door + 1000)
-			display_text(WHITE, init_vertex(env->w / 2 - 100, env->h / 2 - 300),
-					"A door has been opened", env);
+			info(env, ft_strdup("A door has been opened"),
+				v2d(RATIO_GRID_X / 2, 1), 1);
 		else
 		{
 			env->sector[env->plate].type = 0;

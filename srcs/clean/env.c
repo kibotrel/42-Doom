@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/08 19:29:45 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/03/05 22:26:12 by kibotrel         ###   ########.fr       */
+/*   Updated: 2020/03/05 23:52:56 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,15 +24,19 @@ void		free_map(t_env *env)
 	{
 		while (i < env->zones)
 		{
-			if (env->sector[i].vertex)
-				free(env->sector[i].vertex);
-			if (env->sector[i].neighbor)
-				free(env->sector[i].neighbor);
-			if (env->sector[i].door_neighbor)
-				free(env->sector[i].door_neighbor);
-			i++;
+			if (env->sector)
+			{
+				if (env->sector[i].vertex)
+					free(env->sector[i].vertex);
+				if (env->sector[i].neighbor)
+					free(env->sector[i].neighbor);
+				if (env->sector[i].door_neighbor)
+					free(env->sector[i].door_neighbor);
+				i++;
+			}
 		}
-		free(env->sector);
+		if (env->sector)
+			free(env->sector);
 	}
 }
 

@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/03 14:53:03 by nde-jesu          #+#    #+#             */
-/*   Updated: 2020/03/05 23:13:51 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/03/06 01:09:52 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ void				delete_vertex_sector(t_ed_sector **vertex)
 		while (tmp)
 		{
 			tmp = to_del->next;
-
 			free(to_del);
 			to_del = tmp;
 		}
