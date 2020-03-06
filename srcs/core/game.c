@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/18 14:38:11 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/03/06 10:02:15 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/03/06 11:23:52 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ static void	multithreaded_engine(t_env *env)
 	i = -1;
 	while (++i < NB_THREADS)
 		pthread_join(env->sdl.thread[i], NULL);
+	if (env->crash)
+		clean(env, E_MALLOC);
 	if (env->data.sky)
 		draw_skybox(env);
 }
@@ -59,16 +61,10 @@ static void	params_reset(t_env *env)
 **	pthread_create(&env->sound, NULL, (void*)audio, env); THREAD FOR SOUND
 */
 
-void		game(t_env *env, int ac, char **av)
+void		game(t_env *env)
 {
 	if (!env->setup)
 	{
-		if (env->tuto)
-		{
-			ft_bzero(&env->test.move, sizeof(int) * 4);
-			ft_bzero(&env->test, sizeof(t_tuto));
-		}
-		main_parse(av, env, ac);
 		SDL_ShowCursor(SDL_DISABLE);
 		SDL_SetWindowTitle(env->sdl.win, TITLE_GAME);
 		params_reset(env);

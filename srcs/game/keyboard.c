@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/10 15:11:44 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/03/06 10:18:11 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/03/06 11:24:45 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ void	game_keyboard(t_env *env)
 	{
 		env->setup = 0;
 		env->win = MENU;
-		free_map(env);
 		SDL_ShowCursor(SDL_ENABLE);
 		env->tick.back.old = env->tick.back.new;
 		return ;

@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/04 09:26:41 by nde-jesu          #+#    #+#             */
-/*   Updated: 2020/03/06 10:27:31 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/03/06 11:24:28 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 #include "libft.h"
 #include "editor.h"
 #include "clean.h"
+#include "parse.h"
 
 void			write_portals(t_ed_sector *sect, int fd)
 {
@@ -105,7 +106,10 @@ static void		write_file(t_editor *editor, int fd)
 void			create_map(t_editor *editor, t_env *env)
 {
 	int		fd;
+	char *s[2];
 
+	s[0] = NULL;
+	s[1] = editor->map_path;
 	if (editor->sect_is_closed && editor->sector)
 	{
 		fd = open(editor->map_path, O_WRONLY | O_CREAT | O_TRUNC, S_IRWXU);
@@ -115,6 +119,10 @@ void			create_map(t_editor *editor, t_env *env)
 			write_file(editor, fd);
 		if (close(fd) == -1)
 			clean(env, E_P_CLOSE);
-		ft_putendl("Map saved");
+		if (!env->tuto)
+		{
+			free_map(env);
+			main_parse(s, env, 2);
+		}
 	}
 }

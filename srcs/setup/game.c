@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 15:29:00 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/03/06 10:39:02 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/03/06 11:24:58 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static uint8_t	area_setup(t_env *env, t_game *var)
 	return (1);
 }
 
-void			game_setup(t_env *env, t_game *var)
+int			game_setup(t_env *env, t_game *var)
 {
 	uint32_t	i;
 
@@ -36,8 +36,8 @@ void			game_setup(t_env *env, t_game *var)
 	var->tail = var->head;
 	if (!area_setup(env, var))
 	{
-		engine_clean(var);
-		clean(env, E_MALLOC);
+		var->error = 1;
+		return (0);
 	}
 	side_infos(var);
 	while ((int32_t)i < env->w)
@@ -51,6 +51,7 @@ void			game_setup(t_env *env, t_game *var)
 						(var->thread + 1) * (env->data.thread) - 1);
 	if (++var->head == var->queue + 32)
 		var->head = var->queue;
+	return (1);
 }
 
 static int32_t	locate(t_game *v, double space, uint32_t vertex, uint32_t i)

@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 18:48:17 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/03/05 23:30:50 by kibotrel         ###   ########.fr       */
+/*   Updated: 2020/03/06 10:38:43 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -312,6 +312,7 @@ typedef struct			s_env
 {
 	char				*asset[NB_ASSETS];
 	char				*error[NB_ERRORS];
+	int					crash;
 	int					bmp_error;
 	t_cam				cam;
 	t_sdl				sdl;
