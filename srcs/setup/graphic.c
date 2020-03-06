@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/16 11:54:18 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/03/05 14:35:33 by kibotrel         ###   ########.fr       */
+/*   Updated: 2020/03/06 01:22:40 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,10 +51,13 @@ static void	ttf_setup(t_env *env, t_sdl *sdl)
 	police_color(&sdl->color, 0xFF, 0xFF, 0xFF);
 }
 
+/*
+** 	audio_setup(env, &env->audio); TO SETUP SOUND
+*/
+
 void		graphic_setup(t_env *env, t_sdl *sdl)
 {
 	ft_bzero(sdl, sizeof(t_sdl));
 	sdl_setup(env, sdl);
 	ttf_setup(env, sdl);
-	audio_setup(env, &env->audio);
 }

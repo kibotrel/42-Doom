@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 15:18:26 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/03/05 22:12:55 by kibotrel         ###   ########.fr       */
+/*   Updated: 2020/03/05 22:47:17 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,12 @@
 
 void		fall_damage(t_env *env)
 {
+	int			gravity;
 	double		damage;
 	double		height;
 
 	damage = 0;
+	gravity = env->sector[env->cam.sector].gravity * 10;
 	height = (!env->cam.sneak ? CAM_H : SNEAK_H);
 	env->track_fall = (!env->cam.ground ? 1 : 0);
 	if (env->track_fall && env->cam.fly < 0)
@@ -31,10 +33,9 @@ void		fall_damage(t_env *env)
 	else if (env->data.fall_height > INT_MIN && env->cam.fly < 0)
 	{
 		env->data.height_end = env->sector[env->cam.sector].floor;
-		if (env->data.fall_height - 5 > 0)
-			damage = (env->data.fall_height - 15)
-					* (env->sector[env->cam.sector].gravity * 10);
-		damage = difficulty_scale(env, damage);
+		if (env->data.fall_height - 12 > 0)
+			damage = (env->data.fall_height - (12 * (1 / gravity)) * gravity);
+		damage = fabs(difficulty_scale(env, damage));
 		env->data.life -= damage;
 		if (env->data.life <= 0)
 			clean(env, DEATH);

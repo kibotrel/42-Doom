@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/16 11:58:26 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/03/05 22:16:33 by kibotrel         ###   ########.fr       */
+/*   Updated: 2020/03/05 23:31:20 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ static void	bzero_params(t_env *env)
 	ft_bzero(&env->tick.fps, sizeof(t_tick));
 	ft_bzero(&env->tick.hud, sizeof(t_tick));
 	ft_bzero(&env->tick.lock, sizeof(t_tick));
+	ft_bzero(&env->tick.back, sizeof(t_tick));
 	ft_bzero(&env->tick.frame, sizeof(t_tick));
 	ft_bzero(&env->tick.debug, sizeof(t_tick));
 	ft_bzero(&env->tick.purse, sizeof(t_tick));

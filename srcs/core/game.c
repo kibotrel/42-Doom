@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/18 14:38:11 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/03/05 22:26:54 by kibotrel         ###   ########.fr       */
+/*   Updated: 2020/03/06 01:26:49 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,10 @@ static void	params_reset(t_env *env)
 	env->data.fall_height = INT_MIN;
 	env->data.height_end = 0;
 	env->data.height_start = 0;
+	env->data.hud.coin.frame = 0;
+	env->data.hud.shotgun.frame = 0;
+	env->data.shot = 0;
+	env->audio.fire = 0;
 	env->data.magazines = (env->setting.mode == HARD ? 10 : 20);
 	env->setup = 1;
 	env->track_fall = 0;
@@ -55,6 +59,10 @@ static void	params_reset(t_env *env)
 	env->cam.sin = sin(env->cam.angle);
 	env->cam.pos.z = env->sector[env->cam.sector].floor + CAM_H;
 }
+
+/*
+**	pthread_create(&env->sound, NULL, (void*)audio, env); THREAD FOR SOUND
+*/
 
 void		game(t_env *env, int ac, char **av)
 {
@@ -69,7 +77,6 @@ void		game(t_env *env, int ac, char **av)
 		SDL_ShowCursor(SDL_DISABLE);
 		SDL_SetWindowTitle(env->sdl.win, TITLE_GAME);
 		params_reset(env);
-		pthread_create(&env->sound, NULL, (void*)audio, env);
 	}
 	multithreaded_engine(env);
 	hud(env);

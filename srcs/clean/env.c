@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/08 19:29:45 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/03/05 22:26:12 by kibotrel         ###   ########.fr       */
+/*   Updated: 2020/03/06 01:25:47 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,15 +57,21 @@ static void	env_clean(t_env *env)
 		free_map(env);
 }
 
+/*
+**	#include <time.h>
+**	struct timespec	time;
+**	time = (struct timespec){0, 250000000};
+**	pthread_join(env->sound, NULL);
+**	nanosleep(&time, 0);
+**	audio_clean(&env->audio);
+*/
+
 void		clean(t_env *env, uint8_t error)
 {
 	env->data.closed = 1;
-	pthread_join(env->sound, NULL);
-	SDL_Delay(500);
 	clean_editor(&env->editor);
 	ttf_clean(&env->sdl);
 	sdl_clean(&env->sdl);
-	audio_clean(&env->audio);
 	env_clean(env);
 	error ? ft_print_error(env->error[error], error) : exit(0);
 }

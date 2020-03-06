@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   keyboard.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/10 15:11:44 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/03/05 22:40:48 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/03/06 01:28:15 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,23 @@
 #include "utils.h"
 #include "libft.h"
 
+/*
+**	pthread_join(env->sound, NULL);
+**	sf_seek(env->audio.stream[0], 0, SEEK_SET);
+**	sf_seek(env->audio.stream[1], 0, SEEK_SET);
+*/
+
 void	game_keyboard(t_env *env)
 {
-	if (env->input[SDL_SCANCODE_BACKSPACE])
+	env->tick.back.new = SDL_GetTicks();
+	if (env->input[SDL_SCANCODE_BACKSPACE]
+		&& env->tick.back.new > env->tick.back.old + 250)
 	{
 		env->setup = 0;
 		env->win = MENU;
 		free_map(env);
-		pthread_join(env->sound, NULL);
 		SDL_ShowCursor(SDL_ENABLE);
+		env->tick.back.old = env->tick.back.new;
 		return ;
 	}
 	if (env->input[SDL_SCANCODE_SPACE])

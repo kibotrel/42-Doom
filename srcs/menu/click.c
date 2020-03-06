@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   click.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/08 20:33:18 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/01/29 13:03:12 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/03/06 00:09:21 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ void	menu_click(t_env *env, t_ui ui, int x, int y)
 		{
 			env->win = box;
 			env->setup = 0;
+			env->tick.back.old = SDL_GetTicks();
 			ft_bzero(env->sdl.screen->pixels, env->data.w_size);
 			break ;
 		}

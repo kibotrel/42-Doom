@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 18:48:17 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/03/05 22:15:36 by kibotrel         ###   ########.fr       */
+/*   Updated: 2020/03/05 23:30:50 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,7 @@ typedef struct			s_time
 	t_tick				hud;
 	t_tick				lock;
 	t_tick				shot;
+	t_tick				back;
 	t_tick				debug;
 	t_tick				frame;
 	t_tick				purse;
