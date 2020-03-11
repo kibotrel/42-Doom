@@ -1,0 +1,461 @@
+total vertexes 213 sectors 122
+
+player x 20 y 20 sector 0 angle 90
+
+vertex number 0 x 16 y 16
+vertex number 1 x 24 y 16
+vertex number 2 x 24 y 28
+vertex number 3 x 20 y 32
+vertex number 4 x 28 y 32
+vertex number 5 x 24 y 40
+vertex number 6 x 32 y 44
+vertex number 7 x 32 y 48
+vertex number 8 x 44 y 48
+vertex number 9 x 44 y 52
+vertex number 10 x 48 y 44
+vertex number 11 x 56 y 48
+vertex number 12 x 52 y 56
+vertex number 13 x 48 y 56
+vertex number 14 x 48 y 16
+vertex number 15 x 16 y 84
+vertex number 16 x 48 y 84
+vertex number 17 x 20 y 12
+vertex number 18 x 16 y 4
+vertex number 19 x 48 y 4
+vertex number 20 x 8 y 16
+vertex number 21 x 8 y 4
+vertex number 22 x 8 y 84
+vertex number 23 x 52 y 32
+vertex number 24 x 64 y 24
+vertex number 25 x 84 y 4
+vertex number 26 x 84 y 20
+vertex number 27 x 108 y 4
+vertex number 28 x 108 y 32
+vertex number 29 x 52 y 64
+vertex number 30 x 60 y 72
+vertex number 31 x 76 y 76
+vertex number 32 x 76 y 84
+vertex number 33 x 96 y 72
+vertex number 34 x 96 y 84
+vertex number 35 x 108 y 64
+vertex number 36 x 108 y 84
+vertex number 37 x 88 y 80
+vertex number 38 x 68 y 36
+vertex number 39 x 72 y 32
+vertex number 40 x 76 y 32
+vertex number 41 x 84 y 36
+vertex number 42 x 84 y 40
+vertex number 43 x 76 y 44
+vertex number 44 x 72 y 44
+vertex number 45 x 92 y 52
+vertex number 46 x 84 y 56
+vertex number 47 x 80 y 60
+vertex number 48 x 80 y 64
+vertex number 49 x 84 y 68
+vertex number 50 x 92 y 68
+vertex number 51 x 100 y 64
+vertex number 52 x 104 y 60
+vertex number 53 x 104 y 56
+vertex number 54 x 100 y 52
+vertex number 55 x 60 y 36
+vertex number 56 x 64 y 32
+vertex number 57 x 72 y 28
+vertex number 58 x 76 y 28
+vertex number 59 x 80 y 28
+vertex number 60 x 88 y 32
+vertex number 61 x 88 y 36
+vertex number 62 x 72 y 48
+vertex number 63 x 68 y 48
+vertex number 64 x 64 y 44
+vertex number 65 x 76 y 48
+vertex number 66 x 88 y 44
+vertex number 67 x 84 y 48
+vertex number 68 x 92 y 36
+vertex number 69 x 92 y 40
+vertex number 70 x 104 y 40
+vertex number 71 x 108 y 40
+vertex number 72 x 108 y 44
+vertex number 73 x 104 y 44
+vertex number 74 x 108 y 56
+vertex number 75 x 108 y 60
+vertex number 76 x 56 y 52
+vertex number 77 x 124 y 40
+vertex number 78 x 124 y 44
+vertex number 79 x 120 y 56
+vertex number 80 x 124 y 60
+vertex number 81 x 120 y 60
+vertex number 82 x 124 y 72
+vertex number 83 x 120 y 72
+vertex number 84 x 116 y 76
+vertex number 85 x 128 y 76
+vertex number 86 x 128 y 80
+vertex number 87 x 116 y 80
+vertex number 88 x 116 y 84
+vertex number 89 x 128 y 84
+vertex number 90 x 116 y 88
+vertex number 91 x 128 y 88
+vertex number 92 x 124 y 36
+vertex number 93 x 136 y 36
+vertex number 94 x 148 y 36
+vertex number 95 x 160 y 36
+vertex number 96 x 160 y 44
+vertex number 97 x 144 y 44
+vertex number 98 x 140 y 44
+vertex number 99 x 140 y 32
+vertex number 100 x 144 y 32
+vertex number 101 x 140 y 28
+vertex number 102 x 140 y 24
+vertex number 103 x 144 y 24
+vertex number 104 x 144 y 28
+vertex number 105 x 136 y 32
+vertex number 106 x 148 y 32
+vertex number 107 x 136 y 20
+vertex number 108 x 148 y 20
+vertex number 109 x 144 y 56
+vertex number 110 x 140 y 56
+vertex number 111 x 144 y 60
+vertex number 112 x 152 y 56
+vertex number 113 x 156 y 60
+vertex number 114 x 152 y 60
+vertex number 115 x 148 y 64
+vertex number 116 x 160 y 64
+vertex number 117 x 156 y 68
+vertex number 118 x 152 y 68
+vertex number 119 x 152 y 72
+vertex number 120 x 148 y 76
+vertex number 121 x 156 y 72
+vertex number 122 x 160 y 76
+vertex number 123 x 156 y 80
+vertex number 124 x 152 y 80
+vertex number 125 x 164 y 36
+vertex number 126 x 164 y 44
+vertex number 127 x 168 y 36
+vertex number 128 x 168 y 44
+vertex number 129 x 172 y 36
+vertex number 130 x 172 y 44
+vertex number 131 x 176 y 32
+vertex number 132 x 176 y 48
+vertex number 133 x 184 y 32
+vertex number 134 x 184 y 48
+vertex number 135 x 192 y 36
+vertex number 136 x 192 y 44
+vertex number 137 x 200 y 36
+vertex number 138 x 200 y 44
+vertex number 139 x 120 y 92
+vertex number 140 x 124 y 92
+vertex number 141 x 124 y 104
+vertex number 142 x 116 y 104
+vertex number 143 x 116 y 108
+vertex number 144 x 120 y 108
+vertex number 145 x 120 y 112
+vertex number 146 x 116 y 112
+vertex number 147 x 120 y 116
+vertex number 148 x 124 y 116
+vertex number 149 x 124 y 120
+vertex number 150 x 120 y 120
+vertex number 151 x 128 y 120
+vertex number 152 x 132 y 120
+vertex number 153 x 132 y 124
+vertex number 154 x 128 y 124
+vertex number 155 x 136 y 128
+vertex number 156 x 136 y 124
+vertex number 157 x 136 y 120
+vertex number 158 x 136 y 116
+vertex number 159 x 140 y 112
+vertex number 160 x 144 y 120
+vertex number 161 x 144 y 124
+vertex number 162 x 140 y 132
+vertex number 163 x 148 y 120
+vertex number 164 x 148 y 124
+vertex number 165 x 108 y 112
+vertex number 166 x 108 y 120
+vertex number 167 x 108 y 132
+vertex number 168 x 132 y 104
+vertex number 169 x 136 y 108
+vertex number 170 x 112 y 80
+vertex number 171 x 112 y 76
+vertex number 172 x 140 y 104
+vertex number 173 x 144 y 108
+vertex number 174 x 140 y 100
+vertex number 175 x 144 y 100
+vertex number 176 x 136 y 96
+vertex number 177 x 136 y 92
+vertex number 178 x 140 y 92
+vertex number 179 x 144 y 96
+vertex number 180 x 136 y 84
+vertex number 181 x 140 y 84
+vertex number 182 x 132 y 80
+vertex number 183 x 132 y 76
+vertex number 184 x 136 y 76
+vertex number 185 x 140 y 80
+vertex number 186 x 128 y 72
+vertex number 187 x 160 y 120
+vertex number 188 x 160 y 124
+vertex number 189 x 168 y 124
+vertex number 190 x 168 y 120
+vertex number 191 x 172 y 116
+vertex number 192 x 176 y 116
+vertex number 193 x 180 y 120
+vertex number 194 x 180 y 124
+vertex number 195 x 176 y 128
+vertex number 196 x 172 y 128
+vertex number 197 x 160 y 116
+vertex number 198 x 168 y 108
+vertex number 199 x 172 y 108
+vertex number 200 x 172 y 136
+vertex number 201 x 168 y 136
+vertex number 202 x 160 y 128
+vertex number 203 x 176 y 108
+vertex number 204 x 180 y 108
+vertex number 205 x 188 y 116
+vertex number 206 x 188 y 120
+vertex number 207 x 188 y 124
+vertex number 208 x 176 y 136
+vertex number 209 x 188 y 128
+vertex number 210 x 180 y 136
+vertex number 211 x 120 y 100
+vertex number 212 x 112 y 124
+
+sector number 0 texture 8 type 6 data 0 light -1 h_floor -5 h_ceil 20 gravity 10 friction 50 vertex_num 4 vertexes 0 1 2 3 portals 13 7 1 8
+
+sector number 1 texture 8 type 6 data 0 light -1 h_floor -4 h_ceil 20 gravity 10 friction 50 vertex_num 4 vertexes 3 2 4 5 portals 0 7 2 9
+
+sector number 2 texture 8 type 6 data 0 light -1 h_floor -3 h_ceil 20 gravity 10 friction 50 vertex_num 4 vertexes 5 4 6 7 portals 1 6 3 10
+
+sector number 3 texture 8 type 6 data 0 light -1 h_floor -2 h_ceil 20 gravity 10 friction 50 vertex_num 4 vertexes 6 8 9 7 portals 5 4 11 2
+
+sector number 4 texture 8 type 6 data 0 light -1 h_floor -1 h_ceil 20 gravity 10 friction 50 vertex_num 6 vertexes 9 8 10 11 12 13 portals 3 5 39 47 41 12
+
+sector number 5 texture 3 type 6 data 0 light 255 h_floor -25 h_ceil 20 gravity 10 friction 50 vertex_num 4 vertexes 10 8 6 14 portals 4 3 6 19
+
+sector number 6 texture 3 type 6 data 0 light 255 h_floor -25 h_ceil 20 gravity 10 friction 50 vertex_num 3 vertexes 6 4 14 portals 2 7 5
+
+sector number 7 texture 3 type 6 data 0 light 255 h_floor -25 h_ceil 20 gravity 10 friction 50 vertex_num 4 vertexes 4 2 1 14 portals 1 0 16 6
+
+sector number 8 texture 3 type 6 data 0 light 255 h_floor -25 h_ceil 20 gravity 10 friction 50 vertex_num 3 vertexes 0 3 15 portals 0 9 18
+
+sector number 9 texture 3 type 6 data 0 light 255 h_floor -25 h_ceil 20 gravity 10 friction 50 vertex_num 3 vertexes 15 3 5 portals 8 1 10
+
+sector number 10 texture 3 type 6 data 0 light 255 h_floor -25 h_ceil 20 gravity 10 friction 50 vertex_num 3 vertexes 5 7 15 portals 2 11 9
+
+sector number 11 texture 3 type 6 data 0 light 255 h_floor -25 h_ceil 20 gravity 10 friction 50 vertex_num 3 vertexes 15 7 9 portals 10 3 12
+
+sector number 12 texture 3 type 6 data 0 light 255 h_floor -25 h_ceil 20 gravity 10 friction 50 vertex_num 4 vertexes 15 9 13 16 portals 11 4 23 -1
+
+sector number 13 texture 8 type 6 data 0 light -1 h_floor -6 h_ceil 20 gravity 10 friction 50 vertex_num 3 vertexes 0 17 1 portals 14 16 0
+
+sector number 14 texture 3 type 6 data 0 light 255 h_floor -25 h_ceil 20 gravity 10 friction 50 vertex_num 3 vertexes 0 18 17 portals 17 15 13
+
+sector number 15 texture 3 type 6 data 0 light 255 h_floor -25 h_ceil 20 gravity 10 friction 50 vertex_num 3 vertexes 18 19 17 portals -1 16 14
+
+sector number 16 texture 3 type 6 data 0 light 255 h_floor -25 h_ceil 20 gravity 10 friction 50 vertex_num 4 vertexes 1 17 19 14 portals 13 15 20 7
+
+sector number 17 texture 3 type 6 data 0 light 255 h_floor -25 h_ceil 20 gravity 10 friction 50 vertex_num 4 vertexes 18 0 20 21 portals 14 18 -1 -1
+
+sector number 18 texture 3 type 6 data 0 light 255 h_floor -25 h_ceil 20 gravity 10 friction 50 vertex_num 4 vertexes 20 0 15 22 portals 17 8 -1 -1
+
+sector number 19 texture 3 type 6 data 0 light 255 h_floor -25 h_ceil 20 gravity 10 friction 50 vertex_num 3 vertexes 10 14 23 portals 5 20 39
+
+sector number 20 texture 3 type 6 data 0 light 255 h_floor -25 h_ceil 20 gravity 10 friction 50 vertex_num 4 vertexes 14 19 24 23 portals 16 21 40 19
+
+sector number 21 texture 3 type 6 data 0 light 255 h_floor -25 h_ceil 20 gravity 10 friction 50 vertex_num 4 vertexes 24 19 25 26 portals 20 -1 22 44
+
+sector number 22 texture 3 type 6 data 0 light 255 h_floor -25 h_ceil 20 gravity 10 friction 50 vertex_num 4 vertexes 26 25 27 28 portals 21 -1 -1 46
+
+sector number 23 texture 3 type 6 data 0 light 255 h_floor -25 h_ceil 20 gravity 10 friction 50 vertex_num 3 vertexes 13 29 16 portals 41 24 12
+
+sector number 24 texture 3 type 6 data 0 light 255 h_floor -25 h_ceil 20 gravity 10 friction 50 vertex_num 3 vertexes 29 30 16 portals 41 25 23
+
+sector number 25 texture 3 type 6 data 0 light 255 h_floor -25 h_ceil 20 gravity 10 friction 50 vertex_num 4 vertexes 30 31 32 16 portals 41 26 -1 24
+
+sector number 26 texture 3 type 6 data 0 light 255 h_floor -25 h_ceil 20 gravity 10 friction 50 vertex_num 4 vertexes 31 33 34 32 portals 42 27 -1 25
+
+sector number 27 texture 3 type 6 data 0 light 255 h_floor -25 h_ceil 20 gravity 10 friction 50 vertex_num 4 vertexes 33 35 36 34 portals 43 -1 -1 26
+
+sector number 28 texture 0 type 0 data 0 light -1 h_floor 0 h_ceil 20 gravity 10 friction 50 vertex_num 1 vertexes 37 portals -1
+
+sector number 29 texture 0 type 6 data 0 light 65280 h_floor 10 h_ceil 20 gravity 10 friction 50 vertex_num 7 vertexes 38 39 40 41 42 43 44 portals 31 32 33 37 36 35 34
+
+sector number 30 texture 0 type 0 data 0 light -1 h_floor 0 h_ceil 20 gravity 10 friction 50 vertex_num 10 vertexes 45 46 47 48 49 50 51 52 53 54 portals -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+
+sector number 31 texture 7 type 6 data 0 light 312218 h_floor 4 h_ceil 20 gravity 10 friction 50 vertex_num 5 vertexes 55 56 57 39 38 portals 40 44 32 29 34
+
+sector number 32 texture 7 type 6 data 0 light 312218 h_floor 4 h_ceil 20 gravity 10 friction 50 vertex_num 4 vertexes 39 57 58 40 portals 31 45 33 29
+
+sector number 33 texture 7 type 6 data 0 light 312218 h_floor 4 h_ceil 20 gravity 10 friction 50 vertex_num 6 vertexes 58 59 60 61 41 40 portals 45 46 38 37 29 32
+
+sector number 34 texture 7 type 6 data 0 light 312218 h_floor 4 h_ceil 20 gravity 10 friction 50 vertex_num 6 vertexes 55 38 44 62 63 64 portals 31 29 35 48 47 39
+
+sector number 35 texture 7 type 6 data 0 light 312218 h_floor 4 h_ceil 20 gravity 10 friction 50 vertex_num 4 vertexes 62 44 43 65 portals 34 29 36 48
+
+sector number 36 texture 7 type 6 data 0 light 312218 h_floor 4 h_ceil 20 gravity 10 friction 50 vertex_num 5 vertexes 65 43 42 66 67 portals 35 29 37 49 48
+
+sector number 37 texture 7 type 6 data 0 light 312218 h_floor 4 h_ceil 20 gravity 10 friction 50 vertex_num 4 vertexes 42 41 61 66 portals 29 33 38 36
+
+sector number 38 texture 7 type 6 data 0 light 312218 h_floor 4 h_ceil 20 gravity 10 friction 50 vertex_num 5 vertexes 60 68 69 66 61 portals 51 53 52 37 33
+
+sector number 39 texture 7 type 6 data 0 light -1 h_floor 0 h_ceil 20 gravity 10 friction 50 vertex_num 5 vertexes 11 10 23 55 64 portals 4 19 40 34 47
+
+sector number 40 texture 7 type 6 data 0 light -1 h_floor 0 h_ceil 20 gravity 10 friction 50 vertex_num 4 vertexes 24 56 55 23 portals 44 31 39 20
+
+sector number 41 texture 7 type 6 data 0 light -1 h_floor 0 h_ceil 20 gravity 10 friction 50 vertex_num 7 vertexes 12 48 49 31 30 29 13 portals 47 -1 42 25 24 23 4
+
+sector number 42 texture 7 type 6 data 0 light -1 h_floor 0 h_ceil 20 gravity 10 friction 50 vertex_num 4 vertexes 50 33 31 49 portals 43 26 41 -1
+
+sector number 43 texture 7 type 6 data 0 light -1 h_floor 0 h_ceil 20 gravity 10 friction 50 vertex_num 4 vertexes 33 50 51 35 portals 42 -1 56 27
+
+sector number 44 texture 7 type 6 data 0 light -1 h_floor 0 h_ceil 20 gravity 10 friction 50 vertex_num 4 vertexes 56 24 26 57 portals 40 21 45 31
+
+sector number 45 texture 7 type 6 data 0 light -1 h_floor 0 h_ceil 20 gravity 10 friction 50 vertex_num 4 vertexes 57 26 59 58 portals 44 46 33 32
+
+sector number 46 texture 7 type 6 data 0 light -1 h_floor 0 h_ceil 20 gravity 10 friction 50 vertex_num 4 vertexes 59 26 28 60 portals 45 22 51 33
+
+sector number 47 texture 7 type 6 data 0 light -1 h_floor 0 h_ceil 20 gravity 10 friction 50 vertex_num 6 vertexes 63 47 48 12 11 64 portals 48 -1 41 4 39 34
+
+sector number 48 texture 7 type 6 data 0 light -1 h_floor 0 h_ceil 20 gravity 10 friction 50 vertex_num 6 vertexes 63 62 65 67 46 47 portals 34 35 36 49 -1 47
+
+sector number 49 texture 7 type 6 data 0 light -1 h_floor 0 h_ceil 20 gravity 10 friction 50 vertex_num 4 vertexes 46 67 66 45 portals 48 36 52 -1
+
+sector number 50 texture 4 type -3 data 39 light 65280 h_floor -1 h_ceil 15 gravity 10 friction 50 vertex_num 4 vertexes 70 71 72 73 portals 51 58 54 53
+
+sector number 51 texture 7 type 6 data 0 light -1 h_floor 0 h_ceil 20 gravity 10 friction 50 vertex_num 5 vertexes 70 68 60 28 71 portals 53 38 46 -1 50
+
+sector number 52 texture 7 type 6 data 0 light -1 h_floor 0 h_ceil 20 gravity 10 friction 50 vertex_num 5 vertexes 73 54 45 66 69 portals 54 -1 49 38 53
+
+sector number 53 texture 7 type 6 data 0 light -1 h_floor 0 h_ceil 20 gravity 10 friction 50 vertex_num 4 vertexes 73 69 68 70 portals 52 38 51 50
+
+sector number 54 texture 7 type 6 data 0 light -1 h_floor 0 h_ceil 20 gravity 10 friction 50 vertex_num 5 vertexes 54 73 72 74 53 portals 52 50 -1 55 -1
+
+sector number 55 texture 4 type 0 data 0 light 16711680 h_floor 0 h_ceil 15 gravity 10 friction 50 vertex_num 4 vertexes 52 53 74 75 portals -1 54 59 56
+
+sector number 56 texture 7 type 6 data 0 light -1 h_floor 0 h_ceil 20 gravity 10 friction 50 vertex_num 4 vertexes 51 52 75 35 portals -1 55 -1 43
+
+sector number 57 texture 0 type 0 data 0 light -1 h_floor 0 h_ceil 20 gravity 10 friction 50 vertex_num 1 vertexes 76 portals -1
+
+sector number 58 texture 4 type 0 data 0 light -1 h_floor -40 h_ceil -30 gravity 10 friction 50 vertex_num 4 vertexes 71 77 78 72 portals -1 64 -1 50
+
+sector number 59 texture 9 type -9 data 0 light -1 h_floor 0 h_ceil 20 gravity 10 friction 50 vertex_num 5 vertexes 74 79 80 81 75 portals -1 -1 60 -1 55
+
+sector number 60 texture 9 type 0 data 0 light -1 h_floor 0 h_ceil 20 gravity 10 friction 50 vertex_num 4 vertexes 81 80 82 83 portals 59 -1 61 -1
+
+sector number 61 texture 4 type 0 data 0 light -1 h_floor -2 h_ceil 20 gravity 10 friction 50 vertex_num 6 vertexes 84 83 82 85 86 87 portals -1 60 109 108 62 102
+
+sector number 62 texture 4 type 0 data 0 light -1 h_floor -4 h_ceil 20 gravity 10 friction 50 vertex_num 4 vertexes 88 87 86 89 portals -1 61 -1 63
+
+sector number 63 texture 4 type 0 data 0 light -1 h_floor -6 h_ceil 20 gravity 10 friction 50 vertex_num 4 vertexes 90 88 89 91 portals -1 62 -1 85
+
+sector number 64 texture 4 type 1 data 50 light -1 h_floor -60 h_ceil -20 gravity 10 friction 50 vertex_num 9 vertexes 78 77 92 93 94 95 96 97 98 portals 58 -1 -1 65 -1 78 -1 71 -1
+
+sector number 65 texture 5 type 0 data 0 light -1 h_floor -40 h_ceil -20 gravity 10 friction 50 vertex_num 4 vertexes 93 99 100 94 portals -1 67 -1 64
+
+sector number 66 texture 9 type 8 data 0 light 255 h_floor -40 h_ceil -20 gravity 10 friction 50 vertex_num 4 vertexes 101 102 103 104 portals 68 69 70 67
+
+sector number 67 texture 5 type 0 data 0 light -1 h_floor -42 h_ceil -22 gravity 10 friction 50 vertex_num 6 vertexes 99 105 101 104 106 100 portals -1 68 66 70 -1 65
+
+sector number 68 texture 5 type 0 data 0 light -1 h_floor -42 h_ceil -22 gravity 10 friction 50 vertex_num 4 vertexes 105 107 102 101 portals -1 69 66 67
+
+sector number 69 texture 5 type 0 data 0 light -1 h_floor -42 h_ceil -22 gravity 10 friction 50 vertex_num 4 vertexes 107 108 103 102 portals -1 70 66 68
+
+sector number 70 texture 5 type 0 data 0 light -1 h_floor -42 h_ceil -22 gravity 10 friction 50 vertex_num 4 vertexes 103 108 106 104 portals 69 -1 67 66
+
+sector number 71 texture 4 type -8 data 0 light -1 h_floor -60 h_ceil -40 gravity 10 friction 50 vertex_num 4 vertexes 98 97 109 110 portals 64 -1 72 -1
+
+sector number 72 texture 4 type 0 data 0 light -1 h_floor -60 h_ceil -40 gravity 10 friction 50 vertex_num 6 vertexes 111 110 109 112 113 114 portals -1 71 -1 -1 73 -1
+
+sector number 73 texture 4 type 0 data 0 light -1 h_floor -60 h_ceil -40 gravity 10 friction 50 vertex_num 6 vertexes 115 114 113 116 117 118 portals -1 72 -1 76 75 74
+
+sector number 74 texture 4 type 0 data 0 light -1 h_floor -60 h_ceil -40 gravity 10 friction 50 vertex_num 4 vertexes 115 118 119 120 portals 73 75 77 -1
+
+sector number 75 texture 9 type 9 data 0 light 16711680 h_floor -58 h_ceil -42 gravity 10 friction 50 vertex_num 4 vertexes 119 118 117 121 portals 74 73 76 77
+
+sector number 76 texture 4 type 0 data 0 light -1 h_floor -60 h_ceil -40 gravity 10 friction 50 vertex_num 4 vertexes 121 117 116 122 portals 75 73 -1 77
+
+sector number 77 texture 4 type 0 data 0 light -1 h_floor -60 h_ceil -40 gravity 10 friction 50 vertex_num 6 vertexes 120 119 121 122 123 124 portals 74 75 76 -1 -1 -1
+
+sector number 78 texture 4 type 0 data 0 light -1 h_floor -62 h_ceil -22 gravity 10 friction 50 vertex_num 4 vertexes 96 95 125 126 portals 64 -1 79 -1
+
+sector number 79 texture 4 type 0 data 0 light -1 h_floor -64 h_ceil -24 gravity 10 friction 50 vertex_num 4 vertexes 126 125 127 128 portals 78 -1 80 -1
+
+sector number 80 texture 4 type 0 data 0 light -1 h_floor -66 h_ceil -26 gravity 10 friction 50 vertex_num 4 vertexes 128 127 129 130 portals 79 -1 81 -1
+
+sector number 81 texture 4 type 0 data 0 light -1 h_floor -68 h_ceil -28 gravity 10 friction 50 vertex_num 4 vertexes 129 131 132 130 portals -1 82 -1 80
+
+sector number 82 texture 4 type 0 data 0 light -1 h_floor -68 h_ceil -28 gravity 10 friction 50 vertex_num 4 vertexes 132 131 133 134 portals 81 -1 83 -1
+
+sector number 83 texture 4 type 0 data 0 light -1 h_floor -68 h_ceil -28 gravity 10 friction 50 vertex_num 4 vertexes 133 135 136 134 portals -1 84 -1 82
+
+sector number 84 texture 9 type 2 data 50 light -1 h_floor -68 h_ceil -48 gravity 10 friction 50 vertex_num 4 vertexes 135 137 138 136 portals -1 -1 -1 83
+
+sector number 85 texture 4 type 0 data 0 light -1 h_floor -8 h_ceil 20 gravity 10 friction 50 vertex_num 4 vertexes 139 90 91 140 portals -1 63 -1 86
+
+sector number 86 texture 6 type 0 data 0 light -1 h_floor -10 h_ceil 20 gravity 10 friction 50 vertex_num 4 vertexes 139 140 141 142 portals 85 -1 97 -1
+
+sector number 87 texture 0 type 0 data 0 light -1 h_floor -10 h_ceil 20 gravity 10 friction 50 vertex_num 4 vertexes 143 144 145 146 portals 97 98 93 92
+
+sector number 88 texture 0 type 0 data 0 light -1 h_floor -10 h_ceil 20 gravity 10 friction 50 vertex_num 4 vertexes 147 148 149 150 portals 99 100 94 93
+
+sector number 89 texture 0 type 0 data 0 light -1 h_floor -10 h_ceil 20 gravity 10 friction 50 vertex_num 4 vertexes 151 152 153 154 portals 100 101 95 94
+
+sector number 90 texture 5 type 0 data 0 light -1 h_floor -10 h_ceil 20 gravity 10 friction 50 vertex_num 8 vertexes 155 156 157 158 159 160 161 162 portals 95 101 100 99 -1 91 -1 96
+
+sector number 91 texture 6 type 0 data 0 light -1 h_floor -10 h_ceil 20 gravity 10 friction 50 vertex_num 4 vertexes 161 160 163 164 portals 90 -1 110 -1
+
+sector number 92 texture 5 type 4 data 10 light -1 h_floor -30 h_ceil 20 gravity 10 friction 50 vertex_num 4 vertexes 142 143 146 165 portals 97 87 93 -1
+
+sector number 93 texture 5 type 4 data 10 light -1 h_floor -30 h_ceil 20 gravity 10 friction 50 vertex_num 6 vertexes 165 146 145 147 150 166 portals 92 87 99 88 94 -1
+
+sector number 94 texture 5 type 4 data 10 light -1 h_floor -30 h_ceil 20 gravity 10 friction 50 vertex_num 6 vertexes 166 150 149 151 154 167 portals 93 88 100 89 95 -1
+
+sector number 95 texture 5 type 4 data 10 light -1 h_floor -30 h_ceil 20 gravity 10 friction 50 vertex_num 5 vertexes 167 154 153 156 155 portals 94 89 101 90 96
+
+sector number 96 texture 5 type 4 data 10 light -1 h_floor -30 h_ceil 20 gravity 10 friction 50 vertex_num 3 vertexes 167 155 162 portals 95 90 -1
+
+sector number 97 texture 5 type 4 data 10 light -1 h_floor -30 h_ceil 20 gravity 10 friction 50 vertex_num 6 vertexes 143 142 141 168 169 144 portals 92 86 -1 -1 98 87
+
+sector number 98 texture 5 type 4 data 10 light -1 h_floor -30 h_ceil 20 gravity 10 friction 50 vertex_num 4 vertexes 145 144 169 159 portals 87 97 103 99
+
+sector number 99 texture 5 type 4 data 10 light -1 h_floor -30 h_ceil 20 gravity 10 friction 50 vertex_num 5 vertexes 147 145 159 158 148 portals 93 98 90 100 88
+
+sector number 100 texture 5 type 4 data 10 light -1 h_floor -30 h_ceil 20 gravity 10 friction 50 vertex_num 6 vertexes 149 148 158 157 152 151 portals 88 99 90 101 89 94
+
+sector number 101 texture 5 type 4 data 10 light -1 h_floor -30 h_ceil 20 gravity 10 friction 50 vertex_num 4 vertexes 153 152 157 156 portals 89 100 90 95
+
+sector number 102 texture 1 type 5 data 25 light -1 h_floor -2 h_ceil 12 gravity 10 friction 50 vertex_num 4 vertexes 170 171 84 87 portals -1 -1 61 -1
+
+sector number 103 texture 6 type 0 data 0 light -1 h_floor -26 h_ceil 20 gravity 10 friction 50 vertex_num 4 vertexes 169 172 173 159 portals -1 104 -1 98
+
+sector number 104 texture 6 type 0 data 0 light -1 h_floor -22 h_ceil 20 gravity 10 friction 50 vertex_num 4 vertexes 173 172 174 175 portals 103 -1 105 -1
+
+sector number 105 texture 6 type 0 data 0 light -1 h_floor -18 h_ceil 20 gravity 10 friction 50 vertex_num 6 vertexes 174 176 177 178 179 175 portals -1 -1 106 -1 -1 104
+
+sector number 106 texture 6 type 0 data 0 light -1 h_floor -14 h_ceil 20 gravity 10 friction 50 vertex_num 4 vertexes 177 180 181 178 portals -1 107 -1 105
+
+sector number 107 texture 6 type 0 data 0 light -1 h_floor -10 h_ceil 20 gravity 10 friction 50 vertex_num 6 vertexes 180 182 183 184 185 181 portals -1 108 -1 -1 -1 106
+
+sector number 108 texture 6 type 0 data 0 light -1 h_floor -6 h_ceil 20 gravity 10 friction 50 vertex_num 4 vertexes 182 86 85 183 portals -1 61 109 107
+
+sector number 109 texture 6 type 0 data 0 light -1 h_floor -2 h_ceil 20 gravity 10 friction 50 vertex_num 4 vertexes 85 82 186 183 portals 61 -1 -1 108
+
+sector number 110 texture 6 type 0 data 0 light -1 h_floor -10 h_ceil -5 gravity 10 friction 50 vertex_num 4 vertexes 164 163 187 188 portals 91 -1 113 -1
+
+sector number 111 texture 8 type 7 data 0 light 16711680 h_floor -25 h_ceil 20 gravity 10 friction 50 vertex_num 8 vertexes 189 190 191 192 193 194 195 196 portals 113 112 115 116 117 119 118 114
+
+sector number 112 texture 7 type 0 data 0 light -1 h_floor -24 h_ceil 2 gravity 10 friction 5 vertex_num 6 vertexes 187 197 198 199 191 190 portals -1 -1 -1 115 111 113
+
+sector number 113 texture 7 type 0 data 0 light -1 h_floor -10 h_ceil 16 gravity 10 friction 5 vertex_num 4 vertexes 188 187 190 189 portals 110 112 111 114
+
+sector number 114 texture 7 type 0 data 0 light -1 h_floor -12 h_ceil 14 gravity 10 friction 5 vertex_num 6 vertexes 188 189 196 200 201 202 portals 113 111 118 -1 -1 -1
+
+sector number 115 texture 7 type 0 data 0 light -1 h_floor -22 h_ceil 4 gravity 10 friction 5 vertex_num 4 vertexes 191 199 203 192 portals 112 -1 116 111
+
+sector number 116 texture 7 type 0 data 0 light -1 h_floor -20 h_ceil 6 gravity 10 friction 5 vertex_num 6 vertexes 192 203 204 205 206 193 portals 115 -1 -1 -1 117 111
+
+sector number 117 texture 7 type 0 data 0 light -1 h_floor -18 h_ceil 8 gravity 10 friction 5 vertex_num 4 vertexes 194 193 206 207 portals 111 116 -1 119
+
+sector number 118 texture 7 type 0 data 0 light -1 h_floor -14 h_ceil 12 gravity 10 friction 5 vertex_num 4 vertexes 200 196 195 208 portals 114 111 119 -1
+
+sector number 119 texture 7 type 0 data 0 light -1 h_floor -16 h_ceil 10 gravity 10 friction 5 vertex_num 6 vertexes 208 195 194 207 209 210 portals 118 111 117 -1 -1 -1
+
+sector number 120 texture 0 type 0 data 0 light -1 h_floor 0 h_ceil 20 gravity 10 friction 50 vertex_num 1 vertexes 211 portals -1
+
+sector number 121 texture 0 type 0 data 0 light -1 h_floor 0 h_ceil 20 gravity 10 friction 50 vertex_num 1 vertexes 212 portals -1

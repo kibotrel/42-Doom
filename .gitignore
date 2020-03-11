@@ -3,10 +3,7 @@ objs
 build
 SDL2*
 *.o
-*.swo
 *.txt
-TODO*
-*.data
 lib*
 
 # Static libraries - Headers
@@ -22,4 +19,5 @@ doom-nukem
 
 # Recovery
 *.swp
+*.swo
 .DS_Store
