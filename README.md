@@ -54,20 +54,20 @@ W.I.P
 ### Ressources
 
 * Audio
- * [Mick Gordon - The Only Thing They Fear is You (DOOM Eternal)](https://www.youtube.com/watch?v=Akx48dLnccQ)
- * [Shotgun (DOOM Original)](http://www.wolfensteingoodies.com/archives/olddoom/music.htm)
+  * [Mick Gordon - The Only Thing They Fear is You (DOOM Eternal)](https://www.youtube.com/watch?v=Akx48dLnccQ)
+  * [Shotgun (DOOM Original)](http://www.wolfensteingoodies.com/archives/olddoom/music.htm)
 * Fonts
- * [Menu (Pricedown)](https://www.dafont.com/fr/pricedown.font)
- * [Game / Settings (Keep Calm)](https://www.dafont.com/fr/keep-calm.font)
- * [Editor (Open Sans)](https://www.fontsquirrel.com/fonts/open-sans)
+  * [Menu (Pricedown)](https://www.dafont.com/fr/pricedown.font)
+  * [Game / Settings (Keep Calm)](https://www.dafont.com/fr/keep-calm.font)
+  * [Editor (Open Sans)](https://www.fontsquirrel.com/fonts/open-sans)
 * Animations
- * [Shotgun (Duke Nukem 3D)](https://www.spriters-resource.com/pc_computer/dukenukem3d/sheet/19003/)
- * [Coin spin](https://www.pngkey.com/detail/u2e6t4e6t4y3r5y3_26-color-pixel-art-coin-animation/)
+  * [Shotgun (Duke Nukem 3D)](https://www.spriters-resource.com/pc_computer/dukenukem3d/sheet/19003/)
+  * [Coin spin](https://www.pngkey.com/detail/u2e6t4e6t4y3r5y3_26-color-pixel-art-coin-animation/)
 * Images
- * [Menu Background (Doom 2016)](https://wallpaperscave.com/games/doom-2016/6773)
- * [Skybox](https://wallhere.com/fr/wallpaper/637649)
- * [Ammunation box / shells (Doom 64)](https://www.pngwave.com/png-clip-art-aqubd)
- * [Textures (Minecraft Ressources-Pack)](https://minecraft.fr/categorie/resource-pack/)
+  * [Menu Background (Doom 2016)](https://wallpaperscave.com/games/doom-2016/6773)
+  * [Skybox](https://wallhere.com/fr/wallpaper/637649)
+  * [Ammunation box / shells (Doom 64)](https://www.pngwave.com/png-clip-art-aqubd)
+  * [Textures (Minecraft Ressources\-Pack)](https://minecraft.fr/categorie/resource-pack/)
 
 ### Helpful links
 
