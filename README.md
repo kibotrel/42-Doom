@@ -2,6 +2,8 @@
 
 [![CodeFactor](https://www.codefactor.io/repository/github/kibotrel/42-doom/badge)](https://www.codefactor.io/repository/github/kibotrel/42-doom)
 
+![Header](/screenshots/header.png)
+
 This project was made to learn about graphics and physics engine techniques along with audio play-back and mixing using [SDL2](https://www.libsdl.org/), [libsndfile](http://www.mega-nerd.com/libsndfile/) and [libao](https://xiph.org/ao/).
 
 ## Install
@@ -50,7 +52,13 @@ More information available in the [Error management wiki page]() of this project
 
 ## Screenshots
 
-W.I.P
+![Screen0](/screenshots/screen0.png)
+
+![Screen1](/screenshots/screen1.png)
+
+![Screen2](/screenshots/screen2.png)
+
+![Screen3](/screenshots/screen3.png)
 
 ## Credits
 ### Ressources
