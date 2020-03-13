@@ -15,7 +15,7 @@ $> git clone --recurse-submodules https://github.com/kibotrel/42-Doom.git
 $> cd 42-Doom && make
 ```
 
-If you are running under macOS, you'll need [brew](https://brew.sh/) installed to compile the project since some dependencies are installed via this package manager.
+If you are running under macOS, you'll need [`brew`](https://brew.sh/) installed to compile the project since some dependencies are installed via this package manager.
 
 ## Usage
 ### Run the program
