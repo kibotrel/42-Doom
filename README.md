@@ -54,13 +54,13 @@ More information available in the [Error management wiki page]() of this project
 
 ## Screenshots
 
-![Screen0](/screenshots/screen0.png)
-
-![Screen1](/screenshots/screen1.png)
-
 ![Screen2](/screenshots/screen2.png)
 
 ![Screen3](/screenshots/screen3.png)
+
+![Screen0](/screenshots/screen0.png)
+
+![Screen1](/screenshots/screen1.png)
 
 ## Credits
 ### Ressources
