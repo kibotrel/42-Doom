@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 15:18:26 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/03/06 10:20:14 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/03/16 02:34:33 by vivi             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 void		fall_damage(t_env *env)
 {
-	int			gravity;
+	double		gravity;
 	double		damage;
 	double		height;
 
