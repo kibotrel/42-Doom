@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   enums.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 17:59:50 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/03/05 14:30:17 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/03/16 01:31:20 by vivi             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ typedef enum	e_status
 	E_P_NB_VERTEX,
 	E_P_NB_SECTOR,
 	E_P_NO_TOTAL,
-	E_SDL_THREAD,
+	E_THREAD,
 	E_AUDIO_DRIVER,
 	E_FLOAT,
 	E_EDIT_ENTITY,
@@ -102,6 +102,10 @@ typedef enum	e_status
 	E_EDIT_VERTEX,
 	DEATH,
 	WIN,
+	E_AUDIO_OPEN,
+	E_AUDIO_CLOSE,
+	E_DEVICE_OPEN,
+	E_DEVICE_CLOSE,
 	NB_ERRORS
 }				t_status;
 

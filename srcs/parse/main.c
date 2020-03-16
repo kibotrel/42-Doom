@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: reda-con <reda-con@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 14:00:52 by reda-con          #+#    #+#             */
-/*   Updated: 2020/03/06 10:28:01 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/03/15 21:38:37 by vivi             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,9 +77,7 @@ static void		verif_end(int gnl, int fd, t_env *env, t_parse par)
 		main_err(&par, env, 1, E_P_CLOSE);
 	if (env->cam.pos.x <= -1 || env->cam.pos.y <= -1)
 		main_err(&par, env, 1, E_P_NO_PLAYER);
-	if (par.total == -1)
-		main_err(&par, env, 1, E_P_TOTAL);
-	if (par.nb != par.total)
+	if (par.nb != par.total || par.total < 3)
 		main_err(&par, env, 1, E_P_NB_VERTEX);
 	if (env->sect_ct != env->zones)
 		main_err(&par, env, 1, E_P_NB_SECTOR);
@@ -100,7 +98,7 @@ static void		read_file(char *file, char **av, t_env *env)
 	env->zones = 0;
 	gnl = ft_isvalidname(av[1], ".data");
 	if (gnl == 0)
-		clean(env, E_P_NAME);
+		clean(env, E_FILENAME);
 	if ((fd = open(file, O_RDONLY)) == -1)
 		clean(env, E_P_OPEN);
 	while ((gnl = ft_get_next_line(fd, &line)) == 1)

@@ -6,17 +6,11 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/10 15:11:44 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/03/06 11:24:45 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/03/15 22:06:01 by vivi             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "clean.h"
-
-/*
-**	pthread_join(env->sound, NULL);
-**	sf_seek(env->audio.stream[0], 0, SEEK_SET);
-**	sf_seek(env->audio.stream[1], 0, SEEK_SET);
-*/
 
 void	game_keyboard(t_env *env)
 {
@@ -28,6 +22,9 @@ void	game_keyboard(t_env *env)
 		env->win = MENU;
 		SDL_ShowCursor(SDL_ENABLE);
 		env->tick.back.old = env->tick.back.new;
+		pthread_join(env->sound, NULL);
+		sf_seek(env->audio.stream[0], 0, SEEK_SET);
+		sf_seek(env->audio.stream[1], 0, SEEK_SET);
 		return ;
 	}
 	if (env->input[SDL_SCANCODE_SPACE])

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error_message.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lojesu <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: lojesu <lojesu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/05 12:16:41 by lojesu            #+#    #+#             */
-/*   Updated: 2020/03/06 10:37:30 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/03/16 01:31:34 by vivi             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,11 @@
 
 static void	error_messages_part2(t_env *env)
 {
-	env->error[E_P_OPEN] = M_P_OPEN;
-	env->error[E_P_GNL] = M_P_GNL;
-	env->error[E_P_CLOSE] = M_P_CLOSE;
-	env->error[E_P_NO_PLAYER] = M_P_NO_PLAYER;
 	env->error[E_P_TOTAL] = M_P_TOTAL;
 	env->error[E_P_NB_VERTEX] = M_P_NB_VERTEX;
 	env->error[E_P_NB_SECTOR] = M_P_NB_SECTOR;
 	env->error[E_P_NO_TOTAL] = M_P_NO_TOTAL;
-	env->error[E_SDL_THREAD] = M_SDL_THREAD;
+	env->error[E_THREAD] = M_THREAD;
 	env->error[E_AUDIO_DRIVER] = M_AUDIO_DRIVER;
 	env->error[E_FLOAT] = M_FLOAT;
 	env->error[E_EDIT_ENTITY] = M_EDIT_ENTITY;
@@ -33,6 +29,10 @@ static void	error_messages_part2(t_env *env)
 	env->error[E_EDIT_VERTEX] = M_EDIT_VERTEX;
 	env->error[DEATH] = M_DEATH;
 	env->error[WIN] = M_WIN;
+	env->error[E_AUDIO_OPEN] = M_AUDIO_OPEN;
+	env->error[E_AUDIO_CLOSE] = M_AUDIO_CLOSE;
+	env->error[E_DEVICE_OPEN] = M_DEVICE_OPEN;
+	env->error[E_DEVICE_CLOSE] = M_DEVICE_CLOSE;
 }
 
 void		error_messages(t_env *env)
@@ -57,5 +57,9 @@ void		error_messages(t_env *env)
 	env->error[E_P_SECTOR] = M_P_SECTOR;
 	env->error[E_P_BLANK] = M_P_BLANK;
 	env->error[E_P_NAME] = M_P_NAME;
+	env->error[E_P_OPEN] = M_P_OPEN;
+	env->error[E_P_GNL] = M_P_GNL;
+	env->error[E_P_CLOSE] = M_P_CLOSE;
+	env->error[E_P_NO_PLAYER] = M_P_NO_PLAYER;
 	error_messages_part2(env);
 }

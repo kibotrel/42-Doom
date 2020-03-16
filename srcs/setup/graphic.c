@@ -6,13 +6,14 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/16 11:54:18 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/03/06 10:39:53 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/03/15 22:06:35 by vivi             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "clean.h"
 #include "libft.h"
 #include "utils.h"
+#include "setup.h"
 
 static void	sdl_setup(t_env *env, t_sdl *sdl)
 {
@@ -50,13 +51,10 @@ static void	ttf_setup(t_env *env, t_sdl *sdl)
 	police_color(&sdl->color, 0xFF, 0xFF, 0xFF);
 }
 
-/*
-** 	audio_setup(env, &env->audio); TO SETUP SOUND
-*/
-
 void		graphic_setup(t_env *env, t_sdl *sdl)
 {
 	ft_bzero(sdl, sizeof(t_sdl));
+	audio_setup(env, &env->audio);
 	sdl_setup(env, sdl);
 	ttf_setup(env, sdl);
 }

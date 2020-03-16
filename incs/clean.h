@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 19:08:43 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/03/03 13:32:05 by kibotrel         ###   ########.fr       */
+/*   Updated: 2020/03/16 01:34:08 by vivi             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,6 @@ void	engine_clean(t_game *var);
 **	audio.c
 */
 
-void	audio_clean(t_audio *audio);
+void	audio_clean(t_env *env);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/18 14:38:11 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/03/06 11:23:52 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/03/15 22:20:25 by vivi             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static void	multithreaded_engine(t_env *env)
 	env->data.sky = 0;
 	while (++i < NB_THREADS)
 		if (pthread_create(&env->sdl.thread[i], NULL, (void*)graphics, env))
-			clean(env, E_SDL_THREAD);
+			clean(env, E_THREAD);
 	i = -1;
 	while (++i < NB_THREADS)
 		pthread_join(env->sdl.thread[i], NULL);
@@ -57,10 +57,6 @@ static void	params_reset(t_env *env)
 	env->cam.pos.z = env->sector[env->cam.sector].floor + CAM_H;
 }
 
-/*
-**	pthread_create(&env->sound, NULL, (void*)audio, env); THREAD FOR SOUND
-*/
-
 void		game(t_env *env)
 {
 	if (!env->setup)
@@ -68,6 +64,8 @@ void		game(t_env *env)
 		SDL_ShowCursor(SDL_DISABLE);
 		SDL_SetWindowTitle(env->sdl.win, TITLE_GAME);
 		params_reset(env);
+		if (pthread_create(&env->sound, NULL, (void*)audio, env))
+			clean(env, E_THREAD);
 	}
 	multithreaded_engine(env);
 	hud(env);

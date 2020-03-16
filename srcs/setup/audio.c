@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/03 15:04:05 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/03/06 10:35:22 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/03/16 01:39:38 by vivi             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,8 @@ void			audio_setup(t_env *env, t_audio *audio)
 	while (++i < NB_SAMPLES)
 	{
 		ft_bzero(&audio->info[i], sizeof(SF_INFO));
-		audio->stream[i] = sf_open(path[i], SFM_READ, &audio->info[i]);
+		if (!(audio->stream[i] = sf_open(path[i], SFM_READ, &audio->info[i])))
+			clean(env, E_AUDIO_OPEN);
 		audio->format[i].bits = bits_per_sample(audio->info[i].format);
 		audio->format[i].channels = audio->info[i].channels;
 		audio->format[i].rate = audio->info[i].samplerate;
@@ -48,5 +49,6 @@ void			audio_setup(t_env *env, t_audio *audio)
 		audio->format[i].matrix = 0;
 		ft_bzero(audio->buffer[i], sizeof(short) * STREAM_SIZE);
 	}
-	audio->device = ao_open_live(audio->driver, &audio->format[0], NULL);
+	if (!(audio->device = ao_open_live(audio->driver, &audio->format[0], NULL)))
+		clean(env, E_DEVICE_OPEN);
 }

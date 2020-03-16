@@ -6,10 +6,11 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/08 19:29:45 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/03/06 09:56:52 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/03/16 01:37:33 by vivi             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <time.h>
 #include <stdlib.h>
 #include "libft.h"
 #include "clean.h"
@@ -61,21 +62,18 @@ static void	env_clean(t_env *env)
 		free_map(env);
 }
 
-/*
-**	#include <time.h>
-**	struct timespec	time;
-**	time = (struct timespec){0, 250000000};
-**	pthread_join(env->sound, NULL);
-**	nanosleep(&time, 0);
-**	audio_clean(&env->audio);
-*/
-
 void		clean(t_env *env, uint8_t error)
 {
+	struct timespec	time;
+
 	env->data.closed = 1;
+	time = (struct timespec){0, 250000000};
+	pthread_join(env->sound, NULL);
+	nanosleep(&time, 0);
 	clean_editor(&env->editor);
 	ttf_clean(&env->sdl);
 	sdl_clean(&env->sdl);
 	env_clean(env);
+	audio_clean(env);
 	error ? ft_print_error(env->error[error], error) : exit(0);
 }
