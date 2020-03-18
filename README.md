@@ -40,7 +40,7 @@ This program contains a three different sub-menus accessible through the main on
 * [**Editor**]() Build levels and tweak parameters in real-time.
 * [**Settings**]() Update game-rules and modify engine's behaviors.
 
-For more information, click on each sub-menu to be redirected on its wiki or [here]() for the main wiki page.
+For more information, click on each sub-menu to be redirected on its wiki or [here](https://github.com/kibotrel/42-Doom/wiki) for the main wiki page.
 
 ### Error management
 
