@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/19 15:29:59 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/03/06 10:53:25 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/03/06 13:49:33 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,5 @@
 
 void	usage(void)
 {
-	ft_putendl("usage: ./doom-nukem \'data-file\'");
+	ft_putendl("usage: ./doom-nukem [\'data-file.data\']");
 }

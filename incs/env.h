@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/16 11:54:25 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/03/16 01:32:17 by vivi             ###   ########.fr       */
+/*   Updated: 2020/04/13 07:36:07 by demonwaves       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,9 @@
 */
 
 # define M_P			"DEPRECATED"
+# define M_WIN			"\033[32;1mYou win !\033[0m"
 # define M_BKGD			"\033[31;1mError:\033[0m Resolution not supported"
+# define M_DEATH		"\033[31;1mYou died !\033[0m"
 # define M_FLOAT		"DEPRECATED"
 # define M_P_GNL		"\033[31;1mError:\033[0m Unable to build line from file"
 # define M_MALLOC		"\033[31;1mError:\033[0m Can't allocate memory."
@@ -59,26 +61,23 @@
 # define M_TTF_INIT		"\033[31;1mError:\033[0m Can't init TTF connexion."
 # define M_BMP_PARSE	"\033[31;1mError:\033[0m Can't load the given BMP file."
 # define M_P_FS_LINE	"\033[31;1mError:\033[0m Misformated map header"
+# define M_EDIT_TEXT	"DEPRECATED"
+# define M_AUDIO_OPEN	"\033[32;1mError :\033[0m Can't open sound stream"
 # define M_P_NO_TOTAL	"\033[31;1mError:\033[0m Missing header informormations"
 # define M_SDL_UPDATE	"\033[31;1mError:\033[0m Can't update the given frame."
 # define M_TTF_RENDER	"\033[31;1mError:\033[0m Can't write text on surface."
+# define M_E_SECT_PORT	"DEPRECATED"
+# define M_EDIT_ENTITY	"DEPRECATED"
+# define M_EDIT_PORTAL	"DEPRECATED"
+# define M_EDIT_SECTOR	"DEPRECATED"
+# define M_EDIT_VERTEX	"DEPRECATED"
+# define M_AUDIO_CLOSE	"\033[32;1mError :\033[0m Can't close sound stream"
 # define M_P_NB_SECTOR	"\033[31;1mError:\033[0m Incorrect sector amount"
 # define M_P_NB_VERTEX	"\033[31;1mError:\033[0m Incorrect vertex amount"
 # define M_P_NO_PLAYER	"\033[31;1mError:\033[0m Invalid player position"
 # define M_SDL_WINSURF	"\033[31;1mError:\033[0m Can't retrieve window surface."
-
-# define M_AUDIO_DRIVER	"\033[31;1mError:\033[0m No audio driver available."
-# define M_EDIT_ENTITY	"\033[31;1mError:\033[0m Can't create entity."
-# define M_EDIT_PORTAL	"\033[31;1mError:\033[0m Can't create portal."
-# define M_EDIT_SECTOR	"\033[31;1mError:\033[0m Can't create new sector."
-# define M_E_SECT_PORT	"\033[31;1mError:\033[0m Can't create portals for sect."
-# define M_EDIT_TEXT	"\033[31;1mError:\033[0m Can't display text."
-# define M_EDIT_VERTEX	"\033[31;1mError:\033[0m Can't create vertex."
-# define M_DEATH		"\033[31;1mYou died !\033[0m"
-# define M_WIN			"\033[32;1mYou win !\033[0m"
-# define M_AUDIO_OPEN	"\033[32;1mError :\033[0m Can't open sound stream"
-# define M_AUDIO_CLOSE	"\033[32;1mError :\033[0m Can't close sound stream"
 # define M_DEVICE_OPEN	"\033[31;1mError:\033[0m Can't open audio device."
+# define M_AUDIO_DRIVER	"\033[31;1mError:\033[0m No audio driver available."
 # define M_DEVICE_CLOSE "\033[31;1mError:\033[0m Can't close audio device."
 
 # define TITLE_MENU		"Doom-Nukem v0.8.5 - Menu"

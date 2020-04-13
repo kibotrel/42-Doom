@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/04 09:08:44 by nde-jesu          #+#    #+#             */
-/*   Updated: 2020/03/06 10:08:52 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/04/13 07:50:46 by demonwaves       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static t_ed_entity	*create_entity(int x, int y, int type, t_env *env)
 	t_ed_entity	*entity;
 
 	if (!(entity = (t_ed_entity*)ft_memalloc(sizeof(t_ed_entity))))
-		clean(env, E_EDIT_ENTITY);
+		clean(env, E_MALLOC);
 	entity->x = x;
 	entity->y = y;
 	entity->type = type;

@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/04 10:43:57 by nde-jesu          #+#    #+#             */
-/*   Updated: 2020/03/04 10:43:57 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/04/13 06:59:25 by demonwaves       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,18 +66,18 @@ static void		draw_sector_plate_door(t_sdl *sdl, t_ed_sector *sectors,
 	t_ed_sector *sect;
 	t_vertex	*vertex;
 	int			color;
-	int			number;
+	int			n;
 
 	sect = sectors;
 	while (sect->prev)
 		sect = sect->prev;
-	number = EFF_PLATE + edit->count.eff_data[EFF_PLATE];
+	n = EFF_PLATE + edit->count.eff_data[EFF_PLATE];
 	while (sect)
 	{
-		if (sect->effect.effects == number || sect->effect.effects == -number)
+		if ((int)sect->effect.effects == n || (int)sect->effect.effects == -n)
 		{
 			color = 0xff00ff;
-			if (sect->effect.effects == number)
+			if ((int)sect->effect.effects == n)
 				color = 0xffff00;
 			vertex = sect->vertex;
 			while (vertex)

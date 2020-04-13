@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 15:29:00 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/03/06 11:24:58 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/03/06 12:53:20 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static uint8_t	area_setup(t_env *env, t_game *var)
 	return (1);
 }
 
-int			game_setup(t_env *env, t_game *var)
+int				game_setup(t_env *env, t_game *var)
 {
 	uint32_t	i;
 

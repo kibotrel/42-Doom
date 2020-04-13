@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/04 11:49:06 by nde-jesu          #+#    #+#             */
-/*   Updated: 2020/03/05 13:49:28 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/03/06 14:37:14 by nde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -212,8 +212,6 @@ void				move_in_sector(t_editor *edit, int x, int y);
 **	sector/sector_utils.c
 */
 t_ed_sector			*create_sector(t_env *env, t_editor *edit);
-void				delete_sector_in_progress(t_ed_sector **sector,
-	t_editor *edit);
 void				print_sector_light(t_env *env, int light, t_ed_sector *sect,
 	SDL_Surface *screen);
 
@@ -227,7 +225,7 @@ int					intersects_count(t_vertex v1, t_vertex v2, t_vertex p1,
 /*
 **	keyboard.c
 */
-void				editor_keyboard(t_env *env, t_editor *edit, t_tick *button);
+void				editor_keyboard(t_env *env, t_editor *edit);
 
 /*
 **	effector.c

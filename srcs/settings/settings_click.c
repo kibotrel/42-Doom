@@ -6,7 +6,7 @@
 /*   By: lojesu <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/22 17:03:15 by lojesu            #+#    #+#             */
-/*   Updated: 2020/03/06 10:33:43 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/03/06 12:12:05 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,11 @@ static void	click_mode(t_env *env, t_vec2d start, int size)
 	else if (check_great_click(env, start, size + 3, 2))
 		env->setting.mode = NORMAL;
 	else if (check_great_click(env, start, size + 6, 2))
+	{
+		if (env->data.magazines > 10)
+			env->data.magazines = 10;
 		env->setting.mode = HARD;
+	}
 }
 
 static void	click_resolution(t_env *env)

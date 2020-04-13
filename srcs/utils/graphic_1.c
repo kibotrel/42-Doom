@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 13:21:31 by kibotrel          #+#    #+#             */
-/*   Updated: 2020/03/06 10:51:35 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/03/06 13:13:27 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 #define CEIL 0x222222
 #define LAVA_FLOOR 0x330000
 #define HEAL_FLOOR 0x29a329
+#define MONEY_FLOOR 0xe6b800
 
 static uint32_t	select_floor_color(t_env *env, t_game *var)
 {
@@ -24,6 +25,8 @@ static uint32_t	select_floor_color(t_env *env, t_game *var)
 		return (LAVA_FLOOR);
 	else if (env->sector[var->sector].type == HEAL)
 		return (HEAL_FLOOR);
+	else if (env->sector[var->sector].type == MONEY)
+		return (MONEY_FLOOR);
 	return (FLOOR);
 }
 

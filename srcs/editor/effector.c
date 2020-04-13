@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/04 08:55:48 by nde-jesu          #+#    #+#             */
-/*   Updated: 2020/03/05 14:42:56 by nde-jesu         ###   ########.fr       */
+/*   Updated: 2020/04/13 07:03:09 by demonwaves       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	effector_text(t_env *env, t_presets preset, t_ed_effects effect)
 	if (preset == EFF_MOVE || preset == EFF_EFFECT)
 		display_text(WHITE,
 			init_vertex(1460, 50), env->editor.effector[effect], env);
-	else if (preset == EFF_DATA && effect != NONE)
+	else if (preset == EFF_DATA && effect != EFF_NONE)
 	{
 		display_text(WHITE, init_vertex(1420, 50), "-", env);
 		display_text(WHITE, init_vertex(1615, 55), "+", env);
@@ -78,9 +78,9 @@ void	apply_effect_in_sector(t_editor *edit, int x, int y)
 
 void	check_plate(t_ed_sector *sect, int number)
 {
-	if (sect->effect.effects == -number)
+	if ((int)sect->effect.effects == -number)
 		sect->effect.effects = 0;
-	else if (sect->effect.effects == number)
+	else if ((int)sect->effect.effects == number)
 		sect->effect.effects = 0;
 	else
 		sect->effect.effects = number;
@@ -101,8 +101,8 @@ void	apply_plate(t_editor *edit, int x, int y, bool fl)
 	number = EFF_PLATE + edit->count.eff_data[EFF_PLATE];
 	while (sect)
 	{
-		if (sect->sector_number != which_sector &&
-			sect->effect.effects == number && fl == false)
+		if ((int)sect->sector_number != which_sector &&
+			(int)sect->effect.effects == number && fl == false)
 			sect->effect.effects = 0;
 		if (sect->sector_number == which_sector)
 		{

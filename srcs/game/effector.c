@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/05 12:34:35 by reda-con          #+#    #+#             */
-/*   Updated: 2020/03/06 10:15:50 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/03/06 12:22:26 by reda-con         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,9 +60,10 @@ void	effector(t_env *env, int s)
 	police_color(&env->sdl.color, 0xff, 0x00, 0x00);
 	if (env->sector[s].type == LAVA)
 		info(env, ft_strdup("Warning"), v2d(RATIO_GRID_X / 2, 1), 1);
-	police_color(&env->sdl.color, 0xff, 0xff, 0xff);
+	police_color(&env->sdl.color, 0xff, 0xff, 0x00);
 	if (env->sector[s].type == MONEY)
 		info(env, ft_strdup("Earning money"), v2d(RATIO_GRID_X / 2, 1), 1);
+	police_color(&env->sdl.color, 0xff, 0x69, 0xb4);
 	if (env->sector[s].type == HEAL)
 		info(env, ft_strdup("Healing"), v2d(RATIO_GRID_X / 2, 1), 1);
 	env->st_fl = SDL_GetTicks();
@@ -78,6 +79,7 @@ void	effector(t_env *env, int s)
 	}
 	if (env->data.life <= 0 || env->sector[s].type == END)
 		env->data.life <= 0 ? clean(env, DEATH) : clean(env, WIN);
+	police_color(&env->sdl.color, 0xff, 0xff, 0xff);
 }
 
 void	elevator(t_sector *sector, int s, t_cam *cam, int *input)

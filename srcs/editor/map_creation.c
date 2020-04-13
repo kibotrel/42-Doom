@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/04 09:26:41 by nde-jesu          #+#    #+#             */
-/*   Updated: 2020/03/06 11:24:28 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/03/06 12:51:26 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 #include "editor.h"
 #include "clean.h"
 #include "parse.h"
+#include "settings.h"
 
 void			write_portals(t_ed_sector *sect, int fd)
 {
@@ -106,7 +107,7 @@ static void		write_file(t_editor *editor, int fd)
 void			create_map(t_editor *editor, t_env *env)
 {
 	int		fd;
-	char *s[2];
+	char	*s[2];
 
 	s[0] = NULL;
 	s[1] = editor->map_path;
@@ -121,6 +122,10 @@ void			create_map(t_editor *editor, t_env *env)
 			clean(env, E_P_CLOSE);
 		if (!env->tuto)
 		{
+			env->data.money = 0;
+			env->data.life = 100;
+			env->data.ammos = 5;
+			env->data.magazines = (env->setting.mode == HARD ? 10 : 20);
 			free_map(env);
 			main_parse(s, env, 2);
 		}

@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/04 10:06:05 by nde-jesu          #+#    #+#             */
-/*   Updated: 2020/03/06 10:11:38 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/04/13 07:39:23 by demonwaves       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ static void			next_place_sector(t_ed_sector *sect, t_env *env,
 	sect->vertex_count = count_vertex_in_sector(sect->vertex);
 	if (!(sect->is_portal = (int*)ft_memalloc(sizeof(int)
 					* sect->vertex_count)))
-		clean(env, E_EDIT_SECT_PORTAL);
+		clean(env, E_MALLOC);
 	sect->is_portal = ft_memset(sect->is_portal, -1, sizeof(int)
 			* sect->vertex_count);
 	sect->next = create_sector(env, edit);

@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/04 09:33:26 by nde-jesu          #+#    #+#             */
-/*   Updated: 2020/03/06 10:11:13 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/04/13 07:50:58 by demonwaves       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static t_portal	*create_portal(t_vertex v1, t_vertex v2, t_env *env)
 	t_portal	*new;
 
 	if (!(new = (t_portal*)ft_memalloc(sizeof(t_portal))))
-		clean(env, E_EDIT_PORTAL);
+		clean(env, E_MALLOC);
 	new->extrems[0] = v1;
 	new->extrems[1] = v2;
 	new->type = 0;

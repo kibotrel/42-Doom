@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/04 11:12:38 by nde-jesu          #+#    #+#             */
-/*   Updated: 2020/03/06 10:12:25 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/04/13 07:48:01 by demonwaves       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,11 @@ void			display_text(int color, t_vertex pos, const char *text,
 	error = 0;
 	police_color(&env->sdl.color, color >> 16, color >> 8, color);
 	if (!(tmp = TTF_RenderText_Solid(env->sdl.font[2], text, env->sdl.color)))
-		error = 1;
+		clean(env, E_TTF_RENDER);
 	if (!error && SDL_BlitSurface(tmp, 0, env->sdl.screen, &where))
-		error = 2;
-	if (error != 1)
+		clean(env, E_SDL_BLIT);
+	else
 		SDL_FreeSurface(tmp);
-	if (error)
-		clean(env, E_EDIT_TEXT);
 	police_color(&env->sdl.color, 0xff, 0xff, 0xff);
 }
 

@@ -6,7 +6,7 @@
 /*   By: nde-jesu <nde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/04 11:37:26 by nde-jesu          #+#    #+#             */
-/*   Updated: 2020/03/06 10:12:52 by reda-con         ###   ########.fr       */
+/*   Updated: 2020/04/13 07:48:51 by demonwaves       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ t_vertex		*create_vertex(t_vertex v, t_env *env, int num)
 	t_vertex	*new;
 
 	if (!(new = (t_vertex*)ft_memalloc(sizeof(t_vertex))))
-		clean(env, E_EDIT_VERTEX);
+		clean(env, E_MALLOC);
 	new->x = v.x;
 	new->y = v.y;
 	if (num >= 0)
